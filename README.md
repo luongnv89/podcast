@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo/logo-full.svg">
+    <img src="assets/logo/logo-black.svg" alt="Build Wiz AI — AI Show" width="320">
+  </picture>
+</p>
+
 # Build Wiz AI — podcast
 
 Episodes generated with [DropCast](https://github.com/luongnv89/dropcast): a two-host

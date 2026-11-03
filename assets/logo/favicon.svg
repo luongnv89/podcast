@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img" aria-labelledby="t d">
+<title id="t">Build Wiz AI favicon</title>
+<desc id="d">Simplified two-layer mark: bars and spark.</desc>
+<rect width="16" height="16" rx="3.5" fill="#000000"/>
+<path fill="#FFFFFF" d="M2.75 5a1 1 0 0 1 1 1V12.5a1 1 0 0 1 -2 0V6a1 1 0 0 1 1 -1ZM5.5 10a1 1 0 0 1 1 1V12.5a1 1 0 0 1 -2 0V11a1 1 0 0 1 1 -1ZM8 7.5a1 1 0 0 1 1 1V12.5a1 1 0 0 1 -2 0V8.5a1 1 0 0 1 1 -1ZM10.5 10a1 1 0 0 1 1 1V12.5a1 1 0 0 1 -2 0V11a1 1 0 0 1 1 -1ZM13.25 5a1 1 0 0 1 1 1V12.5a1 1 0 0 1 -2 0V6a1 1 0 0 1 1 -1Z"/>
+<path fill="#22C55E" d="M8 0.8C8.45 2.95 8.45 2.95 10.6 3.4C8.45 3.85 8.45 3.85 8 6C7.55 3.85 7.55 3.85 5.4 3.4C7.55 2.95 7.55 2.95 8 0.8Z"/>
+</svg>
