@@ -1,7 +1,7 @@
 {
   "version": 1,
   "show": {
-    "name": "Build Wiz AI",
+    "name": "The AI Show",
     "tagline": "One source, everything worth knowing.",
     "hosts": [
       "Bob",
@@ -18,7 +18,7 @@
         "His thesis: capturing attention is the top skill, and one person using AI well can be a full creative team for their own brand or for clients.",
         "It lays out a step-by-step client process and a way to land the first client, with market data from Goldman Sachs and the IAB."
       ],
-      "show": "Build Wiz AI",
+      "show": "The AI Show",
       "hosts": [
         "Bob",
         "Alice"
@@ -47,7 +47,7 @@
         "Agents can proactively fix alerted bugs, score their own sessions to improve skills, and mine customer data for the roadmap.",
         "It shifts the goal from faster pull requests to one loop from task to shipped product, with humans still reviewing."
       ],
-      "show": "Build Wiz AI",
+      "show": "The AI Show",
       "hosts": [
         "Bob",
         "Alice"
@@ -76,7 +76,7 @@
         "The method: a decent app built fast, heavy daily posting with trial reels, AI-assisted editing, and tested calls to action.",
         "It is a sponsored, self-reported playbook; some tactics, like buying followers or planted comments, carry real risks."
       ],
-      "show": "Build Wiz AI",
+      "show": "The AI Show",
       "hosts": [
         "Bob",
         "Alice"

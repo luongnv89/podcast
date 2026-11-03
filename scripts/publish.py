@@ -42,7 +42,7 @@ SITE = REPO / "docs"
 EPISODES_DIR = "episodes"
 INDEX = "episodes.json"
 SHOW = {
-    "name": "Build Wiz AI",
+    "name": "The AI Show",
     "tagline": "One source, everything worth knowing.",
     "hosts": ["Bob", "Alice"],
 }
