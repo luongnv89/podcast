@@ -9,41 +9,44 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3.5' fill='%23000000'/%3E%3Cpath fill='%23FFFFFF' d='M2.75 5a1 1 0 0 1 1 1V12.5a1 1 0 0 1 -2 0V6a1 1 0 0 1 1 -1ZM5.5 10a1 1 0 0 1 1 1V12.5a1 1 0 0 1 -2 0V11a1 1 0 0 1 1 -1ZM8 7.5a1 1 0 0 1 1 1V12.5a1 1 0 0 1 -2 0V8.5a1 1 0 0 1 1 -1ZM10.5 10a1 1 0 0 1 1 1V12.5a1 1 0 0 1 -2 0V11a1 1 0 0 1 1 -1ZM13.25 5a1 1 0 0 1 1 1V12.5a1 1 0 0 1 -2 0V6a1 1 0 0 1 1 -1Z'/%3E%3Cpath fill='%2322C55E' d='M8 0.8C8.45 2.95 8.45 2.95 10.6 3.4C8.45 3.85 8.45 3.85 8 6C7.55 3.85 7.55 3.85 5.4 3.4C7.55 2.95 7.55 2.95 8 0.8Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Bricolage Grotesque: a characterful, slightly quirky display grotesque that reads as
-     "broadcast" at large sizes. Hanken Grotesk: a calm, legible body face with tabular
-     figures for timestamps. -->
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Bricolage Grotesque: a characterful display grotesque that reads as "broadcast"; used
+     for the brand, titles and numbers. Hanken Grotesk: a calm, legible body face with
+     tabular figures for timestamps and counts. -->
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* Palette: the four core colors only. Gray (#6B7280) is 4.4:1 on black, so it is used
-     for lines, borders and large type; small secondary text is white at reduced opacity
-     (a transparency of white, about 10:1 on black). Green is a highlight: text, lines,
-     borders, focus rings. It is never a background. */
+     for lines and borders only; secondary text is white at reduced opacity (about 10:1
+     on black). Green is a highlight: text, lines, borders, focus rings. Never a fill. */
   :root {
     --black: #000000;
     --white: #FFFFFF;
     --gray: #6B7280;
     --green: #22C55E;
-    --text-2: rgba(255, 255, 255, 0.74);
+    --text-2: rgba(255, 255, 255, 0.72);
+    --text-3: rgba(255, 255, 255, 0.62);
     --line: rgba(255, 255, 255, 0.12);
     --line-strong: rgba(255, 255, 255, 0.24);
-    --card: rgba(255, 255, 255, 0.03);
-    --card-hover: rgba(255, 255, 255, 0.05);
-    --shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 24px 48px -24px rgba(0, 0, 0, 0.9);
-    --radius: 14px;
+    --hover: rgba(255, 255, 255, 0.04);
+    --shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 24px 48px -28px rgba(0, 0, 0, 0.9);
+    --radius: 12px;
+    --r-ctl: 8px;
     --display: "Bricolage Grotesque", Georgia, serif;
     --body: "Hanken Grotesk", "Helvetica Neue", sans-serif;
-    --gutter: clamp(16px, 4vw, 48px);
+    --gutter: clamp(16px, 4vw, 40px);
     --player-h: 0px;
+    --toolbar-h: 112px;
+    color-scheme: dark;
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  [hidden] { display: none !important; }
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--toolbar-h) + 8px); scroll-padding-bottom: calc(var(--player-h) + 16px); }
   body {
     margin: 0;
     background: var(--black);
     color: var(--white);
-    font: 400 16px/1.6 var(--body);
+    font: 400 15px/1.55 var(--body);
     font-feature-settings: "tnum" 1;
-    padding-bottom: calc(var(--player-h) + 24px);
+    padding-bottom: calc(var(--player-h) + 16px);
     min-height: 100vh;
   }
   /* Film grain over everything, very faint: gives the black depth without a new color. */
@@ -55,143 +58,205 @@
     background-image: url("grain.svg");
   }
   a { color: inherit; }
-  button { font: inherit; color: inherit; }
-  :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 6px; }
-  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 var(--gutter); }
+  button, input, select { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 6px; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 var(--gutter); }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-  /* ---------- Masthead ---------- */
-  header.mast { position: relative; border-bottom: 1px solid var(--line); overflow: hidden; }
-  .mast-inner { position: relative; padding-top: clamp(40px, 9vw, 104px); padding-bottom: clamp(28px, 5vw, 48px); }
-  .onair {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-weight: 600; font-size: 14px; letter-spacing: 0.02em; color: var(--green);
-    border: 1px solid rgba(34, 197, 94, 0.45); border-radius: 8px; padding: 5px 12px 5px 10px;
-  }
-  .onair i { width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 0 0 var(--green); border: 2px solid var(--green); animation: pulse 2.4s ease-out infinite; }
-  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34,197,94,.55); } 70% { box-shadow: 0 0 0 10px rgba(34,197,94,0); } 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); } }
-  h1 {
-    font: 800 clamp(52px, 12vw, 132px)/0.9 var(--display);
-    letter-spacing: -0.035em; margin: 22px 0 18px;
-  }
+  /* ---------- Header: one slim band instead of a masthead ---------- */
+  .mast-inner { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 4px 24px; padding-top: 20px; padding-bottom: 16px; }
+  .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand svg { width: 34px; height: 34px; flex: none; }
+  h1 { font: 800 clamp(24px, 3.4vw, 30px)/1 var(--display); letter-spacing: -0.03em; margin: 0; }
   h1 .ai { color: var(--green); }
-  .lede { max-width: 560px; margin: 0; font-size: clamp(17px, 2.2vw, 20px); color: var(--text-2); }
-  .lede strong { color: var(--white); font-weight: 600; }
-  .stats { display: flex; flex-wrap: wrap; gap: 12px 36px; margin-top: 32px; }
-  .stat b { display: block; font: 700 clamp(28px, 4vw, 40px)/1 var(--display); letter-spacing: -0.02em; }
-  .stat span { font-size: 14px; color: var(--text-2); }
-  /* The signal: a field of level bars behind the title, drawn in JS from the real
-     episode durations. Gray at low opacity, one green scan line passing through. */
-  .signal { position: absolute; right: -2%; bottom: 0; width: min(62%, 640px); height: 78%; display: flex; align-items: flex-end; gap: 5px; opacity: 0.55; pointer-events: none; mask-image: linear-gradient(to left, #000 30%, transparent); -webkit-mask-image: linear-gradient(to left, #000 30%, transparent); }
-  .signal span { flex: 1; background: var(--gray); border-radius: 2px 2px 0 0; opacity: 0.35; transform-origin: bottom; animation: level 3.2s ease-in-out infinite alternate; }
-  @keyframes level { from { transform: scaleY(0.55); } to { transform: scaleY(1); } }
-  .scan { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--green); box-shadow: 0 0 18px 2px rgba(34,197,94,.5); left: 40%; animation: scan 9s linear infinite; opacity: .7; }
-  @keyframes scan { from { left: 38%; } to { left: 102%; } }
+  .stats { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 0; margin: 0; font-size: 14px; color: var(--text-2); }
+  .stats div { display: flex; align-items: baseline; gap: 6px; padding: 0 14px; border-left: 1px solid var(--line-strong); }
+  .stats div:first-child { border-left: 0; padding-left: 0; }
+  .stats div:last-child { padding-right: 0; }
+  .stats dt { order: 2; } .stats .lead dt { order: 0; } .stats dd { order: 1; margin: 0; font: 700 17px/1 var(--display); color: var(--white); }
+  .tagline { grid-column: 1 / -1; margin: 6px 0 0; max-width: 760px; color: var(--text-2); }
+  .tagline strong { color: var(--white); font-weight: 600; }
 
-  /* ---------- Episode list ---------- */
-  main.wrap { padding-top: clamp(28px, 5vw, 56px); padding-bottom: clamp(28px, 5vw, 56px); }
-  .list-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
-  .list-head h2 { font: 700 22px/1.2 var(--display); margin: 0; letter-spacing: -0.01em; }
-  .list-head p { margin: 0; font-size: 14px; color: var(--text-2); }
-  .episodes { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
-  .ep {
-    position: relative; display: grid; grid-template-columns: auto 1fr; gap: 20px 24px;
-    padding: 24px; border: 1px solid var(--line); border-radius: var(--radius);
-    background: var(--card); box-shadow: var(--shadow);
-    transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
-    opacity: 0; transform: translateY(10px); animation: rise .6s cubic-bezier(.2,.7,.2,1) forwards;
+  /* ---------- Toolbar: sticky so search, filters and sort are always in reach ---------- */
+  .toolbar {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   }
-  @keyframes rise { to { opacity: 1; transform: none; } }
-  .ep:hover { border-color: var(--line-strong); background: var(--card-hover); }
-  .ep.is-current { border-color: rgba(34, 197, 94, 0.55); }
-  .ep.is-target { animation: rise .6s forwards, flash 1.6s ease-out .2s; }
-  @keyframes flash { 0%,100% { box-shadow: var(--shadow); } 30% { box-shadow: 0 0 0 2px var(--green), var(--shadow); } }
+  .tb-row { display: flex; align-items: center; gap: 8px; padding-top: 12px; }
+  .ctl { height: 40px; border: 1px solid var(--line-strong); border-radius: var(--r-ctl); background: transparent; transition: border-color .15s ease, color .15s ease; }
+  .ctl:hover { border-color: var(--white); }
+  .search { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; padding: 0 6px 0 12px; cursor: text; }
+  .search:focus-within { border-color: var(--green); }
+  .search > svg { width: 16px; height: 16px; flex: none; fill: none; stroke: var(--text-2); stroke-width: 2; stroke-linecap: round; }
+  .search input:disabled, .ctl:disabled { opacity: .38; cursor: not-allowed; }
+  .search input { flex: 1; min-width: 0; height: 100%; border: 0; background: transparent; outline: none; font-size: 15px; }
+  .search input::placeholder { color: var(--text-3); }
+  .search input::-webkit-search-cancel-button { -webkit-appearance: none; }
+  .key { flex: none; display: grid; place-items: center; min-width: 22px; height: 22px; padding: 0 6px; border: 1px solid var(--line-strong); border-radius: 5px; font-size: 12px; font-weight: 600; color: var(--text-2); }
+  .search:focus-within .key, .search.has-q .key { display: none; }
+  .clear-q { flex: none; width: 28px; height: 28px; display: none; place-items: center; border: 0; border-radius: 6px; background: transparent; cursor: pointer; color: var(--text-2); }
+  .clear-q:hover { color: var(--white); background: var(--hover); }
+  .clear-q svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+  .search.has-q .clear-q { display: grid; }
+  .sort-label { flex: none; margin-left: 4px; font-size: 13px; color: var(--text-2); }
+  .select { position: relative; flex: none; }
+  .select select { -webkit-appearance: none; appearance: none; height: 40px; padding: 0 34px 0 12px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .select option { background: var(--black); color: var(--white); }
+  .select::after { content: ""; position: absolute; right: 13px; top: 50%; width: 7px; height: 7px; border: solid var(--text-2); border-width: 0 2px 2px 0; transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+  .order { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 0 12px; font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .order svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease; }
+  .order[data-dir="asc"] svg { transform: rotate(180deg); }
+
+  /* Filter chips: on touch, one row of facet groups so the sticky bar stays two lines tall.
+     When the row overflows it scrolls sideways, and a fade on the right edge says
+     "more this way" (only while there is more to see). Fine pointers wrap instead (below). */
+  .chips { display: flex; flex-wrap: nowrap; align-items: center; padding: 10px 0 12px; overflow-x: auto; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chips.has-more { mask-image: linear-gradient(to left, transparent 0, #000 48px); -webkit-mask-image: linear-gradient(to left, transparent 0, #000 48px); }
+  .fgroup { display: flex; align-items: center; gap: 6px; flex: none; padding: 0 12px; border-left: 1px solid var(--line); }
+  .fgroup:first-child { padding-left: 0; border-left: 0; }
+  .flabel { font-size: 13px; color: var(--text-2); margin-right: 2px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 9px;
+    border: 1px solid var(--line-strong); border-radius: var(--r-ctl); background: transparent;
+    font-size: 13px; font-weight: 600; color: var(--text-2); cursor: pointer; white-space: nowrap;
+    transition: border-color .15s ease, color .15s ease;
+  }
+  .chip:hover:not(:disabled) { border-color: var(--white); color: var(--white); }
+  .chip .n { font-weight: 400; color: var(--text-2); }
+  .chip .tick { display: none; width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+  /* Selected: green border + green text + a check mark, so the state never rests on color alone. */
+  .chip[aria-pressed="true"] { border-color: var(--green); color: var(--green); }
+  .chip[aria-pressed="true"] .tick { display: block; }
+  .chip:disabled { opacity: .38; cursor: not-allowed; }
+  /* The toolbar's bottom edge doubles as the now-playing progress line. */
+  .tb-progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; pointer-events: none; }
+  .tb-progress i { display: block; height: 100%; width: 0; background: var(--green); box-shadow: 0 0 10px rgba(34, 197, 94, .7); transition: width .25s linear; }
+
+  /* ---------- Episode index ---------- */
+  main.wrap { padding-top: 16px; padding-bottom: 32px; }
+  .list-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 32px; margin-bottom: 10px; }
+  .count { margin: 0; font-size: 14px; color: var(--text-2); }
+  .count b { color: var(--white); font-weight: 600; }
+  .linkish { border: 0; background: transparent; padding: 6px 2px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: underline; text-decoration-color: var(--green); text-underline-offset: 4px; }
+  .linkish:hover { color: var(--green); }
+
+  /* One bordered panel; 1px gaps over a line-colored background draw the row dividers,
+     so hidden rows never leave a doubled border behind. */
+  .episodes {
+    list-style: none; margin: 0; padding: 0; display: grid; gap: 1px;
+    background: var(--line); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; box-shadow: var(--shadow);
+  }
+  .ep { position: relative; background: var(--black); scroll-margin-top: 4px; }
+  .ep.enter { animation: rise .5s cubic-bezier(.2,.7,.2,1) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(6px); } }
+  .ep-row { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr) 20px; align-items: center; gap: 16px; padding: 12px 16px; transition: background-color .15s ease; }
+  .ep-row:hover { background: var(--hover); }
+  .ep.is-current .ep-row { box-shadow: inset 2px 0 0 var(--green); }
+  .ep.is-target .ep-row { animation: flash 1.8s ease-out .15s; }
+  @keyframes flash { 0%, 100% { box-shadow: inset 0 0 0 0 transparent; } 25% { box-shadow: inset 0 0 0 2px var(--green); } }
 
   .play {
-    width: 64px; height: 64px; border-radius: 16px; display: grid; place-items: center;
-    border: 1px solid var(--line-strong); background: transparent; cursor: pointer;
+    position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center;
+    border: 1px solid var(--line-strong); background: var(--black); cursor: pointer;
     transition: border-color .15s ease, transform .15s ease, color .15s ease;
   }
-  .play:hover { border-color: var(--white); transform: translateY(-1px); }
-  .play:active { transform: scale(.96); }
-  .play svg { width: 22px; height: 22px; fill: currentColor; }
+  .play:hover { border-color: var(--white); }
+  .play:active { transform: scale(.95); }
+  .play svg { width: 18px; height: 18px; fill: currentColor; }
   .ep.is-current .play { border-color: var(--green); color: var(--green); }
-  /* Equalizer shown on the playing episode's button instead of the pause glyph's
-     neighbor: three green bars bouncing at offset timings. */
-  .eq { display: none; gap: 3px; align-items: flex-end; height: 18px; }
-  .eq b { width: 4px; background: var(--green); border-radius: 1px; animation: eq .9s ease-in-out infinite alternate; }
+  /* Equalizer replaces the pause glyph on the playing row: three green bars. */
+  .eq { display: none; gap: 3px; align-items: flex-end; height: 16px; }
+  .eq b { width: 3px; background: var(--green); border-radius: 1px; animation: eq .9s ease-in-out infinite alternate; }
   .eq b:nth-child(2) { animation-delay: -.3s; } .eq b:nth-child(3) { animation-delay: -.6s; }
-  @keyframes eq { from { height: 4px; } to { height: 18px; } }
-  .ep.is-playing .play:not(:hover) .eq { display: flex; }
-  .ep.is-playing .play:not(:hover) svg { display: none; }
+  @keyframes eq { from { height: 4px; } to { height: 16px; } }
+  .ep.is-playing .play:not(:hover):not(:focus-visible) .eq { display: flex; }
+  .ep.is-playing .play:not(:hover):not(:focus-visible) svg { display: none; }
 
-  .ep-body { min-width: 0; }
-  .meta { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 14px; color: var(--text-2); margin-bottom: 6px; overflow-wrap: anywhere; }
+  .ep-head { min-width: 0; }
+  .ep h3 { font: 700 17px/1.3 var(--display); letter-spacing: -0.01em; margin: 0 0 3px; overflow-wrap: anywhere; }
+  /* The title button stretches over the whole row, so any click on the row expands it;
+     the play button sits above that layer. */
+  .ep-toggle { padding: 0; border: 0; background: none; text-align: left; cursor: pointer; font: inherit; letter-spacing: inherit; }
+  .ep-toggle::after { content: ""; position: absolute; inset: 0; }
+  .ep-toggle:focus-visible { outline: none; }
+  .ep-toggle:focus-visible::after { outline: 2px solid var(--green); outline-offset: -2px; }
+  .ep-row:hover .ep-toggle { text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
+  mark { background: none; color: var(--green); text-decoration-line: underline; text-decoration-thickness: 2px; text-decoration-color: var(--green); text-underline-offset: 3px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 2px 0; font-size: 13px; color: var(--text-2); }
+  .meta > span { white-space: nowrap; }
+  .meta > span + span::before { content: "·"; margin: 0 8px; color: var(--text-3); }
   .meta .dur { color: var(--green); font-weight: 600; }
-  .ep h3 { font: 700 clamp(22px, 3vw, 28px)/1.15 var(--display); letter-spacing: -0.015em; margin: 0 0 10px; overflow-wrap: anywhere; }
-  .ep h3 a { text-decoration: none; }
-  .ep h3 a:hover { text-decoration: underline; text-decoration-color: var(--green); text-underline-offset: 4px; }
-  .summary { margin: 0; padding: 0; list-style: none; color: var(--text-2); display: grid; gap: 4px; }
-  .summary li { position: relative; padding-left: 18px; }
-  .summary li::before { content: ""; position: absolute; left: 0; top: .75em; width: 8px; height: 1px; background: var(--gray); }
-  .credit { margin: 12px 0 0; font-size: 14px; color: var(--text-2); overflow-wrap: anywhere; }
+  .meta .st { color: var(--white); }
+  .chev { width: 20px; height: 20px; fill: none; stroke: var(--text-2); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease, stroke .15s ease; }
+  .ep-row:hover .chev { stroke: var(--white); }
+  .ep.is-open .chev { transform: rotate(180deg); }
+  .progress { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; pointer-events: none; }
+  .progress i { display: block; height: 100%; width: 0; background: var(--green); }
+
+  /* Details sit under the title column so the eye does not jump back to the edge. */
+  .ep-detail { padding: 0 16px 16px 76px; }
+  .summary { margin: 0; padding: 0; list-style: none; color: var(--text-2); display: grid; gap: 3px; max-width: 760px; }
+  .summary li { position: relative; padding-left: 16px; }
+  .summary li::before { content: ""; position: absolute; left: 0; top: .78em; width: 7px; height: 1px; background: var(--gray); }
+  .credit { margin: 10px 0 0; font-size: 14px; color: var(--text-2); overflow-wrap: anywhere; }
   .credit a { color: var(--white); text-decoration-color: var(--green); text-underline-offset: 3px; }
   .credit a:hover { color: var(--green); }
-  .actions { grid-column: 2; display: flex; flex-wrap: wrap; gap: 10px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .btn {
-    display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 8px 14px;
-    border: 1px solid var(--line-strong); border-radius: 10px; background: transparent;
-    font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 6px 12px;
+    border: 1px solid var(--line-strong); border-radius: var(--r-ctl); background: transparent;
+    font-size: 13px; font-weight: 600; text-decoration: none; cursor: pointer;
     transition: border-color .15s ease, color .15s ease;
   }
   .btn:hover { border-color: var(--white); }
-  .btn[aria-expanded="true"] { border-color: var(--green); color: var(--green); }
-  .btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .progress { position: absolute; left: 24px; right: 24px; bottom: -1px; height: 2px; background: transparent; overflow: hidden; border-radius: 2px; }
-  .progress i { display: block; height: 100%; width: 0; background: var(--green); }
+  .btn[aria-expanded="true"], .btn.is-done { border-color: var(--green); color: var(--green); }
+  .btn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
   /* ---------- Transcript ---------- */
-  .transcript { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 16px; }
-  .transcript[hidden] { display: none; }
-  .transcript ol { list-style: none; margin: 0; padding: 0 4px 0 0; max-height: 420px; overflow-y: auto; scrollbar-color: var(--gray) transparent; }
+  .transcript { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 10px; }
+  .transcript ol { list-style: none; margin: 0; padding: 0 4px 0 0; max-height: 380px; overflow-y: auto; scrollbar-color: var(--gray) transparent; }
   .cue {
-    display: grid; grid-template-columns: 64px 1fr; gap: 12px; width: 100%; text-align: left;
-    padding: 10px 12px; border: 0; border-left: 2px solid transparent; background: transparent;
-    cursor: pointer; border-radius: 0 8px 8px 0; color: var(--text-2);
+    display: grid; grid-template-columns: 56px 1fr; gap: 10px; width: 100%; text-align: left;
+    padding: 8px 10px; border: 0; border-left: 2px solid transparent; background: transparent;
+    cursor: pointer; border-radius: 0 6px 6px 0; color: var(--text-2);
     transition: color .15s ease, border-color .15s ease, background-color .15s ease;
   }
-  .cue:hover { color: var(--white); background: rgba(255,255,255,.04); }
+  .cue:hover { color: var(--white); background: var(--hover); }
   .cue.is-now { color: var(--white); border-left-color: var(--green); background: rgba(255,255,255,.05); }
-  .cue time { font-size: 13px; color: var(--text-2); padding-top: 2px; }
+  .cue time { font-size: 12px; color: var(--text-2); padding-top: 2px; }
   .cue.is-now time { color: var(--green); }
   .cue .who { font-weight: 600; color: var(--white); margin-right: 6px; }
   .t-state { margin: 0; font-size: 14px; color: var(--text-2); }
 
   /* ---------- States ---------- */
-  .state { border: 1px dashed var(--line-strong); border-radius: var(--radius); padding: 40px 24px; text-align: center; color: var(--text-2); }
-  .state strong { display: block; color: var(--white); font: 700 20px/1.3 var(--display); margin-bottom: 6px; }
-  .skeleton { height: 168px; border-radius: var(--radius); border: 1px solid var(--line); background: linear-gradient(90deg, rgba(255,255,255,.02), rgba(255,255,255,.06), rgba(255,255,255,.02)); background-size: 200% 100%; animation: shimmer 1.4s linear infinite; }
+  .state { background: var(--black); padding: 36px 20px; text-align: center; color: var(--text-2); }
+  .state strong { display: block; color: var(--white); font: 700 18px/1.3 var(--display); margin-bottom: 4px; }
+  .state .btn { margin-top: 14px; }
+  .skeleton { height: 69px; background: linear-gradient(90deg, rgba(255,255,255,.015), rgba(255,255,255,.06), rgba(255,255,255,.015)) var(--black); background-size: 200% 100%; animation: shimmer 1.4s linear infinite; }
   @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
 
   /* ---------- Player bar ---------- */
   .player {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
-    background: rgba(0,0,0,.88); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    background: rgba(0,0,0,.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-top: 1px solid var(--line-strong);
     transform: translateY(110%); transition: transform .35s cubic-bezier(.2,.7,.2,1);
   }
   .player.is-on { transform: none; }
-  .player .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 8px 20px; padding-top: 12px; padding-bottom: 12px; }
-  .p-controls { display: flex; align-items: center; gap: 6px; }
-  .icon-btn { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid transparent; border-radius: 12px; background: transparent; cursor: pointer; transition: border-color .15s ease, color .15s ease; position: relative; }
+  .player .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 6px 18px; padding-top: 10px; padding-bottom: 10px; }
+  .p-controls { display: flex; align-items: center; gap: 4px; }
+  .icon-btn { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid transparent; border-radius: 10px; background: transparent; cursor: pointer; transition: border-color .15s ease, color .15s ease; position: relative; }
   .icon-btn:hover { border-color: var(--line-strong); }
   .icon-btn svg { width: 20px; height: 20px; fill: currentColor; }
   .icon-btn small { position: absolute; font-size: 9px; font-weight: 600; top: 50%; left: 50%; transform: translate(-50%, -38%); }
-  .p-main { width: 52px; height: 52px; border: 1px solid var(--green); color: var(--green); }
+  .p-main { width: 48px; height: 48px; border: 1px solid var(--green); color: var(--green); }
   .p-main:hover { border-color: var(--white); color: var(--white); }
   .p-info { min-width: 0; }
-  .p-title { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; }
-  .p-track { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; font-size: 13px; color: var(--text-2); }
+  .p-title { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+  .p-track { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; font-size: 12px; color: var(--text-2); }
   /* Scrubber: gray rail, green fill (a line, not a fill area), white thumb. */
   input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 24px; background: transparent; cursor: pointer; margin: 0; }
   input[type=range]::-webkit-slider-runnable-track { height: 3px; border-radius: 3px; background: linear-gradient(to right, var(--green) var(--pct, 0%), var(--gray) var(--pct, 0%)); }
@@ -199,51 +264,109 @@
   input[type=range]::-moz-range-progress { height: 3px; border-radius: 3px; background: var(--green); }
   input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; margin-top: -5.5px; border-radius: 50%; background: var(--white); border: 0; }
   input[type=range]::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--white); border: 0; }
-  .speed { min-width: 56px; height: 36px; border: 1px solid var(--line-strong); border-radius: 10px; background: transparent; font-weight: 600; font-size: 14px; cursor: pointer; }
+  .speed { min-width: 52px; height: 36px; border: 1px solid var(--line-strong); border-radius: var(--r-ctl); background: transparent; font-weight: 600; font-size: 13px; cursor: pointer; }
   .speed:hover { border-color: var(--white); }
 
-  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 14px; color: var(--text-2); }
-  footer p { margin: 0 0 6px; max-width: 680px; }
+  footer { border-top: 1px solid var(--line); padding: 20px 0 28px; font-size: 13px; color: var(--text-2); }
+  footer p { margin: 0 0 4px; max-width: 720px; }
+  footer .keys { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+  footer .keys span { display: inline-flex; align-items: center; gap: 6px; }
 
+  @media (max-width: 760px) {
+    /* Narrow: let the chip row run to the screen edge so it reads as scrollable. */
+    .chips { margin-right: calc(var(--gutter) * -1); padding-right: var(--gutter); }
+  }
   @media (max-width: 640px) {
-    .ep { grid-template-columns: 1fr; padding: 20px; }
-    .play { width: 56px; height: 56px; }
-    .actions { grid-column: 1; }
-    .progress { left: 20px; right: 20px; }
-    .signal { width: 100%; opacity: .35; }
+    body { font-size: 15px; }
+    .mast-inner { grid-template-columns: 1fr; padding-top: 16px; padding-bottom: 12px; }
+    .stats { justify-content: flex-start; font-size: 13px; }
+    .stats div { padding: 0 10px; }
+    .stats dd { font-size: 16px; }
+    .tagline { margin-top: 2px; }
+    .key { display: none; }
+    .order span { display: none; }
+    .order { width: 40px; justify-content: center; padding: 0; }
+    .sort-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .ep-row { gap: 12px; padding: 12px; }
+    .ep-detail { padding: 0 12px 14px 12px; }
     .player .wrap { grid-template-columns: auto minmax(0, 1fr); }
     .speed { grid-column: 2; justify-self: end; margin-top: -4px; }
     .p-back, .p-fwd { display: none; }
-    .cue { grid-template-columns: 52px 1fr; padding: 10px 8px; }
+    .cue { grid-template-columns: 48px 1fr; padding: 8px 6px; }
+    footer .keys { display: none; }
+  }
+  @media (hover: hover) and (pointer: fine) {
+    /* Mouse and trackpad: wrap the chips instead of scrolling sideways, since a hidden
+       horizontal scrollbar is out of reach for a plain mouse wheel. */
+    .chips { flex-wrap: wrap; margin-right: 0; padding-right: 0; }
+    .chips.has-more { mask-image: none; -webkit-mask-image: none; }
+    .fgroup { flex: 0 1 auto; flex-wrap: wrap; }
+  }
+  @media (max-height: 500px) {
+    /* Short viewports (landscape phones, high zoom): stop pinning the toolbar so the list keeps room.
+       It stays positioned for the progress line; the top scroll offset drops since nothing overlays content. */
+    .toolbar { position: relative; }
+    html { scroll-padding-top: 8px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
-    .ep { opacity: 1; transform: none; }
   }
 </style>
 </head>
 <body>
 <header class="mast">
-  <div class="signal" aria-hidden="true"></div>
-  <div class="scan" aria-hidden="true"></div>
   <div class="wrap mast-inner">
-    <span class="onair"><i aria-hidden="true"></i>Podcast</span>
-    <h1>Build Wiz <span class="ai">AI</span></h1>
-    <p class="lede">One source, everything worth knowing. <strong>Bob</strong> asks the questions, <strong>Alice</strong> explains the article, thread or paper, then both say what it leaves out.</p>
-    <div class="stats" aria-live="polite">
-      <div class="stat"><b id="stat-count">–</b><span id="stat-count-label">episodes</span></div>
-      <div class="stat"><b id="stat-min">–</b><span>minutes of audio</span></div>
-      <div class="stat"><b id="stat-latest">–</b><span>latest episode</span></div>
-    </div>
+    <a class="brand" href="./">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path fill="#FFFFFF" d="M11 18a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V21.5a3.5 3.5 0 0 1 3.5 -3.5ZM21.5 40a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V43.5a3.5 3.5 0 0 1 3.5 -3.5ZM32 28a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V31.5a3.5 3.5 0 0 1 3.5 -3.5ZM42.5 40a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V43.5a3.5 3.5 0 0 1 3.5 -3.5ZM53 18a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V21.5a3.5 3.5 0 0 1 3.5 -3.5Z"/><path fill="#22C55E" d="M32 5.5C33.7 11.3 33.7 11.3 39.5 13C33.7 14.7 33.7 14.7 32 20.5C30.3 14.7 30.3 14.7 24.5 13C30.3 11.3 30.3 11.3 32 5.5Z"/></svg>
+      <h1>Build Wiz <span class="ai">AI</span><span class="sr-only"> podcast</span></h1>
+    </a>
+    <dl class="stats" aria-live="polite">
+      <div><dt id="stat-count-label">episodes</dt><dd id="stat-count">–</dd></div>
+      <div><dt>min of audio</dt><dd id="stat-min">–</dd></div>
+      <div class="lead"><dt>Latest</dt><dd id="stat-latest">–</dd></div>
+    </dl>
+    <p class="tagline">One source, everything worth knowing. <strong>Bob</strong> asks the questions, <strong>Alice</strong> explains the article, thread or paper.</p>
   </div>
 </header>
 
+<section class="toolbar" id="toolbar" aria-label="Search, filter and sort episodes">
+  <div class="wrap">
+    <div class="tb-row">
+      <div class="ctl search" id="search" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <label class="sr-only" for="q">Search episodes</label>
+        <input id="q" type="search" placeholder="Search episodes" autocomplete="off" spellcheck="false" enterkeyhint="search">
+        <span class="key" aria-hidden="true" title="Press / to search">/</span>
+        <button class="clear-q" id="clear-q" type="button" aria-label="Clear search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <label class="sort-label" for="sort">Sort by</label>
+      <div class="select">
+        <select class="ctl" id="sort">
+          <option value="published">Date</option>
+          <option value="duration">Length</option>
+          <option value="title">Title</option>
+          <option value="source">Source date</option>
+        </select>
+      </div>
+      <button class="ctl order" id="order" type="button" data-dir="desc">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg><span id="order-label">Newest first</span>
+      </button>
+    </div>
+    <div class="chips" id="filters" role="group" aria-label="Filters"></div>
+  </div>
+  <div class="tb-progress" aria-hidden="true"><i id="tb-progress"></i></div>
+</section>
+
 <main class="wrap" id="main">
   <div class="list-head">
-    <h2>Episodes</h2>
-    <p>Newest first. Press play, or open a transcript and tap any line to jump there.</p>
+    <h2 class="sr-only">Episodes</h2>
+    <p class="count" id="count" aria-live="polite">Loading episodes…</p>
+    <button class="linkish" id="clear-all" type="button" hidden>Clear all</button>
   </div>
   <ol class="episodes" id="episodes" aria-busy="true">
+    <li class="skeleton" aria-hidden="true"></li>
     <li class="skeleton" aria-hidden="true"></li>
     <li class="skeleton" aria-hidden="true"></li>
   </ol>
@@ -251,8 +374,12 @@
 
 <footer>
   <div class="wrap">
-    <p>Episodes are AI-voiced conversations about public posts and articles, written and fact-checked against the source with DropCast. Each episode credits and links its source; the original author's words are theirs.</p>
-    <p>Voices are synthetic. Opinions marked as the hosts' are not the source's.</p>
+    <p>Episodes are AI-voiced conversations about public posts and articles, written and fact-checked against the source with DropCast. Each episode credits and links its source; the original author's words are theirs. Voices are synthetic; opinions marked as the hosts' are not the source's.</p>
+    <p class="keys" aria-label="Keyboard shortcuts">
+      <span><span class="key">/</span> search</span>
+      <span><span class="key">Space</span> play or pause</span>
+      <span><span class="key">←</span><span class="key">→</span> skip 5 s</span>
+    </p>
   </div>
 </footer>
 
@@ -288,16 +415,19 @@
   "use strict";
   const PLAY = "M8 5v14l11-7z";
   const PAUSE = "M7 5h4v14H7zM13 5h4v14h-4z";
+  const CHECK = "M5 12.5l4.5 4.5L19 7.5";
   const SPEEDS = [1, 1.25, 1.5, 2];
   const $ = (id) => document.getElementById(id);
   const audio = $("audio");
   const list = $("episodes");
   const player = $("player");
   const seek = $("p-seek");
+  const qInput = $("q");
   let episodes = [];
   let current = null;       // episode object playing
   let cues = new Map();     // id -> [{start, end, who, text, el}]
   let saveTimer = 0;
+  let noMatch = null;       // the "no matches" row, built once
 
   const store = {           // per-viewer resume points; storage can be unavailable
     get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
@@ -328,55 +458,251 @@
     return h ? `${h}:${String(m).padStart(2, "0")}:${r}` : `${m}:${r}`;
   };
   const minutes = (s) => `${Math.max(1, Math.round((s || 0) / 60))} min`;
-  const day = (iso) => {
+  const day = (iso, year = true) => {
     const d = new Date(iso);
-    return isNaN(d) ? "" : d.toLocaleDateString("en", { year: "numeric", month: "short", day: "numeric" });
+    return isNaN(d) ? "" : d.toLocaleDateString("en", year ? { year: "numeric", month: "short", day: "numeric" } : { month: "short", day: "numeric" });
   };
   const host = (url) => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return ""; } };
   const safeUrl = (url) => { try { const u = new URL(url); return /^https?:$/.test(u.protocol) ? u.href : null; } catch { return null; } };
+  const fold = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // ---------- Render ----------
+  // ---------- Listening status (from the per-viewer resume points) ----------
+  // "done:<id>" is set when an episode plays to the end; "pos:<id>" is the resume point.
+  function statusOf(ep) {
+    const pos = Number(store.get(`pos:${ep.id}`)) || 0;
+    if (pos > 5 && (!ep.duration_s || pos < ep.duration_s - 5)) return "progress";
+    return store.get(`done:${ep.id}`) ? "done" : "new";
+  }
+  function showStatus(ep) {
+    if (!ep._status) return;
+    const st = statusOf(ep);
+    const pos = Number(store.get(`pos:${ep.id}`)) || 0;
+    ep._status.hidden = st === "new";
+    ep._status.textContent = st === "progress"
+      ? `${minutes((ep.duration_s || 0) - pos)} left`
+      : st === "done" ? "Finished" : "";
+  }
+
+  // ---------- Search, filter and sort state ----------
+  const SORTS = {
+    published: { def: "desc", asc: "Oldest first", desc: "Newest first", key: (e) => Date.parse(e.published) || null },
+    duration: { def: "desc", asc: "Shortest first", desc: "Longest first", key: (e) => e.duration_s ?? null },
+    title: { def: "asc", asc: "A to Z", desc: "Z to A", key: (e) => fold(e.title) || null },
+    source: { def: "desc", asc: "Oldest source first", desc: "Newest source first", key: (e) => Date.parse(e.source?.published) || null },
+  };
+  // Own keys only, so a hand-edited ?sort=constructor (or __proto__) falls back to the default.
+  const isSort = (v) => Object.prototype.hasOwnProperty.call(SORTS, v);
+  const KIND = { x: "X", article: "Article", paper: "Paper", thread: "Thread", blog: "Blog", web: "Web", pdf: "PDF", arxiv: "arXiv", youtube: "YouTube", reddit: "Reddit", hn: "Hacker News", github: "GitHub", substack: "Substack", medium: "Medium" };
+  const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+  // Facet groups. Fixed groups always show every option; the others list only the
+  // values present in the data, so a new source kind or voice engine appears by itself.
+  const GROUPS = [
+    { id: "status", label: "Status", fixed: [["new", "New"], ["progress", "In progress"], ["done", "Finished"]], of: statusOf },
+    { id: "length", label: "Length", fixed: [["short", "< 5 min"], ["mid", "5–15 min"], ["long", "> 15 min"]],
+      of: (e) => { const m = (e.duration_s || 0) / 60; return m < 5 ? "short" : m <= 15 ? "mid" : "long"; } },
+    { id: "source", label: "Source", of: (e) => e.source?.kind || "other", name: (v) => KIND[v] || cap(v) },
+    { id: "voice", label: "Voices", of: (e) => (e.voices || "").split("·")[0].trim() || "Unknown", name: (v) => v },
+  ];
+  const state = { q: "", sort: "published", dir: "desc", f: Object.fromEntries(GROUPS.map((g) => [g.id, new Set()])) };
+  const terms = () => fold(state.q).split(/\s+/).filter(Boolean);
+  const filtersOn = () => GROUPS.some((g) => state.f[g.id].size);
+
+  function readUrl() {
+    const p = new URLSearchParams(location.search);
+    state.q = p.get("q") || "";
+    state.sort = isSort(p.get("sort")) ? p.get("sort") : "published";
+    const dir = p.get("order");
+    state.dir = dir === "asc" || dir === "desc" ? dir : SORTS[state.sort].def;
+    for (const g of GROUPS) state.f[g.id] = new Set((p.get(g.id) || "").split(",").map((s) => s.trim()).filter(Boolean));
+  }
+  function writeUrl() {
+    // Only non-default settings go in the query, so a plain link stays clean. The hash
+    // is the episode deep link and is kept as it is.
+    const p = new URLSearchParams();
+    if (state.q.trim()) p.set("q", state.q.trim());
+    if (state.sort !== "published") p.set("sort", state.sort);
+    if (state.dir !== SORTS[state.sort].def) p.set("order", state.dir);
+    for (const g of GROUPS) if (state.f[g.id].size) p.set(g.id, [...state.f[g.id]].join(","));
+    const qs = p.toString();
+    try { history.replaceState(null, "", `${location.pathname}${qs ? `?${qs}` : ""}${location.hash}`); } catch { /* ignore */ }
+  }
+
+  function matches(ep, skip) {
+    for (const t of terms()) if (!ep._hay.includes(t)) return false;
+    for (const g of GROUPS) {
+      if (g.id === skip) continue;
+      const set = state.f[g.id];
+      if (set.size && !set.has(ep._f[g.id])) return false;
+    }
+    return true;
+  }
+
+  function sorted() {
+    const s = SORTS[state.sort];
+    const mul = state.dir === "asc" ? 1 : -1;
+    return episodes.slice().sort((a, b) => {
+      const ka = s.key(a), kb = s.key(b);
+      // Missing values (an unknown source date, say) always sink to the end.
+      if (ka == null && kb != null) return 1;
+      if (kb == null && ka != null) return -1;
+      if (ka != null && ka !== kb) return (ka < kb ? -1 : 1) * mul;
+      return (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0) || a.id.localeCompare(b.id);
+    });
+  }
+
+  function mark(node, text, ts) {
+    if (!ts.length) { node.textContent = text; return; }
+    const re = new RegExp(`(${ts.map(escapeRe).join("|")})`, "gi");
+    node.replaceChildren(...text.split(re).map((part, i) => (i % 2 ? el("mark", { text: part }) : part)));
+  }
+
+  function buildFilters() {
+    const box = $("filters");
+    box.replaceChildren();
+    for (const g of GROUPS) {
+      const counts = new Map();
+      for (const e of episodes) { const v = g.of(e); counts.set(v, (counts.get(v) || 0) + 1); }
+      g.options = g.fixed
+        ? g.fixed.map(([v, l]) => ({ v, l }))
+        : [...counts.keys()].sort((a, b) => counts.get(b) - counts.get(a) || a.localeCompare(b)).map((v) => ({ v, l: g.name(v) }));
+      // Drop values from a stale or hand-edited link that no option can show.
+      for (const v of [...state.f[g.id]]) if (!g.options.some((o) => o.v === v)) state.f[g.id].delete(v);
+      const group = el("div", { class: "fgroup", role: "group", "aria-labelledby": `fl-${g.id}` }, el("span", { class: "flabel", id: `fl-${g.id}`, text: g.label }));
+      for (const o of g.options) {
+        o.n = el("span", { class: "n", "aria-hidden": "true" });
+        o.btn = el("button", { class: "chip", type: "button", "aria-pressed": "false" }, [svg([CHECK], "tick"), el("span", { text: o.l }), o.n]);
+        o.btn.addEventListener("click", () => {
+          const set = state.f[g.id];
+          if (set.has(o.v)) set.delete(o.v); else set.add(o.v);
+          apply();
+        });
+        group.append(o.btn);
+      }
+      box.append(group);
+    }
+  }
+
+  // Filtering and sorting move and hide the existing rows; they never rebuild them, so
+  // the playing row, open transcripts and live cue highlights survive every change.
+  function apply() {
+    if (!isSort(state.sort)) { state.sort = "published"; state.dir = SORTS.published.def; }
+    if (!noMatch) return;   // the toolbar is live before the episode list has loaded
+    for (const e of episodes) for (const g of GROUPS) e._f[g.id] = g.of(e);
+    const ts = terms();
+    const order = sorted();
+    const rows = [...list.children].filter((n) => n.classList.contains("ep"));
+    if (order.some((e, i) => rows[i] !== e._node)) for (const e of order) list.insertBefore(e._node, noMatch);
+    let shown = 0;
+    for (const e of order) {
+      const on = matches(e);
+      e._node.hidden = !on;
+      if (on) shown++;
+      mark(e._titleText, e.title, ts);
+      e._summary.forEach((li, i) => mark(li, e.summary[i], ts));
+    }
+    // Facet counts: how many episodes each chip would show, given everything else set.
+    for (const g of GROUPS) for (const o of g.options) {
+      const n = episodes.filter((e) => e._f[g.id] === o.v && matches(e, g.id)).length;
+      const pressed = state.f[g.id].has(o.v);
+      o.btn.setAttribute("aria-pressed", String(pressed));
+      o.btn.disabled = !n && !pressed;
+      o.btn.setAttribute("aria-label", `${g.label}: ${o.l}, ${n} ${n === 1 ? "episode" : "episodes"}`);
+      o.n.textContent = n;
+    }
+    const total = episodes.length;
+    const active = !!ts.length || filtersOn();
+    const count = $("count");
+    count.replaceChildren(...(active
+      ? [el("b", { text: shown }), ` of ${total} ${total === 1 ? "episode" : "episodes"}`]
+      : [el("b", { text: total }), ` ${total === 1 ? "episode" : "episodes"} · ${SORTS[state.sort][state.dir].toLowerCase()}`]));
+    $("clear-all").hidden = !active;
+    noMatch.hidden = shown > 0 || !total;
+    if (!shown && total) {
+      const why = state.q.trim() ? `Nothing matches “${state.q.trim()}”${filtersOn() ? " with these filters" : ""}.` : "No episode fits all of these filters.";
+      noMatch.querySelector("span").textContent = `${why} Try fewer words or clear a filter.`;
+    }
+    // Sort controls reflect the state (it may come from the URL).
+    $("sort").value = state.sort;
+    const ob = $("order");
+    ob.dataset.dir = state.dir;
+    $("order-label").textContent = SORTS[state.sort][state.dir];
+    const other = SORTS[state.sort][state.dir === "asc" ? "desc" : "asc"];
+    ob.setAttribute("aria-label", `Order: ${SORTS[state.sort][state.dir]}. Switch to ${other.toLowerCase()}.`);
+    $("search").classList.toggle("has-q", !!state.q);
+    writeUrl();
+  }
+
+  function clearAll(e) {
+    const from = document.activeElement;
+    state.q = ""; qInput.value = "";
+    for (const g of GROUPS) state.f[g.id].clear();
+    apply();
+    // Both clear buttons hide themselves; on keyboard activation (click detail 0), keep focus on a stable control.
+    if (e && e.detail === 0 && from && from !== document.body && from.closest("[hidden]")) qInput.focus();
+  }
+
+  // ---------- Render (once per load) ----------
   function render() {
     list.replaceChildren();
     list.removeAttribute("aria-busy");
+    noMatch = el("li", { class: "state", hidden: true }, [
+      el("strong", { text: "No matching episodes" }), el("span"),
+      el("div", {}, el("button", { class: "btn", type: "button", text: "Clear search and filters", onclick: clearAll })),
+    ]);
+    list.append(noMatch);
     if (!episodes.length) {
-      list.append(el("li", { class: "state" }, [el("strong", { text: "No episodes yet" }), "The first one will appear here as soon as it is generated."]));
-      return;
+      list.prepend(el("li", { class: "state" }, [el("strong", { text: "No episodes yet" }), "The first one will appear here as soon as it is generated."]));
     }
-    episodes.forEach((ep, i) => list.append(card(ep, i)));
+    episodes.forEach((ep, i) => list.insertBefore(card(ep, i), noMatch));
     const total = episodes.reduce((a, e) => a + (e.duration_s || 0), 0);
+    const latest = episodes.map((e) => e.published).sort().pop();
     $("stat-count").textContent = episodes.length;
     $("stat-count-label").textContent = episodes.length === 1 ? "episode" : "episodes";
     $("stat-min").textContent = Math.round(total / 60);
-    $("stat-latest").textContent = day(episodes[0].published) || "–";
-    drawSignal();
-    const target = decodeURIComponent(location.hash.slice(1));
-    if (target) {
-      const node = document.getElementById(`ep-${target}`);
-      if (node) { node.classList.add("is-target"); node.scrollIntoView({ block: "center" }); }
-    }
+    // Drop the year for this year's episodes: "Nov 3" says enough and keeps the strip on one line.
+    const sameYear = latest && new Date(latest).getFullYear() === new Date().getFullYear();
+    $("stat-latest").textContent = latest ? day(latest, !sameYear) : "–";
+    buildFilters();
+    apply();
+    fade();
+    openTarget(false);
   }
 
   function card(ep, i) {
     const src = ep.source || {};
     const url = safeUrl(src.url);
+    ep.summary = Array.isArray(ep.summary) ? ep.summary : [];
+    ep._f = {};
+    ep._hay = fold([ep.title, ...ep.summary, src.title, src.author, host(src.url), KIND[src.kind] || src.kind, (ep.hosts || []).join(" "), ep.voices].join(" \n "));
+
     const playBtn = el("button", { class: "play", type: "button", "aria-label": `Play ${ep.title}` }, [
       svg([PLAY]), el("span", { class: "eq", "aria-hidden": "true" }, [el("b"), el("b"), el("b")]),
     ]);
     playBtn.addEventListener("click", () => toggle(ep));
+
+    const detailId = `det-${ep.id}`;
+    const titleText = el("span", { text: ep.title });
+    const toggleBtn = el("button", { class: "ep-toggle", type: "button", "aria-expanded": "false", "aria-controls": detailId }, titleText);
+    const status = el("span", { class: "st", hidden: true });
+    const where = host(src.url);
     const meta = el("div", { class: "meta" }, [
       el("span", { class: "dur", text: minutes(ep.duration_s) }),
       el("span", { text: day(ep.published) }),
-      el("span", { text: (ep.hosts || []).join(" & ") }),
-      el("span", { text: `Voices: ${ep.voices || "synthetic"}` }),
+      where ? el("span", { text: where }) : null,
+      status,
     ]);
-    const title = el("h3", {}, el("a", { href: `#${encodeURIComponent(ep.id)}`, text: ep.title }));
-    const summary = el("ul", { class: "summary" }, (ep.summary || []).map((line) => el("li", { text: line })));
+    const row = el("div", { class: "ep-row" }, [
+      playBtn,
+      el("div", { class: "ep-head" }, [el("h3", {}, toggleBtn), meta]),
+      svg(["M6 9l6 6 6-6"], "chev"),
+    ]);
+
+    const summaryItems = ep.summary.map((line) => el("li", { text: line }));
     const credit = el("p", { class: "credit" }, url
       ? ["Based on ", el("a", { href: url, target: "_blank", rel: "noopener", text: src.title || host(url) }), src.author ? ` by ${src.author}` : "", ` · ${host(url)}`]
       : [src.title ? `Based on ${src.title}` : ""]);
-    const body = el("div", { class: "ep-body" }, [meta, title, summary, credit]);
-
     const actions = el("div", { class: "actions" });
     let panel = null;
     if (ep.transcript) {
@@ -389,33 +715,53 @@
     }
     actions.append(el("a", { class: "btn", href: ep.audio, download: `${ep.id}.mp3` }, [svg(["M12 4v12M6 10l6 6 6-6M5 20h14"]), "Download MP3"]));
     if (url) actions.append(el("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, [svg(["M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"]), "Read the source"]));
+    const linkLabel = el("span", { text: "Copy link" });
+    const linkBtn = el("button", { class: "btn", type: "button" }, [svg(["M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"]), linkLabel]);
+    linkBtn.addEventListener("click", () => copyLink(ep, linkBtn, linkLabel));
+    actions.append(linkBtn);
+    const detail = el("div", { class: "ep-detail", id: detailId, hidden: true }, [
+      summaryItems.length ? el("ul", { class: "summary" }, summaryItems) : null, credit, actions, panel,
+    ]);
+    toggleBtn.addEventListener("click", () => expand(ep, toggleBtn.getAttribute("aria-expanded") !== "true"));
 
-    const done = store.get(`pos:${ep.id}`);
     const bar = el("div", { class: "progress", "aria-hidden": "true" }, el("i"));
-    if (done && ep.duration_s) bar.firstChild.style.width = `${Math.min(100, (done / ep.duration_s) * 100)}%`;
+    const pos = store.get(`pos:${ep.id}`);
+    if (pos && ep.duration_s) bar.firstChild.style.width = `${Math.min(100, (pos / ep.duration_s) * 100)}%`;
 
-    const li = el("li", { class: "ep", id: `ep-${ep.id}` }, [playBtn, body, actions, panel, bar]);
-    li.style.animationDelay = `${Math.min(i, 8) * 70}ms`;
-    ep._node = li; ep._bar = bar.firstChild; ep._btn = playBtn;
+    const li = el("li", { class: "ep enter", id: `ep-${ep.id}` }, [row, detail, bar]);
+    li.style.animationDelay = `${Math.min(i, 10) * 40}ms`;
+    li.addEventListener("animationend", (e) => { if (e.animationName === "rise") li.classList.remove("enter"); });
+    Object.assign(ep, { _node: li, _bar: bar.firstChild, _btn: playBtn, _toggle: toggleBtn, _detail: detail, _titleText: titleText, _summary: summaryItems, _status: status });
+    showStatus(ep);
     return li;
   }
 
-  function drawSignal() {
-    // Bar heights follow the episodes' real durations (oldest left), padded with a
-    // gentle wave so a short catalogue still fills the field.
-    const field = document.querySelector(".signal");
-    const n = 56;
-    const durs = episodes.map((e) => e.duration_s || 0).reverse();
-    const max = Math.max(...durs, 1);
-    field.replaceChildren();
-    for (let i = 0; i < n; i++) {
-      const d = durs[Math.floor((i / n) * durs.length)] || 0;
-      const h = 22 + 50 * (d / max) * (0.6 + 0.4 * Math.abs(Math.sin(i * 1.7))) + 18 * Math.abs(Math.sin(i * 0.45));
-      const s = el("span");
-      s.style.height = `${Math.min(100, h)}%`;
-      s.style.animationDelay = `${-(i * 137) % 3200}ms`;
-      field.append(s);
-    }
+  function expand(ep, open) {
+    ep._toggle.setAttribute("aria-expanded", String(open));
+    ep._detail.hidden = !open;
+    ep._node.classList.toggle("is-open", open);
+  }
+
+  async function copyLink(ep, btn, label) {
+    const link = `${location.origin}${location.pathname}#${encodeURIComponent(ep.id)}`;
+    try { await navigator.clipboard.writeText(link); label.textContent = "Link copied"; }
+    catch { history.replaceState(null, "", `${location.pathname}${location.search}#${encodeURIComponent(ep.id)}`); label.textContent = "Link in address bar"; }
+    btn.classList.add("is-done");
+    setTimeout(() => { label.textContent = "Copy link"; btn.classList.remove("is-done"); }, 1800);
+  }
+
+  // A shared link (#<episode id>) opens that episode. If the current search or filters
+  // hide it, they are cleared so the link never lands on nothing.
+  function openTarget(fromHashChange) {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const ep = id && episodes.find((e) => e.id === id);
+    if (!ep) return;
+    if (ep._node.hidden) clearAll();
+    expand(ep, true);
+    ep._node.classList.remove("is-target");
+    void ep._node.offsetWidth;
+    ep._node.classList.add("is-target");
+    ep._node.scrollIntoView({ block: "start", behavior: fromHashChange && !reduced() ? "smooth" : "auto" });
   }
 
   // ---------- Transcript ----------
@@ -477,7 +823,7 @@
         const box = c.el.closest("ol");
         if (box && !box.closest("[hidden]")) {
           const top = c.el.offsetTop - box.offsetTop - box.clientHeight / 3;
-          box.scrollTo({ top, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+          box.scrollTo({ top, behavior: reduced() ? "auto" : "smooth" });
         }
       } else if (!now) c.el.classList.remove("is-now");
     }
@@ -522,22 +868,30 @@
     }
   }
 
+  function savePos(t) {
+    if (!current) return;
+    store.set(`pos:${current.id}`, Math.floor(t));
+    showStatus(current);
+  }
+
   function tick() {
     const d = audio.duration || current?.duration_s || 0;
     const t = audio.currentTime || 0;
+    const pct = d ? `${(t / d) * 100}%` : "0%";
     seek.max = Math.floor(d);
     if (!seek.matches(":active")) seek.value = Math.floor(t);
-    seek.style.setProperty("--pct", d ? `${(t / d) * 100}%` : "0%");
+    seek.style.setProperty("--pct", pct);
     $("p-cur").textContent = clock(t);
     $("p-dur").textContent = clock(d);
-    if (current && d) current._bar.style.width = `${(t / d) * 100}%`;
+    $("tb-progress").style.width = pct;
+    if (current && d) current._bar.style.width = pct;
     highlight();
-    if (current && Date.now() - saveTimer > 3000) { saveTimer = Date.now(); store.set(`pos:${current.id}`, Math.floor(t)); }
+    if (current && Date.now() - saveTimer > 3000) { saveTimer = Date.now(); savePos(t); }
   }
 
   audio.addEventListener("play", sync);
-  audio.addEventListener("pause", () => { sync(); if (current) store.set(`pos:${current.id}`, Math.floor(audio.currentTime)); });
-  audio.addEventListener("ended", () => { if (current) store.set(`pos:${current.id}`, 0); sync(); });
+  audio.addEventListener("pause", () => { sync(); savePos(audio.currentTime); });
+  audio.addEventListener("ended", () => { if (current) { store.set(`done:${current.id}`, true); savePos(0); } sync(); });
   audio.addEventListener("timeupdate", tick);
   audio.addEventListener("loadedmetadata", tick);
   audio.addEventListener("error", () => { if (current) $("p-title").textContent = `Could not load audio: ${current.title}`; sync(); });
@@ -559,21 +913,62 @@
     navigator.mediaSession.setActionHandler("seekbackward", () => { audio.currentTime -= 15; });
     navigator.mediaSession.setActionHandler("seekforward", () => { audio.currentTime += 30; });
   }
+
+  // ---------- Toolbar wiring ----------
+  let qTimer = 0;
+  qInput.addEventListener("input", () => {
+    state.q = qInput.value;
+    $("search").classList.toggle("has-q", !!state.q);
+    clearTimeout(qTimer);
+    qTimer = setTimeout(apply, 120);
+  });
+  qInput.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (qInput.value) { qInput.value = ""; state.q = ""; apply(); } else qInput.blur();
+    e.stopPropagation();
+  });
+  $("search").addEventListener("click", (e) => { if (!e.target.closest("button")) qInput.focus(); });
+  $("clear-q").addEventListener("click", () => { qInput.value = ""; state.q = ""; apply(); qInput.focus(); });
+  $("sort").addEventListener("change", (e) => { state.sort = e.target.value; state.dir = SORTS[state.sort].def; apply(); });
+  $("order").addEventListener("click", () => { state.dir = state.dir === "asc" ? "desc" : "asc"; apply(); });
+  $("clear-all").addEventListener("click", clearAll);
+  addEventListener("hashchange", () => openTarget(true));
+
   document.addEventListener("keydown", (e) => {
-    if (!current || e.metaKey || e.ctrlKey || e.altKey) return;
-    if (e.target.closest("input, textarea, button, a, [contenteditable]")) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const typing = e.target.closest("input, textarea, select, [contenteditable]");
+    if (e.key === "/" && !typing) { e.preventDefault(); qInput.focus(); qInput.select(); return; }
+    if (!current || typing || e.target.closest("button, a")) return;
     if (e.code === "Space") { e.preventDefault(); toggle(current); }
     else if (e.key === "ArrowLeft") audio.currentTime = Math.max(0, audio.currentTime - 5);
     else if (e.key === "ArrowRight") audio.currentTime += 5;
   });
-  addEventListener("resize", () => { if (player.classList.contains("is-on")) document.documentElement.style.setProperty("--player-h", `${player.offsetHeight}px`); });
+
+  const chipsBox = $("filters");
+  const fade = () => chipsBox.classList.toggle("has-more", chipsBox.scrollLeft + chipsBox.clientWidth < chipsBox.scrollWidth - 2);
+  chipsBox.addEventListener("scroll", fade, { passive: true });
+  addEventListener("resize", fade);
+
+  // Keep the sticky toolbar's height in a variable so deep-linked rows scroll clear of it.
+  const toolbar = $("toolbar");
+  const measure = () => {
+    document.documentElement.style.setProperty("--toolbar-h", `${toolbar.offsetHeight}px`);
+    if (player.classList.contains("is-on")) document.documentElement.style.setProperty("--player-h", `${player.offsetHeight}px`);
+  };
+  if ("ResizeObserver" in window) new ResizeObserver(measure).observe(toolbar);
+  addEventListener("resize", measure);
+  measure();
 
   // ---------- Load ----------
+  readUrl();
+  qInput.value = state.q;
   fetch("episodes.json", { cache: "no-cache" })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then((data) => { episodes = Array.isArray(data.episodes) ? data.episodes : []; render(); })
+    .then((data) => { episodes = Array.isArray(data.episodes) ? data.episodes.filter((e) => e && e.id) : []; render(); })
     .catch(() => {
       list.removeAttribute("aria-busy");
+      $("count").textContent = "Episodes could not be loaded.";
+      for (const c of document.querySelectorAll("#toolbar input, #toolbar select, #toolbar button")) c.disabled = true;
       list.replaceChildren(el("li", { class: "state" }, [el("strong", { text: "Episodes could not be loaded" }), "Check your connection and reload the page."]));
     });
 })();
