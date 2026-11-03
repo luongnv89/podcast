@@ -31,5 +31,9 @@ python3 scripts/publish.py ~/dropcast/jobs/2026-11-03_some-episode --push
 python3 scripts/publish.py --all            # every delivered job, no git
 ```
 
+Edit `docs/` in place (the publisher adds episodes there). `.github/pages-publish.json`
+lists only the files of the first publish, so don't re-run a publish tool against a
+separate staging folder: it could remove episodes it does not know about.
+
 Episodes voiced with edge-tts are for private use only and are never published; a job
 created with `--no-publish` is skipped too.

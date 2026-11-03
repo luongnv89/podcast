@@ -33,7 +33,7 @@ import os
 import shutil
 import subprocess
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -176,7 +176,7 @@ def update_index(site: Path, entries: list[dict[str, Any]]) -> bool:
     data = {
         "version": 1,
         "show": SHOW,
-        "updated": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "episodes": ordered,
     }
     path.parent.mkdir(parents=True, exist_ok=True)
