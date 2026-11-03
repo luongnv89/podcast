@@ -1,0 +1,12 @@
+{
+  "site_dir": "docs",
+  "files": [
+    "episodes.json",
+    "episodes/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent/episode.mp3",
+    "episodes/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent/transcript.vtt",
+    "grain.svg",
+    "index.html"
+  ],
+  "tool": "github-pages-publish",
+  "published_at": "2026-11-03T17:30:11+00:00"
+}

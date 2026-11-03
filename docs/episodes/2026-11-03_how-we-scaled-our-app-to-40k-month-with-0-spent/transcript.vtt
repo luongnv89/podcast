@@ -1,0 +1,381 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.541
+<v Bob>Welcome to Build Wiz AI, the show where we take one source and pull out everything worth knowing.
+
+2
+00:00:06.841 --> 00:00:11.749
+<v Bob>I'm Bob, and today I'm mostly here to ask whether this stuff actually works.
+
+3
+00:00:12.049 --> 00:00:22.576
+<v Alice>And I'm Alice. Today's source is an X article by Nicholas, an app co-founder, called How we scaled our app to 40 thousand dollars a month with zero dollars spent.
+
+4
+00:00:22.876 --> 00:00:27.482
+<v Bob>No marketing spend at all? That's a bold title. What's the core claim?
+
+5
+00:00:27.782 --> 00:00:39.761
+<v Alice>That organic video, posted every day and tested relentlessly, can grow an app with no money spent on marketing. His team went from 5 thousand dollars a month to 40 thousand plus in a month.
+
+6
+00:00:40.061 --> 00:00:43.610
+<v Bob>Wait, back up. Was this their first success?
+
+7
+00:00:43.910 --> 00:00:54.902
+<v Alice>No, and that's the interesting part. They'd hit 20 thousand a month before, with no structure, and lost it all when the off season hit. They fell to 5 thousand a month.
+
+8
+00:00:55.202 --> 00:00:58.322
+<v Bob>So the lesson is structure, not luck.
+
+9
+00:00:58.622 --> 00:01:07.652
+<v Alice>That's his framing. One disclosure up front: the article is sponsored by a clipping platform called Content Rewards, which comes back near the end.
+
+10
+00:01:07.952 --> 00:01:09.967
+<v Bob>Okay, where does he start?
+
+11
+00:01:10.267 --> 00:01:20.922
+<v Alice>With three skills. Problem solving, which he calls the most important one, then confidence, meaning you back yourself and keep testing fixes, then consistency.
+
+12
+00:01:21.222 --> 00:01:24.644
+<v Bob>Consistency sounds like a poster on a gym wall.
+
+13
+00:01:24.944 --> 00:01:35.982
+<v Alice>He makes it concrete. They only saw results once they posted several times a day, every single day. As he puts it, "Half assing things gets you nowhere fast."
+
+14
+00:01:36.282 --> 00:01:40.470
+<v Bob>Step one, build the app. Presumably a really good one?
+
+15
+00:01:40.770 --> 00:01:50.357
+<v Alice>The opposite. Build a decent app, not a great one, in one week max. He says most people stress about the perfect app and never reach their first dollar.
+
+16
+00:01:50.657 --> 00:01:52.453
+<v Bob>What does decent mean here?
+
+17
+00:01:52.753 --> 00:02:01.996
+<v Alice>One hero feature that's great for videos, one or two retention features, like workout plans that update daily, and the basics, like settings.
+
+18
+00:02:02.296 --> 00:02:05.335
+<v Bob>And the paywall? That seems like where the money is.
+
+19
+00:02:05.635 --> 00:02:16.290
+<v Alice>Borrow it. Take inspiration from competitors, or ask a model like Claude how to build a high converting onboarding. RevenueCat and Superwall have paywall templates.
+
+20
+00:02:16.590 --> 00:02:20.012
+<v Bob>Build fast, optimize later. Got it.
+
+21
+00:02:20.312 --> 00:02:32.372
+<v Alice>Step two is choosing who makes the videos. You either partner with an influencer for equity, or make the videos yourself. His team made their own, since his co-founders were already making content.
+
+22
+00:02:32.672 --> 00:02:35.154
+<v Bob>How does the influencer route work?
+
+23
+00:02:35.454 --> 00:02:46.875
+<v Alice>It's a numbers game. You message as many creators as you can on Instagram and TikTok with a copy and paste template, then get them on a call. Don't negotiate over text; he says it doesn't work.
+
+24
+00:02:47.175 --> 00:02:49.866
+<v Bob>And how much of the company do you hand over?
+
+25
+00:02:50.166 --> 00:03:00.693
+<v Alice>He suggests 25 to 50 percent. His logic: before your first dollar, half of an app making 10,000 dollars a month beats all of an app making 1,000.
+
+26
+00:03:00.993 --> 00:03:04.670
+<v Bob>That's a big slice. What makes a creator worth it?
+
+27
+00:03:04.970 --> 00:03:19.538
+<v Alice>Views over followers. Under 100,000 followers is ideal, and averaging below 30,000 views probably isn't worth it. He also wants real engagement, a tier one audience, and chemistry on a call.
+
+28
+00:03:19.838 --> 00:03:24.107
+<v Bob>Step three, post a lot. Do I spin up a dozen accounts?
+
+29
+00:03:24.407 --> 00:03:34.470
+<v Alice>No. One Instagram and one TikTok per person. More accounts mean more problems, like shadow bans, and every fresh account has to be built up.
+
+30
+00:03:34.770 --> 00:03:38.320
+<v Bob>Then how do you test lots of content from one account?
+
+31
+00:03:38.620 --> 00:03:49.229
+<v Alice>Trial reels, which he calls the key part of the whole strategy. They go to a separate algorithm from your main reels and always go to new people, so followers are out of the equation.
+
+32
+00:03:49.529 --> 00:03:52.045
+<v Bob>And if you don't have access to trial reels?
+
+33
+00:03:52.345 --> 00:04:04.579
+<v Alice>He thinks you need a certain number of followers, but isn't sure how many. He mentions buying a few followers to unlock them, while saying he's not recommending it, it breaks Instagram's rules, and it's at your own risk.
+
+34
+00:04:04.879 --> 00:04:06.485
+<v Bob>We'll come back to that one.
+
+35
+00:04:06.785 --> 00:04:19.611
+<v Alice>Next is finding your format. Mix what works consistently for competitors, formats from other niches you can convert, and your own ideas. And he's firm: no low quality, UGC style content.
+
+36
+00:04:19.911 --> 00:04:25.121
+<v Bob>UGC meaning user-generated content, the shaky phone camera stuff?
+
+37
+00:04:25.421 --> 00:04:34.624
+<v Alice>Right. For a workout app, the influencer already works out, so he films his workouts and edits them, copying the angles competitors use.
+
+38
+00:04:34.924 --> 00:04:37.879
+<v Bob>But nobody can film enough to post that much.
+
+39
+00:04:38.179 --> 00:04:51.853
+<v Alice>So you turn one video into many. Change the hook, the sound, the length, which parts you use, and the order of the clips. Test enough versions and you learn which hooks, sounds and lengths work best.
+
+40
+00:04:52.153 --> 00:04:53.989
+<v Bob>How often are we talking?
+
+41
+00:04:54.289 --> 00:05:05.757
+<v Alice>Their starting structure was 3 trial reels and 1 TikTok every day. Every second day, the trial reel with the most views gets uploaded as a new video on the main account.
+
+42
+00:05:06.057 --> 00:05:08.720
+<v Bob>Three a day already sounds like a lot.
+
+43
+00:05:09.020 --> 00:05:19.291
+<v Alice>He compares it to the gym. Three a day is what he recommends, but test more, even up to 12 a day, because Instagram tells you when you've gone too far: views drop.
+
+44
+00:05:19.591 --> 00:05:23.222
+<v Bob>Step four is editing. Where does AI come in?
+
+45
+00:05:23.522 --> 00:05:34.997
+<v Alice>They give Claude competitor videos and other formats as files, with enough context, and it does the editing. He says they edited 6 videos in the time it used to take to edit half of one.
+
+46
+00:05:35.297 --> 00:05:38.098
+<v Bob>Wait, really? Six for a half?
+
+47
+00:05:38.398 --> 00:05:48.461
+<v Alice>That's his claim. He admits some videos won't be easy for Claude, so they edit those themselves, and he doesn't go deep on how. He's just pointing you in that direction.
+
+48
+00:05:48.761 --> 00:05:49.950
+<v Bob>Any tool tips?
+
+49
+00:05:50.250 --> 00:06:01.416
+<v Alice>Post through Instagram's Edits app. When you post similar versions, you don't want any to flop because Instagram thinks it's the same video. In their experience, you get flagged less.
+
+50
+00:06:01.716 --> 00:06:04.279
+<v Bob>And the style of the videos themselves?
+
+51
+00:06:04.579 --> 00:06:17.440
+<v Alice>Entertain first, provide value second. Entertaining gets views, and value improves your retention chart. He wants great sound effects, good editing, and energy from whoever's in the video.
+
+52
+00:06:17.740 --> 00:06:19.754
+<v Bob>Same video on both platforms?
+
+53
+00:06:20.054 --> 00:06:33.519
+<v Alice>Same video, edited differently. TikTok gets shorter, lower effort cuts, and Instagram gets longer, higher quality, slower paced ones. When they started, they got a lot more views on TikTok.
+
+54
+00:06:33.819 --> 00:06:37.368
+<v Bob>Step five. Turning views into downloads.
+
+55
+00:06:37.668 --> 00:06:50.750
+<v Alice>That's the call to action, or CTA. Four things matter: timing, length, design, and how natural it feels. Only at the end probably converts poorly, and at the start it cooked their views.
+
+56
+00:06:51.050 --> 00:06:53.095
+<v Bob>So what did they actually do?
+
+57
+00:06:53.395 --> 00:07:03.923
+<v Alice>For each exercise, they show a screenshot from inside their app, with their logo on it. They never say go use our app, and they end on a screenshot of their App Store page.
+
+58
+00:07:04.223 --> 00:07:06.210
+<v Bob>Subtle. How do you tune it?
+
+59
+00:07:06.510 --> 00:07:16.480
+<v Alice>Watch your retention charts. If views drop at 8 seconds, right where your CTA is, move it, change the design, or change how long it's on screen.
+
+60
+00:07:16.780 --> 00:07:19.006
+<v Bob>Any proof that tuning it matters?
+
+61
+00:07:19.306 --> 00:07:33.711
+<v Alice>He cites a founder doing 50,000 a month with UGC creators. They moved the CTA into the first 10 seconds, cut it to 5 seconds, fired half their UGC team, and tripled revenue to over 100,000.
+
+62
+00:07:34.011 --> 00:07:37.340
+<v Bob>That's secondhand, though. One founder's story.
+
+63
+00:07:37.640 --> 00:07:42.776
+<v Alice>Fair. It's an anecdote from a founder he spoke to, not data he shows.
+
+64
+00:07:43.076 --> 00:07:46.451
+<v Bob>You said the most important CTA isn't even in the video?
+
+65
+00:07:46.751 --> 00:07:58.289
+<v Alice>He says it's in the comment section. On every video, get the comment, what app do you use, in as fast as possible, from an alt account or a friend, rotating accounts and wording.
+
+66
+00:07:58.589 --> 00:08:01.407
+<v Bob>Hold on. So the question is planted?
+
+67
+00:08:01.707 --> 00:08:12.397
+<v Alice>Yes. The poster then replies with the app's name, and once a video has enough views, other people start answering too. He thinks it may matter even more than the CTA in the video.
+
+68
+00:08:12.697 --> 00:08:16.456
+<v Bob>Step six, scale it. What does a good result look like?
+
+69
+00:08:16.756 --> 00:08:26.006
+<v Alice>For organic, he calls around 5 to 7 percent conversion from download to paid a good result. Every app is different, so treat it as a ballpark.
+
+70
+00:08:26.306 --> 00:08:28.741
+<v Bob>And how do you judge a single video?
+
+71
+00:08:29.041 --> 00:08:43.869
+<v Alice>By money, not just views. 200,000 views and 400 to 500 dollars is great. The same views and only 200 to 300 dollars probably converted low, though a viral video still helps your page grow.
+
+72
+00:08:44.169 --> 00:08:45.740
+<v Bob>And where are they now?
+
+73
+00:08:46.040 --> 00:08:56.986
+<v Alice>It took about a month of posting and testing to find what really worked. Now he says they're doing around 2,000 dollars a day, on track for 45 to 50 thousand this month.
+
+74
+00:08:57.286 --> 00:08:58.786
+<v Bob>And once the money comes in?
+
+75
+00:08:59.086 --> 00:09:11.691
+<v Alice>Get onto a provider that pays you out early so you can reinvest fast, and RevenueCat offers it. Then don't take too much out. If you really need to, cap it at 50 percent of profits and reinvest the other 50 percent.
+
+76
+00:09:11.991 --> 00:09:13.613
+<v Bob>Reinvest into what?
+
+77
+00:09:13.913 --> 00:09:24.696
+<v Alice>Meta and TikTok ads, UGC, and slideshow clipping, which he'd add third. In his opinion, clipping builds brand awareness and works best combined with ads.
+
+78
+00:09:24.996 --> 00:09:27.640
+<v Bob>And clipping is what the sponsor sells.
+
+79
+00:09:27.940 --> 00:09:34.300
+<v Alice>Exactly. He names that platform as one option, next to doing it yourself or using an agency.
+
+80
+00:09:34.600 --> 00:09:39.763
+<v Bob>Okay, let me push back properly. A lot of this rests on numbers we can't check.
+
+81
+00:09:40.063 --> 00:09:51.531
+<v Alice>True. The revenue figures are self-reported, and the charts he shows as proof weren't readable in our copy. The piece is also sponsored, and it ends steering toward the sponsor's kind of service.
+
+82
+00:09:51.831 --> 00:09:59.084
+<v Bob>And the tactics. Buying followers, planting comments from alt accounts. That feels like gaming the platform.
+
+83
+00:09:59.384 --> 00:10:11.525
+<v Alice>He flags the follower buying himself as against Instagram's rules. The planted comments he doesn't flag at all. My view is that viewers and platforms could see that as misleading, so weigh it before copying it.
+
+84
+00:10:11.825 --> 00:10:16.067
+<v Bob>And there's survivorship bias. We're hearing from the app that made it.
+
+85
+00:10:16.367 --> 00:10:26.490
+<v Alice>Right, and he admits a lot is app specific. Timing, conversion and formats all vary, and he keeps telling you to test rather than trust his numbers.
+
+86
+00:10:26.790 --> 00:10:30.548
+<v Bob>So what could someone building an app try this week?
+
+87
+00:10:30.848 --> 00:10:41.120
+<v Alice>His start today list: build the decent app this week without polishing it, pick your method, then post your first 3 trial reels and 1 TikTok. Then do it again tomorrow.
+
+88
+00:10:41.420 --> 00:10:43.038
+<v Bob>And beyond the first week?
+
+89
+00:10:43.338 --> 00:10:53.181
+<v Alice>Turn each video into several versions, watch retention charts to place your call to action, and judge every video by the money it brings in, not only its views.
+
+90
+00:10:53.481 --> 00:10:55.516
+<v Bob>What's left open, for you?
+
+91
+00:10:55.816 --> 00:11:05.126
+<v Alice>How well this travels beyond workout apps, which film naturally. And what happens when the platforms change trial reels, or start flagging repeated posts.
+
+92
+00:11:05.426 --> 00:11:08.755
+<v Bob>And whether it holds up when their off season comes back around.
+
+93
+00:11:09.055 --> 00:11:11.874
+<v Bob>That's it for this episode of Build Wiz AI.
+
+94
+00:11:12.174 --> 00:11:20.692
+<v Alice>Today's episode was based on How we scaled our app to 40 thousand dollars a month with zero dollars spent, an X article by Nicholas.
+
+95
+00:11:20.992 --> 00:11:23.555
+<v Bob>Thanks for listening, and see you next time.

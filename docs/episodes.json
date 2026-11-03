@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "show": {
+    "name": "Build Wiz AI",
+    "tagline": "One source, everything worth knowing.",
+    "hosts": [
+      "Bob",
+      "Alice"
+    ]
+  },
+  "updated": "2026-11-03T17:28:14Z",
+  "episodes": [
+    {
+      "id": "2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent",
+      "title": "How we scaled our app to 40 thousand dollars a month with zero dollars spent",
+      "summary": [
+        "An X article by app co-founder Nicholas on growing an app to about 40 thousand dollars a month with organic video.",
+        "The method: a decent app built fast, heavy daily posting with trial reels, AI-assisted editing, and tested calls to action.",
+        "It is a sponsored, self-reported playbook; some tactics, like buying followers or planted comments, carry real risks."
+      ],
+      "show": "Build Wiz AI",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-03T17:15:34Z",
+      "duration_s": 683.555,
+      "size_bytes": 10938034,
+      "audio": "episodes/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent/episode.mp3",
+      "transcript": "episodes/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "How we scaled our app to $40k/month with $0 spent (Full Guide)",
+        "author": "Nicholas (@nicholascalez)",
+        "url": "https://x.com/nicholascalez/status/2117647942379057247",
+        "published": "2026-11-03T15:59:48Z",
+        "kind": "x"
+      }
+    }
+  ]
+}
