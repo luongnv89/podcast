@@ -1,0 +1,213 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.800
+<v Bob>Welcome to Build Wiz AI, the show where we take one source and pull out everything worth knowing.
+
+2
+00:00:05.100 --> 00:00:08.420
+<v Bob>I'm Bob, and as always I'm the one asking the questions.
+
+3
+00:00:08.720 --> 00:00:15.320
+<v Alice>And I'm Alice. Today we're reading an X article by Ben Holmes called The road to self-improving software.
+
+4
+00:00:15.620 --> 00:00:19.220
+<v Bob>Self-improving software. Okay, what's the big idea?
+
+5
+00:00:19.520 --> 00:00:32.400
+<v Alice>His thesis: automating development isn't about pumping out pull requests faster. It's one large loop that starts with the task and ends with the shipped product, with agents deciding what to build next.
+
+6
+00:00:32.700 --> 00:00:34.460
+<v Bob>And where are most teams today?
+
+7
+00:00:34.760 --> 00:00:43.760
+<v Alice>Building small loops: computer use verification, auto-fixing CI failures, adversarial code review. He likes calling this building trust with agents.
+
+8
+00:00:44.060 --> 00:00:45.860
+<v Bob>So what's the first use case?
+
+9
+00:00:46.160 --> 00:00:54.040
+<v Alice>Proactive bug fixes. Not agents working through a backlog, but agents figuring out what should be in the backlog in the first place.
+
+10
+00:00:54.340 --> 00:00:56.940
+<v Bob>How would an agent even know there's a bug?
+
+11
+00:00:57.240 --> 00:01:06.560
+<v Alice>The lowest hanging fruit is server errors. Tools like Sentry and Grafana already raise alerts, so you have an alert tag in an agent to investigate.
+
+12
+00:01:06.860 --> 00:01:09.300
+<v Bob>And then it posts its findings to Slack?
+
+13
+00:01:09.600 --> 00:01:19.840
+<v Alice>That's the simple version. The better version gives the agent the tools to fix the issue and send the pull request, with those small verification and review loops built in.
+
+14
+00:01:20.140 --> 00:01:21.940
+<v Bob>What does the plumbing look like?
+
+15
+00:01:22.240 --> 00:01:33.840
+<v Alice>He says all it takes is a webhook that can trigger an agent on an always-on computer. At Warp, an automations file binds that webhook trigger to an agent prompt and a model.
+
+16
+00:01:34.140 --> 00:01:35.500
+<v Bob>So no human at all?
+
+17
+00:01:35.800 --> 00:01:46.680
+<v Alice>Humans still review the code before fixes are merged. But for the bugs you're alerted to, filing the fix no longer needs a person. As he puts it, "The agent should fix its own bugs."
+
+18
+00:01:46.980 --> 00:01:48.340
+<v Bob>And the second idea?
+
+19
+00:01:48.640 --> 00:01:58.520
+<v Alice>Proactive agent self-improvement. He calls the craft of tuning your skills, architecture and automations factory engineering, his personal favorite name for it.
+
+20
+00:01:58.820 --> 00:02:02.380
+<v Bob>Is this the recursive self-improvement people get nervous about?
+
+21
+00:02:02.680 --> 00:02:11.160
+<v Alice>No, he says it's a simpler idea: skill self-improvement. Agents review their own past conversations to find failure points.
+
+22
+00:02:11.460 --> 00:02:13.260
+<v Bob>Walk me through how that works.
+
+23
+00:02:13.560 --> 00:02:22.560
+<v Alice>Collect your team's past agent sessions: conversation traces, tool calls and artifacts. Then an agent scores each one against rubrics you define.
+
+24
+00:02:22.860 --> 00:02:23.940
+<v Bob>Scored by what?
+
+25
+00:02:24.240 --> 00:02:29.960
+<v Alice>His team uses a language model as a judge, though he says static analysis could be part of it too.
+
+26
+00:02:30.260 --> 00:02:32.060
+<v Bob>And once everything has a score?
+
+27
+00:02:32.360 --> 00:02:42.080
+<v Alice>An agent reviews the low-scoring conversations, looks for common causes behind those failures, and proposes changes to the codebase, the skills, or the agents file.
+
+28
+00:02:42.380 --> 00:02:43.820
+<v Bob>Is there an example?
+
+29
+00:02:44.120 --> 00:02:56.720
+<v Alice>An efficiency scorer, asking whether the agent reached a solution in the fewest steps. In it, the agent spins its wheels working around bugs in its test harness, and that gets flagged as worth fixing in the skill.
+
+30
+00:02:57.020 --> 00:02:59.660
+<v Bob>So it improves the process, not the product.
+
+31
+00:02:59.960 --> 00:03:08.240
+<v Alice>Exactly. The gains are indirect: speed, quality and cost. Cheaper changes mean addressing issues you would've buried in the backlog.
+
+32
+00:03:08.540 --> 00:03:11.580
+<v Bob>And the third one is the big one. Deciding what to build.
+
+33
+00:03:11.880 --> 00:03:21.360
+<v Alice>Agents informing the roadmap itself. He calls it the most sensitive area, and agrees a human will always be in the loop for product work.
+
+34
+00:03:21.660 --> 00:03:23.860
+<v Bob>So what can agents actually do there?
+
+35
+00:03:24.160 --> 00:03:33.320
+<v Alice>Customer data you likely collect already: which features are used or ignored, how marketing pages perform in search, and what customers say in interviews and online.
+
+36
+00:03:33.620 --> 00:03:35.340
+<v Bob>Does his team really do this?
+
+37
+00:03:35.640 --> 00:03:47.160
+<v Alice>They do. They record customer discovery calls with a service called Grain, and the transcripts land in a folder agents can reach through MCP, the Model Context Protocol.
+
+38
+00:03:47.460 --> 00:03:49.020
+<v Bob>And what comes out of it?
+
+39
+00:03:49.320 --> 00:04:02.200
+<v Alice>On a regular cadence, an agent looks for where customers get stuck. Those insights first went to Slack for sales; now they become Notion tasks for engineering, which humans still review and accept.
+
+40
+00:04:02.500 --> 00:04:05.660
+<v Bob>Let me push back, though. Isn't this partly a sales pitch?
+
+41
+00:04:05.960 --> 00:04:12.480
+<v Alice>Fair. It closes with a pitch for Warp Factories. I think the ideas stand on their own, but keep that in mind.
+
+42
+00:04:12.780 --> 00:04:15.580
+<v Bob>And letting agents pick features sounds risky to me.
+
+43
+00:04:15.880 --> 00:04:24.760
+<v Alice>He doesn't claim otherwise. Humans still review the code and accept the roadmap ideas, and the fully closed loop is something he says we're not at yet.
+
+44
+00:04:25.060 --> 00:04:27.220
+<v Bob>So what could a listener try right away?
+
+45
+00:04:27.520 --> 00:04:36.560
+<v Alice>The easy win: wire your error alerts to a webhook that wakes an agent, and have it propose a fix as a pull request, not just a chat message.
+
+46
+00:04:36.860 --> 00:04:38.740
+<v Bob>And for the self-improvement loop?
+
+47
+00:04:39.040 --> 00:04:45.400
+<v Alice>Pick one rubric, like efficiency, score a batch of past agent sessions, and read the low scorers.
+
+48
+00:04:45.700 --> 00:04:47.540
+<v Bob>What's still open, in your view?
+
+49
+00:04:47.840 --> 00:04:57.800
+<v Alice>My question is how far human review can shrink. He wants teams to hit merge with less line-by-line scrutiny, but he doesn't say how you'd know that trust is earned.
+
+50
+00:04:58.100 --> 00:05:02.900
+<v Bob>And whether agents can ever have product taste, or just surface the data for the people who do.
+
+51
+00:05:03.200 --> 00:05:05.920
+<v Bob>That's it for this episode of Build Wiz AI.
+
+52
+00:05:06.220 --> 00:05:12.780
+<v Alice>Today's episode was based on The road to self-improving software, an X article by Ben Holmes.
+
+53
+00:05:13.080 --> 00:05:15.800
+<v Bob>Thanks for listening, and see you next time.

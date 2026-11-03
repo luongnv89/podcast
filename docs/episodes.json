@@ -8,8 +8,37 @@
       "Alice"
     ]
   },
-  "updated": "2026-11-03T17:28:14Z",
+  "updated": "2026-11-03T17:32:50Z",
   "episodes": [
+    {
+      "id": "2026-11-03_the-road-to-self-improving-software",
+      "title": "The road to self-improving software",
+      "summary": [
+        "An X article by Ben Holmes on building a closed-loop software factory with agents.",
+        "Agents can proactively fix alerted bugs, score their own sessions to improve skills, and mine customer data for the roadmap.",
+        "It shifts the goal from faster pull requests to one loop from task to shipped product, with humans still reviewing."
+      ],
+      "show": "Build Wiz AI",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-03T17:26:26Z",
+      "duration_s": 315.8,
+      "size_bytes": 5054252,
+      "audio": "episodes/2026-11-03_the-road-to-self-improving-software/episode.mp3",
+      "transcript": "episodes/2026-11-03_the-road-to-self-improving-software/transcript.vtt",
+      "voices": "VoiceCast · chatterbox-turbo",
+      "source": {
+        "title": "The road to self-improving software",
+        "author": "Ben Holmes (@BHolmesDev)",
+        "url": "https://x.com/BHolmesDev/status/2110793920930107817",
+        "published": "2026-10-15T18:04:22Z",
+        "kind": "x"
+      }
+    },
     {
       "id": "2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent",
       "title": "How we scaled our app to 40 thousand dollars a month with zero dollars spent",
