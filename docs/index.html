@@ -108,9 +108,9 @@
   .order svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease; }
   .order[data-dir="asc"] svg { transform: rotate(180deg); }
 
-  /* Filter chips: always one row of facet groups so the sticky bar stays two lines tall.
+  /* Filter chips: on touch, one row of facet groups so the sticky bar stays two lines tall.
      When the row overflows it scrolls sideways, and a fade on the right edge says
-     "more this way" (only while there is more to see). */
+     "more this way" (only while there is more to see). Fine pointers wrap instead (below). */
   .chips { display: flex; flex-wrap: nowrap; align-items: center; padding: 10px 0 12px; overflow-x: auto; scrollbar-width: none; }
   .chips::-webkit-scrollbar { display: none; }
   .chips.has-more { mask-image: linear-gradient(to left, transparent 0, #000 48px); -webkit-mask-image: linear-gradient(to left, transparent 0, #000 48px); }
@@ -149,7 +149,7 @@
     background: var(--line); border: 1px solid var(--line); border-radius: var(--radius);
     overflow: hidden; box-shadow: var(--shadow);
   }
-  .ep { position: relative; background: var(--black); scroll-margin-top: calc(var(--toolbar-h) + 12px); }
+  .ep { position: relative; background: var(--black); scroll-margin-top: 4px; }
   .ep.enter { animation: rise .5s cubic-bezier(.2,.7,.2,1) both; }
   @keyframes rise { from { opacity: 0; transform: translateY(6px); } }
   .ep-row { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr) 20px; align-items: center; gap: 16px; padding: 12px 16px; transition: background-color .15s ease; }
@@ -184,7 +184,7 @@
   .ep-toggle:focus-visible { outline: none; }
   .ep-toggle:focus-visible::after { outline: 2px solid var(--green); outline-offset: -2px; }
   .ep-row:hover .ep-toggle { text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
-  mark { background: none; color: var(--green); }
+  mark { background: none; color: var(--green); text-decoration-line: underline; text-decoration-thickness: 2px; text-decoration-color: var(--green); text-underline-offset: 3px; }
   .meta { display: flex; flex-wrap: wrap; gap: 2px 0; font-size: 13px; color: var(--text-2); }
   .meta > span { white-space: nowrap; }
   .meta > span + span::before { content: "·"; margin: 0 8px; color: var(--text-3); }
@@ -295,12 +295,18 @@
     .cue { grid-template-columns: 48px 1fr; padding: 8px 6px; }
     footer .keys { display: none; }
   }
+  @media (hover: hover) and (pointer: fine) {
+    /* Mouse and trackpad: wrap the chips instead of scrolling sideways, since a hidden
+       horizontal scrollbar is out of reach for a plain mouse wheel. */
+    .chips { flex-wrap: wrap; margin-right: 0; padding-right: 0; }
+    .chips.has-more { mask-image: none; -webkit-mask-image: none; }
+    .fgroup { flex: 0 1 auto; flex-wrap: wrap; }
+  }
   @media (max-height: 500px) {
     /* Short viewports (landscape phones, high zoom): stop pinning the toolbar so the list keeps room.
-       It stays positioned for the progress line; the top scroll offsets drop since nothing overlays content. */
+       It stays positioned for the progress line; the top scroll offset drops since nothing overlays content. */
     .toolbar { position: relative; }
     html { scroll-padding-top: 8px; }
-    .ep { scroll-margin-top: 12px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -486,6 +492,8 @@
     title: { def: "asc", asc: "A to Z", desc: "Z to A", key: (e) => fold(e.title) || null },
     source: { def: "desc", asc: "Oldest source first", desc: "Newest source first", key: (e) => Date.parse(e.source?.published) || null },
   };
+  // Own keys only, so a hand-edited ?sort=constructor (or __proto__) falls back to the default.
+  const isSort = (v) => Object.prototype.hasOwnProperty.call(SORTS, v);
   const KIND = { x: "X", article: "Article", paper: "Paper", thread: "Thread", blog: "Blog", web: "Web", pdf: "PDF", arxiv: "arXiv", youtube: "YouTube", reddit: "Reddit", hn: "Hacker News", github: "GitHub", substack: "Substack", medium: "Medium" };
   const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
   // Facet groups. Fixed groups always show every option; the others list only the
@@ -504,7 +512,7 @@
   function readUrl() {
     const p = new URLSearchParams(location.search);
     state.q = p.get("q") || "";
-    state.sort = SORTS[p.get("sort")] ? p.get("sort") : "published";
+    state.sort = isSort(p.get("sort")) ? p.get("sort") : "published";
     const dir = p.get("order");
     state.dir = dir === "asc" || dir === "desc" ? dir : SORTS[state.sort].def;
     for (const g of GROUPS) state.f[g.id] = new Set((p.get(g.id) || "").split(",").map((s) => s.trim()).filter(Boolean));
@@ -579,6 +587,7 @@
   // Filtering and sorting move and hide the existing rows; they never rebuild them, so
   // the playing row, open transcripts and live cue highlights survive every change.
   function apply() {
+    if (!isSort(state.sort)) { state.sort = "published"; state.dir = SORTS.published.def; }
     if (!noMatch) return;   // the toolbar is live before the episode list has loaded
     for (const e of episodes) for (const g of GROUPS) e._f[g.id] = g.of(e);
     const ts = terms();
