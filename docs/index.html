@@ -39,7 +39,7 @@
   }
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
-  html { -webkit-text-size-adjust: 100%; scroll-padding-bottom: calc(var(--player-h) + 16px); }
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--toolbar-h) + 8px); scroll-padding-bottom: calc(var(--player-h) + 16px); }
   body {
     margin: 0;
     background: var(--black);
@@ -294,6 +294,13 @@
     .p-back, .p-fwd { display: none; }
     .cue { grid-template-columns: 48px 1fr; padding: 8px 6px; }
     footer .keys { display: none; }
+  }
+  @media (max-height: 500px) {
+    /* Short viewports (landscape phones, high zoom): stop pinning the toolbar so the list keeps room.
+       It stays positioned for the progress line; the top scroll offsets drop since nothing overlays content. */
+    .toolbar { position: relative; }
+    html { scroll-padding-top: 8px; }
+    .ep { scroll-margin-top: 12px; }
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -618,10 +625,13 @@
     writeUrl();
   }
 
-  function clearAll() {
+  function clearAll(e) {
+    const from = document.activeElement;
     state.q = ""; qInput.value = "";
     for (const g of GROUPS) state.f[g.id].clear();
     apply();
+    // Both clear buttons hide themselves; on keyboard activation (click detail 0), keep focus on a stable control.
+    if (e && e.detail === 0 && from && from !== document.body && from.closest("[hidden]")) qInput.focus();
   }
 
   // ---------- Render (once per load) ----------
