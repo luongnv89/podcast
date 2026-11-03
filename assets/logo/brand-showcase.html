@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build Wiz AI · Brand Identity</title>
+<meta name="description" content="Brand identity for Build Wiz AI, the AI Show podcast: logo, colours, typography and usage.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000000;
+    --white: #FFFFFF;
+    --gray: #6B7280;
+    --green: #22C55E;
+    --paper: #FAFAFA;
+    --ink-2: rgba(255,255,255,.74);
+    --line: rgba(255,255,255,.12);
+    --line-strong: rgba(255,255,255,.24);
+    --display: "Bricolage Grotesque", Georgia, serif;
+    --body: "Hanken Grotesk", "Helvetica Neue", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --r: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--black); color: var(--white); font: 400 16px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+  section { padding: 88px 0; border-top: 1px solid var(--line); }
+  .label { font: 600 12px/1 var(--body); letter-spacing: .16em; text-transform: uppercase; color: var(--green); margin: 0 0 18px; }
+  h2 { font: 700 clamp(28px, 4vw, 40px)/1.1 var(--display); letter-spacing: -.02em; margin: 0 0 16px; }
+  p { margin: 0 0 14px; color: var(--ink-2); max-width: 62ch; }
+  code, .mono { font-family: var(--mono); font-size: 13px; }
+
+  /* Hero */
+  .hero { position: relative; padding: 120px 0 104px; text-align: center; overflow: hidden; border: 0; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px 300px at 50% 30%, rgba(34,197,94,.10), transparent 70%); pointer-events: none; }
+  .hero svg.markhero { width: 148px; height: 148px; display: block; margin: 0 auto 36px; overflow: visible; }
+  .hero h1 { font: 800 clamp(44px, 8vw, 88px)/1 var(--display); letter-spacing: -.035em; margin: 14px 0 18px; }
+  .hero h1 .ai { color: var(--green); }
+  .hero .sub { margin: 0 auto; font-size: 18px; color: var(--ink-2); max-width: 46ch; }
+  .hero .label { margin: 0 auto; max-width: none; }
+  .hero .wrap { position: relative; z-index: 1; }
+  .grid > *, .dev > *, .type > *, .concept > *, .chips > * { min-width: 0; }
+  .spark-glow { filter: drop-shadow(0 0 10px rgba(34,197,94,.65)); }
+
+  /* Concept */
+  .concept { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 860px) { .concept { grid-template-columns: 1fr 1fr; gap: 64px; } }
+  .anno { background: #0A0A0A; border: 1px solid var(--line); border-radius: var(--r); padding: 28px; }
+  .anno svg { width: 100%; height: auto; display: block; }
+  .anno text { font: 500 3.2px var(--body); fill: rgba(255,255,255,.7); }
+  .anno .g { fill: var(--green); }
+  @media (max-width: 600px) { .anno { padding: 16px; } .anno text, .anno line { display: none; } .anno svg { max-width: 220px; margin: 0 auto; } }
+  .points { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 14px; }
+  .points li { border-left: 2px solid var(--green); padding: 2px 0 2px 16px; color: var(--ink-2); }
+  .points b { color: var(--white); font-weight: 600; }
+
+  /* Variants */
+  .grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } .wide { grid-column: 1 / -1; } }
+  .card { position: relative; border-radius: var(--r); min-height: 240px; display: grid; place-items: center; padding: 56px 24px 48px; transition: transform .2s ease, box-shadow .2s ease; }
+  .card:hover { transform: translateY(-3px); }
+  .card.dark { background: #0A0A0A; border: 1px solid var(--line); }
+  .card.light { background: var(--paper); box-shadow: 0 1px 2px rgba(0,0,0,.25), 0 12px 32px -16px rgba(0,0,0,.6); }
+  .card .tag { position: absolute; top: 18px; left: 20px; font: 600 12px/1 var(--body); letter-spacing: .08em; text-transform: uppercase; }
+  .card .file { position: absolute; bottom: 16px; right: 20px; font: 400 12px/1 var(--mono); }
+  .card.dark .tag { color: var(--ink-2); } .card.dark .file { color: var(--ink-2); }
+  .card.light .tag { color: #1F2937; } .card.light .file { color: #4B5563; }
+  .card img { display: block; max-width: 100%; height: auto; }
+  .card .cap { display: block; text-align: center; margin-top: 12px; font: 400 12px var(--mono); color: var(--ink-2); }
+  .note { margin-top: 20px; font-size: 14px; }
+
+  /* Palette */
+  .chips { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+  .chip { border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; background: #0A0A0A; }
+  .sw { height: 112px; display: flex; align-items: flex-end; padding: 12px 14px; font: 500 13px var(--mono); }
+  .chip .meta { padding: 14px; }
+  .chip h3 { margin: 0 0 4px; font: 600 15px var(--body); }
+  .chip p { margin: 0; font-size: 13px; }
+
+  /* Type */
+  .type { display: grid; gap: 16px; }
+  @media (min-width: 860px) { .type { grid-template-columns: 1.3fr 1fr; } }
+  .spec { border: 1px solid var(--line); border-radius: var(--r); padding: 32px; background: #0A0A0A; }
+  .spec .big { font: 800 clamp(48px, 7vw, 72px)/1 var(--display); letter-spacing: -.035em; margin: 8px 0 18px; }
+  .spec .mid { font: 700 28px/1.15 var(--display); letter-spacing: -.02em; margin: 0 0 10px; }
+  .spec .body { font: 400 17px/1.6 var(--body); color: var(--ink-2); }
+  .spec .meta { font: 500 12px var(--mono); color: var(--ink-2); }
+  .weights { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 14px; }
+  .weights span { font-size: 15px; }
+
+  /* Dev */
+  .dev { display: grid; gap: 16px; }
+  @media (min-width: 860px) { .dev { grid-template-columns: 1fr 1fr; } }
+  pre { margin: 0; background: #0A0A0A; border: 1px solid var(--line); border-radius: var(--r); padding: 24px; overflow-x: auto; font: 400 13px/1.7 var(--mono); color: var(--ink-2); }
+  .k { color: #93C5FD; } .s { color: var(--green); } .c { color: var(--gray); } .p { color: var(--white); }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--ink-2); font-size: 14px; }
+  footer .wrap { display: flex; gap: 16px; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+  footer img { height: 28px; width: auto; display: block; }
+</style>
+<script>matchMedia('(max-width: 600px)').matches&&addEventListener('DOMContentLoaded',()=>{const a=document.querySelector('.annosvg');a&&a.setAttribute('viewBox','4 4 56 54')});</script>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <svg class="markhero" viewBox="0 0 64 64" role="img" aria-label="Build Wiz AI mark">
+      <path fill="#FFFFFF" d="M11 18a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V21.5a3.5 3.5 0 0 1 3.5 -3.5ZM21.5 40a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V43.5a3.5 3.5 0 0 1 3.5 -3.5ZM32 28a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V31.5a3.5 3.5 0 0 1 3.5 -3.5ZM42.5 40a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V43.5a3.5 3.5 0 0 1 3.5 -3.5ZM53 18a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V21.5a3.5 3.5 0 0 1 3.5 -3.5Z"/>
+      <path class="spark-glow" fill="#22C55E" d="M32 5.5C33.7 11.3 33.7 11.3 39.5 13C33.7 14.7 33.7 14.7 32 20.5C30.3 14.7 30.3 14.7 24.5 13C30.3 11.3 30.3 11.3 32 5.5Z"/>
+    </svg>
+    <p class="label">Brand Identity</p>
+    <h1>Build Wiz <span class="ai">AI</span></h1>
+    <p class="sub">The AI Show. Two hosts, one source, everything worth knowing — a waveform that spells its own name.</p>
+  </div>
+</header>
+
+<main>
+<section>
+  <div class="wrap concept">
+    <div class="anno" aria-label="Annotated mark">
+      <svg class="annosvg" viewBox="-34 0 152 64" role="img" aria-label="Mark with annotations">
+        <path fill="#FFFFFF" d="M11 18a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V21.5a3.5 3.5 0 0 1 3.5 -3.5ZM21.5 40a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V43.5a3.5 3.5 0 0 1 3.5 -3.5ZM32 28a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V31.5a3.5 3.5 0 0 1 3.5 -3.5ZM42.5 40a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V43.5a3.5 3.5 0 0 1 3.5 -3.5ZM53 18a3.5 3.5 0 0 1 3.5 3.5V52.5a3.5 3.5 0 0 1 -7 0V21.5a3.5 3.5 0 0 1 3.5 -3.5Z"/>
+        <path fill="#22C55E" d="M32 5.5C33.7 11.3 33.7 11.3 39.5 13C33.7 14.7 33.7 14.7 32 20.5C30.3 14.7 30.3 14.7 24.5 13C30.3 11.3 30.3 11.3 32 5.5Z"/>
+        <!-- W envelope -->
+        <path d="M11 18 L21.5 40 L32 28 L42.5 40 L53 18" fill="none" stroke="#22C55E" stroke-width=".4" stroke-dasharray="1 1"/>
+        <line x1="39.5" y1="13" x2="66" y2="13" stroke="rgba(255,255,255,.35)" stroke-width=".25"/>
+        <text x="67" y="14.1" class="g">Spark — the "wiz" moment</text>
+        <line x1="56.5" y1="26" x2="66" y2="26" stroke="rgba(255,255,255,.35)" stroke-width=".25"/>
+        <text x="67" y="27.1">Bar tops trace a W</text>
+        <line x1="56.5" y1="48" x2="66" y2="48" stroke="rgba(255,255,255,.35)" stroke-width=".25"/>
+        <text x="67" y="49.1">Five bars = a voice signal</text>
+        <line x1="-2" y1="56" x2="7.5" y2="56" stroke="rgba(255,255,255,.35)" stroke-width=".25"/>
+        <text x="-31" y="57.1">Shared baseline</text>
+        <line x1="-2" y1="40" x2="18" y2="40" stroke="rgba(255,255,255,.35)" stroke-width=".25"/>
+        <text x="-31" y="41.1">Two valleys:</text>
+        <text x="-31" y="45.1">Bob &amp; Alice</text>
+      </svg>
+    </div>
+    <div>
+      <p class="label">Design concept</p>
+      <h2>A waveform that says W.</h2>
+      <p>The mark is five rounded audio bars, the oldest shorthand for “someone is talking.” Their heights run tall, short, mid, short, tall, so the tops trace a W, the initial of Build Wiz AI. The two valleys stand for the two hosts; the centre bar is the source they meet over.</p>
+      <p>One green spark floats in the centre notch. It is the moment an idea lands — the “wiz” — and it is the only place the accent green appears in the mark.</p>
+      <ul class="points">
+        <li><b>Built on what exists.</b> The site’s favicon was already a five-bar waveform; the mark gives that signal a shape and a name.</li>
+        <li><b>Green is a highlight, never a fill.</b> The same rule as the site: #22C55E is used for the spark, the “AI” in the wordmark, lines and focus states.</li>
+        <li><b>Outlined type.</b> “AI Show” is set in Bricolage Grotesque ExtraBold and converted to paths, so it renders identically everywhere, with or without the font installed.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="label">Logo variants</p>
+    <h2>Seven files, one geometry.</h2>
+    <p>Every variant reuses the exact path data of <code>logo-mark.svg</code>. Only colour, scale and the presence of the wordmark change.</p>
+    <div class="grid" style="margin-top:32px">
+      <div class="card dark wide"><span class="tag">Primary lockup</span><img src="logo-full.svg" width="480" alt="Build Wiz AI — AI Show logo"><span class="file">logo-full.svg</span></div>
+      <div class="card dark wide"><span class="tag">White, single colour</span><img src="logo-white.svg" width="480" alt="AI Show logo in white"><span class="file">logo-white.svg</span></div>
+      <div class="card light wide"><span class="tag">Black, single colour</span><img src="logo-black.svg" width="480" alt="AI Show logo in black"><span class="file">logo-black.svg</span></div>
+      <div class="card dark"><span class="tag">Mark</span><img src="logo-mark.svg" width="128" alt="Build Wiz AI mark"><span class="file">logo-mark.svg</span></div>
+      <div class="card light"><span class="tag">App icon</span><img src="logo-icon.svg" width="152" alt="Build Wiz AI app icon"><span class="file">logo-icon.svg</span></div>
+      <div class="card dark"><span class="tag">Wordmark</span><img src="logo-wordmark.svg" width="300" alt="AI Show wordmark"><span class="file">logo-wordmark.svg</span></div>
+      <div class="card dark"><span class="tag">Favicon</span><div><img src="favicon.svg" width="64" height="64" alt="Build Wiz AI favicon"><span class="cap">16×16px · shown at 64px</span></div><span class="file">favicon.svg</span></div>
+    </div>
+    <p class="note">Usage: the primary lockup, mark and wordmark are white-and-green and belong on black or near-black. On light backgrounds use <code>logo-black.svg</code> — #22C55E on #FAFAFA is only about 2.2:1 and is not legible as text. Keep clear space of at least the spark’s height (about two bar widths) around every lockup.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="label">Colour palette</p>
+    <h2>Four colours, two neutrals, strict roles.</h2>
+    <div class="chips" style="margin-top:32px">
+      <div class="chip"><div class="sw" style="background:#000000;color:#fff;border-bottom:1px solid var(--line)">#000000</div><div class="meta"><h3>Black</h3><p>Base. Backgrounds, app icon tile.</p></div></div>
+      <div class="chip"><div class="sw" style="background:#FFFFFF;color:#000">#FFFFFF</div><div class="meta"><h3>White</h3><p>Primary text and the waveform bars.</p></div></div>
+      <div class="chip"><div class="sw" style="background:#22C55E;color:#000">#22C55E</div><div class="meta"><h3>Signal Green</h3><p>Highlight only: spark, “AI”, lines, focus. Never a fill area.</p></div></div>
+      <div class="chip"><div class="sw" style="background:#6B7280;color:#000">#6B7280</div><div class="meta"><h3>Gray</h3><p>Borders, rules, large secondary type.</p></div></div>
+      <div class="chip"><div class="sw" style="background:#0A0A0A;color:#fff;border-bottom:1px solid var(--line)">#0A0A0A</div><div class="meta"><h3>Surface</h3><p>Cards and elevated panels.</p></div></div>
+      <div class="chip"><div class="sw" style="background:#FAFAFA;color:#000">#FAFAFA</div><div class="meta"><h3>Paper</h3><p>Light backgrounds; pair with logo-black.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="label">Typography</p>
+    <h2>Broadcast display, calm body.</h2>
+    <div class="type" style="margin-top:32px">
+      <div class="spec">
+        <span class="meta">Display · Bricolage Grotesque 800 / 700</span>
+        <div class="big"><span style="color:var(--green)">AI</span> Show</div>
+        <div class="mid">The road to self-improving software</div>
+        <div class="weights"><span style="font:500 15px var(--display)">Medium 500</span><span style="font:700 15px var(--display)">Bold 700</span><span style="font:800 15px var(--display)">ExtraBold 800</span></div>
+      </div>
+      <div class="spec">
+        <span class="meta">Body · Hanken Grotesk 400 / 500 / 600</span>
+        <p class="body" style="margin-top:14px">Bob and Alice take one public article, thread or paper and pull out everything worth knowing — fact-checked against the source and credited in every episode.</p>
+        <div class="weights"><span style="font-weight:400">Regular 400</span><span style="font-weight:500">Medium 500</span><span style="font-weight:600">SemiBold 600</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="label">Developer reference</p>
+    <h2>Drop-in tokens and files.</h2>
+    <div class="dev" style="margin-top:32px">
+<pre><span class="c">// tailwind.config.js</span>
+<span class="k">theme</span>: { <span class="k">extend</span>: {
+  <span class="k">colors</span>: {
+    <span class="k">brand</span>: {
+      <span class="p">primary</span>: <span class="s">'#000000'</span>,
+      <span class="p">surface</span>: <span class="s">'#0A0A0A'</span>,
+      <span class="p">border</span>:  <span class="s">'rgba(255,255,255,0.12)'</span>,
+      <span class="p">muted</span>:   <span class="s">'rgba(255,255,255,0.74)'</span>,
+      <span class="p">gray</span>:    <span class="s">'#6B7280'</span>, <span class="c">// lines, large type only</span>
+      <span class="p">text</span>:    <span class="s">'#FFFFFF'</span>,
+      <span class="p">accent</span>:  <span class="s">'#22C55E'</span>,
+      <span class="p">paper</span>:   <span class="s">'#FAFAFA'</span>,
+    },
+  },
+  <span class="k">fontFamily</span>: {
+    <span class="p">display</span>: [<span class="s">'Bricolage Grotesque'</span>, <span class="s">'Georgia'</span>, <span class="s">'serif'</span>],
+    <span class="p">sans</span>:    [<span class="s">'Hanken Grotesk'</span>, <span class="s">'Helvetica Neue'</span>, <span class="s">'sans-serif'</span>],
+  },
+} }</pre>
+<pre><span class="p">assets/logo/</span>
+├── <span class="s">logo-mark.svg</span>      <span class="c">64×64 canonical mark</span>
+├── <span class="s">logo-full.svg</span>      <span class="c">320×72 mark + “AI Show”</span>
+├── <span class="s">logo-wordmark.svg</span>  <span class="c">180×40 type only</span>
+├── <span class="s">logo-icon.svg</span>      <span class="c">512×512 app / cover icon</span>
+├── <span class="s">favicon.svg</span>        <span class="c">16×16 simplified, black tile</span>
+├── <span class="s">logo-white.svg</span>     <span class="c">320×72 white, dark bg</span>
+├── <span class="s">logo-black.svg</span>     <span class="c">320×72 black, light bg</span>
+└── <span class="s">brand-showcase.html</span>
+
+<span class="c">&lt;!-- favicon --&gt;</span>
+&lt;<span class="k">link</span> rel=<span class="s">"icon"</span> href=<span class="s">"favicon.svg"</span> type=<span class="s">"image/svg+xml"</span>&gt;</pre>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="logo-full.svg" alt="Build Wiz AI — AI Show">
+    <span>Build Wiz AI · Brand Identity · Luong NGUYEN</span>
+  </div>
+</footer>
+</body>
+</html>
