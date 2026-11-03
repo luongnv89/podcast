@@ -58,6 +58,10 @@ class Skip(Exception):
     """The job is left out on purpose (not an error)."""
 
 
+class NotReady(Skip):
+    """The episode is not rendered yet: fine for ``--all``, an error for a named job."""
+
+
 def _read_json(path: Path) -> Any:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -107,8 +111,12 @@ def episode_entry(job: Path, site: Path) -> tuple[dict[str, Any], list[Path]]:
     script = _read_json(job / "script.json")
     source = _read_json(job / "source.json") or {}
     request = _read_json(job / "request.json") or {}
-    if result.get("status") != "delivered" or not isinstance(run, dict):
-        raise Skip("not delivered yet")
+    state = _read_json(job / "job.json") or {}
+    rendered = ((state.get("steps") or {}).get("render") or {}).get("status") == "done"
+    # DropCast runs the publisher inside its reply step, before result.json says
+    # "delivered", so a finished render step is what marks the episode as ready.
+    if not (rendered or result.get("status") == "delivered") or not isinstance(run, dict):
+        raise NotReady("not rendered yet")
     if run.get("private_use"):
         raise Skip("voices are for private use only (edge-tts)")
     if request.get("publish") is False:
@@ -244,9 +252,15 @@ def main(argv: list[str] | None = None) -> int:
             _git("pull", "--rebase", "origin", "main")
         entries: list[dict[str, Any]] = []
         changed: list[Path] = []
+        named = set(args.jobs and [Path(j).expanduser().resolve() for j in args.jobs])
         for job in jobs:
             try:
                 entry, files = episode_entry(job.resolve(), SITE)
+            except NotReady as why:
+                bucket = "failed" if job.resolve() in named else "skipped"
+                key = "error" if bucket == "failed" else "reason"
+                report[bucket].append({"job": job.name, key: str(why)})
+                continue
             except Skip as why:
                 report["skipped"].append({"job": job.name, "reason": str(why)})
                 continue
