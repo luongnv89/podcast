@@ -8,8 +8,38 @@
       "Alice"
     ]
   },
-  "updated": "2026-11-04T13:26:56Z",
+  "updated": "2026-11-04T15:02:21Z",
   "episodes": [
+    {
+      "id": "2026-11-04_a-practical-guide-to-security-in-november-2026",
+      "title": "A Practical Guide to Security in November 2026",
+      "summary": [
+        "Jack Cable's X article A Practical Guide to Security in November 2026, after a chaotic few weeks of hacks and critical bugs.",
+        "His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.",
+        "Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-04T15:02:20Z",
+      "duration_s": 678.626,
+      "size_bytes": 10859040,
+      "audio": "episodes/2026-11-04_a-practical-guide-to-security-in-november-2026/episode.mp3",
+      "transcript": "episodes/2026-11-04_a-practical-guide-to-security-in-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "A Practical Guide to Security in November 2026",
+        "author": "Jack Cable (@jackhcable)",
+        "url": "https://x.com/jackhcable/status/2117731409246978489",
+        "published": "2026-11-03T21:31:28Z",
+        "kind": "x"
+      }
+    },
     {
       "id": "2026-11-04_the-golden-touch",
       "title": "Vua Midas và Bàn Tay Vàng",
