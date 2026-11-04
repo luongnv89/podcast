@@ -86,7 +86,7 @@
   .tagline { grid-column: 1 / -1; margin: 6px 0 0; max-width: 760px; color: var(--text-2); }
   .tagline strong { color: var(--white); font-weight: 600; }
 
-  /* ---------- Toolbar: sticky so search, filters and sort are always in reach ---------- */
+  /* ---------- Toolbar: sticky so tabs, search and sort are always in reach ---------- */
   .toolbar {
     position: sticky; top: 0; z-index: 40;
     background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
@@ -113,7 +113,7 @@
   .tab[aria-selected="true"] .n { color: var(--green); }
   .tab:focus-visible { outline-offset: -2px; }
   .tab .l-short { display: none; }
-  .tb-row { display: flex; align-items: center; gap: 8px; padding-top: 12px; }
+  .tb-row { display: flex; align-items: center; gap: 8px; padding: 12px 0; }
   .ctl { height: 40px; border: 1px solid var(--line-strong); border-radius: var(--r-ctl); background: transparent; transition: border-color .15s ease, color .15s ease; }
   .ctl:hover { border-color: var(--white); }
   .search { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; padding: 0 6px 0 12px; cursor: text; }
@@ -138,28 +138,6 @@
   .order svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease; }
   .order[data-dir="asc"] svg { transform: rotate(180deg); }
 
-  /* Filter chips: on touch, one row of facet groups so the sticky bar stays two lines tall.
-     When the row overflows it scrolls sideways, and a fade on the right edge says
-     "more this way" (only while there is more to see). Fine pointers wrap instead (below). */
-  .chips { display: flex; flex-wrap: nowrap; align-items: center; padding: 10px 0 12px; overflow-x: auto; scrollbar-width: none; }
-  .chips::-webkit-scrollbar { display: none; }
-  .chips.has-more { mask-image: linear-gradient(to left, transparent 0, #000 48px); -webkit-mask-image: linear-gradient(to left, transparent 0, #000 48px); }
-  .fgroup { display: flex; align-items: center; gap: 6px; flex: none; padding: 0 12px; border-left: 1px solid var(--line); }
-  .fgroup:first-child { padding-left: 0; border-left: 0; }
-  .flabel { font-size: 13px; color: var(--text-2); margin-right: 2px; }
-  .chip {
-    display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 9px;
-    border: 1px solid var(--line-strong); border-radius: var(--r-ctl); background: transparent;
-    font-size: 13px; font-weight: 600; color: var(--text-2); cursor: pointer; white-space: nowrap;
-    transition: border-color .15s ease, color .15s ease;
-  }
-  .chip:hover:not(:disabled) { border-color: var(--white); color: var(--white); }
-  .chip .n { font-weight: 400; color: var(--text-2); }
-  .chip .tick { display: none; width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
-  /* Selected: green border + green text + a check mark, so the state never rests on color alone. */
-  .chip[aria-pressed="true"] { border-color: var(--green); color: var(--green); }
-  .chip[aria-pressed="true"] .tick { display: block; }
-  .chip:disabled { opacity: .38; cursor: not-allowed; }
   /* The toolbar's bottom edge doubles as the now-playing progress line. */
   .tb-progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; pointer-events: none; }
   .tb-progress i { display: block; height: 100%; width: 0; background: var(--green); box-shadow: 0 0 10px rgba(34, 197, 94, .7); transition: width .25s linear; }
@@ -302,10 +280,6 @@
   footer .keys { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
   footer .keys span { display: inline-flex; align-items: center; gap: 6px; }
 
-  @media (max-width: 760px) {
-    /* Narrow: let the chip row run to the screen edge so it reads as scrollable. */
-    .chips { margin-right: calc(var(--gutter) * -1); padding-right: var(--gutter); }
-  }
   @media (max-width: 640px) {
     body { font-size: 15px; }
     .mast-inner { grid-template-columns: 1fr; padding-top: 16px; padding-bottom: 12px; }
@@ -331,13 +305,6 @@
     .p-back, .p-fwd { display: none; }
     .cue { grid-template-columns: 48px 1fr; padding: 8px 6px; }
     footer .keys { display: none; }
-  }
-  @media (hover: hover) and (pointer: fine) {
-    /* Mouse and trackpad: wrap the chips instead of scrolling sideways, since a hidden
-       horizontal scrollbar is out of reach for a plain mouse wheel. */
-    .chips { flex-wrap: wrap; margin-right: 0; padding-right: 0; }
-    .chips.has-more { mask-image: none; -webkit-mask-image: none; }
-    .fgroup { flex: 0 1 auto; flex-wrap: wrap; }
   }
   @media (max-height: 500px) {
     /* Short viewports (landscape phones, high zoom): stop pinning the toolbar so the list keeps room.
@@ -366,7 +333,7 @@
   </div>
 </header>
 
-<section class="toolbar" id="toolbar" aria-label="Search, filter and sort episodes">
+<section class="toolbar" id="toolbar" aria-label="Browse, search and sort episodes">
   <div class="wrap">
     <div class="tabs" id="tabs" role="tablist" aria-label="Categories"></div>
     <div class="tb-row">
@@ -392,7 +359,6 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg><span id="order-label">Newest first</span>
       </button>
     </div>
-    <div class="chips" id="filters" role="group" aria-label="Filters"></div>
   </div>
   <div class="tb-progress" aria-hidden="true"><i id="tb-progress"></i></div>
 </section>
@@ -453,7 +419,6 @@
   "use strict";
   const PLAY = "M8 5v14l11-7z";
   const PAUSE = "M7 5h4v14H7zM13 5h4v14h-4z";
-  const CHECK = "M5 12.5l4.5 4.5L19 7.5";
   const SPEEDS = [1, 1.25, 1.5, 2];
   const $ = (id) => document.getElementById(id);
   const audio = $("audio");
@@ -523,7 +488,7 @@
       : st === "done" ? "Finished" : "";
   }
 
-  // ---------- Search, filter and sort state ----------
+  // ---------- Tab, search and sort state ----------
   const SORTS = {
     published: { def: "desc", asc: "Oldest first", desc: "Newest first", key: (e) => Date.parse(e.published) || null },
     duration: { def: "desc", asc: "Shortest first", desc: "Longest first", key: (e) => e.duration_s ?? null },
@@ -533,16 +498,6 @@
   // Own keys only, so a hand-edited ?sort=constructor (or __proto__) falls back to the default.
   const isSort = (v) => Object.prototype.hasOwnProperty.call(SORTS, v);
   const KIND = { x: "X", article: "Article", paper: "Paper", thread: "Thread", blog: "Blog", web: "Web", pdf: "PDF", arxiv: "arXiv", youtube: "YouTube", reddit: "Reddit", hn: "Hacker News", github: "GitHub", substack: "Substack", medium: "Medium" };
-  const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-  // Facet groups. Fixed groups always show every option; the others list only the
-  // values present in the data, so a new source kind or voice engine appears by itself.
-  const GROUPS = [
-    { id: "status", label: "Status", fixed: [["new", "New"], ["progress", "In progress"], ["done", "Finished"]], of: statusOf },
-    { id: "length", label: "Length", fixed: [["short", "< 5 min"], ["mid", "5–15 min"], ["long", "> 15 min"]],
-      of: (e) => { const m = (e.duration_s || 0) / 60; return m < 5 ? "short" : m <= 15 ? "mid" : "long"; } },
-    { id: "source", label: "Source", of: (e) => e.source?.kind || "other", name: (v) => KIND[v] || cap(v) },
-    { id: "voice", label: "Voices", of: (e) => (e.voices || "").split("·")[0].trim() || "Unknown", name: (v) => v },
-  ];
   // Category tabs. Every episode sits in exactly one; "category" comes from
   // episodes.json, with a fallback for entries published before it existed.
   const TABS = [
@@ -557,9 +512,8 @@
   ];
   const isTab = (v) => TABS.some((t) => t.id === v);
   const catOf = (e) => (isTab(e.category) ? e.category : e.format === "bedtime-story" ? "bedtime" : "others");
-  const state = { tab: "ai", q: "", sort: "published", dir: "desc", f: Object.fromEntries(GROUPS.map((g) => [g.id, new Set()])) };
+  const state = { tab: "ai", q: "", sort: "published", dir: "desc" };
   const terms = () => fold(state.q).split(/\s+/).filter(Boolean);
-  const filtersOn = () => GROUPS.some((g) => state.f[g.id].size);
 
   function readUrl() {
     const p = new URLSearchParams(location.search);
@@ -568,7 +522,6 @@
     state.sort = isSort(p.get("sort")) ? p.get("sort") : "published";
     const dir = p.get("order");
     state.dir = dir === "asc" || dir === "desc" ? dir : SORTS[state.sort].def;
-    for (const g of GROUPS) state.f[g.id] = new Set((p.get(g.id) || "").split(",").map((s) => s.trim()).filter(Boolean));
   }
   function writeUrl() {
     // Only non-default settings go in the query, so a plain link stays clean. The hash
@@ -578,19 +531,13 @@
     if (state.q.trim()) p.set("q", state.q.trim());
     if (state.sort !== "published") p.set("sort", state.sort);
     if (state.dir !== SORTS[state.sort].def) p.set("order", state.dir);
-    for (const g of GROUPS) if (state.f[g.id].size) p.set(g.id, [...state.f[g.id]].join(","));
     const qs = p.toString();
     try { history.replaceState(null, "", `${location.pathname}${qs ? `?${qs}` : ""}${location.hash}`); } catch { /* ignore */ }
   }
 
-  function matches(ep, skip) {
+  function matches(ep) {
     if (ep._cat !== state.tab) return false;
     for (const t of terms()) if (!ep._hay.includes(t)) return false;
-    for (const g of GROUPS) {
-      if (g.id === skip) continue;
-      const set = state.f[g.id];
-      if (set.size && !set.has(ep._f[g.id])) return false;
-    }
     return true;
   }
 
@@ -636,9 +583,7 @@
 
   function selectTab(id) {
     if (!isTab(id) || id === state.tab) return;
-    state.tab = id;
-    // Filters belong to one tab's list; carry over only the search.
-    for (const g of GROUPS) state.f[g.id].clear();
+    state.tab = id;   // the search carries over
     apply();
   }
 
@@ -658,41 +603,13 @@
     if (sel && sel.parentNode.scrollWidth > sel.parentNode.clientWidth) sel.scrollIntoView({ block: "nearest", inline: "nearest" });
   }
 
-  function buildFilters() {
-    const box = $("filters");
-    box.replaceChildren();
-    for (const g of GROUPS) {
-      const counts = new Map();
-      for (const e of episodes) { const v = g.of(e); counts.set(v, (counts.get(v) || 0) + 1); }
-      // Options come from every episode, so switching tabs never rebuilds the chips;
-      // the counts below (and disabled chips) follow the selected tab.
-      g.options = g.fixed
-        ? g.fixed.map(([v, l]) => ({ v, l }))
-        : [...counts.keys()].sort((a, b) => counts.get(b) - counts.get(a) || a.localeCompare(b)).map((v) => ({ v, l: g.name(v) }));
-      // Drop values from a stale or hand-edited link that no option can show.
-      for (const v of [...state.f[g.id]]) if (!g.options.some((o) => o.v === v)) state.f[g.id].delete(v);
-      const group = el("div", { class: "fgroup", role: "group", "aria-labelledby": `fl-${g.id}` }, el("span", { class: "flabel", id: `fl-${g.id}`, text: g.label }));
-      for (const o of g.options) {
-        o.n = el("span", { class: "n", "aria-hidden": "true" });
-        o.btn = el("button", { class: "chip", type: "button", "aria-pressed": "false" }, [svg([CHECK], "tick"), el("span", { text: o.l }), o.n]);
-        o.btn.addEventListener("click", () => {
-          const set = state.f[g.id];
-          if (set.has(o.v)) set.delete(o.v); else set.add(o.v);
-          apply();
-        });
-        group.append(o.btn);
-      }
-      box.append(group);
-    }
-  }
-
-  // Filtering and sorting move and hide the existing rows; they never rebuild them, so
+  // Tabs, search and sorting move and hide the existing rows; they never rebuild them, so
   // the playing row, open transcripts and live cue highlights survive every change.
   function apply() {
     if (!isSort(state.sort)) { state.sort = "published"; state.dir = SORTS.published.def; }
     if (!isTab(state.tab)) state.tab = "ai";
     if (!noMatch) return;   // the toolbar is live before the episode list has loaded
-    for (const e of episodes) { e._cat = catOf(e); for (const g of GROUPS) e._f[g.id] = g.of(e); }
+    for (const e of episodes) e._cat = catOf(e);
     showTab();
     const ts = terms();
     const order = sorted();
@@ -706,17 +623,8 @@
       mark(e._titleText, e.title, ts);
       e._summary.forEach((li, i) => mark(li, e.summary[i], ts));
     }
-    // Facet counts: how many episodes each chip would show, given everything else set.
-    for (const g of GROUPS) for (const o of g.options) {
-      const n = episodes.filter((e) => e._f[g.id] === o.v && matches(e, g.id)).length;
-      const pressed = state.f[g.id].has(o.v);
-      o.btn.setAttribute("aria-pressed", String(pressed));
-      o.btn.disabled = !n && !pressed;
-      o.btn.setAttribute("aria-label", `${g.label}: ${o.l}, ${n} ${n === 1 ? "episode" : "episodes"}`);
-      o.n.textContent = n;
-    }
     const total = episodes.filter((e) => e._cat === state.tab).length;
-    const active = !!ts.length || filtersOn();
+    const active = !!ts.length;
     const count = $("count");
     count.replaceChildren(...(active
       ? [el("b", { text: shown }), ` of ${total} ${total === 1 ? "episode" : "episodes"}`]
@@ -729,8 +637,7 @@
       noMatch.querySelector("span").textContent = "New episodes appear here as soon as they are published.";
     } else if (!shown) {
       noMatch.querySelector("strong").textContent = "No matching episodes";
-      const why = state.q.trim() ? `Nothing matches “${state.q.trim()}”${filtersOn() ? " with these filters" : ""}.` : "No episode fits all of these filters.";
-      noMatch.querySelector("span").textContent = `${why} Try fewer words or clear a filter.`;
+      noMatch.querySelector("span").textContent = `Nothing matches “${state.q.trim()}”. Try fewer or different words.`;
     }
     // Sort controls reflect the state (it may come from the URL).
     $("sort").value = state.sort;
@@ -746,7 +653,6 @@
   function clearAll(e) {
     const from = document.activeElement;
     state.q = ""; qInput.value = "";
-    for (const g of GROUPS) state.f[g.id].clear();
     apply();
     // Both clear buttons hide themselves; on keyboard activation (click detail 0), keep focus on a stable control.
     if (e && e.detail === 0 && from && from !== document.body && from.closest("[hidden]")) qInput.focus();
@@ -758,7 +664,7 @@
     list.removeAttribute("aria-busy");
     noMatch = el("li", { class: "state", hidden: true }, [
       el("strong", { text: "No matching episodes" }), el("span"),
-      el("div", {}, el("button", { class: "btn", type: "button", text: "Clear search and filters", onclick: clearAll })),
+      el("div", {}, el("button", { class: "btn", type: "button", text: "Clear search", onclick: clearAll })),
     ]);
     list.append(noMatch);
     if (!episodes.length) {
@@ -774,9 +680,7 @@
     const sameYear = latest && new Date(latest).getFullYear() === new Date().getFullYear();
     $("stat-latest").textContent = latest ? day(latest, !sameYear) : "–";
     buildTabs();
-    buildFilters();
     apply();
-    fade();
     openTarget(false);
   }
 
@@ -784,7 +688,6 @@
     const src = ep.source || {};
     const url = safeUrl(src.url);
     ep.summary = Array.isArray(ep.summary) ? ep.summary : [];
-    ep._f = {};
     ep._hay = fold([ep.title, ...ep.summary, src.title, src.author, host(src.url), KIND[src.kind] || src.kind, (ep.hosts || []).join(" "), ep.voices].join(" \n "));
 
     const playBtn = el("button", { class: "play", type: "button", "aria-label": `Play ${ep.title}` }, [
@@ -860,13 +763,13 @@
     setTimeout(() => { label.textContent = "Copy link"; btn.classList.remove("is-done"); }, 1800);
   }
 
-  // A shared link (#<episode id>) opens that episode. If the current search or filters
-  // hide it, they are cleared so the link never lands on nothing.
+  // A shared link (#<episode id>) opens that episode in its tab. If the search
+  // hides it, the search is cleared so the link never lands on nothing.
   function openTarget(fromHashChange) {
     const id = decodeURIComponent(location.hash.slice(1));
     const ep = id && episodes.find((e) => e.id === id);
     if (!ep) return;
-    if (ep._cat !== state.tab) { state.tab = ep._cat; for (const g of GROUPS) state.f[g.id].clear(); apply(); }
+    if (ep._cat !== state.tab) { state.tab = ep._cat; apply(); }
     if (ep._node.hidden) clearAll();
     expand(ep, true);
     ep._node.classList.remove("is-target");
@@ -1054,11 +957,6 @@
     else if (e.key === "ArrowLeft") audio.currentTime = Math.max(0, audio.currentTime - 5);
     else if (e.key === "ArrowRight") audio.currentTime += 5;
   });
-
-  const chipsBox = $("filters");
-  const fade = () => chipsBox.classList.toggle("has-more", chipsBox.scrollLeft + chipsBox.clientWidth < chipsBox.scrollWidth - 2);
-  chipsBox.addEventListener("scroll", fade, { passive: true });
-  addEventListener("resize", fade);
 
   // Keep the sticky toolbar's height in a variable so deep-linked rows scroll clear of it.
   const toolbar = $("toolbar");
