@@ -49,8 +49,8 @@ SITE = REPO / "docs"
 EPISODES_DIR = "episodes"
 INDEX = "episodes.json"
 SHOW = {
-    "name": "The AI Show",
-    "tagline": "One source, everything worth knowing.",
+    "name": "Build Wiz AI Show",
+    "tagline": "Big AI ideas, made clear for builders.",
     "hosts": ["Bob", "Alice"],
 }
 ENGINE_LABELS = {
@@ -211,7 +211,7 @@ def episode_entry(
         "title": title,
         "summary": summary,
         "category": chosen,
-        "show": (script.get("show") or {}).get("name") or SHOW["name"],
+        "show": SHOW["name"],  # one brand on the site, whatever older scripts said
         "hosts": [name for name in (hosts.get("host_a"), hosts.get("host_b")) if name],
         "language": script.get("language") or "en",
         "format": script.get("format"),

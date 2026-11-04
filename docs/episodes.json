@@ -1,8 +1,8 @@
 {
   "version": 1,
   "show": {
-    "name": "The AI Show",
-    "tagline": "One source, everything worth knowing.",
+    "name": "Build Wiz AI Show",
+    "tagline": "Big AI ideas, made clear for builders.",
     "hosts": [
       "Bob",
       "Alice"
@@ -19,7 +19,7 @@
         "Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today."
       ],
       "category": "ai",
-      "show": "Build Wiz AI",
+      "show": "Build Wiz AI Show",
       "hosts": [
         "Bob",
         "Alice"
@@ -49,7 +49,7 @@
         "A gentle lesson for kids: water, bread and the people we love are worth more than all the gold in the world."
       ],
       "category": "bedtime",
-      "show": "The AI Show",
+      "show": "Build Wiz AI Show",
       "hosts": [],
       "language": "vi",
       "format": "bedtime-story",
@@ -76,7 +76,7 @@
         "Bạn giao được việc và phần lớn khâu kiểm tra, nhưng không giao được trách nhiệm cho thứ mình ship."
       ],
       "category": "ai",
-      "show": "Build Wiz AI",
+      "show": "Build Wiz AI Show",
       "hosts": [
         "Bob",
         "Alice"
@@ -106,7 +106,7 @@
         "It lays out a step-by-step client process and a way to land the first client, with market data from Goldman Sachs and the IAB."
       ],
       "category": "ai",
-      "show": "The AI Show",
+      "show": "Build Wiz AI Show",
       "hosts": [
         "Bob",
         "Alice"
@@ -136,7 +136,7 @@
         "It shifts the goal from faster pull requests to one loop from task to shipped product, with humans still reviewing."
       ],
       "category": "ai",
-      "show": "The AI Show",
+      "show": "Build Wiz AI Show",
       "hosts": [
         "Bob",
         "Alice"
@@ -166,7 +166,7 @@
         "It is a sponsored, self-reported playbook; some tactics, like buying followers or planted comments, carry real risks."
       ],
       "category": "marketing",
-      "show": "The AI Show",
+      "show": "Build Wiz AI Show",
       "hosts": [
         "Bob",
         "Alice"

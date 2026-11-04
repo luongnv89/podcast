@@ -1,11 +1,11 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/logo/logo-full.svg">
-    <img src="assets/logo/logo-black.svg" alt="The AI Show" width="320">
+    <img src="assets/logo/logo-black.svg" alt="Build Wiz AI Show" width="320">
   </picture>
 </p>
 
-# The AI Show — podcast
+# Build Wiz AI Show — podcast
 
 Episodes generated with [DropCast](https://github.com/luongnv89/dropcast): a two-host
 conversation (Bob and Alice) about one public article, thread or paper, fact-checked
