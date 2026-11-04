@@ -8,8 +8,37 @@
       "Alice"
     ]
   },
-  "updated": "2026-11-03T21:29:57Z",
+  "updated": "2026-11-04T10:48:24Z",
   "episodes": [
+    {
+      "id": "2026-11-04_critical-thinking-when-agents-do-the-work",
+      "title": "Tư duy phản biện khi agent làm việc thay mình",
+      "summary": [
+        "Addy Osmani viết trên X về tư duy phản biện khi agent AI làm phần lớn công việc thay ta.",
+        "Từ giao việc, phó thác đến đầu hàng nhận thức: hãy đặt giả thuyết trước, hỏi dấu xanh chứng minh gì và đọc bằng chứng.",
+        "Bạn giao được việc và phần lớn khâu kiểm tra, nhưng không giao được trách nhiệm cho thứ mình ship."
+      ],
+      "show": "Build Wiz AI",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "vi",
+      "format": "podcast-2host",
+      "published": "2026-11-04T10:46:09Z",
+      "duration_s": 702.041,
+      "size_bytes": 11233950,
+      "audio": "episodes/2026-11-04_critical-thinking-when-agents-do-the-work/episode.mp3",
+      "transcript": "episodes/2026-11-04_critical-thinking-when-agents-do-the-work/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Critical thinking when agents do the work",
+        "author": "Addy Osmani (@addyosmani)",
+        "url": "https://x.com/addyosmani/status/2117512471930167377",
+        "published": "2026-11-03T07:01:29Z",
+        "kind": "x"
+      }
+    },
     {
       "id": "2026-11-03_the-most-lucrative-ai-business-to-start-in-2027",
       "title": "The most lucrative AI business to start in 2027",

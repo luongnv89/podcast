@@ -1,0 +1,397 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.104
+<v Bob>Chào mừng các bạn đến với Build Wiz AI, nơi mỗi tập tụi mình lấy một nguồn và rút ra mọi thứ đáng biết.
+
+2
+00:00:06.404 --> 00:00:09.269
+<v Bob>Mình là Bob, người chuyên đặt câu hỏi.
+
+3
+00:00:09.569 --> 00:00:20.386
+<v Alice>Còn mình là Alice. Hôm nay là bài viết dài trên X của Addy Osmani, tựa đề Critical thinking when agents do the work. Tức là tư duy phản biện khi agent làm việc thay mình.
+
+4
+00:00:20.686 --> 00:00:23.040
+<v Bob>Vậy ý chính là gì, nói gọn thôi?
+
+5
+00:00:23.340 --> 00:00:33.357
+<v Alice>Khi càng nhiều việc chạy qua agent, chẳng có gì trong ngày buộc mình phải suy nghĩ phản biện nữa. Nên mình phải tự xây thói quen đó vào ngày làm việc, vì mặc định sẽ không có gì làm thay.
+
+6
+00:00:33.657 --> 00:00:36.602
+<v Bob>Nghe như một bài kêu gọi bớt dùng AI nhỉ?
+
+7
+00:00:36.902 --> 00:00:46.745
+<v Alice>Không hề. Addy nói thẳng ông rất mê những công cụ này, và không viết bài để khuyên bớt dùng agent. Mục tiêu là giữ tư duy phản biện khi cái gì cũng dễ đẩy sang agent.
+
+8
+00:00:47.045 --> 00:00:48.395
+<v Bob>Vậy vấn đề nằm ở đâu?
+
+9
+00:00:48.695 --> 00:00:57.005
+<v Alice>Addy nói trước đây phần lớn việc suy nghĩ và cảm nhận diễn ra trong khoảng giữa câu hỏi và câu trả lời. Giờ khoảng đó chỉ còn tính bằng giây.
+
+10
+00:00:57.305 --> 00:01:00.042
+<v Bob>Mà model càng giỏi thì càng đỡ lo chứ?
+
+11
+00:01:00.342 --> 00:01:12.193
+<v Alice>Đây là chỗ nghịch lý. Model càng tốt thì lỗi hiển nhiên càng ít, câu trả lời viết hay và gần như đúng, nên chẳng còn gì buộc mình nhìn lại lần hai. Dù chạy nhiều agent một lúc, bạn vẫn chỉ có một đôi mắt.
+
+12
+00:01:12.493 --> 00:01:16.763
+<v Bob>Bài có một khung khái niệm, một cái thang ba nấc. Alice giải thích đi.
+
+13
+00:01:17.063 --> 00:01:26.998
+<v Alice>Nấc trên cùng là cognitive offloading, tức là giao việc cho AI nhưng vẫn giữ quyền làm chủ kết quả. Addy nói ông làm vậy cả ngày, và bạn cũng nên thế.
+
+14
+00:01:27.298 --> 00:01:28.409
+<v Bob>Nấc giữa?
+
+15
+00:01:28.709 --> 00:01:37.111
+<v Alice>Nấc giữa là deferral, tạm gọi là phó thác. Đầu ra của công cụ trở thành đầu vào mới của bạn, nó không còn là một giả thuyết nữa.
+
+16
+00:01:37.411 --> 00:01:38.444
+<v Bob>Còn đáy thang?
+
+17
+00:01:38.744 --> 00:01:50.467
+<v Alice>Đáy là cognitive surrender, đầu hàng nhận thức: kết quả của AI lặng lẽ trở thành của bạn, và bạn không thấy cần kiểm tra. Thuật ngữ này do Steven Shaw và Gideon Nave ở Wharton đặt ra.
+
+18
+00:01:50.767 --> 00:01:54.526
+<v Bob>Nhưng chẳng ai tự quyết định đầu hàng cả. Người ta trượt xuống thế nào?
+
+19
+00:01:54.826 --> 00:02:06.503
+<v Alice>Từng bước nhỏ nghe rất hợp lý. Câu trả lời trước đọc kỹ, câu sau lướt qua, câu sau nữa chỉ nhìn khung sườn. Rồi ai đó hỏi về một dòng, và bạn không giải thích được, kể cả khi nhờ agent.
+
+20
+00:02:06.803 --> 00:02:08.868
+<v Bob>Nghe quen một cách đáng sợ.
+
+21
+00:02:09.168 --> 00:02:21.054
+<v Alice>Addy nói đó là cách món nợ nhận thức tích tụ, và lúc đầu nó hoàn toàn vô hình. Codebase trông sạch sẽ, test vẫn pass. Chỉ khi phải sửa hệ thống, bạn mới nhận ra không còn ai hiểu nó nữa.
+
+22
+00:02:21.354 --> 00:02:23.580
+<v Bob>Chuyện này có tên riêng không?
+
+23
+00:02:23.880 --> 00:02:35.766
+<v Alice>Với code, Addy gọi là comprehension debt, nợ hiểu biết, thuật ngữ của Jeremy Twei. Margaret-Anne Storey thì viết về việc nó hiện ra trong nhóm, khi hiểu biết chung về hệ thống bị bào mòn dần.
+
+24
+00:02:36.066 --> 00:02:41.055
+<v Bob>Khoan, ai mà nhớ nổi toàn bộ một codebase lớn? Đòi hỏi vậy hơi phi thực tế.
+
+25
+00:02:41.355 --> 00:02:51.371
+<v Alice>Addy đồng ý, ông nói điều đó là bất khả thi. Đội Claude Code nói công khai rằng họ xây lại hiểu biết khi cần: cần hiểu phần nào thì nhờ Claude giải thích phần đó.
+
+26
+00:02:51.671 --> 00:02:53.348
+<v Bob>Vậy ranh giới nằm ở đâu?
+
+27
+00:02:53.648 --> 00:03:01.540
+<v Alice>Khi bạn không giải thích được câu trả lời, kể cả nhờ agent, thì bạn đã nhường quyền làm chủ. Còn chỗ nào rủi ro thấp, cứ giao hẳn.
+
+28
+00:03:01.840 --> 00:03:03.104
+<v Bob>Có ví dụ nào không?
+
+29
+00:03:03.404 --> 00:03:13.467
+<v Alice>Rất đời thường. Addy cần chọn một trong ba khách sạn được đánh giá ngang nhau để quay khóa học. Không có thời gian đọc review, ông giao hẳn quyết định cho AI, và nó ổn.
+
+30
+00:03:13.767 --> 00:03:16.284
+<v Bob>Nhưng chắc ông không làm vậy với mọi thứ.
+
+31
+00:03:16.584 --> 00:03:28.643
+<v Alice>Đúng. Ông sẽ không làm vậy khi quyết định đầu tư tiền, khuyên con cái về sự nghiệp, hay ở công ty, như có an toàn để ship không. Giao việc khi sai thì rẻ, giữ phần suy luận khi người khác phải gánh hậu quả.
+
+32
+00:03:28.943 --> 00:03:33.166
+<v Bob>Phần mình thích nhất: những câu Addy tự hỏi mình. Câu đầu tiên là gì?
+
+33
+00:03:33.466 --> 00:03:43.227
+<v Alice>Mình đã có giả thuyết trước khi hỏi chưa? Trước khi giao agent việc gì không tầm thường, ông ghi lại, dù chỉ trong đầu, câu trả lời mình đoán. Đoán dở cũng không sao.
+
+34
+00:03:43.527 --> 00:03:46.984
+<v Bob>Sao phải đoán trước? Đằng nào agent cũng trả lời.
+
+35
+00:03:47.284 --> 00:04:01.509
+<v Alice>Vì đọc một câu trả lời viết hay rồi thì rất khó tưởng tượng khả năng nào khác. Nếu hoàn toàn mù mờ, hãy xin cái mà Thariq Shihipar gọi là blind spot pass. Đưa model những gì bạn biết, để nó tìm những điều bạn không biết là mình không biết.
+
+36
+00:04:01.809 --> 00:04:02.897
+<v Bob>Câu thứ hai?
+
+37
+00:04:03.197 --> 00:04:10.148
+<v Alice>Mình đang nhờ nó giúp mình nghĩ, hay nhờ nó nghĩ thay? Cả hai đều được, miễn là bạn biết mình đang làm cái nào.
+
+38
+00:04:10.448 --> 00:04:14.132
+<v Bob>Câu tiếp theo nghe như của nhà khoa học.
+
+39
+00:04:14.432 --> 00:04:24.704
+<v Alice>Điều gì phải đúng thì kết luận này mới sai? Rồi đi kiểm chứng. Model tự đánh giá độ tự tin thì kém giá trị hơn nhiều so với một phép thử thật, nên hãy đưa cho nó một phép thử.
+
+40
+00:04:25.004 --> 00:04:26.205
+<v Bob>Và câu cuối?
+
+41
+00:04:26.505 --> 00:04:34.861
+<v Alice>Mình có dám đặt cược vào cái này trước mặt người sẽ phải bảo trì nó không? Addy coi đó là thước đo trách nhiệm, cho code và cho mọi thứ bạn bàn giao.
+
+42
+00:04:35.161 --> 00:04:38.618
+<v Bob>Sang chuyện kiểm chứng. Sao Addy viết về nó nhiều vậy?
+
+43
+00:04:38.918 --> 00:04:52.812
+<v Alice>Vì ông tin nút thắt đã chuyển từ viết code sang việc chắc chắn mình đúng. Khi agent có cách tự kiểm tra, như test đầu cuối hay thao tác thật trên app, nó có thể sửa, chạy test, đọc kết quả và thử lại trước cả khi bạn nhìn vào.
+
+44
+00:04:53.112 --> 00:04:55.849
+<v Bob>Hình như Boris Cherny có câu nói về chuyện này?
+
+45
+00:04:56.149 --> 00:05:05.741
+<v Alice>Đúng, Boris Cherny gọi đó là cho Claude một cách để tự kiểm tra công việc của nó. Thay vì đọc từng dòng, bạn xây những vòng lặp đó và xem xét bằng chứng.
+
+46
+00:05:06.041 --> 00:05:08.604
+<v Bob>Vậy test xanh là xong rồi nhỉ?
+
+47
+00:05:08.904 --> 00:05:16.575
+<v Alice>Đây là cái bẫy: bạn cũng có thể đầu hàng cả việc kiểm chứng. Câu hỏi có bằng chứng ủng hộ kết luận không, biến thành check đã xanh chưa.
+
+48
+00:05:16.875 --> 00:05:19.647
+<v Bob>Nhưng test pass thì có gì sai?
+
+49
+00:05:19.947 --> 00:05:30.393
+<v Alice>Agent làm việc viết test rẻ tới mức bạn sẽ thấy rất nhiều màu xanh. Nếu test được viết với cùng lỗi như tính năng, nó vẫn pass. Và một dấu xanh chỉ cho biết đúng một thuộc tính.
+
+50
+00:05:30.693 --> 00:05:31.764
+<v Bob>Vậy nên làm gì?
+
+51
+00:05:32.064 --> 00:05:43.184
+<v Alice>Khi một check chuyển xanh, hỏi nó đã chứng minh điều gì, rồi hỏi nó chưa chứng minh điều gì. Và định nghĩa thế nào là đã kiểm chứng ngay từ đầu, vì để sau thì kết quả nào bạn cũng hợp lý hóa được.
+
+52
+00:05:43.484 --> 00:05:46.221
+<v Bob>Vạch đích cụ thể trông ra sao?
+
+53
+00:05:46.521 --> 00:05:57.129
+<v Alice>Một thứ hữu hình: test pass, ảnh chụp màn hình, log hay trace. Khi agent báo xong, trước khi đọc bản tóm tắt, hãy xem lệnh nó đã chạy và kết quả trả về.
+
+54
+00:05:57.429 --> 00:06:00.201
+<v Bob>Nghe nói Addy còn một mẹo hơi ngớ ngẩn.
+
+55
+00:06:00.501 --> 00:06:15.039
+<v Alice>Cuối việc, ông hỏi: mình có bỏ sót gì không? Rất thường xuyên, sau khi làm xong một tính năng phức tạp với model hàng đầu, câu hỏi đó lòi ra thêm hai, ba việc nữa. Claude Code cũng có thể tự phê bình qua một subagent ở ngữ cảnh mới.
+
+56
+00:06:15.339 --> 00:06:16.479
+<v Bob>Còn ngoài code?
+
+57
+00:06:16.779 --> 00:06:30.585
+<v Alice>Nếu agent tổng hợp 50 cuộc gọi khách hàng cho bạn, hãy mở vài tài liệu gốc xem bản tóm tắt có đúng không. Kiểm tra con số mà đề xuất của bạn dựa vào. Agent làm việc kiểm chứng rẻ đi, cái khó là biết kiểm chứng tốt trông thế nào.
+
+58
+00:06:30.885 --> 00:06:34.570
+<v Bob>Giờ đến chuyện review. Addy có một kịch bản nghe rất thật.
+
+59
+00:06:34.870 --> 00:06:49.147
+<v Alice>Agent đưa bạn một PR 600 dòng. Bạn nhìn sơ cấu trúc, tên biến ổn, test pass, thế là duyệt. Nhưng ở giữa có một thay đổi thứ tự tinh vi ở ranh giới transaction, hay một giá trị mặc định bị đảo ở một trường hợp biên.
+
+60
+00:06:49.447 --> 00:06:52.654
+<v Bob>Ối. Mình nghĩ ai làm lâu cũng từng dính vụ này.
+
+61
+00:06:52.954 --> 00:07:05.652
+<v Alice>Addy nói viết code và review code là hai kỹ năng khác nhau, và có lúc review biến thành đóng dấu cho qua. Nên hãy đọc diff như thể không phải AI viết, rồi nhìn xa hơn diff, vào những quyết định agent đã đưa ra.
+
+62
+00:07:05.952 --> 00:07:07.204
+<v Bob>Quyết định gì cơ?
+
+63
+00:07:07.504 --> 00:07:19.772
+<v Alice>Qua một phiên dài, nó quyết thay bạn nhiều điều nhỏ: giá trị mặc định, cái gì ngoài phạm vi, yêu cầu nào bị diễn giải lại khi hai yêu cầu mâu thuẫn. Bản tóm tắt nói mọi thứ đều ổn sẽ không cho bạn thấy.
+
+64
+00:07:20.072 --> 00:07:21.732
+<v Bob>Vậy làm sao moi ra?
+
+65
+00:07:22.032 --> 00:07:34.219
+<v Alice>Bảo nó liệt kê các quyết định và giả định đã đưa ra, rồi tự kiểm tra mình: chọn ngẫu nhiên vài dòng và hỏi dòng này thì sao. Với tài liệu, đóng lại và thử viết ra lập luận chính theo trí nhớ.
+
+66
+00:07:34.519 --> 00:07:37.036
+<v Bob>Có cả mẹo làm bài kiểm tra nữa phải không?
+
+67
+00:07:37.336 --> 00:07:49.140
+<v Alice>Đúng, một thói quen Addy thích: nhờ Claude viết báo cáo về thay đổi, kèm bài quiz ở cuối, với luật là chỉ merge khi làm đúng hết. Hiểu thứ mình ship đủ để bảo vệ nó, vì sẽ có lúc ai đó hỏi.
+
+68
+00:07:49.440 --> 00:07:52.305
+<v Bob>Còn khi agent tạo ra quá nhiều thì sao?
+
+69
+00:07:52.605 --> 00:08:06.836
+<v Alice>Addy gọi đó là orchestration tax, thuế điều phối: khoảng cách giữa những gì agent tạo ra và những gì bạn dám ký tên. Nếu việc xong chất đống nhanh hơn bạn kịp xem, mở thêm phiên chẳng giúp gì: hãy siết check lại, hoặc chậm lại.
+
+70
+00:08:07.136 --> 00:08:13.785
+<v Alice>Câu chốt của ông: khi bạn tạo ra nhiều hơn mức mình dám đứng sau, bạn không còn review nữa. Bạn đang hy vọng.
+
+71
+00:08:14.085 --> 00:08:18.436
+<v Bob>Phần tiếp theo nói về prompt. Sao prompt lại là tư duy phản biện?
+
+72
+00:08:18.736 --> 00:08:30.331
+<v Alice>Theo Addy, tư duy của con người giờ không nằm ở giữa nữa mà ở đầu và cuối: mô tả việc và ngữ cảnh, rồi review đầu ra. Nên ông coi prompt tốt là một kỹ năng tư duy phản biện.
+
+73
+00:08:30.631 --> 00:08:33.961
+<v Bob>Ngày xưa đưa yêu cầu mơ hồ là có người hỏi lại ngay.
+
+74
+00:08:34.261 --> 00:08:46.785
+<v Alice>Và bạn nhận ra mình chưa nghĩ thông. Agent thì thường không chặn bạn lại, nó tự điền chỗ trống và trả về thứ trông như đã xong, dù ý tưởng phía sau vẫn mờ. Addy gọi đó là intent debt, nợ ý định.
+
+75
+00:08:47.085 --> 00:08:48.401
+<v Bob>Nợ này ai trả?
+
+76
+00:08:48.701 --> 00:08:58.415
+<v Alice>Chỉ bạn thôi, không ai sửa thay được, ý định phải đến từ chính bạn. Prompt phản chiếu mức bạn hiểu vấn đề, nói không rõ thì có khi trong đầu cũng chưa rõ.
+
+77
+00:08:58.715 --> 00:09:00.375
+<v Bob>Có cách làm cụ thể không?
+
+78
+00:09:00.675 --> 00:09:11.713
+<v Alice>Tự viết bản brief bằng lời của mình trước khi nhờ: người đọc là ai, cái gì ngoài phạm vi, thế nào là xong. Nếu sửa đến vòng thứ hai mà chưa tới, đừng chỉnh vụn nữa, hãy viết lại prompt.
+
+79
+00:09:12.013 --> 00:09:13.492
+<v Bob>Còn tiêu chuẩn đầu ra?
+
+80
+00:09:13.792 --> 00:09:27.935
+<v Alice>Giờ thứ gì cũng ra đẹp và tự tin, nên độ bóng bẩy không còn là tín hiệu hữu ích. Nếu không thoải mái ghi tên mình lên kết quả, Addy sẽ không đưa nó ra. Cái nào không đạt thì ghi lý do vào một hook hay một test để nó không lặp lại.
+
+81
+00:09:28.235 --> 00:09:34.293
+<v Bob>Giờ mình phản biện nhé. Một hai năm nữa model sẽ phát hiện được mọi thứ mình phát hiện. Giữ kỹ năng này làm gì?
+
+82
+00:09:34.593 --> 00:09:44.563
+<v Alice>Chính Addy nêu câu hỏi đó, và thừa nhận bạn có thể đúng ở nhiều phần phát hiện lỗi. Nhưng dù AI giúp bao nhiêu, một con người vẫn phải nhận trách nhiệm cho thứ được ship.
+
+83
+00:09:44.863 --> 00:09:47.553
+<v Bob>Nhưng đó là chuyện trách nhiệm, đâu phải kỹ năng?
+
+84
+00:09:47.853 --> 00:09:56.976
+<v Alice>Ông nói tin agent đến mức nào cho từng việc tự nó là một phán đoán. Muốn phán đoán đó chuẩn thì phải review công việc, vì những gì model làm sai luôn thay đổi.
+
+85
+00:09:57.276 --> 00:09:59.374
+<v Bob>Có gì ngoài ý kiến của ông không?
+
+86
+00:09:59.674 --> 00:10:11.479
+<v Alice>Ông dẫn nghiên cứu của chính Anthropic về kỹ sư và nhà nghiên cứu của họ. Họ gọi cái bẫy này là nghịch lý giám sát: giám sát Claude đòi hỏi chính những kỹ năng code có thể bị teo đi vì lạm dụng AI.
+
+87
+00:10:11.779 --> 00:10:14.643
+<v Bob>Vậy phần nào model giỏi hơn cũng không gánh được?
+
+88
+00:10:14.943 --> 00:10:28.153
+<v Alice>Bạn đang xây gì, vì sao đáng làm, ảnh hưởng tới ai, sẵn sàng hy sinh gì. Agent giúp bạn nghĩ được, nhưng những câu đó vẫn là của bạn. Bạn giao được việc và phần lớn khâu kiểm tra, nhưng không giao được trách nhiệm.
+
+89
+00:10:28.453 --> 00:10:30.423
+<v Bob>Vậy người nghe nên làm gì ngay?
+
+90
+00:10:30.723 --> 00:10:40.357
+<v Alice>Addy nói không cần làm hết, chọn cái hợp với mình. Mỗi tuần một lần, viết chút code không dùng agent, hoặc làm một việc thật mà quên cách làm thì rất tệ.
+
+91
+00:10:40.657 --> 00:10:41.815
+<v Bob>Còn hàng tháng?
+
+92
+00:10:42.115 --> 00:10:52.933
+<v Alice>Mỗi tháng, ghi ra những việc bạn đã thôi làm và quyết định cái nào chấp nhận bỏ. Và tự hỏi câu từ một bài blog cũ của ông: nếu AI không tồn tại, bạn sẽ lạc lối đến mức nào?
+
+93
+00:10:53.233 --> 00:10:55.505
+<v Bob>Nếu chỉ thử đúng một việc tuần này?
+
+94
+00:10:55.805 --> 00:11:05.868
+<v Alice>Trước khi hỏi, ghi ra bạn nghĩ chuyện gì sẽ xảy ra. Sau khi agent xong, ghi ra một điều nó đã không kiểm tra. Rồi xem cách bạn đọc kết quả có thay đổi không.
+
+95
+00:11:06.168 --> 00:11:08.101
+<v Bob>Bài viết còn bỏ ngỏ điều gì?
+
+96
+00:11:08.401 --> 00:11:20.798
+<v Alice>Theo mình, bài không nói người mới vào nghề xây phán đoán thế nào nếu ít khi tự tay làm từ đầu. Đó là câu hỏi của mình, không phải của bài viết. Và khi model đổi liên tục, bao lâu nên xét lại mức tin tưởng?
+
+97
+00:11:21.098 --> 00:11:27.794
+<v Bob>Và với các nhóm, ai giữ hiểu biết chung về hệ thống khi ai cũng dựa vào agent? Mình nghĩ câu đó vẫn còn để ngỏ.
+
+98
+00:11:28.094 --> 00:11:32.235
+<v Bob>Tập hôm nay của Build Wiz AI đến đây là hết. Cảm ơn các bạn đã lắng nghe.
+
+99
+00:11:32.535 --> 00:11:42.041
+<v Alice>Tập này dựa trên bài viết Critical thinking when agents do the work của Addy Osmani, đăng trên X. Cảm ơn Addy vì bài viết rất đáng suy ngẫm, hẹn gặp lại các bạn.
