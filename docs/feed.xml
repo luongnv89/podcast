@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0">
+<channel>
+  <title>Build Wiz AI</title>
+  <link>https://luongnv.com/podcast/</link>
+  <atom:link href="https://luongnv.com/podcast/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Build Wiz AI: two hosts, Bob and Alice, take one public source (an article, a thread or a paper) and pull out everything worth knowing, fact-checked against the source and credited in every episode. Episodes are written and voiced with AI using DropCast.</description>
+  <language>en</language>
+  <lastBuildDate>Wed, 04 Nov 2026 14:41:10 +0000</lastBuildDate>
+  <itunes:author>Build Wiz AI</itunes:author>
+  <itunes:owner>
+    <itunes:name>Build Wiz AI</itunes:name>
+    <itunes:email>buildwizai@gmail.com</itunes:email>
+  </itunes:owner>
+  <itunes:image href="https://luongnv.com/podcast/cover.jpg"/>
+  <image>
+    <url>https://luongnv.com/podcast/cover.jpg</url>
+    <title>Build Wiz AI</title>
+    <link>https://luongnv.com/podcast/</link>
+  </image>
+  <itunes:category text="Technology"/>
+  <itunes:explicit>false</itunes:explicit>
+  <itunes:type>episodic</itunes:type>
+</channel>
+</rss>

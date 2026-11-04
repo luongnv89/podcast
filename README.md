@@ -28,7 +28,7 @@ DropCast calls the publisher after every delivered episode when this is set in i
 `DROPCAST_PUBLISH=0` turn it off):
 
 ```bash
-DROPCAST_PUBLISH_CMD=python3 /path/to/podcast/scripts/publish.py --push
+DROPCAST_PUBLISH_CMD="python3 /path/to/podcast/scripts/publish.py --push"
 ```
 
 By hand:
@@ -61,3 +61,26 @@ separate staging folder: it could remove episodes it does not know about.
 
 Episodes voiced with edge-tts are for private use only and are never published; a job
 created with `--no-publish` is skipped too.
+
+## Podcast feed (Spotify and other apps)
+
+`docs/feed.xml` (https://luongnv.com/podcast/feed.xml) is the show's RSS feed, as
+**Build Wiz AI** (`en`, cover art `docs/cover.jpg`, made from `assets/cover/cover.html`).
+Spotify has no upload API: the feed is submitted once in Spotify for Creators (Add a new
+show → Find an existing show → Somewhere else → the feed URL, then the 8-digit code sent
+to the feed's owner email, `buildwizai@gmail.com`). After that, Spotify checks the feed
+several times an hour and adds new feed episodes on its own.
+
+The feed is opt-in per episode and English only: an episode is listed when its
+`episodes.json` entry has `"feed": true`.
+
+```bash
+python3 scripts/feed.py list                      # in the feed / can be added
+python3 scripts/feed.py add <job id> --push       # list an episode (English only)
+python3 scripts/feed.py remove <job id> --push    # unlist it (Spotify unpublishes it)
+python3 scripts/feed.py build                     # rewrite feed.xml from episodes.json
+```
+
+`publish.py` keeps the `feed` flag when it re-publishes an episode and rebuilds the
+feed after every publish; a re-rendered episode gets a new `?v=` audio URL so apps
+download it again. Tests: `python3 -m unittest discover tests`.

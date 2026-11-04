@@ -21,7 +21,9 @@ private use only (edge-tts, ``run.json`` ``private_use``), or when the job opted
 (``request.json`` ``"publish": false``, from ``--no-publish`` or "don't publish").
 
 ``--push`` commits the changed files and pushes them; the Pages workflow then deploys
-the site. Standard library only, so DropCast can call it as
+the site. After every publish the RSS feed (``docs/feed.xml``, ``scripts/feed.py``) is
+rebuilt; an episode is listed there only after ``feed.py add``, and keeps that flag
+when it is re-published. Standard library only, so DropCast can call it as
 ``DROPCAST_PUBLISH_CMD="python3 /path/to/podcast/scripts/publish.py --push"``.
 
 Prints one JSON object. Exit 0 = every job published or skipped on purpose,
@@ -43,6 +45,9 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import feed  # noqa: E402  (scripts/feed.py: the RSS feed for Spotify and podcast apps)
 
 REPO = Path(__file__).resolve().parents[1]
 SITE = REPO / "docs"
@@ -229,6 +234,8 @@ def episode_entry(
             "kind": source.get("kind"),
         },
     }
+    if (known.get(episode_id) or {}).get("feed") is True:  # in the RSS feed (feed.py add)
+        entry["feed"] = True
     return entry, changed
 
 
@@ -349,6 +356,10 @@ def main(argv: list[str] | None = None) -> int:
             report["published"].append({"id": entry["id"], "title": entry["title"]})
         if entries and update_index(SITE, entries):
             changed.append(SITE / INDEX)
+        # The RSS feed lists only the episodes added with feed.py; a re-rendered one
+        # gets a new audio URL there, so rebuild it whenever an episode changed.
+        if changed and feed.write_feed(SITE):
+            changed.append(SITE / feed.FEED)
         if args.push and changed:
             report["git"] = push(changed, [e["title"] for e in entries])
             if not report["git"].get("pushed") and report["git"].get("error"):
