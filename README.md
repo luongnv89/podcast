@@ -36,7 +36,24 @@ By hand:
 ```bash
 python3 scripts/publish.py ~/dropcast/jobs/2026-11-03_some-episode --push
 python3 scripts/publish.py --all            # every delivered job, no git
+python3 scripts/publish.py ~/dropcast/jobs/2026-11-03_some-episode --category marketing
 ```
+
+## Tabs (categories)
+
+The page has four tabs: **AI podcast**, **Bedtime stories**, **Marketing** and
+**Others**. Each episode in `episodes.json` has one `category`: `ai`, `bedtime`,
+`marketing` or `others`. The publisher picks it in this order:
+
+1. `--category` (one job at a time);
+2. a `category.txt` in the job folder, holding one of the four words;
+3. `bedtime` for a `bedtime-story` script;
+4. the category already in `episodes.json`, so a hand fix survives a re-publish;
+5. a keyword guess from the title and summary (AI words → `ai`, more marketing words
+   → `marketing`, neither → `others`).
+
+To move a live episode, edit its `category` in `docs/episodes.json`. Links keep the tab
+in the query (`?tab=bedtime`); a shared episode link (`#<job id>`) opens its own tab.
 
 Edit `docs/` in place (the publisher adds episodes there). `.github/pages-publish.json`
 lists only the files of the first publish, so don't re-run a publish tool against a

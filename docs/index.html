@@ -92,6 +92,27 @@
     background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
     border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   }
+  /* Category tabs: one row of underlined labels on top of the sticky bar. The selected
+     tab gets white text and a green underline; counts stay quiet. Scrolls sideways on
+     narrow screens instead of wrapping. */
+  .tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--line); }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    position: relative; flex: none; display: inline-flex; align-items: baseline; gap: 7px;
+    height: 44px; padding: 0 12px; border: 0; background: transparent; cursor: pointer;
+    font: 700 15px/44px var(--display); letter-spacing: -0.01em; color: var(--text-2); white-space: nowrap;
+    transition: color .15s ease;
+  }
+  .tab:first-child { padding-left: 0; }
+  .tab:hover { color: var(--white); }
+  .tab .n { font: 400 13px/1 var(--body); color: var(--text-3); }
+  .tab::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: -1px; height: 2px; background: transparent; }
+  .tab:first-child::after { left: 0; }
+  .tab[aria-selected="true"] { color: var(--white); }
+  .tab[aria-selected="true"]::after { background: var(--green); }
+  .tab[aria-selected="true"] .n { color: var(--green); }
+  .tab:focus-visible { outline-offset: -2px; }
+  .tab .l-short { display: none; }
   .tb-row { display: flex; align-items: center; gap: 8px; padding-top: 12px; }
   .ctl { height: 40px; border: 1px solid var(--line-strong); border-radius: var(--r-ctl); background: transparent; transition: border-color .15s ease, color .15s ease; }
   .ctl:hover { border-color: var(--white); }
@@ -293,6 +314,13 @@
     .stats dd { font-size: 16px; }
     .tagline { margin-top: 2px; }
     .key { display: none; }
+    /* Four tabs fit a 360 px screen without scrolling. */
+    .tabs { gap: 0; }
+    .tab { height: 40px; line-height: 40px; padding: 0 8px; font-size: 13.5px; gap: 4px; letter-spacing: -0.02em; }
+    .tab::after { left: 8px; right: 8px; }
+    .tab .n { font-size: 12px; }
+    .tab .l-long { display: none; }
+    .tab .l-short { display: inline; }
     .order span { display: none; }
     .order { width: 40px; justify-content: center; padding: 0; }
     .sort-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -334,12 +362,13 @@
       <div><dt>min of audio</dt><dd id="stat-min">–</dd></div>
       <div class="lead"><dt>Latest</dt><dd id="stat-latest">–</dd></div>
     </dl>
-    <p class="tagline">One source, everything worth knowing. <strong>Bob</strong> asks the questions, <strong>Alice</strong> explains the article, thread or paper.</p>
+    <p class="tagline" id="tagline">One source, everything worth knowing. <strong>Bob</strong> asks the questions, <strong>Alice</strong> explains the article, thread or paper.</p>
   </div>
 </header>
 
 <section class="toolbar" id="toolbar" aria-label="Search, filter and sort episodes">
   <div class="wrap">
+    <div class="tabs" id="tabs" role="tablist" aria-label="Categories"></div>
     <div class="tb-row">
       <div class="ctl search" id="search" role="search">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -374,7 +403,7 @@
     <p class="count" id="count" aria-live="polite">Loading episodes…</p>
     <button class="linkish" id="clear-all" type="button" hidden>Clear all</button>
   </div>
-  <ol class="episodes" id="episodes" aria-busy="true">
+  <ol class="episodes" id="episodes" aria-busy="true" role="tabpanel" aria-labelledby="tab-ai">
     <li class="skeleton" aria-hidden="true"></li>
     <li class="skeleton" aria-hidden="true"></li>
     <li class="skeleton" aria-hidden="true"></li>
@@ -383,7 +412,7 @@
 
 <footer>
   <div class="wrap">
-    <p>Episodes are AI-voiced conversations about public posts and articles, written and fact-checked against the source with DropCast. Each episode credits and links its source; the original author's words are theirs. Voices are synthetic; opinions marked as the hosts' are not the source's.</p>
+    <p>Episodes are AI-voiced conversations and stories based on public posts, articles and texts, written with DropCast; conversations are fact-checked against the source. Each episode credits and links its source; the original author's words are theirs. Voices are synthetic; opinions marked as the hosts' are not the source's.</p>
     <p class="keys" aria-label="Keyboard shortcuts">
       <span><span class="key">/</span> search</span>
       <span><span class="key">Space</span> play or pause</span>
@@ -514,12 +543,27 @@
     { id: "source", label: "Source", of: (e) => e.source?.kind || "other", name: (v) => KIND[v] || cap(v) },
     { id: "voice", label: "Voices", of: (e) => (e.voices || "").split("·")[0].trim() || "Unknown", name: (v) => v },
   ];
-  const state = { q: "", sort: "published", dir: "desc", f: Object.fromEntries(GROUPS.map((g) => [g.id, new Set()])) };
+  // Category tabs. Every episode sits in exactly one; "category" comes from
+  // episodes.json, with a fallback for entries published before it existed.
+  const TABS = [
+    { id: "ai", label: "AI podcast", short: "AI", empty: "No AI episodes yet.",
+      tagline: ["One source, everything worth knowing. ", ["Bob"], " asks the questions, ", ["Alice"], " explains the article, thread or paper."] },
+    { id: "bedtime", label: "Bedtime stories", short: "Bedtime", empty: "No bedtime stories yet.",
+      tagline: ["Gentle stories for bedtime, told slowly by a warm narrator, with a calm goodnight at the end."] },
+    { id: "marketing", label: "Marketing", empty: "No marketing episodes yet.",
+      tagline: ["Marketing, studied one source at a time. ", ["Bob"], " asks the questions, ", ["Alice"], " explains what works and why."] },
+    { id: "others", label: "Others", empty: "Nothing here yet.",
+      tagline: ["Everything else worth a listen. One source, everything worth knowing."] },
+  ];
+  const isTab = (v) => TABS.some((t) => t.id === v);
+  const catOf = (e) => (isTab(e.category) ? e.category : e.format === "bedtime-story" ? "bedtime" : "others");
+  const state = { tab: "ai", q: "", sort: "published", dir: "desc", f: Object.fromEntries(GROUPS.map((g) => [g.id, new Set()])) };
   const terms = () => fold(state.q).split(/\s+/).filter(Boolean);
   const filtersOn = () => GROUPS.some((g) => state.f[g.id].size);
 
   function readUrl() {
     const p = new URLSearchParams(location.search);
+    state.tab = isTab(p.get("tab")) ? p.get("tab") : "ai";
     state.q = p.get("q") || "";
     state.sort = isSort(p.get("sort")) ? p.get("sort") : "published";
     const dir = p.get("order");
@@ -530,6 +574,7 @@
     // Only non-default settings go in the query, so a plain link stays clean. The hash
     // is the episode deep link and is kept as it is.
     const p = new URLSearchParams();
+    if (state.tab !== "ai") p.set("tab", state.tab);
     if (state.q.trim()) p.set("q", state.q.trim());
     if (state.sort !== "published") p.set("sort", state.sort);
     if (state.dir !== SORTS[state.sort].def) p.set("order", state.dir);
@@ -539,6 +584,7 @@
   }
 
   function matches(ep, skip) {
+    if (ep._cat !== state.tab) return false;
     for (const t of terms()) if (!ep._hay.includes(t)) return false;
     for (const g of GROUPS) {
       if (g.id === skip) continue;
@@ -567,12 +613,59 @@
     node.replaceChildren(...text.split(re).map((part, i) => (i % 2 ? el("mark", { text: part }) : part)));
   }
 
+  function buildTabs() {
+    const box = $("tabs");
+    box.replaceChildren();
+    for (const t of TABS) {
+      t.n = el("span", { class: "n" });
+      t.btn = el("button", { class: "tab", type: "button", role: "tab", id: `tab-${t.id}`, "aria-controls": "episodes", "aria-selected": "false", tabIndex: -1 }, [el("span", { class: "l-long", text: t.label }), el("span", { class: "l-short", text: t.short || t.label, "aria-hidden": "true" }), t.n]);
+      t.btn.addEventListener("click", () => selectTab(t.id));
+      box.append(t.btn);
+    }
+    // Arrow keys move between tabs (the usual tablist pattern); Home and End jump.
+    box.addEventListener("keydown", (e) => {
+      const i = TABS.findIndex((t) => t.id === state.tab);
+      const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: TABS.length - 1 }[e.key];
+      if (to == null) return;
+      e.preventDefault();
+      const t = TABS[(to + TABS.length) % TABS.length];
+      selectTab(t.id);
+      t.btn.focus();
+    });
+  }
+
+  function selectTab(id) {
+    if (!isTab(id) || id === state.tab) return;
+    state.tab = id;
+    // Filters belong to one tab's list; carry over only the search.
+    for (const g of GROUPS) state.f[g.id].clear();
+    apply();
+  }
+
+  function showTab() {
+    const tab = TABS.find((t) => t.id === state.tab);
+    for (const t of TABS) {
+      const on = t === tab;
+      const n = episodes.filter((e) => e._cat === t.id).length;
+      t.btn.setAttribute("aria-selected", String(on));
+      t.btn.tabIndex = on ? 0 : -1;
+      t.btn.setAttribute("aria-label", `${t.label}, ${n} ${n === 1 ? "episode" : "episodes"}`);
+      t.n.textContent = n;
+    }
+    list.setAttribute("aria-labelledby", `tab-${tab.id}`);
+    $("tagline").replaceChildren(...tab.tagline.map((part) => (Array.isArray(part) ? el("strong", { text: part[0] }) : part)));
+    const sel = tab.btn;
+    if (sel && sel.parentNode.scrollWidth > sel.parentNode.clientWidth) sel.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }
+
   function buildFilters() {
     const box = $("filters");
     box.replaceChildren();
     for (const g of GROUPS) {
       const counts = new Map();
       for (const e of episodes) { const v = g.of(e); counts.set(v, (counts.get(v) || 0) + 1); }
+      // Options come from every episode, so switching tabs never rebuilds the chips;
+      // the counts below (and disabled chips) follow the selected tab.
       g.options = g.fixed
         ? g.fixed.map(([v, l]) => ({ v, l }))
         : [...counts.keys()].sort((a, b) => counts.get(b) - counts.get(a) || a.localeCompare(b)).map((v) => ({ v, l: g.name(v) }));
@@ -597,8 +690,10 @@
   // the playing row, open transcripts and live cue highlights survive every change.
   function apply() {
     if (!isSort(state.sort)) { state.sort = "published"; state.dir = SORTS.published.def; }
+    if (!isTab(state.tab)) state.tab = "ai";
     if (!noMatch) return;   // the toolbar is live before the episode list has loaded
-    for (const e of episodes) for (const g of GROUPS) e._f[g.id] = g.of(e);
+    for (const e of episodes) { e._cat = catOf(e); for (const g of GROUPS) e._f[g.id] = g.of(e); }
+    showTab();
     const ts = terms();
     const order = sorted();
     const rows = [...list.children].filter((n) => n.classList.contains("ep"));
@@ -620,15 +715,20 @@
       o.btn.setAttribute("aria-label", `${g.label}: ${o.l}, ${n} ${n === 1 ? "episode" : "episodes"}`);
       o.n.textContent = n;
     }
-    const total = episodes.length;
+    const total = episodes.filter((e) => e._cat === state.tab).length;
     const active = !!ts.length || filtersOn();
     const count = $("count");
     count.replaceChildren(...(active
       ? [el("b", { text: shown }), ` of ${total} ${total === 1 ? "episode" : "episodes"}`]
       : [el("b", { text: total }), ` ${total === 1 ? "episode" : "episodes"} · ${SORTS[state.sort][state.dir].toLowerCase()}`]));
     $("clear-all").hidden = !active;
-    noMatch.hidden = shown > 0 || !total;
-    if (!shown && total) {
+    noMatch.hidden = shown > 0 || !episodes.length;
+    noMatch.querySelector("div").hidden = !total;
+    if (!total) {
+      noMatch.querySelector("strong").textContent = TABS.find((t) => t.id === state.tab).empty;
+      noMatch.querySelector("span").textContent = "New episodes appear here as soon as they are published.";
+    } else if (!shown) {
+      noMatch.querySelector("strong").textContent = "No matching episodes";
       const why = state.q.trim() ? `Nothing matches “${state.q.trim()}”${filtersOn() ? " with these filters" : ""}.` : "No episode fits all of these filters.";
       noMatch.querySelector("span").textContent = `${why} Try fewer words or clear a filter.`;
     }
@@ -673,6 +773,7 @@
     // Drop the year for this year's episodes: "Nov 3" says enough and keeps the strip on one line.
     const sameYear = latest && new Date(latest).getFullYear() === new Date().getFullYear();
     $("stat-latest").textContent = latest ? day(latest, !sameYear) : "–";
+    buildTabs();
     buildFilters();
     apply();
     fade();
@@ -765,6 +866,7 @@
     const id = decodeURIComponent(location.hash.slice(1));
     const ep = id && episodes.find((e) => e.id === id);
     if (!ep) return;
+    if (ep._cat !== state.tab) { state.tab = ep._cat; for (const g of GROUPS) state.f[g.id].clear(); apply(); }
     if (ep._node.hidden) clearAll();
     expand(ep, true);
     ep._node.classList.remove("is-target");

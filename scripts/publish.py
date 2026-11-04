@@ -7,8 +7,14 @@ Usage:
 
 For each delivered DropCast job it copies ``episode.mp3`` and ``transcript.vtt`` to
 ``docs/episodes/<job id>/`` and records the episode in ``docs/episodes.json``
-(title, summary, source, duration, voices). Only public facts are copied: no local
-paths, no source text, no keys.
+(title, summary, source, duration, voices, category). Only public facts are copied: no
+local paths, no source text, no keys.
+
+Each episode gets one ``category``, the site's tab: ``ai`` (AI podcast), ``bedtime``
+(bedtime stories), ``marketing`` or ``others``. The first that applies wins:
+``--category`` (when publishing one job), the job's ``category.txt`` (one word),
+``bedtime`` for a ``bedtime-story`` script, the category already in ``episodes.json``
+(so a hand fix survives a re-publish), then a keyword guess from the title and summary.
 
 A job is skipped (and reported) when it is not delivered yet, when its voices are for
 private use only (edge-tts, ``run.json`` ``private_use``), or when the job opted out
@@ -30,6 +36,7 @@ import fcntl
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -52,6 +59,51 @@ ENGINE_LABELS = {
     "openrouter": "OpenRouter",
     "edgetts": "edge-tts",
 }
+
+
+CATEGORIES = ("ai", "bedtime", "marketing", "others")
+# Keyword guess, used only when nothing else names the category. Lower-case, matched as
+# whole words in the title (counted three times) and the summary.
+AI_WORDS = (
+    "ai", "a.i.", "agent", "agents", "agentic", "llm", "llms", "gpt", "chatgpt", "claude",
+    "openai", "anthropic", "gemini", "model", "models", "machine learning", "neural",
+    "prompt", "prompts", "copilot", "automation", "trí tuệ nhân tạo", "intelligence",
+)
+MARKETING_WORDS = (
+    "marketing", "marketer", "brand", "branding", "growth", "audience", "funnel", "seo",
+    "ads", "advertising", "campaign", "organic", "viral", "reels", "tiktok", "content",
+    "copywriting", "conversion", "customers", "launch", "followers", "posting",
+    "call to action", "calls to action", "go-to-market", "tiếp thị",
+)
+
+
+def _count(words: tuple[str, ...], text: str) -> int:
+    return sum(len(re.findall(rf"(?<!\w){re.escape(w)}(?!\w)", text)) for w in words)
+
+
+def guess_category(title: str, summary: list[str], fmt: str | None) -> str:
+    """Best guess from the words alone: ``bedtime``, ``marketing``, ``ai`` or ``others``."""
+    if fmt == "bedtime-story":
+        return "bedtime"
+    head = (title or "").lower()
+    body = " ".join(summary).lower()
+    ai = 3 * _count(AI_WORDS, head) + _count(AI_WORDS, body)
+    marketing = 3 * _count(MARKETING_WORDS, head) + _count(MARKETING_WORDS, body)
+    if marketing > ai:
+        return "marketing"
+    if ai:
+        return "ai"
+    return "others"
+
+
+def _job_category(job: Path) -> str | None:
+    try:
+        word = (job / "category.txt").read_text(encoding="utf-8").strip().lower()
+    except OSError:
+        return None
+    if word not in CATEGORIES:
+        raise ValueError(f"category.txt says {word!r}; use one of {', '.join(CATEGORIES)}")
+    return word
 
 
 class Skip(Exception):
@@ -104,7 +156,9 @@ def _voice_label(run: dict[str, Any]) -> str:
     return f"{label} · {model}" if model else label
 
 
-def episode_entry(job: Path, site: Path) -> tuple[dict[str, Any], list[Path]]:
+def episode_entry(
+    job: Path, site: Path, category: str | None = None
+) -> tuple[dict[str, Any], list[Path]]:
     """Copy one job's media into ``site`` and return its index entry and changed files."""
     result = _read_json(job / "result.json") or {}
     run = _read_json(job / "run.json")
@@ -139,10 +193,24 @@ def episode_entry(job: Path, site: Path) -> tuple[dict[str, Any], list[Path]]:
         transcript = f"{EPISODES_DIR}/{episode_id}/transcript.vtt"
 
     hosts = (script.get("show") or {}).get("hosts") or {}
+    title = script.get("title") or source.get("title") or episode_id
+    summary = _summary(job)
+    known = {e.get("id"): e for e in (_read_json(site / INDEX) or {}).get("episodes") or []
+             if isinstance(e, dict)}
+    previous = (known.get(episode_id) or {}).get("category")
+    chosen = category or _job_category(job)
+    if not chosen:
+        chosen = (
+            "bedtime"
+            if script.get("format") == "bedtime-story"
+            else previous if previous in CATEGORIES
+            else guess_category(title, summary, script.get("format"))
+        )
     entry = {
         "id": episode_id,
-        "title": script.get("title") or source.get("title") or episode_id,
-        "summary": _summary(job),
+        "title": title,
+        "summary": summary,
+        "category": chosen,
         "show": (script.get("show") or {}).get("name") or SHOW["name"],
         "hosts": [name for name in (hosts.get("host_a"), hosts.get("host_b")) if name],
         "language": script.get("language") or "en",
@@ -217,7 +285,9 @@ def push(paths: list[Path], titles: list[str]) -> dict[str, Any]:
 @contextlib.contextmanager
 def _lock():
     """One publisher at a time (two episodes can finish together)."""
-    path = REPO / ".git" / "podcast-publish.lock"
+    # The shared git dir, so a linked worktree (where .git is a file) locks the same file.
+    common = _git("rev-parse", "--git-common-dir").stdout.strip() or ".git"
+    path = (REPO / common).resolve() / "podcast-publish.lock"
     with path.open("w") as handle:
         fcntl.flock(handle, fcntl.LOCK_EX)
         try:
@@ -236,8 +306,15 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("jobs", nargs="*", metavar="JOB", help="DropCast job folder(s)")
     parser.add_argument("--all", action="store_true", help="every job in $DROPCAST_HOME/jobs")
     parser.add_argument("--push", action="store_true", help="commit and push the changes")
+    parser.add_argument(
+        "--category", choices=CATEGORIES, help="the site tab for this one job (default: guessed)"
+    )
     args = parser.parse_args(argv)
     jobs = [Path(j).expanduser() for j in args.jobs]
+    if args.category and (args.all or len(jobs) != 1):
+        parser.print_usage(sys.stderr)
+        print("error: --category needs exactly one job folder", file=sys.stderr)
+        return 2
     if args.all:
         root = _jobs_root()
         jobs += sorted(p for p in root.glob("*") if p.is_dir())
@@ -255,7 +332,7 @@ def main(argv: list[str] | None = None) -> int:
         named = set(args.jobs and [Path(j).expanduser().resolve() for j in args.jobs])
         for job in jobs:
             try:
-                entry, files = episode_entry(job.resolve(), SITE)
+                entry, files = episode_entry(job.resolve(), SITE, args.category)
             except NotReady as why:
                 bucket = "failed" if job.resolve() in named else "skipped"
                 key = "error" if bucket == "failed" else "reason"
