@@ -18,6 +18,7 @@
         "King Midas wishes that all he touches turns to gold, then loses food, roses and, for a moment, his daughter Marygold.",
         "A gentle lesson for kids: water, bread and the people we love are worth more than all the gold in the world."
       ],
+      "category": "bedtime",
       "show": "The AI Show",
       "hosts": [],
       "language": "vi",
@@ -44,6 +45,7 @@
         "Từ giao việc, phó thác đến đầu hàng nhận thức: hãy đặt giả thuyết trước, hỏi dấu xanh chứng minh gì và đọc bằng chứng.",
         "Bạn giao được việc và phần lớn khâu kiểm tra, nhưng không giao được trách nhiệm cho thứ mình ship."
       ],
+      "category": "ai",
       "show": "Build Wiz AI",
       "hosts": [
         "Bob",
@@ -73,6 +75,7 @@
         "His thesis: capturing attention is the top skill, and one person using AI well can be a full creative team for their own brand or for clients.",
         "It lays out a step-by-step client process and a way to land the first client, with market data from Goldman Sachs and the IAB."
       ],
+      "category": "ai",
       "show": "The AI Show",
       "hosts": [
         "Bob",
@@ -102,6 +105,7 @@
         "Agents can proactively fix alerted bugs, score their own sessions to improve skills, and mine customer data for the roadmap.",
         "It shifts the goal from faster pull requests to one loop from task to shipped product, with humans still reviewing."
       ],
+      "category": "ai",
       "show": "The AI Show",
       "hosts": [
         "Bob",
@@ -131,6 +135,7 @@
         "The method: a decent app built fast, heavy daily posting with trial reels, AI-assisted editing, and tested calls to action.",
         "It is a sponsored, self-reported playbook; some tactics, like buying followers or planted comments, carry real risks."
       ],
+      "category": "marketing",
       "show": "The AI Show",
       "hosts": [
         "Bob",
