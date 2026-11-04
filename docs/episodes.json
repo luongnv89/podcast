@@ -8,8 +8,34 @@
       "Alice"
     ]
   },
-  "updated": "2026-11-04T10:48:24Z",
+  "updated": "2026-11-04T13:26:56Z",
   "episodes": [
+    {
+      "id": "2026-11-04_the-golden-touch",
+      "title": "Vua Midas và Bàn Tay Vàng",
+      "summary": [
+        "A Vietnamese bedtime retelling of The Golden Touch, Nathaniel Hawthorne's version of the King Midas myth.",
+        "King Midas wishes that all he touches turns to gold, then loses food, roses and, for a moment, his daughter Marygold.",
+        "A gentle lesson for kids: water, bread and the people we love are worth more than all the gold in the world."
+      ],
+      "show": "The AI Show",
+      "hosts": [],
+      "language": "vi",
+      "format": "bedtime-story",
+      "published": "2026-11-04T13:26:55Z",
+      "duration_s": 395.953,
+      "size_bytes": 6336304,
+      "audio": "episodes/2026-11-04_the-golden-touch/episode.mp3",
+      "transcript": "episodes/2026-11-04_the-golden-touch/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "THE GOLDEN TOUCH.",
+        "author": null,
+        "url": "https://www.ibiblio.org/eldritch/nh/wb2b.html",
+        "published": null,
+        "kind": "article"
+      }
+    },
     {
       "id": "2026-11-04_critical-thinking-when-agents-do-the-work",
       "title": "Tư duy phản biện khi agent làm việc thay mình",
