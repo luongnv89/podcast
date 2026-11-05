@@ -482,6 +482,22 @@ def _lock():
             fcntl.flock(handle, fcntl.LOCK_UN)
 
 
+def _rebuild_feeds(report: dict[str, Any]) -> list[Path]:
+    """Rewrite the story RSS feeds (scripts/feed.py); a failure never blocks a publish."""
+    try:
+        import importlib.util
+
+        spec = importlib.util.spec_from_file_location("feed", Path(__file__).with_name("feed.py"))
+        if spec is None or spec.loader is None:
+            raise ImportError("scripts/feed.py not found")
+        feed = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(feed)
+        return list(feed.write_feeds(SITE))
+    except Exception as exc:  # noqa: BLE001 - the episode is still published
+        report["feed_error"] = f"{type(exc).__name__}: {exc}"
+        return []
+
+
 def _jobs_root() -> Path:
     home = os.environ.get("DROPCAST_HOME") or "~/dropcast"
     return Path(home).expanduser() / "jobs"
@@ -535,6 +551,9 @@ def main(argv: list[str] | None = None) -> int:
             report["published"].append({"id": entry["id"], "title": entry["title"]})
         if entries and update_index(SITE, entries):
             changed.append(SITE / INDEX)
+        if entries:
+            # The Once Upon a Time Show feeds (Spotify) follow episodes.json on their own.
+            changed += _rebuild_feeds(report)
         if args.push and changed:
             report["git"] = push(changed, [e["title"] for e in entries])
             if not report["git"].get("pushed") and report["git"].get("error"):

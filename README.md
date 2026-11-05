@@ -119,6 +119,40 @@ groups.
 
 Tests (standard library, no network): `python3 -m unittest discover -s tests`.
 
+## Spotify and podcast apps (story feeds)
+
+Once Upon a Time Show reaches Spotify through **its own RSS feeds**, one per language,
+because a Spotify show has a single language. Spotify has no upload API: a show hosted
+elsewhere is submitted once as a feed, and Spotify checks the feed on its own and adds
+new episodes.
+
+| Language | Feed | Cover |
+|---|---|---|
+| English | https://luongnv.com/podcast/stories/feed-en.xml | `docs/stories/cover-en.jpg` |
+| French | https://luongnv.com/podcast/stories/feed-fr.xml | `docs/stories/cover-fr.jpg` |
+| Vietnamese | https://luongnv.com/podcast/stories/feed-vi.xml | `docs/stories/cover-vi.jpg` |
+
+- `scripts/feed.py` builds them from `episodes.json` (`build`, `list`). A feed holds
+  every Once Upon a Time Show episode in its language, newest first. `"feed": false` on
+  an entry leaves it out, and removing an episode from a feed unpublishes it on Spotify.
+- **Fully automatic:** `publish.py` rebuilds the feeds after every publish and commits
+  them with the episode. A new story reaches Spotify with no manual step.
+- Each item: guid = the job id (never changes); show notes = the summary, the source
+  credit, the music credit (CC BY) and the AI-voice note; enclosure with size and
+  duration; transcript (`podcast:transcript`). The enclosure URL ends in
+  `?v=<sha8>` of the MP3, so a re-voiced episode is downloaded again under the same guid.
+- Channel: category Kids & Family › Stories for Kids, not explicit, owner email
+  `buildwizai@gmail.com` (public in the feed: Spotify emails its 8-digit code there).
+  Titles and descriptions (each under Spotify's 600-character limit) are in `FEEDS` in
+  `scripts/feed.py`.
+- Covers are 3000 x 3000 JPEGs rendered from `assets/cover/stories-cover.html?lang=<lang>`
+  with headless Chromium.
+- Build Wiz AI Show stays hosted on Spotify for Creators and is not in these feeds.
+
+**Submitting a feed (once per language):** creators.spotify.com → avatar or menu →
+**Add a new show** → **Find an existing show** → **Somewhere else** → paste the feed URL →
+enter the code emailed to buildwizai@gmail.com → check the details and submit.
+
 ## Analytics (GA4 events)
 
 Both pages load Google Analytics 4 (`G-FZV5YX8YPT`, the luongnv.com property) for page

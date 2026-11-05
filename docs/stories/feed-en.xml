@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0">
+<channel>
+  <title>Once Upon a Time Show: Bedtime Stories</title>
+  <link>https://luongnv.com/podcast/stories/</link>
+  <atom:link href="https://luongnv.com/podcast/stories/feed-en.xml" rel="self" type="application/rss+xml"/>
+  <description>Gentle bedtime stories for children, told slowly by a warm narrator. Each episode retells a classic, public-domain tale (Cinderella, Hansel and Gretel, King Midas and more) in simple words, with soft music between the scenes and a calm goodnight at the end. The tales are adapted for bedtime, so nothing is too scary. Scripts and voices are made with AI, and every episode credits its source and its music. Also in French and Vietnamese.</description>
+  <itunes:summary>Gentle bedtime stories for children, told slowly by a warm narrator. Each episode retells a classic, public-domain tale (Cinderella, Hansel and Gretel, King Midas and more) in simple words, with soft music between the scenes and a calm goodnight at the end. The tales are adapted for bedtime, so nothing is too scary. Scripts and voices are made with AI, and every episode credits its source and its music. Also in French and Vietnamese.</itunes:summary>
+  <language>en</language>
+  <lastBuildDate>Thu, 05 Nov 2026 22:39:33 +0000</lastBuildDate>
+  <itunes:author>Once Upon a Time Show</itunes:author>
+  <itunes:owner>
+    <itunes:name>Build Wiz AI</itunes:name>
+    <itunes:email>buildwizai@gmail.com</itunes:email>
+  </itunes:owner>
+  <itunes:image href="https://luongnv.com/podcast/stories/cover-en.jpg"/>
+  <image>
+    <url>https://luongnv.com/podcast/stories/cover-en.jpg</url>
+    <title>Once Upon a Time Show: Bedtime Stories</title>
+    <link>https://luongnv.com/podcast/stories/</link>
+  </image>
+  <itunes:category text="Kids &amp; Family">
+    <itunes:category text="Stories for Kids"/>
+  </itunes:category>
+  <itunes:explicit>false</itunes:explicit>
+  <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-05_hansel-and-gretel</guid>
+    <title>Hansel and Gretel, a bedtime story</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-05_hansel-and-gretel</link>
+    <description>A gentle bedtime retelling of Hansel and Gretel, from the Brothers Grimm's tale as translated by D. L. Ashliman.
+
+Shining pebbles, a house made of bread and cake, and a clever sister who sets her brother free.
+
+A kind white duck carries them home to their father, and the story ends with a quiet goodnight.
+
+Source: Hansel and Gretel (https://sites.pitt.edu/~dash/grimm015.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>A gentle bedtime retelling of Hansel and Gretel, from the Brothers Grimm's tale as translated by D. L. Ashliman.</p><p>Shining pebbles, a house made of bread and cake, and a clever sister who sets her brother free.</p><p>A kind white duck carries them home to their father, and the story ends with a quiet goodnight.</p><p>Source: Hansel and Gretel: <a href="https://sites.pitt.edu/~dash/grimm015.html">https://sites.pitt.edu/~dash/grimm015.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Thu, 05 Nov 2026 21:28:03 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel/episode.mp3?v=a9a27dde" length="6458686" type="audio/mpeg"/>
+    <itunes:duration>404</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-04_the-golden-touch-en</guid>
+    <title>King Midas and the Golden Touch</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-04_the-golden-touch-en</link>
+    <description>A gentle bedtime retelling of King Midas, from Nathaniel Hawthorne's "The Golden Touch".
+
+A king who loved gold gets his wish: everything he touches turns to gold, even his little daughter Marygold.
+
+River water makes all right again, and he learns what is worth more than gold.
+
+Source: THE GOLDEN TOUCH. (https://www.ibiblio.org/eldritch/nh/wb2b.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Golly Gee", "Touching Moments Four - Melody", "Call to Adventure", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>A gentle bedtime retelling of King Midas, from Nathaniel Hawthorne's "The Golden Touch".</p><p>A king who loved gold gets his wish: everything he touches turns to gold, even his little daughter Marygold.</p><p>River water makes all right again, and he learns what is worth more than gold.</p><p>Source: THE GOLDEN TOUCH.: <a href="https://www.ibiblio.org/eldritch/nh/wb2b.html">https://www.ibiblio.org/eldritch/nh/wb2b.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Golly Gee", "Touching Moments Four - Melody", "Call to Adventure", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Thu, 05 Nov 2026 15:47:28 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-04_the-golden-touch-en/episode.mp3?v=789a90d2" length="7804530" type="audio/mpeg"/>
+    <itunes:duration>488</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-04_the-golden-touch-en/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-05_cinderella-or-the-little-glass-slipper</guid>
+    <title>Cinderella, a bedtime story</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-05_cinderella-or-the-little-glass-slipper</link>
+    <description>A gentle bedtime retelling of Cinderella, from Charles Perrault's tale as translated by Andrew Lang.
+
+A kind girl, a fairy godmother, a pumpkin coach and a glass slipper that fits just right.
+
+It ends with forgiveness and a quiet goodnight: being kind is the best magic of all.
+
+Source: Cinderella; or, The Little Glass Slipper (https://sites.pitt.edu/~dash/perrault06.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Marty Gots a Plan", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>A gentle bedtime retelling of Cinderella, from Charles Perrault's tale as translated by Andrew Lang.</p><p>A kind girl, a fairy godmother, a pumpkin coach and a glass slipper that fits just right.</p><p>It ends with forgiveness and a quiet goodnight: being kind is the best magic of all.</p><p>Source: Cinderella; or, The Little Glass Slipper: <a href="https://sites.pitt.edu/~dash/perrault06.html">https://sites.pitt.edu/~dash/perrault06.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Marty Gots a Plan", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Thu, 05 Nov 2026 14:59:09 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-05_cinderella-or-the-little-glass-slipper/episode.mp3?v=6ee9804c" length="5656580" type="audio/mpeg"/>
+    <itunes:duration>353</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_cinderella-or-the-little-glass-slipper/transcript.vtt" type="text/vtt"/>
+  </item>
+</channel>
+</rss>
