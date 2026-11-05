@@ -131,14 +131,14 @@ a reload counts again.
 | Event | When | Extra parameters |
 |---|---|---|
 | `episode_play` | an episode starts playing for the first time in the page view (a resume after a pause is not counted) | |
-| `episode_progress` | the player reaches 25, 50, 75 and 100 % of the episode (100: it played to the end), each once per episode, only after its `episode_play` (so loading a resume point sends nothing; seeking ahead does reach a milestone) | `percent` (25, 50, 75, 100) |
+| `episode_progress` | the player reaches 25, 50, 75 and 100 % of the episode (100: it played to the end), each once per episode, only after its `episode_play` (so loading a resume point sends nothing; seeking ahead does reach a milestone, and playing from a saved resume point counts the milestones already passed, so `percent` is the position reached, not proof it was all heard) | `percent` (25, 50, 75, 100) |
 | `language_switch` | the visitor picks another language of a story (EN / FR / VI); a deep link does not count | `from_language`, `to_language` |
 | `episode_download` | the "Download MP3" link (click or middle click) | |
 | `source_click` | an outbound source link: "Based on …", "Read the source" and the Sources list | |
 
 Every event carries the episode it is about: `episode_id` (the job id), `episode_title`
 (at most 100 characters, GA4's limit), `show` (Build Wiz AI Show or Once Upon a Time
-Show), `language` (the version's primary language, e.g. `fr`), `category` (when set) and
+Show), `episode_language` (the version's primary language, e.g. `fr`; not `language`, which GA4 reserves for the visitor's browser language), `category` (when set) and
 `story_group` (only for a story in several languages). A language switch carries the new
 version's parameters. Each language version has its own id, so switching languages while
 a story plays counts as a new episode: `language_switch`, then `episode_play` (and later
@@ -149,7 +149,7 @@ To see them in GA4: **Reports → Engagement → Events** lists each event and i
 within seconds). To break them down by episode, show or language, register
 the parameters once as event-scoped custom dimensions in **Admin → Data display →
 Custom definitions → Create custom dimension** (scope "Event"): at least `episode_id`,
-`show` and `language`, and optionally `episode_title`, `story_group`, `category`,
+`show` and `episode_language`, and optionally `episode_title`, `story_group`, `category`,
 `percent`, `from_language` and `to_language`. Dimensions only fill in from the day they
 are created; then use them in the event report or an **Explore** (e.g. rows
 `episode_title`, columns `percent`, filter on `episode_progress`).

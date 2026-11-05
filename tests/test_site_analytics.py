@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EVENTS = ["episode_play", "episode_progress", "language_switch", "episode_download", "source_click"]
-PARAMS = ["episode_id", "episode_title", "show", "language", "story_group", "category",
+PARAMS = ["episode_id", "episode_title", "show", "episode_language", "story_group", "category",
           "percent", "from_language", "to_language"]
 
 
@@ -37,8 +37,12 @@ class SiteAnalyticsTest(unittest.TestCase):
     def test_every_parameter_is_sent_and_documented(self) -> None:
         for name in PARAMS:
             with self.subTest(param=name):
-                self.assertIn(name, self.js)
+                self.assertRegex(self.js, rf"([{{,]\s*{name}\s*:|\.{name}\s*=)")
                 self.assertIn(f"`{name}`", self.readme)
+
+    def test_reserved_language_parameter_is_not_sent(self) -> None:
+        # GA4 fills `language` with the visitor's browser language; sending it would overwrite that.
+        self.assertNotRegex(self.js, r"[{,]\s*language\s*:")
 
     def test_no_new_tracker(self) -> None:
         # The pages load GA4 once each; site.js loads no script and sets no cookie.

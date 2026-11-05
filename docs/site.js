@@ -81,7 +81,7 @@
   // The parameters every event carries (no personal data): the episode, its show, language,
   // story group (a story in several languages only) and category.
   function epParams(ep) {
-    const p = { episode_id: String(ep.id), episode_title: String(ep.title || "").slice(0, 100), show: showOf(ep), language: ep._lang || langOf(ep) };
+    const p = { episode_id: String(ep.id), episode_title: String(ep.title || "").slice(0, 100), show: showOf(ep), episode_language: ep._lang || langOf(ep) };
     const g = typeof ep.story_group === "string" ? ep.story_group.trim() : "";
     if (g) p.story_group = g;
     if (typeof ep.category === "string" && ep.category) p.category = ep.category;
