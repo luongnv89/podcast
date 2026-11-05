@@ -24,8 +24,37 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-05T21:31:28Z",
+  "updated": "2026-11-05T21:34:32Z",
   "episodes": [
+    {
+      "id": "2026-11-05_hansel-and-gretel-vi",
+      "title": "Hansel và Gretel, chuyện kể trước giờ ngủ",
+      "summary": [
+        "Truyện Hansel và Gretel kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman.",
+        "Những viên sỏi lấp lánh, ngôi nhà bằng bánh mì và bánh ngọt, và cô em gái thông minh cứu anh trai.",
+        "Chú vịt trắng hiền lành đưa hai anh em về với cha, và câu chuyện khép lại bằng lời chúc ngủ ngon."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "vi",
+      "format": "bedtime-story",
+      "published": "2026-11-05T21:34:30Z",
+      "duration_s": 403.098,
+      "size_bytes": 6451581,
+      "audio": "episodes/2026-11-05_hansel-and-gretel-vi/episode.mp3",
+      "transcript": "episodes/2026-11-05_hansel-and-gretel-vi/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Hansel and Gretel",
+        "author": null,
+        "url": "https://sites.pitt.edu/~dash/grimm015.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Carefree\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-05_hansel-and-gretel"
+    },
     {
       "id": "2026-11-05_hansel-and-gretel-fr",
       "title": "Hansel et Gretel, une histoire du soir",
