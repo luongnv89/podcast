@@ -24,8 +24,39 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-05T15:58:34Z",
+  "updated": "2026-11-05T15:58:41Z",
   "episodes": [
+    {
+      "id": "2026-11-04_the-golden-touch-en",
+      "title": "King Midas and the Golden Touch",
+      "summary": [
+        "A gentle bedtime retelling of King Midas, from Nathaniel Hawthorne's \"The Golden Touch\".",
+        "A king who loved gold gets his wish: everything he touches turns to gold, even his little daughter Marygold.",
+        "River water makes all right again, and he learns what is worth more than gold."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "bedtime-story",
+      "published": "2026-11-05T15:47:28Z",
+      "duration_s": 487.673,
+      "size_bytes": 7804530,
+      "audio": "episodes/2026-11-04_the-golden-touch-en/episode.mp3",
+      "transcript": "episodes/2026-11-04_the-golden-touch-en/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "THE GOLDEN TOUCH.",
+        "author": null,
+        "url": "https://www.ibiblio.org/eldritch/nh/wb2b.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Dreamy Flashback\", \"Golly Gee\", \"Touching Moments Four - Melody\", \"Call to Adventure\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)"
+    },
     {
       "id": "2026-11-04_the-golden-touch",
       "title": "Vua Midas và Bàn Tay Vàng",
