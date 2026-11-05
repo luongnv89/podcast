@@ -106,7 +106,12 @@ transcript, download, source link and music credit; a playing story keeps playin
 new language. The version shown first is the visitor's last choice (remembered in the
 browser), else the first browser language (`navigator.languages`) that has a version,
 else English, else the first version. Every version keeps its own id, so `#<episode id>`
-opens that version. A search matches a story when any of its versions matches. The
+opens that version. A search matches a story when any of its versions matches; while
+the search is on, the story shows its first matching version (unless the chosen one
+matches, or was picked during that search), without remembering it, and clearing the
+search brings the chosen version back. Languages compare by their primary subtag
+(`en-US` is `en`), and an unknown language is labelled with its code (at most 3
+letters, uppercased). The
 counts count stories (one per group), and the minutes count the version shown first, so
 a story in three languages counts once. Entries without `story_group` (and a second
 version in a language the group already has) show as before; the main page has no

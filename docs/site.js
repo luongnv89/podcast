@@ -73,8 +73,11 @@
   // id (deep link), audio, transcript and resume point. Entries without one are unchanged.
   const LANGS = { en: ["EN", "English"], fr: ["FR", "Français"], vi: ["VI", "Tiếng Việt"] };
   const LANG_ORDER = Object.keys(LANGS);
-  const langOf = (e) => (typeof e.language === "string" && e.language.trim() ? e.language.trim().toLowerCase() : "en");
-  const langLabel = (l) => LANGS[l] || [l.toUpperCase(), l.toUpperCase()];
+  // Languages compare by their primary subtag ("en-US" is "en"), like the browser's.
+  const primaryLang = (l) => (typeof l === "string" ? l.trim().toLowerCase().split(/[-_;]/)[0] : "");
+  const langOf = (e) => primaryLang(e.language) || "en";
+  // An unknown language is labelled with its code, cut to 3 letters so the switch stays small.
+  const langLabel = (l) => LANGS[l] || [l.slice(0, 3).toUpperCase(), l.slice(0, 3).toUpperCase()];
   const langRank = (l) => (LANG_ORDER.includes(l) ? LANG_ORDER.indexOf(l) : LANG_ORDER.length);
   function groupUnits(eps) {
     const out = [];
@@ -94,7 +97,7 @@
     for (const u of out) {
       u.versions.sort((a, b) => langRank(a._lang) - langRank(b._lang) || a._lang.localeCompare(b._lang));
       u.grouped = u.versions.length > 1;
-      u.sel = pickVersion(u);
+      u.sel = u.chosen = pickVersion(u);   // sel: the version on show; chosen: without a search
     }
     return out;
   }
@@ -104,21 +107,35 @@
     if (!u.grouped) return u.versions[0];
     const find = (l) => (typeof l === "string" && l ? u.versions.find((v) => v._lang === l) : null);
     const browser = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language])
-      .map((l) => String(l || "").trim().toLowerCase().split(/[-_;]/)[0]);
-    for (const l of [store.get("lang"), ...browser, "en"]) { const v = find(l); if (v) return v; }
+      .map((l) => primaryLang(String(l || "")));
+    for (const l of [primaryLang(store.get("lang")), ...browser, "en"]) { const v = find(l); if (v) return v; }
     return u.versions[0];
   }
+  // A switch by the visitor (or a deep link) chooses the version; it stays on show for the
+  // current search too, and comes back when the search is cleared.
   function selectVersion(u, v, byUser) {
+    if (!u.versions.includes(v)) return;
     if (byUser) store.set("lang", v._lang);
+    const hadFocus = u.sel._node.contains(document.activeElement);
+    u.chosen = v;
+    u.pin = terms().join(" ");
+    if (v === u.sel) return;
+    showVersion(u, v, true);
+    apply();
+    if (hadFocus) v._langBtns.get(v._lang)?.focus();
+  }
+  // Puts a version on show. "follow": a real switch, so the transcript and the player follow
+  // it; a search only swaps the card and leaves the player alone.
+  function showVersion(u, v, follow) {
     const old = u.sel;
-    if (v === old || !u.versions.includes(v)) return;
+    if (v === old) return;
     const wasOpen = old._toggle.getAttribute("aria-expanded") === "true";
     const trOpen = !!old._tBtn && old._tBtn.getAttribute("aria-expanded") === "true";
-    const hadFocus = old._node.contains(document.activeElement);
     old._node.hidden = true;
     v._node.hidden = false;
     u.sel = v;
     expand(v, wasOpen);
+    if (!follow) return;
     if (trOpen && v._tBtn && v._tBtn.getAttribute("aria-expanded") !== "true") openTranscript(v, v._panel, v._tBtn);
     // The player follows the switch: the story keeps playing (or stays paused) in the new language.
     if (current === old) {
@@ -126,8 +143,12 @@
       savePos(audio.currentTime);
       if (playing) play(v); else { load(v); sync(); }
     }
-    apply();
-    if (hadFocus) v._langBtns.get(v._lang)?.focus();
+  }
+  // While a search is on, a story shows its chosen version if that one matches (or was
+  // chosen during this search), else its first matching version. Nothing is stored.
+  function versionFor(u, ts) {
+    if (!ts.length || u.pin === ts.join(" ") || hits(u.chosen, ts)) return u.chosen;
+    return u.versions.find((v) => hits(v, ts)) || u.chosen;
   }
 
   // ---------- Listening status (from the per-viewer resume points) ----------
@@ -193,10 +214,11 @@
   }
 
   // A story in several languages matches when any of its versions does.
+  const hits = (ep, ts) => ts.every((t) => ep._hay.includes(t));
   function matches(u) {
     if (u._cat !== state.tab) return false;
     const ts = terms();
-    return u.versions.some((ep) => ts.every((t) => ep._hay.includes(t)));
+    return u.versions.some((ep) => hits(ep, ts));
   }
 
   function sorted() {
@@ -269,9 +291,12 @@
     if (!isSort(state.sort)) { state.sort = "published"; state.dir = SORTS.published.def; }
     if (!isTab(state.tab)) state.tab = DEF_TAB;
     if (!noMatch) return;   // the toolbar is live before the episode list has loaded
-    for (const u of units) u._cat = catOf(u.sel);
-    showTab();
     const ts = terms();
+    for (const u of units) {
+      u._cat = catOf(u.chosen);
+      if (u.grouped) showVersion(u, versionFor(u, ts), false);
+    }
+    showTab();
     const order = sorted();
     const rows = [...list.children].filter((n) => n.classList.contains("ep") || n.classList.contains("ep-group"));
     if (order.some((u, i) => rows[i] !== u._node)) for (const u of order) list.insertBefore(u._node, noMatch);
@@ -334,7 +359,7 @@
     }
     units.forEach((u, i) => list.insertBefore(row(u, i), noMatch));
     // A story counts once, in its counts and in its minutes (the version shown first).
-    const total = units.reduce((a, u) => a + (u.sel.duration_s || 0), 0);
+    const total = units.reduce((a, u) => a + (u.chosen.duration_s || 0), 0);
     const latest = episodes.map((e) => e.published).sort().pop();
     $("stat-count").textContent = units.length;
     $("stat-count-label").textContent = noun(units.length);
@@ -498,7 +523,7 @@
       return;
     }
     const u = ep._unit;
-    if (u.sel !== ep) selectVersion(u, ep, false);   // a version's link opens that version
+    selectVersion(u, ep, false);   // a version's link opens (and chooses) that version
     if (u._cat !== state.tab) { state.tab = u._cat; apply(); }
     if (u._node.hidden) clearAll();
     expand(ep, true);
