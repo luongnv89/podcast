@@ -10,6 +10,11 @@ For each delivered DropCast job it copies ``episode.mp3`` and ``transcript.vtt``
 (title, summary, source, duration, voices, category). Only public facts are copied: no
 local paths, no source text, no keys.
 
+An episode with extra sources presented by guests (DropCast #94) also gets ``sources``
+(every source used, main first: ``title``, ``author``, ``url``) and ``guests``
+(``name``, ``presents``: the titles of the sources they present); ``source`` stays the
+main source. Other episodes get neither key, so their entries do not change.
+
 Each episode gets one ``category``, the site's tab: ``ai`` (AI podcast), ``bedtime``
 (bedtime stories), ``marketing`` or ``others``. The first that applies wins:
 ``--category`` (when publishing one job), the job's ``category.txt`` (one word),
@@ -156,6 +161,111 @@ def _voice_label(run: dict[str, Any]) -> str:
     return f"{label} · {model}" if model else label
 
 
+def _text(value: Any) -> str | None:
+    return value.strip() if isinstance(value, str) and value.strip() else None
+
+
+def _fetched_extra(job: Path, source_id: str) -> dict[str, Any]:
+    """An extra source's fetched ``sources/<id>/source.json`` (a regular file inside the
+    job, no symlink), or ``{}``."""
+    if not re.fullmatch(r"[a-z0-9][a-z0-9-]*", source_id):
+        return {}
+    folder = job / "sources" / source_id
+    path = folder / "source.json"
+    if folder.is_symlink() or path.is_symlink() or not path.is_file():
+        return {}
+    data = _read_json(path)
+    return data if isinstance(data, dict) else {}
+
+
+def episode_sources(
+    job: Path, script: dict[str, Any], source: dict[str, Any], result: dict[str, Any]
+) -> list[dict[str, Any]]:
+    """Every source the episode used, main first: ``[{id, title, author, url}]``.
+
+    The extra sources are the objects in ``script.json`` ``sources``. Their credit comes
+    from ``result.json`` ``delivery.sources`` when it lists the same sources (DropCast
+    usually runs the publisher before it writes the delivered result, so it may be
+    missing or from an earlier run), else from the listed title and author, filled from
+    the fetched ``sources/<id>/source.json`` and then ``fact_check_pass.sources``. The
+    main source is read from ``source.json``. Only public fields are kept: no ``label``
+    (it can name a local file).
+    """
+    listed = [
+        item
+        for item in script.get("sources") or []
+        if isinstance(item, dict) and isinstance(item.get("id"), str) and item["id"] != "main"
+    ]
+    main = {
+        "id": "main",
+        "title": _text(source.get("title")),
+        "author": _text(source.get("author")),
+        "url": _text(source.get("url")),
+    }
+    delivered = ((result.get("delivery") or {}) if isinstance(result, dict) else {}).get(
+        "sources"
+    )
+    if isinstance(delivered, list) and all(isinstance(s, dict) for s in delivered):
+        ids = [s.get("id") for s in delivered]
+        if ids == ["main", *(item["id"] for item in listed)]:
+            credits = [
+                {
+                    "id": s["id"],
+                    "title": _text(s.get("title")),
+                    "author": _text(s.get("author")),
+                    "url": _text(s.get("url")),
+                }
+                for s in delivered
+            ]
+            # The main source's title in result.json falls back to a label ("file x.md");
+            # source.json is what the site already credits.
+            credits[0] = main
+            return credits
+    checked = {
+        s.get("id"): s
+        for s in ((script.get("fact_check_pass") or {}).get("sources") or [])
+        if isinstance(s, dict)
+    }
+    credits = [main]
+    for item in listed:
+        fetched = _fetched_extra(job, item["id"])
+        report = checked.get(item["id"]) or {}
+        credit = {"id": item["id"]}
+        for field in ("title", "author", "url"):
+            credit[field] = (
+                _text(item.get(field)) or _text(fetched.get(field)) or _text(report.get(field))
+            )
+        credit["title"] = credit["title"] or item["id"]
+        credits.append(credit)
+    return credits
+
+
+def episode_credits(
+    job: Path, script: dict[str, Any], source: dict[str, Any], result: dict[str, Any]
+) -> dict[str, Any]:
+    """The ``sources`` and ``guests`` keys of an index entry, only for an episode with
+    extra sources or guests (so an older episode's entry is unchanged)."""
+    credits = episode_sources(job, script, source, result)
+    titles = {c["id"]: c["title"] for c in credits}
+    guests = []
+    for speaker in script.get("speakers") or []:
+        if not isinstance(speaker, dict) or not str(speaker.get("role") or "").startswith(
+            "guest-"
+        ):
+            continue
+        name = _text(speaker.get("name"))
+        if not name:
+            continue
+        presents = [titles[i] for i in speaker.get("presents") or [] if i in titles]
+        guests.append({"name": name, "presents": presents})
+    extra: dict[str, Any] = {}
+    if len(credits) > 1:
+        extra["sources"] = [{k: c[k] for k in ("title", "author", "url")} for c in credits]
+    if guests:
+        extra["guests"] = guests
+    return extra
+
+
 def episode_entry(
     job: Path, site: Path, category: str | None = None
 ) -> tuple[dict[str, Any], list[Path]]:
@@ -229,6 +339,9 @@ def episode_entry(
             "kind": source.get("kind"),
         },
     }
+    # Every source used and the guests who presented them (DropCast #94): added only
+    # when the episode has extra sources or guests, so other entries stay as they were.
+    entry.update(episode_credits(job, script, source, result))
     return entry, changed
 
 
