@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Once Upon a Time Show · Stories</title>
+<meta name="description" content="Once Upon a Time Show: gentle stories for bedtime and story time, told slowly by a warm narrator. Classic and public-domain tales, retold and voiced with DropCast.">
+<meta name="theme-color" content="#000000">
+<!-- Google Analytics: the same GA4 property as luongnv.com. This site is served at
+     luongnv.com/podcast/, so its visits show up there under the /podcast/ page path. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000000'/%3E%3Cpath fill='%23FFFFFF' d='M7 22.5c8.5-3.2 16.8-2.4 23 2.6V53c-6.2-5-14.5-5.8-23-2.6zM57 22.5c-8.5-3.2-16.8-2.4-23 2.6V53c6.2-5 14.5-5.8 23-2.6z'/%3E%3Cpath fill='%23F2C46D' d='M32 3.5C33.4 8.6 33.4 8.6 38.5 10C33.4 11.4 33.4 11.4 32 16.5C30.6 11.4 30.6 11.4 25.5 10C30.6 8.6 30.6 8.6 32 3.5Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Bricolage Grotesque: a characterful display grotesque that reads as "broadcast"; used
+     for the brand, titles and numbers. Hanken Grotesk: a calm, legible body face with
+     tabular figures for timestamps and counts. -->
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css">
+</head>
+<body class="story-show">
+<header class="mast">
+  <div class="wrap mast-inner">
+    <a class="brand" href="./">
+      <!-- The story show's mark: an open book with a small star, white on black with a soft gold. -->
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path fill="#FFFFFF" d="M7 22.5c8.5-3.2 16.8-2.4 23 2.6V53c-6.2-5-14.5-5.8-23-2.6zM57 22.5c-8.5-3.2-16.8-2.4-23 2.6V53c6.2-5 14.5-5.8 23-2.6z"/><path fill="#000000" opacity=".35" d="M11 28.5c5.5-1.4 10.5-1 15 1.2v1.6c-4.5-2.2-9.5-2.6-15-1.2zM11 34.5c5.5-1.4 10.5-1 15 1.2v1.6c-4.5-2.2-9.5-2.6-15-1.2zM53 28.5c-5.5-1.4-10.5-1-15 1.2v1.6c4.5-2.2 9.5-2.6 15-1.2zM53 34.5c-5.5-1.4-10.5-1-15 1.2v1.6c4.5-2.2 9.5-2.6 15-1.2z"/><path fill="#F2C46D" d="M32 3.5C33.4 8.6 33.4 8.6 38.5 10C33.4 11.4 33.4 11.4 32 16.5C30.6 11.4 30.6 11.4 25.5 10C30.6 8.6 30.6 8.6 32 3.5Z"/></svg>
+      <h1>Once Upon a <span class="hl">Time</span> Show<span class="sr-only">: stories</span></h1>
+    </a>
+    <dl class="stats" aria-live="polite">
+      <div><dt id="stat-count-label">stories</dt><dd id="stat-count">–</dd></div>
+      <div><dt>min of audio</dt><dd id="stat-min">–</dd></div>
+      <div class="lead"><dt>Latest</dt><dd id="stat-latest">–</dd></div>
+    </dl>
+    <p class="tagline" id="tagline">Gentle stories for bedtime and story time, told slowly by a warm narrator.</p>
+    <p class="show-link">From the makers of <a href="../">Build Wiz AI Show →</a></p>
+  </div>
+</header>
+
+<section class="toolbar" id="toolbar" aria-label="Search and sort stories">
+  <div class="wrap">
+    <div class="tabs" id="tabs" role="tablist" aria-label="Categories"></div>
+    <div class="tb-row">
+      <div class="ctl search" id="search" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <label class="sr-only" for="q">Search stories</label>
+        <input id="q" type="search" placeholder="Search stories" autocomplete="off" spellcheck="false" enterkeyhint="search">
+        <span class="key" aria-hidden="true" title="Press / to search">/</span>
+        <button class="clear-q" id="clear-q" type="button" aria-label="Clear search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <label class="sort-label" for="sort">Sort by</label>
+      <div class="select">
+        <select class="ctl" id="sort">
+          <option value="published">Date</option>
+          <option value="duration">Length</option>
+          <option value="title">Title</option>
+          <option value="source">Source date</option>
+        </select>
+      </div>
+      <button class="ctl order" id="order" type="button" data-dir="desc">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg><span id="order-label">Newest first</span>
+      </button>
+    </div>
+  </div>
+  <div class="tb-progress" aria-hidden="true"><i id="tb-progress"></i></div>
+</section>
+
+<main class="wrap" id="main">
+  <div class="list-head">
+    <h2 class="sr-only">Stories</h2>
+    <p class="count" id="count" aria-live="polite">Loading episodes…</p>
+    <button class="linkish" id="clear-all" type="button" hidden>Clear all</button>
+  </div>
+  <ol class="episodes" id="episodes" aria-busy="true" role="tabpanel" aria-labelledby="tab-all">
+    <li class="skeleton" aria-hidden="true"></li>
+    <li class="skeleton" aria-hidden="true"></li>
+    <li class="skeleton" aria-hidden="true"></li>
+  </ol>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Stories are AI-voiced retellings of classic and public-domain tales, written with DropCast and told by a synthetic narrator. Each story credits and links the text it is based on; music is credited where its licence asks for it.</p>
+    <p class="keys" aria-label="Keyboard shortcuts">
+      <span><span class="key">/</span> search</span>
+      <span><span class="key">Space</span> play or pause</span>
+      <span><span class="key">←</span><span class="key">→</span> skip 5 s</span>
+    </p>
+  </div>
+</footer>
+
+<section class="player" id="player" aria-label="Audio player">
+  <div class="wrap">
+    <div class="p-controls">
+      <button class="icon-btn p-back" id="p-back" type="button" aria-label="Back 15 seconds">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2L7 6l5 4V7a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg><small>15</small>
+      </button>
+      <button class="icon-btn p-main" id="p-toggle" type="button" aria-label="Play">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path id="p-glyph" d="M8 5v14l11-7z"/></svg>
+      </button>
+      <button class="icon-btn p-fwd" id="p-fwd" type="button" aria-label="Forward 30 seconds">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V2l5 4-5 4V7a6 6 0 1 0 6 6h2a8 8 0 1 1-8-8z"/></svg><small>30</small>
+      </button>
+    </div>
+    <div class="p-info">
+      <div class="p-title" id="p-title">Nothing playing</div>
+      <div class="p-track">
+        <time id="p-cur">0:00</time>
+        <input type="range" id="p-seek" min="0" max="0" step="1" value="0" aria-label="Seek">
+        <time id="p-dur">0:00</time>
+      </div>
+    </div>
+    <button class="speed" id="p-speed" type="button" aria-label="Playback speed">1×</button>
+  </div>
+</section>
+
+<audio id="audio" preload="none"></audio>
+
+<script>
+  // This page lists Once Upon a Time Show: every bedtime-story and storytelling episode
+  // of ../episodes.json, in one list (no tabs).
+  window.SHOW_PAGE = {
+    show: "Once Upon a Time Show",
+    artist: "Once Upon a Time Show",
+    noun: ["story", "stories"],
+    data: "../episodes.json",
+    pages: { "Build Wiz AI Show": "../" },
+    tabs: [
+      { id: "all", label: "Stories", empty: "No stories yet.",
+        tagline: ["Gentle stories for bedtime and story time, told slowly by a warm narrator."] },
+    ],
+  };
+</script>
+<script src="../site.js"></script>
+</body>
+</html>

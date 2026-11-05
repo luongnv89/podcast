@@ -243,5 +243,109 @@ class MusicCreditTest(EpisodeCreditsTest):
                 self.assertNotIn("music_credit", self.entry())
 
 
+STORY = "Once Upon a Time Show"
+BUILD = "Build Wiz AI Show"
+
+
+class ShowRoutingTest(EpisodeCreditsTest):
+    """Stories go to Once Upon a Time Show (DropCast #129); podcasts stay Build Wiz AI Show."""
+
+    def make_show_job(self, fmt, script_show=None, brief_show=None, result=None) -> None:
+        self.make_job([MAIN["url"]], HOSTS, result=result)
+        script = json.loads((self.job / "script.json").read_text(encoding="utf-8"))
+        script["format"] = fmt
+        if script_show is not None:
+            script["show"] = dict(script["show"], name=script_show)
+        _write(self.job / "script.json", script)
+        if brief_show is not None:
+            _write(self.job / "brief.json", {"format": fmt, "show": brief_show})
+
+    def test_podcast_unchanged(self) -> None:
+        for fmt in ("podcast-2host", "solo-explainer"):
+            with self.subTest(fmt=fmt):
+                self.make_show_job(fmt, BUILD, {"name": BUILD, "register": "show"})
+                self.assertEqual(self.entry()["show"], BUILD)
+
+    def test_story_job_goes_to_the_story_show(self) -> None:
+        for fmt in ("bedtime-story", "storytelling"):
+            with self.subTest(fmt=fmt):
+                register = "bedtime" if fmt == "bedtime-story" else "story"
+                self.make_show_job(fmt, STORY, {"name": STORY, "register": register})
+                self.assertEqual(self.entry()["show"], STORY)
+
+    def test_legacy_story_with_the_build_wiz_name_is_routed_by_format(self) -> None:
+        # A story briefed before #126: script.json and brief.json both say Build Wiz AI Show.
+        self.make_show_job("bedtime-story", BUILD, {"name": BUILD, "register": "bedtime"})
+        entry = self.entry()
+        self.assertEqual(entry["show"], STORY)
+        self.assertEqual(entry["category"], "bedtime")
+        self.make_show_job("storytelling", BUILD)  # no brief.json at all
+        self.assertEqual(self.entry()["show"], STORY)
+
+    def test_story_named_by_the_brief_or_script_only(self) -> None:
+        # A story format this site does not know yet, named by its brief or script.
+        self.make_show_job("fable", None, {"name": STORY, "register": "story"})
+        self.assertEqual(self.entry()["show"], STORY)
+        self.make_show_job("fable", STORY)
+        self.assertEqual(self.entry()["show"], STORY)
+
+    def test_old_or_unknown_show_names_publish_as_build_wiz(self) -> None:
+        self.make_show_job("podcast-2host", "The AI Show", {"name": "The AI Show"})
+        self.assertEqual(self.entry()["show"], BUILD)
+        (self.job / "brief.json").write_text("not json", encoding="utf-8")
+        self.assertEqual(self.entry()["show"], BUILD)
+
+    def test_result_json_is_not_read_for_the_show(self) -> None:
+        # result.json is not final when DropCast calls the publisher.
+        result = {"status": "awaiting", "delivery": {"show": STORY}}
+        self.make_show_job("podcast-2host", BUILD, result=result)
+        self.assertEqual(self.entry()["show"], BUILD)
+
+    def test_index_lists_both_shows(self) -> None:
+        self.make_show_job("bedtime-story", STORY)
+        self.assertTrue(publish.update_index(self.site, [self.entry()]))
+        saved = json.loads((self.site / "episodes.json").read_text(encoding="utf-8"))
+        self.assertEqual(saved["show"]["name"], BUILD)
+        self.assertEqual([s["name"] for s in saved["shows"]], [BUILD, STORY])
+        self.assertEqual(saved["shows"][1]["page"], "stories/")
+        self.assertEqual(saved["episodes"][0]["show"], STORY)
+
+
+class SiteMigrationTest(unittest.TestCase):
+    """The live index after #129: stories moved to their own page, nothing removed."""
+
+    def setUp(self) -> None:
+        self.data = json.loads((ROOT / "docs" / "episodes.json").read_text(encoding="utf-8"))
+        self.episodes = self.data["episodes"]
+
+    def test_stories_are_on_the_story_show(self) -> None:
+        stories = {e["id"] for e in self.episodes if e["show"] == STORY}
+        self.assertTrue({"2026-11-04_the-golden-touch",
+                         "2026-11-05_cinderella-or-the-little-glass-slipper"} <= stories)
+        for e in self.episodes:
+            with self.subTest(id=e["id"]):
+                story = e.get("format") in publish.STORY_FORMATS
+                self.assertEqual(e["show"], STORY if story else BUILD)
+                if story:
+                    self.assertTrue((ROOT / "docs" / e["audio"]).is_file())
+
+    def test_no_episode_removed(self) -> None:
+        self.assertGreaterEqual(len(self.episodes), 10)
+        self.assertEqual(len({e["id"] for e in self.episodes}), len(self.episodes))
+        for e in self.episodes:
+            self.assertTrue((ROOT / "docs" / e["audio"]).is_file(), e["id"])
+
+    def test_both_pages_share_the_index_and_script(self) -> None:
+        main = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+        stories = (ROOT / "docs" / "stories" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('href="stories/"', main)
+        self.assertNotIn('id: "bedtime"', main)
+        self.assertIn('<script src="site.js"></script>', main)
+        self.assertIn('<script src="../site.js"></script>', stories)
+        self.assertIn('data: "../episodes.json"', stories)
+        self.assertIn("<h1>Once Upon a <span", stories)
+        self.assertEqual([s["name"] for s in self.data["shows"]], [BUILD, STORY])
+
+
 if __name__ == "__main__":
     unittest.main()
