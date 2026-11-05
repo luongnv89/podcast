@@ -24,8 +24,39 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-05T14:59:11Z",
+  "updated": "2026-11-05T15:31:32Z",
   "episodes": [
+    {
+      "id": "2026-11-05_cinderella-or-the-little-glass-slipper-fr",
+      "title": "Cendrillon, une histoire du soir",
+      "summary": [
+        "Cendrillon, racontée tout en douceur pour l'heure du coucher, d'après le conte de Charles Perrault.",
+        "Une jeune fille au grand cœur, une marraine fée, un carrosse-citrouille et une pantoufle de verre.",
+        "Une histoire qui finit par le pardon et un bonsoir tout calme : être gentil, c'est la plus belle des magies."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "fr",
+      "format": "bedtime-story",
+      "published": "2026-11-05T15:24:08Z",
+      "duration_s": 351.693,
+      "size_bytes": 5628995,
+      "audio": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper-fr/episode.mp3",
+      "transcript": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper-fr/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Cinderella; or, The Little Glass Slipper",
+        "author": null,
+        "url": "https://sites.pitt.edu/~dash/perrault06.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)"
+    },
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper",
       "title": "Cinderella, a bedtime story",
