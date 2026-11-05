@@ -24,7 +24,7 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-05T12:44:54Z",
+  "updated": "2026-11-05T14:02:35Z",
   "episodes": [
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper",
@@ -42,9 +42,9 @@
       ],
       "language": "en",
       "format": "bedtime-story",
-      "published": "2026-11-05T12:44:53Z",
-      "duration_s": 377.31,
-      "size_bytes": 6037881,
+      "published": "2026-11-05T14:02:34Z",
+      "duration_s": 420.557,
+      "size_bytes": 6730735,
       "audio": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper/episode.mp3",
       "transcript": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper/transcript.vtt",
       "voices": "OpenRouter · fish-audio/s2.1-pro-free:free",
@@ -54,7 +54,8 @@
         "url": "https://sites.pitt.edu/~dash/perrault06.html",
         "published": null,
         "kind": "article"
-      }
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)"
     },
     {
       "id": "2026-11-05_meet-the-new-build-wiz-ai-show",
