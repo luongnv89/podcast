@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- Cover art for the Once Upon a Time Show feeds (3000 x 3000, one per language).
+     Render: chrome-headless-shell --screenshot --window-size=3000,3000 "cover.html?lang=en"
+     then save as JPEG (docs/stories/cover-<lang>.jpg). The mark is the story page's book. -->
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Hanken+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; width: 3000px; height: 3000px; background: #000; overflow: hidden; }
+  .c { position: relative; width: 3000px; height: 3000px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+       background: radial-gradient(circle at 50% 38%, #1d1a2e 0%, #0b0a12 55%, #000 100%); color: #fff; }
+  .stars i { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: #F2C46D; opacity: .55; }
+  svg { width: 1250px; height: 1250px; margin-top: -120px; }
+  h1 { font: 800 250px/0.95 "Bricolage Grotesque", Georgia, serif; letter-spacing: -0.03em; margin: 40px 0 0; text-align: center; }
+  h1 .hl { color: #F2C46D; }
+  p { font: 600 120px/1.15 "Hanken Grotesk", sans-serif; color: rgba(255,255,255,.78); margin: 70px 0 0; text-align: center; max-width: 2500px; }
+</style></head>
+<body><div class="c">
+  <div class="stars"><i style="left:420px;top:380px"></i><i style="left:2560px;top:300px"></i><i style="left:2380px;top:820px"></i><i style="left:610px;top:980px"></i><i style="left:300px;top:2620px"></i><i style="left:2700px;top:2580px"></i><i style="left:1500px;top:180px"></i></div>
+  <svg viewBox="0 0 64 64" aria-hidden="true"><path fill="#FFFFFF" d="M7 22.5c8.5-3.2 16.8-2.4 23 2.6V53c-6.2-5-14.5-5.8-23-2.6zM57 22.5c-8.5-3.2-16.8-2.4-23 2.6V53c6.2-5 14.5-5.8 23-2.6z"/><path fill="#000000" opacity=".35" d="M11 28.5c5.5-1.4 10.5-1 15 1.2v1.6c-4.5-2.2-9.5-2.6-15-1.2zM11 34.5c5.5-1.4 10.5-1 15 1.2v1.6c-4.5-2.2-9.5-2.6-15-1.2zM53 28.5c-5.5-1.4-10.5-1-15 1.2v1.6c4.5-2.2 9.5-2.6 15-1.2zM53 34.5c-5.5-1.4-10.5-1-15 1.2v1.6c4.5-2.2 9.5-2.6 15-1.2z"/><path fill="#F2C46D" d="M32 3.5C33.4 8.6 33.4 8.6 38.5 10C33.4 11.4 33.4 11.4 32 16.5C30.6 11.4 30.6 11.4 25.5 10C30.6 8.6 30.6 8.6 32 3.5Z"/></svg>
+  <h1>Once Upon a <span class="hl">Time</span> Show</h1>
+  <p id="sub"></p>
+</div>
+<script>
+  const SUB = { en: "Bedtime Stories", fr: "Histoires du soir", vi: "Truyện kể trước giờ ngủ" };
+  const lang = new URLSearchParams(location.search).get("lang") || "en";
+  document.documentElement.lang = lang;
+  document.getElementById("sub").textContent = SUB[lang] || SUB.en;
+</script>
+</body></html>

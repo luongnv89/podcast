@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0">
+<channel>
+  <title>Once Upon a Time Show : histoires du soir</title>
+  <link>https://luongnv.com/podcast/stories/</link>
+  <atom:link href="https://luongnv.com/podcast/stories/feed-fr.xml" rel="self" type="application/rss+xml"/>
+  <description>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</description>
+  <itunes:summary>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</itunes:summary>
+  <language>fr</language>
+  <lastBuildDate>Thu, 05 Nov 2026 22:39:34 +0000</lastBuildDate>
+  <itunes:author>Once Upon a Time Show</itunes:author>
+  <itunes:owner>
+    <itunes:name>Build Wiz AI</itunes:name>
+    <itunes:email>buildwizai@gmail.com</itunes:email>
+  </itunes:owner>
+  <itunes:image href="https://luongnv.com/podcast/stories/cover-fr.jpg"/>
+  <image>
+    <url>https://luongnv.com/podcast/stories/cover-fr.jpg</url>
+    <title>Once Upon a Time Show : histoires du soir</title>
+    <link>https://luongnv.com/podcast/stories/</link>
+  </image>
+  <itunes:category text="Kids &amp; Family">
+    <itunes:category text="Stories for Kids"/>
+  </itunes:category>
+  <itunes:explicit>false</itunes:explicit>
+  <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-05_hansel-and-gretel-fr</guid>
+    <title>Hansel et Gretel, une histoire du soir</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-05_hansel-and-gretel-fr</link>
+    <description>Une version douce de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.
+
+Des cailloux qui brillent, une maison en pain et en gâteau, et une sœur maligne qui libère son frère.
+
+Un gentil canard blanc les ramène chez leur papa, et l'histoire se termine par une bonne nuit tout en douceur.
+
+Source: Hansel and Gretel (https://sites.pitt.edu/~dash/grimm015.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
+    <content:encoded><![CDATA[<p>Une version douce de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.</p><p>Des cailloux qui brillent, une maison en pain et en gâteau, et une sœur maligne qui libère son frère.</p><p>Un gentil canard blanc les ramène chez leur papa, et l'histoire se termine par une bonne nuit tout en douceur.</p><p>Source: Hansel and Gretel: <a href="https://sites.pitt.edu/~dash/grimm015.html">https://sites.pitt.edu/~dash/grimm015.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
+    <pubDate>Thu, 05 Nov 2026 22:10:03 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel-fr/episode.mp3?v=90a804ab" length="8190709" type="audio/mpeg"/>
+    <itunes:duration>512</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel-fr/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-04_the-golden-touch-fr</guid>
+    <title>Le roi Midas et le toucher d'or</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-04_the-golden-touch-fr</link>
+    <description>Le roi Midas, raconté tout en douceur pour l'heure du coucher, d'après « Le toucher d'or » de Nathaniel Hawthorne.
+
+Un roi qui aimait l'or voit son vœu exaucé : tout ce qu'il touche devient or, même sa petite Marygold.
+
+L'eau de la rivière répare tout, et il comprend ce qui vaut plus que l'or.
+
+Source: THE GOLDEN TOUCH. (https://www.ibiblio.org/eldritch/nh/wb2b.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Golly Gee", "Touching Moments Four - Melody", "Call to Adventure", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
+    <content:encoded><![CDATA[<p>Le roi Midas, raconté tout en douceur pour l'heure du coucher, d'après « Le toucher d'or » de Nathaniel Hawthorne.</p><p>Un roi qui aimait l'or voit son vœu exaucé : tout ce qu'il touche devient or, même sa petite Marygold.</p><p>L'eau de la rivière répare tout, et il comprend ce qui vaut plus que l'or.</p><p>Source: THE GOLDEN TOUCH.: <a href="https://www.ibiblio.org/eldritch/nh/wb2b.html">https://www.ibiblio.org/eldritch/nh/wb2b.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Golly Gee", "Touching Moments Four - Melody", "Call to Adventure", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
+    <pubDate>Thu, 05 Nov 2026 16:32:38 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-04_the-golden-touch-fr/episode.mp3?v=f3c1a19b" length="9250669" type="audio/mpeg"/>
+    <itunes:duration>578</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-04_the-golden-touch-fr/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-05_cinderella-or-the-little-glass-slipper-fr</guid>
+    <title>Cendrillon, une histoire du soir</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-05_cinderella-or-the-little-glass-slipper-fr</link>
+    <description>Cendrillon, racontée tout en douceur pour l'heure du coucher, d'après le conte de Charles Perrault.
+
+Une jeune fille au grand cœur, une marraine fée, un carrosse-citrouille et une pantoufle de verre.
+
+Une histoire qui finit par le pardon et un bonsoir tout calme : être gentil, c'est la plus belle des magies.
+
+Source: Cinderella; or, The Little Glass Slipper (https://sites.pitt.edu/~dash/perrault06.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Marty Gots a Plan", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Écrit et lu avec l'IA (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Cendrillon, racontée tout en douceur pour l'heure du coucher, d'après le conte de Charles Perrault.</p><p>Une jeune fille au grand cœur, une marraine fée, un carrosse-citrouille et une pantoufle de verre.</p><p>Une histoire qui finit par le pardon et un bonsoir tout calme : être gentil, c'est la plus belle des magies.</p><p>Source: Cinderella; or, The Little Glass Slipper: <a href="https://sites.pitt.edu/~dash/perrault06.html">https://sites.pitt.edu/~dash/perrault06.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Marty Gots a Plan", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Thu, 05 Nov 2026 15:24:08 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-05_cinderella-or-the-little-glass-slipper-fr/episode.mp3?v=f787e672" length="5628995" type="audio/mpeg"/>
+    <itunes:duration>352</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_cinderella-or-the-little-glass-slipper-fr/transcript.vtt" type="text/vtt"/>
+  </item>
+</channel>
+</rss>
