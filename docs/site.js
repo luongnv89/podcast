@@ -68,6 +68,46 @@
   const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // ---------- Analytics (GA4 events, DropCast #138) ----------
+  // The pages load GA4 (gtag) for page views; these events say what is listened to. No new
+  // tracker or cookie: they go through the page's gtag, and every call is guarded, so a
+  // blocked, missing or throwing gtag never breaks the page. Each counter is per page view.
+  const MILESTONES = [25, 50, 75, 100];
+  const played = new Set();   // episode ids whose episode_play was sent
+  const reached = new Map();  // episode id -> progress milestones sent
+  function track(name, params) {
+    try { if (typeof window.gtag === "function") window.gtag("event", name, params); } catch { /* never breaks the page */ }
+  }
+  // The parameters every event carries (no personal data): the episode, its show, language,
+  // story group (a story in several languages only) and category.
+  function epParams(ep) {
+    const p = { episode_id: String(ep.id), episode_title: String(ep.title || "").slice(0, 100), show: showOf(ep), language: ep._lang || langOf(ep) };
+    const g = typeof ep.story_group === "string" ? ep.story_group.trim() : "";
+    if (g) p.story_group = g;
+    if (typeof ep.category === "string" && ep.category) p.category = ep.category;
+    return p;
+  }
+  // A link click (and a middle click, which opens a tab) sends one event.
+  function trackLink(a, name, ep) {
+    a.addEventListener("click", () => track(name, epParams(ep)));
+    a.addEventListener("auxclick", (e) => { if (e.button === 1) track(name, epParams(ep)); });
+    return a;
+  }
+  // 25 / 50 / 75 / 100 % of the episode reached in the player, each once, and only once
+  // the episode has played in this page view (loading a resume point sends nothing).
+  function trackProgress(ended) {
+    if (!current || !played.has(current.id)) return;
+    const d = Number.isFinite(audio.duration) && audio.duration > 0 ? audio.duration : current.duration_s || 0;
+    const pct = ended ? 100 : d ? ((audio.currentTime || 0) / d) * 100 : 0;
+    let sent = reached.get(current.id);
+    if (!sent) reached.set(current.id, (sent = new Set()));
+    for (const m of MILESTONES) {
+      if (pct < m || sent.has(m)) continue;
+      sent.add(m);
+      track("episode_progress", { ...epParams(current), percent: m });
+    }
+  }
+
   // ---------- One story in several languages (DropCast #136) ----------
   // Entries sharing a "story_group" are one row with a language switch; each keeps its own
   // id (deep link), audio, transcript and resume point. Entries without one are unchanged.
@@ -120,6 +160,7 @@
     u.chosen = v;
     u.pin = terms().join(" ");
     if (v === u.sel) return;
+    if (byUser) track("language_switch", { ...epParams(v), from_language: u.sel._lang, to_language: v._lang });
     showVersion(u, v, true);
     apply();
     if (hadFocus) v._langBtns.get(v._lang)?.focus();
@@ -431,7 +472,7 @@
 
     const summaryItems = ep.summary.map((line) => el("li", grouped ? { text: line, lang: ep._lang } : { text: line }));
     const credit = el("p", { class: "credit" }, url
-      ? ["Based on ", el("a", { href: url, target: "_blank", rel: "noopener", text: src.title || host(url) }), src.author ? ` by ${src.author}` : "", ` · ${host(url)}`]
+      ? ["Based on ", trackLink(el("a", { href: url, target: "_blank", rel: "noopener", text: src.title || host(url) }), "source_click", ep), src.author ? ` by ${src.author}` : "", ` · ${host(url)}`]
       : [src.title ? `Based on ${src.title}` : ""]);
     let sourceList = null;
     if (sources.length > 1) {
@@ -441,7 +482,7 @@
           const u = safeUrl(x.url);
           const name = String(x.title || host(u) || "Untitled source");
           return el("li", {}, [
-            u ? el("a", { href: u, target: "_blank", rel: "noopener", text: name }) : name,
+            u ? trackLink(el("a", { href: u, target: "_blank", rel: "noopener", text: name }), "source_click", ep) : name,
             x.author ? ` by ${x.author}` : "",
             u ? ` · ${host(u)}` : "",
           ]);
@@ -468,8 +509,8 @@
       tBtn.addEventListener("click", () => openTranscript(ep, panel, tBtn));
       actions.append(tBtn);
     }
-    actions.append(el("a", { class: "btn", href: ep.audio, download: `${ep.id}.mp3` }, [svg(["M12 4v12M6 10l6 6 6-6M5 20h14"]), "Download MP3"]));
-    if (url) actions.append(el("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, [svg(["M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"]), "Read the source"]));
+    actions.append(trackLink(el("a", { class: "btn", href: ep.audio, download: `${ep.id}.mp3` }, [svg(["M12 4v12M6 10l6 6 6-6M5 20h14"]), "Download MP3"]), "episode_download", ep));
+    if (url) actions.append(trackLink(el("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, [svg(["M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"]), "Read the source"]), "source_click", ep));
     const linkLabel = el("span", { text: "Copy link" });
     const linkBtn = el("button", { class: "btn", type: "button" }, [svg(["M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"]), linkLabel]);
     linkBtn.addEventListener("click", () => copyLink(ep, linkBtn, linkLabel));
@@ -657,12 +698,19 @@
     $("tb-progress").style.width = pct;
     if (current && d) current._bar.style.width = pct;
     highlight();
+    trackProgress(false);
     if (current && Date.now() - saveTimer > 3000) { saveTimer = Date.now(); savePos(t); }
   }
 
   audio.addEventListener("play", sync);
+  // The first time an episode really starts in this page view (not a resume after a pause).
+  audio.addEventListener("playing", () => {
+    if (!current || played.has(current.id)) return;
+    played.add(current.id);
+    track("episode_play", epParams(current));
+  });
   audio.addEventListener("pause", () => { sync(); savePos(audio.currentTime); });
-  audio.addEventListener("ended", () => { if (current) { store.set(`done:${current.id}`, true); savePos(0); } sync(); });
+  audio.addEventListener("ended", () => { trackProgress(true); if (current) { store.set(`done:${current.id}`, true); savePos(0); } sync(); });
   audio.addEventListener("timeupdate", tick);
   audio.addEventListener("loadedmetadata", tick);
   audio.addEventListener("error", () => { if (current) $("p-title").textContent = `Could not load audio: ${current.title}`; sync(); });
