@@ -39,6 +39,23 @@ python3 scripts/publish.py --all            # every delivered job, no git
 python3 scripts/publish.py ~/dropcast/jobs/2026-11-03_some-episode --category marketing
 ```
 
+## Sources and guests
+
+Every episode credits its source (`source` in `episodes.json`). DropCast episodes can
+also bring in extra external sources, each presented by a fictional recurring guest
+(Maya, Sam, Lena or Theo). For those episodes the publisher adds:
+
+- `sources`: every source used, main first, as `{title, author, url}` (from the job's
+  `result.json` `delivery.sources` when it matches the script, else from `script.json`
+  `sources`, the fetched `sources/<id>/source.json` and the fact-check report);
+- `guests`: `{name, presents}`, `presents` being the titles of the sources each guest
+  presents.
+
+The episode's details then list the sources and the guests. Episodes without extra
+sources get neither key, so their entries are unchanged.
+
+Tests (standard library, no network): `python3 -m unittest discover -s tests`.
+
 ## Tabs (categories)
 
 The page has four tabs: **AI podcast**, **Bedtime stories**, **Marketing** and

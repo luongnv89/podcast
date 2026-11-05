@@ -212,6 +212,13 @@
   .credit { margin: 10px 0 0; font-size: 14px; color: var(--text-2); overflow-wrap: anywhere; }
   .credit a { color: var(--white); text-decoration-color: var(--green); text-underline-offset: 3px; }
   .credit a:hover { color: var(--green); }
+  .sources { margin: 10px 0 0; font-size: 14px; color: var(--text-2); max-width: 760px; }
+  .sources h4 { margin: 0 0 4px; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-2); }
+  .sources ol { margin: 0; padding: 0 0 0 20px; display: grid; gap: 3px; overflow-wrap: anywhere; }
+  .sources a { color: var(--white); text-decoration-color: var(--green); text-underline-offset: 3px; }
+  .sources a:hover { color: var(--green); }
+  .guests { margin: 8px 0 0; font-size: 14px; color: var(--text-2); overflow-wrap: anywhere; }
+  .guests strong { color: var(--white); font-weight: 600; }
   .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .btn {
     display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 6px 12px;
@@ -688,7 +695,12 @@
     const src = ep.source || {};
     const url = safeUrl(src.url);
     ep.summary = Array.isArray(ep.summary) ? ep.summary : [];
-    ep._hay = fold([ep.title, ...ep.summary, src.title, src.author, host(src.url), KIND[src.kind] || src.kind, (ep.hosts || []).join(" "), ep.voices].join(" \n "));
+    // Every source used (main first) and the guests who presented the extra ones.
+    const sources = (Array.isArray(ep.sources) ? ep.sources : []).filter((x) => x && typeof x === "object");
+    const extras = sources.slice(1);
+    const guests = (Array.isArray(ep.guests) ? ep.guests : []).filter((g) => g && typeof g.name === "string" && g.name);
+    ep._hay = fold([ep.title, ...ep.summary, src.title, src.author, host(src.url), KIND[src.kind] || src.kind, (ep.hosts || []).join(" "), ep.voices,
+      ...extras.flatMap((x) => [x.title, x.author, host(x.url)]), ...guests.map((g) => g.name)].join(" \n "));
 
     const playBtn = el("button", { class: "play", type: "button", "aria-label": `Play ${ep.title}` }, [
       svg([PLAY]), el("span", { class: "eq", "aria-hidden": "true" }, [el("b"), el("b"), el("b")]),
@@ -716,6 +728,27 @@
     const credit = el("p", { class: "credit" }, url
       ? ["Based on ", el("a", { href: url, target: "_blank", rel: "noopener", text: src.title || host(url) }), src.author ? ` by ${src.author}` : "", ` · ${host(url)}`]
       : [src.title ? `Based on ${src.title}` : ""]);
+    let sourceList = null;
+    if (sources.length > 1) {
+      sourceList = el("div", { class: "sources" }, [
+        el("h4", { text: "Sources" }),
+        el("ol", {}, sources.map((x) => {
+          const u = safeUrl(x.url);
+          const name = String(x.title || host(u) || "Untitled source");
+          return el("li", {}, [
+            u ? el("a", { href: u, target: "_blank", rel: "noopener", text: name }) : name,
+            x.author ? ` by ${x.author}` : "",
+            u ? ` · ${host(u)}` : "",
+          ]);
+        })),
+      ]);
+    }
+    const guestLine = guests.length
+      ? el("p", { class: "guests" }, ["Guests: ", ...guests.flatMap((g, i) => {
+        const shows = (Array.isArray(g.presents) ? g.presents : []).filter((t) => typeof t === "string" && t);
+        return [i ? ", " : "", el("strong", { text: g.name }), shows.length ? ` (presents ${shows.join(", ")})` : ""];
+      })])
+      : null;
     const actions = el("div", { class: "actions" });
     let panel = null;
     if (ep.transcript) {
@@ -733,7 +766,7 @@
     linkBtn.addEventListener("click", () => copyLink(ep, linkBtn, linkLabel));
     actions.append(linkBtn);
     const detail = el("div", { class: "ep-detail", id: detailId, hidden: true }, [
-      summaryItems.length ? el("ul", { class: "summary" }, summaryItems) : null, credit, actions, panel,
+      summaryItems.length ? el("ul", { class: "summary" }, summaryItems) : null, credit, sourceList, guestLine, actions, panel,
     ]);
     toggleBtn.addEventListener("click", () => expand(ep, toggleBtn.getAttribute("aria-expanded") !== "true"));
 
