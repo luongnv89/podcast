@@ -7,7 +7,7 @@ Usage:
 
 For each delivered DropCast job it copies ``episode.mp3`` and ``transcript.vtt`` to
 ``docs/episodes/<job id>/`` and records the episode in ``docs/episodes.json``
-(title, summary, source, duration, voices, category). Only public facts are copied: no
+(title, summary, source, duration, voices, show, category). Only public facts are copied: no
 local paths, no source text, no keys.
 
 An episode with extra sources presented by guests (DropCast #94) also gets ``sources``
@@ -18,6 +18,15 @@ main source. Other episodes get neither key, so their entries do not change.
 An episode whose music needs attribution (``run.json`` ``music.credit``, e.g. a CC-BY
 track) also gets ``music_credit``, that text trimmed; the site shows it under the episode.
 Without a credit (the CC0 theme, older jobs) the key is left out.
+
+Each episode gets one ``show``: **Once Upon a Time Show** for a story (a ``bedtime-story``
+or ``storytelling`` script, or a job whose ``script.json`` or ``brief.json`` names that
+show or a story register), listed on ``docs/stories/``; else **Build Wiz AI Show**, listed
+on ``docs/index.html``. The format wins over the name, so a story briefed before the
+stories had their own show (its script says Build Wiz AI Show) still goes to the story
+show. Any other job is Build Wiz AI Show unless its script or brief names the story show
+or a story register (DropCast never writes that for a podcast). ``result.json``
+is not read for it (DropCast runs the publisher before that file is final).
 
 Each episode gets one ``category``, the site's tab: ``ai`` (AI podcast), ``bedtime``
 (bedtime stories), ``marketing`` or ``others``. The first that applies wins:
@@ -62,6 +71,15 @@ SHOW = {
     "tagline": "Big AI ideas, made clear for builders.",
     "hosts": ["Bob", "Alice"],
 }
+# The stories' show (DropCast #125/#129): its own page, docs/stories/.
+STORY_SHOW = {
+    "name": "Once Upon a Time Show",
+    "tagline": "Gentle stories for bedtime and story time, told slowly by a warm narrator.",
+    "page": "stories/",
+}
+SHOWS = [dict(SHOW, page=""), STORY_SHOW]
+STORY_FORMATS = ("bedtime-story", "storytelling")
+STORY_REGISTERS = ("story", "bedtime")
 ENGINE_LABELS = {
     "voicecast": "VoiceCast",
     "elevenlabs": "ElevenLabs",
@@ -113,6 +131,24 @@ def _job_category(job: Path) -> str | None:
     if word not in CATEGORIES:
         raise ValueError(f"category.txt says {word!r}; use one of {', '.join(CATEGORIES)}")
     return word
+
+
+def episode_show(job: Path, script: dict[str, Any]) -> str:
+    """The show an episode is published under: ``STORY_SHOW`` or ``SHOW``'s name.
+
+    A story format always goes to the story show (an older story's script still says
+    Build Wiz AI Show). Otherwise the story show only when ``script.json`` ``show.name``
+    or the job's ``brief.json`` (``show.name``, ``show.register``) says so, e.g. a future
+    story format; anything else, including a show name this site does not know, is
+    Build Wiz AI Show.
+    """
+    if script.get("format") in STORY_FORMATS:
+        return STORY_SHOW["name"]
+    brief = _mapping(_mapping(_read_json(job / "brief.json")).get("show"))
+    named = (_mapping(script.get("show")).get("name"), brief.get("name"))
+    if STORY_SHOW["name"] in named or brief.get("register") in STORY_REGISTERS:
+        return STORY_SHOW["name"]
+    return SHOW["name"]
 
 
 class Skip(Exception):
@@ -338,7 +374,7 @@ def episode_entry(
         "title": title,
         "summary": summary,
         "category": chosen,
-        "show": SHOW["name"],  # one brand on the site, whatever older scripts said
+        "show": episode_show(job, script),  # routed by format, never an old brand
         "hosts": [name for name in (hosts.get("host_a"), hosts.get("host_b")) if name],
         "language": script.get("language") or "en",
         "format": script.get("format"),
@@ -380,6 +416,7 @@ def update_index(site: Path, entries: list[dict[str, Any]]) -> bool:
     data = {
         "version": 1,
         "show": SHOW,
+        "shows": SHOWS,
         "updated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "episodes": ordered,
     }

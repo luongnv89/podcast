@@ -8,6 +8,22 @@
       "Alice"
     ]
   },
+  "shows": [
+    {
+      "name": "Build Wiz AI Show",
+      "tagline": "Big AI ideas, made clear for builders.",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "page": ""
+    },
+    {
+      "name": "Once Upon a Time Show",
+      "tagline": "Gentle stories for bedtime and story time, told slowly by a warm narrator.",
+      "page": "stories/"
+    }
+  ],
   "updated": "2026-11-05T12:44:54Z",
   "episodes": [
     {
@@ -19,7 +35,7 @@
         "It ends with forgiveness and a quiet goodnight: being kind is the best magic of all."
       ],
       "category": "bedtime",
-      "show": "Build Wiz AI Show",
+      "show": "Once Upon a Time Show",
       "hosts": [
         "Bob",
         "Alice"
@@ -264,7 +280,7 @@
         "A gentle lesson for kids: water, bread and the people we love are worth more than all the gold in the world."
       ],
       "category": "bedtime",
-      "show": "Build Wiz AI Show",
+      "show": "Once Upon a Time Show",
       "hosts": [],
       "language": "vi",
       "format": "bedtime-story",

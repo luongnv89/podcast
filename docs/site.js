@@ -1,0 +1,621 @@
+// The episode list and player shared by the show pages. Each page sets window.SHOW_PAGE
+// before loading this file: which show it lists, its tabs and where episodes.json is.
+// Both shows share one episodes.json; an episode's show is its "show" field, and a story
+// format always belongs to the story show (the same routing as scripts/publish.py).
+(() => {
+  "use strict";
+  const BUILD_SHOW = "Build Wiz AI Show";
+  const STORY_SHOW = "Once Upon a Time Show";
+  const STORY_FORMATS = ["bedtime-story", "storytelling"];
+  const showOf = (e) => (STORY_FORMATS.includes(e.format) || e.show === STORY_SHOW ? STORY_SHOW : BUILD_SHOW);
+  const PAGE = Object.assign({ show: BUILD_SHOW, data: "episodes.json", tabs: [], pages: {}, legacyTabs: {} }, window.SHOW_PAGE || {});
+  const DATA_URL = new URL(PAGE.data, location.href);
+  const NOUN = PAGE.noun || ["episode", "episodes"];   // [one, many]: "story", "stories"
+  const noun = (n) => NOUN[n === 1 ? 0 : 1];
+  const PLAY = "M8 5v14l11-7z";
+  const PAUSE = "M7 5h4v14H7zM13 5h4v14h-4z";
+  const SPEEDS = [1, 1.25, 1.5, 2];
+  const $ = (id) => document.getElementById(id);
+  const audio = $("audio");
+  const list = $("episodes");
+  const player = $("player");
+  const seek = $("p-seek");
+  const qInput = $("q");
+  let episodes = [];        // this show's episodes
+  let others = [];          // the other show's, only to forward their deep links
+  let current = null;       // episode object playing
+  let cues = new Map();     // id -> [{start, end, who, text, el}]
+  let saveTimer = 0;
+  let noMatch = null;       // the "no matches" row, built once
+
+  const store = {           // per-viewer resume points; storage can be unavailable
+    get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* ignore */ } },
+  };
+  const el = (tag, props = {}, kids = []) => {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(props)) {
+      if (k === "class") n.className = v;
+      else if (k === "text") n.textContent = v;
+      else if (k.startsWith("aria-") || k.startsWith("data-") || k === "role") n.setAttribute(k, v);
+      else n[k] = v;
+    }
+    for (const kid of [].concat(kids)) if (kid) n.append(kid);
+    return n;
+  };
+  const svg = (paths, cls) => {
+    const ns = "http://www.w3.org/2000/svg";
+    const s = document.createElementNS(ns, "svg");
+    s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("aria-hidden", "true");
+    if (cls) s.setAttribute("class", cls);
+    for (const d of paths) { const p = document.createElementNS(ns, "path"); p.setAttribute("d", d); s.append(p); }
+    return s;
+  };
+  const clock = (s) => {
+    s = Math.max(0, Math.floor(s || 0));
+    const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), r = String(s % 60).padStart(2, "0");
+    return h ? `${h}:${String(m).padStart(2, "0")}:${r}` : `${m}:${r}`;
+  };
+  const minutes = (s) => `${Math.max(1, Math.round((s || 0) / 60))} min`;
+  const day = (iso, year = true) => {
+    const d = new Date(iso);
+    return isNaN(d) ? "" : d.toLocaleDateString("en", year ? { year: "numeric", month: "short", day: "numeric" } : { month: "short", day: "numeric" });
+  };
+  const host = (url) => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return ""; } };
+  const safeUrl = (url) => { try { const u = new URL(url); return /^https?:$/.test(u.protocol) ? u.href : null; } catch { return null; } };
+  const fold = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------- Listening status (from the per-viewer resume points) ----------
+  // "done:<id>" is set when an episode plays to the end; "pos:<id>" is the resume point.
+  function statusOf(ep) {
+    const pos = Number(store.get(`pos:${ep.id}`)) || 0;
+    if (pos > 5 && (!ep.duration_s || pos < ep.duration_s - 5)) return "progress";
+    return store.get(`done:${ep.id}`) ? "done" : "new";
+  }
+  function showStatus(ep) {
+    if (!ep._status) return;
+    const st = statusOf(ep);
+    const pos = Number(store.get(`pos:${ep.id}`)) || 0;
+    ep._status.hidden = st === "new";
+    ep._status.textContent = st === "progress"
+      ? `${minutes((ep.duration_s || 0) - pos)} left`
+      : st === "done" ? "Finished" : "";
+  }
+
+  // ---------- Tab, search and sort state ----------
+  const SORTS = {
+    published: { def: "desc", asc: "Oldest first", desc: "Newest first", key: (e) => Date.parse(e.published) || null },
+    duration: { def: "desc", asc: "Shortest first", desc: "Longest first", key: (e) => e.duration_s ?? null },
+    title: { def: "asc", asc: "A to Z", desc: "Z to A", key: (e) => fold(e.title) || null },
+    source: { def: "desc", asc: "Oldest source first", desc: "Newest source first", key: (e) => Date.parse(e.source?.published) || null },
+  };
+  // Own keys only, so a hand-edited ?sort=constructor (or __proto__) falls back to the default.
+  const isSort = (v) => Object.prototype.hasOwnProperty.call(SORTS, v);
+  const KIND = { x: "X", article: "Article", paper: "Paper", thread: "Thread", blog: "Blog", web: "Web", pdf: "PDF", arxiv: "arXiv", youtube: "YouTube", reddit: "Reddit", hn: "Hacker News", github: "GitHub", substack: "Substack", medium: "Medium" };
+  // Category tabs. Every episode sits in exactly one; "category" comes from
+  // episodes.json, with a fallback for entries published before it existed.
+  // The page's tabs (from SHOW_PAGE). A page with one tab hides the tab row and lists
+  // every episode of its show; otherwise "category" picks the tab, unknown ones go last.
+  const TABS = PAGE.tabs.length ? PAGE.tabs : [{ id: "all", label: "Episodes", empty: "No episodes yet.", tagline: [] }];
+  const DEF_TAB = TABS[0].id;
+  const isTab = (v) => TABS.some((t) => t.id === v);
+  const catOf = (e) => (TABS.length === 1 ? DEF_TAB : isTab(e.category) ? e.category : TABS[TABS.length - 1].id);
+  const state = { tab: DEF_TAB, q: "", sort: "published", dir: "desc" };
+  const terms = () => fold(state.q).split(/\s+/).filter(Boolean);
+
+  function readUrl() {
+    const p = new URLSearchParams(location.search);
+    // A tab that moved to another page (the old Bedtime tab): follow it there.
+    const moved = Object.prototype.hasOwnProperty.call(PAGE.legacyTabs, p.get("tab")) && PAGE.legacyTabs[p.get("tab")];
+    if (moved) { location.replace(`${moved}${location.hash}`); return false; }
+    state.tab = isTab(p.get("tab")) ? p.get("tab") : DEF_TAB;
+    state.q = p.get("q") || "";
+    state.sort = isSort(p.get("sort")) ? p.get("sort") : "published";
+    const dir = p.get("order");
+    state.dir = dir === "asc" || dir === "desc" ? dir : SORTS[state.sort].def;
+    return true;
+  }
+  function writeUrl() {
+    // Only non-default settings go in the query, so a plain link stays clean. The hash
+    // is the episode deep link and is kept as it is.
+    const p = new URLSearchParams();
+    if (state.tab !== DEF_TAB) p.set("tab", state.tab);
+    if (state.q.trim()) p.set("q", state.q.trim());
+    if (state.sort !== "published") p.set("sort", state.sort);
+    if (state.dir !== SORTS[state.sort].def) p.set("order", state.dir);
+    const qs = p.toString();
+    try { history.replaceState(null, "", `${location.pathname}${qs ? `?${qs}` : ""}${location.hash}`); } catch { /* ignore */ }
+  }
+
+  function matches(ep) {
+    if (ep._cat !== state.tab) return false;
+    for (const t of terms()) if (!ep._hay.includes(t)) return false;
+    return true;
+  }
+
+  function sorted() {
+    const s = SORTS[state.sort];
+    const mul = state.dir === "asc" ? 1 : -1;
+    return episodes.slice().sort((a, b) => {
+      const ka = s.key(a), kb = s.key(b);
+      // Missing values (an unknown source date, say) always sink to the end.
+      if (ka == null && kb != null) return 1;
+      if (kb == null && ka != null) return -1;
+      if (ka != null && ka !== kb) return (ka < kb ? -1 : 1) * mul;
+      return (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0) || a.id.localeCompare(b.id);
+    });
+  }
+
+  function mark(node, text, ts) {
+    if (!ts.length) { node.textContent = text; return; }
+    const re = new RegExp(`(${ts.map(escapeRe).join("|")})`, "gi");
+    node.replaceChildren(...text.split(re).map((part, i) => (i % 2 ? el("mark", { text: part }) : part)));
+  }
+
+  function buildTabs() {
+    const box = $("tabs");
+    box.replaceChildren();
+    box.hidden = TABS.length < 2;
+    for (const t of TABS) {
+      t.n = el("span", { class: "n" });
+      t.btn = el("button", { class: "tab", type: "button", role: "tab", id: `tab-${t.id}`, "aria-controls": "episodes", "aria-selected": "false", tabIndex: -1 }, [el("span", { class: "l-long", text: t.label }), el("span", { class: "l-short", text: t.short || t.label, "aria-hidden": "true" }), t.n]);
+      t.btn.addEventListener("click", () => selectTab(t.id));
+      box.append(t.btn);
+    }
+    // Arrow keys move between tabs (the usual tablist pattern); Home and End jump.
+    box.addEventListener("keydown", (e) => {
+      const i = TABS.findIndex((t) => t.id === state.tab);
+      const to = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: TABS.length - 1 }[e.key];
+      if (to == null) return;
+      e.preventDefault();
+      const t = TABS[(to + TABS.length) % TABS.length];
+      selectTab(t.id);
+      t.btn.focus();
+    });
+  }
+
+  function selectTab(id) {
+    if (!isTab(id) || id === state.tab) return;
+    state.tab = id;   // the search carries over
+    apply();
+  }
+
+  function showTab() {
+    const tab = TABS.find((t) => t.id === state.tab);
+    for (const t of TABS) {
+      const on = t === tab;
+      const n = episodes.filter((e) => e._cat === t.id).length;
+      t.btn.setAttribute("aria-selected", String(on));
+      t.btn.tabIndex = on ? 0 : -1;
+      t.btn.setAttribute("aria-label", `${t.label}, ${n} ${noun(n)}`);
+      t.n.textContent = n;
+    }
+    list.setAttribute("aria-labelledby", `tab-${tab.id}`);
+    if (tab.tagline.length) $("tagline").replaceChildren(...tab.tagline.map((part) => (Array.isArray(part) ? el("strong", { text: part[0] }) : part)));
+    const sel = tab.btn;
+    if (sel && sel.parentNode.scrollWidth > sel.parentNode.clientWidth) sel.scrollIntoView({ block: "nearest", inline: "nearest" });
+  }
+
+  // Tabs, search and sorting move and hide the existing rows; they never rebuild them, so
+  // the playing row, open transcripts and live cue highlights survive every change.
+  function apply() {
+    if (!isSort(state.sort)) { state.sort = "published"; state.dir = SORTS.published.def; }
+    if (!isTab(state.tab)) state.tab = DEF_TAB;
+    if (!noMatch) return;   // the toolbar is live before the episode list has loaded
+    for (const e of episodes) e._cat = catOf(e);
+    showTab();
+    const ts = terms();
+    const order = sorted();
+    const rows = [...list.children].filter((n) => n.classList.contains("ep"));
+    if (order.some((e, i) => rows[i] !== e._node)) for (const e of order) list.insertBefore(e._node, noMatch);
+    let shown = 0;
+    for (const e of order) {
+      const on = matches(e);
+      e._node.hidden = !on;
+      if (on) shown++;
+      mark(e._titleText, e.title, ts);
+      e._summary.forEach((li, i) => mark(li, e.summary[i], ts));
+    }
+    const total = episodes.filter((e) => e._cat === state.tab).length;
+    const active = !!ts.length;
+    const count = $("count");
+    count.replaceChildren(...(active
+      ? [el("b", { text: shown }), ` of ${total} ${noun(total)}`]
+      : [el("b", { text: total }), ` ${noun(total)} · ${SORTS[state.sort][state.dir].toLowerCase()}`]));
+    $("clear-all").hidden = !active;
+    noMatch.hidden = shown > 0 || !episodes.length;
+    noMatch.querySelector("div").hidden = !total;
+    if (!total) {
+      noMatch.querySelector("strong").textContent = TABS.find((t) => t.id === state.tab).empty;
+      noMatch.querySelector("span").textContent = "New episodes appear here as soon as they are published.";
+    } else if (!shown) {
+      noMatch.querySelector("strong").textContent = "No matching episodes";
+      noMatch.querySelector("span").textContent = `Nothing matches “${state.q.trim()}”. Try fewer or different words.`;
+    }
+    // Sort controls reflect the state (it may come from the URL).
+    $("sort").value = state.sort;
+    const ob = $("order");
+    ob.dataset.dir = state.dir;
+    $("order-label").textContent = SORTS[state.sort][state.dir];
+    const other = SORTS[state.sort][state.dir === "asc" ? "desc" : "asc"];
+    ob.setAttribute("aria-label", `Order: ${SORTS[state.sort][state.dir]}. Switch to ${other.toLowerCase()}.`);
+    $("search").classList.toggle("has-q", !!state.q);
+    writeUrl();
+  }
+
+  function clearAll(e) {
+    const from = document.activeElement;
+    state.q = ""; qInput.value = "";
+    apply();
+    // Both clear buttons hide themselves; on keyboard activation (click detail 0), keep focus on a stable control.
+    if (e && e.detail === 0 && from && from !== document.body && from.closest("[hidden]")) qInput.focus();
+  }
+
+  // ---------- Render (once per load) ----------
+  function render() {
+    list.replaceChildren();
+    list.removeAttribute("aria-busy");
+    noMatch = el("li", { class: "state", hidden: true }, [
+      el("strong", { text: "No matching episodes" }), el("span"),
+      el("div", {}, el("button", { class: "btn", type: "button", text: "Clear search", onclick: clearAll })),
+    ]);
+    list.append(noMatch);
+    if (!episodes.length) {
+      list.prepend(el("li", { class: "state" }, [el("strong", { text: "No episodes yet" }), "The first one will appear here as soon as it is generated."]));
+    }
+    episodes.forEach((ep, i) => list.insertBefore(card(ep, i), noMatch));
+    const total = episodes.reduce((a, e) => a + (e.duration_s || 0), 0);
+    const latest = episodes.map((e) => e.published).sort().pop();
+    $("stat-count").textContent = episodes.length;
+    $("stat-count-label").textContent = noun(episodes.length);
+    $("stat-min").textContent = Math.round(total / 60);
+    // Drop the year for this year's episodes: "Nov 3" says enough and keeps the strip on one line.
+    const sameYear = latest && new Date(latest).getFullYear() === new Date().getFullYear();
+    $("stat-latest").textContent = latest ? day(latest, !sameYear) : "–";
+    buildTabs();
+    apply();
+    openTarget(false);
+  }
+
+  function card(ep, i) {
+    const src = ep.source || {};
+    const url = safeUrl(src.url);
+    ep.summary = Array.isArray(ep.summary) ? ep.summary : [];
+    // Every source used (main first) and the guests who presented the extra ones.
+    const sources = (Array.isArray(ep.sources) ? ep.sources : []).filter((x) => x && typeof x === "object");
+    const extras = sources.slice(1);
+    const guests = (Array.isArray(ep.guests) ? ep.guests : []).filter((g) => g && typeof g.name === "string" && g.name);
+    ep._hay = fold([ep.title, ...ep.summary, src.title, src.author, host(src.url), KIND[src.kind] || src.kind, (ep.hosts || []).join(" "), ep.voices,
+      ...extras.flatMap((x) => [x.title, x.author, host(x.url)]), ...guests.map((g) => g.name)].join(" \n "));
+
+    const playBtn = el("button", { class: "play", type: "button", "aria-label": `Play ${ep.title}` }, [
+      svg([PLAY]), el("span", { class: "eq", "aria-hidden": "true" }, [el("b"), el("b"), el("b")]),
+    ]);
+    playBtn.addEventListener("click", () => toggle(ep));
+
+    const detailId = `det-${ep.id}`;
+    const titleText = el("span", { text: ep.title });
+    const toggleBtn = el("button", { class: "ep-toggle", type: "button", "aria-expanded": "false", "aria-controls": detailId }, titleText);
+    const status = el("span", { class: "st", hidden: true });
+    const where = host(src.url);
+    const meta = el("div", { class: "meta" }, [
+      el("span", { class: "dur", text: minutes(ep.duration_s) }),
+      el("span", { text: day(ep.published) }),
+      where ? el("span", { text: where }) : null,
+      status,
+    ]);
+    const row = el("div", { class: "ep-row" }, [
+      playBtn,
+      el("div", { class: "ep-head" }, [el("h3", {}, toggleBtn), meta]),
+      svg(["M6 9l6 6 6-6"], "chev"),
+    ]);
+
+    const summaryItems = ep.summary.map((line) => el("li", { text: line }));
+    const credit = el("p", { class: "credit" }, url
+      ? ["Based on ", el("a", { href: url, target: "_blank", rel: "noopener", text: src.title || host(url) }), src.author ? ` by ${src.author}` : "", ` · ${host(url)}`]
+      : [src.title ? `Based on ${src.title}` : ""]);
+    let sourceList = null;
+    if (sources.length > 1) {
+      sourceList = el("div", { class: "sources" }, [
+        el("h4", { text: "Sources" }),
+        el("ol", {}, sources.map((x) => {
+          const u = safeUrl(x.url);
+          const name = String(x.title || host(u) || "Untitled source");
+          return el("li", {}, [
+            u ? el("a", { href: u, target: "_blank", rel: "noopener", text: name }) : name,
+            x.author ? ` by ${x.author}` : "",
+            u ? ` · ${host(u)}` : "",
+          ]);
+        })),
+      ]);
+    }
+    const guestLine = guests.length
+      ? el("p", { class: "guests" }, ["Guests: ", ...guests.flatMap((g, i) => {
+        const shows = (Array.isArray(g.presents) ? g.presents : []).filter((t) => typeof t === "string" && t);
+        return [i ? ", " : "", el("strong", { text: g.name }), shows.length ? ` (presents ${shows.join(", ")})` : ""];
+      })])
+      : null;
+    // Licensed music that needs attribution (CC-BY): shown as plain text.
+    const musicCredit = typeof ep.music_credit === "string" ? ep.music_credit.trim() : "";
+    const musicLine = musicCredit ? el("p", { class: "music", text: `Music: ${musicCredit}` }) : null;
+    const actions = el("div", { class: "actions" });
+    let panel = null;
+    if (ep.transcript) {
+      panel = el("div", { class: "transcript", hidden: true, id: `tr-${ep.id}` });
+      const tBtn = el("button", { class: "btn", type: "button", "aria-expanded": "false", "aria-controls": `tr-${ep.id}` }, [
+        svg(["M4 6h16M4 12h16M4 18h10"]), "Transcript",
+      ]);
+      tBtn.addEventListener("click", () => openTranscript(ep, panel, tBtn));
+      actions.append(tBtn);
+    }
+    actions.append(el("a", { class: "btn", href: ep.audio, download: `${ep.id}.mp3` }, [svg(["M12 4v12M6 10l6 6 6-6M5 20h14"]), "Download MP3"]));
+    if (url) actions.append(el("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, [svg(["M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"]), "Read the source"]));
+    const linkLabel = el("span", { text: "Copy link" });
+    const linkBtn = el("button", { class: "btn", type: "button" }, [svg(["M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"]), linkLabel]);
+    linkBtn.addEventListener("click", () => copyLink(ep, linkBtn, linkLabel));
+    actions.append(linkBtn);
+    const detail = el("div", { class: "ep-detail", id: detailId, hidden: true }, [
+      summaryItems.length ? el("ul", { class: "summary" }, summaryItems) : null, credit, sourceList, guestLine, musicLine, actions, panel,
+    ]);
+    toggleBtn.addEventListener("click", () => expand(ep, toggleBtn.getAttribute("aria-expanded") !== "true"));
+
+    const bar = el("div", { class: "progress", "aria-hidden": "true" }, el("i"));
+    const pos = store.get(`pos:${ep.id}`);
+    if (pos && ep.duration_s) bar.firstChild.style.width = `${Math.min(100, (pos / ep.duration_s) * 100)}%`;
+
+    const li = el("li", { class: "ep enter", id: `ep-${ep.id}` }, [row, detail, bar]);
+    li.style.animationDelay = `${Math.min(i, 10) * 40}ms`;
+    li.addEventListener("animationend", (e) => { if (e.animationName === "rise") li.classList.remove("enter"); });
+    Object.assign(ep, { _node: li, _bar: bar.firstChild, _btn: playBtn, _toggle: toggleBtn, _detail: detail, _titleText: titleText, _summary: summaryItems, _status: status });
+    showStatus(ep);
+    return li;
+  }
+
+  function expand(ep, open) {
+    ep._toggle.setAttribute("aria-expanded", String(open));
+    ep._detail.hidden = !open;
+    ep._node.classList.toggle("is-open", open);
+  }
+
+  async function copyLink(ep, btn, label) {
+    const link = `${location.origin}${location.pathname}#${encodeURIComponent(ep.id)}`;
+    try { await navigator.clipboard.writeText(link); label.textContent = "Link copied"; }
+    catch { history.replaceState(null, "", `${location.pathname}${location.search}#${encodeURIComponent(ep.id)}`); label.textContent = "Link in address bar"; }
+    btn.classList.add("is-done");
+    setTimeout(() => { label.textContent = "Copy link"; btn.classList.remove("is-done"); }, 1800);
+  }
+
+  // A shared link (#<episode id>) opens that episode in its tab. If the search
+  // hides it, the search is cleared so the link never lands on nothing.
+  function openTarget(fromHashChange) {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const ep = id && episodes.find((e) => e.id === id);
+    if (!ep) {
+      // A link to the other show's episode (shared before the stories moved): forward it.
+      const away = id && others.find((e) => e.id === id);
+      const page = away && PAGE.pages[showOf(away)];
+      if (page) location.replace(`${page}${location.hash}`);
+      return;
+    }
+    if (ep._cat !== state.tab) { state.tab = ep._cat; apply(); }
+    if (ep._node.hidden) clearAll();
+    expand(ep, true);
+    ep._node.classList.remove("is-target");
+    void ep._node.offsetWidth;
+    ep._node.classList.add("is-target");
+    ep._node.scrollIntoView({ block: "start", behavior: fromHashChange && !reduced() ? "smooth" : "auto" });
+  }
+
+  // ---------- Transcript ----------
+  function parseVtt(text) {
+    const out = [];
+    const toS = (t) => { const p = t.trim().split(":").map(Number); return p.length === 3 ? p[0] * 3600 + p[1] * 60 + p[2] : p[0] * 60 + p[1]; };
+    for (const block of text.replace(/\r/g, "").split(/\n\n+/)) {
+      const lines = block.split("\n");
+      const at = lines.findIndex((l) => l.includes("-->"));
+      if (at < 0) continue;
+      const [a, b] = lines[at].split("-->");
+      let body = lines.slice(at + 1).join(" ").trim();
+      let who = "";
+      const m = body.match(/^<v\s+([^>]+)>/);
+      if (m) { who = m[1].trim(); body = body.slice(m[0].length); }
+      body = body.replace(/<[^>]+>/g, "").trim();
+      // The end time may be followed by cue settings ("00:00:06.541 align:start").
+      if (body) out.push({ start: toS(a), end: toS(b.trim().split(/\s+/)[0]), who, text: body });
+    }
+    return out;
+  }
+
+  async function openTranscript(ep, panel, btn) {
+    const open = btn.getAttribute("aria-expanded") === "true";
+    btn.setAttribute("aria-expanded", String(!open));
+    panel.hidden = open;
+    if (open || cues.has(ep.id)) return;
+    panel.replaceChildren(el("p", { class: "t-state", text: "Loading transcript…" }));
+    try {
+      const res = await fetch(ep.transcript);
+      if (!res.ok) throw new Error(res.status);
+      const items = parseVtt(await res.text());
+      const ol = el("ol", { "aria-label": `Transcript of ${ep.title}` });
+      for (const c of items) {
+        const b = el("button", { class: "cue", type: "button" }, [
+          el("time", { text: clock(c.start) }),
+          el("span", {}, [c.who ? el("span", { class: "who", text: c.who }) : "", c.text]),
+        ]);
+        b.addEventListener("click", () => play(ep, c.start));
+        c.el = b;
+        ol.append(el("li", {}, b));
+      }
+      cues.set(ep.id, items);
+      panel.replaceChildren(ol);
+      if (current === ep) highlight();
+    } catch {
+      panel.replaceChildren(el("p", { class: "t-state", text: "The transcript could not be loaded. The audio still plays." }));
+    }
+  }
+
+  function highlight() {
+    const items = current && cues.get(current.id);
+    if (!items) return;
+    const t = audio.currentTime;
+    for (const c of items) {
+      const now = t >= c.start && t < c.end + 0.3;
+      if (now && !c.el.classList.contains("is-now")) {
+        c.el.classList.add("is-now");
+        const box = c.el.closest("ol");
+        if (box && !box.closest("[hidden]")) {
+          const top = c.el.offsetTop - box.offsetTop - box.clientHeight / 3;
+          box.scrollTo({ top, behavior: reduced() ? "auto" : "smooth" });
+        }
+      } else if (!now) c.el.classList.remove("is-now");
+    }
+  }
+
+  // ---------- Playback ----------
+  function toggle(ep) {
+    if (current === ep && !audio.paused) audio.pause();
+    else play(ep);
+  }
+
+  function play(ep, at) {
+    if (current !== ep) {
+      if (current) current._node.classList.remove("is-current", "is-playing");
+      current = ep;
+      audio.src = ep.audio;
+      audio.playbackRate = Number(store.get("speed")) || 1;
+      const resume = store.get(`pos:${ep.id}`);
+      audio.currentTime = at ?? (resume && ep.duration_s && resume < ep.duration_s - 5 ? resume : 0);
+      ep._node.classList.add("is-current");
+      $("p-title").textContent = ep.title;
+      player.classList.add("is-on");
+      document.documentElement.style.setProperty("--player-h", `${player.offsetHeight}px`);
+      if ("mediaSession" in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({ title: ep.title, artist: PAGE.artist || (ep.hosts || []).join(" & "), album: PAGE.show });
+      }
+    } else if (at != null) {
+      audio.currentTime = at;
+    }
+    audio.play().catch(() => sync());
+  }
+
+  function sync() {
+    const playing = current && !audio.paused;
+    $("p-glyph").setAttribute("d", playing ? PAUSE : PLAY);
+    $("p-toggle").setAttribute("aria-label", playing ? "Pause" : "Play");
+    for (const ep of episodes) {
+      const on = ep === current && playing;
+      ep._node.classList.toggle("is-playing", on);
+      ep._btn.setAttribute("aria-label", `${on ? "Pause" : "Play"} ${ep.title}`);
+      ep._btn.querySelector("path").setAttribute("d", on ? PAUSE : PLAY);
+    }
+  }
+
+  function savePos(t) {
+    if (!current) return;
+    store.set(`pos:${current.id}`, Math.floor(t));
+    showStatus(current);
+  }
+
+  function tick() {
+    const d = audio.duration || current?.duration_s || 0;
+    const t = audio.currentTime || 0;
+    const pct = d ? `${(t / d) * 100}%` : "0%";
+    seek.max = Math.floor(d);
+    if (!seek.matches(":active")) seek.value = Math.floor(t);
+    seek.style.setProperty("--pct", pct);
+    $("p-cur").textContent = clock(t);
+    $("p-dur").textContent = clock(d);
+    $("tb-progress").style.width = pct;
+    if (current && d) current._bar.style.width = pct;
+    highlight();
+    if (current && Date.now() - saveTimer > 3000) { saveTimer = Date.now(); savePos(t); }
+  }
+
+  audio.addEventListener("play", sync);
+  audio.addEventListener("pause", () => { sync(); savePos(audio.currentTime); });
+  audio.addEventListener("ended", () => { if (current) { store.set(`done:${current.id}`, true); savePos(0); } sync(); });
+  audio.addEventListener("timeupdate", tick);
+  audio.addEventListener("loadedmetadata", tick);
+  audio.addEventListener("error", () => { if (current) $("p-title").textContent = `Could not load audio: ${current.title}`; sync(); });
+  seek.addEventListener("input", () => { audio.currentTime = Number(seek.value); tick(); });
+  $("p-toggle").addEventListener("click", () => current && toggle(current));
+  $("p-back").addEventListener("click", () => { audio.currentTime = Math.max(0, audio.currentTime - 15); });
+  $("p-fwd").addEventListener("click", () => { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 30); });
+  const speedBtn = $("p-speed");
+  const showSpeed = () => { speedBtn.textContent = `${audio.playbackRate}×`; speedBtn.setAttribute("aria-label", `Playback speed ${audio.playbackRate}×`); };
+  audio.playbackRate = Number(store.get("speed")) || 1; showSpeed();
+  speedBtn.addEventListener("click", () => {
+    const next = SPEEDS[(SPEEDS.indexOf(audio.playbackRate) + 1) % SPEEDS.length];
+    audio.playbackRate = next; store.set("speed", next); showSpeed();
+  });
+  audio.addEventListener("ratechange", showSpeed);
+  if ("mediaSession" in navigator) {
+    navigator.mediaSession.setActionHandler("play", () => audio.play());
+    navigator.mediaSession.setActionHandler("pause", () => audio.pause());
+    navigator.mediaSession.setActionHandler("seekbackward", () => { audio.currentTime -= 15; });
+    navigator.mediaSession.setActionHandler("seekforward", () => { audio.currentTime += 30; });
+  }
+
+  // ---------- Toolbar wiring ----------
+  let qTimer = 0;
+  qInput.addEventListener("input", () => {
+    state.q = qInput.value;
+    $("search").classList.toggle("has-q", !!state.q);
+    clearTimeout(qTimer);
+    qTimer = setTimeout(apply, 120);
+  });
+  qInput.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    if (qInput.value) { qInput.value = ""; state.q = ""; apply(); } else qInput.blur();
+    e.stopPropagation();
+  });
+  $("search").addEventListener("click", (e) => { if (!e.target.closest("button")) qInput.focus(); });
+  $("clear-q").addEventListener("click", () => { qInput.value = ""; state.q = ""; apply(); qInput.focus(); });
+  $("sort").addEventListener("change", (e) => { state.sort = e.target.value; state.dir = SORTS[state.sort].def; apply(); });
+  $("order").addEventListener("click", () => { state.dir = state.dir === "asc" ? "desc" : "asc"; apply(); });
+  $("clear-all").addEventListener("click", clearAll);
+  addEventListener("hashchange", () => openTarget(true));
+
+  document.addEventListener("keydown", (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const typing = e.target.closest("input, textarea, select, [contenteditable]");
+    if (e.key === "/" && !typing) { e.preventDefault(); qInput.focus(); qInput.select(); return; }
+    if (!current || typing || e.target.closest("button, a")) return;
+    if (e.code === "Space") { e.preventDefault(); toggle(current); }
+    else if (e.key === "ArrowLeft") audio.currentTime = Math.max(0, audio.currentTime - 5);
+    else if (e.key === "ArrowRight") audio.currentTime += 5;
+  });
+
+  // Keep the sticky toolbar's height in a variable so deep-linked rows scroll clear of it.
+  const toolbar = $("toolbar");
+  const measure = () => {
+    document.documentElement.style.setProperty("--toolbar-h", `${toolbar.offsetHeight}px`);
+    if (player.classList.contains("is-on")) document.documentElement.style.setProperty("--player-h", `${player.offsetHeight}px`);
+  };
+  if ("ResizeObserver" in window) new ResizeObserver(measure).observe(toolbar);
+  addEventListener("resize", measure);
+  measure();
+
+  // ---------- Load ----------
+  // Media paths in episodes.json are relative to it, so a page in a subfolder resolves them.
+  const resolve = (path) => (typeof path === "string" && path ? new URL(path, DATA_URL).href : path);
+  if (!readUrl()) return;
+  qInput.value = state.q;
+  fetch(DATA_URL, { cache: "no-cache" })
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then((data) => {
+      const all = Array.isArray(data.episodes) ? data.episodes.filter((e) => e && e.id) : [];
+      for (const e of all) { e.audio = resolve(e.audio); e.transcript = resolve(e.transcript); }
+      episodes = all.filter((e) => showOf(e) === PAGE.show);
+      others = all.filter((e) => showOf(e) !== PAGE.show);
+      render();
+    })
+    .catch(() => {
+      list.removeAttribute("aria-busy");
+      $("count").textContent = "Episodes could not be loaded.";
+      for (const c of document.querySelectorAll("#toolbar input, #toolbar select, #toolbar button")) c.disabled = true;
+      list.replaceChildren(el("li", { class: "state" }, [el("strong", { text: "Episodes could not be loaded" }), "Check your connection and reload the page."]));
+    });
+})();
