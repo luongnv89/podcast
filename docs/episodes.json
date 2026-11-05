@@ -24,8 +24,39 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-05T15:58:41Z",
+  "updated": "2026-11-05T15:58:49Z",
   "episodes": [
+    {
+      "id": "2026-11-04_the-golden-touch-fr",
+      "title": "Le roi Midas et le toucher d'or",
+      "summary": [
+        "Le roi Midas, raconté tout en douceur pour l'heure du coucher, d'après « Le toucher d'or » de Nathaniel Hawthorne.",
+        "Un roi qui aimait l'or voit son vœu exaucé : tout ce qu'il touche devient or, même sa petite Marygold.",
+        "L'eau de la rivière répare tout, et il comprend ce qui vaut plus que l'or."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "fr",
+      "format": "bedtime-story",
+      "published": "2026-11-05T15:53:16Z",
+      "duration_s": 478.582,
+      "size_bytes": 7659081,
+      "audio": "episodes/2026-11-04_the-golden-touch-fr/episode.mp3",
+      "transcript": "episodes/2026-11-04_the-golden-touch-fr/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "THE GOLDEN TOUCH.",
+        "author": null,
+        "url": "https://www.ibiblio.org/eldritch/nh/wb2b.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Dreamy Flashback\", \"Golly Gee\", \"Touching Moments Four - Melody\", \"Call to Adventure\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)"
+    },
     {
       "id": "2026-11-04_the-golden-touch-en",
       "title": "King Midas and the Golden Touch",
