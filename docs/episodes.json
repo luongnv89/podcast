@@ -24,8 +24,39 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-05T15:31:32Z",
+  "updated": "2026-11-05T15:31:37Z",
   "episodes": [
+    {
+      "id": "2026-11-05_cinderella-or-the-little-glass-slipper-vi",
+      "title": "Cô bé Lọ Lem, chuyện kể trước giờ ngủ",
+      "summary": [
+        "Cô bé Lọ Lem, kể thật nhẹ nhàng trước giờ đi ngủ, theo truyện cổ của Charles Perrault.",
+        "Một cô bé hiền lành, bà tiên đỡ đầu, cỗ xe bí ngô và chiếc giày thủy tinh vừa khít.",
+        "Câu chuyện khép lại bằng sự tha thứ và lời chúc ngủ ngon: ở hiền thì gặp lành."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "vi",
+      "format": "bedtime-story",
+      "published": "2026-11-05T15:28:54Z",
+      "duration_s": 335.896,
+      "size_bytes": 5376130,
+      "audio": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper-vi/episode.mp3",
+      "transcript": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper-vi/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Cinderella; or, The Little Glass Slipper",
+        "author": null,
+        "url": "https://sites.pitt.edu/~dash/perrault06.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)"
+    },
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper-fr",
       "title": "Cendrillon, une histoire du soir",
