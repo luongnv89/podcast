@@ -1,0 +1,401 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.101
+<v Alice>What if ONE person could run the experiments of a whole marketing department?
+
+2
+00:00:04.401 --> 00:00:12.212
+<v Bob>That's the claim. One agent reads last week's sales calls in ten minutes. Another launches thirty ads and kills the losers while you sleep.
+
+3
+00:00:16.512 --> 00:00:24.897
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and today I'm the one asking the questions.
+
+4
+00:00:25.197 --> 00:00:31.754
+<v Bob>And I'm Bob! Today's source is an X article by Greg Isenberg about the rise of the marketing engineer.
+
+5
+00:00:32.054 --> 00:00:34.065
+<v Alice>Give me the big idea in one breath.
+
+6
+00:00:34.365 --> 00:00:43.482
+<v Bob>Here's the key point. Greg says marketing engineers are the new ten-x employee, and most companies don't have one yet. Part marketer, part builder.
+
+7
+00:00:43.782 --> 00:00:47.178
+<v Alice>Part marketer, part builder. Okay, I'm listening.
+
+8
+00:00:47.478 --> 00:00:50.378
+<v Alice>Why now? Marketing has had tools forever.
+
+9
+00:00:50.678 --> 00:01:03.660
+<v Bob>Because for 20 years, he says, marketing ideas were easy and shipping them was hard. Every idea had to survive a brief, a designer, a developer, an analyst and two meetings. Most died in a Slack thread.
+
+10
+00:01:03.960 --> 00:01:07.147
+<v Alice>Died in a Slack thread. I've been to that funeral.
+
+11
+00:01:07.447 --> 00:01:18.340
+<v Bob>Then he walks through history. AdWords arrives in 2000, Facebook ads in 2007, and every click can be counted. Digital marketers could run a few experiments a month.
+
+12
+00:01:18.640 --> 00:01:20.103
+<v Alice>And then growth hackers?
+
+13
+00:01:20.403 --> 00:01:31.793
+<v Bob>Greg credits Sean Ellis with coining the term in 2010. Growth hackers treated marketing like product, but every good idea needed an engineer, so a few experiments a week was a great week.
+
+14
+00:01:32.093 --> 00:01:36.716
+<v Alice>Let's hear the original. Lena, our builder, you read that 2010 post.
+
+15
+00:01:37.016 --> 00:01:45.663
+<v Lena>I did. In Find a Growth Hacker for Your Startup, Sean Ellis defines it simply: "A growth hacker is a person whose true north is growth."
+
+16
+00:01:45.963 --> 00:01:58.946
+<v Lena>And here's the part that fits today. Ellis wrote that he'd met great growth hackers with engineering backgrounds and others with sales backgrounds. His process: prioritize ideas, test them, then keep or cut.
+
+17
+00:01:59.246 --> 00:02:02.224
+<v Alice>Engineers and salespeople. Not just marketers.
+
+18
+00:02:02.524 --> 00:02:09.733
+<v Lena>Exactly. And he says the faster that loop repeats, the more likely you find scalable, repeatable ways to grow.
+
+19
+00:02:10.033 --> 00:02:22.311
+<v Bob>Which is Greg's whole thesis. Think of it like a kitchen where tasting a new recipe used to take a month, and now takes an afternoon. He says the cost of an experiment keeps collapsing, and whoever learns the fastest wins.
+
+20
+00:02:22.611 --> 00:02:25.406
+<v Alice>And ChatGPT didn't already fix this?
+
+21
+00:02:25.706 --> 00:02:37.931
+<v Bob>Not in his telling: with ChatGPT, copy came faster, but the org chart and the six week cycle stayed the same. Just better first drafts, and he says most marketing teams are still sitting right there.
+
+22
+00:02:38.231 --> 00:02:41.366
+<v Alice>So what does a marketing engineer actually unlock?
+
+23
+00:02:41.666 --> 00:02:52.402
+<v Bob>Knowledge the company already has. Sales hears the same five objections every week, and support knows which promises lead to refunds. But it reaches a campaign maybe once a quarter.
+
+24
+00:02:52.702 --> 00:02:53.982
+<v Alice>Why so rarely?
+
+25
+00:02:54.282 --> 00:03:08.232
+<v Bob>It's like owning a pantry full of great ingredients but only cooking on holidays. Small ideas, like a note to forty old prospects the day their feature ships, kept losing to the big launch. Now he says one person can do each in an afternoon.
+
+26
+00:03:08.532 --> 00:03:12.032
+<v Alice>Okay, I'm sold. Where do I start? Ten agents?
+
+27
+00:03:12.332 --> 00:03:25.158
+<v Bob>No! That's the mistake he sees over and over: ten agents, a mountain of generic slop, and then AI marketing is overhyped. His diagnosis: the agents were fine, the context was thin.
+
+28
+00:03:25.458 --> 00:03:28.907
+<v Alice>Thin context. So what's thick context?
+
+29
+00:03:29.207 --> 00:03:39.943
+<v Bob>He calls it the brain: a folder that explains your business like you'd explain it to a sharp new hire on their first day. Skipping it is like hiring a brilliant marketer and skipping onboarding.
+
+30
+00:03:40.243 --> 00:03:41.653
+<v Alice>What goes in the folder?
+
+31
+00:03:41.953 --> 00:03:50.992
+<v Bob>Six files do most of the heavy lifting. Who buys and stays, and what you may promise. Your brand voice, through examples you loved and rejected.
+
+32
+00:03:51.292 --> 00:04:02.002
+<v Bob>Then founder opinions, which he calls your unfair advantage, since every competitor has the same models. And failed campaigns, so an agent doesn't repeat a 20,000 dollar mistake.
+
+33
+00:04:02.302 --> 00:04:05.280
+<v Alice>Examples over adjectives. I like that.
+
+34
+00:04:05.580 --> 00:04:16.186
+<v Bob>And one rule keeps it healthy: agents can add guesses to an evidence folder, but only a human moves something into company. Otherwise one agent's hunch quietly becomes company policy.
+
+35
+00:04:16.486 --> 00:04:20.091
+<v Alice>A hunch becoming policy. That's scarier than it sounds.
+
+36
+00:04:20.391 --> 00:04:22.402
+<v Alice>Then the agents can read my data?
+
+37
+00:04:22.702 --> 00:04:36.051
+<v Bob>Read-only first. Reading your CRM is useful on day one; editing it is earned over time. Then the boring part: give every campaign an ID and carry it everywhere, from links and ad names to the deals in your CRM.
+
+38
+00:04:36.351 --> 00:04:37.761
+<v Alice>That sounds dull.
+
+39
+00:04:38.061 --> 00:04:49.921
+<v Bob>He calls it the most valuable thing in the whole setup! It's like a luggage tag: the bag can travel anywhere and you still know whose it is. Then agents can answer which marketing brought in customers who paid and stayed.
+
+40
+00:04:50.221 --> 00:04:51.814
+<v Alice>And the very first agent?
+
+41
+00:04:52.114 --> 00:05:00.029
+<v Bob>The customer language agent. Export your last 20 to 50 sales call transcripts and have it pull out the exact words customers use.
+
+42
+00:05:00.329 --> 00:05:02.210
+<v Alice>Does it get it right first time?
+
+43
+00:05:02.510 --> 00:05:11.810
+<v Bob>No, and he's honest about it: the first version will be about 70 percent right. After three or four rounds of fixes, it reads calls better than most of your team.
+
+44
+00:05:12.110 --> 00:05:13.338
+<v Alice>What does it find?
+
+45
+00:05:13.638 --> 00:05:26.333
+<v Bob>His example: scheduling software for plumbers, where owners keep saying, I'm tired of taking calls during dinner. That line is your ad, your headline, your sales opener. People buy the situation more than the feature.
+
+46
+00:05:26.633 --> 00:05:28.775
+<v Alice>Calls during dinner. I'd buy that.
+
+47
+00:05:29.075 --> 00:05:30.773
+<v Alice>Then you add more agents?
+
+48
+00:05:31.073 --> 00:05:45.545
+<v Bob>One at a time. A buying trigger agent spots events like a second location or a funding round, then finishes one sentence: this event creates this problem, and our product solves it. If that sentence is mushy, the account waits.
+
+49
+00:05:45.845 --> 00:05:47.987
+<v Alice>Like a bouncer with one question.
+
+50
+00:05:48.287 --> 00:06:04.013
+<v Bob>Exactly like a bouncer. Then a search agent asks ChatGPT, Claude and Perplexity your buyers' questions every week, to see what the models trust. And a performance agent writes a Monday memo, each line ending in keep, kill, change or test.
+
+51
+00:06:04.313 --> 00:06:05.906
+<v Alice>Which one pays the bills?
+
+52
+00:06:06.206 --> 00:06:20.991
+<v Bob>The closed-lost agent, which he says pays for everything else. It rereads every lost deal and records the real reason plus a reopen condition, like needed SSO. The day SSO ships, each of those prospects gets a personal draft.
+
+53
+00:06:21.291 --> 00:06:23.904
+<v Alice>Let's talk ads. What's changed there?
+
+54
+00:06:24.204 --> 00:06:38.153
+<v Bob>His headline: creative is the new targeting. Greg says Meta's system, called Andromeda, reads the ad itself to figure out who should see it. And he says fifty look-alike versions of one headline get roughly the reach of a single ad.
+
+55
+00:06:38.453 --> 00:06:42.058
+<v Alice>Theo, our analyst, you went to Meta's own write-up.
+
+56
+00:06:42.358 --> 00:06:55.837
+<v Theo>In an Engineering at Meta post, Chonglin Sun and colleagues describe Andromeda as a retrieval engine. Retrieval is the first step: it narrows tens of millions of ad candidates to a few thousand relevant ones.
+
+57
+00:06:56.137 --> 00:06:59.089
+<v Alice>Tens of millions down to thousands. Wow.
+
+58
+00:06:59.389 --> 00:07:08.271
+<v Theo>And the scale is real: they wrote that more than a million advertisers used their generative AI tools to create more than 15 million ads in a month.
+
+59
+00:07:08.571 --> 00:07:19.829
+<v Theo>One caution, though: the post doesn't describe grouping look-alike ads, so that part is Greg's claim. Meta does say the next version should deliver a more diverse set of ad candidates.
+
+60
+00:07:20.129 --> 00:07:22.141
+<v Alice>So variety matters either way.
+
+61
+00:07:22.441 --> 00:07:35.084
+<v Bob>Right. So Greg's engine: scripts for 8 to 12 distinct concepts, like a pain point, a customer story, a myth you're busting. Picture a band trying different songs, not the same song in ten keys.
+
+62
+00:07:35.384 --> 00:07:36.925
+<v Alice>And who's on camera?
+
+63
+00:07:37.225 --> 00:07:50.887
+<v Bob>His rule: use AI actors to test, then pay humans to win. AI actors let you test twenty scripts in a day for the price of one creator video. Once a script wins, a real person usually performs even better.
+
+64
+00:07:51.187 --> 00:07:54.688
+<v Alice>Agents launching ads while I sleep. That makes me nervous.
+
+65
+00:07:54.988 --> 00:08:03.634
+<v Bob>Good! His line: "Always ask me before sending" is a polite suggestion to a model. Real guardrails live in the tools.
+
+66
+00:08:03.934 --> 00:08:05.867
+<v Alice>Meaning what, in practice?
+
+67
+00:08:06.167 --> 00:08:11.758
+<v Bob>Outreach gets draft only access, and ads launch paused. Budgets stay with you.
+
+68
+00:08:12.058 --> 00:08:14.591
+<v Alice>So lock the doors, don't just leave a note.
+
+69
+00:08:14.891 --> 00:08:24.113
+<v Bob>Exactly. And then the job looks more like editing than making. It's like being an editor-in-chief: a review queue where every item takes under a minute to decide.
+
+70
+00:08:24.413 --> 00:08:26.058
+<v Alice>Show me a full campaign.
+
+71
+00:08:26.358 --> 00:08:40.830
+<v Bob>His example is a bookkeeping firm: eleven customers said they can't tell if they made money after returns, shipping and fees. That becomes a free profitability review, three ad angles, and notes to 60 old prospects, then a 2,000 dollar test.
+
+72
+00:08:41.130 --> 00:08:42.018
+<v Alice>And the result?
+
+73
+00:08:42.318 --> 00:08:50.965
+<v Bob>The calculator page converts best. But the performance agent also reminds you the sample is still small. And the customer's original words survived every step.
+
+74
+00:08:51.265 --> 00:08:54.400
+<v Alice>Time to push back. This all sounds very tidy.
+
+75
+00:08:54.700 --> 00:09:09.250
+<v Bob>Fair. The bookkeeping firm is a picture he paints, not a reported case, and the article gives no results data. His 2028 prediction, one or two marketing engineers outshipping departments ten times their size, is labeled as his guess.
+
+76
+00:09:09.550 --> 00:09:10.908
+<v Alice>Anything else to flag?
+
+77
+00:09:11.208 --> 00:09:18.287
+<v Bob>He's upfront that his partner just launched Boring Funnels, which he recommends in the piece. So read that tool list knowing it.
+
+78
+00:09:18.587 --> 00:09:23.054
+<v Alice>And the AI actors? Sam, our skeptic, that's your corner.
+
+79
+00:09:23.354 --> 00:09:40.177
+<v Sam>Shannon Bond at NPR reported that Meta will label images created with leading AI tools. Meta also said it will require users to disclose a photorealistic video or realistic-sounding audio that was digitally created or altered.
+
+80
+00:09:40.477 --> 00:09:41.470
+<v Alice>And if you don't?
+
+81
+00:09:41.770 --> 00:09:52.663
+<v Sam>Meta said it may penalize accounts that fail to do so. And NPR notes TikTok and YouTube also require disclosure of realistic AI content.
+
+82
+00:09:52.963 --> 00:10:00.643
+<v Alice>Good. Labels, not loopholes. And Greg agrees: label AI generated people wherever the platform asks.
+
+83
+00:10:00.943 --> 00:10:05.514
+<v Alice>Time for Builder's Corner! Bob, one thing to try this week?
+
+84
+00:10:05.814 --> 00:10:18.275
+<v Bob>Greg's own starter: if you're a marketer, build the customer language agent and run it on your last 20 sales calls. If you're an engineer, sit in on five sales calls, then build a calculator for one customer segment.
+
+85
+00:10:18.575 --> 00:10:19.855
+<v Alice>And keep it on a leash?
+
+86
+00:10:20.155 --> 00:10:31.048
+<v Bob>Yes. Keep publishing, outreach and spending behind approval until each workflow earns your trust. A confused workflow running every morning just gives you a reliable supply of confusion.
+
+87
+00:10:31.348 --> 00:10:35.449
+<v Alice>A reliable supply of confusion. I've worked there too.
+
+88
+00:10:35.749 --> 00:10:38.361
+<v Alice>Quick recap. What should listeners keep?
+
+89
+00:10:38.661 --> 00:10:49.215
+<v Bob>One: the cost of an experiment keeps collapsing, so learn faster. Two: build the brain before the agents. Thin context means generic slop.
+
+90
+00:10:49.515 --> 00:11:01.897
+<v Bob>Three: guardrails live in the tools, not in prompts. And four: Meta's own post backs the scale, but the look-alike grouping is Greg's claim. Labels matter for AI actors.
+
+91
+00:11:02.197 --> 00:11:04.078
+<v Alice>And who becomes one of these people?
+
+92
+00:11:04.378 --> 00:11:13.416
+<v Bob>He says most of them sit in growth, content and ops roles right now, one weekend of building away. That's his encouragement, and honestly, mine too.
+
+93
+00:11:13.716 --> 00:11:15.492
+<v Alice>What's still open for you, Bob?
+
+94
+00:11:15.792 --> 00:11:23.942
+<v Bob>Two things the article can't settle. First, does Andromeda really treat look-alike ads as one, when Meta's post doesn't say so?
+
+95
+00:11:24.242 --> 00:11:25.183
+<v Alice>And the second?
+
+96
+00:11:25.483 --> 00:11:31.178
+<v Bob>How much of this works outside a startup. Greg gives a playbook, not measured results.
+
+97
+00:11:31.478 --> 00:11:33.254
+<v Alice>Two good homework questions.
+
+98
+00:11:33.554 --> 00:11:40.999
+<v Alice>This episode is based on Greg Isenberg's X article on marketing engineers and AI agents. Thanks to him for writing it.
+
+99
+00:11:41.299 --> 00:11:54.125
+<v Bob>Our guests presented the Meta Andromeda post by Chonglin Sun and colleagues at Engineering at Meta. Then Find a Growth Hacker for Your Startup by Sean Ellis, and Shannon Bond's NPR report on Meta labeling AI images.
+
+100
+00:11:54.425 --> 00:11:59.493
+<v Alice>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

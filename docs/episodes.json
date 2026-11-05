@@ -8,8 +8,80 @@
       "Alice"
     ]
   },
-  "updated": "2026-11-04T15:02:21Z",
+  "updated": "2026-11-05T10:54:48Z",
   "episodes": [
+    {
+      "id": "2026-11-05_marketing-engineers-100x-more-experiments-with",
+      "title": "Marketing Engineers: 100x More Experiments with AI agents",
+      "summary": [
+        "Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents.",
+        "His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.",
+        "Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-05T10:54:46Z",
+      "duration_s": 726.093,
+      "size_bytes": 11618472,
+      "audio": "episodes/2026-11-05_marketing-engineers-100x-more-experiments-with/episode.mp3",
+      "transcript": "episodes/2026-11-05_marketing-engineers-100x-more-experiments-with/transcript.vtt",
+      "voices": "OpenRouter · fish-audio/s2.1-pro-free:free",
+      "source": {
+        "title": "Marketing Engineers: 100x More Experiments with AI agents",
+        "author": "GREG ISENBERG (@gregisenberg)",
+        "url": "https://x.com/gregisenberg/status/2108188646973313195",
+        "published": "2026-10-08T13:31:56Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "Marketing Engineers: 100x More Experiments with AI agents",
+          "author": "GREG ISENBERG (@gregisenberg)",
+          "url": "https://x.com/gregisenberg/status/2108188646973313195"
+        },
+        {
+          "title": "Find a Growth Hacker for Your Startup",
+          "author": "Sean Ellis",
+          "url": "https://www.startup-marketing.com/where-are-all-the-growth-hackers"
+        },
+        {
+          "title": "Meta Andromeda: Supercharging Advantage+ automation with the next-gen personalized ads retrieval engine",
+          "author": "Chonglin Sun et al.",
+          "url": "https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine"
+        },
+        {
+          "title": "Meta will start labeling AI-generated images on Instagram and Facebook",
+          "author": "Shannon Bond",
+          "url": "https://www.npr.org/2024/02/06/1229317971/meta-labeling-ai-generated-images-instagram-facebook-artificial-intelligence"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Lena",
+          "presents": [
+            "Find a Growth Hacker for Your Startup"
+          ]
+        },
+        {
+          "name": "Theo",
+          "presents": [
+            "Meta Andromeda: Supercharging Advantage+ automation with the next-gen personalized ads retrieval engine"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Meta will start labeling AI-generated images on Instagram and Facebook"
+          ]
+        }
+      ]
+    },
     {
       "id": "2026-11-04_a-practical-guide-to-security-in-november-2026",
       "title": "A Practical Guide to Security in November 2026",
