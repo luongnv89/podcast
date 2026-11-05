@@ -165,14 +165,25 @@ def _text(value: Any) -> str | None:
     return value.strip() if isinstance(value, str) and value.strip() else None
 
 
+def _web_url(value: Any) -> str | None:
+    """A public http(s) link, or None (never a javascript:, data: or file: URL)."""
+    url = _text(value)
+    return url if url and re.match(r"https?://[^/\s]", url, re.IGNORECASE) else None
+
+
+def _mapping(value: Any) -> dict[str, Any]:
+    return value if isinstance(value, dict) else {}
+
+
 def _fetched_extra(job: Path, source_id: str) -> dict[str, Any]:
     """An extra source's fetched ``sources/<id>/source.json`` (a regular file inside the
     job, no symlink), or ``{}``."""
     if not re.fullmatch(r"[a-z0-9][a-z0-9-]*", source_id):
         return {}
-    folder = job / "sources" / source_id
+    root = job / "sources"
+    folder = root / source_id
     path = folder / "source.json"
-    if folder.is_symlink() or path.is_symlink() or not path.is_file():
+    if root.is_symlink() or folder.is_symlink() or path.is_symlink() or not path.is_file():
         return {}
     data = _read_json(path)
     return data if isinstance(data, dict) else {}
@@ -193,51 +204,48 @@ def episode_sources(
     """
     listed = [
         item
-        for item in script.get("sources") or []
+        for item in (script.get("sources") if isinstance(script.get("sources"), list) else [])
         if isinstance(item, dict) and isinstance(item.get("id"), str) and item["id"] != "main"
     ]
     main = {
         "id": "main",
         "title": _text(source.get("title")),
         "author": _text(source.get("author")),
-        "url": _text(source.get("url")),
+        "url": _web_url(source.get("url")),
     }
-    delivered = ((result.get("delivery") or {}) if isinstance(result, dict) else {}).get(
-        "sources"
-    )
+    checked = {
+        s.get("id"): s
+        for s in (_mapping(script.get("fact_check_pass")).get("sources") or [])
+        if isinstance(s, dict)
+    }
+    by_id = {item["id"]: item for item in listed}
+
+    def complete(source_id: str, given: dict[str, Any]) -> dict[str, Any]:
+        """Fill a credit's missing fields from the listed entry, the fetched page and
+        the fact-check report, in that order."""
+        fetched = _fetched_extra(job, source_id)
+        report = _mapping(checked.get(source_id))
+        item = by_id.get(source_id, {})
+        credit: dict[str, Any] = {"id": source_id}
+        for field in ("title", "author", "url"):
+            pick = _web_url if field == "url" else _text
+            credit[field] = (
+                pick(given.get(field))
+                or pick(item.get(field))
+                or pick(fetched.get(field))
+                or pick(report.get(field))
+            )
+        credit["title"] = credit["title"] or source_id
+        return credit
+
+    delivered = _mapping(_mapping(result).get("delivery")).get("sources")
     if isinstance(delivered, list) and all(isinstance(s, dict) for s in delivered):
         ids = [s.get("id") for s in delivered]
         if ids == ["main", *(item["id"] for item in listed)]:
-            credits = [
-                {
-                    "id": s["id"],
-                    "title": _text(s.get("title")),
-                    "author": _text(s.get("author")),
-                    "url": _text(s.get("url")),
-                }
-                for s in delivered
-            ]
             # The main source's title in result.json falls back to a label ("file x.md");
             # source.json is what the site already credits.
-            credits[0] = main
-            return credits
-    checked = {
-        s.get("id"): s
-        for s in ((script.get("fact_check_pass") or {}).get("sources") or [])
-        if isinstance(s, dict)
-    }
-    credits = [main]
-    for item in listed:
-        fetched = _fetched_extra(job, item["id"])
-        report = checked.get(item["id"]) or {}
-        credit = {"id": item["id"]}
-        for field in ("title", "author", "url"):
-            credit[field] = (
-                _text(item.get(field)) or _text(fetched.get(field)) or _text(report.get(field))
-            )
-        credit["title"] = credit["title"] or item["id"]
-        credits.append(credit)
-    return credits
+            return [main, *(complete(s["id"], s) for s in delivered[1:])]
+    return [main, *(complete(item["id"], {}) for item in listed)]
 
 
 def episode_credits(
@@ -256,7 +264,12 @@ def episode_credits(
         name = _text(speaker.get("name"))
         if not name:
             continue
-        presents = [titles[i] for i in speaker.get("presents") or [] if i in titles]
+        presents_ids = speaker.get("presents")
+        presents = [
+            titles[i]
+            for i in (presents_ids if isinstance(presents_ids, list) else [])
+            if isinstance(i, str) and i in titles
+        ]
         guests.append({"name": name, "presents": presents})
     extra: dict[str, Any] = {}
     if len(credits) > 1:

@@ -158,6 +158,48 @@ class EpisodeCreditsTest(unittest.TestCase):
         self.assertEqual(saved["episodes"][0]["sources"], entry["sources"])
         self.assertEqual(saved["episodes"][0]["guests"], entry["guests"])
 
+class RobustCreditsTest(EpisodeCreditsTest):
+    """Review of PR #8: bad fields never crash a publish run, links stay http(s)."""
+
+    def test_badly_formed_fields_do_not_crash(self) -> None:
+        maya = dict(MAYA, presents=[{"id": "rivers-study"}, "rivers-study"])
+        result = {"delivery": "not a dict"}
+        self.make_job([MAIN["url"], EXTRA], [*HOSTS, maya], result=result,
+                      fact_check_pass="not a dict")
+        entry = self.entry()
+        self.assertEqual(entry["guests"], [{"name": "Maya", "presents": [EXTRA["title"]]}])
+
+    def test_sources_value_that_is_not_a_list(self) -> None:
+        self.make_job(5, HOSTS)
+        self.assertNotIn("sources", self.entry())
+
+    def test_symlinked_sources_folder_not_read(self) -> None:
+        listed = dict(EXTRA, author=None)
+        self.make_job([MAIN["url"], listed], HOSTS)
+        outside = self.tmp / "elsewhere"
+        _write(outside / "rivers-study" / "source.json", {"author": "Someone Else"})
+        (self.job / "sources").symlink_to(outside, target_is_directory=True)
+        self.assertIsNone(self.entry()["sources"][1]["author"])
+
+    def test_delivered_null_title_is_filled_from_the_fetched_page(self) -> None:
+        result = {"delivery": {"sources": [
+            {"id": "main", "title": "x", "url": None},
+            {"id": "rivers-study", "title": None, "author": None, "url": None},
+        ]}}
+        listed = {"id": "rivers-study", "title": None, "url": EXTRA["url"], "author": None}
+        self.make_job([MAIN["url"], listed], [*HOSTS, MAYA], result=result)
+        _write(self.job / "sources" / "rivers-study" / "source.json",
+               {"id": "rivers-study", "author": "Sam Rivers", "title": "A study of quiet"})
+        entry = self.entry()
+        self.assertEqual(entry["sources"][1],
+                         {"title": EXTRA["title"], "author": "Sam Rivers", "url": EXTRA["url"]})
+        self.assertEqual(entry["guests"][0]["presents"], [EXTRA["title"]])
+
+    def test_only_http_links_are_published(self) -> None:
+        listed = dict(EXTRA, url="javascript:alert(1)")
+        self.make_job([MAIN["url"], listed], HOSTS)
+        self.assertIsNone(self.entry()["sources"][1]["url"])
+
 
 if __name__ == "__main__":
     unittest.main()
