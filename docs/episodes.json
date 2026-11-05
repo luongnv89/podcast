@@ -24,7 +24,7 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-05T16:04:22Z",
+  "updated": "2026-11-05T19:04:01Z",
   "episodes": [
     {
       "id": "2026-11-04_the-golden-touch-fr",
@@ -42,12 +42,12 @@
       ],
       "language": "fr",
       "format": "bedtime-story",
-      "published": "2026-11-05T15:53:16Z",
-      "duration_s": 478.582,
-      "size_bytes": 7659081,
+      "published": "2026-11-05T16:32:38Z",
+      "duration_s": 578.048,
+      "size_bytes": 9250669,
       "audio": "episodes/2026-11-04_the-golden-touch-fr/episode.mp3",
       "transcript": "episodes/2026-11-04_the-golden-touch-fr/transcript.vtt",
-      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
       "source": {
         "title": "THE GOLDEN TOUCH.",
         "author": null,
