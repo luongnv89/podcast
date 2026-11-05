@@ -1,0 +1,125 @@
+WEBVTT
+
+1
+00:00:04.000 --> 00:00:16.800
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and today I'm explaining one X article on my own, by Greg Isenberg, on the rise of the marketing engineer.
+
+2
+00:00:17.100 --> 00:00:31.885
+<v Alice>His thesis, in one line: marketing engineers are the new ten-x employee, and most companies don't have one yet. Part marketer, part builder. Here's the key point: the person with the idea and the person who can build it become the same person.
+
+3
+00:00:32.185 --> 00:00:46.788
+<v Alice>Why now? Greg's answer is history. For 20 years, he says, marketing ideas were easy and shipping them was hard. Every idea had to survive a brief, a designer, a developer, an analyst and two meetings, and most died in a Slack thread.
+
+4
+00:00:47.088 --> 00:01:03.963
+<v Alice>AdWords arrived in 2000 and Facebook ads in 2007, so every click could be counted, and you could run a few experiments a month. Then growth hackers, a term he says Sean Ellis coined in 2010, got to a few experiments a week. But every good idea still needed an engineer.
+
+5
+00:01:04.263 --> 00:01:21.687
+<v Alice>ChatGPT made copy faster, and the org chart stayed the same. So what changed? Agents. Now, he says, dozens of experiments a day becomes realistic for one person. His summary: the cost of an experiment keeps collapsing, and whoever learns the fastest wins.
+
+6
+00:01:21.987 --> 00:01:35.152
+<v Alice>So what does one person unlock? Knowledge the company already has. Sales hears the same five objections every week. Support knows which promises lead to refunds. But all of it reaches a campaign maybe once a quarter.
+
+7
+00:01:35.452 --> 00:01:51.021
+<v Alice>Think of a pantry full of great ingredients, used only on holidays. The small ideas, like a note to forty old prospects the day the feature they asked for ships, kept losing to the big launch. Greg says a marketing engineer can do every one of those in an afternoon.
+
+8
+00:01:51.321 --> 00:02:05.871
+<v Alice>Now, the mistake he sees over and over. Someone spins up ten agents, gets back a mountain of generic slop, and decides AI marketing is overhyped. His diagnosis: the agents were fine, but the context was thin.
+
+9
+00:02:06.171 --> 00:02:19.598
+<v Alice>So before you build a single agent, build the brain: a folder that explains your business the way you'd explain it to a sharp new hire on their first day. Skipping it, he says, is like hiring a brilliant marketer and skipping onboarding.
+
+10
+00:02:19.898 --> 00:02:35.389
+<v Alice>Six files do most of the heavy lifting. Who buys and who stays. What you sell and what you're allowed to promise. Your brand voice, shown through emails or ads you loved and ones you rejected, because agents learn far more from examples than from adjectives.
+
+11
+00:02:35.689 --> 00:02:48.202
+<v Alice>Then your founder's opinions, which he calls your unfair advantage, since every competitor has access to the same models. And your failed campaigns, so an agent doesn't repeat a 20,000 dollar mistake.
+
+12
+00:02:48.502 --> 00:03:00.257
+<v Alice>One rule keeps the brain healthy: agents can add guesses to an evidence folder, but only a human moves something into the company folder. Otherwise one agent's hunch quietly becomes company policy.
+
+13
+00:03:00.557 --> 00:03:10.797
+<v Alice>Next, connect your data. Start with read-only access everywhere. An agent that can read your CRM is useful on day one. One that can edit it earns that over time.
+
+14
+00:03:11.097 --> 00:03:28.834
+<v Alice>Then the boring part he calls the most valuable thing in the whole setup. Give every campaign an ID and carry it everywhere: links, ad names, email sequences and deals. It's like a luggage tag. Now your agents can answer the question that matters: which marketing brought in customers who paid and stayed?
+
+15
+00:03:29.134 --> 00:03:38.851
+<v Alice>Build one agent and get it great before you build a second. Six agents talking to each other on day one, he jokes, is how you spend your weekend debugging a group chat.
+
+16
+00:03:39.151 --> 00:03:56.993
+<v Alice>Your first is the customer language agent. Export your last 20 to 50 sales call transcripts and have it pull out the exact words customers use. He's honest that the first version will be about 70 percent right. After three or four rounds of fixes, it reads calls better than most people on your team.
+
+17
+00:03:57.293 --> 00:04:09.989
+<v Alice>His example: scheduling software for plumbers. Owners keep saying, I'm tired of taking calls during dinner. That one line is your ad, your headline and your sales opener, because people buy the situation more than the feature.
+
+18
+00:04:10.289 --> 00:04:31.422
+<v Alice>Then add the rest one at a time. A buying trigger agent watches for events like a second location or a funding round. It only drafts an email when one sentence comes out sharp: this event creates this problem, and our product solves it. A search agent asks ChatGPT, Claude and Perplexity your buyers' questions every week, to see what the models trust.
+
+19
+00:04:31.722 --> 00:04:52.123
+<v Alice>A performance agent writes a Monday memo where every line ends in keep, kill, change or test. And the closed-lost agent, which he says pays for everything else. It rereads each lost deal and records the real reason plus a reopen condition. The day that condition is met, say SSO ships, it drafts a personal note.
+
+20
+00:04:52.423 --> 00:05:12.224
+<v Alice>On ads, his headline is: creative is the new targeting. Greg says Meta's system, Andromeda, reads the ad itself to figure out who should see it. And he says fifty versions of the same headline get you roughly the reach of a single ad. That's his description; the article doesn't link Meta's own documentation for it.
+
+21
+00:05:12.524 --> 00:05:27.179
+<v Alice>So the job is a steady stream of truly different ideas: scripts for 8 to 12 distinct concepts, like a pain point, a customer story or a myth you're busting. Picture a band trying different songs, not one song in ten keys.
+
+22
+00:05:27.479 --> 00:05:48.377
+<v Alice>And his rule for video: use AI actors to test, then pay humans to win. AI actors let you test twenty scripts in a day for the price of one creator video. Once you know which script works, a real person saying it usually performs even better. He also says to label AI generated people and scenes wherever the platform asks.
+
+23
+00:05:48.677 --> 00:06:03.828
+<v Alice>Here's the line I'd underline. "Always ask me before sending" is a polite suggestion to a model. Real guardrails live in the tools. Outreach gets draft only access to email, ads are created in a paused state, and budgets stay with you.
+
+24
+00:06:04.128 --> 00:06:13.898
+<v Alice>Once the machine is built, he says, the job looks a lot more like editing than making. The heart of it's a review queue where every item should take under a minute to decide.
+
+25
+00:06:14.198 --> 00:06:31.543
+<v Alice>He walks through an example: a bookkeeping firm. Eleven different customers said they can't tell if they actually made money after returns, shipping and fees. That becomes a free profitability review, ads from the customers' own words, notes to 60 old prospects, and a 2,000 dollar test.
+
+26
+00:06:31.843 --> 00:06:48.587
+<v Alice>Two weeks later, in his telling, the calculator page converts best, and the performance agent reminds you the sample is still small. Notice what he's doing: it's a picture of a campaign, not a reported case, and the article shares no measured results. Keep that in mind when you weigh the playbook.
+
+27
+00:06:48.887 --> 00:07:05.475
+<v Alice>One more thing to know as a reader. Greg says openly that his partner just launched Boring Funnels, which he recommends in the piece. And his forecast that by 2028 one or two marketing engineers will outship departments ten times their size is, in his words, his guess.
+
+28
+00:07:05.775 --> 00:07:19.019
+<v Alice>So what should you keep? First, the cost of an experiment keeps collapsing, so the winner is whoever learns fastest. Second, build the brain before the agents. Thin context gives you generic slop.
+
+29
+00:07:19.319 --> 00:07:35.123
+<v Alice>Third, put the guardrails in the tools, not in a prompt. And keep publishing, outreach and spending behind approval until each workflow earns your trust. As he puts it, a confused workflow running every morning just gives you a reliable supply of confusion.
+
+30
+00:07:35.423 --> 00:07:48.589
+<v Alice>And his starter for this week: if you're a marketer, build the customer language agent and run it on your last 20 sales calls. If you're an engineer, sit in on five sales calls, then build a calculator for one customer segment.
+
+31
+00:07:48.889 --> 00:08:07.488
+<v Alice>In short: one person who can both market and build, running agents on a well-written brain. This episode is based on Greg Isenberg's X article on marketing engineers and AI agents. Thanks to him for writing it. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.
