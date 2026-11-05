@@ -92,6 +92,31 @@ it, trimmed, into the episode's entry as `music_credit` (it reads `run.json`, si
 as a small line: "Music: <credit>". Episodes without a credit (the CC0 theme, older jobs)
 get no `music_credit` key, so their entries are unchanged.
 
+## One story in several languages
+
+A bedtime story can come in English, French and Vietnamese (DropCast #134). Every
+version's `script.json` carries the same `story_group` (a string) and its own `language`;
+the publisher copies both into the version's `episodes.json` entry (`story_group` only
+when set, so older entries are unchanged; `result.json` is not read for it).
+
+The story page lists the versions of one `story_group` as **one story** with a language
+switch (English / Français / Tiếng Việt, shortened to EN / FR / VI on a phone, each
+labelled in its own language). Switching changes the title, summary, duration, player,
+transcript, download, source link and music credit; a playing story keeps playing in the
+new language. The version shown first is the visitor's last choice (remembered in the
+browser), else the first browser language (`navigator.languages`) that has a version,
+else English, else the first version. Every version keeps its own id, so `#<episode id>`
+opens that version. A search matches a story when any of its versions matches; while
+the search is on, the story shows its first matching version (unless the chosen one
+matches, or was picked during that search), without remembering it, and clearing the
+search brings the chosen version back. Languages compare by their primary subtag
+(`en-US` is `en`), and an unknown language is labelled with its code (at most 3
+letters, uppercased). The
+counts count stories (one per group), and the minutes count the version shown first, so
+a story in three languages counts once. Entries without `story_group` (and a second
+version in a language the group already has) show as before; the main page has no
+groups.
+
 Tests (standard library, no network): `python3 -m unittest discover -s tests`.
 
 ## Tabs (categories)

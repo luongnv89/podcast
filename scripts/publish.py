@@ -19,6 +19,12 @@ An episode whose music needs attribution (``run.json`` ``music.credit``, e.g. a 
 track) also gets ``music_credit``, that text trimmed; the site shows it under the episode.
 Without a credit (the CC0 theme, older jobs) the key is left out.
 
+A story told in several languages (DropCast #136) has the same ``script.json``
+``story_group`` in every version; the publisher copies it as ``story_group`` (with each
+version's ``language``, as for every episode), and the story page shows the versions as
+one story with a language switch. Without it (older jobs) the key is left out.
+``result.json`` is not read for it.
+
 Each episode gets one ``show``: **Once Upon a Time Show** for a story (a ``bedtime-story``
 or ``storytelling`` script, or a job whose ``script.json`` or ``brief.json`` names that
 show or a story register), listed on ``docs/stories/``; else **Build Wiz AI Show**, listed
@@ -401,6 +407,13 @@ def episode_entry(
     music_credit = _text(_mapping(run.get("music")).get("credit"))
     if music_credit:
         entry["music_credit"] = music_credit
+    # One story in several languages (DropCast #136): every version's script.json carries
+    # the same ``story_group`` and its own ``language`` (copied above); the story page
+    # lists the versions as one story with a language switch. Added only when set, so
+    # other entries stay as they were.
+    story_group = _text(script.get("story_group"))
+    if story_group:
+        entry["story_group"] = story_group
     return entry, changed
 
 

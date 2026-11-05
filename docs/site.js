@@ -21,7 +21,8 @@
   const player = $("player");
   const seek = $("p-seek");
   const qInput = $("q");
-  let episodes = [];        // this show's episodes
+  let episodes = [];        // this show's episodes (every language version)
+  let units = [];           // the list's rows: one episode, or one story in several languages
   let others = [];          // the other show's, only to forward their deep links
   let current = null;       // episode object playing
   let cues = new Map();     // id -> [{start, end, who, text, el}]
@@ -66,6 +67,89 @@
   const fold = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---------- One story in several languages (DropCast #136) ----------
+  // Entries sharing a "story_group" are one row with a language switch; each keeps its own
+  // id (deep link), audio, transcript and resume point. Entries without one are unchanged.
+  const LANGS = { en: ["EN", "English"], fr: ["FR", "Français"], vi: ["VI", "Tiếng Việt"] };
+  const LANG_ORDER = Object.keys(LANGS);
+  // Languages compare by their primary subtag ("en-US" is "en"), like the browser's.
+  const primaryLang = (l) => (typeof l === "string" ? l.trim().toLowerCase().split(/[-_;]/)[0] : "");
+  const langOf = (e) => primaryLang(e.language) || "en";
+  // An unknown language is labelled with its code, cut to 3 letters so the switch stays small.
+  const langLabel = (l) => LANGS[l] || [l.slice(0, 3).toUpperCase(), l.slice(0, 3).toUpperCase()];
+  const langRank = (l) => (LANG_ORDER.includes(l) ? LANG_ORDER.indexOf(l) : LANG_ORDER.length);
+  function groupUnits(eps) {
+    const out = [];
+    const byGroup = new Map();
+    // Newest first, so a second version in the same language stays its own row.
+    const newest = eps.slice().sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0));
+    for (const e of newest) {
+      e._lang = langOf(e);
+      const g = typeof e.story_group === "string" ? e.story_group.trim() : "";
+      let u = g && byGroup.get(g);
+      if (u && !u.versions.some((v) => v._lang === e._lang)) { u.versions.push(e); e._unit = u; continue; }
+      u = { versions: [e] };
+      if (g && !byGroup.has(g)) byGroup.set(g, u);
+      e._unit = u;
+      out.push(u);
+    }
+    for (const u of out) {
+      u.versions.sort((a, b) => langRank(a._lang) - langRank(b._lang) || a._lang.localeCompare(b._lang));
+      u.grouped = u.versions.length > 1;
+      u.sel = u.chosen = pickVersion(u);   // sel: the version on show; chosen: without a search
+    }
+    return out;
+  }
+  // The version shown first: the visitor's last choice, else the browser's languages, else
+  // English, else the first one.
+  function pickVersion(u) {
+    if (!u.grouped) return u.versions[0];
+    const find = (l) => (typeof l === "string" && l ? u.versions.find((v) => v._lang === l) : null);
+    const browser = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language])
+      .map((l) => primaryLang(String(l || "")));
+    for (const l of [primaryLang(store.get("lang")), ...browser, "en"]) { const v = find(l); if (v) return v; }
+    return u.versions[0];
+  }
+  // A switch by the visitor (or a deep link) chooses the version; it stays on show for the
+  // current search too, and comes back when the search is cleared.
+  function selectVersion(u, v, byUser) {
+    if (!u.versions.includes(v)) return;
+    if (byUser) store.set("lang", v._lang);
+    const hadFocus = u.sel._node.contains(document.activeElement);
+    u.chosen = v;
+    u.pin = terms().join(" ");
+    if (v === u.sel) return;
+    showVersion(u, v, true);
+    apply();
+    if (hadFocus) v._langBtns.get(v._lang)?.focus();
+  }
+  // Puts a version on show. "follow": a real switch, so the transcript and the player follow
+  // it; a search only swaps the card and leaves the player alone.
+  function showVersion(u, v, follow) {
+    const old = u.sel;
+    if (v === old) return;
+    const wasOpen = old._toggle.getAttribute("aria-expanded") === "true";
+    const trOpen = !!old._tBtn && old._tBtn.getAttribute("aria-expanded") === "true";
+    old._node.hidden = true;
+    v._node.hidden = false;
+    u.sel = v;
+    expand(v, wasOpen);
+    if (!follow) return;
+    if (trOpen && v._tBtn && v._tBtn.getAttribute("aria-expanded") !== "true") openTranscript(v, v._panel, v._tBtn);
+    // The player follows the switch: the story keeps playing (or stays paused) in the new language.
+    if (current === old) {
+      const playing = !audio.paused;
+      savePos(audio.currentTime);
+      if (playing) play(v); else { load(v); sync(); }
+    }
+  }
+  // While a search is on, a story shows its chosen version if that one matches (or was
+  // chosen during this search), else its first matching version. Nothing is stored.
+  function versionFor(u, ts) {
+    if (!ts.length || u.pin === ts.join(" ") || hits(u.chosen, ts)) return u.chosen;
+    return u.versions.find((v) => hits(v, ts)) || u.chosen;
+  }
 
   // ---------- Listening status (from the per-viewer resume points) ----------
   // "done:<id>" is set when an episode plays to the end; "pos:<id>" is the resume point.
@@ -129,16 +213,19 @@
     try { history.replaceState(null, "", `${location.pathname}${qs ? `?${qs}` : ""}${location.hash}`); } catch { /* ignore */ }
   }
 
-  function matches(ep) {
-    if (ep._cat !== state.tab) return false;
-    for (const t of terms()) if (!ep._hay.includes(t)) return false;
-    return true;
+  // A story in several languages matches when any of its versions does.
+  const hits = (ep, ts) => ts.every((t) => ep._hay.includes(t));
+  function matches(u) {
+    if (u._cat !== state.tab) return false;
+    const ts = terms();
+    return u.versions.some((ep) => hits(ep, ts));
   }
 
   function sorted() {
     const s = SORTS[state.sort];
     const mul = state.dir === "asc" ? 1 : -1;
-    return episodes.slice().sort((a, b) => {
+    return units.slice().sort((ua, ub) => {
+      const a = ua.sel, b = ub.sel;   // a story sorts by the version on show
       const ka = s.key(a), kb = s.key(b);
       // Missing values (an unknown source date, say) always sink to the end.
       if (ka == null && kb != null) return 1;
@@ -186,7 +273,7 @@
     const tab = TABS.find((t) => t.id === state.tab);
     for (const t of TABS) {
       const on = t === tab;
-      const n = episodes.filter((e) => e._cat === t.id).length;
+      const n = units.filter((u) => u._cat === t.id).length;
       t.btn.setAttribute("aria-selected", String(on));
       t.btn.tabIndex = on ? 0 : -1;
       t.btn.setAttribute("aria-label", `${t.label}, ${n} ${noun(n)}`);
@@ -204,28 +291,33 @@
     if (!isSort(state.sort)) { state.sort = "published"; state.dir = SORTS.published.def; }
     if (!isTab(state.tab)) state.tab = DEF_TAB;
     if (!noMatch) return;   // the toolbar is live before the episode list has loaded
-    for (const e of episodes) e._cat = catOf(e);
-    showTab();
     const ts = terms();
-    const order = sorted();
-    const rows = [...list.children].filter((n) => n.classList.contains("ep"));
-    if (order.some((e, i) => rows[i] !== e._node)) for (const e of order) list.insertBefore(e._node, noMatch);
-    let shown = 0;
-    for (const e of order) {
-      const on = matches(e);
-      e._node.hidden = !on;
-      if (on) shown++;
-      mark(e._titleText, e.title, ts);
-      e._summary.forEach((li, i) => mark(li, e.summary[i], ts));
+    for (const u of units) {
+      u._cat = catOf(u.chosen);
+      if (u.grouped) showVersion(u, versionFor(u, ts), false);
     }
-    const total = episodes.filter((e) => e._cat === state.tab).length;
+    showTab();
+    const order = sorted();
+    const rows = [...list.children].filter((n) => n.classList.contains("ep") || n.classList.contains("ep-group"));
+    if (order.some((u, i) => rows[i] !== u._node)) for (const u of order) list.insertBefore(u._node, noMatch);
+    let shown = 0;
+    for (const u of order) {
+      const on = matches(u);
+      u._node.hidden = !on;
+      if (on) shown++;
+      for (const e of u.versions) {
+        mark(e._titleText, e.title, ts);
+        e._summary.forEach((li, i) => mark(li, e.summary[i], ts));
+      }
+    }
+    const total = units.filter((u) => u._cat === state.tab).length;
     const active = !!ts.length;
     const count = $("count");
     count.replaceChildren(...(active
       ? [el("b", { text: shown }), ` of ${total} ${noun(total)}`]
       : [el("b", { text: total }), ` ${noun(total)} · ${SORTS[state.sort][state.dir].toLowerCase()}`]));
     $("clear-all").hidden = !active;
-    noMatch.hidden = shown > 0 || !episodes.length;
+    noMatch.hidden = shown > 0 || !units.length;
     noMatch.querySelector("div").hidden = !total;
     if (!total) {
       noMatch.querySelector("strong").textContent = TABS.find((t) => t.id === state.tab).empty;
@@ -262,14 +354,15 @@
       el("div", {}, el("button", { class: "btn", type: "button", text: "Clear search", onclick: clearAll })),
     ]);
     list.append(noMatch);
-    if (!episodes.length) {
+    if (!units.length) {
       list.prepend(el("li", { class: "state" }, [el("strong", { text: "No episodes yet" }), "The first one will appear here as soon as it is generated."]));
     }
-    episodes.forEach((ep, i) => list.insertBefore(card(ep, i), noMatch));
-    const total = episodes.reduce((a, e) => a + (e.duration_s || 0), 0);
+    units.forEach((u, i) => list.insertBefore(row(u, i), noMatch));
+    // A story counts once, in its counts and in its minutes (the version shown first).
+    const total = units.reduce((a, u) => a + (u.chosen.duration_s || 0), 0);
     const latest = episodes.map((e) => e.published).sort().pop();
-    $("stat-count").textContent = episodes.length;
-    $("stat-count-label").textContent = noun(episodes.length);
+    $("stat-count").textContent = units.length;
+    $("stat-count-label").textContent = noun(units.length);
     $("stat-min").textContent = Math.round(total / 60);
     // Drop the year for this year's episodes: "Nov 3" says enough and keeps the strip on one line.
     const sameYear = latest && new Date(latest).getFullYear() === new Date().getFullYear();
@@ -279,7 +372,18 @@
     openTarget(false);
   }
 
-  function card(ep, i) {
+  // One list row: an episode's card, or one card per language version of a story with
+  // only the selected one shown.
+  function row(u, i) {
+    if (!u.grouped) return (u._node = card(u.sel, i, u));
+    const li = el("li", { class: "ep-group enter" }, u.versions.map((v) => card(v, i, u)));
+    li.style.animationDelay = `${Math.min(i, 10) * 40}ms`;
+    li.addEventListener("animationend", (e) => { if (e.animationName === "rise") li.classList.remove("enter"); });
+    return (u._node = li);
+  }
+
+  function card(ep, i, u) {
+    const grouped = !!(u && u.grouped);
     const src = ep.source || {};
     const url = safeUrl(src.url);
     ep.summary = Array.isArray(ep.summary) ? ep.summary : [];
@@ -296,7 +400,7 @@
     playBtn.addEventListener("click", () => toggle(ep));
 
     const detailId = `det-${ep.id}`;
-    const titleText = el("span", { text: ep.title });
+    const titleText = el("span", grouped ? { text: ep.title, lang: ep._lang } : { text: ep.title });
     const toggleBtn = el("button", { class: "ep-toggle", type: "button", "aria-expanded": "false", "aria-controls": detailId }, titleText);
     const status = el("span", { class: "st", hidden: true });
     const where = host(src.url);
@@ -306,13 +410,26 @@
       where ? el("span", { text: where }) : null,
       status,
     ]);
-    const row = el("div", { class: "ep-row" }, [
+    // The language switch of a story in several languages, labelled in each language.
+    const langBtns = new Map();
+    const langs = grouped
+      ? el("div", { class: "langs", role: "group", "aria-label": "Language" }, u.versions.map((v) => {
+        const [short, name] = langLabel(v._lang);
+        const b = el("button", { class: "lang", type: "button", lang: v._lang, title: name, "aria-label": name, "aria-pressed": String(v === ep) }, [
+          el("span", { class: "l-long", text: name }), el("span", { class: "l-short", text: short, "aria-hidden": "true" }),
+        ]);
+        b.addEventListener("click", () => selectVersion(u, v, true));
+        langBtns.set(v._lang, b);
+        return b;
+      }))
+      : null;
+    const rowEl = el("div", { class: "ep-row" }, [
       playBtn,
-      el("div", { class: "ep-head" }, [el("h3", {}, toggleBtn), meta]),
+      el("div", { class: "ep-head" }, [el("h3", {}, toggleBtn), meta, langs]),
       svg(["M6 9l6 6 6-6"], "chev"),
     ]);
 
-    const summaryItems = ep.summary.map((line) => el("li", { text: line }));
+    const summaryItems = ep.summary.map((line) => el("li", grouped ? { text: line, lang: ep._lang } : { text: line }));
     const credit = el("p", { class: "credit" }, url
       ? ["Based on ", el("a", { href: url, target: "_blank", rel: "noopener", text: src.title || host(url) }), src.author ? ` by ${src.author}` : "", ` · ${host(url)}`]
       : [src.title ? `Based on ${src.title}` : ""]);
@@ -342,9 +459,10 @@
     const musicLine = musicCredit ? el("p", { class: "music", text: `Music: ${musicCredit}` }) : null;
     const actions = el("div", { class: "actions" });
     let panel = null;
+    let tBtn = null;
     if (ep.transcript) {
       panel = el("div", { class: "transcript", hidden: true, id: `tr-${ep.id}` });
-      const tBtn = el("button", { class: "btn", type: "button", "aria-expanded": "false", "aria-controls": `tr-${ep.id}` }, [
+      tBtn = el("button", { class: "btn", type: "button", "aria-expanded": "false", "aria-controls": `tr-${ep.id}` }, [
         svg(["M4 6h16M4 12h16M4 18h10"]), "Transcript",
       ]);
       tBtn.addEventListener("click", () => openTranscript(ep, panel, tBtn));
@@ -365,10 +483,15 @@
     const pos = store.get(`pos:${ep.id}`);
     if (pos && ep.duration_s) bar.firstChild.style.width = `${Math.min(100, (pos / ep.duration_s) * 100)}%`;
 
-    const li = el("li", { class: "ep enter", id: `ep-${ep.id}` }, [row, detail, bar]);
-    li.style.animationDelay = `${Math.min(i, 10) * 40}ms`;
-    li.addEventListener("animationend", (e) => { if (e.animationName === "rise") li.classList.remove("enter"); });
-    Object.assign(ep, { _node: li, _bar: bar.firstChild, _btn: playBtn, _toggle: toggleBtn, _detail: detail, _titleText: titleText, _summary: summaryItems, _status: status });
+    // A language version is a block inside its story's row; only the selected one shows.
+    const li = grouped
+      ? el("div", { class: "ep", id: `ep-${ep.id}`, lang: ep._lang, hidden: ep !== u.sel }, [rowEl, detail, bar])
+      : el("li", { class: "ep enter", id: `ep-${ep.id}` }, [rowEl, detail, bar]);
+    if (!grouped) {
+      li.style.animationDelay = `${Math.min(i, 10) * 40}ms`;
+      li.addEventListener("animationend", (e) => { if (e.animationName === "rise") li.classList.remove("enter"); });
+    }
+    Object.assign(ep, { _node: li, _bar: bar.firstChild, _btn: playBtn, _toggle: toggleBtn, _detail: detail, _titleText: titleText, _summary: summaryItems, _status: status, _tBtn: tBtn, _panel: panel, _langBtns: langBtns });
     showStatus(ep);
     return li;
   }
@@ -399,8 +522,10 @@
       if (page) location.replace(`${page}${location.hash}`);
       return;
     }
-    if (ep._cat !== state.tab) { state.tab = ep._cat; apply(); }
-    if (ep._node.hidden) clearAll();
+    const u = ep._unit;
+    selectVersion(u, ep, false);   // a version's link opens (and chooses) that version
+    if (u._cat !== state.tab) { state.tab = u._cat; apply(); }
+    if (u._node.hidden) clearAll();
     expand(ep, true);
     ep._node.classList.remove("is-target");
     void ep._node.offsetWidth;
@@ -479,24 +604,26 @@
     else play(ep);
   }
 
-  function play(ep, at) {
-    if (current !== ep) {
-      if (current) current._node.classList.remove("is-current", "is-playing");
-      current = ep;
-      audio.src = ep.audio;
-      audio.playbackRate = Number(store.get("speed")) || 1;
-      const resume = store.get(`pos:${ep.id}`);
-      audio.currentTime = at ?? (resume && ep.duration_s && resume < ep.duration_s - 5 ? resume : 0);
-      ep._node.classList.add("is-current");
-      $("p-title").textContent = ep.title;
-      player.classList.add("is-on");
-      document.documentElement.style.setProperty("--player-h", `${player.offsetHeight}px`);
-      if ("mediaSession" in navigator) {
-        navigator.mediaSession.metadata = new MediaMetadata({ title: ep.title, artist: PAGE.artist || (ep.hosts || []).join(" & "), album: PAGE.show });
-      }
-    } else if (at != null) {
-      audio.currentTime = at;
+  // Put an episode in the player (without starting it).
+  function load(ep, at) {
+    if (current) current._node.classList.remove("is-current", "is-playing");
+    current = ep;
+    audio.src = ep.audio;
+    audio.playbackRate = Number(store.get("speed")) || 1;
+    const resume = store.get(`pos:${ep.id}`);
+    audio.currentTime = at ?? (resume && ep.duration_s && resume < ep.duration_s - 5 ? resume : 0);
+    ep._node.classList.add("is-current");
+    $("p-title").textContent = ep.title;
+    player.classList.add("is-on");
+    document.documentElement.style.setProperty("--player-h", `${player.offsetHeight}px`);
+    if ("mediaSession" in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({ title: ep.title, artist: PAGE.artist || (ep.hosts || []).join(" & "), album: PAGE.show });
     }
+  }
+
+  function play(ep, at) {
+    if (current !== ep) load(ep, at);
+    else if (at != null) audio.currentTime = at;
     audio.play().catch(() => sync());
   }
 
@@ -610,6 +737,7 @@
       for (const e of all) { e.audio = resolve(e.audio); e.transcript = resolve(e.transcript); }
       episodes = all.filter((e) => showOf(e) === PAGE.show);
       others = all.filter((e) => showOf(e) !== PAGE.show);
+      units = groupUnits(episodes);
       render();
     })
     .catch(() => {

@@ -312,6 +312,60 @@ class ShowRoutingTest(EpisodeCreditsTest):
         self.assertEqual(saved["episodes"][0]["show"], STORY)
 
 
+class StoryGroupTest(EpisodeCreditsTest):
+    """One story in several languages (DropCast #136): ``story_group`` and ``language``."""
+
+    def make_story(self, **fields) -> None:
+        self.make_job([MAIN["url"]], HOSTS)
+        script = json.loads((self.job / "script.json").read_text(encoding="utf-8"))
+        script.update(format="bedtime-story", **fields)
+        for key in [k for k, v in script.items() if v is None]:
+            del script[key]
+        _write(self.job / "script.json", script)
+
+    def test_group_and_language_are_copied(self) -> None:
+        for lang in ("en", "fr", "vi"):
+            with self.subTest(lang=lang):
+                self.make_story(story_group="2026-11-05_cinderella", language=lang)
+                entry = self.entry()
+                self.assertEqual(entry["story_group"], "2026-11-05_cinderella")
+                self.assertEqual(entry["language"], lang)
+
+    def test_group_is_trimmed(self) -> None:
+        self.make_story(story_group="  2026-11-05_cinderella \n", language="fr")
+        self.assertEqual(self.entry()["story_group"], "2026-11-05_cinderella")
+
+    def test_old_job_has_no_group_key(self) -> None:
+        self.make_story(language="vi")
+        entry = self.entry()
+        self.assertNotIn("story_group", entry)
+        self.assertEqual(entry["language"], "vi")
+        self.make_story(language=None)  # no language at all: English, as before
+        self.assertEqual(self.entry()["language"], "en")
+
+    def test_bad_group_values_are_left_out(self) -> None:
+        for bad in ("", "   ", 5, ["a"], {"id": "a"}, True):
+            with self.subTest(bad=bad):
+                self.make_story(story_group=bad, language="en")
+                self.assertNotIn("story_group", self.entry())
+
+    def test_result_json_is_not_read_for_the_group(self) -> None:
+        self.make_story(language="fr")
+        _write(self.job / "result.json", {"status": "delivered", "story_group": "x",
+                                          "delivery": {"story_group": "x", "language": "en"}})
+        entry = self.entry()
+        self.assertNotIn("story_group", entry)
+        self.assertEqual(entry["language"], "fr")
+
+    def test_index_round_trip_keeps_the_group(self) -> None:
+        self.make_story(story_group="2026-11-05_cinderella", language="vi")
+        self.assertTrue(publish.update_index(self.site, [self.entry()]))
+        saved = json.loads((self.site / "episodes.json").read_text(encoding="utf-8"))
+        self.assertEqual(saved["episodes"][0]["story_group"], "2026-11-05_cinderella")
+        self.assertEqual(saved["episodes"][0]["language"], "vi")
+        self.assertFalse(publish.update_index(self.site, [self.entry()]))
+
+
 class SiteMigrationTest(unittest.TestCase):
     """The live index after #129: stories moved to their own page, nothing removed."""
 
