@@ -15,6 +15,10 @@ An episode with extra sources presented by guests (DropCast #94) also gets ``sou
 (``name``, ``presents``: the titles of the sources they present); ``source`` stays the
 main source. Other episodes get neither key, so their entries do not change.
 
+An episode whose music needs attribution (``run.json`` ``music.credit``, e.g. a CC-BY
+track) also gets ``music_credit``, that text as is; the site shows it under the episode.
+Without a credit (the CC0 theme, older jobs) the key is left out.
+
 Each episode gets one ``category``, the site's tab: ``ai`` (AI podcast), ``bedtime``
 (bedtime stories), ``marketing`` or ``others``. The first that applies wins:
 ``--category`` (when publishing one job), the job's ``category.txt`` (one word),
@@ -355,6 +359,12 @@ def episode_entry(
     # Every source used and the guests who presented them (DropCast #94): added only
     # when the episode has extra sources or guests, so other entries stay as they were.
     entry.update(episode_credits(job, script, source, result))
+    # Licensed music that needs attribution (e.g. CC-BY): DropCast writes the credit in
+    # run.json ``music.credit`` (null for the CC0 theme). Added only when it is set, so
+    # other entries stay as they were.
+    music_credit = _text(_mapping(run.get("music")).get("credit"))
+    if music_credit:
+        entry["music_credit"] = music_credit
     return entry, changed
 
 

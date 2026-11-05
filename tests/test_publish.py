@@ -53,7 +53,7 @@ class EpisodeCreditsTest(unittest.TestCase):
     def tearDown(self) -> None:
         self._tmp.cleanup()
 
-    def make_job(self, sources, speakers, result=None, fact_check_pass=None) -> None:
+    def make_job(self, sources, speakers, result=None, fact_check_pass=None, music=None) -> None:
         job = self.job
         script = {
             "title": "Quiet hours",
@@ -68,11 +68,11 @@ class EpisodeCreditsTest(unittest.TestCase):
         _write(job / "script.json", script)
         _write(job / "source.json", MAIN)
         _write(job / "job.json", {"steps": {"render": {"status": "done"}}})
-        _write(
-            job / "run.json",
-            {"engine": "openrouter", "episode": "episode.mp3", "duration_s": 300,
-             "finished": "2026-11-05T10:00:00Z"},
-        )
+        run = {"engine": "openrouter", "episode": "episode.mp3", "duration_s": 300,
+               "finished": "2026-11-05T10:00:00Z"}
+        if music is not None:
+            run["music"] = music
+        _write(job / "run.json", run)
         _write(job / "result.json", result if result is not None else {"status": "awaiting"})
         (job / "episode.mp3").write_bytes(b"ID3fake")
 
@@ -199,6 +199,39 @@ class RobustCreditsTest(EpisodeCreditsTest):
         listed = dict(EXTRA, url="javascript:alert(1)")
         self.make_job([MAIN["url"], listed], HOSTS)
         self.assertIsNone(self.entry()["sources"][1]["url"])
+
+
+CREDIT = (
+    '"Music Box Theme" by Kevin MacLeod (incompetech.com), licensed under Creative '
+    "Commons: By Attribution 4.0 License http://creativecommons.org/licenses/by/4.0/"
+)
+
+
+class MusicCreditTest(EpisodeCreditsTest):
+    """Licensed music credited per episode, from run.json ``music.credit``."""
+
+    def test_credit_is_published(self) -> None:
+        music = {"title": "Music Box Theme", "author": "Kevin MacLeod",
+                 "licence": "CC-BY-4.0", "source": "incompetech.com", "credit": f"  {CREDIT} "}
+        self.make_job([MAIN["url"]], HOSTS, music=music)
+        entry = self.entry()
+        self.assertEqual(entry["music_credit"], CREDIT)
+        self.assertTrue(publish.update_index(self.site, [entry]))
+        saved = json.loads((self.site / "episodes.json").read_text(encoding="utf-8"))
+        self.assertEqual(saved["episodes"][0]["music_credit"], CREDIT)
+
+    def test_run_json_wins_over_result_json(self) -> None:
+        # result.json is not final when DropCast calls the publisher: never read from it.
+        result = {"status": "awaiting", "music": {"credit": "stale"}}
+        self.make_job([MAIN["url"]], HOSTS, result=result, music={"credit": CREDIT})
+        self.assertEqual(self.entry()["music_credit"], CREDIT)
+
+    def test_no_credit_no_key(self) -> None:
+        for music in (None, {"credit": None}, {"credit": ""}, {"credit": "   "},
+                      {"credit": 5}, {"title": "Theme"}, "not a dict", []):
+            with self.subTest(music=music):
+                self.make_job([MAIN["url"]], HOSTS, music=music)  # None: no music key
+                self.assertNotIn("music_credit", self.entry())
 
 
 if __name__ == "__main__":

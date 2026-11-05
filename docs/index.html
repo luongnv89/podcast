@@ -219,6 +219,7 @@
   .sources a:hover { color: var(--green); }
   .guests { margin: 8px 0 0; font-size: 14px; color: var(--text-2); overflow-wrap: anywhere; }
   .guests strong { color: var(--white); font-weight: 600; }
+  .music { margin: 8px 0 0; font-size: 13px; color: var(--text-2); max-width: 760px; overflow-wrap: anywhere; }
   .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .btn {
     display: inline-flex; align-items: center; gap: 7px; min-height: 36px; padding: 6px 12px;
@@ -749,6 +750,9 @@
         return [i ? ", " : "", el("strong", { text: g.name }), shows.length ? ` (presents ${shows.join(", ")})` : ""];
       })])
       : null;
+    // Licensed music that needs attribution (CC-BY): shown as plain text.
+    const musicCredit = typeof ep.music_credit === "string" ? ep.music_credit.trim() : "";
+    const musicLine = musicCredit ? el("p", { class: "music", text: `Music: ${musicCredit}` }) : null;
     const actions = el("div", { class: "actions" });
     let panel = null;
     if (ep.transcript) {
@@ -766,7 +770,7 @@
     linkBtn.addEventListener("click", () => copyLink(ep, linkBtn, linkLabel));
     actions.append(linkBtn);
     const detail = el("div", { class: "ep-detail", id: detailId, hidden: true }, [
-      summaryItems.length ? el("ul", { class: "summary" }, summaryItems) : null, credit, sourceList, guestLine, actions, panel,
+      summaryItems.length ? el("ul", { class: "summary" }, summaryItems) : null, credit, sourceList, guestLine, musicLine, actions, panel,
     ]);
     toggleBtn.addEventListener("click", () => expand(ep, toggleBtn.getAttribute("aria-expanded") !== "true"));
 
