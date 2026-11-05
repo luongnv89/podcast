@@ -58,7 +58,7 @@ sources get neither key, so their entries are unchanged.
 
 When an episode uses licensed music that requires attribution (e.g. a CC-BY track),
 DropCast writes the credit in the job's `run.json` as `music.credit`. The publisher copies
-it, as is, into the episode's entry as `music_credit` (it reads `run.json`, since
+it, trimmed, into the episode's entry as `music_credit` (it reads `run.json`, since
 `result.json` is not final yet when DropCast calls it), and the episode's details show it
 as a small line: "Music: <credit>". Episodes without a credit (the CC0 theme, older jobs)
 get no `music_credit` key, so their entries are unchanged.

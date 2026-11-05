@@ -220,6 +220,15 @@ class MusicCreditTest(EpisodeCreditsTest):
         saved = json.loads((self.site / "episodes.json").read_text(encoding="utf-8"))
         self.assertEqual(saved["episodes"][0]["music_credit"], CREDIT)
 
+    def test_republishing_the_same_credit_changes_nothing(self) -> None:
+        music = {"title": "Music Box Theme", "author": "Kevin MacLeod",
+                 "licence": "CC-BY-4.0", "source": "incompetech.com", "credit": CREDIT}
+        self.make_job([MAIN["url"]], HOSTS, music=music)
+        self.assertTrue(publish.update_index(self.site, [self.entry()]))
+        before = (self.site / "episodes.json").read_text(encoding="utf-8")
+        self.assertFalse(publish.update_index(self.site, [self.entry()]))
+        self.assertEqual((self.site / "episodes.json").read_text(encoding="utf-8"), before)
+
     def test_run_json_wins_over_result_json(self) -> None:
         # result.json is not final when DropCast calls the publisher: never read from it.
         result = {"status": "awaiting", "music": {"credit": "stale"}}

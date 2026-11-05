@@ -16,7 +16,7 @@ An episode with extra sources presented by guests (DropCast #94) also gets ``sou
 main source. Other episodes get neither key, so their entries do not change.
 
 An episode whose music needs attribution (``run.json`` ``music.credit``, e.g. a CC-BY
-track) also gets ``music_credit``, that text as is; the site shows it under the episode.
+track) also gets ``music_credit``, that text trimmed; the site shows it under the episode.
 Without a credit (the CC0 theme, older jobs) the key is left out.
 
 Each episode gets one ``category``, the site's tab: ``ai`` (AI podcast), ``bedtime``
