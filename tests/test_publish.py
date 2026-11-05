@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -340,8 +341,13 @@ class SiteMigrationTest(unittest.TestCase):
         stories = (ROOT / "docs" / "stories" / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="stories/"', main)
         self.assertNotIn('id: "bedtime"', main)
-        self.assertIn('<script src="site.js"></script>', main)
-        self.assertIn('<script src="../site.js"></script>', stories)
+        # Both pages load the same shared script and stylesheet, with the same cache-busting version.
+        main_v = re.search(r'<script src="site\.js\?v=(\w+)"></script>', main)
+        story_v = re.search(r'<script src="\.\./site\.js\?v=(\w+)"></script>', stories)
+        self.assertTrue(main_v and story_v)
+        self.assertEqual(main_v.group(1), story_v.group(1))
+        self.assertIn(f'href="site.css?v={main_v.group(1)}"', main)
+        self.assertIn(f'href="../site.css?v={main_v.group(1)}"', stories)
         self.assertIn('data: "../episodes.json"', stories)
         self.assertIn("<h1>Once Upon a <span", stories)
         self.assertEqual([s["name"] for s in self.data["shows"]], [BUILD, STORY])

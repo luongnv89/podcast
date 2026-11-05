@@ -24,7 +24,8 @@ or ``storytelling`` script, or a job whose ``script.json`` or ``brief.json`` nam
 show or a story register), listed on ``docs/stories/``; else **Build Wiz AI Show**, listed
 on ``docs/index.html``. The format wins over the name, so a story briefed before the
 stories had their own show (its script says Build Wiz AI Show) still goes to the story
-show; a podcast is always Build Wiz AI Show, whatever older scripts said. ``result.json``
+show. Any other job is Build Wiz AI Show unless its script or brief names the story show
+or a story register (DropCast never writes that for a podcast). ``result.json``
 is not read for it (DropCast runs the publisher before that file is final).
 
 Each episode gets one ``category``, the site's tab: ``ai`` (AI podcast), ``bedtime``

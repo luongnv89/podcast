@@ -27,6 +27,8 @@ The site is static (`docs/`), deployed by GitHub Pages from `main`
 - `docs/site.js`, `docs/site.css` — the list and player both pages share. Each page sets
   `window.SHOW_PAGE` (its show, tabs and the path to `episodes.json`) before loading
   `site.js`; both read the same `docs/episodes.json` and list only their show's episodes.
+  Both pages load them as `site.js?v=<version>` / `site.css?v=<version>`: bump the
+  version on both pages whenever either file changes (GitHub Pages caches them for 10 min).
 - `docs/episodes/<job id>/` — each episode's `episode.mp3` and `transcript.vtt`.
 - `scripts/publish.py` — copies delivered DropCast jobs into `docs/`, updates
   `episodes.json`, and (with `--push`) commits and pushes. Standard library only.
