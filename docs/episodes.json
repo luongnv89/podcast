@@ -24,7 +24,7 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-05T14:02:35Z",
+  "updated": "2026-11-05T14:59:11Z",
   "episodes": [
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper",
@@ -42,12 +42,12 @@
       ],
       "language": "en",
       "format": "bedtime-story",
-      "published": "2026-11-05T14:02:34Z",
-      "duration_s": 420.557,
-      "size_bytes": 6730735,
+      "published": "2026-11-05T14:59:09Z",
+      "duration_s": 353.421,
+      "size_bytes": 5656580,
       "audio": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper/episode.mp3",
       "transcript": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper/transcript.vtt",
-      "voices": "OpenRouter · fish-audio/s2.1-pro-free:free",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
         "title": "Cinderella; or, The Little Glass Slipper",
         "author": null,
