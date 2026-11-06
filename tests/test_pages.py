@@ -141,6 +141,42 @@ class PageTest(unittest.TestCase):
         self.assertTrue(fr.meta["og:image"].endswith("stories/cover-en.jpg"))
         self.assertEqual(fr.meta["og:locale"], "fr_FR")
 
+    def art(self) -> dict:
+        folder = self.site / "art" / "2026-11-05_cinderella"
+        folder.mkdir(parents=True, exist_ok=True)
+        for name in ("wide", "square", "thumb"):
+            (folder / f"{name}.jpg").write_bytes(b"jpg")
+        return {"square": "art/2026-11-05_cinderella/square.jpg", "wide": "art/2026-11-05_cinderella/wide.jpg",
+                "thumb": "art/2026-11-05_cinderella/thumb.jpg", "alt": "A pumpkin coach at night."}
+
+    def test_story_page_with_illustration(self) -> None:
+        ep = dict(self.eps[0], image=self.art())
+        html = pages.render_page(ep, self.eps, self.site)
+        head = parse(html)
+        self.assertEqual(head.meta["og:image"], "https://luongnv.com/podcast/art/2026-11-05_cinderella/wide.jpg")
+        self.assertEqual(head.meta["twitter:image"], head.meta["og:image"])
+        self.assertEqual(head.meta["twitter:card"], "summary_large_image")
+        self.assertEqual(head.meta["og:image:alt"], "A pumpkin coach at night.")
+        ld = json.loads(head.ld[0])
+        self.assertEqual(ld["image"], "https://luongnv.com/podcast/art/2026-11-05_cinderella/square.jpg")
+        self.assertIn('<img class="hero" src="../../art/2026-11-05_cinderella/wide.jpg" alt="A pumpkin coach at night." '
+                      'width="1920" height="1080"', html)
+        self.assertLess(html.index('class="hero"'), html.index('<h1 id="title">'))
+        self.assertRegex(html, r"\.hero \{[^}]*max-width: 100%; height: auto;[^}]*border-radius")
+        # Without alt text the title names it.
+        no_alt = dict(ep, image=dict(ep["image"], alt=None))
+        self.assertIn('alt="Illustration: Cinderella &lt;/script&gt; (en)"', pages.render_page(no_alt, self.eps, self.site))
+
+    def test_page_without_illustration_is_unchanged(self) -> None:
+        plain = pages.render_page(self.eps[0], self.eps, self.site)
+        for marker in ("hero", "summary_large_image", "og:image:alt", "/art/"):
+            self.assertNotIn(marker, plain)
+        # An image whose files are not on the site (or an unsafe path) changes nothing.
+        missing = {"square": "art/x/square.jpg", "wide": "art/x/wide.jpg", "thumb": "art/x/thumb.jpg", "alt": "x"}
+        for image in (missing, {"wide": "../../secret.jpg", "square": "../../secret.jpg"}, "art/x/wide.jpg"):
+            with self.subTest(image=image):
+                self.assertEqual(pages.render_page(dict(self.eps[0], image=image), self.eps, self.site), plain)
+
     def test_podcast_page(self) -> None:
         head = parse(pages.render_page(self.eps[2], self.eps, self.site))
         self.assertEqual(head.title, "Roll-ups | Build Wiz AI Show")

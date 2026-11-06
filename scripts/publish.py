@@ -4,7 +4,7 @@
 Usage:
     python3 scripts/publish.py JOB [JOB ...] [--push]   # one or more job folders
     python3 scripts/publish.py --all [--push]           # every job in $DROPCAST_HOME/jobs
-    python3 scripts/publish.py --backfill [--push]      # descriptions + pages for old entries
+    python3 scripts/publish.py --backfill [--push]      # descriptions, art, feeds, pages
 
 For each delivered DropCast job it copies ``episode.mp3`` and ``transcript.vtt`` to
 ``docs/episodes/<job id>/`` and records the episode in ``docs/episodes.json``
@@ -48,6 +48,13 @@ name ``<Show> - <Title> (<YYYY-MM-DD>).mp3``: ``run.json`` ``delivery.file_name`
 rebuilt with the same rule), DropCast #161/#163. After every publish the episode pages
 (``docs/episodes/<id>/index.html``) and ``docs/sitemap.xml`` are rebuilt
 (``scripts/pages.py``). ``--backfill`` fills both keys for older entries and rebuilds them.
+
+A story's illustration (one per story, shared by its language versions) comes from the
+job's ``illustration/`` folder (``wide.jpg``, ``square.jpg``, ``thumb.jpg``, optional
+``alt.txt``), else from the job of the same ``story_group`` that has it. The jpgs are
+copied to ``docs/art/<story group or id>/`` and the entry gets ``image`` (``square``,
+``wide``, ``thumb`` paths and ``alt``); without one, an ``image`` already in
+``episodes.json`` is kept. ``--backfill`` adds it to older entries and rebuilds the feeds.
 
 A job is skipped (and reported) when it is not delivered yet, when its voices are for
 private use only (edge-tts, ``run.json`` ``private_use``), or when the job opted out
@@ -198,6 +205,114 @@ def _copy(src: Path, dest: Path) -> bool:
     shutil.copyfile(src, dest)
     os.chmod(dest, 0o644)
     return True
+
+
+# ---------- Story illustrations (Luong's decision 2026-11-06) ----------
+# One hand-drawn illustration per story, shared by its language versions. A DropCast job
+# may hold ``illustration/`` with ``wide.jpg`` (1920x1080, page hero and share cards),
+# ``square.jpg`` (3000x3000, episode artwork in podcast apps), ``thumb.jpg`` (640x640, the
+# site list) and optionally ``alt.txt`` (one line of English alt text). Only one version of
+# a story group has it (the English one), so the others find it through ``story_group``.
+ART_DIR = "art"
+ART_FOLDER = "illustration"
+ART_FILES = ("wide", "square", "thumb")
+_SAFE_KEY = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*")
+
+
+def art_key(key: Any) -> str:
+    """``key`` when it is a plain, safe path component (no ``/``, no ``..``), else ValueError."""
+    text = key if isinstance(key, str) else ""
+    if not _SAFE_KEY.fullmatch(text) or ".." in text or len(text) > 200:
+        raise ValueError(f"unsafe illustration key {str(key)[:80]!r}")
+    return text
+
+
+def _art_complete(folder: Path) -> bool:
+    """An ``illustration/`` folder with all three jpgs as regular files (no symlinks)."""
+    if folder.is_symlink() or not folder.is_dir():
+        return False
+    return all(
+        not (folder / f"{name}.jpg").is_symlink() and (folder / f"{name}.jpg").is_file()
+        for name in ART_FILES
+    )
+
+
+def _story_group_of(job: Path) -> str | None:
+    return _text(_mapping(_read_json(job / "script.json")).get("story_group"))
+
+
+def find_illustration(
+    job: Path, story_group: str | None = None, siblings: Path | None = None
+) -> Path | None:
+    """The ``illustration/`` folder for ``job``: its own when complete, else the first
+    complete one (sorted by folder name) among the job folders in ``siblings`` (default
+    ``job.parent``) whose ``script.json`` has the same ``story_group``. ``story_group``
+    defaults to the job's own; ``None`` when nothing is found."""
+    own = job / ART_FOLDER
+    if _art_complete(own):
+        return own
+    group = _text(story_group) or (_story_group_of(job) if job.is_dir() else None)
+    if not group:
+        return None
+    root = siblings if siblings is not None else job.parent
+    try:
+        folders = sorted(p for p in root.iterdir() if p.is_dir() and not p.is_symlink())
+    except OSError:
+        return None
+    for folder in folders:
+        if folder == job or _story_group_of(folder) != group:
+            continue
+        if _art_complete(folder / ART_FOLDER):
+            return folder / ART_FOLDER
+    return None
+
+
+def _alt_text(folder: Path) -> str | None:
+    path = folder / "alt.txt"
+    if path.is_symlink() or not path.is_file():
+        return None
+    try:
+        text = path.read_text(encoding="utf-8")
+    except (OSError, UnicodeDecodeError):
+        return None
+    return _text(re.sub(r"\s+", " ", text)[:500])
+
+
+def copy_illustration(folder: Path, site: Path, key: str) -> tuple[dict[str, Any], list[Path]]:
+    """Copy the three jpgs to ``site/art/<key>/`` (only the ones whose bytes changed) and
+    return the entry's ``image`` field and the changed files."""
+    key = art_key(key)
+    dest = site / ART_DIR / key
+    changed = []
+    for name in ART_FILES:
+        if _copy(folder / f"{name}.jpg", dest / f"{name}.jpg"):
+            changed.append(dest / f"{name}.jpg")
+    image: dict[str, Any] = {name: f"{ART_DIR}/{key}/{name}.jpg" for name in ("square", "wide", "thumb")}
+    image["alt"] = _alt_text(folder)
+    return image, changed
+
+
+_ART_PATH = re.compile(r"art/[A-Za-z0-9][A-Za-z0-9._-]*/(?:wide|square|thumb)\.jpg")
+
+
+def _valid_image(value: Any) -> dict[str, Any] | None:
+    """An ``image`` field already in ``episodes.json`` when its paths are safe, else None."""
+    image = _mapping(value)
+    paths = [image.get(name) for name in ("square", "wide", "thumb")]
+    if not all(isinstance(p, str) and _ART_PATH.fullmatch(p) and ".." not in p for p in paths):
+        return None
+    return image
+
+
+def episode_image(
+    job: Path, site: Path, episode_id: str, story_group: str | None, siblings: Path | None = None
+) -> tuple[dict[str, Any] | None, list[Path]]:
+    """Find, copy and describe a job's illustration: ``(image field or None, changed)``.
+    The art folder is named after the story group (shared by its versions), else the id."""
+    folder = find_illustration(job, story_group, siblings)
+    if folder is None:
+        return None, []
+    return copy_illustration(folder, site, story_group or episode_id)
 
 
 def _summary(job: Path) -> list[str]:
@@ -762,6 +877,19 @@ def episode_entry(
     story_group = _text(script.get("story_group"))
     if story_group:
         entry["story_group"] = story_group
+    # The story's illustration (one per story group): copied to docs/art/<key>/ and named
+    # in ``image``. Without one here (e.g. a re-publish from a machine without the art), an
+    # image already in episodes.json is kept. Added only when set, so other entries stay
+    # as they were.
+    try:
+        image, art_files = episode_image(job, site, episode_id, story_group)
+    except ValueError as exc:
+        image, art_files = None, []
+        entry["_art_problems"] = [str(exc)]
+    changed += art_files
+    image = image or _valid_image((known.get(episode_id) or {}).get("image"))
+    if image:
+        entry["image"] = image
     # The copy-paste description and the download name (DropCast #161/#163): the job's
     # description.txt, else a hand-edited one already in episodes.json (it survives a
     # re-publish), else one built from the summary, sources and tagline. A generated one
@@ -885,15 +1013,22 @@ def _rebuild_pages(report: dict[str, Any]) -> list[Path]:
         return []
 
 
-def backfill(site: Path, jobs_root: Path) -> tuple[bool, list[dict[str, Any]]]:
-    """Give every ``episodes.json`` entry without one a ``description`` and a ``file_name``.
+def backfill(
+    site: Path, jobs_root: Path, art_changed: list[Path] | None = None
+) -> tuple[bool, list[dict[str, Any]]]:
+    """Give every ``episodes.json`` entry without one a ``description``, a ``file_name``
+    and (when its story has one) an ``image``.
 
     A job folder still on this machine (``jobs_root/<id>``) gives its ``description.txt``
     and ``run.json`` ``delivery.file_name`` when usable; otherwise the description is
     ``fallback_description()`` of the entry and the name is rebuilt from its show, title
-    and published date. Entries that already have both are left as they are.
+    and published date. The illustration is found as when publishing
+    (``find_illustration()``: the job's own ``illustration/``, else a job in ``jobs_root``
+    of the same ``story_group``), copied to ``site/art/<key>/`` and the copied files are
+    appended to ``art_changed``. Entries that already have them are left as they are.
     Returns (index changed, what was filled per entry).
     """
+    art: list[Path] = []
     path = site / INDEX
     data = _read_json(path)
     if not isinstance(data, dict) or not isinstance(data.get("episodes"), list):
@@ -916,10 +1051,23 @@ def backfill(site: Path, jobs_root: Path) -> tuple[bool, list[dict[str, Any]]]:
             run = _mapping(_read_json(job / "run.json")) if job.is_dir() else {}
             entry["file_name"] = entry_file_name(entry, _mapping(run.get("delivery")).get("file_name"))
             done["file_name"] = entry["file_name"]
+        if not entry.get("image"):
+            group = _text(entry.get("story_group")) or (_story_group_of(job) if job.is_dir() else None)
+            try:
+                image, files = episode_image(job, site, str(entry["id"]), group, jobs_root)
+            except ValueError as exc:
+                image, files = None, []
+                done["image_problems"] = [str(exc)]
+            if image:
+                entry["image"] = image
+                done["image"] = image["wide"].rsplit("/", 1)[0]
+                art.extend(f for f in files if f not in art)
         if len(done) > 1:
             filled.append(done)
-    if not filled:
-        return False, []
+    if art_changed is not None:
+        art_changed.extend(art)
+    if not any(set(f) - {"id", "image_problems"} for f in filled):
+        return False, filled
     data["updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return True, filled
@@ -937,7 +1085,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--push", action="store_true", help="commit and push the changes")
     parser.add_argument(
         "--backfill", action="store_true",
-        help="give every episodes.json entry a description and file_name, rebuild the episode pages",
+        help="give every episodes.json entry a description, file_name and story art; rebuild feeds and pages",
     )
     parser.add_argument(
         "--category", choices=CATEGORIES, help="the site tab for this one job (default: guessed)"
@@ -988,6 +1136,8 @@ def main(argv: list[str] | None = None) -> int:
                 report.setdefault("notes", []).append(
                     f"{job.name}: description.txt not used ({'; '.join(problems)}); kept the existing or a generated one"
                 )
+            for problem in entry.pop("_art_problems", None) or []:
+                report.setdefault("notes", []).append(f"{job.name}: illustration not published ({problem})")
             entries.append(entry)
             changed += files
             report["published"].append({"id": entry["id"], "title": entry["title"]})
@@ -1009,22 +1159,29 @@ def main(argv: list[str] | None = None) -> int:
 
 def _backfill_main(push_it: bool) -> int:
     report: dict[str, Any] = {"filled": [], "failed": [], "git": None}
+    art: list[Path] = []
     with _lock():
         if push_it:
             _git("pull", "--rebase", "origin", "main")
         try:
-            index_changed, report["filled"] = backfill(SITE, _jobs_root())
+            index_changed, report["filled"] = backfill(SITE, _jobs_root(), art)
         except (OSError, ValueError) as exc:
             report["failed"].append({"job": INDEX, "error": str(exc)})
             index_changed = False
         changed = [SITE / INDEX] if index_changed else []
+        changed += art
         if not report["failed"]:
+            # The story feeds carry the episode artwork too (itunes:image per item).
+            changed += _rebuild_feeds(report)
             changed += _rebuild_pages(report)
         if push_it and changed:
-            report["git"] = push(changed, [], "feat(site): backfill episode descriptions and pages")
+            report["git"] = push(
+                changed, [], "feat(site): backfill episode descriptions, pages and story art"
+            )
             if not report["git"].get("pushed") and report["git"].get("error"):
                 report["failed"].append({"job": "git", "error": report["git"]["error"]})
         report["changed"] = [str(p.relative_to(REPO)) for p in changed]
+    report["art"] = sorted({f["id"] for f in report["filled"] if f.get("image")})
     print(json.dumps(report, indent=2, ensure_ascii=False))
     return 1 if report["failed"] or report.get("pages_error") else 0
 

@@ -13,6 +13,11 @@ description, the download link and a link back to ``#<id>`` on the show page. A 
 several languages links its other versions (``hreflang``). ``docs/sitemap.xml`` lists the
 two show pages and every episode page.
 
+A story with an illustration (``image`` in ``episodes.json``, its files under ``docs/art/``)
+shows the wide picture at the top of its page, uses it for ``og:image``/``twitter:image``
+(``summary_large_image``) and the square one for the JSON-LD ``image``. Without one the page
+is exactly as before.
+
 ``publish.py`` rebuilds them after every publish (and with ``--backfill``), so they always
 follow ``episodes.json``. A file is rewritten only when its bytes change, and nothing
 depends on the clock, so a rebuild with no new episode changes nothing.
@@ -85,6 +90,32 @@ def cover_url(ep: dict[str, Any], site: Path = SITE) -> str:
     return BASE_URL + cover
 
 
+_ART_PATH = re.compile(r"art/[A-Za-z0-9][A-Za-z0-9._-]*/(?:wide|square|thumb)\.jpg")
+
+
+def art_of(ep: dict[str, Any], site: Path = SITE) -> dict[str, str] | None:
+    """The story illustration of an episode (``image`` in episodes.json) when its wide and
+    square files are on the site: ``wide``/``square`` absolute URLs, ``wide_rel`` (from the
+    episode page) and ``alt``; else None."""
+    image = ep.get("image")
+    if not isinstance(image, dict):
+        return None
+    paths = {k: image.get(k) for k in ("wide", "square")}
+    for path in paths.values():
+        if not isinstance(path, str) or not _ART_PATH.fullmatch(path) or ".." in path:
+            return None
+        if not (site / path).is_file():
+            return None
+    alt = image.get("alt") if isinstance(image.get("alt"), str) and image["alt"].strip() else None
+    title = str(ep.get("title") or ep.get("id") or "")
+    return {
+        "wide": BASE_URL + str(paths["wide"]),
+        "square": BASE_URL + str(paths["square"]),
+        "wide_rel": "../../" + str(paths["wide"]),
+        "alt": re.sub(r"\s+", " ", alt).strip() if alt else f"Illustration: {title}",
+    }
+
+
 def _iso_duration(seconds: Any) -> str | None:
     try:
         s = int(round(float(seconds)))
@@ -138,6 +169,8 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     back = f"../../{SHOWS[show]['page']}#{ep_id}"
     audio = BASE_URL + str(ep.get("audio") or f"episodes/{ep_id}/episode.mp3")
     cover = cover_url(ep, site)
+    art = art_of(ep, site)
+    share = art["wide"] if art else cover  # og:image / twitter:image
     file_name = str(ep.get("file_name") or f"{ep_id}.mp3")
     published = str(ep.get("published") or "")
     day = published[:10]
@@ -153,7 +186,7 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
         "description": description or hook,
         "url": url,
         "inLanguage": lang,
-        "image": cover,
+        "image": art["square"] if art else cover,
         "associatedMedia": {"@type": "MediaObject", "contentUrl": audio, "encodingFormat": "audio/mpeg"},
         "partOfSeries": {"@type": "PodcastSeries", "name": show, "url": show_url},
     }
@@ -183,14 +216,24 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
         f'<meta property="og:title" content="{e(title)}">',
         f'<meta property="og:description" content="{e(hook)}">',
         f'<meta property="og:url" content="{e(url)}">',
-        f'<meta property="og:image" content="{e(cover)}">',
+        f'<meta property="og:image" content="{e(share)}">',
+        *(
+            [
+                '<meta property="og:image:width" content="1920">',
+                '<meta property="og:image:height" content="1080">',
+                f'<meta property="og:image:alt" content="{e(art["alt"])}">',
+            ]
+            if art
+            else []
+        ),
         f'<meta property="og:locale" content="{e(LOCALES.get(lang, lang))}">',
         f'<meta property="og:audio" content="{e(audio)}">',
         '<meta property="og:audio:type" content="audio/mpeg">',
-        '<meta name="twitter:card" content="summary">',
+        f'<meta name="twitter:card" content="{"summary_large_image" if art else "summary"}">',
         f'<meta name="twitter:title" content="{e(title)}">',
         f'<meta name="twitter:description" content="{e(hook)}">',
-        f'<meta name="twitter:image" content="{e(cover)}">',
+        f'<meta name="twitter:image" content="{e(share)}">',
+        *([f'<meta name="twitter:image:alt" content="{e(art["alt"])}">'] if art else []),
         f'<script type="application/ld+json">\n{_json_ld(ld)}\n</script>',
         f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>',
         "<script>",
@@ -217,6 +260,11 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
         "  .btn:hover { border-color: #fff; color: #fff; }",
         "  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }",
         "  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }",
+        *(
+            ["  .hero { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; margin: 16px 0 0; background: #111; }"]
+            if art
+            else []
+        ),
         "</style>",
         "</head>",
     ]
@@ -224,6 +272,11 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
         "<body>",
         "<main>",
         f'  <a class="show" href="../../{SHOWS[show]["page"]}">{e(show)}</a>',
+        *(
+            [f'  <img class="hero" src="{e(art["wide_rel"])}" alt="{e(art["alt"])}" width="1920" height="1080" decoding="async" fetchpriority="high">']
+            if art
+            else []
+        ),
         f'  <h1 id="title">{e(title)}</h1>',
         '  <p class="meta">'
         + " · ".join(
