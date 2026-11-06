@@ -75,6 +75,21 @@
   };
   // An episode's own page (docs/episodes/<id>/, written by scripts/pages.py), next to episodes.json.
   const pageOf = (ep) => new URL(`episodes/${encodeURIComponent(ep.id)}/`, DATA_URL).href;
+  // A story's illustration (scripts/publish.py copies it to docs/art/<key>/): only a plain
+  // "art/<key>/<wide|square|thumb>.jpg" path is used, resolved next to episodes.json.
+  const ART_PATH = /^art\/[A-Za-z0-9][A-Za-z0-9._-]*\/(?:wide|square|thumb)\.jpg$/;
+  const artPath = (img, kind) => {
+    const p = img && typeof img === "object" ? img[kind] : null;
+    return typeof p === "string" && ART_PATH.test(p) && !p.includes("..") ? new URL(p, DATA_URL).href : null;
+  };
+  // The episode's own art, else another language version's: every version of a story shows the same picture.
+  const artSource = (ep, kind) => [ep, ...((ep._unit && ep._unit.versions) || [])].find((v) => artPath(v.image, kind));
+  const artOf = (ep, kind) => { const v = artSource(ep, kind); return v ? artPath(v.image, kind) : null; };
+  const artAlt = (ep) => {
+    const v = artSource(ep, "wide");
+    const alt = v && typeof v.image.alt === "string" ? v.image.alt.trim() : "";
+    return alt || `Illustration: ${ep.title}`;
+  };
   // The description's hook (its first paragraph): the page's meta description while a deep link is open.
   const hookOf = (d) => String(d || "").trim().split(/\n\s*\n/)[0].replace(/\s+/g, " ").trim();
   const metaDesc = document.querySelector('meta[name="description"]');
@@ -479,8 +494,12 @@
         return b;
       }))
       : null;
-    const rowEl = el("div", { class: "ep-row" }, [
+    // The story's square thumbnail next to the title (decorative there: the title names it).
+    const thumbUrl = artOf(ep, "thumb");
+    const thumb = thumbUrl ? el("img", { class: "thumb", src: thumbUrl, alt: "", loading: "lazy", decoding: "async", width: 64, height: 64 }) : null;
+    const rowEl = el("div", { class: thumb ? "ep-row has-art" : "ep-row" }, [
       playBtn,
+      thumb,
       el("div", { class: "ep-head" }, [el("h3", {}, toggleBtn), meta, langs]),
       svg(["M6 9l6 6 6-6"], "chev"),
     ]);
@@ -537,8 +556,11 @@
     const linkBtn = el("button", { class: "btn", type: "button" }, [svg(["M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"]), linkLabel]);
     linkBtn.addEventListener("click", () => copyLink(ep, linkBtn, linkLabel));
     actions.append(linkBtn);
+    // The wide illustration above the summary; lazy, so it loads when the details open.
+    const wideUrl = artOf(ep, "wide");
+    const art = wideUrl ? el("img", { class: "art", src: wideUrl, alt: artAlt(ep), loading: "lazy", decoding: "async", width: 1920, height: 1080 }) : null;
     const detail = el("div", { class: "ep-detail", id: detailId, hidden: true }, [
-      summaryItems.length ? el("ul", { class: "summary" }, summaryItems) : null, credit, sourceList, guestLine, musicLine, actions, panel,
+      art, summaryItems.length ? el("ul", { class: "summary" }, summaryItems) : null, credit, sourceList, guestLine, musicLine, actions, panel,
     ]);
     toggleBtn.addEventListener("click", (e) => {
       if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;   // opens the page
@@ -712,7 +734,12 @@
     player.classList.add("is-on");
     document.documentElement.style.setProperty("--player-h", `${player.offsetHeight}px`);
     if ("mediaSession" in navigator) {
-      navigator.mediaSession.metadata = new MediaMetadata({ title: ep.title, artist: PAGE.artist || (ep.hosts || []).join(" & "), album: PAGE.show });
+      // The story's illustration as the lock-screen artwork: only the 640 px thumbnail, so a
+      // play on a phone never downloads the 3000 px podcast-app artwork.
+      const artwork = [["thumb", "640x640"]]
+        .map(([kind, sizes]) => { const src = artOf(ep, kind); return src ? { src, sizes, type: "image/jpeg" } : null; })
+        .filter(Boolean);
+      navigator.mediaSession.metadata = new MediaMetadata({ title: ep.title, artist: PAGE.artist || (ep.hosts || []).join(" & "), album: PAGE.show, ...(artwork.length ? { artwork } : {}) });
     }
   }
 

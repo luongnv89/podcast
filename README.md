@@ -31,6 +31,8 @@ The site is static (`docs/`), deployed by GitHub Pages from `main`
   version on both pages whenever either file changes (GitHub Pages caches them for 10 min).
 - `docs/episodes/<job id>/` — each episode's `episode.mp3`, `transcript.vtt` and its own
   page `index.html` (see "Descriptions, download names and episode pages").
+- `docs/art/<story group>/` — each story's illustration (`wide.jpg`, `square.jpg`,
+  `thumb.jpg`), copied by the publisher (see "Story illustrations").
 - `docs/sitemap.xml`, `docs/robots.txt`, `docs/cover.jpg` — the sitemap of both show pages
   and every episode page, and Build Wiz AI Show's cover for share previews (rendered from
   `assets/cover/build-wiz-cover.html`, 1400 x 1400).
@@ -54,8 +56,37 @@ By hand:
 python3 scripts/publish.py ~/dropcast/jobs/2026-11-03_some-episode --push
 python3 scripts/publish.py --all            # every delivered job, no git
 python3 scripts/publish.py ~/dropcast/jobs/2026-11-03_some-episode --category marketing
-python3 scripts/publish.py --backfill [--push]   # descriptions, names, pages for old entries
+python3 scripts/publish.py --backfill [--push]   # descriptions, names, story art, feeds, pages
 ```
+
+## Story illustrations
+
+Each story has one hand-drawn illustration, shared by its EN/FR/VI versions. A DropCast job
+may hold an `illustration/` folder:
+
+| File | Size | Used for |
+|---|---|---|
+| `wide.jpg` | 1920 x 1080 | the episode page's hero, `og:image`/`twitter:image` (share cards), the expanded card on the site |
+| `square.jpg` | 3000 x 3000 | the episode artwork in podcast apps (`<itunes:image>` per feed item), JSON-LD `image`, the player's lock-screen artwork |
+| `thumb.jpg` | 640 x 640 | the thumbnail in the site's list (64 px, 52 px on phones) |
+| `alt.txt` | one line | English alt text (optional; else `Illustration: <title>`) |
+
+Only one job of a story group has it (the English one). The publisher takes the job's own
+`illustration/` when all three jpgs are there, else the first job folder next to it
+(sorted by name) whose `script.json` has the same `story_group` and a complete
+`illustration/`. It copies the jpgs to `docs/art/<story group>/` (an episode without a
+group uses its id; anything that is not a plain file name is refused and reported in
+`notes`), rewriting a file only when its bytes change, and adds to the entry:
+
+```json
+"image": {"square": "art/<key>/square.jpg", "wide": "art/<key>/wide.jpg",
+          "thumb": "art/<key>/thumb.jpg", "alt": "<alt.txt or null>"}
+```
+
+An entry gets `image` only when an illustration is found; when none is found, an `image`
+already in `episodes.json` is kept, so a re-publish from a machine without the art does
+not drop it. Podcasts and stories without art have no `image` and look exactly as before
+(cards, pages and feeds).
 
 ## Descriptions, download names and episode pages
 
@@ -129,12 +160,19 @@ Console); `docs/robots.txt` names it too.
 
 **Backfill.** `python3 scripts/publish.py --backfill` gives every entry without one a
 `description` and a `file_name` (a job folder still in `$DROPCAST_HOME/jobs` gives its
-`description.txt` and `delivery.file_name`; otherwise they are generated from the entry),
-then rebuilds the episode pages and the sitemap. Entries that have both are left alone,
+`description.txt` and `delivery.file_name`; otherwise they are generated from the entry)
+and, for a story whose illustration is in `$DROPCAST_HOME/jobs` (its own job or one of the
+same `story_group`, see "Story illustrations"), an `image` with the art copied to
+`docs/art/`; then it rebuilds the story feeds, the episode pages and the sitemap. Its
+report lists the filled entries (`filled`) and the ids that got art (`art`); with `--push`
+the commit is `feat(site): backfill episode descriptions, pages and story art`. Entries that have both are left alone,
 so it is safe to run again; `--push` commits and pushes the result. It does not rewrite a
 description an entry already has: after the labels file changes, regenerate the generated
 ones (every entry whose job has no usable `description.txt`) with `fallback_description()`
 and rebuild the pages, as done for #163 when the labels moved to DropCast.
+Backfill skips entries that already have an `image`: after a story is redrawn, re-publish its jobs
+(`publish.py JOB --push`, which re-copies changed art), and note that podcast apps may keep the old
+picture for a while because the art URLs do not change.
 
 ## Shows (publish routing)
 

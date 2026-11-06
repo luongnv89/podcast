@@ -23,6 +23,10 @@ audio file again only when its URL changes, so the enclosure URL carries
 ``?v=<first 8 hex of the MP3's SHA-256>``: a re-voiced episode keeps its guid and gets
 the new audio.
 
+A story with an illustration (``image.square`` in ``episodes.json``, the file under
+``docs/art/``) gets ``<itunes:image>`` on its item, so podcast apps show the picture as the
+episode artwork; the channel keeps the show's cover.
+
 Standard library only. Prints one JSON object. Exit 0 ok, 2 usage error.
 """
 
@@ -31,6 +35,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from email.utils import format_datetime
@@ -147,6 +152,22 @@ def _audio_version(site: Path, audio: str) -> str | None:
     return digest.hexdigest()[:8]
 
 
+_ART_PATH = re.compile(r"art/[A-Za-z0-9][A-Za-z0-9._-]*/(?:wide|square|thumb)\.jpg")
+
+
+def item_image(ep: dict[str, Any], site: Path = SITE) -> str | None:
+    """The episode artwork's absolute URL (``BASE_URL`` + the story illustration's
+    ``image.square``, a safe ``art/...jpg`` path whose file is on the site), else None.
+    No query string: some directories want the artwork URL to end in ``.jpg``."""
+    image = ep.get("image")
+    square = image.get("square") if isinstance(image, dict) else None
+    if not isinstance(square, str) or not _ART_PATH.fullmatch(square) or ".." in square:
+        return None
+    if not (site / square).is_file():
+        return None
+    return BASE_URL + square
+
+
 def is_story(ep: dict[str, Any]) -> bool:
     if ep.get("show"):
         return ep.get("show") == STORY_SHOW
@@ -257,6 +278,10 @@ def render_feed(index: dict[str, Any], lang: str, site: Path = SITE, now: dateti
             f"    <itunes:explicit>{COMMON['explicit']}</itunes:explicit>",
             "    <itunes:episodeType>full</itunes:episodeType>",
         ]
+        artwork = item_image(ep, site)
+        if artwork:
+            # The story's illustration as the episode's artwork (Apple Podcasts, Spotify).
+            out.append(f"    <itunes:image href={quoteattr(artwork)}/>")
         if ep.get("transcript"):
             out.append(
                 f"    <podcast:transcript url={quoteattr(BASE_URL + str(ep['transcript']))}"

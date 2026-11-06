@@ -244,6 +244,133 @@ class MusicCreditTest(EpisodeCreditsTest):
                 self.assertNotIn("music_credit", self.entry())
 
 
+JPG = b"\xff\xd8\xff\xe0fake-jpeg"
+
+
+def _art(folder: Path, files=("wide", "square", "thumb"), alt: str | None = "A girl in a red cap.") -> None:
+    (folder / "illustration").mkdir(parents=True, exist_ok=True)
+    for name in files:
+        (folder / "illustration" / f"{name}.jpg").write_bytes(JPG + name.encode())
+    if alt is not None:
+        (folder / "illustration" / "alt.txt").write_text(f"  {alt}\n", encoding="utf-8")
+
+
+class IllustrationTest(EpisodeCreditsTest):
+    """One story illustration, shared by its language versions (docs/art/<key>/)."""
+
+    GROUP = "2026-11-06_little-red-cap"
+
+    def story_job(self, group: str | None = GROUP) -> None:
+        self.make_job([MAIN["url"]], HOSTS)
+        script = json.loads((self.job / "script.json").read_text(encoding="utf-8"))
+        script["format"] = "bedtime-story"
+        if group is not None:
+            script["story_group"] = group
+        _write(self.job / "script.json", script)
+
+    def sibling(self, name: str, group: str = GROUP) -> Path:
+        folder = self.tmp / name
+        _write(folder / "script.json", {"title": name, "story_group": group})
+        return folder
+
+    def test_own_folder(self) -> None:
+        self.story_job(group=None)
+        _art(self.job)
+        self.assertEqual(publish.find_illustration(self.job), self.job / "illustration")
+        entry, changed = publish.episode_entry(self.job, self.site)
+        key = self.job.name  # no story group: the episode id
+        self.assertEqual(entry["image"], {"square": f"art/{key}/square.jpg", "wide": f"art/{key}/wide.jpg",
+                                          "thumb": f"art/{key}/thumb.jpg", "alt": "A girl in a red cap."})
+        for name in ("wide", "square", "thumb"):
+            dest = self.site / "art" / key / f"{name}.jpg"
+            self.assertEqual(dest.read_bytes(), JPG + name.encode())
+            self.assertIn(dest, changed)
+        # The same bytes again: nothing to copy, nothing changed.
+        _, again = publish.episode_entry(self.job, self.site)
+        self.assertFalse([p for p in again if "/art/" in str(p)])
+
+    def test_group_fallback(self) -> None:
+        self.story_job()
+        other = self.sibling("2026-11-06_little-red-cap-en")
+        _art(other, alt=None)
+        self.sibling("2026-11-06_unrelated", group="other")
+        _art(self.tmp / "2026-11-06_unrelated")
+        self.assertEqual(publish.find_illustration(self.job), other / "illustration")
+        entry, changed = publish.episode_entry(self.job, self.site)
+        self.assertEqual(entry["image"]["wide"], f"art/{self.GROUP}/wide.jpg")
+        self.assertIsNone(entry["image"]["alt"])
+        self.assertEqual(len([p for p in changed if "/art/" in str(p)]), 3)
+
+    def test_incomplete_folder_ignored(self) -> None:
+        self.story_job()
+        _art(self.job, files=("wide", "square"))  # no thumb
+        first = self.sibling("2026-11-06_little-red-cap-a")
+        _art(first, files=("wide", "thumb"))
+        second = self.sibling("2026-11-06_little-red-cap-b")
+        _art(second)
+        self.assertEqual(publish.find_illustration(self.job), second / "illustration")
+        (second / "illustration" / "thumb.jpg").unlink()
+        self.assertIsNone(publish.find_illustration(self.job))
+        self.assertNotIn("image", publish.episode_entry(self.job, self.site)[0])
+
+    def test_unsafe_key_rejected(self) -> None:
+        for key in ("../evil", "a/b", "..", "a..b", "", ".hidden", "a\\b", None, 5):
+            with self.subTest(key=key):
+                with self.assertRaises(ValueError):
+                    publish.art_key(key)
+        self.assertEqual(publish.art_key("2026-11-06_little-red-cap"), "2026-11-06_little-red-cap")
+        self.story_job(group="../evil")
+        _art(self.job)
+        entry, changed = publish.episode_entry(self.job, self.site)
+        self.assertNotIn("image", entry)
+        self.assertTrue(entry["_art_problems"])
+        self.assertFalse((self.tmp / "evil").exists())
+        self.assertFalse((self.site / "art").exists())
+
+    def test_no_art_no_key(self) -> None:
+        self.story_job()
+        entry = self.entry()
+        self.assertNotIn("image", entry)
+        self.assertNotIn("_art_problems", entry)
+
+    def test_previous_image_is_kept(self) -> None:
+        self.story_job()
+        image = {"square": f"art/{self.GROUP}/square.jpg", "wide": f"art/{self.GROUP}/wide.jpg",
+                 "thumb": f"art/{self.GROUP}/thumb.jpg", "alt": "Kept."}
+        _write(self.site / "episodes.json", {"episodes": [{"id": self.job.name, "image": image}]})
+        self.assertEqual(self.entry()["image"], image)
+        # An unsafe path in the old entry is not carried over.
+        bad = dict(image, wide="../../etc/passwd")
+        _write(self.site / "episodes.json", {"episodes": [{"id": self.job.name, "image": bad}]})
+        self.assertNotIn("image", self.entry())
+
+    def test_backfill_fills_images(self) -> None:
+        jobs = self.tmp / "jobs"
+        en = jobs / f"{self.GROUP}-en"
+        _write(en / "script.json", {"story_group": self.GROUP})
+        _art(en)
+        _write(jobs / self.GROUP / "script.json", {"story_group": self.GROUP})  # vi: no art
+        episodes = [
+            {"id": self.GROUP, "story_group": self.GROUP, "description": "d", "file_name": "f.mp3"},
+            {"id": f"{self.GROUP}-fr", "story_group": self.GROUP, "description": "d", "file_name": "f.mp3"},
+            {"id": f"{self.GROUP}-en", "story_group": self.GROUP, "description": "d", "file_name": "f.mp3"},
+            {"id": "pod", "description": "d", "file_name": "f.mp3"},
+        ]
+        _write(self.site / "episodes.json", {"version": 1, "episodes": episodes})
+        art: list[Path] = []
+        changed, filled = publish.backfill(self.site, jobs, art)
+        self.assertTrue(changed)
+        self.assertEqual([f["id"] for f in filled], [e["id"] for e in episodes[:3]])
+        self.assertEqual({f["image"] for f in filled}, {f"art/{self.GROUP}"})
+        self.assertEqual(sorted(p.name for p in art), ["square.jpg", "thumb.jpg", "wide.jpg"])
+        saved = json.loads((self.site / "episodes.json").read_text(encoding="utf-8"))["episodes"]
+        for entry in saved[:3]:
+            self.assertEqual(entry["image"]["thumb"], f"art/{self.GROUP}/thumb.jpg")
+            self.assertEqual(entry["image"]["alt"], "A girl in a red cap.")
+        self.assertNotIn("image", saved[3])
+        self.assertEqual(publish.backfill(self.site, jobs), (False, []))
+
+
 STORY = "Once Upon a Time Show"
 BUILD = "Build Wiz AI Show"
 

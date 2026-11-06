@@ -170,6 +170,10 @@ main.wrap { padding-top: 16px; padding-bottom: 32px; }
 .ep.is-playing .play:not(:hover):not(:focus-visible) .eq { display: flex; }
 .ep.is-playing .play:not(:hover):not(:focus-visible) svg { display: none; }
 
+/* A story's illustration: a square thumbnail between the play button and the title. Rows
+   without one keep the three columns above. */
+.ep-row.has-art { grid-template-columns: 44px 64px minmax(0, 1fr) 20px; }
+.thumb { display: block; width: 64px; height: 64px; border-radius: 8px; object-fit: cover; background: var(--line); }
 .ep-head { min-width: 0; }
 .ep h3 { font: 700 17px/1.3 var(--display); letter-spacing: -0.01em; margin: 0 0 3px; overflow-wrap: anywhere; }
 /* The title button stretches over the whole row, so any click on the row expands it;
@@ -202,6 +206,7 @@ mark { background: none; color: var(--accent); text-decoration-line: underline; 
 
 /* Details sit under the title column so the eye does not jump back to the edge. */
 .ep-detail { padding: 0 16px 16px 76px; }
+.art { display: block; width: 100%; max-width: 760px; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); margin: 0 0 12px; background: var(--line); }
 .summary { margin: 0; padding: 0; list-style: none; color: var(--text-2); display: grid; gap: 3px; max-width: 760px; }
 .summary li { position: relative; padding-left: 16px; }
 .summary li::before { content: ""; position: absolute; left: 0; top: .78em; width: 7px; height: 1px; background: var(--gray); }
@@ -303,6 +308,8 @@ footer .keys span { display: inline-flex; align-items: center; gap: 6px; }
   .order { width: 40px; justify-content: center; padding: 0; }
   .sort-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .ep-row { gap: 12px; padding: 12px; }
+  .ep-row.has-art { grid-template-columns: 44px 52px minmax(0, 1fr) 20px; }
+  .thumb { width: 52px; height: 52px; }
   .lang { min-width: 48px; min-height: 40px; }
   .lang .l-long { display: none; }
   .lang .l-short { display: inline; }

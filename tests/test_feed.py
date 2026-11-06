@@ -119,6 +119,28 @@ class FeedTest(unittest.TestCase):
         changed = feed.write_feeds(self.site, later)
         self.assertEqual([p.name for p in changed], ["feed-en.xml"])
 
+    def test_item_image_from_the_story_illustration(self) -> None:
+        square = self.site / "art" / "g" / "square.jpg"
+        square.parent.mkdir(parents=True)
+        square.write_bytes(b"jpg")
+        image = {"square": "art/g/square.jpg", "wide": "art/g/wide.jpg", "thumb": "art/g/thumb.jpg", "alt": None}
+        self.index["episodes"][0]["image"] = image
+        self.index["episodes"][3]["image"] = dict(image, square="art/missing/square.jpg")
+        items = {i.findtext("guid"): i for i in self.channel("en").findall("item")}
+        self.assertEqual(items["a"].find(f"{IT}image").get("href"), "https://luongnv.com/podcast/art/g/square.jpg")
+        self.assertIsNone(items["b"].find(f"{IT}image"))  # the file is not on the site
+        # The channel keeps the show's cover.
+        self.assertTrue(self.channel("en").find(f"{IT}image").get("href").endswith("stories/cover-en.jpg"))
+
+    def test_no_item_image_without_a_safe_existing_file(self) -> None:
+        for image in (None, {}, {"square": "../../etc/passwd"}, {"square": "art/../x/square.jpg"},
+                      {"square": "https://evil.example/x.jpg"}, "art/g/square.jpg"):
+            with self.subTest(image=image):
+                ep = story("z", "en", "2026-11-05T00:00:00Z", image=image)
+                self.assertIsNone(feed.item_image(ep, self.site))
+        xml = feed.render_feed(self.index, "en", self.site, NOW)
+        self.assertEqual(xml.count("<itunes:image"), 1)  # the channel's only
+
 
 if __name__ == "__main__":
     unittest.main()
