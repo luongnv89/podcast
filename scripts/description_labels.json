@@ -1,0 +1,47 @@
+{
+  "labels": {
+    "en": {
+      "in_this_episode": "In this episode:",
+      "sources": "Sources:",
+      "music": "Music:"
+    },
+    "fr": {
+      "in_this_episode": "Dans cet épisode :",
+      "sources": "Sources :",
+      "music": "Musique :"
+    },
+    "vi": {
+      "in_this_episode": "Trong tập này:",
+      "sources": "Nguồn:",
+      "music": "Nhạc:"
+    }
+  },
+  "shows": {
+    "Build Wiz AI Show": {
+      "link": "luongnv.com/podcast",
+      "taglines": {
+        "en": "Big AI ideas, made clear for builders.",
+        "fr": "Les grandes idées de l'IA, expliquées clairement à ceux qui construisent.",
+        "vi": "Những ý tưởng lớn về AI, giải thích dễ hiểu cho người làm sản phẩm."
+      },
+      "last_lines": {
+        "en": "Big AI ideas, made clear for builders. luongnv.com/podcast",
+        "fr": "Les grandes idées de l'IA, expliquées clairement à ceux qui construisent. luongnv.com/podcast",
+        "vi": "Những ý tưởng lớn về AI, giải thích dễ hiểu cho người làm sản phẩm. luongnv.com/podcast"
+      }
+    },
+    "Once Upon a Time Show": {
+      "link": "luongnv.com/podcast/stories",
+      "taglines": {
+        "en": "Gentle stories for bedtime and story time, told slowly by a warm narrator.",
+        "fr": "De douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse.",
+        "vi": "Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp."
+      },
+      "last_lines": {
+        "en": "Gentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
+        "fr": "De douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
+        "vi": "Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories"
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# The podcast site (luongnv.com/podcast/). Crawlers read robots.txt only at the domain
+# root (luongnv.com/robots.txt, another repository); this copy names the podcast sitemap
+# for tools that look here, and the root file should list it too.
+User-agent: *
+Allow: /
+
+Sitemap: https://luongnv.com/podcast/sitemap.xml
