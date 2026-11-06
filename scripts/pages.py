@@ -1,0 +1,329 @@
+#!/usr/bin/env python3
+"""Write one static page per episode and the sitemap (DropCast #163), for search engines.
+
+Usage:
+    python3 scripts/pages.py build            # rewrite every page and docs/sitemap.xml
+
+The show pages are single pages with ``#<id>`` links, which give crawlers no episode of
+their own. So each episode in ``docs/episodes.json`` also gets
+``docs/episodes/<id>/index.html``: title ``<Title> | <Show>``, ``<meta name="description">``
+= the description's hook (its first paragraph), a canonical URL, Open Graph and Twitter
+tags with the show's cover, ``PodcastEpisode`` JSON-LD, the audio player, the full
+description, the download link and a link back to ``#<id>`` on the show page. A story in
+several languages links its other versions (``hreflang``). ``docs/sitemap.xml`` lists the
+two show pages and every episode page.
+
+``publish.py`` rebuilds them after every publish (and with ``--backfill``), so they always
+follow ``episodes.json``. A file is rewritten only when its bytes change, and nothing
+depends on the clock, so a rebuild with no new episode changes nothing.
+
+Standard library only. Prints one JSON object. Exit 0 ok, 2 usage error.
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+from html import escape
+from pathlib import Path
+from typing import Any
+
+REPO = Path(__file__).resolve().parents[1]
+SITE = REPO / "docs"
+INDEX = "episodes.json"
+BASE_URL = "https://luongnv.com/podcast/"
+BUILD_SHOW = "Build Wiz AI Show"
+STORY_SHOW = "Once Upon a Time Show"
+STORY_FORMATS = ("bedtime-story", "storytelling")
+GA_ID = "G-FZV5YX8YPT"
+SHOWS = {
+    BUILD_SHOW: {"page": "", "cover": "cover.jpg", "accent": "#22C55E"},
+    STORY_SHOW: {"page": "stories/", "cover": "stories/cover-{lang}.jpg", "accent": "#F2C46D"},
+}
+LANG_NAMES = {"en": "English", "fr": "Français", "vi": "Tiếng Việt"}
+LOCALES = {"en": "en_US", "fr": "fr_FR", "vi": "vi_VN"}
+SITEMAP = "sitemap.xml"
+_SAFE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*")
+
+
+def show_of(ep: dict[str, Any]) -> str:
+    """The same routing as publish.py and site.js: a story format is always a story."""
+    if ep.get("format") in STORY_FORMATS or ep.get("show") == STORY_SHOW:
+        return STORY_SHOW
+    return BUILD_SHOW
+
+
+def _lang(ep: dict[str, Any]) -> str:
+    lang = str(ep.get("language") or "en").strip().lower().split("-")[0].split("_")[0]
+    return lang if re.fullmatch(r"[a-z]{2,3}", lang) else "en"
+
+
+def _hook(text: Any) -> str:
+    return re.sub(r"\s+", " ", str(text or "").strip().split("\n\n", 1)[0]).strip()
+
+
+def _web_url(value: Any) -> str | None:
+    url = value.strip() if isinstance(value, str) else ""
+    return url if re.match(r"https?://[^/\s]", url, re.IGNORECASE) else None
+
+
+def page_path(ep_id: str) -> str:
+    return f"episodes/{ep_id}/"
+
+
+def page_url(ep_id: str) -> str:
+    return BASE_URL + page_path(ep_id)
+
+
+def cover_url(ep: dict[str, Any], site: Path = SITE) -> str:
+    show = show_of(ep)
+    cover = SHOWS[show]["cover"].format(lang=_lang(ep))
+    if not (site / cover).is_file():
+        cover = SHOWS[show]["cover"].format(lang="en")
+    return BASE_URL + cover
+
+
+def _iso_duration(seconds: Any) -> str | None:
+    try:
+        s = int(round(float(seconds)))
+    except (TypeError, ValueError):
+        return None
+    h, rest = divmod(max(0, s), 3600)
+    m, s = divmod(rest, 60)
+    return "PT" + (f"{h}H" if h else "") + (f"{m}M" if m or h else "") + f"{s}S"
+
+
+def _minutes(seconds: Any) -> str:
+    try:
+        return f"{max(1, round(float(seconds) / 60))} min"
+    except (TypeError, ValueError):
+        return ""
+
+
+def _json_ld(data: dict[str, Any]) -> str:
+    # "<" escaped so a title can never close the script element.
+    text = json.dumps(data, ensure_ascii=False, indent=1)
+    return text.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+
+
+def versions_of(ep: dict[str, Any], episodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """The other language versions of a story (same ``story_group``), one per language."""
+    group = ep.get("story_group")
+    if not isinstance(group, str) or not group.strip():
+        return []
+    seen = {_lang(ep)}
+    out = []
+    for other in episodes:
+        if other is ep or other.get("story_group") != group or _lang(other) in seen:
+            continue
+        if not _SAFE_ID.fullmatch(str(other.get("id") or "")):
+            continue
+        seen.add(_lang(other))
+        out.append(other)
+    return sorted(out, key=lambda o: list(LANG_NAMES).index(_lang(o)) if _lang(o) in LANG_NAMES else 9)
+
+
+def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path = SITE) -> str:
+    """The static page of one episode (``docs/episodes/<id>/index.html``)."""
+    ep_id = str(ep["id"])
+    show = show_of(ep)
+    lang = _lang(ep)
+    title = str(ep.get("title") or ep_id)
+    description = str(ep.get("description") or "").strip()
+    hook = _hook(description) or " ".join(s for s in ep.get("summary") or [] if isinstance(s, str))
+    url = page_url(ep_id)
+    show_url = BASE_URL + SHOWS[show]["page"]
+    back = f"../../{SHOWS[show]['page']}#{ep_id}"
+    audio = BASE_URL + str(ep.get("audio") or f"episodes/{ep_id}/episode.mp3")
+    cover = cover_url(ep, site)
+    file_name = str(ep.get("file_name") or f"{ep_id}.mp3")
+    published = str(ep.get("published") or "")
+    day = published[:10]
+    src: dict[str, Any] = ep["source"] if isinstance(ep.get("source"), dict) else {}
+    src_url = _web_url(src.get("url"))
+    others = versions_of(ep, episodes)
+    duration = _iso_duration(ep.get("duration_s"))
+
+    ld: dict[str, Any] = {
+        "@context": "https://schema.org",
+        "@type": "PodcastEpisode",
+        "name": title,
+        "description": description or hook,
+        "url": url,
+        "inLanguage": lang,
+        "image": cover,
+        "associatedMedia": {"@type": "MediaObject", "contentUrl": audio, "encodingFormat": "audio/mpeg"},
+        "partOfSeries": {"@type": "PodcastSeries", "name": show, "url": show_url},
+    }
+    if published:
+        ld["datePublished"] = published
+    if duration:
+        ld["timeRequired"] = duration
+        ld["associatedMedia"]["duration"] = duration
+    if src_url:
+        ld["isBasedOn"] = src_url
+
+    e = lambda v: escape(str(v), quote=True)  # noqa: E731
+    head = [
+        "<!doctype html>",
+        f'<html lang="{e(lang)}">',
+        "<head>",
+        '<meta charset="utf-8">',
+        '<meta name="viewport" content="width=device-width, initial-scale=1">',
+        f"<title>{e(title)} | {e(show)}</title>",
+        f'<meta name="description" content="{e(hook)}">',
+        f'<link rel="canonical" href="{e(url)}">',
+        f'<link rel="alternate" hreflang="{e(lang)}" href="{e(url)}">',
+        *(f'<link rel="alternate" hreflang="{e(_lang(o))}" href="{e(page_url(str(o["id"])))}">' for o in others),
+        '<meta name="theme-color" content="#000000">',
+        '<meta property="og:type" content="website">',
+        f'<meta property="og:site_name" content="{e(show)}">',
+        f'<meta property="og:title" content="{e(title)}">',
+        f'<meta property="og:description" content="{e(hook)}">',
+        f'<meta property="og:url" content="{e(url)}">',
+        f'<meta property="og:image" content="{e(cover)}">',
+        f'<meta property="og:locale" content="{e(LOCALES.get(lang, lang))}">',
+        f'<meta property="og:audio" content="{e(audio)}">',
+        '<meta property="og:audio:type" content="audio/mpeg">',
+        '<meta name="twitter:card" content="summary">',
+        f'<meta name="twitter:title" content="{e(title)}">',
+        f'<meta name="twitter:description" content="{e(hook)}">',
+        f'<meta name="twitter:image" content="{e(cover)}">',
+        f'<script type="application/ld+json">\n{_json_ld(ld)}\n</script>',
+        f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>',
+        "<script>",
+        "  window.dataLayer = window.dataLayer || [];",
+        "  function gtag(){dataLayer.push(arguments);}",
+        "  gtag('js', new Date());",
+        f"  gtag('config', '{GA_ID}');",
+        "</script>",
+        "<style>",
+        f"  :root {{ --accent: {SHOWS[show]['accent']}; color-scheme: dark; }}",
+        "  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 \"Helvetica Neue\", Arial, sans-serif; }",
+        "  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }",
+        "  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }",
+        "  a:hover { color: var(--accent); }",
+        "  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }",
+        "  .show { font-weight: 700; text-decoration: none; }",
+        "  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }",
+        "  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }",
+        "  .meta .dur { color: var(--accent); font-weight: 600; }",
+        "  audio { width: 100%; margin: 4px 0 16px; }",
+        "  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }",
+        "  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }",
+        "  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }",
+        "  .btn:hover { border-color: #fff; color: #fff; }",
+        "  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }",
+        "  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }",
+        "</style>",
+        "</head>",
+    ]
+    body = [
+        "<body>",
+        "<main>",
+        f'  <a class="show" href="../../{SHOWS[show]["page"]}">{e(show)}</a>',
+        f'  <h1 id="title">{e(title)}</h1>',
+        '  <p class="meta">'
+        + " · ".join(
+            x
+            for x in (
+                f'<span class="dur">{e(_minutes(ep.get("duration_s")))}</span>' if _minutes(ep.get("duration_s")) else "",
+                f'<time datetime="{e(published)}">{e(day)}</time>' if day else "",
+                e(LANG_NAMES.get(lang, lang.upper())),
+            )
+            if x
+        )
+        + "</p>",
+        f'  <audio controls preload="none" src="episode.mp3" aria-labelledby="title"></audio>',
+        f'  <p class="desc" id="description">{e(description or hook)}</p>',
+        '  <p class="actions">',
+        f'    <a class="btn" href="{e(back)}">Listen on {e(show)}</a>',
+        f'    <a class="btn" href="episode.mp3" download="{e(file_name)}">Download MP3</a>',
+    ]
+    if ep.get("transcript"):
+        body.append('    <a class="btn" href="transcript.vtt">Transcript</a>')
+    body.append("  </p>")
+    if others:
+        links = ", ".join(
+            f'<a href="../{e(o["id"])}/" hreflang="{e(_lang(o))}" lang="{e(_lang(o))}">{e(LANG_NAMES.get(_lang(o), _lang(o).upper()))}</a>'
+            for o in others
+        )
+        body.append(f'  <p class="langs">Also in: {links}</p>')
+    if src_url:
+        author = f" by {e(src.get('author'))}" if src.get("author") else ""
+        body.append(
+            f'  <p class="credit">Based on <a href="{e(src_url)}" rel="noopener">{e(src.get("title") or src_url)}</a>{author}</p>'
+        )
+    body += [
+        "  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>",
+        "</main>",
+        "</body>",
+        "</html>",
+        "",
+    ]
+    return "\n".join(head + body)
+
+
+def render_sitemap(episodes: list[dict[str, Any]]) -> str:
+    latest: dict[str, str] = {}
+    rows = []
+    for ep in episodes:
+        day = str(ep.get("published") or "")[:10]
+        show = show_of(ep)
+        if day > latest.get(show, ""):
+            latest[show] = day
+        rows.append((page_url(str(ep["id"])), day))
+    urls = [(BASE_URL + SHOWS[s]["page"], latest.get(s, "")) for s in (BUILD_SHOW, STORY_SHOW)] + rows
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for loc, day in urls:
+        lastmod = f"<lastmod>{escape(day)}</lastmod>" if re.fullmatch(r"\d{4}-\d{2}-\d{2}", day) else ""
+        lines.append(f"  <url><loc>{escape(loc)}</loc>{lastmod}</url>")
+    lines.append("</urlset>")
+    return "\n".join(lines) + "\n"
+
+
+def _write(path: Path, text: str) -> bool:
+    data = text.encode("utf-8")
+    if path.is_file() and path.read_bytes() == data:
+        return False
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(data)
+    path.chmod(0o644)
+    return True
+
+
+def site_episodes(site: Path = SITE) -> list[dict[str, Any]]:
+    try:
+        data = json.loads((site / INDEX).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+    eps = data.get("episodes") if isinstance(data, dict) else None
+    return [e for e in eps or [] if isinstance(e, dict) and _SAFE_ID.fullmatch(str(e.get("id") or ""))]
+
+
+def write_pages(site: Path = SITE) -> list[Path]:
+    """Every episode page and the sitemap; returns the files that changed."""
+    episodes = site_episodes(site)
+    changed = []
+    for ep in episodes:
+        path = site / page_path(str(ep["id"])) / "index.html"
+        if _write(path, render_page(ep, episodes, site)):
+            changed.append(path)
+    if _write(site / SITEMAP, render_sitemap(episodes)):
+        changed.append(site / SITEMAP)
+    return changed
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=(__doc__ or "").split("\n\n")[0])
+    parser.add_argument("command", choices=["build"])
+    parser.parse_args(argv)
+    changed = write_pages(SITE)
+    print(json.dumps({"changed": [str(p.relative_to(REPO)) for p in changed]}, indent=2))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

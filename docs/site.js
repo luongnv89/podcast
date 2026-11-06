@@ -67,6 +67,19 @@
   const fold = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const reduced = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // The download name (DropCast #163): "<Show> - <Title> (<date>).mp3" from episodes.json,
+  // else the episode id. Characters no file system accepts are dropped all the same.
+  const fileName = (ep) => {
+    const n = typeof ep.file_name === "string" ? ep.file_name.replace(/[\\/:*?"<>|\u0000-\u001f\u007f]/g, "").trim() : "";
+    return n || `${ep.id}.mp3`;
+  };
+  // An episode's own page (docs/episodes/<id>/, written by scripts/pages.py), next to episodes.json.
+  const pageOf = (ep) => new URL(`episodes/${encodeURIComponent(ep.id)}/`, DATA_URL).href;
+  // The description's hook (its first paragraph): the page's meta description while a deep link is open.
+  const hookOf = (d) => String(d || "").trim().split(/\n\s*\n/)[0].replace(/\s+/g, " ").trim();
+  const metaDesc = document.querySelector('meta[name="description"]');
+  const baseDesc = metaDesc ? metaDesc.content : "";
+  const setMetaDesc = (ep) => { if (metaDesc) metaDesc.content = (ep && hookOf(ep.description)) || baseDesc; };
 
   // ---------- Analytics (GA4 events, DropCast #138) ----------
   // The pages load GA4 (gtag) for page views; these events say what is listened to. No new
@@ -442,7 +455,9 @@
 
     const detailId = `det-${ep.id}`;
     const titleText = el("span", grouped ? { text: ep.title, lang: ep._lang } : { text: ep.title });
-    const toggleBtn = el("button", { class: "ep-toggle", type: "button", "aria-expanded": "false", "aria-controls": detailId }, titleText);
+    // The title links to the episode's own page (crawlers, a middle or modified click); a
+    // plain click or Enter/Space expands the row as before.
+    const toggleBtn = el("a", { class: "ep-toggle", href: pageOf(ep), "aria-expanded": "false", "aria-controls": detailId }, titleText);
     const status = el("span", { class: "st", hidden: true });
     const where = host(src.url);
     const meta = el("div", { class: "meta" }, [
@@ -509,7 +524,14 @@
       tBtn.addEventListener("click", () => openTranscript(ep, panel, tBtn));
       actions.append(tBtn);
     }
-    actions.append(trackLink(el("a", { class: "btn", href: ep.audio, download: `${ep.id}.mp3` }, [svg(["M12 4v12M6 10l6 6 6-6M5 20h14"]), "Download MP3"]), "episode_download", ep));
+    actions.append(trackLink(el("a", { class: "btn", href: ep.audio, download: fileName(ep) }, [svg(["M12 4v12M6 10l6 6 6-6M5 20h14"]), "Download MP3"]), "episode_download", ep));
+    // The copy-paste podcast description (DropCast #163), exactly as in episodes.json.
+    if (typeof ep.description === "string" && ep.description.trim()) {
+      const descLabel = el("span", { text: "Copy description", "aria-live": "polite" });
+      const descBtn = el("button", { class: "btn", type: "button", "data-copy": "description" }, [svg(["M9 9h10v11H9zM5 15V4h10"]), descLabel]);
+      descBtn.addEventListener("click", () => copyDescription(ep, descBtn, descLabel));
+      actions.append(descBtn);
+    }
     if (url) actions.append(trackLink(el("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, [svg(["M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"]), "Read the source"]), "source_click", ep));
     const linkLabel = el("span", { text: "Copy link" });
     const linkBtn = el("button", { class: "btn", type: "button" }, [svg(["M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"]), linkLabel]);
@@ -518,7 +540,12 @@
     const detail = el("div", { class: "ep-detail", id: detailId, hidden: true }, [
       summaryItems.length ? el("ul", { class: "summary" }, summaryItems) : null, credit, sourceList, guestLine, musicLine, actions, panel,
     ]);
-    toggleBtn.addEventListener("click", () => expand(ep, toggleBtn.getAttribute("aria-expanded") !== "true"));
+    toggleBtn.addEventListener("click", (e) => {
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;   // opens the page
+      e.preventDefault();
+      expand(ep, toggleBtn.getAttribute("aria-expanded") !== "true");
+    });
+    toggleBtn.addEventListener("keydown", (e) => { if (e.key === " ") { e.preventDefault(); toggleBtn.click(); } });
 
     const bar = el("div", { class: "progress", "aria-hidden": "true" }, el("i"));
     const pos = store.get(`pos:${ep.id}`);
@@ -551,11 +578,38 @@
     setTimeout(() => { label.textContent = "Copy link"; btn.classList.remove("is-done"); }, 1800);
   }
 
+  // Clipboard API, else a hidden textarea and execCommand (older browsers, http pages).
+  async function copyText(text) {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch { /* fall back */ }
+    const focus = document.activeElement;
+    const ta = el("textarea", { value: text, readOnly: true, "aria-hidden": "true", tabIndex: -1 });
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch { ok = false; }
+    ta.remove();
+    if (focus && typeof focus.focus === "function") focus.focus({ preventScroll: true });
+    return ok;
+  }
+
+  async function copyDescription(ep, btn, label) {
+    const ok = await copyText(ep.description);
+    label.textContent = ok ? "Copied" : "Copy failed";
+    btn.classList.toggle("is-done", ok);
+    if (ok) track("description_copy", epParams(ep));
+    clearTimeout(btn._t);
+    btn._t = setTimeout(() => { label.textContent = "Copy description"; btn.classList.remove("is-done"); }, 1800);
+  }
+
   // A shared link (#<episode id>) opens that episode in its tab. If the search
   // hides it, the search is cleared so the link never lands on nothing.
   function openTarget(fromHashChange) {
     const id = decodeURIComponent(location.hash.slice(1));
     const ep = id && episodes.find((e) => e.id === id);
+    setMetaDesc(ep || null);
     if (!ep) {
       // A link to the other show's episode (shared before the stories moved): forward it.
       const away = id && others.find((e) => e.id === id);
