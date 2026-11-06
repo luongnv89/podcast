@@ -1,0 +1,409 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.713
+<v Bob>Picture a software factory where no human reads the code, and no human writes it. Sounds like the dream, right?
+
+2
+00:00:07.013 --> 00:00:13.622
+<v Alice>That's the lights-off factory. And today's author says it plainly: the lights off factory doesn't work.
+
+3
+00:00:13.922 --> 00:00:15.516
+<v Bob>Okay, so why not?
+
+4
+00:00:19.816 --> 00:00:28.149
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and I'm the one asking the questions today.
+
+5
+00:00:28.449 --> 00:00:37.905
+<v Alice>And I'm Alice. Today we're unpacking Why Software Factories Fail, part one of a series by Dex Horthy, who posts as dexhorthy on X.
+
+6
+00:00:38.205 --> 00:00:47.453
+<v Alice>His thesis: no amount of harness engineering can fix what is, at heart, a model-training issue. Models aren't rewarded for keeping a codebase healthy.
+
+7
+00:00:47.753 --> 00:00:50.365
+<v Bob>So it's not a skill issue. Bold.
+
+8
+00:00:50.665 --> 00:00:57.326
+<v Alice>That's literally one of his headings. And we've got three guests bringing outside research, so it's not just one person's take.
+
+9
+00:00:57.626 --> 00:01:01.231
+<v Bob>Let's start with the hype. What's the story everyone's telling?
+
+10
+00:01:01.531 --> 00:01:09.107
+<v Alice>He sums it up in four lines: you're the bottleneck, the models are good enough, code is free, just ship more stuff.
+
+11
+00:01:09.407 --> 00:01:16.251
+<v Alice>He also names StrongDM, which wrote about a factory where no human reads code and no human writes code.
+
+12
+00:01:16.551 --> 00:01:18.849
+<v Bob>And he's not just dunking on people, right?
+
+13
+00:01:19.149 --> 00:01:27.143
+<v Alice>No. He says these people are all really smart and he has a ton of respect for them. His target is the advice, not the people.
+
+14
+00:01:27.443 --> 00:01:29.559
+<v Bob>And what's the promise he's pushing back on?
+
+15
+00:01:29.859 --> 00:01:39.811
+<v Alice>The just token harder promise: with enough harness engineering you get 10 to 100 times faster, high quality, and nobody ever has to do code review.
+
+16
+00:01:40.111 --> 00:01:42.828
+<v Bob>Honestly, that last part sounds great.
+
+17
+00:01:43.128 --> 00:01:52.114
+<v Alice>He's sarcastic about it. Configure more linters, sprinkle magic words like adversarial review onto PR bots, and the software will happily build itself.
+
+18
+00:01:52.414 --> 00:01:55.262
+<v Bob>Fair. So where does vibe coding fit in?
+
+19
+00:01:55.562 --> 00:02:06.115
+<v Alice>He's clear it's a different world. He quotes Addy Osmani: a weekend side project and a team keeping a ten-year-old enterprise system alive share almost no constraints worth naming.
+
+20
+00:02:06.415 --> 00:02:15.532
+<v Alice>His audience is people solving hard problems in complex codebases. And he says an agent-built codebase starts to struggle after maybe three to six months.
+
+21
+00:02:15.832 --> 00:02:18.261
+<v Bob>Three to six months. That's fast.
+
+22
+00:02:18.561 --> 00:02:21.409
+<v Bob>Okay, what even is a software factory?
+
+23
+00:02:21.709 --> 00:02:29.519
+<v Alice>Fun fact first: he traces the term back to a NATO conference in 1968, the same one that gave us software engineering.
+
+24
+00:02:29.819 --> 00:02:37.734
+<v Alice>Then he grounds it in 2022, right before AI. People decide what to build, it goes into a tracker, and someone builds it.
+
+25
+00:02:38.034 --> 00:02:44.774
+<v Alice>A human reviews the pull request, it ships, monitoring watches it, and users complain, which feeds the tracker again.
+
+26
+00:02:45.074 --> 00:02:46.615
+<v Bob>Lots of loops already.
+
+27
+00:02:46.915 --> 00:02:54.726
+<v Alice>Exactly. Think of a restaurant kitchen: orders come in, cooks cook, the head chef tastes every plate before it leaves the pass.
+
+28
+00:02:55.026 --> 00:02:56.854
+<v Bob>And the head chef is code review.
+
+29
+00:02:57.154 --> 00:03:08.178
+<v Alice>Right. Now swap the cooks for agents. He lists Ramp, Stripe, WorkOS and Brex as companies that built agent factories shipping on the order of 75 percent of their code.
+
+30
+00:03:08.478 --> 00:03:17.046
+<v Alice>Building drops from hours or days to minutes or hours. But review still takes hours or days. So review becomes the bottleneck.
+
+31
+00:03:17.346 --> 00:03:19.358
+<v Bob>So the chef is drowning in plates.
+
+32
+00:03:19.658 --> 00:03:28.278
+<v Alice>So you speed review up too: agentic code review for style, bugs and security, and agentic regression testing that pokes the app from the outside.
+
+33
+00:03:28.578 --> 00:03:29.623
+<v Bob>Does that fix it?
+
+34
+00:03:29.923 --> 00:03:39.144
+<v Alice>Review is faster, he says, but it's also probably still the bottleneck. So you add more loops, routing incidents and user feedback into the factory.
+
+35
+00:03:39.444 --> 00:03:50.651
+<v Alice>And the lights-off move is to fire the chef. You stop having a human read every change, and invest in tests, sandboxes, automated review, monitoring and user feedback instead.
+
+36
+00:03:50.951 --> 00:03:52.231
+<v Bob>Did he actually try it?
+
+37
+00:03:52.531 --> 00:04:00.733
+<v Alice>He did. In July 2025 his team went full lights-off. Eventually they hit an issue gnarly enough that the agent couldn't solve it.
+
+38
+00:04:01.033 --> 00:04:07.773
+<v Alice>Then you dig into the codebase you stopped reading three months ago. Meanwhile, the site was down and the users were angry.
+
+39
+00:04:08.073 --> 00:04:10.006
+<v Bob>Ouch. How did it end?
+
+40
+00:04:10.306 --> 00:04:18.952
+<v Alice>By about the third time, in November, they decided it'd be easier to rewrite from scratch. His cofounder spent two whole weeks doing it by hand.
+
+41
+00:04:19.252 --> 00:04:22.047
+<v Bob>Two weeks of cleanup. That's the hidden bill.
+
+42
+00:04:22.347 --> 00:04:26.266
+<v Bob>So why does this keep happening? Aren't the models way better now?
+
+43
+00:04:26.566 --> 00:04:37.407
+<v Alice>Better at some things, he says: one-off problems or a new marketing site, way better. But improving codebase quality over time? Not much better, as far as he can tell.
+
+44
+00:04:37.707 --> 00:04:44.028
+<v Alice>And he admits he can't prove it. There are no good benchmarks for a model's ability to maintain codebase quality.
+
+45
+00:04:44.328 --> 00:04:47.045
+<v Bob>What does he mean by maintainability, exactly?
+
+46
+00:04:47.345 --> 00:04:54.607
+<v Alice>When it becomes really hard to change one part of the codebase without breaking another. Martin Fowler calls it shotgun surgery.
+
+47
+00:04:54.907 --> 00:04:57.754
+<v Bob>Okay, so how are these coding models trained?
+
+48
+00:04:58.054 --> 00:05:08.712
+<v Alice>Here's the key point. In his sketch, you generate coding agent traces, score them with a verifier, then update the weights so good traces get more likely. Millions of times.
+
+49
+00:05:09.012 --> 00:05:14.916
+<v Alice>It's like grading an essay only on whether it reaches the right word count. You'll get the word count every time.
+
+50
+00:05:15.216 --> 00:05:18.116
+<v Bob>Ha. And the word count here is passing tests.
+
+51
+00:05:18.416 --> 00:05:32.182
+<v Maya>That's exactly how SWE-bench works. In their arXiv paper, SWE-bench: Can Language Models Resolve Real-World GitHub Issues, Carlos Jimenez and colleagues built tasks from real GitHub issues and the pull requests that fixed them.
+
+52
+00:05:32.482 --> 00:05:43.088
+<v Maya>Given a codebase and an issue, the model edits the code to resolve it. The authors note it often needs coordinated changes across several functions, classes and files.
+
+53
+00:05:43.388 --> 00:05:46.052
+<v Bob>So it's a tough test. Where's the catch?
+
+54
+00:05:46.352 --> 00:05:56.958
+<v Alice>Dex walks through a benchmark in that family, SWE-bench Multilingual. The reward is one or zero: did you fix the thing, and did you avoid breaking anything else?
+
+55
+00:05:57.258 --> 00:06:03.553
+<v Alice>How the model got there doesn't matter. In his words, there's no penalty for eroding codebase maintainability.
+
+56
+00:06:03.853 --> 00:06:06.518
+<v Bob>Which is how you get try-catch blocks around everything.
+
+57
+00:06:06.818 --> 00:06:14.211
+<v Alice>That's literally his example. Tests give a clean pass or fail in seconds, so training can loop millions of times.
+
+58
+00:06:14.511 --> 00:06:23.497
+<v Alice>But the cost of bad architecture shows up in weeks, months, maybe years. Like when a one-line change turns into the same edit in eleven places.
+
+59
+00:06:23.797 --> 00:06:26.148
+<v Bob>Eleven places. I've lived that.
+
+60
+00:06:26.448 --> 00:06:29.713
+<v Bob>He also has a theory about why Claude Code won, right?
+
+61
+00:06:30.013 --> 00:06:38.712
+<v Alice>Yes. The accepted explanation, he says, is that Anthropic trained the model inside the harness, against the exact tools it would ship with.
+
+62
+00:06:39.012 --> 00:06:47.162
+<v Alice>So the model got really good at calling those tools. Think of a pilot trained in the exact cockpit they'll fly, not a generic simulator.
+
+63
+00:06:47.462 --> 00:06:49.343
+<v Bob>Wasn't it just distribution, though?
+
+64
+00:06:49.643 --> 00:06:59.360
+<v Alice>You can hand-wave it as distribution, he says. But aider, cline and codebuff all predated Claude Code with the same tools, and tool use would just fail sometimes.
+
+65
+00:06:59.660 --> 00:07:08.699
+<v Alice>He also cites an OpenAI talk: if you build a harness but can't train the model inside it, you'll always be at a disadvantage to a team that owns both.
+
+66
+00:07:08.999 --> 00:07:11.846
+<v Bob>And nobody trains that pilot to keep the plane tidy.
+
+67
+00:07:12.146 --> 00:07:22.700
+<v Alice>Exactly. Though some new benchmarks are trying. SWE-Marathon from Abundant AI uses huge tasks with a compound reward instead of a single pass or fail.
+
+68
+00:07:23.000 --> 00:07:33.422
+<v Alice>DeepSWE from Datacurve uses big tasks on open-source repos that were never actually built, so they can't already be in the training set. That fixes contamination, not quality.
+
+69
+00:07:33.722 --> 00:07:42.944
+<v Alice>And Frontier Code from Cognition penalizes tests that don't fail on the pre-patch code, and runs a judge model over the diff for code-quality rules.
+
+70
+00:07:43.244 --> 00:07:46.561
+<v Bob>So a model grades the code. Problem solved?
+
+71
+00:07:46.861 --> 00:07:53.470
+<v Alice>He's skeptical. If a model could reliably tell good code from bad, it might have written the good version to begin with.
+
+72
+00:07:53.770 --> 00:07:59.961
+<v Alice>His line: more review agents raise the floor, catching the dumb stuff. But they don't move the ceiling.
+
+73
+00:08:00.261 --> 00:08:02.926
+<v Bob>Floor versus ceiling. I like that.
+
+74
+00:08:03.226 --> 00:08:06.857
+<v Bob>Let's push back. Is there data beyond his own experience?
+
+75
+00:08:07.157 --> 00:08:17.214
+<v Alice>He cites a Faros AI report on review quality, bugs and incidents, but he calls it more of a correlation signal than a smoking gun. Our guests bring more.
+
+76
+00:08:17.514 --> 00:08:31.098
+<v Theo>Here's some. Nathen Harvey and Derek DeBellis announced the DORA report on the Google Cloud Blog. More than 75 percent of respondents rely on AI for at least one daily professional responsibility.
+
+77
+00:08:31.398 --> 00:08:40.932
+<v Theo>But as AI adoption increased, the report estimates delivery throughput fell by 1.5 percent and delivery stability by 7.2 percent.
+
+78
+00:08:41.232 --> 00:08:45.987
+<v Bob>So more AI, a bit less stable. That's correlation too, though.
+
+79
+00:08:46.287 --> 00:08:56.187
+<v Theo>It's an estimate from survey data. Their conclusion: improving the development process doesn't automatically improve software delivery, not without the basics.
+
+80
+00:08:56.487 --> 00:09:08.529
+<v Sam>And speed itself is shakier than people think. METR ran a study, Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity.
+
+81
+00:09:08.829 --> 00:09:20.872
+<v Sam>They recruited 16 experienced developers and 246 real issues. With AI tools allowed, developers took 19 percent longer to finish.
+
+82
+00:09:21.172 --> 00:09:23.523
+<v Bob>Longer? Wait, really?
+
+83
+00:09:23.823 --> 00:09:32.443
+<v Sam>And they expected AI to speed them up by 24 percent. Even afterwards, they still believed it had sped them up by 20 percent.
+
+84
+00:09:32.743 --> 00:09:42.513
+<v Sam>To be fair, METR says it doesn't claim AI fails to speed up most developers. It's one setting: experienced people in big, mature repos.
+
+85
+00:09:42.813 --> 00:09:52.583
+<v Alice>Which is exactly Dex's brownfield world. But note the limits: neither study measures maintainability directly, and Dex himself says he can't prove his claim.
+
+86
+00:09:52.883 --> 00:09:56.488
+<v Bob>And to be fair to the factory folks, he never says it can't be done.
+
+87
+00:09:56.788 --> 00:10:02.091
+<v Alice>Right. His point isn't that it can't be done; it's that the hype is outrunning the discipline.
+
+88
+00:10:02.391 --> 00:10:06.413
+<v Bob>Time for Builder's Corner. Alice, one thing to try this week?
+
+89
+00:10:06.713 --> 00:10:14.681
+<v Alice>Don't turn the lights off on the parts that matter. Teams front-load planning and architecture together, so there's less rework and review goes fast.
+
+90
+00:10:14.981 --> 00:10:25.064
+<v Alice>So align on the design before an agent writes code, and keep a human reading what lands in your core modules. Agent reviewers can raise the floor; you're still the ceiling.
+
+91
+00:10:25.364 --> 00:10:28.682
+<v Bob>Plan first, read what matters. Got it.
+
+92
+00:10:28.982 --> 00:10:30.079
+<v Bob>Quick takeaways?
+
+93
+00:10:30.379 --> 00:10:39.835
+<v Alice>One: building got fast, review didn't, so review is the bottleneck. Two: training rewards passing tests, not good design.
+
+94
+00:10:40.135 --> 00:10:49.774
+<v Alice>Three: more agents and tokens raise the floor, not the ceiling. And four: outside data on stability and speed is mixed at best.
+
+95
+00:10:50.074 --> 00:10:53.287
+<v Bob>My take? The chef keeps their job.
+
+96
+00:10:53.587 --> 00:10:54.815
+<v Bob>What's still open?
+
+97
+00:10:55.115 --> 00:11:01.593
+<v Alice>Can anyone build a fast, reliable check for maintainability? He says training needs one, and we don't have it yet.
+
+98
+00:11:01.893 --> 00:11:08.424
+<v Bob>And will StrongDM share real results? He says he couldn't find definitive data on how their dark factory went.
+
+99
+00:11:08.724 --> 00:11:13.478
+<v Alice>Plus, this is only part one. He promises the how-to in the next part.
+
+100
+00:11:13.778 --> 00:11:21.589
+<v Bob>Thanks to Dex Horthy for Why Software Factories Fail, and to Carlos Jimenez and colleagues for the SWE-bench paper on arXiv.
+
+101
+00:11:21.889 --> 00:11:29.752
+<v Alice>Thanks also to Nathen Harvey and Derek DeBellis for the DORA report announcement, and to METR for its developer productivity study.
+
+102
+00:11:30.052 --> 00:11:39.273
+<v Alice>The voices are AI, and every claim was checked against those sources. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

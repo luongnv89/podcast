@@ -24,8 +24,83 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-06T09:24:37Z",
+  "updated": "2026-11-06T10:27:44Z",
   "episodes": [
+    {
+      "id": "2026-11-06_why-software-factories-fail",
+      "title": "Why Software Factories Fail: The Harness Is Not Enough",
+      "summary": [
+        "Dex Horthy's X article, part one of Why Software Factories Fail, argues the lights-off software factory does not work.",
+        "Coding models are trained to pass tests, and there is no penalty for eroding codebase maintainability.",
+        "Guests add DORA and METR data on delivery stability and developer speed, plus how SWE-bench tasks are graded."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-06T10:27:42Z",
+      "duration_s": 705.873,
+      "size_bytes": 11295114,
+      "audio": "episodes/2026-11-06_why-software-factories-fail/episode.mp3",
+      "transcript": "episodes/2026-11-06_why-software-factories-fail/transcript.vtt",
+      "voices": "OpenRouter · fish-audio/s2.1-pro-free:free",
+      "source": {
+        "title": "Why Software Factories Fail",
+        "author": "dex (@dexhorthy)",
+        "url": "https://x.com/dexhorthy/status/2080697380379427275",
+        "published": "2026-07-24T16:51:27Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "Why Software Factories Fail",
+          "author": "dex (@dexhorthy)",
+          "url": "https://x.com/dexhorthy/status/2080697380379427275"
+        },
+        {
+          "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+          "author": "Carlos E. Jimenez et al.",
+          "url": "https://arxiv.org/abs/2310.06770"
+        },
+        {
+          "title": "Announcing the 2024 DORA report | Google Cloud Blog",
+          "author": "Nathen Harvey and Derek DeBellis",
+          "url": "https://cloud.google.com/blog/products/devops-sre/announcing-the-2024-dora-report"
+        },
+        {
+          "title": "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity",
+          "author": "METR",
+          "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?"
+          ]
+        },
+        {
+          "name": "Theo",
+          "presents": [
+            "Announcing the 2024 DORA report | Google Cloud Blog"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity"
+          ]
+        }
+      ],
+      "description": "Can a lights-off software factory, where no human reads or writes the code, really work? Bob and Alice unpack Dex Horthy's Why Software Factories Fail in 12 minutes: why coding agents erode codebase maintainability, and why harness engineering can't fix it.\n\nIn this episode:\n- Why review became the bottleneck once agents write the code\n- Why models are rewarded for passing tests, not good design\n- What DORA and METR data say about stability and speed\n\nSources: Dex Horthy; Carlos E. Jimenez et al.; Nathen Harvey and Derek DeBellis; METR\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Why Software Factories Fail The Harness Is Not Enough (2026-11-06).mp3"
+    },
     {
       "id": "2026-11-06_5t-opportunity-ai-roll-ups",
       "title": "AI Roll-Ups: Buy a Boring Business, Run It with Agents",
