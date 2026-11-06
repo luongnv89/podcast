@@ -24,8 +24,40 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-06T18:19:04Z",
+  "updated": "2026-11-06T18:19:14Z",
   "episodes": [
+    {
+      "id": "2026-11-06_little-red-cap-vi",
+      "title": "Cô bé quàng khăn đỏ, chuyện kể trước giờ ngủ",
+      "summary": [
+        "Truyện Cô bé quàng khăn đỏ kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman.",
+        "Một con sói ranh mãnh, bà ngoại trốn trong tủ, và bác thợ săn làm sói chạy biến vào rừng sâu.",
+        "Chẳng ai bị đau, một con sói khác rơi tõm xuống máng nước luộc xúc xích, và câu chuyện khép lại bằng lời chúc ngủ ngon."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "vi",
+      "format": "bedtime-story",
+      "published": "2026-11-06T18:13:22Z",
+      "duration_s": 370.269,
+      "size_bytes": 5926317,
+      "audio": "episodes/2026-11-06_little-red-cap-vi/episode.mp3",
+      "transcript": "episodes/2026-11-06_little-red-cap-vi/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Little Red Cap",
+        "author": null,
+        "url": "https://sites.pitt.edu/~dash/grimm026.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Carefree\", \"Golly Gee\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-06_little-red-cap",
+      "description": "Cô bé quàng khăn đỏ, kể lại nhẹ nhàng trước giờ ngủ theo truyện cổ của anh em nhà Grimm. Một con sói ranh mãnh, một bà ngoại thông minh và cô bé học cách đi đúng lối mòn, không ai bị đau cả.\n\nTrong tập này:\n- Đường vào rừng và chiếc bánh mang cho bà\n- Bà ơi, sao tai bà to thế: cuộc trò chuyện nổi tiếng\n- Con sói trên mái nhà rơi tõm xuống máng nước\n\nNguồn: Little Red Cap, anh em nhà Grimm, bản dịch của D. L. Ashliman\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Cô bé quàng khăn đỏ, chuyện kể trước giờ ngủ (2026-11-06).mp3"
+    },
     {
       "id": "2026-11-06_little-red-cap",
       "title": "Little Red Riding Hood, a bedtime story",

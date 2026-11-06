@@ -7,7 +7,7 @@
   <description>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</description>
   <itunes:summary>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</itunes:summary>
   <language>vi</language>
-  <lastBuildDate>Thu, 05 Nov 2026 22:39:34 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 06 Nov 2026 18:19:14 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,29 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-06_little-red-cap-vi</guid>
+    <title>Cô bé quàng khăn đỏ, chuyện kể trước giờ ngủ</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-06_little-red-cap-vi</link>
+    <description>Truyện Cô bé quàng khăn đỏ kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman.
+
+Một con sói ranh mãnh, bà ngoại trốn trong tủ, và bác thợ săn làm sói chạy biến vào rừng sâu.
+
+Chẳng ai bị đau, một con sói khác rơi tõm xuống máng nước luộc xúc xích, và câu chuyện khép lại bằng lời chúc ngủ ngon.
+
+Nguồn: Little Red Cap (https://sites.pitt.edu/~dash/grimm026.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Golly Gee", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Truyện Cô bé quàng khăn đỏ kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman.</p><p>Một con sói ranh mãnh, bà ngoại trốn trong tủ, và bác thợ săn làm sói chạy biến vào rừng sâu.</p><p>Chẳng ai bị đau, một con sói khác rơi tõm xuống máng nước luộc xúc xích, và câu chuyện khép lại bằng lời chúc ngủ ngon.</p><p>Nguồn: Little Red Cap: <a href="https://sites.pitt.edu/~dash/grimm026.html">https://sites.pitt.edu/~dash/grimm026.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Golly Gee", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Fri, 06 Nov 2026 18:13:22 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap-vi/episode.mp3?v=44a6aa16" length="5926317" type="audio/mpeg"/>
+    <itunes:duration>370</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap-vi/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-05_hansel-and-gretel-vi</guid>
     <title>Hansel và Gretel, chuyện kể trước giờ ngủ</title>
