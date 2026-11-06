@@ -459,9 +459,35 @@ def description_hook(text: Any) -> str:
 
 
 def _clean_name(text: Any) -> str:
-    text = _UNSAFE_NAME.sub("", str(text or ""))
-    text = "".join(c for c in text if unicodedata.category(c) != "Cc")
+    """As DropCast's ``delivery._clean_name_part``: NFC, control characters become spaces,
+    format characters (``Cf``: bidi overrides, zero-width) are dropped, then ``\\/:*?"<>|``."""
+    text = unicodedata.normalize("NFC", str(text or ""))
+    text = "".join(
+        " " if unicodedata.category(c) == "Cc" else c for c in text if unicodedata.category(c) != "Cf"
+    )
+    text = _UNSAFE_NAME.sub("", text)
     return re.sub(r"\s+", " ", text).strip()
+
+
+FILE_NAME_MAX = 150
+FILE_NAME_MAX_BYTES = 250
+
+
+def _cut_words(text: str, limit: int) -> str:
+    """As DropCast's ``delivery._cut_words``: at most ``limit`` characters, at a word
+    boundary (inside a word longer than ``limit``), without trailing punctuation."""
+    if len(text) <= limit:
+        return text
+    if limit <= 0:
+        return ""
+    cut = text[: limit + 1]
+    space = cut.rfind(" ")
+    cut = cut[:space] if space > 0 else text[:limit]
+    return re.sub(r"[\s,;:.\-\u2013\u2014]+$", "", cut) or text[:limit].strip()
+
+
+def _name_bytes(name: str, tail: str) -> int:
+    return len(f"{name}{tail}.mp3".encode())
 
 
 def episode_file_name(show: str, title: str, date: str) -> str:
@@ -469,15 +495,20 @@ def episode_file_name(show: str, title: str, date: str) -> str:
     DropCast's ``delivery.episode_file_name``): ``\\/:*?\"<>|`` and control characters
     dropped, spaces collapsed, at most 150 characters before ``.mp3`` (the title is cut at
     a word boundary)."""
-    show, title, tail = _clean_name(show), _clean_name(title), f" ({_clean_name(date)})"
-    stem = f"{show} - {title}{tail}"
-    if len(stem) > 150:
-        room = max(0, 150 - len(show) - 3 - len(tail))
-        cut = title[: room + 1]
-        cut = cut.rsplit(" ", 1)[0] if " " in cut else title[:room]
-        title = cut[:room].rstrip(" ,;-–")
-        stem = f"{show} - {title}{tail}" if title else f"{show}{tail}"
-    return f"{stem[:150].strip()}.mp3"
+    head = f"{_clean_name(show)} - "
+    title = _clean_name(title) or "Episode"
+    tail = f" ({_clean_name(date)})"
+    room = FILE_NAME_MAX - len(head) - len(tail)
+    if room >= 1:
+        cut = _cut_words(title, room)
+        while _name_bytes(head + cut, tail) > FILE_NAME_MAX_BYTES and len(cut) > 1:
+            cut = _cut_words(cut, len(cut) - 1)
+        if _name_bytes(head + cut, tail) <= FILE_NAME_MAX_BYTES:
+            return f"{head}{cut}{tail}.mp3"
+    name = _cut_words(f"{head}{title}", FILE_NAME_MAX - len(tail))
+    while _name_bytes(name, tail) > FILE_NAME_MAX_BYTES and len(name) > 1:
+        name = _cut_words(name, len(name) - 1)
+    return f"{name}{tail}.mp3"
 
 
 def paris_date(stamp: Any) -> str | None:
@@ -503,7 +534,13 @@ def entry_file_name(entry: dict[str, Any], delivered: Any = None) -> str:
     """``run.json`` ``delivery.file_name`` when it is a clean ``.mp3`` name, else rebuilt
     from the entry's show, title and published date."""
     given = _text(delivered)
-    if given and given.lower().endswith(".mp3") and _clean_name(given) == given and len(given) <= 154:
+    if (
+        given
+        and given.lower().endswith(".mp3")
+        and _clean_name(given) == given
+        and len(given) <= FILE_NAME_MAX + 4
+        and len(given.encode()) <= FILE_NAME_MAX_BYTES
+    ):
         return given
     day = paris_date(entry.get("published")) or "undated"
     return episode_file_name(str(entry.get("show") or SHOW["name"]), str(entry.get("title") or entry.get("id")), day)
@@ -726,15 +763,27 @@ def episode_entry(
     if story_group:
         entry["story_group"] = story_group
     # The copy-paste description and the download name (DropCast #161/#163): the job's
-    # description.txt, else the one already in episodes.json (a hand fix survives a
-    # re-publish), else one built from the summary, sources and tagline.
+    # description.txt, else a hand-edited one already in episodes.json (it survives a
+    # re-publish), else one built from the summary, sources and tagline. A generated one
+    # is marked ``description_source: "generated"`` and rebuilt on every publish, so it
+    # follows a changed summary; delete the marker to keep a hand edit.
     written, problems = job_description(job)
     if problems:
         entry["_description_problems"] = problems
-    previous_text = _text((known.get(episode_id) or {}).get("description"))
-    if previous_text and description_problems(previous_text):
+    previous = known.get(episode_id) or {}
+    previous_text = _text(previous.get("description"))
+    if previous_text and (
+        description_problems(previous_text) or previous.get("description_source") == "generated"
+    ):
         previous_text = None
-    entry["description"] = written or previous_text or fallback_description(entry)
+    if written:
+        entry["description"], entry["description_source"] = written, "description.txt"
+    elif previous_text:
+        entry["description"] = previous_text
+        if previous.get("description_source"):
+            entry["description_source"] = previous["description_source"]
+    else:
+        entry["description"], entry["description_source"] = fallback_description(entry), "generated"
     entry["file_name"] = entry_file_name(entry, _mapping(run.get("delivery")).get("file_name"))
     return entry, changed
 
@@ -858,7 +907,9 @@ def backfill(site: Path, jobs_root: Path) -> tuple[bool, list[dict[str, Any]]]:
         if not _text(entry.get("description")):
             written, problems = job_description(job) if job.is_dir() else (None, [])
             entry["description"] = written or fallback_description(entry)
-            done["description"] = "description.txt" if written else "generated"
+            done["description"] = entry["description_source"] = (
+                "description.txt" if written else "generated"
+            )
             if problems:
                 done["description_problems"] = problems
         if not _text(entry.get("file_name")):

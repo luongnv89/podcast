@@ -223,7 +223,29 @@ class FileNameTest(unittest.TestCase):
 
     def test_unsafe_and_control_characters_dropped(self) -> None:
         name = publish.episode_file_name(BUILD, 'a/b\\c:d*e?f"g<h>i|j\tk\x00l  m', "2026-11-06")
-        self.assertEqual(name, "Build Wiz AI Show - abcdefghijkl m (2026-11-06).mp3")
+        # as DropCast: control characters become spaces
+        self.assertEqual(name, "Build Wiz AI Show - abcdefghij k l m (2026-11-06).mp3")
+
+    def test_format_characters_dropped(self) -> None:
+        # bidi overrides and zero-width characters cannot disguise the name
+        name = publish.episode_file_name(BUILD, "a\u202egnp.exe\u200b now", "2026-11-06")
+        self.assertEqual(name, "Build Wiz AI Show - agnp.exe now (2026-11-06).mp3")
+
+    def test_byte_cap_keeps_the_title(self) -> None:
+        # Same results as DropCast's delivery.episode_file_name (checked against it).
+        for title in ("\u1edd" * 200, "\u6df1" * 120):
+            name = publish.episode_file_name(BUILD, title, "2026-11-06")
+            self.assertLessEqual(len(name.encode()), 250)
+            self.assertRegex(name, r"^Build Wiz AI Show - .+ \(2026-11-06\)\.mp3$")
+        self.assertEqual(
+            len(publish.episode_file_name(BUILD, "\u1edd" * 200, "2026-11-06")),
+            len("Build Wiz AI Show -  (2026-11-06).mp3") + 71,
+        )
+
+    def test_delivered_name_over_the_byte_cap_is_rebuilt(self) -> None:
+        entry = {"show": BUILD, "title": "T", "published": "2026-11-06T08:00:00Z"}
+        too_long = "Build Wiz AI Show - " + "\u6df1" * 120 + " (2026-11-06).mp3"
+        self.assertEqual(publish.entry_file_name(entry, too_long), "Build Wiz AI Show - T (2026-11-06).mp3")
 
     def test_long_title_cut_at_a_word(self) -> None:
         name = publish.episode_file_name(BUILD, "word " * 60, "2026-11-06")

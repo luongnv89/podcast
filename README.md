@@ -86,9 +86,12 @@ descriptions (below).
 
 The publisher takes it from, in this order: the job's `description.txt` (written by Echo,
 checked by DropCast; the publisher only refuses one that is empty, over 600 characters or
-has Markdown/HTML, and then says so in its `notes`), the description already in
-`episodes.json` (a hand fix survives a re-publish), else one generated from the entry
-(`fallback_description()`: the first summary line plus one sentence on the hosts or the
+has Markdown/HTML, and then says so in its `notes`), a hand-edited description already in
+`episodes.json` (it survives a re-publish), else one generated from the entry. Each entry
+records where its text came from in `description_source` (`description.txt` or
+`generated`); a `generated` one is rebuilt on every publish, so it follows a changed
+summary. To keep a hand edit, edit the text and delete its `description_source`. A
+generated description (`fallback_description()`: the first summary line plus one sentence on the hosts or the
 length as the hook, the other summary lines as the points, the sources, the music credit,
 then the show's last line in the episode's language). A generated one is shortened until
 it fits: authors only in `Sources`, then (when the first summary line is one sentence, so
@@ -97,7 +100,7 @@ sources named (`and N more`), and last the longest lines cut at a word boundary.
 
 Every entry also has a `file_name`, the download name `<Show> - <Title> (<YYYY-MM-DD>).mp3`:
 `run.json` `delivery.file_name` when DropCast wrote a clean one, else rebuilt with the same
-rule (`episode_file_name()`: `\ / : * ? " < > |` and control characters dropped, spaces
+rule (`episode_file_name()`, a copy of DropCast's `delivery.episode_file_name`: `\ / : * ? " < > |` and format characters dropped, control characters as spaces, at most 250 UTF-8 bytes, spaces
 collapsed, at most 150 characters before `.mp3`, the title cut at a word boundary; the
 date is the published day in Europe/Paris). The MP3 on the site keeps its path
 (`episodes/<id>/episode.mp3`); only the saved name changes.
