@@ -7,7 +7,10 @@ these tests keep the guard and the README's event list from drifting.
 
 from __future__ import annotations
 
+import json
 import re
+import shutil
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -88,9 +91,45 @@ class SiteIllustrationTest(unittest.TestCase):
         self.assertRegex(self.js, r"\[\s*art, summaryItems\.length")
         # Every language version of a story shows the same art.
         self.assertIn("[ep, ...((ep._unit && ep._unit.versions) || [])]", self.js)
-        self.assertRegex(self.js, r'\[\["square", "3000x3000"\], \["thumb", "640x640"\]\]')
+        # Lock screen: only the small thumbnail, never the 3000 px square (mobile data).
+        self.assertIn('const artwork = [["thumb", "640x640"]]', self.js)
+        self.assertNotIn('["square", "3000x3000"]', self.js)
         self.assertIn("...(artwork.length ? { artwork } : {})", self.js)
 
 
 if __name__ == "__main__":
     unittest.main()
+
+
+@unittest.skipUnless(shutil.which("node"), "node is not installed")
+class ArtHelpersRunInNode(unittest.TestCase):
+    """Run site.js's art helpers (ART_PATH .. artAlt) in node, not just grep for them."""
+
+    def test_art_paths_versions_and_alt(self):
+        js = (ROOT / "docs" / "site.js").read_text(encoding="utf-8")
+        start = js.index("  const ART_PATH")
+        end = js.index("  // The description's hook")
+        script = (
+            'const DATA_URL = "https://luongnv.com/podcast/episodes.json";\n'
+            + js[start:end]
+            + """
+const ok = (p) => artPath({ square: p }, "square");
+const en = { title: "Tale", image: { wide: "art/g1/wide.jpg", square: "art/g1/square.jpg", thumb: "art/g1/thumb.jpg", alt: " A drawing. " } };
+const fr = { title: "Conte" };
+const unit = { versions: [fr, en] }; en._unit = unit; fr._unit = unit;
+console.log(JSON.stringify({
+  good: ok("art/g1/square.jpg"),
+  bad: ["../art/g1/square.jpg", "art/../x/square.jpg", "art/a..b/square.jpg", "//evil.com/art/g/square.jpg",
+        "art/g/square.jpg?x", "art/g/square.jpg\\nx", "art/g/other.jpg", "https://evil.com/art/g/square.jpg"].map(ok),
+  frThumb: artOf(fr, "thumb"), frAlt: artAlt(fr), noArt: artOf({ title: "x" }, "wide"), noAlt: artAlt({ title: "Pod" }),
+}));
+"""
+        )
+        out = subprocess.run(["node", "-e", script], capture_output=True, text=True, timeout=60, check=True)
+        got = json.loads(out.stdout)
+        self.assertEqual(got["good"], "https://luongnv.com/podcast/art/g1/square.jpg")
+        self.assertEqual(got["bad"], [None] * 8)
+        self.assertEqual(got["frThumb"], "https://luongnv.com/podcast/art/g1/thumb.jpg")
+        self.assertEqual(got["frAlt"], "A drawing.")
+        self.assertIsNone(got["noArt"])
+        self.assertEqual(got["noAlt"], "Illustration: Pod")

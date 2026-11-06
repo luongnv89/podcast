@@ -734,8 +734,9 @@
     player.classList.add("is-on");
     document.documentElement.style.setProperty("--player-h", `${player.offsetHeight}px`);
     if ("mediaSession" in navigator) {
-      // The story's square illustration as the lock-screen artwork (the thumbnail as a smaller size).
-      const artwork = [["square", "3000x3000"], ["thumb", "640x640"]]
+      // The story's illustration as the lock-screen artwork: only the 640 px thumbnail, so a
+      // play on a phone never downloads the 3000 px podcast-app artwork.
+      const artwork = [["thumb", "640x640"]]
         .map(([kind, sizes]) => { const src = artOf(ep, kind); return src ? { src, sizes, type: "image/jpeg" } : null; })
         .filter(Boolean);
       navigator.mediaSession.metadata = new MediaMetadata({ title: ep.title, artist: PAGE.artist || (ep.hosts || []).join(" & "), album: PAGE.show, ...(artwork.length ? { artwork } : {}) });

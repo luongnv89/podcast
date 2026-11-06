@@ -170,6 +170,9 @@ so it is safe to run again; `--push` commits and pushes the result. It does not 
 description an entry already has: after the labels file changes, regenerate the generated
 ones (every entry whose job has no usable `description.txt`) with `fallback_description()`
 and rebuild the pages, as done for #163 when the labels moved to DropCast.
+Backfill skips entries that already have an `image`: after a story is redrawn, re-publish its jobs
+(`publish.py JOB --push`, which re-copies changed art), and note that podcast apps may keep the old
+picture for a while because the art URLs do not change.
 
 ## Shows (publish routing)
 
