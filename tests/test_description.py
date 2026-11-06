@@ -64,22 +64,26 @@ def story(**extra) -> dict:
     return entry
 
 
-def check_layout(test: unittest.TestCase, text: str, show: str, music: bool) -> None:
+SHARED = json.loads((ROOT / "scripts" / "description_labels.json").read_text(encoding="utf-8"))
+
+
+def check_layout(test: unittest.TestCase, text: str, show: str, music: bool, lang: str = "en") -> None:
     """The contract: hook / blank / In this episode + 2-4 bullets / blank / Sources,
-    music (stories), last line tagline + link; plain text, at most 600 characters."""
+    music (stories), last line = the show's last line (tagline + link) in ``lang``, all
+    labels DropCast's in ``lang``; plain text, at most 600 characters."""
+    names = SHARED["labels"][lang]
     test.assertLessEqual(len(text), 600)
     test.assertEqual(publish.description_problems(text), [])
     hook, middle, tail = text.split("\n\n")
     test.assertTrue(hook and "\n" not in hook)
     lines = middle.split("\n")
-    test.assertEqual(lines[0], "In this episode:")
+    test.assertEqual(lines[0], names["in_this_episode"])
     test.assertTrue(2 <= len(lines) - 1 <= 4)
     test.assertTrue(all(line.startswith("- ") for line in lines[1:]))
     tail_lines = tail.split("\n")
-    test.assertTrue(tail_lines[0].startswith("Sources: "))
-    test.assertEqual(any(line.startswith("Music: ") for line in tail_lines), music)
-    link = "luongnv.com/podcast/stories" if show == STORY else "luongnv.com/podcast"
-    test.assertTrue(tail_lines[-1].startswith(show) and tail_lines[-1].endswith(" " + link))
+    test.assertTrue(tail_lines[0].startswith(names["sources"] + " "))
+    test.assertEqual(any(line.startswith(names["music"] + " ") for line in tail_lines), music)
+    test.assertEqual(tail_lines[-1], SHARED["shows"][show]["last_lines"][lang])
 
 
 class FallbackDescriptionTest(unittest.TestCase):
@@ -89,14 +93,48 @@ class FallbackDescriptionTest(unittest.TestCase):
         self.assertIn("Bob and Alice unpack it in 10 minutes.", text)
         # An ALL-CAPS title and author are tidied; the trailing dot of the title goes.
         self.assertIn("Sources: Why Cities Want Quiet by Jane Example (@janex)", text)
-        self.assertTrue(text.endswith("Build Wiz AI Show: Big AI ideas, made clear for builders. luongnv.com/podcast"))
+        self.assertTrue(text.endswith("\nBig AI ideas, made clear for builders. luongnv.com/podcast"))
 
     def test_story_layout_and_music_credit(self) -> None:
-        text = publish.fallback_description(story())
+        text = publish.fallback_description(story(language="en"))
         check_layout(self, text, STORY, music=True)
         self.assertIn("Music: Kevin MacLeod (incompetech.com), CC BY 4.0", text)
         self.assertIn("Sources: Cinderella; or, The Little Glass Slipper", text)
-        self.assertIn("Once Upon a Time Show : Des histoires douces", text)
+
+    def test_french_story_uses_dropcast_labels_and_last_line(self) -> None:
+        text = publish.fallback_description(story())
+        check_layout(self, text, STORY, music=True, lang="fr")
+        self.assertIn("\n\nDans cet épisode :\n- ", text)
+        self.assertIn("\n\nSources : Cinderella; or, The Little Glass Slipper\n", text)
+        self.assertIn("\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\n", text)
+        self.assertTrue(text.endswith(
+            "\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une "
+            "voix chaleureuse. luongnv.com/podcast/stories"))
+        for english in ("In this episode:", "Sources: ", "Music: ", "Once Upon a Time Show"):
+            self.assertNotIn(english, text)
+
+    def test_vietnamese_uses_dropcast_labels_and_last_line(self) -> None:
+        text = publish.fallback_description(story(language="vi"))
+        check_layout(self, text, STORY, music=True, lang="vi")
+        self.assertIn("\n\nTrong tập này:\n- ", text)
+        self.assertIn("\n\nNguồn: Cinderella", text)
+        self.assertIn("\nNhạc: Kevin MacLeod", text)
+        pod = publish.fallback_description(podcast(language="vi"))
+        check_layout(self, pod, BUILD, music=False, lang="vi")
+        self.assertIn("Nguồn: Why Cities Want Quiet của Jane Example (@janex)", pod)
+        self.assertTrue(pod.endswith(
+            "\nNhững ý tưởng lớn về AI, giải thích dễ hiểu cho người làm sản phẩm. luongnv.com/podcast"))
+
+    def test_hook_keeps_two_sentences_by_dropping_bullets_first(self) -> None:
+        # Four long points: dropping two of them is enough, so the hook keeps its
+        # added sentence (two sentences) instead of falling back to one.
+        point = "A point that takes quite a lot of words to say, " * 2 + "and ends here."
+        entry = podcast(summary=["One hook sentence.", point, point, point, point])
+        text = publish.fallback_description(entry)
+        hook, middle, _ = text.split("\n\n")
+        self.assertEqual(hook, "One hook sentence. Bob and Alice unpack it in 10 minutes.")
+        self.assertLess(middle.count("\n- "), 4)
+        self.assertGreaterEqual(middle.count("\n- "), 2)
 
     def test_solo_explainer_does_not_name_both_hosts(self) -> None:
         text = publish.fallback_description(podcast(format="solo-explainer"))
@@ -134,9 +172,33 @@ class FallbackDescriptionTest(unittest.TestCase):
         for e in data["episodes"]:
             with self.subTest(id=e["id"]):
                 show = STORY if e.get("format") in publish.STORY_FORMATS else BUILD
-                check_layout(self, e["description"], show, music=bool(e.get("music_credit")))
+                check_layout(self, e["description"], show, music=bool(e.get("music_credit")),
+                             lang=e.get("language") or "en")
                 self.assertRegex(e["file_name"], r"^.+ - .+ \(\d{4}-\d{2}-\d{2}\)\.mp3$")
                 self.assertTrue(e["file_name"].startswith(show + " - "))
+
+
+class SharedLabelsTest(unittest.TestCase):
+    def test_labels_file_is_loaded(self) -> None:
+        self.assertEqual(publish.LABELS_FILE, ROOT / "scripts" / "description_labels.json")
+        self.assertEqual(publish.LABELS, SHARED["labels"])
+        self.assertEqual(publish.labels("fr"), {"in_this_episode": "Dans cet épisode :",
+                                                "sources": "Sources :", "music": "Musique :"})
+        self.assertEqual(publish.labels("vi"), {"in_this_episode": "Trong tập này:",
+                                                "sources": "Nguồn:", "music": "Nhạc:"})
+        self.assertEqual(publish.labels("de"), SHARED["labels"]["en"])
+        for show, texts in SHARED["shows"].items():
+            self.assertEqual(publish.SHOW_LINKS[show], texts["link"])
+            for lang, line in texts["last_lines"].items():
+                self.assertEqual(publish.last_line(show, lang), line)
+                self.assertFalse(line.startswith(show))
+
+    def test_bad_labels_file_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            bad = Path(tmp) / "description_labels.json"
+            bad.write_text(json.dumps({"labels": {"fr": {}}, "shows": {}}), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                publish._load_labels(bad)
 
 
 class DescriptionCheckTest(unittest.TestCase):

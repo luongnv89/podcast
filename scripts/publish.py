@@ -215,20 +215,42 @@ def _summary(job: Path) -> list[str]:
 # / the show's tagline and link. Without one, ``fallback_description()`` builds the same
 # layout from the summary, the sources and the show's tagline.
 DESCRIPTION_MAX = 600
-SHOW_LINKS = {SHOW["name"]: "luongnv.com/podcast", STORY_SHOW["name"]: "luongnv.com/podcast/stories"}
-# The tagline per show and language (Build Wiz AI Show's are DropCast's brand.TAGLINE).
-TAGLINES = {
-    SHOW["name"]: {
-        "en": SHOW["tagline"],
-        "fr": "Les grandes idées de l'IA, expliquées clairement à ceux qui construisent.",
-        "vi": "Những ý tưởng lớn về AI, giải thích dễ hiểu cho người làm sản phẩm.",
-    },
-    STORY_SHOW["name"]: {
-        "en": STORY_SHOW["tagline"],
-        "fr": "Des histoires douces pour le soir, racontées lentement par une voix chaleureuse.",
-        "vi": "Những câu chuyện nhẹ nhàng trước giờ ngủ, kể chậm rãi bằng giọng kể ấm áp.",
-    },
-}
+# The labels (per language) and each show's link, taglines and last line come from
+# DropCast, one source of truth: scripts/description_labels.json is a copy of
+# ``python -m dropcast.description labels --json`` (README, "Descriptions").
+LABELS_FILE = Path(__file__).resolve().with_name("description_labels.json")
+
+
+def _load_labels(path: Path = LABELS_FILE) -> dict[str, Any]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data.get("labels"), dict) or "en" not in data["labels"]:
+        raise ValueError(f"{path.name}: no English labels")
+    for name, show in (data.get("shows") or {}).items():
+        if not show.get("link") or "en" not in (show.get("last_lines") or {}):
+            raise ValueError(f"{path.name}: {name} has no link or English last line")
+    return data
+
+
+DESCRIPTION_STRINGS = _load_labels()
+LABELS: dict[str, dict[str, str]] = DESCRIPTION_STRINGS["labels"]
+SHOW_TEXTS: dict[str, dict[str, Any]] = DESCRIPTION_STRINGS["shows"]
+SHOW_LINKS = {name: show["link"] for name, show in SHOW_TEXTS.items()}
+# How a source is credited and the rest counted, per language (site-side wording).
+_BY = {"en": "{t} by {a}", "fr": "{t} de {a}", "vi": "{t} của {a}"}
+_MORE = {"en": "and {n} more", "fr": "et {n} autres", "vi": "và {n} nguồn khác"}
+
+
+def labels(lang: str) -> dict[str, str]:
+    """The description labels in ``lang`` (English for a language without its own)."""
+    return LABELS.get(lang) or LABELS["en"]
+
+
+def last_line(show: str, lang: str) -> str:
+    """The show's last line in ``lang``: its tagline and link, exactly as DropCast's."""
+    lines = SHOW_TEXTS[show]["last_lines"]
+    return lines.get(lang) or lines["en"]
+
+
 # The one sentence the fallback adds to the hook (facts from the entry only).
 _HOOK_PODCAST = {
     "en": ("{a} and {b} unpack it in {n} minutes.", "{a} unpacks it in {n} minutes.",
@@ -276,13 +298,14 @@ def _credit_names(entry: dict[str, Any]) -> list[tuple[str, str]]:
     return out
 
 
-def _music_line(credit: Any) -> str | None:
+def _music_line(credit: Any, lang: str = "en") -> str | None:
     credit = _text(credit)
     if not credit:
         return None
+    label = labels(lang)["music"]
     if "Kevin MacLeod" in credit and re.search(r"Attribution 4\.0|CC[ -]BY 4\.0", credit):
-        return f"Music: {MUSIC_SHORT}"
-    return f"Music: {_cut(credit, 120)}"
+        return f"{label} {MUSIC_SHORT}"
+    return f"{label} {_cut(credit, 120)}"
 
 
 def _cut(text: str, limit: int) -> str:
@@ -319,42 +342,48 @@ def _host_sentence(entry: dict[str, Any], lang: str, n: int) -> str:
     return one.format(a=hosts[0], n=n) if hosts else none.format(n=n)
 
 
+def _sentence_count(text: str) -> int:
+    return len([part for part in re.split(r"(?<=[.!?…])\s+", text.strip()) if part])
+
+
 def fallback_description(entry: dict[str, Any], limit: int = DESCRIPTION_MAX) -> str:
     """The contract's layout built from an index entry: hook (the first summary line and
     one sentence on the hosts or length), the other summary lines as ``In this episode``,
-    the sources (title by author), the music credit, then the show's tagline and link.
+    the sources (title by author), the music credit, then the show's last line (tagline
+    and link). Labels and last line are DropCast's, in the entry's language.
 
     Shortened step by step until it fits ``limit`` characters: sources by author (or
-    title) only, then without the added hook sentence, at most two bullets, fewer sources
-    named, and last the longest lines cut at a word boundary.
+    title) only, then (when the first summary line is a single sentence, so the hook keeps
+    two) three then two bullets, then without the added hook sentence, at most two
+    bullets, fewer sources named, and last the longest lines cut at a word boundary.
     """
-    show = str(entry.get("show")) if entry.get("show") in SHOW_LINKS else SHOW["name"]
+    show = str(entry.get("show")) if entry.get("show") in SHOW_TEXTS else SHOW["name"]
     lang = _lang(entry)
+    names_of = labels(lang)
     summary = [_tidy(s) for s in entry.get("summary") or [] if isinstance(s, str) and s.strip()]
     first = summary[0] if summary else _tidy(entry.get("title")).rstrip(".") + "."
     bullets = summary[1:5]
     credits = _credit_names(entry)
-    music = _music_line(entry.get("music_credit"))
-    tagline = TAGLINES[show].get(lang) or TAGLINES[show]["en"]
-    colon = " : " if lang == "fr" else ": "
-    last = f"{show}{colon}{tagline} {SHOW_LINKS[show]}"
+    music = _music_line(entry.get("music_credit"), lang)
+    last = last_line(show, lang)
     extras = _hook_sentences(entry, show, lang)
 
     def build(full_credits: bool, with_extra: int, n_bullets: int, n_sources: int,
               hook: str, items: list[str]) -> str:
         """``with_extra``: 0 = no added sentence, 1 = the shortest, 2 = the longest."""
         names = [
-            (f"{t} by {a}" if t and a else t or a) if full_credits
+            (_BY[lang].format(t=t, a=a) if t and a else t or a) if full_credits
             else (re.sub(r"\s*\(@\w+\)$", "", a) or t)
             for t, a in credits[:n_sources]
         ]
         if len(credits) > n_sources:
-            names.append(f"and {len(credits) - n_sources} more")
+            names.append(_MORE[lang].format(n=len(credits) - n_sources))
         extra = extras[0 if with_extra == 2 else -1] if extras and with_extra else ""
         blocks = [f"{hook} {extra}" if extra else hook]
         if items[:n_bullets]:
-            blocks.append("In this episode:\n" + "\n".join(f"- {b}" for b in items[:n_bullets]))
-        tail = [f"Sources: {'; '.join(names)}"] if names else []
+            point_lines = "\n".join(f"- {b}" for b in items[:n_bullets])
+            blocks.append(f"{names_of['in_this_episode']}\n{point_lines}")
+        tail = [f"{names_of['sources']} {'; '.join(names)}"] if names else []
         tail += [music] if music else []
         tail.append(last)
         blocks.append("\n".join(tail))
@@ -366,6 +395,12 @@ def fallback_description(entry: dict[str, Any], limit: int = DESCRIPTION_MAX) ->
         dict(full_credits=True, with_extra=1, n_bullets=4),
         dict(full_credits=False, with_extra=2, n_bullets=4),
         dict(full_credits=False, with_extra=1, n_bullets=4),
+    ]
+    if extras and _sentence_count(first) < 2:
+        # Without the added sentence the hook would be one sentence: drop bullets first.
+        steps += [dict(full_credits=fc, with_extra=1, n_bullets=n)
+                  for n in (3, 2) for fc in (True, False)]
+    steps += [
         dict(full_credits=True, with_extra=0, n_bullets=4),
         dict(full_credits=False, with_extra=0, n_bullets=4),
         dict(full_credits=False, with_extra=0, n_bullets=2),

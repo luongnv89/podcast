@@ -71,8 +71,18 @@ In this episode:
 
 Sources: <each source's title by author, or author or title>
 Music: Kevin MacLeod (incompetech.com), CC BY 4.0      (stories with credited music)
-<Show>: <tagline> luongnv.com/podcast                 (stories: luongnv.com/podcast/stories)
+<tagline> luongnv.com/podcast                          (stories: luongnv.com/podcast/stories)
 ```
+
+The labels and the last line are DropCast's, in the episode's language: French uses
+`Dans cet épisode :`, `Sources :`, `Musique :` and Vietnamese `Trong tập này:`, `Nguồn:`,
+`Nhạc:`; the last line is the show's `last_lines[<lang>]` (its tagline and link, no show
+name). They live in `scripts/description_labels.json`, a copy of DropCast's
+`python -m dropcast.description labels --json` (one source of truth, DropCast #164), which
+`publish.py` loads at start. To refresh it after DropCast changes a label or tagline, run
+from the DropCast checkout `uv run python -m dropcast.description labels --json >
+<podcast>/scripts/description_labels.json`, run the tests, and regenerate the generated
+descriptions (below).
 
 The publisher takes it from, in this order: the job's `description.txt` (written by Echo,
 checked by DropCast; the publisher only refuses one that is empty, over 600 characters or
@@ -80,9 +90,10 @@ has Markdown/HTML, and then says so in its `notes`), the description already in
 `episodes.json` (a hand fix survives a re-publish), else one generated from the entry
 (`fallback_description()`: the first summary line plus one sentence on the hosts or the
 length as the hook, the other summary lines as the points, the sources, the music credit,
-then the show's tagline in the episode's language). A generated one is shortened until it
-fits: authors only in `Sources`, without the added sentence, two points, fewer sources
-named (`and N more`), and last the longest lines cut at a word boundary.
+then the show's last line in the episode's language). A generated one is shortened until
+it fits: authors only in `Sources`, then (when the first summary line is one sentence, so
+the hook keeps two) three then two points, without the added sentence, two points, fewer
+sources named (`and N more`), and last the longest lines cut at a word boundary.
 
 Every entry also has a `file_name`, the download name `<Show> - <Title> (<YYYY-MM-DD>).mp3`:
 `run.json` `delivery.file_name` when DropCast wrote a clean one, else rebuilt with the same
@@ -117,7 +128,10 @@ Console); `docs/robots.txt` names it too.
 `description` and a `file_name` (a job folder still in `$DROPCAST_HOME/jobs` gives its
 `description.txt` and `delivery.file_name`; otherwise they are generated from the entry),
 then rebuilds the episode pages and the sitemap. Entries that have both are left alone,
-so it is safe to run again; `--push` commits and pushes the result.
+so it is safe to run again; `--push` commits and pushes the result. It does not rewrite a
+description an entry already has: after the labels file changes, regenerate the generated
+ones (every entry whose job has no usable `description.txt`) with `fallback_description()`
+and rebuild the pages, as done for #163 when the labels moved to DropCast.
 
 ## Shows (publish routing)
 
