@@ -7,7 +7,7 @@
   <description>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</description>
   <itunes:summary>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</itunes:summary>
   <language>fr</language>
-  <lastBuildDate>Thu, 05 Nov 2026 22:39:34 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 06 Nov 2026 18:19:26 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,29 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-06_little-red-cap-fr</guid>
+    <title>Le Petit Chaperon rouge, une histoire du soir</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-06_little-red-cap-fr</link>
+    <description>Une version douce du Petit Chaperon rouge pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.
+
+Un loup rusé, une Mère-Grand cachée dans son armoire, et un chasseur qui fait fuir le loup au fond des bois.
+
+Personne n'a de mal, un second loup tombe dans un bac d'eau de saucisses, et l'histoire finit par une douce bonne nuit.
+
+Source: Little Red Cap (https://sites.pitt.edu/~dash/grimm026.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Golly Gee", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
+    <content:encoded><![CDATA[<p>Une version douce du Petit Chaperon rouge pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.</p><p>Un loup rusé, une Mère-Grand cachée dans son armoire, et un chasseur qui fait fuir le loup au fond des bois.</p><p>Personne n'a de mal, un second loup tombe dans un bac d'eau de saucisses, et l'histoire finit par une douce bonne nuit.</p><p>Source: Little Red Cap: <a href="https://sites.pitt.edu/~dash/grimm026.html">https://sites.pitt.edu/~dash/grimm026.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Golly Gee", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
+    <pubDate>Fri, 06 Nov 2026 18:18:40 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap-fr/episode.mp3?v=06c587a5" length="7193540" type="audio/mpeg"/>
+    <itunes:duration>449</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap-fr/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-05_hansel-and-gretel-fr</guid>
     <title>Hansel et Gretel, une histoire du soir</title>

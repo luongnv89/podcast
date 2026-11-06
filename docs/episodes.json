@@ -24,8 +24,40 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-06T18:19:14Z",
+  "updated": "2026-11-06T18:19:25Z",
   "episodes": [
+    {
+      "id": "2026-11-06_little-red-cap-fr",
+      "title": "Le Petit Chaperon rouge, une histoire du soir",
+      "summary": [
+        "Une version douce du Petit Chaperon rouge pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.",
+        "Un loup rusé, une Mère-Grand cachée dans son armoire, et un chasseur qui fait fuir le loup au fond des bois.",
+        "Personne n'a de mal, un second loup tombe dans un bac d'eau de saucisses, et l'histoire finit par une douce bonne nuit."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "fr",
+      "format": "bedtime-story",
+      "published": "2026-11-06T18:18:40Z",
+      "duration_s": 449.488,
+      "size_bytes": 7193540,
+      "audio": "episodes/2026-11-06_little-red-cap-fr/episode.mp3",
+      "transcript": "episodes/2026-11-06_little-red-cap-fr/transcript.vtt",
+      "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
+      "source": {
+        "title": "Little Red Cap",
+        "author": null,
+        "url": "https://sites.pitt.edu/~dash/grimm026.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Carefree\", \"Golly Gee\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-06_little-red-cap",
+      "description": "Le Petit Chaperon rouge en douce histoire du soir, d'après les frères Grimm. Un loup rusé, une Mère-Grand maligne et une petite fille qui apprend à rester sur le chemin.\n\nDans cet épisode :\n- Un gâteau pour Mère-Grand\n- Comme vous avez de grandes oreilles : le célèbre dialogue\n- Un loup sur le toit et un grand plouf\n\nSources : Little Red Cap, frères Grimm, traduit par D. L. Ashliman\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Le Petit Chaperon rouge, une histoire du soir (2026-11-06).mp3"
+    },
     {
       "id": "2026-11-06_little-red-cap-vi",
       "title": "Cô bé quàng khăn đỏ, chuyện kể trước giờ ngủ",
