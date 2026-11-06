@@ -24,7 +24,7 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-06T18:19:25Z",
+  "updated": "2026-11-06T23:36:59Z",
   "episodes": [
     {
       "id": "2026-11-06_little-red-cap-fr",
@@ -56,7 +56,13 @@
       "story_group": "2026-11-06_little-red-cap",
       "description": "Le Petit Chaperon rouge en douce histoire du soir, d'après les frères Grimm. Un loup rusé, une Mère-Grand maligne et une petite fille qui apprend à rester sur le chemin.\n\nDans cet épisode :\n- Un gâteau pour Mère-Grand\n- Comme vous avez de grandes oreilles : le célèbre dialogue\n- Un loup sur le toit et un grand plouf\n\nSources : Little Red Cap, frères Grimm, traduit par D. L. Ashliman\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Le Petit Chaperon rouge, une histoire du soir (2026-11-06).mp3"
+      "file_name": "Once Upon a Time Show - Le Petit Chaperon rouge, une histoire du soir (2026-11-06).mp3",
+      "image": {
+        "square": "art/2026-11-06_little-red-cap/square.jpg",
+        "wide": "art/2026-11-06_little-red-cap/wide.jpg",
+        "thumb": "art/2026-11-06_little-red-cap/thumb.jpg",
+        "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
+      }
     },
     {
       "id": "2026-11-06_little-red-cap-vi",
@@ -88,7 +94,13 @@
       "story_group": "2026-11-06_little-red-cap",
       "description": "Cô bé quàng khăn đỏ, kể lại nhẹ nhàng trước giờ ngủ theo truyện cổ của anh em nhà Grimm. Một con sói ranh mãnh, một bà ngoại thông minh và cô bé học cách đi đúng lối mòn, không ai bị đau cả.\n\nTrong tập này:\n- Đường vào rừng và chiếc bánh mang cho bà\n- Bà ơi, sao tai bà to thế: cuộc trò chuyện nổi tiếng\n- Con sói trên mái nhà rơi tõm xuống máng nước\n\nNguồn: Little Red Cap, anh em nhà Grimm, bản dịch của D. L. Ashliman\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Cô bé quàng khăn đỏ, chuyện kể trước giờ ngủ (2026-11-06).mp3"
+      "file_name": "Once Upon a Time Show - Cô bé quàng khăn đỏ, chuyện kể trước giờ ngủ (2026-11-06).mp3",
+      "image": {
+        "square": "art/2026-11-06_little-red-cap/square.jpg",
+        "wide": "art/2026-11-06_little-red-cap/wide.jpg",
+        "thumb": "art/2026-11-06_little-red-cap/thumb.jpg",
+        "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
+      }
     },
     {
       "id": "2026-11-06_little-red-cap",
@@ -120,7 +132,13 @@
       "story_group": "2026-11-06_little-red-cap",
       "description": "Little Red Riding Hood, retold as a gentle bedtime story from the Brothers Grimm's Little Red Cap. A sneaky wolf, a clever grandmother and a girl who learns to stay on the path. Nobody gets hurt.\n\nIn this episode:\n- A walk in the woods with cake for Grandmother\n- What big ears you have: the famous bedside talk\n- A wolf on the roof and a big sausage-water splash\n\nSources: Little Red Cap, Brothers Grimm, translated by D. L. Ashliman\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Little Red Riding Hood, a bedtime story (2026-11-06).mp3"
+      "file_name": "Once Upon a Time Show - Little Red Riding Hood, a bedtime story (2026-11-06).mp3",
+      "image": {
+        "square": "art/2026-11-06_little-red-cap/square.jpg",
+        "wide": "art/2026-11-06_little-red-cap/wide.jpg",
+        "thumb": "art/2026-11-06_little-red-cap/thumb.jpg",
+        "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
+      }
     },
     {
       "id": "2026-11-06_why-software-factories-fail",
@@ -302,7 +320,13 @@
       "story_group": "2026-11-05_hansel-and-gretel",
       "description": "Une version douce de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman. 9 minutes d'écoute.\n\nDans cet épisode :\n- Des cailloux qui brillent, une maison en pain et en gâteau, et une sœur maligne qui libère son frère.\n- Un gentil canard blanc les ramène chez leur papa, et l'histoire se termine par une bonne nuit tout en douceur.\n\nSources : Hansel and Gretel\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
       "file_name": "Once Upon a Time Show - Hansel et Gretel, une histoire du soir (2026-11-05).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "image": {
+        "square": "art/2026-11-05_hansel-and-gretel/square.jpg",
+        "wide": "art/2026-11-05_hansel-and-gretel/wide.jpg",
+        "thumb": "art/2026-11-05_hansel-and-gretel/thumb.jpg",
+        "alt": "Pencil drawing of Hansel and Gretel walking hand in hand under the moon, following shining white pebbles home to a little lit house."
+      }
     },
     {
       "id": "2026-11-05_hansel-and-gretel-vi",
@@ -334,7 +358,13 @@
       "story_group": "2026-11-05_hansel-and-gretel",
       "description": "Truyện Hansel và Gretel kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman. 7 phút nghe, có nhạc nhẹ giữa các cảnh.\n\nTrong tập này:\n- Những viên sỏi lấp lánh, ngôi nhà bằng bánh mì và bánh ngọt, và cô em gái thông minh cứu anh trai.\n- Chú vịt trắng hiền lành đưa hai anh em về với cha, và câu chuyện khép lại bằng lời chúc ngủ ngon.\n\nNguồn: Hansel and Gretel\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
       "file_name": "Once Upon a Time Show - Hansel và Gretel, chuyện kể trước giờ ngủ (2026-11-05).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "image": {
+        "square": "art/2026-11-05_hansel-and-gretel/square.jpg",
+        "wide": "art/2026-11-05_hansel-and-gretel/wide.jpg",
+        "thumb": "art/2026-11-05_hansel-and-gretel/thumb.jpg",
+        "alt": "Pencil drawing of Hansel and Gretel walking hand in hand under the moon, following shining white pebbles home to a little lit house."
+      }
     },
     {
       "id": "2026-11-05_hansel-and-gretel",
@@ -366,7 +396,13 @@
       "story_group": "2026-11-05_hansel-and-gretel",
       "description": "A gentle bedtime retelling of Hansel and Gretel, from the Brothers Grimm's tale as translated by D. L. Ashliman. A 7-minute listen, with soft music between the scenes.\n\nIn this episode:\n- Shining pebbles, a house made of bread and cake, and a clever sister who sets her brother free.\n- A kind white duck carries them home to their father, and the story ends with a quiet goodnight.\n\nSources: Hansel and Gretel\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
       "file_name": "Once Upon a Time Show - Hansel and Gretel, a bedtime story (2026-11-05).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "image": {
+        "square": "art/2026-11-05_hansel-and-gretel/square.jpg",
+        "wide": "art/2026-11-05_hansel-and-gretel/wide.jpg",
+        "thumb": "art/2026-11-05_hansel-and-gretel/thumb.jpg",
+        "alt": "Pencil drawing of Hansel and Gretel walking hand in hand under the moon, following shining white pebbles home to a little lit house."
+      }
     },
     {
       "id": "2026-11-04_the-golden-touch-fr",
@@ -401,7 +437,13 @@
       "story_group": "2026-11-04_the-golden-touch",
       "description": "Le roi Midas, raconté tout en douceur pour l'heure du coucher, d'après « Le toucher d'or » de Nathaniel Hawthorne. 10 minutes d'écoute, avec une petite musique entre les scènes.\n\nDans cet épisode :\n- Un roi qui aimait l'or voit son vœu exaucé : tout ce qu'il touche devient or, même sa petite Marygold.\n- L'eau de la rivière répare tout, et il comprend ce qui vaut plus que l'or.\n\nSources : The Golden Touch\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
       "file_name": "Once Upon a Time Show - Le roi Midas et le toucher d'or (2026-11-05).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "image": {
+        "square": "art/2026-11-04_the-golden-touch/square.jpg",
+        "wide": "art/2026-11-04_the-golden-touch/wide.jpg",
+        "thumb": "art/2026-11-04_the-golden-touch/thumb.jpg",
+        "alt": "Pencil drawing of King Midas sprinkling river water on a rose bush from a clay jug while his daughter Marygold holds up a red rose."
+      }
     },
     {
       "id": "2026-11-04_the-golden-touch-en",
@@ -436,7 +478,13 @@
       "story_group": "2026-11-04_the-golden-touch",
       "description": "A gentle bedtime retelling of King Midas, from Nathaniel Hawthorne's \"The Golden Touch\". An 8-minute listen, with soft music between the scenes.\n\nIn this episode:\n- A king who loved gold gets his wish: everything he touches turns to gold, even his little daughter Marygold.\n- River water makes all right again, and he learns what is worth more than gold.\n\nSources: The Golden Touch\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
       "file_name": "Once Upon a Time Show - King Midas and the Golden Touch (2026-11-05).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "image": {
+        "square": "art/2026-11-04_the-golden-touch/square.jpg",
+        "wide": "art/2026-11-04_the-golden-touch/wide.jpg",
+        "thumb": "art/2026-11-04_the-golden-touch/thumb.jpg",
+        "alt": "Pencil drawing of King Midas sprinkling river water on a rose bush from a clay jug while his daughter Marygold holds up a red rose."
+      }
     },
     {
       "id": "2026-11-04_the-golden-touch",
@@ -471,7 +519,13 @@
       "story_group": "2026-11-04_the-golden-touch",
       "description": "Vua Midas, kể thật nhẹ nhàng trước giờ đi ngủ, theo truyện \"Bàn tay vàng\" của Nathaniel Hawthorne. 8 phút nghe, có nhạc nhẹ giữa các cảnh.\n\nTrong tập này:\n- Ông vua mê vàng được toại nguyện: chạm vào gì cũng hóa vàng, kể cả cô con gái nhỏ Marygold.\n- Nước sông làm mọi thứ trở lại như cũ, và vua hiểu ra điều quý hơn vàng.\n\nNguồn: The Golden Touch\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
       "file_name": "Once Upon a Time Show - Vua Midas và Bàn Tay Vàng (2026-11-05).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "image": {
+        "square": "art/2026-11-04_the-golden-touch/square.jpg",
+        "wide": "art/2026-11-04_the-golden-touch/wide.jpg",
+        "thumb": "art/2026-11-04_the-golden-touch/thumb.jpg",
+        "alt": "Pencil drawing of King Midas sprinkling river water on a rose bush from a clay jug while his daughter Marygold holds up a red rose."
+      }
     },
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper-vi",
@@ -506,7 +560,13 @@
       "story_group": "2026-11-05_cinderella-or-the-little-glass-slipper",
       "description": "Cô bé Lọ Lem, kể thật nhẹ nhàng trước giờ đi ngủ, theo truyện cổ của Charles Perrault. 6 phút nghe, có nhạc nhẹ giữa các cảnh.\n\nTrong tập này:\n- Một cô bé hiền lành, bà tiên đỡ đầu, cỗ xe bí ngô và chiếc giày thủy tinh vừa khít.\n- Câu chuyện khép lại bằng sự tha thứ và lời chúc ngủ ngon: ở hiền thì gặp lành.\n\nNguồn: Cinderella; or, The Little Glass Slipper\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
       "file_name": "Once Upon a Time Show - Cô bé Lọ Lem, chuyện kể trước giờ ngủ (2026-11-05).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "image": {
+        "square": "art/2026-11-05_cinderella-or-the-little-glass-slipper/square.jpg",
+        "wide": "art/2026-11-05_cinderella-or-the-little-glass-slipper/wide.jpg",
+        "thumb": "art/2026-11-05_cinderella-or-the-little-glass-slipper/thumb.jpg",
+        "alt": "Pencil drawing of Cinderella in a blue ball gown beside a pumpkin coach with two little mice, a palace glowing on the hill at dusk."
+      }
     },
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper-fr",
@@ -541,7 +601,13 @@
       "story_group": "2026-11-05_cinderella-or-the-little-glass-slipper",
       "description": "Cendrillon, racontée tout en douceur pour l'heure du coucher, d'après le conte de Charles Perrault. 6 minutes d'écoute.\n\nDans cet épisode :\n- Une jeune fille au grand cœur, une marraine fée, un carrosse-citrouille et une pantoufle de verre.\n- Une histoire qui finit par le pardon et un bonsoir tout calme : être gentil, c'est la plus belle des magies.\n\nSources : Cinderella; or, The Little Glass Slipper\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
       "file_name": "Once Upon a Time Show - Cendrillon, une histoire du soir (2026-11-05).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "image": {
+        "square": "art/2026-11-05_cinderella-or-the-little-glass-slipper/square.jpg",
+        "wide": "art/2026-11-05_cinderella-or-the-little-glass-slipper/wide.jpg",
+        "thumb": "art/2026-11-05_cinderella-or-the-little-glass-slipper/thumb.jpg",
+        "alt": "Pencil drawing of Cinderella in a blue ball gown beside a pumpkin coach with two little mice, a palace glowing on the hill at dusk."
+      }
     },
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper",
@@ -576,7 +642,13 @@
       "story_group": "2026-11-05_cinderella-or-the-little-glass-slipper",
       "description": "A gentle bedtime retelling of Cinderella, from Charles Perrault's tale as translated by Andrew Lang. A 6-minute listen, with soft music between the scenes.\n\nIn this episode:\n- A kind girl, a fairy godmother, a pumpkin coach and a glass slipper that fits just right.\n- It ends with forgiveness and a quiet goodnight: being kind is the best magic of all.\n\nSources: Cinderella; or, The Little Glass Slipper\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
       "file_name": "Once Upon a Time Show - Cinderella, a bedtime story (2026-11-05).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "image": {
+        "square": "art/2026-11-05_cinderella-or-the-little-glass-slipper/square.jpg",
+        "wide": "art/2026-11-05_cinderella-or-the-little-glass-slipper/wide.jpg",
+        "thumb": "art/2026-11-05_cinderella-or-the-little-glass-slipper/thumb.jpg",
+        "alt": "Pencil drawing of Cinderella in a blue ball gown beside a pumpkin coach with two little mice, a palace glowing on the hill at dusk."
+      }
     },
     {
       "id": "2026-11-05_meet-the-new-build-wiz-ai-show",

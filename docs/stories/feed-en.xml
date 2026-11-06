@@ -7,7 +7,7 @@
   <description>Gentle bedtime stories for children, told slowly by a warm narrator. Each episode retells a classic, public-domain tale (Cinderella, Hansel and Gretel, King Midas and more) in simple words, with soft music between the scenes and a calm goodnight at the end. The tales are adapted for bedtime, so nothing is too scary. Scripts and voices are made with AI, and every episode credits its source and its music. Also in French and Vietnamese.</description>
   <itunes:summary>Gentle bedtime stories for children, told slowly by a warm narrator. Each episode retells a classic, public-domain tale (Cinderella, Hansel and Gretel, King Midas and more) in simple words, with soft music between the scenes and a calm goodnight at the end. The tales are adapted for bedtime, so nothing is too scary. Scripts and voices are made with AI, and every episode credits its source and its music. Also in French and Vietnamese.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Fri, 06 Nov 2026 18:19:04 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 06 Nov 2026 23:36:59 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -45,6 +45,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
     <itunes:duration>377</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-06_little-red-cap/square.jpg"/>
     <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap/transcript.vtt" type="text/vtt"/>
   </item>
   <item>
@@ -68,6 +69,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
     <itunes:duration>404</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-05_hansel-and-gretel/square.jpg"/>
     <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel/transcript.vtt" type="text/vtt"/>
   </item>
   <item>
@@ -91,6 +93,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
     <itunes:duration>488</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-04_the-golden-touch/square.jpg"/>
     <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-04_the-golden-touch-en/transcript.vtt" type="text/vtt"/>
   </item>
   <item>
@@ -114,6 +117,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
     <itunes:duration>353</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-05_cinderella-or-the-little-glass-slipper/square.jpg"/>
     <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_cinderella-or-the-little-glass-slipper/transcript.vtt" type="text/vtt"/>
   </item>
 </channel>

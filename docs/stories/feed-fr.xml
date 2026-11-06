@@ -7,7 +7,7 @@
   <description>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</description>
   <itunes:summary>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</itunes:summary>
   <language>fr</language>
-  <lastBuildDate>Fri, 06 Nov 2026 18:19:26 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 06 Nov 2026 23:36:59 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -45,6 +45,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback",
     <itunes:duration>449</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-06_little-red-cap/square.jpg"/>
     <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap-fr/transcript.vtt" type="text/vtt"/>
   </item>
   <item>
@@ -68,6 +69,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure"
     <itunes:duration>512</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-05_hansel-and-gretel/square.jpg"/>
     <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel-fr/transcript.vtt" type="text/vtt"/>
   </item>
   <item>
@@ -91,6 +93,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy
     <itunes:duration>578</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-04_the-golden-touch/square.jpg"/>
     <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-04_the-golden-touch-fr/transcript.vtt" type="text/vtt"/>
   </item>
   <item>
@@ -114,6 +117,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy
     <itunes:duration>352</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-05_cinderella-or-the-little-glass-slipper/square.jpg"/>
     <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_cinderella-or-the-little-glass-slipper-fr/transcript.vtt" type="text/vtt"/>
   </item>
 </channel>
