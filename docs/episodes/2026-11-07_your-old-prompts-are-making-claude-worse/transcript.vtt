@@ -1,0 +1,473 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.277
+<v Alice>What if the prompt tricks that used to help are now making your AI worse, and costing you more?
+
+2
+00:00:05.577 --> 00:00:13.074
+<v Bob>One Anthropic engineer found cost cuts of up to 72 percent on internal benchmarks, with no meaningful change to performance.
+
+3
+00:00:13.374 --> 00:00:14.732
+<v Alice>Wait, how?
+
+4
+00:00:19.032 --> 00:00:31.179
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and today Bob walks us through a talk by Lance Martin of Anthropic, from the AI Engineer channel on YouTube.
+
+5
+00:00:31.479 --> 00:00:41.353
+<v Bob>Hi everyone. The talk is called Your Old Prompts Are Making Claude Worse, and the message is simple. Most of us are leaving quality and money on the table, and the fixes are small.
+
+6
+00:00:41.653 --> 00:00:43.534
+<v Alice>And we have guests today?
+
+7
+00:00:43.834 --> 00:00:51.227
+<v Bob>Three of them. Maya, Sam and Lena each bring an outside source, so we can test Lance's ideas against other work.
+
+8
+00:00:51.527 --> 00:00:55.759
+<v Alice>So set the scene. What's the usual thinking about cost and quality?
+
+9
+00:00:56.059 --> 00:01:06.142
+<v Bob>The usual view is a trade-off. Better performance costs more money, and cutting cost means giving up performance, along a curve of models from Opus to Sonnet to Haiku.
+
+10
+00:01:06.442 --> 00:01:08.976
+<v Alice>And Lance says we're not even on that curve?
+
+11
+00:01:09.276 --> 00:01:19.568
+<v Bob>That's his claim. Many applications sit inside the frontier because of minor misconfigurations, and he says fixing them has improved performance and cut cost for many customers.
+
+12
+00:01:19.868 --> 00:01:22.585
+<v Alice>So it's like driving with the handbrake half on.
+
+13
+00:01:22.885 --> 00:01:27.874
+<v Bob>Ha, pretty much! He covers five themes, so let's take them one by one.
+
+14
+00:01:28.174 --> 00:01:29.637
+<v Alice>Fix number one?
+
+15
+00:01:29.937 --> 00:01:41.248
+<v Bob>Audit your prompts. Lance says prompts accumulate debt, just like code. Think of the old habits: think step by step, verification rituals, be maximally thorough.
+
+16
+00:01:41.548 --> 00:01:44.160
+<v Alice>Wait, those used to be the magic words!
+
+17
+00:01:44.460 --> 00:01:57.104
+<v Bob>They were, several generations ago. Now, he says, frontier models choose when to think and naturally verify their work. Worse, the old rituals increase cost and can reduce performance.
+
+18
+00:01:57.404 --> 00:02:00.591
+<v Alice>What about prompts where two rules contradict each other?
+
+19
+00:02:00.891 --> 00:02:09.224
+<v Bob>That one's sneaky. Older models would quietly ignore one of the two rules, but frontier models often get confused by contradictory rules.
+
+20
+00:02:09.524 --> 00:02:11.535
+<v Alice>So how do I find all that junk?
+
+21
+00:02:11.835 --> 00:02:25.314
+<v Bob>Claude Code has a prompt audit. You can call it through the checkup skill or the Claude API skill, and both lead to the same code. It scans the working directory, skills, tools and prompts, for these anti-patterns and removes them.
+
+22
+00:02:25.614 --> 00:02:27.626
+<v Alice>Does it actually move the numbers?
+
+23
+00:02:27.926 --> 00:02:43.233
+<v Bob>He tested it on a synthetic set of about 50 customer support tickets, simulating a migration from an older Opus to a newer one with each anti-pattern injected. The migration alone helped a little, and running the prompt audit on top gave a further bump in both performance and cost.
+
+24
+00:02:43.533 --> 00:02:46.302
+<v Alice>Both at once? I'd expect a trade-off again.
+
+25
+00:02:46.602 --> 00:02:54.230
+<v Bob>The boosters make the model spend excessive tokens. Strip them out and it spends less, and it stops tripping over confusing rules.
+
+26
+00:02:54.530 --> 00:02:56.542
+<v Alice>Okay, fix number two.
+
+27
+00:02:56.842 --> 00:03:08.231
+<v Bob>Use the prompt cache. An agent works across many turns, and each turn adds just a little, like one tool call. Much of the context repeats, and you don't want to pay for it twice.
+
+28
+00:03:08.531 --> 00:03:10.830
+<v Alice>How much cheaper is a cached token?
+
+29
+00:03:11.130 --> 00:03:18.340
+<v Bob>He says it's billed at about a tenth of the base rate, though it varies by model, so check the pricing pages. It's also much faster.
+
+30
+00:03:18.640 --> 00:03:19.763
+<v Alice>What's the catch?
+
+31
+00:03:20.063 --> 00:03:31.922
+<v Bob>The cache is a strict prefix match, so even a one-byte change in your prefix invalidates it. Imagine a library that only finds your book when every character of the shelf code matches, starting from the first.
+
+32
+00:03:32.222 --> 00:03:34.051
+<v Alice>So how should a prompt be laid out?
+
+33
+00:03:34.351 --> 00:03:46.211
+<v Bob>Stable things first. System instructions and tools are cached across all your sessions, then the CLAUDE dot md memory per project, then session state, and finally the messages that grow each turn.
+
+34
+00:03:46.511 --> 00:03:48.574
+<v Alice>Does anyone actually watch this?
+
+35
+00:03:48.874 --> 00:03:55.849
+<v Bob>The Claude Console shows your prompt cache hit rate. Lance says the Claude Code team tracks theirs very religiously.
+
+36
+00:03:56.149 --> 00:03:58.813
+<v Alice>And the 72 percent from the top of the show?
+
+37
+00:03:59.113 --> 00:04:12.279
+<v Bob>That's this one. Lance and colleagues on the applied team ran the check on internal benchmarks, and some harnesses weren't using the cache properly. They found cost cuts of up to 72 percent with no meaningful change to performance.
+
+38
+00:04:12.579 --> 00:04:15.479
+<v Alice>Free money, basically.
+
+39
+00:04:15.779 --> 00:04:20.246
+<v Bob>Those are his words, more or less: effectively just free cost savings.
+
+40
+00:04:20.546 --> 00:04:24.882
+<v Alice>Fix number three is about evals. Why do they matter for all this?
+
+41
+00:04:25.182 --> 00:04:35.657
+<v Bob>Because frontier Claude is very good at self-correction. Give it a well-structured eval and it can hill climb on it, improving round after round. But the eval has to be climbable.
+
+42
+00:04:35.957 --> 00:04:38.021
+<v Alice>What makes an eval climbable?
+
+43
+00:04:38.321 --> 00:04:47.438
+<v Bob>Four checks. A bigger model should score higher, more thinking should score higher, there should be headroom at the frontier, and runs should have low variance.
+
+44
+00:04:47.738 --> 00:04:49.984
+<v Alice>Headroom meaning it isn't maxed out?
+
+45
+00:04:50.284 --> 00:05:04.416
+<v Bob>Yes, not saturated, and he sees one problem all the time: ambiguous cases that no model can solve. Picture a test where the last 20 percent of questions have no right answer. You'd burn tokens chasing points that don't exist.
+
+46
+00:05:04.716 --> 00:05:05.343
+<v Alice>Ouch.
+
+47
+00:05:05.643 --> 00:05:16.066
+<v Bob>To build one, there's a build eval command in the Claude API skill. It doesn't care where your data lives, and it walks you through the process: it shows you the data, then the eval.
+
+48
+00:05:16.366 --> 00:05:22.191
+<v Alice>In the Q and A someone asked about grading open-ended work, like text. What did he say?
+
+49
+00:05:22.491 --> 00:05:34.900
+<v Bob>Use a deterministic check when you can. Otherwise, build a rubric a human can reason about, and don't use arbitrary scales like zero to five. Make it crisp, ideally a binary good versus bad.
+
+50
+00:05:35.200 --> 00:05:37.211
+<v Alice>And how do you know the rubric works?
+
+51
+00:05:37.511 --> 00:05:49.136
+<v Bob>Have several models grade with it: if they all disagree, that's a bad sign. Run replicates to check the variance. And pairwise comparisons work well, like asking which of two web pages is better.
+
+52
+00:05:49.436 --> 00:05:52.283
+<v Alice>Lena, you brought a source on exactly this.
+
+53
+00:05:52.583 --> 00:06:10.242
+<v Lena>Hamel Husain, in his guide Using LLM-as-a-Judge For Evaluation on Hamel's Blog, makes the same case. Tracking a bunch of scores on a one to five scale is often a sign of a bad eval process. He wants a clear pass or fail, plus a written critique of the reasoning.
+
+54
+00:06:10.542 --> 00:06:13.676
+<v Alice>Why the critique, if you already have pass or fail?
+
+55
+00:06:13.976 --> 00:06:26.959
+<v Lena>The critique keeps the nuance, like noting that something was mostly correct but had areas for improvement. It's like a teacher's notes next to the grade: the grade says where you stand, the notes say what to fix.
+
+56
+00:06:27.259 --> 00:06:30.812
+<v Alice>So the grade is simple, and the reasoning lives next to it.
+
+57
+00:06:31.112 --> 00:06:34.847
+<v Alice>Fix number four: hill climbing. What's the danger there?
+
+58
+00:06:35.147 --> 00:06:45.805
+<v Bob>Overfitting. Say one task in your benchmark needs OCR, so the harness grows an OCR tool that production never needs. It's like a student who memorizes last year's exam.
+
+59
+00:06:46.105 --> 00:06:48.117
+<v Alice>And then production isn't any better.
+
+60
+00:06:48.417 --> 00:07:00.799
+<v Bob>Exactly, after you've spent a lot of tokens. So the hill climb command in the Claude API skill splits your eval into a train set and a test set. Claude only ever looks at failures in the train split.
+
+61
+00:07:01.099 --> 00:07:03.241
+<v Alice>How does that catch overfitting?
+
+62
+00:07:03.541 --> 00:07:15.923
+<v Bob>It checks performance against both every round. If train improves while test stays flat, that's an early signal you might be overfitting. He's clear it's not perfect: you still have to audit it carefully and stay in the loop.
+
+63
+00:07:16.223 --> 00:07:17.581
+<v Alice>Any real example?
+
+64
+00:07:17.881 --> 00:07:33.372
+<v Bob>His own Claude API skill, which gives Claude awareness of Anthropic's APIs and SDKs. On an eval built from the documentation it started at 66 percent. Claude Code looked at the failures, rewrote the skill text, and improved significantly.
+
+65
+00:07:33.672 --> 00:07:37.303
+<v Alice>Why tune skills and prompts rather than harness code?
+
+66
+00:07:37.603 --> 00:07:53.329
+<v Bob>Text is a small surface, clearly coupled to model behavior, and easy to modify. Harness code means much larger diffs and more surface area for confusion. The catch: prompts are very easy to overfit, because Claude is good at wiggling a prompt into your eval's shape.
+
+67
+00:07:53.629 --> 00:07:56.580
+<v Alice>There's a cost version of hill climbing too, right?
+
+68
+00:07:56.880 --> 00:08:06.415
+<v Bob>Yes. Tell the hill climber to reduce cost, and it looks for a setup at least at par on performance that surely costs less, searching effort, model and prompt.
+
+69
+00:08:06.715 --> 00:08:08.674
+<v Alice>What happened on the support tickets?
+
+70
+00:08:08.974 --> 00:08:24.230
+<v Bob>It started with an older Opus at high effort and moved to a newer Opus at low effort: a big bump in performance, a minor cost cut. Next it tried another model at low effort, which cut cost but degraded performance a bit, so it tuned the prompt to rescue it.
+
+71
+00:08:24.530 --> 00:08:25.836
+<v Alice>And the final score?
+
+72
+00:08:26.136 --> 00:08:32.667
+<v Bob>A 90 percent reduction in cost, with a notable improvement in performance, found autonomously by the hill climber.
+
+73
+00:08:32.967 --> 00:08:35.814
+<v Alice>Wait, 90 percent? Seriously?
+
+74
+00:08:36.114 --> 00:08:49.280
+<v Bob>Seriously. Here's the key point: a stronger model at low effort is often more token efficient, and so cheaper, than a weaker model at high effort. It's like asking someone smarter, who doesn't have to try as hard.
+
+75
+00:08:49.580 --> 00:08:51.957
+<v Alice>So what's his default advice on effort?
+
+76
+00:08:52.257 --> 00:09:01.295
+<v Bob>Start low, not medium, on a smarter model, and dial up if you need it. People often start at max effort, which is extremely token hungry.
+
+77
+00:09:01.595 --> 00:09:04.495
+<v Alice>Does this work even when the eval is maxed out?
+
+78
+00:09:04.795 --> 00:09:10.385
+<v Bob>Yes. With a saturated eval, keep performance fixed and just burn down cost.
+
+79
+00:09:10.685 --> 00:09:14.969
+<v Alice>Last theme: harnesses. Why does that come up now?
+
+80
+00:09:15.269 --> 00:09:32.327
+<v Bob>Because tasks keep getting longer. Lance said Claude Opus 3 could do only about four minutes of autonomous work, so you could build autocomplete or chat. Over 2025, models reached an hour or two of human-equivalent work, and now he says task durations are exceeding a day or two.
+
+81
+00:09:32.627 --> 00:09:36.598
+<v Alice>He showed METR's charts for that. Maya, you brought the paper behind them.
+
+82
+00:09:36.898 --> 00:09:58.109
+<v Maya>Thomas Kwa and colleagues at METR wrote an arXiv paper, Measuring AI Ability to Complete Long Software Tasks. It measures the time humans take on tasks an AI completes with 50 percent success, and frontier models like Claude 3.7 Sonnet sat at around 50 minutes. That horizon has been doubling approximately every seven months since 2019.
+
+83
+00:09:58.409 --> 00:10:01.387
+<v Alice>So day-long agents are just the curve continuing?
+
+84
+00:10:01.687 --> 00:10:15.218
+<v Maya>Maybe. The authors flag limits, including external validity, and say that if the results generalize, within 5 years AI could automate many software tasks that take humans a month. That's an extrapolation, not a promise.
+
+85
+00:10:15.518 --> 00:10:18.313
+<v Alice>So what does a harness for days of work look like?
+
+86
+00:10:18.613 --> 00:10:34.836
+<v Bob>Lance's answer is Claude Managed Agents, built on decoupling the brain from the hands. The harness is the brain, the sandboxes are the hands, and the session log is a separate, append-only object. If the harness or a sandbox dies, you boot a new one and recover from the log.
+
+87
+00:10:35.136 --> 00:10:37.016
+<v Alice>Why does that matter in practice?
+
+88
+00:10:37.316 --> 00:10:48.236
+<v Bob>Picture an agent you spin up overnight, and its sandbox dies midway through the night. In a single container, you lose state and the session log. With this design, nothing is lost.
+
+89
+00:10:48.536 --> 00:10:52.976
+<v Alice>And secrets? An agent running for days with my keys sounds spooky.
+
+90
+00:10:53.276 --> 00:11:02.393
+<v Bob>He used that same word. Managed Agents never gives Claude direct access to secrets: they're held in vaults, so Claude can reference a key without seeing it.
+
+91
+00:11:02.693 --> 00:11:03.268
+<v Alice>Neat.
+
+92
+00:11:03.568 --> 00:11:14.644
+<v Bob>One more from the Q and A. With a plain message history, everything you compact is gone. With the context as an object independent from the harness, Claude can always go back and query it.
+
+93
+00:11:14.944 --> 00:11:18.157
+<v Alice>Time for some pushback. Sam, you're our skeptic.
+
+94
+00:11:18.457 --> 00:11:37.291
+<v Sam>Here's my worry, from Ethan Mollick's post Centaurs and Cyborgs on the Jagged Frontier, on One Useful Thing. On some tasks AI is immensely powerful, and on others it fails completely or subtly. Unless you use AI a lot, you won't know which is which.
+
+95
+00:11:37.591 --> 00:11:39.184
+<v Alice>Is there data behind that?
+
+96
+00:11:39.484 --> 00:11:58.397
+<v Sam>A Boston Consulting Group experiment with 758 consultants. On one task picked to sit outside the frontier, consultants got it right 84 percent of the time without AI, but only 60 to 70 percent with it. The team says the consultants fell asleep at the wheel.
+
+97
+00:11:58.697 --> 00:12:01.910
+<v Alice>So a confident wrong answer is the real risk.
+
+98
+00:12:02.210 --> 00:12:09.107
+<v Sam>Yes, and one caveat on my own source: it was a new working paper, not yet peer-reviewed.
+
+99
+00:12:09.407 --> 00:12:22.416
+<v Bob>Lance makes a related point. Don't fill an eval only with one model's failures, because intelligence is jagged and the next model may solve them all. Pick cases from first principles, your own intuition and production data.
+
+100
+00:12:22.716 --> 00:12:24.309
+<v Alice>Anything else to be careful about?
+
+101
+00:12:24.609 --> 00:12:38.428
+<v Bob>My take: the 72 and 90 percent figures come from internal benchmarks and a synthetic support set, so measure on your own eval first. And he admits hill climbing very long tasks is much harder, with a bigger infrastructure lift.
+
+102
+00:12:38.728 --> 00:12:42.280
+<v Alice>Time for Builder's Corner. Bob, what can we do this week?
+
+103
+00:12:42.580 --> 00:12:59.403
+<v Bob>First, run the prompt audit in Claude Code on your project, and drop the think-step-by-step and verification rituals it flags. Second, check your prompt cache hit rate in the Claude Console, and put stable content first: instructions and tools, then memory, then the messages.
+
+104
+00:12:59.703 --> 00:13:02.054
+<v Alice>And if I already have an eval?
+
+105
+00:13:02.354 --> 00:13:13.665
+<v Bob>Third, ask the hill climber to keep performance fixed and cut cost. Try a stronger model at low effort before a weaker one at high effort, and watch the test split, not just train.
+
+106
+00:13:13.965 --> 00:13:15.559
+<v Alice>And if I don't have one yet?
+
+107
+00:13:15.859 --> 00:13:21.632
+<v Bob>Start with the build eval command, look at your own data first, and keep the grading binary.
+
+108
+00:13:21.932 --> 00:13:23.212
+<v Alice>Let's pull it together.
+
+109
+00:13:23.512 --> 00:13:32.498
+<v Bob>Old prompt habits cost money and can hurt quality, so audit them. And the prompt cache is close to free savings, as long as your prefix stays stable.
+
+110
+00:13:32.798 --> 00:13:38.676
+<v Alice>A good eval is climbable: headroom, low variance, and simple grading a human understands.
+
+111
+00:13:38.976 --> 00:13:48.327
+<v Bob>Let Claude hill climb, but split train and test to catch overfitting. And for agents that run for days, keep the brain, the hands and the session log apart.
+
+112
+00:13:48.627 --> 00:13:50.221
+<v Alice>What's still unsettled?
+
+113
+00:13:50.521 --> 00:13:58.567
+<v Bob>Keeping evals hard. Lance admits models are shattering evals very quickly, and it's hard to write a challenge for the best models today.
+
+114
+00:13:58.867 --> 00:14:01.583
+<v Alice>And whether the time-horizon curve keeps rising.
+
+115
+00:14:01.883 --> 00:14:12.776
+<v Bob>Right. Lance thinks day-long tasks are already outside what METR can measure, and the paper itself flags its external validity. Nobody knows yet how far it goes.
+
+116
+00:14:13.076 --> 00:14:20.573
+<v Alice>That's our episode. The main source was Lance Martin's talk Your Old Prompts Are Making Claude Worse, on the AI Engineer channel.
+
+117
+00:14:20.873 --> 00:14:31.375
+<v Bob>Our guests brought the paper by Thomas Kwa and colleagues at METR, Hamel Husain's guide to LLM-as-a-Judge, and Ethan Mollick's Centaurs and Cyborgs on the Jagged Frontier.
+
+118
+00:14:31.675 --> 00:14:36.899
+<v Alice>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.
