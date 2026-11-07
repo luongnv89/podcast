@@ -24,8 +24,72 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-07T13:22:54Z",
+  "updated": "2026-11-07T13:40:32Z",
   "episodes": [
+    {
+      "id": "2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0",
+      "title": "How Two Founders Ran 60 UGC Creators With Zero Employees",
+      "summary": [
+        "Mau Baron's X article on how Prayer Lock grew from $25k to $150k a month with UGC, run by two founders and no employees.",
+        "The playbook: an app worth filming, three creators first, base plus bonus pay, and reading every bad week as hook, retention or conversion.",
+        "Guests bring Andrew Chen on why marketing channels decay and an Instagram study on disclosing sponsored posts."
+      ],
+      "category": "marketing",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-07T13:40:30Z",
+      "duration_s": 685.252,
+      "size_bytes": 10965346,
+      "audio": "episodes/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0/episode.mp3",
+      "transcript": "episodes/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0/transcript.vtt",
+      "voices": "OpenRouter · fish-audio/s2.1-pro-free:free",
+      "source": {
+        "title": "How we ran a UGC army to $150k/month with 0 employees (The Complete Guide)",
+        "author": "Mau Baron (@maubaron)",
+        "url": "https://x.com/maubaron/status/2118738294452150361",
+        "published": "2026-11-06T16:12:28Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "How we ran a UGC army to $150k/month with 0 employees (The Complete Guide)",
+          "author": "Mau Baron (@maubaron)",
+          "url": "https://x.com/maubaron/status/2118738294452150361"
+        },
+        {
+          "title": "Every marketing channel sucks right now",
+          "author": "Andrew Chen",
+          "url": "https://andrewchen.substack.com/p/every-marketing-channel-sucks-right"
+        },
+        {
+          "title": "Influencer Self-Disclosure Practices on Instagram: A Multi-Country Longitudinal Study",
+          "author": "Thales Bertaglia et al.",
+          "url": "https://arxiv.org/abs/2407.09202"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Sam",
+          "presents": [
+            "Every marketing channel sucks right now"
+          ]
+        },
+        {
+          "name": "Maya",
+          "presents": [
+            "Influencer Self-Disclosure Practices on Instagram: A Multi-Country Longitudinal Study"
+          ]
+        }
+      ],
+      "description": "How did two founders run 60 UGC creators with zero employees? Bob and Alice unpack Mau Baron's playbook for growing a mobile app from $25k to $150k a month in 13 minutes.\n\nIn this episode:\n- An app worth filming and a funnel that converts\n- Hiring, paying and managing creators\n- Running every video as TikTok Spark Ads\n\nSources: Mau Baron; Andrew Chen; Thales Bertaglia et al.\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - How Two Founders Ran 60 UGC Creators With Zero Employees (2026-11-07).mp3"
+    },
     {
       "id": "2026-11-07_your-old-prompts-are-making-claude-worse",
       "title": "Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude",
