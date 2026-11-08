@@ -1,421 +1,421 @@
 WEBVTT
 
 1
-00:00:00.000 --> 00:00:04.023
+00:00:00.000 --> 00:00:04.937
 <v Alice>If you spend all day with a coding agent, are you secretly a manager?
 
 2
-00:00:04.323 --> 00:00:10.697
+00:00:05.237 --> 00:00:11.245
 <v Bob>One engineer says yes, and that every gripe you have about bad managers is a bug report for working with agents.
 
 3
-00:00:10.997 --> 00:00:12.120
+00:00:11.545 --> 00:00:13.139
 <v Alice>Wait, really?
 
 4
-00:00:16.420 --> 00:00:25.720
+00:00:17.439 --> 00:00:27.679
 <v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and Bob is walking us through an X article today.
 
 5
-00:00:26.020 --> 00:00:36.103
+00:00:27.979 --> 00:00:37.200
 <v Bob>Hi everyone. It's Your coding agents made you a manager, by Addy Osmani. He compares good engineering managers' habits with what he's learned from using and creating Claude Code.
 
 6
-00:00:36.403 --> 00:00:37.526
+00:00:37.500 --> 00:00:38.728
 <v Alice>And we have guests?
 
 7
-00:00:37.826 --> 00:00:42.476
+00:00:39.028 --> 00:00:43.181
 <v Bob>Two. Maya and Sam each bring research that tests his ideas.
 
 8
-00:00:42.776 --> 00:00:44.317
+00:00:43.481 --> 00:00:45.362
 <v Alice>So what's the big claim?
 
 9
-00:00:44.617 --> 00:00:57.678
+00:00:45.662 --> 00:00:58.122
 <v Bob>That the skills for managing agents are pretty much the skills for managing a team. If you're with a coding agent all day, you're selecting tasks, writing instructions, delegating, following up, judging results and deciding what ships.
 
 10
-00:00:57.978 --> 00:01:02.419
+00:00:58.422 --> 00:01:03.725
 <v Alice>That sounds like a pitch to become a manager. Plenty of engineers would run.
 
 11
-00:01:02.719 --> 00:01:12.489
+00:01:04.025 --> 00:01:13.508
 <v Bob>He knows. He means management in a narrow sense: producing good outcomes by enabling others' work. And he says agents are no substitute for managers or colleagues.
 
 12
-00:01:12.789 --> 00:01:15.558
+00:01:13.808 --> 00:01:16.603
 <v Alice>And the good news for people who never managed anyone?
 
 13
-00:01:15.858 --> 00:01:25.445
+00:01:16.903 --> 00:01:25.549
 <v Bob>You've been on the receiving end of handoffs for years, so you might know what a good one looks like. The sections are ordered by impact, so the most high-leverage habit comes first.
 
 14
-00:01:25.745 --> 00:01:27.678
+00:01:25.849 --> 00:01:27.809
 <v Alice>Then what's habit number one?
 
 15
-00:01:27.978 --> 00:01:38.714
+00:01:28.109 --> 00:01:37.565
 <v Bob>Give the agent a way to check its work, like a test suite, a build or a screenshot, and have it show you the results as proof. The anti-pattern is taking looks done as confirmation.
 
 16
-00:01:39.014 --> 00:01:41.548
+00:01:37.865 --> 00:01:40.347
 <v Alice>Why is looks done so dangerous?
 
 17
-00:01:41.848 --> 00:01:55.667
+00:01:40.647 --> 00:01:52.820
 <v Bob>Because agents stop when the work looks done. Without validation, that's the only check they have, and you become the agent's test suite. Think of a new manager who reads every line their team writes: within a quarter, they're the bottleneck.
 
 18
-00:01:55.967 --> 00:01:57.743
+00:01:53.120 --> 00:01:55.053
 <v Alice>So what counts as a check?
 
 19
-00:01:58.043 --> 00:02:13.900
+00:01:55.353 --> 00:02:09.250
 <v Bob>Almost anything with a definitive pass or fail: tests, build exit codes, linters, diff scripts, screenshots. He says the command that runs them is the single most useful line in your CLAUDE dot md, the file the agent reads at the start of each session.
 
 20
-00:02:14.200 --> 00:02:16.316
+00:02:09.550 --> 00:02:11.666
 <v Alice>How do I wire that into my day?
 
 21
-00:02:16.616 --> 00:02:29.416
+00:02:11.966 --> 00:02:23.825
 <v Bob>Four ways. Just ask, like run the auth tests and continue until they pass. Set a goal a separate model checks after every turn, or enforce it with a Stop hook that blocks the turn until the typecheck passes.
 
 22
-00:02:29.716 --> 00:02:31.779
+00:02:24.125 --> 00:02:27.521
 <v Alice>That's three. The fourth?
 
 23
-00:02:32.079 --> 00:02:41.065
+00:02:27.821 --> 00:02:35.971
 <v Bob>Have it reviewed. The code review command sends the diff to a fresh subagent that never saw your conversation, the way authors don't approve their own PRs.
 
 24
-00:02:41.365 --> 00:02:42.462
+00:02:36.271 --> 00:02:37.499
 <v Alice>Nice touch.
 
 25
-00:02:42.762 --> 00:02:54.727
+00:02:37.799 --> 00:02:48.640
 <v Bob>And scope the review. Ask it to find problems and it will always find something. Ask for correctness issues and to ignore style, and it does that, the way good managers learn to ask for feedback.
 
 26
-00:02:55.027 --> 00:02:58.840
+00:02:48.940 --> 00:02:53.041
 <v Alice>Habit two is context. What does a good brief look like?
 
 27
-00:02:59.140 --> 00:03:13.142
+00:02:53.341 --> 00:03:06.037
 <v Bob>It covers what the agent can't learn from the repo: the objective and why it matters, constraints, what's out of scope, and what success looks like. The military calls it commander's intent, and Netflix calls it context, not control.
 
 28
-00:03:13.442 --> 00:03:15.453
+00:03:06.337 --> 00:03:09.001
 <v Alice>So I should write everything down?
 
 29
-00:03:15.753 --> 00:03:27.613
+00:03:09.301 --> 00:03:20.612
 <v Bob>No, and that's the subtle part. The first thing an agent does is read your code, and current models pick up folder structure, conventions and test set-up fast. If it can read it in the code, don't say it.
 
 30
-00:03:27.913 --> 00:03:29.559
+00:03:20.912 --> 00:03:22.741
 <v Alice>Then where do my words go?
 
 31
-00:03:29.859 --> 00:03:42.972
+00:03:23.041 --> 00:03:34.012
 <v Bob>On what isn't in the repo: a meeting decision, someone's deploy process, why the task matters, what done means this time. It's like briefing a smart contractor: skip the tour, explain the client.
 
 32
-00:03:43.272 --> 00:03:44.918
+00:03:34.312 --> 00:03:36.193
 <v Alice>Can you make that concrete?
 
 33
-00:03:45.218 --> 00:03:56.372
+00:03:36.493 --> 00:03:46.733
 <v Bob>His example turns make the dashboard faster into a brief. It has a load-time target, why it matters, no schema changes, what's out of scope, and a script for before and after numbers.
 
 34
-00:03:56.672 --> 00:03:58.501
+00:03:47.033 --> 00:03:49.384
 <v Alice>And if I'm not ready to write a brief?
 
 35
-00:03:58.801 --> 00:04:10.373
+00:03:49.684 --> 00:04:00.238
 <v Bob>Have the agent interview you until it could write the spec, save it to a file, then build from it in a new session. Also treat the agent like a new hire: give it access to your issue tracker or team chat.
 
 36
-00:04:10.673 --> 00:04:14.591
+00:04:00.538 --> 00:04:05.109
 <v Alice>Habit three: corrections that compound. What's that?
 
 37
-00:04:14.891 --> 00:04:26.934
+00:04:05.409 --> 00:04:16.119
 <v Bob>When you correct the same thing more than once, put it in the team's CLAUDE dot md or turn it into a shared skill. The anti-pattern is fixing it by hand every session, or keeping knowledge only on your own machine.
 
 38
-00:04:27.234 --> 00:04:29.010
+00:04:16.419 --> 00:04:18.378
 <v Alice>What belongs in that file?
 
 39
-00:04:29.310 --> 00:04:44.566
+00:04:18.678 --> 00:04:32.628
 <v Bob>It's like a team handbook, kept concise: exact commands to verify things, misleading areas of the code, decisions that don't exist in the repo, and anything you've corrected twice. Written notes outlast people changing teams and models getting replaced.
 
 40
-00:04:44.866 --> 00:04:49.489
+00:04:32.928 --> 00:04:38.805
 <v Alice>What about rules in all caps? I've seen those everywhere.
 
 41
-00:04:49.789 --> 00:05:04.575
+00:04:39.105 --> 00:04:52.584
 <v Bob>He says let the agent decide by default, and enforce only what can't bend, with hooks or deny rules. Prompts, CLAUDE dot md and skills are requests the model can weigh; hooks, deny rules and managed settings are always enforced.
 
 42
-00:05:04.875 --> 00:05:07.173
+00:04:52.884 --> 00:04:55.497
 <v Alice>So when do I upgrade a line to a hook?
 
 43
-00:05:07.473 --> 00:05:23.042
+00:04:55.797 --> 00:05:10.634
 <v Bob>If you keep stressing a CLAUDE dot md line and the agent still misses it, make it a hook. If a hook only expresses a preference, remove it. He quotes Andy Grove's idea of task-relevant maturity: supervision should match someone's track record on that specific task.
 
 44
-00:05:23.342 --> 00:05:25.589
+00:05:10.934 --> 00:05:13.364
 <v Alice>And old habits from older models?
 
 45
-00:05:25.889 --> 00:05:38.715
+00:05:13.664 --> 00:05:24.975
 <v Bob>The guide lists habits to stop: all-caps directions, think harder, since effort is a setting now, and don't be lazy. His line: with agents, over-process is the new micromanagement.
 
 46
-00:05:39.015 --> 00:05:40.530
+00:05:25.275 --> 00:05:27.051
 <v Alice>Ha, I love that.
 
 47
-00:05:40.830 --> 00:05:42.842
+00:05:27.351 --> 00:05:29.728
 <v Alice>Habit four is about planning?
 
 48
-00:05:43.142 --> 00:05:58.031
+00:05:30.028 --> 00:05:43.560
 <v Bob>Agree on a plan before the agent codes, read it for hidden assumptions, and split the work into non-overlapping pieces. For a big task, a second session can review the plan like a staff engineer. That design review is the cheapest place to catch a wrong turn.
 
 49
-00:05:58.331 --> 00:06:00.108
+00:05:43.860 --> 00:05:45.976
 <v Alice>And when I run agents in parallel?
 
 50
-00:06:00.408 --> 00:06:15.010
+00:05:46.276 --> 00:06:00.512
 <v Bob>The batch command splits a big mechanical change into 5 to 30 tasks in separate worktrees, with a PR for each. You just check the slices for overlap. Otherwise five agents on overlapping tasks give you one merge conflict with five authors.
 
 51
-00:06:15.310 --> 00:06:16.016
+00:06:00.812 --> 00:06:02.327
 <v Alice>Ouch.
 
 52
-00:06:16.316 --> 00:06:25.432
+00:06:02.627 --> 00:06:11.143
 <v Bob>Then steer early. Watch the first minute and correct as soon as it goes off course. If two corrections have already failed, start a fresh session with a better prompt.
 
 53
-00:06:25.732 --> 00:06:27.796
+00:06:11.443 --> 00:06:13.690
 <v Alice>Why not just try a third time?
 
 54
-00:06:28.096 --> 00:06:45.206
+00:06:13.990 --> 00:06:29.428
 <v Bob>Because a capable person missing repeatedly usually means the problem is upstream: instructions, context or scope. And a third correction is mostly more text the model keeps re-reading, failed attempts included. Picture a meeting where the whole failed history is read aloud again every time you speak.
 
 55
-00:06:45.506 --> 00:06:47.570
+00:06:29.728 --> 00:06:32.027
 <v Alice>Does cheap undo change that?
 
 56
-00:06:47.870 --> 00:07:02.472
+00:06:32.327 --> 00:06:46.172
 <v Bob>Yes. The rewind command rolls code and conversation back to an earlier point, so trying an ambitious approach first is low-risk. Good managers do the same: when a mistake is cheap to undo, let people be ambitious, then run the retro.
 
 57
-00:07:02.772 --> 00:07:05.332
+00:06:46.472 --> 00:06:49.136
 <v Alice>Habit five sounds like the serious one.
 
 58
-00:07:05.632 --> 00:07:15.872
+00:06:49.436 --> 00:06:59.311
 <v Bob>Delegate the task, never the judgment. The agent does the work, and you decide product calls, security boundaries and what ships. Treat every diff like you're going to get paged for it.
 
 59
-00:07:16.172 --> 00:07:17.452
+00:06:59.611 --> 00:07:01.152
 <v Alice>And the anti-pattern?
 
 60
-00:07:17.752 --> 00:07:25.902
+00:07:01.452 --> 00:07:09.262
 <v Bob>Approving big diffs because the tests are green and the names look reasonable. In his words, that's not code review, it's code ratification.
 
 61
-00:07:26.202 --> 00:07:27.718
+00:07:09.562 --> 00:07:11.704
 <v Alice>Has he fallen into that?
 
 62
-00:07:28.018 --> 00:07:43.587
+00:07:12.004 --> 00:07:25.823
 <v Bob>He says so. He had an agent research gaps with competitors and write local PRs to close them, skimmed the code, and almost pushed changes that added complexity for little gain. A 600-line diff, reasonable names, green tests: approve.
 
 63
-00:07:43.887 --> 00:07:45.584
+00:07:26.123 --> 00:07:28.187
 <v Alice>So how should the work be split?
 
 64
-00:07:45.884 --> 00:07:59.729
+00:07:28.487 --> 00:07:41.496
 <v Bob>Agents take style, linting, review follow-ups, typical bugs and unit tests. Humans keep security boundaries, compliance and product decisions. And keep changes small, because the unit of review is the unit of comprehension.
 
 65
-00:08:00.029 --> 00:08:02.459
+00:07:41.796 --> 00:07:44.225
 <v Alice>What about agents that run while I sleep?
 
 66
-00:08:02.759 --> 00:08:14.853
+00:07:44.525 --> 00:07:55.366
 <v Bob>Before an unattended run, answer five questions, like a manager handing a senior engineer a project before a vacation. Does it know what done looks like, can it verify itself, and what are its boundaries?
 
 67
-00:08:15.153 --> 00:08:16.094
+00:07:55.666 --> 00:07:56.763
 <v Alice>And the last two?
 
 68
-00:08:16.394 --> 00:08:26.947
+00:07:57.063 --> 00:08:07.382
 <v Bob>What are its guardrails, like a turn or spend limit, and who approves its output? He also suggests a pilot on three files before the full batch: think of it as a probation period.
 
 69
-00:08:27.247 --> 00:08:29.781
+00:08:07.682 --> 00:08:10.346
 <v Alice>How many agents can one person handle?
 
 70
-00:08:30.081 --> 00:08:44.553
+00:08:10.646 --> 00:08:23.942
 <v Bob>Managers learn their span of control: past a certain number of reports, quality drops, like a teacher with too big a class. He calls the agent version the orchestration tax. Past the first few agents, each new one needs more attention than the last.
 
 71
-00:08:44.853 --> 00:08:46.316
+00:08:24.242 --> 00:08:26.123
 <v Alice>And how many does he run?
 
 72
-00:08:46.616 --> 00:08:58.371
+00:08:26.423 --> 00:08:36.559
 <v Bob>Most days four or five background agents and a few local sessions, and some days that's too many. His rule: you can't scale agents by monitoring more, only by needing to monitor less.
 
 73
-00:08:58.671 --> 00:09:00.865
+00:08:36.859 --> 00:08:39.105
 <v Alice>So how do I measure if it's working?
 
 74
-00:09:01.165 --> 00:09:17.074
+00:08:39.405 --> 00:08:54.008
 <v Bob>Measure the system, not the activity: PR cycle time, ramp-up time for new hires, how often you revert or redo work. The share of AI-written code isn't a useful goal. And with Grove's countermeasure rule, if you count merged PRs, count reverts too.
 
 75
-00:09:17.374 --> 00:09:19.568
+00:08:54.308 --> 00:08:56.659
 <v Alice>And when building is nearly free?
 
 76
-00:09:19.868 --> 00:09:31.362
+00:08:56.959 --> 00:09:07.199
 <v Bob>Then the most important word is still no. Any plausible idea can be a PR by lunch, but the team must review, secure and maintain it, so the question isn't can we, but should we.
 
 77
-00:09:31.662 --> 00:09:33.778
+00:09:07.499 --> 00:09:09.850
 <v Alice>Where does the manager analogy break?
 
 78
-00:09:34.078 --> 00:09:44.266
+00:09:10.150 --> 00:09:19.606
 <v Bob>He lists it himself. Running five agents doesn't prepare you to manage five people, rework is almost free, and agents have no experience, just a notebook on one machine.
 
 79
-00:09:44.566 --> 00:09:49.451
+00:09:19.906 --> 00:09:25.731
 <v Alice>He also says agents are eager and confident. Maya, that's your area.
 
 80
-00:09:49.751 --> 00:10:07.644
+00:09:26.031 --> 00:09:43.925
 <v Maya>Mike Pearl reported in Gizmodo on Wharton research by Steven Shaw and Gideon Nave: 1,372 people took a reasoning test with a chatbot that was sometimes wrong. People accepted its right answers 93 percent of the time, and its wrong ones 80 percent of the time.
 
 81
-00:10:07.944 --> 00:10:09.904
+00:09:44.225 --> 00:09:46.472
 <v Alice>Eighty percent? Wow.
 
 82
-00:10:10.204 --> 00:10:21.593
+00:09:46.772 --> 00:09:58.161
 <v Maya>And those who used AI rated their confidence 11.7 percent higher. Pearl adds a fair caution: read up on the replication crisis before treating any one experiment as gospel.
 
 83
-00:10:21.893 --> 00:10:28.189
+00:09:58.461 --> 00:10:04.365
 <v Bob>That matches Osmani's advice: counter the overconfidence by asking the agent to argue against its own answer.
 
 84
-00:10:28.489 --> 00:10:31.884
+00:10:04.665 --> 00:10:08.270
 <v Alice>Sam, you're skeptical that agents speed us up at all.
 
 85
-00:10:32.184 --> 00:10:46.317
+00:10:08.570 --> 00:10:22.702
 <v Sam>A bit. In a randomized trial by METR, 16 experienced open-source developers worked on 246 real issues. With AI tools allowed, they took 19 percent longer.
 
 86
-00:10:46.617 --> 00:10:48.680
+00:10:23.002 --> 00:10:25.954
 <v Alice>But surely they felt faster?
 
 87
-00:10:48.980 --> 00:11:06.038
+00:10:26.254 --> 00:10:43.312
 <v Sam>That's the twist. They expected a 24 percent speedup, and even after the slowdown, they believed AI had sped them up by 20 percent. METR notes these were frontier models at the time, and it doesn't claim AI fails to speed up most developers.
 
 88
-00:11:06.338 --> 00:11:14.018
+00:10:43.612 --> 00:10:49.986
 <v Bob>Fair. And it's a good reason for his measure-the-system rule: track cycle time and reverts, not how fast it feels.
 
 89
-00:11:14.318 --> 00:11:18.289
+00:10:50.286 --> 00:10:55.040
 <v Alice>Time for Builder's Corner. Bob, what do I do tomorrow morning?
 
 90
-00:11:18.589 --> 00:11:28.307
+00:10:55.340 --> 00:11:04.143
 <v Bob>Find the one command that proves your work, tests or a build, and put it at the top of your CLAUDE dot md. Then ask the agent to show that proof before you read the diff.
 
 91
-00:11:28.607 --> 00:11:29.965
+00:11:04.443 --> 00:11:06.037
 <v Alice>And for the next task?
 
 92
-00:11:30.265 --> 00:11:41.236
+00:11:06.337 --> 00:11:15.506
 <v Bob>Write a short brief with only what the repo can't tell it: why, constraints, out of scope, and how done gets checked. Anything you correct twice goes into CLAUDE dot md.
 
 93
-00:11:41.536 --> 00:11:43.051
+00:11:15.806 --> 00:11:17.399
 <v Alice>And when it goes sideways?
 
 94
-00:11:43.351 --> 00:11:49.360
+00:11:17.699 --> 00:11:22.871
 <v Bob>Two failed corrections? Restart with a better prompt. And review the diff as if you'll get paged for it.
 
 95
-00:11:49.660 --> 00:11:50.652
+00:11:23.171 --> 00:11:24.451
 <v Alice>Let's wrap it up.
 
 96
-00:11:50.952 --> 00:11:58.449
+00:11:24.751 --> 00:11:31.125
 <v Bob>Every task needs a check it can run, and you ask for the proof. Tell the agent what it can't see, and leave out what it can.
 
 97
-00:11:58.749 --> 00:12:03.739
+00:11:31.425 --> 00:11:36.963
 <v Alice>Plan before coding, steer early, and restart after two failed corrections.
 
 98
-00:12:04.039 --> 00:12:10.360
+00:11:37.263 --> 00:11:42.671
 <v Bob>Keep the judgment: you own what ships. And scale by needing to watch less, not by watching more.
 
 99
-00:12:10.660 --> 00:12:12.384
+00:11:42.971 --> 00:11:44.695
 <v Alice>What's still unsettled?
 
 100
-00:12:12.684 --> 00:12:21.200
+00:11:44.995 --> 00:11:53.197
 <v Bob>How to train junior developers when agents take over the starter work. He says managers now have to create those reps on purpose, and how is still open.
 
 101
-00:12:21.500 --> 00:12:25.419
+00:11:53.497 --> 00:11:57.729
 <v Alice>And whether agents actually make experienced developers faster today.
 
 102
-00:12:25.719 --> 00:12:36.507
+00:11:58.029 --> 00:12:07.668
 <v Bob>Right. METR says progress is difficult to predict, and in February 2026 it published new data on late-2025 AI tools. The answer keeps moving.
 
 103
-00:12:36.807 --> 00:12:43.704
+00:12:07.968 --> 00:12:15.335
 <v Alice>That's our episode. The main source was Addy Osmani's X article, Your coding agents made you a manager.
 
 104
-00:12:44.004 --> 00:12:51.997
+00:12:15.635 --> 00:12:23.132
 <v Bob>Our guests brought Mike Pearl's Gizmodo piece on cognitive surrender, and METR's study on AI and experienced open-source developers.
 
 105
-00:12:52.297 --> 00:12:57.522
+00:12:23.432 --> 00:12:29.309
 <v Alice>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

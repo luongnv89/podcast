@@ -24,7 +24,7 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-08T07:56:41Z",
+  "updated": "2026-11-08T12:11:31Z",
   "episodes": [
     {
       "id": "2026-11-08_your-coding-agents-made-you-a-manager",
@@ -42,9 +42,9 @@
       ],
       "language": "en",
       "format": "podcast-2host",
-      "published": "2026-11-08T07:56:39Z",
-      "duration_s": 784.122,
-      "size_bytes": 12547302,
+      "published": "2026-11-08T12:11:29Z",
+      "duration_s": 755.909,
+      "size_bytes": 12095906,
       "audio": "episodes/2026-11-08_your-coding-agents-made-you-a-manager/episode.mp3",
       "transcript": "episodes/2026-11-08_your-coding-agents-made-you-a-manager/transcript.vtt",
       "voices": "OpenRouter · fish-audio/s2.1-pro-free:free",
