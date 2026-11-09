@@ -1,0 +1,405 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.338
+<v Alice>Could one person run a million dollar marketing agency with a team of AI agents?
+
+2
+00:00:05.638 --> 00:00:12.078
+<v Bob>One marketer sketched it on paper: 20 clients, three tiers, and agents that ask before they act.
+
+3
+00:00:12.378 --> 00:00:14.586
+<v Alice>Okay, can I see that math?
+
+4
+00:00:18.886 --> 00:00:28.090
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and today Bob is walking us through an X article.
+
+5
+00:00:28.390 --> 00:00:39.783
+<v Bob>Hi everyone. It's How to Build a One-Person Million Dollar Agency with AI Agents, by The Boring Marketer. He calls it a hypothetical, and says every number in it's a sketch you'd replace with your own.
+
+6
+00:00:40.083 --> 00:00:41.532
+<v Alice>And who's joining us?
+
+7
+00:00:41.832 --> 00:00:48.783
+<v Bob>Three guests. Theo on the market, Lena on building agents, and Sam, our skeptic, on the legal trap.
+
+8
+00:00:49.083 --> 00:00:52.970
+<v Alice>So why an agency at all? Why not just sell software?
+
+9
+00:00:53.270 --> 00:01:07.250
+<v Bob>Because Main Street owners don't want more software. Plumbers and HVAC shops have been sold website builders, review apps and ad dashboards, and running them is a job they don't have time for. What they'll pay for is more booked jobs.
+
+10
+00:01:07.550 --> 00:01:09.349
+<v Alice>And the catch with agencies?
+
+11
+00:01:09.649 --> 00:01:23.287
+<v Bob>People: an agency sells work done by hand, so revenue grows only as fast as you hire. A million dollar agency usually means about six people, and his bet is that agents can now do most of that work and bring you only the decisions.
+
+12
+00:01:23.587 --> 00:01:26.789
+<v Alice>So you're the boss of a team that never sleeps.
+
+13
+00:01:27.089 --> 00:01:28.844
+<v Alice>Okay, show me the math.
+
+14
+00:01:29.144 --> 00:01:45.795
+<v Bob>A million a year is 83,333 dollars a month. He splits it into three tiers: 5 clients at 1,500 dollars a month, 10 at 4,000, and 5 at 7,500. That's 20 clients and 85,000 dollars a month.
+
+15
+00:01:46.095 --> 00:01:49.552
+<v Alice>Only twenty clients? That sounds almost too easy.
+
+16
+00:01:49.852 --> 00:02:02.678
+<v Bob>Clients leave, though: agencies on retainers lose about a quarter of their clients a year, and agencies with one to ten people lose 44.3 percent. So to end two years with 20, plan on signing about 28.
+
+17
+00:02:02.978 --> 00:02:06.179
+<v Alice>And how many businesses do you pitch to sign 28?
+
+18
+00:02:06.479 --> 00:02:23.687
+<v Bob>Work backwards. By his guesses, 1 in 20 businesses that get the full two-week sequence takes a call, and 1 in 4 calls signs up. So one client takes about 80 businesses, and 28 clients take about 2,240, like a funnel where the top has to be enormous.
+
+19
+00:02:23.987 --> 00:02:25.855
+<v Alice>That's a lot of businesses.
+
+20
+00:02:26.155 --> 00:02:34.303
+<v Bob>About 22 a week for two years, each one found, checked on a phone and followed up. That's why both teams in this piece are agents.
+
+21
+00:02:34.603 --> 00:02:36.748
+<v Alice>Is the market even big enough?
+
+22
+00:02:37.048 --> 00:02:53.884
+<v Bob>He only goes after plumbing and HVAC companies with ten or more people. Dallas-Fort Worth has 613 of them, and the four big Texas metros have 1,446. At 1 in 80, that's about 18 clients, so he stays in one trade and adds metros.
+
+23
+00:02:54.184 --> 00:02:56.153
+<v Alice>Why stick to one trade?
+
+24
+00:02:56.453 --> 00:03:06.389
+<v Bob>Because what carries over is the trade: the same menu, the same tested pages, the same prompts and the same proof. A new metro is just a new list.
+
+25
+00:03:06.689 --> 00:03:09.507
+<v Alice>So what do the clients actually buy?
+
+26
+00:03:09.807 --> 00:03:27.270
+<v Bob>One short menu, and nothing made to order. The site tier is 1,500 dollars a month after a 2,500 dollar setup, and it turns more of the traffic they already get into calls. Think their number on the first screen, a page for every service they run ads on, and a text back to every missed call.
+
+27
+00:03:27.570 --> 00:03:28.972
+<v Alice>And the bigger tiers?
+
+28
+00:03:29.272 --> 00:03:41.797
+<v Bob>The 4,000 dollar tier adds their Google ads and their Google Business Profile. The 7,500 dollar tier adds Meta ads, local search pages and a monthly call with you. It's the only tier with a standing call.
+
+29
+00:03:42.097 --> 00:03:44.195
+<v Alice>Why start with the website, though?
+
+30
+00:03:44.495 --> 00:03:57.530
+<v Bob>It's where the traffic they already pay for lands. Think of it like the shop's front door: fix the door, and the same visitors walk in more often. Then the upgrade sells on numbers, after 60 to 90 days of weekly reports.
+
+31
+00:03:57.830 --> 00:03:59.474
+<v Alice>And if a client wants out?
+
+32
+00:03:59.774 --> 00:04:07.619
+<v Bob>Keep the domain in their name, and hand the site back the same week. He even lists holding a site hostage as one of the things that breaks the business.
+
+33
+00:04:07.919 --> 00:04:10.588
+<v Alice>Ha, so no hostage situations.
+
+34
+00:04:10.888 --> 00:04:12.313
+<v Alice>Who does the selling?
+
+35
+00:04:12.613 --> 00:04:22.293
+<v Bob>Six agent seats: a researcher, an auditor, a writer, a caller, a marketer and a follow-up rep, with a manager agent above them. And you're the closer.
+
+36
+00:04:22.593 --> 00:04:26.734
+<v Alice>Six seats for one person. That's a busy org chart.
+
+37
+00:04:27.034 --> 00:04:43.569
+<v Bob>And every seat works from proof. It takes about 19 cold dials to get one conversation, and owners can spot an AI-written personalized first line from the subject. What still gets a reply is the business's own website, measured on a phone, next to the best in their town.
+
+38
+00:04:43.869 --> 00:04:45.636
+<v Alice>So what makes good proof?
+
+39
+00:04:45.936 --> 00:04:57.485
+<v Bob>Four parts. The gap on their phone, why it costs them in their customer's words, the best in their town, and the fix in one sentence. It's like a doctor showing you the X-ray, not just the bill.
+
+40
+00:04:57.785 --> 00:04:59.190
+<v Alice>Give me an example.
+
+41
+00:04:59.490 --> 00:05:12.873
+<v Bob>His strongest proof is a test. Fill in their contact form after hours, the way a customer would, and time the reply. Then the first line writes itself: I filled in your form on Tuesday evening, and nobody had replied by Thursday.
+
+42
+00:05:13.173 --> 00:05:14.730
+<v Alice>And the email itself?
+
+43
+00:05:15.030 --> 00:05:26.962
+<v Bob>One gap, one ask, under 80 words, plain text with no link. And say what your AI did. I had my AI check your site on a phone is true, and he says it's a better hook than pretending you were browsing.
+
+44
+00:05:27.262 --> 00:05:28.596
+<v Alice>And the follow-ups?
+
+45
+00:05:28.896 --> 00:05:43.434
+<v Bob>Most deals come on the second, third or fourth touch, and his two-week rhythm runs from the first email on day 1 to a last one on day 12. The moment they reply, everything else stops. That rule lives in code, where the agent can't skip it.
+
+46
+00:05:43.734 --> 00:05:47.922
+<v Alice>Theo, is this one marketer's dream, or a bigger trend?
+
+47
+00:05:48.222 --> 00:06:00.456
+<v Theo>Bigger. Jeremy Kahn at Fortune wrote about Sequoia investor Julien Bek and his essay, Services: The New Software. Bek thinks the next 1 trillion dollar company will sell an outcome, not a product.
+
+48
+00:06:00.756 --> 00:06:03.064
+<v Alice>Why would investors care about that?
+
+49
+00:06:03.364 --> 00:06:18.447
+<v Theo>Size. Bek notes that for every dollar enterprises spend on software, they spend six on services. He calls these firms autopilots: like in aviation, a human still monitors the systems and handles the hardest tasks, but a lot of the process is automated.
+
+50
+00:06:18.747 --> 00:06:25.188
+<v Bob>My take: that's the plumber agency in one picture. The owner approves, and the agents fly the plane.
+
+51
+00:06:25.488 --> 00:06:34.564
+<v Theo>One warning from the same piece, though. Bek says go-to-market costs remain an unsolved challenge: you can't scale service sales the way you scale software sales.
+
+52
+00:06:34.864 --> 00:06:38.641
+<v Alice>Which is exactly why his sales team is made of agents.
+
+53
+00:06:38.941 --> 00:06:42.654
+<v Alice>Okay, they sign. Who runs twenty accounts?
+
+54
+00:06:42.954 --> 00:06:58.200
+<v Bob>Four more seats. A site seat, an ads seat, a Maps seat for the Google Business Profile, and a reporter that writes a five-line weekly note. The rule: agents do the work, and anything a customer or the owner would notice comes to you as an approval first.
+
+55
+00:06:58.500 --> 00:07:00.719
+<v Alice>Won't I drown in approvals?
+
+56
+00:07:01.019 --> 00:07:06.693
+<v Bob>That's what approvals dot md is for: every client folder has one, with three lists.
+
+57
+00:07:06.993 --> 00:07:08.333
+<v Alice>Which are?
+
+58
+00:07:08.633 --> 00:07:20.391
+<v Bob>Runs on its own, like the weekly report and review requests. Asks you first, like any change a customer can see or any budget change. And never, like spending above the cap the owner signed.
+
+59
+00:07:20.691 --> 00:07:23.335
+<v Alice>So it's like a babysitter's note on the fridge.
+
+60
+00:07:23.635 --> 00:07:34.546
+<v Bob>Pretty much. The week runs on it: 20 minutes every morning on the approval queue, reports that go out on their own, and Friday for sales calls. On paper, that's 15 to 20 hours a week.
+
+61
+00:07:34.846 --> 00:07:35.953
+<v Alice>On paper?
+
+62
+00:07:36.253 --> 00:07:48.058
+<v Bob>His words. In practice something always breaks, and the slack in the week is for it. And no agent fixes the owner's side: if the shop doesn't answer the calls you send, the numbers look bad whatever you build.
+
+63
+00:07:48.358 --> 00:07:53.045
+<v Alice>Lena, you build agents. Does this checkpoint setup match what works?
+
+64
+00:07:53.345 --> 00:08:06.171
+<v Lena>Mostly, yes. Anthropic's guide, Building effective AI agents, says agents can pause for human feedback at checkpoints or when they hit blockers. And they should get ground truth from the environment at each step.
+
+65
+00:08:06.471 --> 00:08:10.056
+<v Alice>Ground truth, like checking the site on a real phone?
+
+66
+00:08:10.356 --> 00:08:21.173
+<v Lena>Right. The guide also warns that autonomy means higher costs and the potential for compounding errors, so it recommends testing in sandboxed environments with the appropriate guardrails.
+
+67
+00:08:21.473 --> 00:08:29.655
+<v Bob>Which matches his advice to turn on one more seat a week, not ten at once. It's like hiring: you don't onboard a whole team on day one.
+
+68
+00:08:29.955 --> 00:08:37.627
+<v Lena>And start simple. The guide recommends finding the simplest solution possible, and only increasing complexity when needed.
+
+69
+00:08:37.927 --> 00:08:41.813
+<v Alice>Do the agents get better, or do they repeat the same mistakes?
+
+70
+00:08:42.113 --> 00:08:51.108
+<v Bob>They repeat them, unless something writes down what they learned. So every seat gets a skill, a short file of instructions, and he runs three loops on top.
+
+71
+00:08:51.408 --> 00:08:52.566
+<v Alice>Three loops?
+
+72
+00:08:52.866 --> 00:08:59.388
+<v Bob>Every no becomes a rule. Every test feeds the next client. And every reply teaches the writer.
+
+73
+00:08:59.688 --> 00:09:01.534
+<v Alice>Like a new hire's notebook.
+
+74
+00:09:01.834 --> 00:09:14.633
+<v Bob>Like a notebook the whole team shares. A new HVAC client starts with the tests that won for the last five clients, and he calls that the real payoff of staying in one trade. Just keep every skill short enough to read in a minute.
+
+75
+00:09:14.933 --> 00:09:17.136
+<v Alice>Short skills. Noted.
+
+76
+00:09:17.436 --> 00:09:20.812
+<v Alice>Okay, time for the skeptics. What breaks?
+
+77
+00:09:21.112 --> 00:09:30.792
+<v Bob>He lists it himself. Proof that's wrong: one wrong fact and the owner stops reading. And approval fatigue: if the queue asks about everything, you'll start approving without reading.
+
+78
+00:09:31.092 --> 00:09:32.819
+<v Alice>Anything else on his list?
+
+79
+00:09:33.119 --> 00:09:42.834
+<v Bob>Believing the headline numbers. Most stats in this space come from vendors, and he says he hasn't seen anyone prove a one-person agency this size with a team of agents yet.
+
+80
+00:09:43.134 --> 00:09:45.825
+<v Alice>Respect for saying that out loud.
+
+81
+00:09:46.125 --> 00:09:57.720
+<v Sam>And the phone is where it gets expensive. Ali Swenson at AP News reported that the FCC outlawed robocalls that contain AI-generated voices, under the Telephone Consumer Protection Act.
+
+82
+00:09:58.020 --> 00:10:00.409
+<v Alice>What does that mean for a cold call?
+
+83
+00:10:00.709 --> 00:10:16.698
+<v Sam>Under that law, telemarketers generally can't use artificial or prerecorded voice messages to call cellphones, and the ruling classifies AI voices as artificial. Call recipients can potentially recover up to 1,500 dollars in damages for each unwanted call.
+
+84
+00:10:16.998 --> 00:10:27.781
+<v Bob>Which is his Seat 4. An AI voice can't cold call a cell phone, and each call can cost you 500 to 1,500 dollars. So he uses AI everywhere except the dialing.
+
+85
+00:10:28.081 --> 00:10:29.323
+<v Alice>And texts?
+
+86
+00:10:29.623 --> 00:10:34.780
+<v Bob>Skip cold texts and ringless voicemail too. He says the law counts both as calls.
+
+87
+00:10:35.080 --> 00:10:45.107
+<v Sam>One more from the AP piece: the FCC can fine companies that use AI voices in their calls, with a maximum of more than 23,000 dollars per call.
+
+88
+00:10:45.407 --> 00:10:48.399
+<v Alice>Okay. No robots dialing. Got it.
+
+89
+00:10:48.699 --> 00:10:57.647
+<v Bob>My take: the model is plausible, but the million is a sketch. His own advice is to trust your first 100 businesses over any headline number.
+
+90
+00:10:57.947 --> 00:11:02.600
+<v Alice>Time for Builder's Corner. Bob, what should a builder try this week?
+
+91
+00:11:02.900 --> 00:11:15.297
+<v Bob>Take one agent you already run and write its approvals file with three lists: what runs on its own, what asks you first, and what it never does. Then put spending caps where a bad prompt can't reach them.
+
+92
+00:11:15.597 --> 00:11:17.776
+<v Alice>And for the agency folks listening?
+
+93
+00:11:18.076 --> 00:11:28.557
+<v Bob>Run his form test on five local businesses. Fill in the contact form after hours and time the reply. It's cheap, it's honest, and it tells you fast whether the gap is real.
+
+94
+00:11:28.857 --> 00:11:31.594
+<v Alice>Let's wrap it up. Your three takeaways?
+
+95
+00:11:31.894 --> 00:11:44.883
+<v Bob>One: a million a year is 20 clients on a short menu, if the math holds. Two: agents do the work, but anything a customer would notice asks you first. Three: AI everywhere, except the dialing.
+
+96
+00:11:45.183 --> 00:11:48.082
+<v Alice>And mine: the website is the way in.
+
+97
+00:11:48.382 --> 00:11:49.764
+<v Alice>What's still open?
+
+98
+00:11:50.064 --> 00:11:59.187
+<v Bob>Whether those conversion guesses hold. He says they're guesses you'll replace after your first 100 businesses. And whether owners will trust a text thread that's mostly software.
+
+99
+00:11:59.487 --> 00:12:02.433
+<v Alice>I'd love to see someone actually try it.
+
+100
+00:12:02.733 --> 00:12:17.642
+<v Bob>This episode is based on How to Build a One-Person Million Dollar Agency with AI Agents, by The Boring Marketer, on X. Thanks also to Jeremy Kahn at Fortune, to Anthropic for Building effective AI agents, and to Ali Swenson at AP News.
+
+101
+00:12:17.942 --> 00:12:25.103
+<v Alice>Thanks for joining us, everyone. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

@@ -24,8 +24,83 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-09T08:58:35Z",
+  "updated": "2026-11-09T23:30:22Z",
   "episodes": [
+    {
+      "id": "2026-11-09_how-to-build-a-one-person-million-dollar-agency",
+      "title": "How to Build a One-Person Million Dollar Agency with AI Agents",
+      "summary": [
+        "The Boring Marketer sketches a one-person marketing agency for plumbing and HVAC shops, run by teams of AI agents.",
+        "His math: 20 clients on three tiers for about $85,000 a month, with agents that bring you only the decisions.",
+        "Guests add the services-as-software trend, how to build agents with checkpoints, and why AI must never do the cold calls."
+      ],
+      "category": "marketing",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-09T23:30:21Z",
+      "duration_s": 751.703,
+      "size_bytes": 12028640,
+      "audio": "episodes/2026-11-09_how-to-build-a-one-person-million-dollar-agency/episode.mp3",
+      "transcript": "episodes/2026-11-09_how-to-build-a-one-person-million-dollar-agency/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "How to Build a One-Person Million Dollar Agency with AI Agents",
+        "author": "The Boring Marketer (@boringmarketer)",
+        "url": "https://x.com/boringmarketer/status/2119888053577646318",
+        "published": "2026-11-09T20:21:12Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "How to Build a One-Person Million Dollar Agency with AI Agents",
+          "author": "The Boring Marketer (@boringmarketer)",
+          "url": "https://x.com/boringmarketer/status/2119888053577646318"
+        },
+        {
+          "title": "Are services the new software? This Sequoia partner thinks so | Fortune",
+          "author": "Jeremy Kahn",
+          "url": "https://fortune.com/2026/04/21/services-are-the-new-software-sequoia-venture-capital-julien-bek-ai-native-eye-on-ai/"
+        },
+        {
+          "title": "Building effective AI agents",
+          "author": "Anthropic",
+          "url": "https://www.anthropic.com/research/building-effective-agents"
+        },
+        {
+          "title": "AI-generated voices in robocalls can deceive voters. The FCC just made them illegal",
+          "author": "Ali Swenson",
+          "url": "https://apnews.com/article/fcc-elections-artificial-intelligence-robocalls-regulations-a8292b1371b3764916461f60660b93e6"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Theo",
+          "presents": [
+            "Are services the new software? This Sequoia partner thinks so | Fortune"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Building effective AI agents"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "AI-generated voices in robocalls can deceive voters. The FCC just made them illegal"
+          ]
+        }
+      ],
+      "description": "Can one person run a million dollar marketing agency with AI agents? Bob and Alice unpack The Boring Marketer's plan for plumbing and HVAC shops: three tiers, sales agents, and delivery agents that ask first.\n\nIn this episode:\n- The math: 20 clients for about $85,000 a month, and why you plan on signing 28.\n- Approvals: runs on its own, asks you first, never.\n- What breaks: vendor numbers, approval fatigue, and AI voices on cold calls.\n\nSources: The Boring Marketer; Jeremy Kahn; Anthropic; Ali Swenson\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - How to Build a One-Person Million Dollar Agency with AI Agents (2026-11-10).mp3"
+    },
     {
       "id": "2026-11-04_a-practical-guide-to-security-in-november-2026",
       "title": "A Practical Guide to Security in November 2026",
