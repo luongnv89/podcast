@@ -24,8 +24,41 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-09T08:22:21Z",
+  "updated": "2026-11-09T08:37:13Z",
   "episodes": [
+    {
+      "id": "2026-11-05_marketing-engineers-solo-explainer",
+      "title": "Marketing Engineers: 100x More Experiments with AI agents (solo explainer)",
+      "summary": [
+        "A solo explainer of Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents.",
+        "His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.",
+        "Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "solo-explainer",
+      "published": "2026-11-09T08:37:10Z",
+      "duration_s": 524.633,
+      "size_bytes": 8395333,
+      "audio": "episodes/2026-11-05_marketing-engineers-solo-explainer/episode.mp3",
+      "transcript": "episodes/2026-11-05_marketing-engineers-solo-explainer/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Marketing Engineers: 100x More Experiments with AI agents",
+        "author": "GREG ISENBERG (@gregisenberg)",
+        "url": "https://x.com/gregisenberg/status/2108188646973313195",
+        "published": "2026-10-08T13:31:56Z",
+        "kind": "x"
+      },
+      "description": "A solo explainer of Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents. Alice unpacks it on her own.\n\nIn this episode:\n- His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.\n- Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.\n\nSources: Marketing Engineers: 100x More Experiments with AI agents by Greg Isenberg (@gregisenberg)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Marketing Engineers 100x More Experiments with AI agents (solo explainer) (2026-11-09).mp3"
+    },
     {
       "id": "2026-11-05_meet-the-new-build-wiz-ai-show",
       "title": "Meet the new Build Wiz AI Show",
@@ -938,39 +971,6 @@
         "thumb": "art/2026-11-05_cinderella-or-the-little-glass-slipper/thumb.jpg",
         "alt": "Pencil drawing of Cinderella in a blue ball gown beside a pumpkin coach with two little mice, a palace glowing on the hill at dusk."
       }
-    },
-    {
-      "id": "2026-11-05_marketing-engineers-solo-explainer",
-      "title": "Marketing Engineers: 100x More Experiments with AI agents (solo explainer)",
-      "summary": [
-        "A solo explainer of Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents.",
-        "His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.",
-        "Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins."
-      ],
-      "category": "ai",
-      "show": "Build Wiz AI Show",
-      "hosts": [
-        "Bob",
-        "Alice"
-      ],
-      "language": "en",
-      "format": "solo-explainer",
-      "published": "2026-11-05T11:02:41Z",
-      "duration_s": 494.088,
-      "size_bytes": 7906576,
-      "audio": "episodes/2026-11-05_marketing-engineers-solo-explainer/episode.mp3",
-      "transcript": "episodes/2026-11-05_marketing-engineers-solo-explainer/transcript.vtt",
-      "voices": "OpenRouter · fish-audio/s2.1-pro-free:free",
-      "source": {
-        "title": "Marketing Engineers: 100x More Experiments with AI agents",
-        "author": "GREG ISENBERG (@gregisenberg)",
-        "url": "https://x.com/gregisenberg/status/2108188646973313195",
-        "published": "2026-10-08T13:31:56Z",
-        "kind": "x"
-      },
-      "description": "A solo explainer of Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents. Unpacked in 8 minutes.\n\nIn this episode:\n- His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.\n- Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.\n\nSources: Marketing Engineers: 100x More Experiments with AI agents by Greg Isenberg (@gregisenberg)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
-      "file_name": "Build Wiz AI Show - Marketing Engineers 100x More Experiments with AI agents (solo explainer) (2026-11-05).mp3",
-      "description_source": "generated"
     },
     {
       "id": "2026-11-05_marketing-engineers-100x-more-experiments-with",
