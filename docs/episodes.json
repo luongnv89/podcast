@@ -24,8 +24,83 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-09T07:59:43Z",
+  "updated": "2026-11-09T08:13:20Z",
   "episodes": [
+    {
+      "id": "2026-11-06_5t-opportunity-ai-roll-ups",
+      "title": "AI Roll-Ups: Buy a Boring Business, Run It with Agents",
+      "summary": [
+        "Greg Isenberg's X article makes the case for AI roll-ups: buy an established services business and run its back office with AI agents.",
+        "His playbook: buy the customers and trust, build a rulebook and review checkpoints, and move margins from 5-10% toward 30-40%.",
+        "Guests add balance: even Thrive needed more than off-the-shelf AI, and AI users get less accurate when they stop checking."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-09T08:13:17Z",
+      "duration_s": 770.085,
+      "size_bytes": 12322457,
+      "audio": "episodes/2026-11-06_5t-opportunity-ai-roll-ups/episode.mp3",
+      "transcript": "episodes/2026-11-06_5t-opportunity-ai-roll-ups/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "$5T opportunity: AI Roll Ups",
+        "author": "GREG ISENBERG (@gregisenberg)",
+        "url": "https://x.com/gregisenberg/status/2103927365977928019",
+        "published": "2026-09-26T19:19:07Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "$5T opportunity: AI Roll Ups",
+          "author": "GREG ISENBERG (@gregisenberg)",
+          "url": "https://x.com/gregisenberg/status/2103927365977928019"
+        },
+        {
+          "title": "The Revolution in Services: General Catalyst's AI Rollup Strategy, with Marc Bhargava",
+          "author": "Nathan Labenz",
+          "url": "https://www.cognitiverevolution.ai/the-revolution-in-services-general-catalysts-ai-rollup-strategy-with-marc-bhargava"
+        },
+        {
+          "title": "OpenAI hopes to automate IT and accounting with Thrive Holdings",
+          "author": "Nicole Kobie",
+          "url": "https://www.itpro.com/technology/artificial-intelligence/openai-hopes-to-automate-it-and-accounting-with-thrive-holdings"
+        },
+        {
+          "title": "Centaurs and Cyborgs on the Jagged Frontier",
+          "author": "Ethan Mollick",
+          "url": "https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Theo",
+          "presents": [
+            "The Revolution in Services: General Catalyst's AI Rollup Strategy, with Marc Bhargava"
+          ]
+        },
+        {
+          "name": "Maya",
+          "presents": [
+            "Centaurs and Cyborgs on the Jagged Frontier"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "OpenAI hopes to automate IT and accounting with Thrive Holdings"
+          ]
+        }
+      ],
+      "description": "Greg Isenberg's X article makes the case for AI roll-ups: buy an established services business and run its back office with AI agents. Bob and Alice unpack it.\n\nIn this episode:\n- His playbook: buy the customers and trust, build a rulebook and review checkpoints, and move margins from 5-10% toward 30-40%.\n- Guests add balance: even Thrive needed more than off-the-shelf AI, and AI users get less accurate when they stop checking.\n\nSources: Greg Isenberg; Nathan Labenz; Nicole Kobie; Ethan Mollick\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - AI Roll-Ups Buy a Boring Business, Run It with Agents (2026-11-09).mp3"
+    },
     {
       "id": "2026-11-06_why-software-factories-fail",
       "title": "Why Software Factories Fail: The Harness Is Not Enough",
@@ -417,81 +492,6 @@
         "thumb": "art/2026-11-06_little-red-cap/thumb.jpg",
         "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
       }
-    },
-    {
-      "id": "2026-11-06_5t-opportunity-ai-roll-ups",
-      "title": "AI Roll-Ups: Buy a Boring Business, Run It with Agents",
-      "summary": [
-        "Greg Isenberg's X article makes the case for AI roll-ups: buy an established services business and run its back office with AI agents.",
-        "His playbook: buy the customers and trust, build a rulebook and review checkpoints, and move margins from 5-10% toward 30-40%.",
-        "Guests add balance: even Thrive needed more than off-the-shelf AI, and AI users get less accurate when they stop checking."
-      ],
-      "category": "ai",
-      "show": "Build Wiz AI Show",
-      "hosts": [
-        "Bob",
-        "Alice"
-      ],
-      "language": "en",
-      "format": "podcast-2host",
-      "published": "2026-11-06T07:50:23Z",
-      "duration_s": 770.953,
-      "size_bytes": 12336526,
-      "audio": "episodes/2026-11-06_5t-opportunity-ai-roll-ups/episode.mp3",
-      "transcript": "episodes/2026-11-06_5t-opportunity-ai-roll-ups/transcript.vtt",
-      "voices": "OpenRouter · fish-audio/s2.1-pro-free:free",
-      "source": {
-        "title": "$5T opportunity: AI Roll Ups",
-        "author": "GREG ISENBERG (@gregisenberg)",
-        "url": "https://x.com/gregisenberg/status/2103927365977928019",
-        "published": "2026-09-26T19:19:07Z",
-        "kind": "x"
-      },
-      "sources": [
-        {
-          "title": "$5T opportunity: AI Roll Ups",
-          "author": "GREG ISENBERG (@gregisenberg)",
-          "url": "https://x.com/gregisenberg/status/2103927365977928019"
-        },
-        {
-          "title": "The Revolution in Services: General Catalyst's AI Rollup Strategy, with Marc Bhargava",
-          "author": "Nathan Labenz",
-          "url": "https://www.cognitiverevolution.ai/the-revolution-in-services-general-catalysts-ai-rollup-strategy-with-marc-bhargava"
-        },
-        {
-          "title": "OpenAI hopes to automate IT and accounting with Thrive Holdings",
-          "author": "Nicole Kobie",
-          "url": "https://www.itpro.com/technology/artificial-intelligence/openai-hopes-to-automate-it-and-accounting-with-thrive-holdings"
-        },
-        {
-          "title": "Centaurs and Cyborgs on the Jagged Frontier",
-          "author": "Ethan Mollick",
-          "url": "https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged"
-        }
-      ],
-      "guests": [
-        {
-          "name": "Theo",
-          "presents": [
-            "The Revolution in Services: General Catalyst's AI Rollup Strategy, with Marc Bhargava"
-          ]
-        },
-        {
-          "name": "Maya",
-          "presents": [
-            "Centaurs and Cyborgs on the Jagged Frontier"
-          ]
-        },
-        {
-          "name": "Sam",
-          "presents": [
-            "OpenAI hopes to automate IT and accounting with Thrive Holdings"
-          ]
-        }
-      ],
-      "description": "Greg Isenberg's X article makes the case for AI roll-ups: buy an established services business and run its back office with AI agents. Bob and Alice unpack it in 13 minutes.\n\nIn this episode:\n- His playbook: buy the customers and trust, build a rulebook and review checkpoints, and move margins from 5-10% toward 30-40%.\n- Guests add balance: even Thrive needed more than off-the-shelf AI, and AI users get less accurate when they stop checking.\n\nSources: Greg Isenberg; Nathan Labenz; Nicole Kobie; Ethan Mollick\nBig AI ideas, made clear for builders. luongnv.com/podcast",
-      "file_name": "Build Wiz AI Show - AI Roll-Ups Buy a Boring Business, Run It with Agents (2026-11-06).mp3",
-      "description_source": "generated"
     },
     {
       "id": "2026-11-05_hansel-and-gretel-fr",

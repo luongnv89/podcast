@@ -1,445 +1,445 @@
 WEBVTT
 
 1
-00:00:00.000 --> 00:00:04.624
+00:00:00.000 --> 00:00:04.815
 <v Alice>Could you buy a boring local business and triple its profit with AI agents?
 
 2
-00:00:04.924 --> 00:00:13.910
+00:00:05.115 --> 00:00:14.291
 <v Bob>One accounting firm says its AI processed 7,000 tax returns this season. One job went from 180 hours a year down to 15.
 
 3
-00:00:18.210 --> 00:00:26.412
+00:00:18.591 --> 00:00:27.795
 <v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and today I'm asking the questions.
 
 4
-00:00:26.712 --> 00:00:34.706
+00:00:28.095 --> 00:00:36.707
 <v Bob>And I'm Bob! Today's source is Greg Isenberg's X article on AI roll-ups: why he thinks you should buy a business and run it with agents.
 
 5
-00:00:35.006 --> 00:00:37.122
+00:00:37.007 --> 00:00:39.871
 <v Alice>Give me the big idea in one breath.
 
 6
-00:00:37.422 --> 00:00:46.303
+00:00:40.171 --> 00:00:49.723
 <v Bob>Here's the key point. Buy a business that already has the customers, the licenses and the trust. Then change how the work gets done with AI agents.
 
 7
-00:00:46.603 --> 00:00:49.268
+00:00:50.023 --> 00:00:53.271
 <v Alice>Keep the customers, change the work. Got it.
 
 8
-00:00:49.568 --> 00:00:53.016
+00:00:53.571 --> 00:00:57.343
 <v Alice>Why does he call it a 5 trillion dollar opportunity?
 
 9
-00:00:53.316 --> 00:01:05.724
+00:00:57.643 --> 00:01:08.252
 <v Bob>He cites McKinsey: about 5 trillion dollars worth of American businesses will change hands by 2035. Most belong to baby boomers heading into retirement, many with nobody lined up to buy.
 
 10
-00:01:06.024 --> 00:01:07.800
+00:01:08.552 --> 00:01:11.041
 <v Alice>And that accounting firm from the teaser?
 
 11
-00:01:08.100 --> 00:01:18.184
+00:01:11.341 --> 00:01:21.276
 <v Bob>Larson Gross, in Bellingham, Washington. Founded in 1949, five offices, about 200 employees, and Thrive Holdings recently bought a stake in it.
 
 12
-00:01:18.484 --> 00:01:26.111
+00:01:21.576 --> 00:01:29.340
 <v Bob>This tax season, its AI processed 7,000 returns. Accountants saved 31 percent of their time on average.
 
 13
-00:01:26.411 --> 00:01:29.546
+00:01:29.640 --> 00:01:33.225
 <v Alice>Thirty-one percent. That's real time back.
 
 14
-00:01:29.846 --> 00:01:32.380
+00:01:33.525 --> 00:01:36.617
 <v Alice>Okay, what's a roll-up, exactly?
 
 15
-00:01:32.680 --> 00:01:45.976
+00:01:36.917 --> 00:01:50.096
 <v Bob>A pretty old idea. You buy lots of small businesses in one industry and combine them, so the whole is worth more than the pieces. He says private equity has run this play on services for 40 years, mostly with financial engineering.
 
 16
-00:01:46.276 --> 00:01:48.105
+00:01:50.396 --> 00:01:52.617
 <v Alice>So what does AI change?
 
 17
-00:01:48.405 --> 00:01:59.742
+00:01:52.917 --> 00:02:03.909
 <v Bob>The middle step: you buy at a services price, then rebuild how the work gets delivered, with agents doing a large share. The customers and revenue stay, and the cost of each unit of work drops.
 
 18
-00:02:00.042 --> 00:02:01.139
+00:02:04.209 --> 00:02:05.402
 <v Alice>And the profit?
 
 19
-00:02:01.439 --> 00:02:15.441
+00:02:05.702 --> 00:02:20.356
 <v Bob>A traditional services firm runs around 5 to 10 percent EBITDA margins. The thesis is the same firm can run at 30 to 40. Picture the same restaurant, same menu, same regulars, but the kitchen suddenly costs a third as much.
 
 20
-00:02:15.741 --> 00:02:18.510
+00:02:20.656 --> 00:02:23.904
 <v Alice>Same regulars, cheaper kitchen. I like it.
 
 21
-00:02:18.810 --> 00:02:21.892
+00:02:24.204 --> 00:02:27.472
 <v Alice>Why is this happening now and not five years ago?
 
 22
-00:02:22.192 --> 00:02:32.798
+00:02:27.772 --> 00:02:38.125
 <v Bob>He names three things. First, the models got good enough at the actual work: data entry, first drafts of tax returns, contract review, support tickets.
 
 23
-00:02:33.098 --> 00:02:38.218
+00:02:38.425 --> 00:02:43.542
 <v Bob>His line: two years ago the output needed redoing. Now it needs checking.
 
 24
-00:02:38.518 --> 00:02:41.418
+00:02:43.842 --> 00:02:47.264
 <v Alice>Redoing versus checking. Big difference.
 
 25
-00:02:41.718 --> 00:02:51.252
+00:02:47.564 --> 00:02:56.896
 <v Bob>Second, the owners are retiring. Many are in their sixties and seventies with no succession plan. Their kids don't want the firm, and their employees can't afford it.
 
 26
-00:02:51.552 --> 00:02:52.440
+00:02:57.196 --> 00:02:58.261
 <v Alice>And third?
 
 27
-00:02:52.740 --> 00:03:05.567
+00:02:58.561 --> 00:03:10.163
 <v Bob>The arithmetic. Services firms sell for a low multiple because the market assumes their margins are stuck. Think of a house sold cheap because everyone assumes the plumbing is broken: fix it, and you bought at a discount.
 
 28
-00:03:05.867 --> 00:03:09.680
+00:03:10.463 --> 00:03:14.605
 <v Alice>Theo, our analyst, you listened to one of the investors behind this.
 
 29
-00:03:09.980 --> 00:03:21.657
+00:03:14.905 --> 00:03:25.432
 <v Theo>I did. On The Cognitive Revolution, Nathan Labenz interviewed Marc Bhargava of General Catalyst. Their team studied the tasks across 70 service categories and picked 10 verticals.
 
 30
-00:03:21.957 --> 00:03:35.358
+00:03:25.732 --> 00:03:38.476
 <v Theo>In those, they believe anywhere from 30 to 70 percent of tasks are already automatable with AI today. And the margin story matches: from 5 to 10 percent EBITDA margins to 30 to 40 in certain cases.
 
 31
-00:03:35.658 --> 00:03:47.335
+00:03:38.776 --> 00:03:48.746
 <v Theo>With one nuance. Bhargava says they focus on the complementary side. A human stays in the loop, and one human with a team of agents can take a lot more calls than one human alone.
 
 32
-00:03:47.635 --> 00:03:49.333
+00:03:49.046 --> 00:03:51.122
 <v Alice>Who's actually doing this?
 
 33
-00:03:49.633 --> 00:03:58.984
+00:03:51.422 --> 00:04:00.947
 <v Bob>Greg lists a few. Long Lake, in property management: 18 businesses acquired, 100 million dollars of EBITDA in under two years.
 
 34
-00:03:59.284 --> 00:04:10.360
+00:04:01.247 --> 00:04:11.570
 <v Bob>Crescendo, in contact centers: 90 percent of frontline tickets resolved by AI. And Dwelly, in UK real estate: problem resolution down from 50 days to 20.
 
 35
-00:04:10.660 --> 00:04:25.315
+00:04:11.870 --> 00:04:27.255
 <v Bob>Thrive Holdings has bought nearly 50 local accounting practices over two years, and just committed 1 billion dollars to buy more. General Catalyst set aside 1.5 billion and put more than 750 million into at least ten companies.
 
 36
-00:04:25.615 --> 00:04:28.515
+00:04:27.555 --> 00:04:30.594
 <v Alice>Those numbers are huge. Are they solid?
 
 37
-00:04:28.815 --> 00:04:34.405
+00:04:30.894 --> 00:04:36.569
 <v Bob>Greg's own caveat: they're self-reported, and none of these companies has been through a recession yet.
 
 38
-00:04:34.705 --> 00:04:37.840
+00:04:36.869 --> 00:04:40.163
 <v Alice>Billion dollar funds. Doesn't that leave me out?
 
 39
-00:04:38.140 --> 00:04:49.816
+00:04:40.463 --> 00:04:51.153
 <v Bob>He argues the opposite! A billion dollar vehicle can't spend its time on a bookkeeping firm doing 2 million a year, because the check is too small. It's like a whaling ship that can't stop for small fish.
 
 40
-00:04:50.116 --> 00:04:52.128
+00:04:51.453 --> 00:04:53.934
 <v Alice>So the small firms get ignored.
 
 41
-00:04:52.428 --> 00:05:06.247
+00:04:54.234 --> 00:05:06.967
 <v Bob>Exactly, and that's where the competition is thinnest. Second, the tools are the same ones you have. He says Larson Gross's tax agents run on OpenAI's Codex, and those models are available to anyone for a monthly subscription.
 
 42
-00:05:06.547 --> 00:05:07.304
+00:05:07.267 --> 00:05:08.327
 <v Alice>What else?
 
 43
-00:05:07.604 --> 00:05:18.811
+00:05:08.627 --> 00:05:19.619
 <v Bob>You can be the integration: the biggest risk in any roll-up is buying faster than you can integrate. One person who buys one firm knows every client by name and watches every agent draft.
 
 44
-00:05:19.111 --> 00:05:23.316
+00:05:19.919 --> 00:05:24.061
 <v Alice>But if I can build an AI accounting product, why buy a firm?
 
 45
-00:05:23.616 --> 00:05:32.655
+00:05:24.361 --> 00:05:33.483
 <v Bob>Because the hardest parts have nothing to do with software. The client list took 30 years and the trust is personal. The licenses took exams and time.
 
 46
-00:05:32.955 --> 00:05:44.344
+00:05:33.783 --> 00:05:44.996
 <v Bob>It's like moving into a house with a garden that's already grown, instead of planting seeds. And the firm's history, every edge case and every caught mistake, is training material a startup doesn't have.
 
 47
-00:05:44.644 --> 00:05:47.779
+00:05:45.296 --> 00:05:48.845
 <v Alice>So the startup earns the customer, then does the work.
 
 48
-00:05:48.079 --> 00:05:53.617
+00:05:49.145 --> 00:05:54.820
 <v Bob>And the acquisition already has the customer. All you change is the work. That's his line.
 
 49
-00:05:53.917 --> 00:05:56.268
+00:05:55.120 --> 00:05:57.705
 <v Alice>Say I'm in. Where do I start?
 
 50
-00:05:56.568 --> 00:06:04.613
+00:05:58.005 --> 00:06:05.723
 <v Bob>Before you buy anything, set up the system. He says the folder structure is the operating model. Three little files do most of the work.
 
 51
-00:06:04.913 --> 00:06:06.507
+00:06:06.023 --> 00:06:07.804
 <v Alice>Three files. Go.
 
 52
-00:06:06.807 --> 00:06:16.446
+00:06:08.104 --> 00:06:17.435
 <v Bob>A target criteria file decides what you buy. A rules folder decides whether the agents can be trusted. And a corrections log is how the rules get better every week.
 
 53
-00:06:16.746 --> 00:06:18.444
+00:06:17.735 --> 00:06:19.403
 <v Alice>And the agents themselves?
 
 54
-00:06:18.744 --> 00:06:30.551
+00:06:19.703 --> 00:06:30.997
 <v Bob>Two sets: one helps you buy the right business, one runs it. And here's his most important design decision: the reviewer can block but never ship. The preparer can ship nothing on its own.
 
 55
-00:06:30.851 --> 00:06:32.915
+00:06:31.297 --> 00:06:33.601
 <v Alice>Like two keys for one safe.
 
 56
-00:06:33.215 --> 00:06:39.119
+00:06:33.901 --> 00:06:39.575
 <v Bob>Exactly like two keys. Keeping them apart stops most bad output before it reaches a client.
 
 57
-00:06:39.419 --> 00:06:43.572
+00:06:39.875 --> 00:06:44.435
 <v Alice>Maya, our researcher, you brought a study about checking AI work.
 
 58
-00:06:43.872 --> 00:06:55.418
+00:06:44.735 --> 00:06:55.599
 <v Maya>Yes. In Centaurs and Cyborgs on the Jagged Frontier, on One Useful Thing, Ethan Mollick describes an experiment with 758 consultants at Boston Consulting Group.
 
 59
-00:06:55.718 --> 00:07:07.891
+00:06:55.899 --> 00:07:07.831
 <v Maya>On tasks the AI handled well, consultants using AI finished 12.2 percent more tasks, completed them 25.1 percent more quickly, and produced 40 percent higher quality results.
 
 60
-00:07:08.191 --> 00:07:10.203
+00:07:08.131 --> 00:07:10.740
 <v Alice>That sounds like a yes for agents.
 
 61
-00:07:10.503 --> 00:07:22.232
+00:07:11.040 --> 00:07:23.064
 <v Maya>Here's the catch. On a task outside what the AI could do, those using AI actually had less accurate answers than those who weren't allowed to use it. Mollick calls it falling asleep at the wheel.
 
 62
-00:07:22.532 --> 00:07:25.327
+00:07:23.364 --> 00:07:26.565
 <v Alice>So the reviewer has to stay awake. Got it.
 
 63
-00:07:25.627 --> 00:07:28.004
+00:07:26.865 --> 00:07:29.939
 <v Alice>Back to buying. How do I find a firm?
 
 64
-00:07:28.304 --> 00:07:40.634
+00:07:30.239 --> 00:07:41.486
 <v Bob>Most small firms that would sell aren't listed anywhere. He suggests state licensing board lookups, business filings, association directories and local business journals. Then write to the owner yourself.
 
 65
-00:07:40.934 --> 00:07:42.292
+00:07:41.786 --> 00:07:43.351
 <v Alice>What's a good score?
 
 66
-00:07:42.592 --> 00:07:53.511
+00:07:43.651 --> 00:07:54.005
 <v Bob>Score every target the same way, so your excitement doesn't make the decision. Under 60 percent is usually a job, not an acquisition. Above 80 deserves a letter of intent.
 
 67
-00:07:53.811 --> 00:07:57.834
+00:07:54.305 --> 00:07:57.699
 <v Alice>A job, not an acquisition. Ouch.
 
 68
-00:07:58.134 --> 00:08:08.871
+00:07:57.999 --> 00:08:08.963
 <v Bob>Then diligence with work samples: ask for 20 to 50 real, anonymized completed jobs and build an automation map. Think of it as the home inspection before you buy the house.
 
 69
-00:08:09.171 --> 00:08:11.704
+00:08:09.263 --> 00:08:12.336
 <v Alice>A home inspection for the work. Smart.
 
 70
-00:08:12.004 --> 00:08:12.710
+00:08:12.636 --> 00:08:13.843
 <v Alice>And the math?
 
 71
-00:08:13.010 --> 00:08:24.974
+00:08:14.143 --> 00:08:25.692
 <v Bob>His illustrative example: you buy for around 800,000 dollars. Move the margin from 10 to 30 percent and hold it, and the business is worth about three times what you paid, at the same multiple.
 
 72
-00:08:25.274 --> 00:08:26.867
+00:08:25.992 --> 00:08:27.638
 <v Alice>That's the dream number.
 
 73
-00:08:27.167 --> 00:08:35.448
+00:08:27.938 --> 00:08:35.992
 <v Bob>He's careful there: that's before tooling, before the months it takes, before anything goes wrong. The whole game is whether you can hold the margin.
 
 74
-00:08:35.748 --> 00:08:38.282
+00:08:36.292 --> 00:08:39.366
 <v Alice>Okay, I own the firm. Now what?
 
 75
-00:08:38.582 --> 00:08:47.986
+00:08:39.666 --> 00:08:49.509
 <v Bob>The rulebook, which he says is where the real asset gets built. Every firm runs on rules nobody wrote down, like the client who always sends documents late.
 
 76
-00:08:48.286 --> 00:08:58.709
+00:08:49.809 --> 00:09:00.336
 <v Bob>In the first 60 days, you get them out of people's heads and into files. Then every week, compare agent drafts with what a person approved, and turn repeated corrections into rules.
 
 77
-00:08:59.009 --> 00:09:00.785
+00:09:00.636 --> 00:09:02.462
 <v Alice>Why does that matter so much?
 
 78
-00:09:01.085 --> 00:09:11.691
+00:09:02.762 --> 00:09:12.605
 <v Bob>Because anyone can use the same models. Nobody else has your list of every way they go wrong in this niche. It's like a family recipe book, with every burnt dish written in the margins.
 
 79
-00:09:11.991 --> 00:09:13.167
+00:09:12.905 --> 00:09:14.266
 <v Alice>And the first months?
 
 80
-00:09:13.467 --> 00:09:23.707
+00:09:14.566 --> 00:09:24.582
 <v Bob>Days 1 to 30: change nothing the clients can see. Meet every employee, announce the deal with the former owner present, and run agents in shadow mode next to people.
 
 81
-00:09:24.007 --> 00:09:38.504
+00:09:24.882 --> 00:09:39.369
 <v Bob>Days 31 to 60: move the back office, starting with the highest-volume, lowest-risk task, every draft reviewed. Days 61 to 100: expand carefully, and track client and key-person retention alongside margin.
 
 82
-00:09:38.804 --> 00:09:41.156
+00:09:39.669 --> 00:09:42.250
 <v Alice>So margin isn't the only scoreboard.
 
 83
-00:09:41.456 --> 00:09:47.934
+00:09:42.550 --> 00:09:49.246
 <v Bob>His warning: if margin goes up while client retention goes down, you're selling the asset to pay for the renovation.
 
 84
-00:09:48.234 --> 00:09:50.533
+00:09:49.546 --> 00:09:52.431
 <v Alice>Time to push back. What breaks?
 
 85
-00:09:50.833 --> 00:10:00.916
+00:09:52.731 --> 00:10:02.109
 <v Bob>He lists it himself: buying faster than you can integrate, and key people leaving, like the accountant who quits six weeks after the sale. And clients leaving with the owner.
 
 86
-00:10:01.216 --> 00:10:04.403
+00:10:02.409 --> 00:10:06.040
 <v Alice>Sam, our skeptic, you looked at the tools claim.
 
 87
-00:10:04.703 --> 00:10:19.723
+00:10:06.340 --> 00:10:19.201
 <v Sam>I did. Nicole Kobie at IT Pro reported on OpenAI taking a stake in Thrive Holdings. A Thrive partner told Reuters they were struggling with off-the-shelf AI that couldn't manage the specific tasks required.
 
 88
-00:10:20.023 --> 00:10:22.583
+00:10:19.501 --> 00:10:22.493
 <v Alice>Off-the-shelf wasn't enough? For Thrive?
 
 89
-00:10:22.883 --> 00:10:31.922
+00:10:22.793 --> 00:10:30.894
 <v Sam>That's the report. So OpenAI's researchers will embed into Thrive Holdings' businesses. That's a lot more than a monthly subscription.
 
 90
-00:10:32.222 --> 00:10:34.651
+00:10:31.194 --> 00:10:34.314
 <v Alice>Theo, does your investor say the same?
 
 91
-00:10:34.951 --> 00:10:44.251
+00:10:34.614 --> 00:10:43.266
 <v Theo>Close. Bhargava says they still think you need a really amazing technical CEO or CTO or founding team at the core of these projects.
 
 92
-00:10:44.551 --> 00:10:53.197
+00:10:43.566 --> 00:10:51.968
 <v Bob>That's a fair challenge to the solo founder story. My read: Greg's pitch works best for someone who can build, or who partners with someone who can.
 
 93
-00:10:53.497 --> 00:10:54.803
+00:10:52.268 --> 00:10:53.762
 <v Alice>And the headline numbers?
 
 94
-00:10:55.103 --> 00:11:04.272
+00:10:54.062 --> 00:11:02.599
 <v Bob>Greg says it plainly: most published results come from young companies raising money, untested by a downturn. Underwrite your deal on your own numbers.
 
 95
-00:11:04.572 --> 00:11:08.909
+00:11:02.899 --> 00:11:07.350
 <v Alice>Time for Builder's Corner! Bob, one thing to try this week?
 
 96
-00:11:09.209 --> 00:11:20.102
+00:11:07.650 --> 00:11:18.096
 <v Bob>Before buying anything, write the target criteria file. His sourcing filter is 5 to 50 employees, founded before 2005, owner-operated, no obvious succession.
 
 97
-00:11:20.402 --> 00:11:22.178
+00:11:18.396 --> 00:11:20.268
 <v Alice>And keep a human reviewer.
 
 98
-00:11:22.478 --> 00:11:26.579
+00:11:20.568 --> 00:11:24.791
 <v Bob>Always. Keep the checkpoints until the correction rate earns their removal.
 
 99
-00:11:26.879 --> 00:11:29.544
+00:11:25.091 --> 00:11:28.165
 <v Alice>Quick recap. What should listeners keep?
 
 100
-00:11:29.844 --> 00:11:39.927
+00:11:28.465 --> 00:11:38.273
 <v Bob>One: buy the customers and the trust, then change the work. Two: build the system first, with a reviewer that can block and a preparer that can't ship alone.
 
 101
-00:11:40.227 --> 00:11:50.467
+00:11:38.573 --> 00:11:48.032
 <v Bob>Three: the rulebook is the moat. And four: the headline numbers are self-reported, and Sam's report shows even Thrive needed more than off-the-shelf AI.
 
 102
-00:11:50.767 --> 00:11:52.282
+00:11:48.332 --> 00:11:49.904
 <v Alice>And Greg's last word?
 
 103
-00:11:52.582 --> 00:12:02.404
+00:11:50.204 --> 00:11:59.756
 <v Bob>Take care of the clients, keep the good people, and let agents handle the back office. He thinks people who start with one boring business this year will be in a really good spot.
 
 104
-00:12:02.704 --> 00:12:04.585
+00:12:00.056 --> 00:12:02.328
 <v Alice>What's still open for you, Bob?
 
 105
-00:12:04.885 --> 00:12:10.162
+00:12:02.628 --> 00:12:08.430
 <v Bob>Whether these margins survive a recession. None of the companies he lists has been through one yet.
 
 106
-00:12:10.462 --> 00:12:11.350
+00:12:08.730 --> 00:12:09.975
 <v Alice>And the second?
 
 107
-00:12:11.650 --> 00:12:17.136
+00:12:10.275 --> 00:12:15.868
 <v Bob>Whether one person really can do it alone, or needs the technical team the investors say they need.
 
 108
-00:12:17.436 --> 00:12:19.264
+00:12:16.168 --> 00:12:17.987
 <v Alice>Two good homework questions.
 
 109
-00:12:19.564 --> 00:12:25.572
+00:12:18.287 --> 00:12:24.762
 <v Alice>This episode is based on Greg Isenberg's X article, AI Roll Ups. Thanks to him for writing it.
 
 110
-00:12:25.872 --> 00:12:38.986
+00:12:25.062 --> 00:12:37.719
 <v Bob>Our guests presented Nathan Labenz's Cognitive Revolution interview with Marc Bhargava, and Nicole Kobie's IT Pro report on OpenAI and Thrive Holdings. Plus Centaurs and Cyborgs on the Jagged Frontier by Ethan Mollick.
 
 111
-00:12:39.286 --> 00:12:44.353
+00:12:38.019 --> 00:12:43.485
 <v Alice>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.
