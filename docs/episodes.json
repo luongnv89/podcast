@@ -24,8 +24,72 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-08T12:34:26Z",
+  "updated": "2026-11-09T06:50:45Z",
   "episodes": [
+    {
+      "id": "2026-11-08_your-coding-agents-made-you-a-manager",
+      "title": "Your Coding Agents Made You a Manager",
+      "summary": [
+        "Addy Osmani's X article Your coding agents made you a manager: the skills for managing agents are the skills for managing a team.",
+        "Give agents a check they can run, brief only what the repo can't show, plan first, restart after two failed fixes, and keep the judgment.",
+        "Guests bring the Wharton cognitive surrender study via Gizmodo and METR's trial where developers were 19% slower with AI."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-09T06:50:42Z",
+      "duration_s": 790.818,
+      "size_bytes": 12654300,
+      "audio": "episodes/2026-11-08_your-coding-agents-made-you-a-manager/episode.mp3",
+      "transcript": "episodes/2026-11-08_your-coding-agents-made-you-a-manager/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Your coding agents made you a manager",
+        "author": "Addy Osmani (@addyosmani)",
+        "url": "https://x.com/addyosmani/status/2119332146485891501",
+        "published": "2026-11-08T07:32:13Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "Your coding agents made you a manager",
+          "author": "Addy Osmani (@addyosmani)",
+          "url": "https://x.com/addyosmani/status/2119332146485891501"
+        },
+        {
+          "title": "‘Cognitive Surrender’ Is a New and Useful Term for How AI Melts Brains",
+          "author": "Mike Pearl",
+          "url": "https://gizmodo.com/cognitive-surrender-is-a-new-and-useful-term-for-how-ai-melts-brains-2000742595"
+        },
+        {
+          "title": "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity",
+          "author": "METR",
+          "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "‘Cognitive Surrender’ Is a New and Useful Term for How AI Melts Brains"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity"
+          ]
+        }
+      ],
+      "description": "Spend your day with a coding agent and you are already a manager. Bob and Alice unpack Addy Osmani's guide to managing coding agents like a good engineering manager would.\n\nIn this episode:\n- Give agents a check they can run, and ask for proof\n- Brief what the repo can't show; restart after two failed fixes\n- Delegate the task, never the judgment\n\nSources: Addy Osmani; Mike Pearl; METR\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Your Coding Agents Made You a Manager (2026-11-09).mp3"
+    },
     {
       "id": "2026-11-07_your-old-prompts-are-making-claude-worse",
       "title": "Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude",
@@ -164,70 +228,6 @@
       "description": "How did two founders run 60 UGC creators with zero employees? Bob and Alice unpack Mau Baron's playbook for growing a mobile app from $25k to $150k a month.\n\nIn this episode:\n- An app worth filming and a funnel that converts\n- Hiring, paying and managing creators\n- Running every video as TikTok Spark Ads\n\nSources: Mau Baron; Andrew Chen; Thales Bertaglia et al.\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
       "file_name": "Build Wiz AI Show - How Two Founders Ran 60 UGC Creators With Zero Employees (2026-11-08).mp3"
-    },
-    {
-      "id": "2026-11-08_your-coding-agents-made-you-a-manager",
-      "title": "Your Coding Agents Made You a Manager",
-      "summary": [
-        "Addy Osmani's X article Your coding agents made you a manager: the skills for managing agents are the skills for managing a team.",
-        "Give agents a check they can run, brief only what the repo can't show, plan first, restart after two failed fixes, and keep the judgment.",
-        "Guests bring the Wharton cognitive surrender study via Gizmodo and METR's trial where developers were 19% slower with AI."
-      ],
-      "category": "ai",
-      "show": "Build Wiz AI Show",
-      "hosts": [
-        "Bob",
-        "Alice"
-      ],
-      "language": "en",
-      "format": "podcast-2host",
-      "published": "2026-11-08T12:11:29Z",
-      "duration_s": 755.909,
-      "size_bytes": 12095906,
-      "audio": "episodes/2026-11-08_your-coding-agents-made-you-a-manager/episode.mp3",
-      "transcript": "episodes/2026-11-08_your-coding-agents-made-you-a-manager/transcript.vtt",
-      "voices": "OpenRouter · fish-audio/s2.1-pro-free:free",
-      "source": {
-        "title": "Your coding agents made you a manager",
-        "author": "Addy Osmani (@addyosmani)",
-        "url": "https://x.com/addyosmani/status/2119332146485891501",
-        "published": "2026-11-08T07:32:13Z",
-        "kind": "x"
-      },
-      "sources": [
-        {
-          "title": "Your coding agents made you a manager",
-          "author": "Addy Osmani (@addyosmani)",
-          "url": "https://x.com/addyosmani/status/2119332146485891501"
-        },
-        {
-          "title": "‘Cognitive Surrender’ Is a New and Useful Term for How AI Melts Brains",
-          "author": "Mike Pearl",
-          "url": "https://gizmodo.com/cognitive-surrender-is-a-new-and-useful-term-for-how-ai-melts-brains-2000742595"
-        },
-        {
-          "title": "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity",
-          "author": "METR",
-          "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/"
-        }
-      ],
-      "guests": [
-        {
-          "name": "Maya",
-          "presents": [
-            "‘Cognitive Surrender’ Is a New and Useful Term for How AI Melts Brains"
-          ]
-        },
-        {
-          "name": "Sam",
-          "presents": [
-            "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity"
-          ]
-        }
-      ],
-      "description": "Spend your day with a coding agent and you are already a manager. Bob and Alice unpack Addy Osmani's guide to managing coding agents like a good engineering manager would.\n\nIn this episode:\n- Give agents a check they can run, and ask for proof\n- Brief what the repo can't show; restart after two failed fixes\n- Delegate the task, never the judgment\n\nSources: Addy Osmani; Mike Pearl; METR\nBig AI ideas, made clear for builders. luongnv.com/podcast",
-      "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Your Coding Agents Made You a Manager (2026-11-08).mp3"
     },
     {
       "id": "2026-11-06_little-red-cap-fr",
