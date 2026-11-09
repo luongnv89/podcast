@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-09T08:13:20Z",
+  "updated": "2026-11-09T08:22:21Z",
   "episodes": [
+    {
+      "id": "2026-11-05_meet-the-new-build-wiz-ai-show",
+      "title": "Meet the new Build Wiz AI Show",
+      "summary": [
+        "A fresh introduction to Build Wiz AI Show: hosts Bob and Alice, who swap roles, and four recurring guests.",
+        "How an episode is made: read in full, outlined, tested against outside sources, every claim checked word for word.",
+        "Why it matters: each episode aims to give the best ideas, their limits, and one concrete thing to try."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-09T08:22:18Z",
+      "duration_s": 401.21,
+      "size_bytes": 6420432,
+      "audio": "episodes/2026-11-05_meet-the-new-build-wiz-ai-show/episode.mp3",
+      "transcript": "episodes/2026-11-05_meet-the-new-build-wiz-ai-show/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Meet the new Build Wiz AI Show",
+        "author": "Build Wiz AI Show",
+        "url": null,
+        "published": "2026-11-05",
+        "kind": "text"
+      },
+      "sources": [
+        {
+          "title": "Meet the new Build Wiz AI Show",
+          "author": "Build Wiz AI Show",
+          "url": null
+        },
+        {
+          "title": "Survey of Hallucination in Natural Language Generation",
+          "author": "Ziwei Ji et al.",
+          "url": "https://arxiv.org/abs/2202.03629"
+        },
+        {
+          "title": "Building effective AI agents",
+          "author": "Anthropic",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents"
+        },
+        {
+          "title": "Podcasts as a Source of News and Information",
+          "author": "Elisa Shearer et al.",
+          "url": "https://www.pewresearch.org/journalism/2023/04/18/podcasts-as-a-source-of-news-and-information/"
+        },
+        {
+          "title": "Meta will start labeling AI-generated images on Instagram and Facebook",
+          "author": "Shannon Bond",
+          "url": "https://www.npr.org/2024/02/06/1229317971/meta-labeling-ai-generated-images-instagram-facebook-artificial-intelligence"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "Survey of Hallucination in Natural Language Generation"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Building effective AI agents"
+          ]
+        },
+        {
+          "name": "Theo",
+          "presents": [
+            "Podcasts as a Source of News and Information"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Meta will start labeling AI-generated images on Instagram and Facebook"
+          ]
+        }
+      ],
+      "description": "A fresh introduction to Build Wiz AI Show: hosts Bob and Alice, who swap roles, and four recurring guests. Bob and Alice unpack it.\n\nIn this episode:\n- How an episode is made: read in full, outlined, tested against outside sources, every claim checked word for word.\n- Why it matters: each episode aims to give the best ideas, their limits, and one concrete thing to try.\n\nSources: Build Wiz AI Show; Ziwei Ji et al.; Anthropic; Elisa Shearer et al.; Shannon Bond\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Meet the new Build Wiz AI Show (2026-11-09).mp3"
+    },
     {
       "id": "2026-11-06_5t-opportunity-ai-roll-ups",
       "title": "AI Roll-Ups: Buy a Boring Business, Run It with Agents",
@@ -852,92 +938,6 @@
         "thumb": "art/2026-11-05_cinderella-or-the-little-glass-slipper/thumb.jpg",
         "alt": "Pencil drawing of Cinderella in a blue ball gown beside a pumpkin coach with two little mice, a palace glowing on the hill at dusk."
       }
-    },
-    {
-      "id": "2026-11-05_meet-the-new-build-wiz-ai-show",
-      "title": "Meet the new Build Wiz AI Show",
-      "summary": [
-        "A fresh introduction to Build Wiz AI Show: hosts Bob and Alice, who swap roles, and four recurring guests.",
-        "How an episode is made: read in full, outlined, tested against outside sources, every claim checked word for word.",
-        "Why it matters: each episode aims to give the best ideas, their limits, and one concrete thing to try."
-      ],
-      "category": "ai",
-      "show": "Build Wiz AI Show",
-      "hosts": [
-        "Bob",
-        "Alice"
-      ],
-      "language": "en",
-      "format": "podcast-2host",
-      "published": "2026-11-05T11:15:02Z",
-      "duration_s": 391.902,
-      "size_bytes": 6271520,
-      "audio": "episodes/2026-11-05_meet-the-new-build-wiz-ai-show/episode.mp3",
-      "transcript": "episodes/2026-11-05_meet-the-new-build-wiz-ai-show/transcript.vtt",
-      "voices": "OpenRouter · fish-audio/s2.1-pro-free:free",
-      "source": {
-        "title": "Meet the new Build Wiz AI Show",
-        "author": "Build Wiz AI Show",
-        "url": null,
-        "published": "2026-11-05",
-        "kind": "text"
-      },
-      "sources": [
-        {
-          "title": "Meet the new Build Wiz AI Show",
-          "author": "Build Wiz AI Show",
-          "url": null
-        },
-        {
-          "title": "Survey of Hallucination in Natural Language Generation",
-          "author": "Ziwei Ji et al.",
-          "url": "https://arxiv.org/abs/2202.03629"
-        },
-        {
-          "title": "Building effective AI agents",
-          "author": "Anthropic",
-          "url": "https://www.anthropic.com/engineering/building-effective-agents"
-        },
-        {
-          "title": "Podcasts as a Source of News and Information",
-          "author": "Elisa Shearer et al.",
-          "url": "https://www.pewresearch.org/journalism/2023/04/18/podcasts-as-a-source-of-news-and-information/"
-        },
-        {
-          "title": "Meta will start labeling AI-generated images on Instagram and Facebook",
-          "author": "Shannon Bond",
-          "url": "https://www.npr.org/2024/02/06/1229317971/meta-labeling-ai-generated-images-instagram-facebook-artificial-intelligence"
-        }
-      ],
-      "guests": [
-        {
-          "name": "Maya",
-          "presents": [
-            "Survey of Hallucination in Natural Language Generation"
-          ]
-        },
-        {
-          "name": "Lena",
-          "presents": [
-            "Building effective AI agents"
-          ]
-        },
-        {
-          "name": "Theo",
-          "presents": [
-            "Podcasts as a Source of News and Information"
-          ]
-        },
-        {
-          "name": "Sam",
-          "presents": [
-            "Meta will start labeling AI-generated images on Instagram and Facebook"
-          ]
-        }
-      ],
-      "description": "A fresh introduction to Build Wiz AI Show: hosts Bob and Alice, who swap roles, and four recurring guests. Bob and Alice unpack it in 7 minutes.\n\nIn this episode:\n- How an episode is made: read in full, outlined, tested against outside sources, every claim checked word for word.\n- Why it matters: each episode aims to give the best ideas, their limits, and one concrete thing to try.\n\nSources: Build Wiz AI Show; Ziwei Ji et al.; Anthropic; Elisa Shearer et al.; Shannon Bond\nBig AI ideas, made clear for builders. luongnv.com/podcast",
-      "file_name": "Build Wiz AI Show - Meet the new Build Wiz AI Show (2026-11-05).mp3",
-      "description_source": "generated"
     },
     {
       "id": "2026-11-05_marketing-engineers-solo-explainer",
