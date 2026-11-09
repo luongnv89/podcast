@@ -24,8 +24,83 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-09T07:15:21Z",
+  "updated": "2026-11-09T07:44:15Z",
   "episodes": [
+    {
+      "id": "2026-11-07_your-old-prompts-are-making-claude-worse",
+      "title": "Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude",
+      "summary": [
+        "Lance Martin of Anthropic's AI Engineer talk Your Old Prompts Are Making Claude Worse, with three guests.",
+        "Audit old prompt habits, use the prompt cache (up to 72% cheaper), build climbable evals and hill climb without overfitting.",
+        "Guests bring METR's long-tasks paper, Hamel Husain on binary LLM judges and Ethan Mollick's jagged frontier."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-09T07:44:08Z",
+      "duration_s": 890.579,
+      "size_bytes": 14250513,
+      "audio": "episodes/2026-11-07_your-old-prompts-are-making-claude-worse/episode.mp3",
+      "transcript": "episodes/2026-11-07_your-old-prompts-are-making-claude-worse/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Your Old Prompts Are Making Claude Worse",
+        "author": "Lance Martin",
+        "url": "https://www.youtube.com/watch?v=ys6YQ2yfBpM",
+        "published": "2026-11-06",
+        "kind": "text"
+      },
+      "sources": [
+        {
+          "title": "Your Old Prompts Are Making Claude Worse",
+          "author": "Lance Martin",
+          "url": "https://www.youtube.com/watch?v=ys6YQ2yfBpM"
+        },
+        {
+          "title": "Measuring AI Ability to Complete Long Software Tasks",
+          "author": "Thomas Kwa et al.",
+          "url": "https://arxiv.org/abs/2503.14499"
+        },
+        {
+          "title": "Using LLM-as-a-Judge For Evaluation: A Complete Guide – Hamel’s Blog",
+          "author": "Hamel Husain",
+          "url": "https://hamel.dev/blog/posts/llm-judge/index.html"
+        },
+        {
+          "title": "Centaurs and Cyborgs on the Jagged Frontier",
+          "author": "Ethan Mollick",
+          "url": "https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "Measuring AI Ability to Complete Long Software Tasks"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Using LLM-as-a-Judge For Evaluation: A Complete Guide – Hamel’s Blog"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Centaurs and Cyborgs on the Jagged Frontier"
+          ]
+        }
+      ],
+      "description": "Old prompt tricks like think step by step can now make Claude worse and pricier. Bob and Alice unpack Lance Martin's AI Engineer talk on getting more from frontier models.\n\nIn this episode:\n- Prompt audits and the prompt cache: up to 72% cheaper\n- Evals Claude can climb, and hill climbing without overfitting\n- Days-long agents with Claude Managed Agents\n\nSources: Lance Martin; Thomas Kwa et al.; Hamel Husain; Ethan Mollick\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Your Old Prompts Are Making Claude Worse Cheaper, Better Claude (2026-11-09).mp3"
+    },
     {
       "id": "2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0",
       "title": "How Two Founders Ran 60 UGC Creators With Zero Employees",
@@ -153,81 +228,6 @@
       "description": "Spend your day with a coding agent and you are already a manager. Bob and Alice unpack Addy Osmani's guide to managing coding agents like a good engineering manager would.\n\nIn this episode:\n- Give agents a check they can run, and ask for proof\n- Brief what the repo can't show; restart after two failed fixes\n- Delegate the task, never the judgment\n\nSources: Addy Osmani; Mike Pearl; METR\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
       "file_name": "Build Wiz AI Show - Your Coding Agents Made You a Manager (2026-11-09).mp3"
-    },
-    {
-      "id": "2026-11-07_your-old-prompts-are-making-claude-worse",
-      "title": "Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude",
-      "summary": [
-        "Lance Martin of Anthropic's AI Engineer talk Your Old Prompts Are Making Claude Worse, with three guests.",
-        "Audit old prompt habits, use the prompt cache (up to 72% cheaper), build climbable evals and hill climb without overfitting.",
-        "Guests bring METR's long-tasks paper, Hamel Husain on binary LLM judges and Ethan Mollick's jagged frontier."
-      ],
-      "category": "ai",
-      "show": "Build Wiz AI Show",
-      "hosts": [
-        "Bob",
-        "Alice"
-      ],
-      "language": "en",
-      "format": "podcast-2host",
-      "published": "2026-11-08T12:34:25Z",
-      "duration_s": 858.735,
-      "size_bytes": 13741021,
-      "audio": "episodes/2026-11-07_your-old-prompts-are-making-claude-worse/episode.mp3",
-      "transcript": "episodes/2026-11-07_your-old-prompts-are-making-claude-worse/transcript.vtt",
-      "voices": "OpenRouter · fish-audio/s2.1-pro-free:free",
-      "source": {
-        "title": "Your Old Prompts Are Making Claude Worse",
-        "author": "Lance Martin",
-        "url": "https://www.youtube.com/watch?v=ys6YQ2yfBpM",
-        "published": "2026-11-06",
-        "kind": "text"
-      },
-      "sources": [
-        {
-          "title": "Your Old Prompts Are Making Claude Worse",
-          "author": "Lance Martin",
-          "url": "https://www.youtube.com/watch?v=ys6YQ2yfBpM"
-        },
-        {
-          "title": "Measuring AI Ability to Complete Long Software Tasks",
-          "author": "Thomas Kwa et al.",
-          "url": "https://arxiv.org/abs/2503.14499"
-        },
-        {
-          "title": "Using LLM-as-a-Judge For Evaluation: A Complete Guide – Hamel’s Blog",
-          "author": "Hamel Husain",
-          "url": "https://hamel.dev/blog/posts/llm-judge/index.html"
-        },
-        {
-          "title": "Centaurs and Cyborgs on the Jagged Frontier",
-          "author": "Ethan Mollick",
-          "url": "https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged"
-        }
-      ],
-      "guests": [
-        {
-          "name": "Maya",
-          "presents": [
-            "Measuring AI Ability to Complete Long Software Tasks"
-          ]
-        },
-        {
-          "name": "Lena",
-          "presents": [
-            "Using LLM-as-a-Judge For Evaluation: A Complete Guide – Hamel’s Blog"
-          ]
-        },
-        {
-          "name": "Sam",
-          "presents": [
-            "Centaurs and Cyborgs on the Jagged Frontier"
-          ]
-        }
-      ],
-      "description": "Old prompt tricks like think step by step can now make Claude worse and pricier. Bob and Alice unpack Lance Martin's AI Engineer talk on getting more from frontier models.\n\nIn this episode:\n- Prompt audits and the prompt cache: up to 72% cheaper\n- Evals Claude can climb, and hill climbing without overfitting\n- Days-long agents with Claude Managed Agents\n\nSources: Lance Martin; Thomas Kwa et al.; Hamel Husain; Ethan Mollick\nBig AI ideas, made clear for builders. luongnv.com/podcast",
-      "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Your Old Prompts Are Making Claude Worse Cheaper, Better Claude (2026-11-08).mp3"
     },
     {
       "id": "2026-11-06_little-red-cap-fr",
