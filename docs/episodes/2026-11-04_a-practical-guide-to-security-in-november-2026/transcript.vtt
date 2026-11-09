@@ -1,313 +1,313 @@
 WEBVTT
 
 1
-00:00:00.000 --> 00:00:06.541
-<v Bob>Welcome to Build Wiz AI, the show where we take one source and pull out everything worth knowing.
+00:00:04.000 --> 00:00:13.331
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. Today we take one source and pull out everything worth knowing.
 
 2
-00:00:06.841 --> 00:00:13.316
+00:00:13.631 --> 00:00:20.455
 <v Bob>I'm Bob, and I'll be asking the questions. Fair warning, today's topic made me want to change all my passwords.
 
 3
-00:00:13.616 --> 00:00:23.331
+00:00:20.755 --> 00:00:30.470
 <v Alice>And I'm Alice. Today's source is an X article by Jack Cable called A Practical Guide to Security in November 2026, posted on November 3.
 
 4
-00:00:23.631 --> 00:00:25.117
+00:00:30.770 --> 00:00:32.220
 <v Bob>So what's the big idea?
 
 5
-00:00:25.417 --> 00:00:37.732
+00:00:32.520 --> 00:00:44.836
 <v Alice>Here it is plainly. The last few weeks were rough for security, but in his words, "the security best practices we've known about for years still work." What's changed is the urgency.
 
 6
-00:00:38.032 --> 00:00:41.763
+00:00:45.136 --> 00:00:48.430
 <v Bob>So no need to throw all our computers into the sea.
 
 7
-00:00:42.063 --> 00:00:56.926
+00:00:48.730 --> 00:01:03.593
 <v Alice>Not quite, as he puts it. AI makes attacks faster and cheaper, but it doesn't stop you from closing off basic attack paths. So the article recaps what happened, then gives a checklist of what to do now and what to do within 30 days.
 
 8
-00:00:57.226 --> 00:01:01.368
+00:01:03.893 --> 00:01:07.443
 <v Bob>Okay, start with the scary part. What actually happened?
 
 9
-00:01:01.668 --> 00:01:16.287
+00:01:07.743 --> 00:01:22.362
 <v Alice>Over a two-week period, he lists the largest theft in recorded history, and a PHP bug so critical that governments took their websites down. Plus a compromised Claude Code extension for Cursor that tried to backdoor developer machines.
 
 10
-00:01:16.587 --> 00:01:20.984
+00:01:22.662 --> 00:01:26.757
 <v Bob>The largest theft in recorded history. How large are we talking?
 
 11
-00:01:21.284 --> 00:01:27.643
+00:01:27.057 --> 00:01:33.416
 <v Alice>North Korean state-sponsored hackers siphoned 6.34 billion dollars from Binance.
 
 12
-00:01:27.943 --> 00:01:30.506
+00:01:33.716 --> 00:01:36.361
 <v Bob>Wow. How did they even get in?
 
 13
-00:01:30.806 --> 00:01:46.338
+00:01:36.661 --> 00:01:52.192
 <v Alice>Many details aren't known yet. But Binance reported that several engineers' laptops were compromised through a fake job interview and a tampered installer. A deployment token on one of those laptops let the attackers reach Binance's wallet signing service.
 
 14
-00:01:46.638 --> 00:01:50.095
+00:01:52.492 --> 00:01:55.868
 <v Bob>So one developer laptop led all the way to the money.
 
 15
-00:01:50.395 --> 00:02:01.259
+00:01:56.168 --> 00:02:07.032
 <v Alice>Exactly, and that's his lesson. In his words, "a compromised developer machine should never be enough to compromise production environments, let alone steal billions of dollars."
 
 16
-00:02:01.559 --> 00:02:03.204
+00:02:07.332 --> 00:02:08.908
 <v Bob>And the Cursor extension?
 
 17
-00:02:03.504 --> 00:02:20.476
+00:02:09.208 --> 00:02:26.180
 <v Alice>On October 29, Cursor disclosed that an attacker published a malicious version of the Claude Code Cursor extension, one of the most popular Cursor extensions. It tried to install a persistent backdoor, so the attacker could log in to the developer's machine over SSH.
 
 18
-00:02:20.776 --> 00:02:23.815
+00:02:26.480 --> 00:02:29.619
 <v Bob>But people had to install it themselves, right?
 
 19
-00:02:24.115 --> 00:02:34.359
+00:02:29.919 --> 00:02:40.163
 <v Alice>Not necessarily. Extensions auto-update, so users could have received it without doing anything. Cursor reported that fewer than 5,000 users installed it.
 
 20
-00:02:34.659 --> 00:02:37.431
+00:02:40.463 --> 00:02:43.207
 <v Bob>Do we know how the bad version got published?
 
 21
-00:02:37.731 --> 00:02:50.893
+00:02:43.507 --> 00:02:56.670
 <v Alice>Not fully. The malicious version differed from what was published on Open VSX, the open extension registry Cursor uses. So the article suggests the attacker compromised the publishing process downstream of that registry.
 
 22
-00:02:51.193 --> 00:02:54.952
+00:02:56.970 --> 00:03:00.601
 <v Bob>And on top of the hacks, there was a pile of vulnerabilities?
 
 23
-00:02:55.252 --> 00:03:11.903
+00:03:00.901 --> 00:03:17.552
 <v Alice>Yes. The headline one is PHP2Shell, a memory safety flaw in the PHP runtime. PHP runs roughly 70 percent of websites, and in some setups a single unauthenticated request could trigger the bug before any application code ran.
 
 24
-00:03:12.203 --> 00:03:16.445
+00:03:17.852 --> 00:03:21.738
 <v Bob>Before the app even runs. That's rough. What else?
 
 25
-00:03:16.745 --> 00:03:34.255
+00:03:22.038 --> 00:03:39.548
 <v Alice>An unauthenticated remote code execution bug in GitLab, which put many companies' most critical source code at risk. And another round of critical bugs in VPNs, firewalls and other internet-facing appliances, which he calls a go-to target for nation-state adversaries.
 
 26
-00:03:34.555 --> 00:03:39.207
+00:03:39.848 --> 00:03:44.408
 <v Bob>You mentioned a private key set to the number 4. Please tell me that's a joke.
 
 27
-00:03:39.507 --> 00:03:48.904
+00:03:44.708 --> 00:03:54.104
 <v Alice>It's not. The certificate authority eMudhra set its private key to the number 4, which means anyone could have issued certificates in its name.
 
 28
-00:03:49.204 --> 00:03:52.197
+00:03:54.404 --> 00:03:57.141
 <v Bob>Incredible. Anything else on the list?
 
 29
-00:03:52.497 --> 00:04:12.038
+00:03:57.441 --> 00:04:16.983
 <v Alice>A guest-to-host escape in KVM, found through Vercel's Sandbox bounty program, let code inside a virtual machine get root on the host. And a bug in the Linux TCP stack lets a remote attacker with no login get root on systems running a Multipath TCP listener. Recent versions of Go turn that on by default.
 
 30
-00:04:12.338 --> 00:04:19.290
+00:04:17.283 --> 00:04:23.805
 <v Bob>Okay, let me recap. One record theft, one poisoned extension, and a stack of serious bugs.
 
 31
-00:04:19.590 --> 00:04:28.027
+00:04:24.105 --> 00:04:32.542
 <v Alice>That's it. And his answer isn't panic. It's two sets of actions: what you should do immediately, and what you should do within 30 days.
 
 32
-00:04:28.327 --> 00:04:30.936
+00:04:32.842 --> 00:04:35.487
 <v Bob>Let's get practical. Where do we start?
 
 33
-00:04:31.236 --> 00:04:47.562
+00:04:35.787 --> 00:04:52.112
 <v Alice>With the corporate environment, which he calls some of the lowest-lift changes. The first move is phishing-resistant multi-factor sign-in. Use passkeys or hardware security keys, not SMS codes, and only allow sign-in from managed devices.
 
 34
-00:04:47.862 --> 00:04:49.500
+00:04:52.412 --> 00:04:54.018
 <v Bob>Why is that the first move?
 
 35
-00:04:49.800 --> 00:05:02.626
+00:04:54.318 --> 00:05:07.144
 <v Alice>Because even if an employee gets tricked by a phishing attack, their account doesn't get compromised. He says to start with high-risk accounts like Google Workspace, GitHub, your cloud provider and your identity provider.
 
 36
-00:05:02.926 --> 00:05:04.486
+00:05:07.444 --> 00:05:08.985
 <v Bob>What else can I do today?
 
 37
-00:05:04.786 --> 00:05:16.591
+00:05:09.285 --> 00:05:21.089
 <v Alice>Audit your public-facing attack surface. He suggests pointing a coding agent at your public domains, and assuming that any public system is already being targeted by attackers with frontier models.
 
 38
-00:05:16.891 --> 00:05:18.908
+00:05:21.389 --> 00:05:23.414
 <v Bob>And for everyone else in the company?
 
 39
-00:05:19.208 --> 00:05:29.991
+00:05:23.714 --> 00:05:34.496
 <v Alice>A password manager, because password reuse is still one of the most common attack vectors. It also only fills passwords on the correct domain, so it helps against phishing too.
 
 40
-00:05:30.291 --> 00:05:33.557
+00:05:34.796 --> 00:05:38.098
 <v Bob>I saw ad blockers on the list. That surprised me.
 
 41
-00:05:33.857 --> 00:05:51.862
+00:05:38.398 --> 00:05:56.402
 <v Alice>It surprised me too. Binance's attack chain started when an engineer searched for an AI coding tool and downloaded a tampered installer. Malicious search ads and lookalike download pages are a common way malware reaches developer laptops, and an ad blocker like uBlock Origin removes a large share of them.
 
 42
-00:05:52.162 --> 00:05:53.409
+00:05:56.702 --> 00:05:57.945
 <v Bob>And within the month?
 
 43
-00:05:53.709 --> 00:06:13.645
+00:05:58.245 --> 00:06:18.181
 <v Alice>Put every corporate device under device management and endpoint detection, so you control what gets installed and see when a laptop misbehaves. Keep an allowlist of approved Chrome and versus Code extensions, with an auto-update delay. And audit the whole attack surface, so one compromised device never opens a way into production.
 
 44
-00:06:13.945 --> 00:06:17.066
+00:06:18.481 --> 00:06:21.776
 <v Bob>Developers seem to be the soft spot in all of this.
 
 45
-00:06:17.366 --> 00:06:36.327
+00:06:22.076 --> 00:06:41.037
 <v Alice>That's his point. Developer laptops run a huge amount of third-party code: package installs, editor extensions, MCP servers, and now local AI agents that can execute commands on their own. If any one of them is compromised, the attacker inherits everything that developer can reach.
 
 46
-00:06:36.627 --> 00:06:39.208
+00:06:41.337 --> 00:06:43.261
 <v Bob>So what do developers do today?
 
 47
-00:06:39.508 --> 00:07:00.767
+00:06:43.561 --> 00:07:04.820
 <v Alice>Scan your machines for secrets with a tool like TruffleHog: cloud credentials, API keys, SSH keys and dot env files in home directories, shell history and repos. And take an inventory of extensions, plugins and MCP servers, especially anything with access to the filesystem, a shell or credentials.
 
 48
-00:07:01.067 --> 00:07:02.569
+00:07:05.120 --> 00:07:06.671
 <v Bob>And the longer-term fix?
 
 49
-00:07:02.869 --> 00:07:21.145
+00:07:06.971 --> 00:07:25.247
 <v Alice>Move secrets into a secrets manager and rotate anything the scan found. Then move to cloud coding agents and remote development environments. In his words, "the most reliable way to limit the damage from a compromised extension, package, or agent is to keep it off the laptop entirely."
 
 50
-00:07:21.445 --> 00:07:23.068
+00:07:25.547 --> 00:07:27.211
 <v Bob>What about the code itself?
 
 51
-00:07:23.368 --> 00:07:43.896
+00:07:27.511 --> 00:07:48.040
 <v Alice>Today, run a frontier model on your codebases and critical open source dependencies. Start with anything internet-facing or that handles authentication, payments or customer data. And scan code, images and build artifacts for secrets, since a key in a published Docker image is as exposed as one in a public repo.
 
 52
-00:07:44.196 --> 00:07:45.443
+00:07:48.340 --> 00:07:49.583
 <v Bob>And within the month?
 
 53
-00:07:45.743 --> 00:08:02.917
+00:07:49.883 --> 00:08:07.056
 <v Alice>Plan to refactor your critical code. PHP2Shell was a memory safety bug, and he writes, "we're running out of excuses for continuing to write code in memory-unsafe languages." He also says to give your scanner your threat model, because a generic prompt produces a lot of noise.
 
 54
-00:08:03.217 --> 00:08:07.440
+00:08:07.356 --> 00:08:11.417
 <v Bob>Then there's the supply chain. Packages that turn evil overnight.
 
 55
-00:08:07.740 --> 00:08:24.228
+00:08:11.717 --> 00:08:28.205
 <v Alice>Right, he mentions worm-style attacks like Shai-Hulud over the last year. His fix is to set a minimum package age of at least seven days for npm, PyPI and any other package manager. Malicious releases are usually caught and pulled within that window.
 
 56
-00:08:24.528 --> 00:08:28.542
+00:08:28.505 --> 00:08:32.472
 <v Bob>Oh, that's clever. Just wait a week before trusting a new release.
 
 57
-00:08:28.842 --> 00:08:41.285
+00:08:32.772 --> 00:08:45.215
 <v Alice>Exactly. Also pin versions, commit your lockfiles, and make your build install from the lockfile. And within the month, remove dependencies you don't use and look closely at unmaintained ones.
 
 58
-00:08:41.585 --> 00:08:43.086
+00:08:45.515 --> 00:08:46.927
 <v Bob>Last piece is monitoring?
 
 59
-00:08:43.386 --> 00:08:58.423
+00:08:47.227 --> 00:09:02.264
 <v Alice>Yes. Make sure the logs you'd need actually exist: identity provider sign-ins, cloud audit logs, source control and build activity, and access to production data. And keep them where an attacker with production access can't delete them.
 
 60
-00:08:58.723 --> 00:09:00.868
+00:09:02.564 --> 00:09:04.407
 <v Bob>And what should set off an alarm?
 
 61
-00:09:01.168 --> 00:09:13.565
+00:09:04.707 --> 00:09:17.103
 <v Alice>High-signal events: new admin accounts, changes to multi-factor settings, access from new devices or locations, large data exports, and secrets read from unusual places.
 
 62
-00:09:13.865 --> 00:09:21.071
+00:09:17.403 --> 00:09:24.483
 <v Bob>Let me push back. Isn't this the same old checklist? Attackers have AI now. Shouldn't the defense be new too?
 
 63
-00:09:21.371 --> 00:09:37.732
+00:09:24.783 --> 00:09:41.143
 <v Alice>He argues the opposite. An attacker doesn't need sophisticated AI to exploit an unpatched server or use a stolen credential. But note that the guide does use AI for defense: coding agents to audit your surface, and frontier models to scan your code.
 
 64
-00:09:38.032 --> 00:09:44.562
+00:09:41.443 --> 00:09:47.582
 <v Bob>Another one. Moving every developer to remote environments sounds slow and expensive for a small team.
 
 65
-00:09:44.862 --> 00:09:56.748
+00:09:47.882 --> 00:09:59.768
 <v Alice>Fair, and I think that's a real tradeoff. The article doesn't talk about cost. It puts that step in the 30-day list, and the quick wins, like scanning for secrets and auditing extensions, come first.
 
 66
-00:09:57.048 --> 00:10:00.342
+00:10:00.068 --> 00:10:03.490
 <v Bob>And the Binance story isn't fully known yet, right?
 
 67
-00:10:00.642 --> 00:10:06.955
+00:10:03.790 --> 00:10:10.102
 <v Alice>Right, he says many details aren't known yet. So treat the attack chain as what Binance has reported so far.
 
 68
-00:10:07.255 --> 00:10:11.188
+00:10:10.402 --> 00:10:14.115
 <v Bob>Okay, the short version. What should a listener do this week?
 
 69
-00:10:11.488 --> 00:10:23.211
+00:10:14.415 --> 00:10:26.138
 <v Alice>Use passkeys or hardware keys on your most important accounts. Set a minimum package age of seven days. And scan your laptop for secrets, then remove extensions nobody needs.
 
 70
-00:10:23.511 --> 00:10:25.900
+00:10:26.438 --> 00:10:28.626
 <v Bob>And what do I take back to work?
 
 71
-00:10:26.200 --> 00:10:33.151
+00:10:28.926 --> 00:10:35.877
 <v Alice>His closing advice: ask your security team which of these steps they're taking, and aim to knock out a few today.
 
 72
-00:10:33.451 --> 00:10:35.677
+00:10:36.177 --> 00:10:38.485
 <v Bob>What's still open after reading this?
 
 73
-00:10:35.977 --> 00:10:49.999
+00:10:38.785 --> 00:10:52.807
 <v Alice>How the extension's publishing process was actually compromised, since the article only points downstream of Open VSX. And the full Binance story. I'd also like to know how small teams should weigh remote development against cost.
 
 74
-00:10:50.299 --> 00:10:52.398
+00:10:53.107 --> 00:10:55.031
 <v Bob>And whether this pace keeps up.
 
 75
-00:10:52.698 --> 00:11:01.182
+00:10:55.331 --> 00:11:03.815
 <v Alice>He expects it to. New bugs will keep coming, and he says frontier models mean they'll be found and exploited faster than before.
 
 76
-00:11:01.482 --> 00:11:04.017
-<v Bob>That's it for today's Build Wiz AI.
+00:11:04.115 --> 00:11:06.005
+<v Bob>And that's our guide for today.
 
 77
-00:11:04.317 --> 00:11:14.567
+00:11:06.305 --> 00:11:16.555
 <v Alice>This episode is based on A Practical Guide to Security in November 2026 by Jack Cable, posted on X. Thanks to Jack for a clear and practical guide.
 
 78
-00:11:14.867 --> 00:11:18.626
-<v Bob>Thanks for listening, everyone. Now go turn on those passkeys.
+00:11:16.855 --> 00:11:24.143
+<v Bob>Now go turn on those passkeys, everyone. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

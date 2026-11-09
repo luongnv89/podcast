@@ -24,8 +24,41 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-09T08:50:07Z",
+  "updated": "2026-11-09T08:58:35Z",
   "episodes": [
+    {
+      "id": "2026-11-04_a-practical-guide-to-security-in-november-2026",
+      "title": "A Practical Guide to Security in November 2026",
+      "summary": [
+        "Jack Cable's X article A Practical Guide to Security in November 2026, after a chaotic few weeks of hacks and critical bugs.",
+        "His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.",
+        "Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-09T08:58:33Z",
+      "duration_s": 690.743,
+      "size_bytes": 11053107,
+      "audio": "episodes/2026-11-04_a-practical-guide-to-security-in-november-2026/episode.mp3",
+      "transcript": "episodes/2026-11-04_a-practical-guide-to-security-in-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "A Practical Guide to Security in November 2026",
+        "author": "Jack Cable (@jackhcable)",
+        "url": "https://x.com/jackhcable/status/2117731409246978489",
+        "published": "2026-11-03T21:31:28Z",
+        "kind": "x"
+      },
+      "description": "Jack Cable's X article A Practical Guide to Security in November 2026, after a chaotic few weeks of hacks and critical bugs. Bob and Alice unpack it.\n\nIn this episode:\n- His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.\n- Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today.\n\nSources: A Practical Guide to Security in November 2026 by Jack Cable (@jackhcable)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - A Practical Guide to Security in November 2026 (2026-11-09).mp3"
+    },
     {
       "id": "2026-11-05_marketing-engineers-100x-more-experiments-with",
       "title": "Marketing Engineers: 100x More Experiments with AI agents",
@@ -1046,39 +1079,6 @@
         "thumb": "art/2026-11-05_cinderella-or-the-little-glass-slipper/thumb.jpg",
         "alt": "Pencil drawing of Cinderella in a blue ball gown beside a pumpkin coach with two little mice, a palace glowing on the hill at dusk."
       }
-    },
-    {
-      "id": "2026-11-04_a-practical-guide-to-security-in-november-2026",
-      "title": "A Practical Guide to Security in November 2026",
-      "summary": [
-        "Jack Cable's X article A Practical Guide to Security in November 2026, after a chaotic few weeks of hacks and critical bugs.",
-        "His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.",
-        "Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today."
-      ],
-      "category": "ai",
-      "show": "Build Wiz AI Show",
-      "hosts": [
-        "Bob",
-        "Alice"
-      ],
-      "language": "en",
-      "format": "podcast-2host",
-      "published": "2026-11-04T15:02:20Z",
-      "duration_s": 678.626,
-      "size_bytes": 10859040,
-      "audio": "episodes/2026-11-04_a-practical-guide-to-security-in-november-2026/episode.mp3",
-      "transcript": "episodes/2026-11-04_a-practical-guide-to-security-in-november-2026/transcript.vtt",
-      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
-      "source": {
-        "title": "A Practical Guide to Security in November 2026",
-        "author": "Jack Cable (@jackhcable)",
-        "url": "https://x.com/jackhcable/status/2117731409246978489",
-        "published": "2026-11-03T21:31:28Z",
-        "kind": "x"
-      },
-      "description": "Jack Cable's X article A Practical Guide to Security in November 2026, after a chaotic few weeks of hacks and critical bugs. Bob and Alice unpack it in 11 minutes.\n\nIn this episode:\n- His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.\n- Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today.\n\nSources: A Practical Guide to Security in November 2026 by Jack Cable (@jackhcable)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
-      "file_name": "Build Wiz AI Show - A Practical Guide to Security in November 2026 (2026-11-04).mp3",
-      "description_source": "generated"
     },
     {
       "id": "2026-11-04_critical-thinking-when-agents-do-the-work",
