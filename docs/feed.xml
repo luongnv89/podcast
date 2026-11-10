@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Tue, 10 Nov 2026 21:08:33 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 10 Nov 2026 21:30:17 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,31 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-10_state-of-the-tech-job-market-late-2026</guid>
+    <title>PMs Are Winning, Engineers Are Plateauing: The Tech Job Market in Late 2026</title>
+    <link>https://luongnv.com/podcast/#2026-11-10_state-of-the-tech-job-market-late-2026</link>
+    <description>Lenny Rachitsky's late-2026 job market report: PM openings are up 75% from their low, while engineering openings have stalled.
+
+Design and user research hit record lows, remote falls to 14% of roles, and the Bay Area now beats remote worldwide.
+
+Guests weigh Indeed's rebound in senior AI roles, the rise of forward deployed engineers, and why openings aren't hires.
+
+Sources:
+- State of the tech job market: late 2026, Lenny Rachitsky (https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late)
+- AI and Job Postings: From Destruction to Creation? - Indeed Hiring Lab, Guillermo Gallacher (https://hiringlab.indeed.com/2026/07/08/ai-and-job-postings-from-destruction-to-creation)
+- Trading Margin for Moat: Why the Forward Deployed Engineer Is the Hottest Job in Startups | Andreessen Horowitz, Joe Schmidt, a16z (https://a16z.com/services-led-growth)
+- 'Ghost job' postings are adding another layer of uncertainty to the stalling jobs picture, Jeff Cox (https://www.cnbc.com/2025/11/11/ghost-job-postings-add-another-layer-of-uncertainty-to-stalled-jobs-picture.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Lenny Rachitsky's late-2026 job market report: PM openings are up 75% from their low, while engineering openings have stalled.</p><p>Design and user research hit record lows, remote falls to 14% of roles, and the Bay Area now beats remote worldwide.</p><p>Guests weigh Indeed's rebound in senior AI roles, the rise of forward deployed engineers, and why openings aren't hires.</p><p>Sources:</p><ul><li>State of the tech job market: late 2026, Lenny Rachitsky: <a href="https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late">https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late</a></li><li>AI and Job Postings: From Destruction to Creation? - Indeed Hiring Lab, Guillermo Gallacher: <a href="https://hiringlab.indeed.com/2026/07/08/ai-and-job-postings-from-destruction-to-creation">https://hiringlab.indeed.com/2026/07/08/ai-and-job-postings-from-destruction-to-creation</a></li><li>Trading Margin for Moat: Why the Forward Deployed Engineer Is the Hottest Job in Startups | Andreessen Horowitz, Joe Schmidt, a16z: <a href="https://a16z.com/services-led-growth">https://a16z.com/services-led-growth</a></li><li>'Ghost job' postings are adding another layer of uncertainty to the stalling jobs picture, Jeff Cox: <a href="https://www.cnbc.com/2025/11/11/ghost-job-postings-add-another-layer-of-uncertainty-to-stalled-jobs-picture.html">https://www.cnbc.com/2025/11/11/ghost-job-postings-add-another-layer-of-uncertainty-to-stalled-jobs-picture.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 10 Nov 2026 21:30:15 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-10_state-of-the-tech-job-market-late-2026/episode.mp3?v=a18d4c8d" length="9403033" type="audio/mpeg"/>
+    <itunes:duration>588</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-10_state-of-the-tech-job-market-late-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-10_become-a-cracked-marketer</guid>
     <title>Become a Cracked Marketer: The Marketing Engineer Method</title>

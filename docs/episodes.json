@@ -24,8 +24,83 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-10T21:08:33Z",
+  "updated": "2026-11-10T21:30:17Z",
   "episodes": [
+    {
+      "id": "2026-11-10_state-of-the-tech-job-market-late-2026",
+      "title": "PMs Are Winning, Engineers Are Plateauing: The Tech Job Market in Late 2026",
+      "summary": [
+        "Lenny Rachitsky's late-2026 job market report: PM openings are up 75% from their low, while engineering openings have stalled.",
+        "Design and user research hit record lows, remote falls to 14% of roles, and the Bay Area now beats remote worldwide.",
+        "Guests weigh Indeed's rebound in senior AI roles, the rise of forward deployed engineers, and why openings aren't hires."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-10T21:30:15Z",
+      "duration_s": 587.618,
+      "size_bytes": 9403033,
+      "audio": "episodes/2026-11-10_state-of-the-tech-job-market-late-2026/episode.mp3",
+      "transcript": "episodes/2026-11-10_state-of-the-tech-job-market-late-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "State of the tech job market: late 2026",
+        "author": "Lenny Rachitsky",
+        "url": "https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late",
+        "published": "2026-11-10T15:04:03Z",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "State of the tech job market: late 2026",
+          "author": "Lenny Rachitsky",
+          "url": "https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late"
+        },
+        {
+          "title": "AI and Job Postings: From Destruction to Creation? - Indeed Hiring Lab",
+          "author": "Guillermo Gallacher",
+          "url": "https://hiringlab.indeed.com/2026/07/08/ai-and-job-postings-from-destruction-to-creation"
+        },
+        {
+          "title": "Trading Margin for Moat: Why the Forward Deployed Engineer Is the Hottest Job in Startups | Andreessen Horowitz",
+          "author": "Joe Schmidt, a16z",
+          "url": "https://a16z.com/services-led-growth"
+        },
+        {
+          "title": "'Ghost job' postings are adding another layer of uncertainty to the stalling jobs picture",
+          "author": "Jeff Cox",
+          "url": "https://www.cnbc.com/2025/11/11/ghost-job-postings-add-another-layer-of-uncertainty-to-stalled-jobs-picture.html"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "AI and Job Postings: From Destruction to Creation? - Indeed Hiring Lab"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Trading Margin for Moat: Why the Forward Deployed Engineer Is the Hottest Job in Startups | Andreessen Horowitz"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "'Ghost job' postings are adding another layer of uncertainty to the stalling jobs picture"
+          ]
+        }
+      ],
+      "description": "The job AI was supposed to kill is growing fastest. Bob and Alice unpack Lenny Rachitsky's report on the tech job market in late 2026.\n\nIn this episode:\n- PM openings up 75% from their low, while engineering openings stall.\n- Record lows for design, user research and remote roles, and the pull of the Bay Area.\n- LLM and Claude top the job posts, forward deployed engineers boom, and why openings aren't hires.\n\nSources: Lenny Rachitsky; Guillermo Gallacher; Joe Schmidt; Jeff Cox\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - PMs Are Winning, Engineers Are Plateauing The Tech Job Market in Late 2026 (2026-11-10).mp3"
+    },
     {
       "id": "2026-11-10_become-a-cracked-marketer",
       "title": "Become a Cracked Marketer: The Marketing Engineer Method",
