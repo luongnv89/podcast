@@ -165,7 +165,7 @@ class FeedTest(unittest.TestCase):
         self.assertEqual(ch.findtext("link"), "https://luongnv.com/podcast/")
         self.assertEqual(ch.findtext(f"{IT}author"), "Build Wiz AI Show")
         self.assertEqual(ch.find(f"{IT}owner/{IT}email").text, "buildwizai@gmail.com")
-        self.assertEqual(ch.find(f"{IT}image").get("href"), "https://luongnv.com/podcast/cover.jpg")
+        self.assertEqual(ch.find(f"{IT}image").get("href"), "https://luongnv.com/podcast/cover-3000.jpg")
         cat = ch.find(f"{IT}category")
         self.assertEqual(cat.get("text"), "Technology")
         self.assertEqual(len(cat), 0)

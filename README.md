@@ -286,7 +286,8 @@ site, newest first (key `buildwiz` in `FEEDS`; Vietnamese episodes and stories a
 out). It is rebuilt with the story feeds on every publish, so a new episode reaches the
 platforms that read it by itself.
 
-- Channel: title Build Wiz AI Show, category Technology, not explicit, cover `docs/cover.jpg`,
+- Channel: title Build Wiz AI Show, category Technology, not explicit, cover `docs/cover-3000.jpg`
+  (3000 x 3000, the share cover rendered at 2.14x: `--force-device-scale-factor=2.142857`),
   owner email `buildwizai@gmail.com` (YouTube and Apple send verification codes there).
 - Item notes: the three summary lines, every source (title, author, link) and the AI-voice note.
   Same guid and `?v=<sha8>` enclosure rules as the story feeds.

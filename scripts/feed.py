@@ -129,7 +129,7 @@ FEEDS: dict[str, dict[str, str]] = {
         "category": "Technology",
         "subcategory": "",
         "file": "feed.xml",
-        "image": "cover.jpg",
+        "image": "cover-3000.jpg",
         "title": "Build Wiz AI Show",
         "description": (
             "Big AI ideas, made clear for builders. Each episode takes one source, an "
