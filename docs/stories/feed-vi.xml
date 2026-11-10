@@ -7,7 +7,7 @@
   <description>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</description>
   <itunes:summary>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</itunes:summary>
   <language>vi</language>
-  <lastBuildDate>Fri, 06 Nov 2026 23:36:59 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 10 Nov 2026 16:54:03 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-10_three-little-pigs-vi</guid>
+    <title>Ba chú heo con, chuyện kể trước giờ ngủ</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-10_three-little-pigs-vi</link>
+    <description>Truyện Ba chú heo con kể nhẹ nhàng trước giờ ngủ, theo truyện cổ nước Anh của Joseph Jacobs, trên trang Three Little Pigs của D. L. Ashliman.
+
+Một nhà rơm, một nhà gỗ, một nhà gạch, và chú heo con thông minh qua mặt con sói nhờ củ cải, quả táo và chiếc thùng đánh bơ.
+
+Chẳng ai bị ăn thịt: con sói rơi tõm vào nồi nước lạnh, chạy mất luôn, và câu chuyện khép lại bằng lời chúc ngủ ngon.
+
+Nguồn: Three Little Pigs (https://sites.pitt.edu/~dash/type0124.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Marty Gots a Plan", "Golly Gee", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Truyện Ba chú heo con kể nhẹ nhàng trước giờ ngủ, theo truyện cổ nước Anh của Joseph Jacobs, trên trang Three Little Pigs của D. L. Ashliman.</p><p>Một nhà rơm, một nhà gỗ, một nhà gạch, và chú heo con thông minh qua mặt con sói nhờ củ cải, quả táo và chiếc thùng đánh bơ.</p><p>Chẳng ai bị ăn thịt: con sói rơi tõm vào nồi nước lạnh, chạy mất luôn, và câu chuyện khép lại bằng lời chúc ngủ ngon.</p><p>Nguồn: Three Little Pigs: <a href="https://sites.pitt.edu/~dash/type0124.html">https://sites.pitt.edu/~dash/type0124.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Marty Gots a Plan", "Golly Gee", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 10 Nov 2026 16:53:40 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-10_three-little-pigs-vi/episode.mp3?v=0ca3102b" length="8095934" type="audio/mpeg"/>
+    <itunes:duration>506</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-10_three-little-pigs/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-10_three-little-pigs-vi/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-06_little-red-cap-vi</guid>
     <title>Cô bé quàng khăn đỏ, chuyện kể trước giờ ngủ</title>
