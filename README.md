@@ -90,8 +90,14 @@ always Once Upon a Time Show), plus the episode's `language`.
   `https://github.com/<repo>/releases/download/<id>/<id>.mp3`), `size_bytes` and
   `audio_sha256`, and `episodes.json` is written atomically (temp file, then rename). The
   MP3 is never copied into `docs/`; a leftover copy from before the move is removed only
-  after the index update, once the new URL answers HEAD with 200 and `size_bytes`
-  (otherwise it is kept and the report's `notes` say so).
+  after the index update and a successful rebuild of the feeds and pages, once the new URL
+  answers HEAD with 200 and `size_bytes` (otherwise it is kept and the report's `notes`
+  say so). A failed feed or page rebuild fails the run (`rebuild` in `failed`): nothing is
+  removed or pushed, and publishing again rebuilds and pushes what that run left
+  uncommitted.
+- An `episodes.json` that is there but cannot be parsed (git conflict markers, say) stops
+  every `publish.py` command before any upload or write, so it is never replaced by a new
+  index; only a missing file starts a new one.
 - **Re-renders never use `--clobber`.** The new file is uploaded as `<id>.new.mp3`, its
   size and state are checked, then the old `<id>.mp3` is deleted and the new asset renamed
   (`gh api -X PATCH repos/<repo>/releases/assets/<asset id> -f name=<id>.mp3`). A failed
@@ -103,11 +109,13 @@ always Once Upon a Time Show), plus the episode's `language`.
   use, `"publish": false`) run before any upload, so those jobs are still never published. A failed upload fails that job with the `gh` error and leaves
   `episodes.json` and `docs/` unchanged.
 - `PODCAST_MEDIA_REPO_OVERRIDE=owner/name` sends every upload to that one repo (tests,
-  emergencies). The site's player only accepts the four repos above (`MEDIA_PREFIX` in
-  `site.js`: after parsing, origin `https://github.com` and path exactly
-  `/luongnv89/<repo>/releases/download/<id>/<id>.mp3`; percent-encoded dots, slashes and
-  backslashes are refused), so a change of repos needs a `site.js` change too. An episode
-  whose audio is refused shows no Play or Download button.
+  emergencies). The site's player only accepts the four repos above (`mediaUrl()` in
+  `site.js`: after parsing, no credentials, origin `https://github.com` and a path that
+  `MEDIA_PATH` matches exactly, `/luongnv89/<repo>/releases/download/<id>/<id>.mp3` with
+  the same `<id>` twice; the URL is rebuilt from that origin and path, and `..`,
+  backslashes and percent-encoded dots, slashes and backslashes are refused), so a change
+  of repos needs a `site.js` change too. An episode whose audio is refused shows no Play
+  or Download button.
 - The asset URL redirects (302) to `release-assets.githubusercontent.com`, which answers
   HEAD with `Content-Length`, supports Range requests (206) and ignores the feeds' `?v=`.
   It serves the MP3 as `application/octet-stream` (the API records `audio/mpeg`); browsers
@@ -128,7 +136,10 @@ again to finish**: it also picks up leftovers, i.e. `docs/episodes/<id>/episode.
 whose entry already has its release URL and an `audio_sha256`/`size_bytes` matching the
 file (other copies are kept and listed under `kept`), checks them with HEAD, rebuilds,
 removes them and commits everything the earlier run left uncommitted. `--push` first runs
-`git pull --rebase --autostash` (a failed pull stops it before any upload) and commits and
+`git pull --rebase --autostash` (a failed pull stops it before any upload, and so does a
+pull that exits 0 but leaves conflicts: unmerged paths, conflict markers in
+`episodes.json` or the autostash left in `git stash list`; the error names the stash to
+resolve by hand before running again) and commits and
 pushes all of it as one commit (`feat(site): move episode audio to GitHub Releases (#30)`),
 only when nothing failed; without it the files change locally only (the uploads still
 happen). `--dry-run` lists the episodes, leftovers, repos and bytes it would move and

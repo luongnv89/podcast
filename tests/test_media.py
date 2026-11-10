@@ -623,6 +623,107 @@ class StaleCopyTest(Tmp):
             self.run_main(no_verify)
         self.assertTrue(self.stale.exists())
 
+    def test_kept_when_the_rebuild_fails(self) -> None:
+        # L-a: the copy goes only after a good rebuild, as in --migrate-audio.
+        def no_verify(url):
+            raise AssertionError("HEAD-checked (so maybe removed) before a good rebuild")
+
+        for name, key in (("_rebuild_feeds", "feed_error"), ("_rebuild_pages", "pages_error")):
+            with self.subTest(failing=name):
+                def broken(report, site=None, key=key):
+                    report[key] = "ValueError: bad template"
+                    return []
+
+                with mock.patch.object(publish, name, broken):
+                    code, report = self.run_main(no_verify)
+                self.assertEqual(code, 1)
+                self.assertEqual(report["failed"][-1]["job"], "rebuild")
+                self.assertIn("nothing pushed and no docs/ MP3 removed", report["failed"][-1]["error"])
+                self.assertTrue(self.stale.exists())
+                self.assertNotIn(f"docs/episodes/{EP}/episode.mp3", report["changed"])
+
+
+CONFLICTED_INDEX = (
+    '{"version": 1, "episodes": [\n'
+    "<<<<<<< Updated upstream\n"
+    '{"id": "older", "title": "Remote"}\n'
+    "=======\n"
+    '{"id": "older", "title": "Local"}\n'
+    ">>>>>>> Stashed changes\n"
+    "]}\n"
+)
+
+
+class UnreadableIndexTest(Tmp):
+    """N1: an episodes.json that is there but cannot be parsed is never replaced by a new
+    (one-episode) index; only a missing file starts one."""
+
+    BROKEN: ClassVar[dict[str, str]] = {
+        "conflict markers": CONFLICTED_INDEX,
+        "truncated JSON": '{"version": 1, "episodes": [{"id": "older"',
+        "no episodes list": '{"version": 1}',
+        "not UTF-8": "\udcff",  # written with surrogateescape below: one invalid byte
+    }
+
+    def write_index(self, text: str) -> Path:
+        path = self.site / "episodes.json"
+        path.write_bytes(text.encode("utf-8", "surrogateescape"))
+        return path
+
+    def test_update_index_refuses_and_keeps_the_file(self) -> None:
+        for name, text in self.BROKEN.items():
+            with self.subTest(index=name):
+                path = self.write_index(text)
+                before = path.read_bytes()
+                with self.assertRaisesRegex(ValueError, "episodes.json"):
+                    publish.update_index(self.site, [{"id": EP, "published": "2026-11-05T10:00:00Z"}])
+                self.assertEqual(path.read_bytes(), before)
+
+    def test_conflict_markers_are_named(self) -> None:
+        self.write_index(CONFLICTED_INDEX)
+        with self.assertRaisesRegex(ValueError, "conflict markers"):
+            publish.read_index(self.site / "episodes.json")
+
+    def test_a_missing_index_still_starts_a_new_one(self) -> None:
+        self.assertIsNone(publish.read_index(self.site / "episodes.json"))
+        self.assertTrue(publish.update_index(self.site, [{"id": EP, "published": "2026-11-05T10:00:00Z"}]))
+        self.assertEqual([e["id"] for e in publish.read_index(self.site / "episodes.json")["episodes"]], [EP])
+
+    def test_publish_stops_before_any_upload(self) -> None:
+        make_job(self.job)
+        path = self.write_index(CONFLICTED_INDEX)
+        media = FakeMedia()
+        out = io.StringIO()
+        with contextlib.ExitStack() as stack:
+            stack.enter_context(mock.patch.object(publish, "SITE", self.site))
+            stack.enter_context(mock.patch.object(publish, "REPO", self.tmp))
+            stack.enter_context(mock.patch.object(publish, "GhMedia", media))
+            stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
+            stack.enter_context(contextlib.redirect_stdout(out))
+            code = publish.main([str(self.job)])
+        report = json.loads(out.getvalue())
+        self.assertEqual(code, 1)
+        self.assertEqual(report["failed"][0]["job"], "episodes.json")
+        self.assertIn("conflict markers", report["failed"][0]["error"])
+        self.assertEqual((media.calls, report["published"]), ([], []))
+        self.assertEqual(path.read_text(encoding="utf-8"), CONFLICTED_INDEX)
+        self.assertFalse((self.site / "episodes" / EP).exists())
+
+    def test_episode_entry_refuses_before_any_upload(self) -> None:
+        make_job(self.job)
+        self.write_index(CONFLICTED_INDEX)
+        media = FakeMedia()
+        with self.assertRaisesRegex(ValueError, "conflict markers"):
+            publish.episode_entry(self.job, self.site, media=media)
+        self.assertEqual(media.calls, [])
+
+    def test_migrate_and_backfill_refuse(self) -> None:
+        self.write_index('{"version": 1, "episodes": [')
+        with self.assertRaisesRegex(ValueError, "not valid JSON"):
+            publish.migrate_audio(self.site, media=FakeMedia(), dry_run=True)
+        with self.assertRaisesRegex(ValueError, "not valid JSON"):
+            publish.backfill(self.site, self.tmp / "jobs")
+
 
 def _ok_for(site: Path):
     def ok(url: str) -> dict:
@@ -842,6 +943,8 @@ class MigrateCommandTest(Tmp):
         def git(*args):
             if args[0] == "pull":
                 return subprocess.CompletedProcess(args, 1, "", "error: cannot pull with rebase: conflict")
+            if args[:2] == ("stash", "list"):  # read before the pull (N1)
+                return subprocess.CompletedProcess(args, 0, "", "")
             raise AssertionError(f"git {args} after a failed pull")
 
         code, report = self.run_migrate("--push", git=git)
@@ -849,6 +952,147 @@ class MigrateCommandTest(Tmp):
         self.assertEqual(report["failed"], [{"job": "git pull", "error": "error: cannot pull with rebase: conflict"}])
         self.assertEqual(self.media.calls, [])
         self.assertEqual(len(list(self.wsite.rglob("episode.mp3"))), 4)
+
+    def test_conflicted_autostash_stops_before_anything(self) -> None:
+        # N1: an interrupted run left episodes.json uncommitted, then a commit from another
+        # checkout changed the same lines. `git pull --rebase --autostash` exits 0 here.
+        index = self.wsite / "episodes.json"
+        index.write_text(index.read_text().replace('"title": "Episode 2026-11-01_a"', '"title": "Local"'))
+        other = self.tmp / "other"
+        subprocess.run(["git", "clone", "-q", str(self.origin), str(other)], check=True)
+        for key, value in (("user.name", "Test"), ("user.email", "test@example.com"), ("commit.gpgsign", "false"),
+                           ("core.hooksPath", str(self.tmp / "no-hooks"))):
+            _git_in(other, "config", key, value)
+        theirs = other / "docs" / "episodes.json"
+        theirs.write_text(theirs.read_text().replace('"title": "Episode 2026-11-01_a"', '"title": "Remote"'))
+        _git_in(other, "commit", "-q", "-am", "retitle an episode")
+        _git_in(other, "push", "-q", "origin", "main")
+        remote_head = self.origin_head()
+        stashes = _git_in(self.work, "stash", "list")
+
+        with mock.patch.object(publish, "migrate_audio", side_effect=AssertionError("migrated")), \
+                mock.patch.object(publish, "push", side_effect=AssertionError("pushed")):
+            code, report = self.run_migrate("--push")
+        self.assertEqual(code, 1)
+        self.assertEqual(report["failed"][0]["job"], "git pull")
+        error = report["failed"][0]["error"]
+        for words in ("autostash", "docs/episodes.json", "conflict markers", "Nothing was uploaded, pushed or removed",
+                      "stash", "--migrate-audio --push again"):
+            self.assertIn(words, error)
+        self.assertIsNone(report["git"])
+        self.assertEqual((self.media.calls, report["changed"]), ([], []))
+        self.assertEqual(self.origin_head(), remote_head)
+        self.assertEqual(len(list(self.wsite.rglob("episode.mp3"))), 4)
+        # The run's own changes are still in the stash it names: nothing was dropped.
+        left = _git_in(self.work, "stash", "list", "--format=%H").split()
+        self.assertEqual(len(left), len(stashes.splitlines()) + 1)
+        self.assertIn(left[0][:12], error)
+
+        # A normal publish in this checkout now refuses the conflicted index instead of
+        # rewriting it with only its own episode.
+        make_job(self.job)
+        conflicted = index.read_bytes()
+        out = io.StringIO()
+        with contextlib.ExitStack() as stack:
+            stack.enter_context(mock.patch.object(publish, "SITE", self.wsite))
+            stack.enter_context(mock.patch.object(publish, "REPO", self.work))
+            stack.enter_context(mock.patch.object(publish, "GhMedia", self.media))
+            stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
+            stack.enter_context(mock.patch.object(publish, "push", side_effect=AssertionError("pushed")))
+            stack.enter_context(contextlib.redirect_stdout(out))
+            code = publish.main([str(self.job), "--push"])
+        self.assertEqual(code, 1)
+        self.assertIn("conflict markers", json.loads(out.getvalue())["failed"][0]["error"])
+        self.assertEqual(self.media.calls, [])
+        self.assertEqual(index.read_bytes(), conflicted)
+
+
+@unittest.skipUnless(shutil.which("git"), "git is not installed")
+class PublishCommandTest(Tmp):
+    """L-a: a normal publish --push against a real (local) git repo and origin. A failed
+    rebuild keeps the old docs/ MP3 and pushes nothing; publishing again pushes it all."""
+
+    def setUp(self) -> None:
+        super().setUp()
+        self.origin = self.tmp / "origin.git"
+        self.work = self.tmp / "work"
+        subprocess.run(["git", "init", "-q", "--bare", "-b", "main", str(self.origin)], check=True)
+        subprocess.run(["git", "init", "-q", "-b", "main", str(self.work)], check=True)
+        hooks = self.tmp / "no-hooks"
+        hooks.mkdir()
+        for key, value in (("user.name", "Test"), ("user.email", "test@example.com"), ("commit.gpgsign", "false"),
+                           ("core.hooksPath", str(hooks))):
+            _git_in(self.work, "config", key, value)
+        _git_in(self.work, "remote", "add", "origin", str(self.origin))
+        self.wsite = self.work / "docs"
+        # The episode as published before the move: its MP3 in docs/.
+        self.stale = self.wsite / "episodes" / EP / "episode.mp3"
+        _write(self.stale, "old bytes")
+        _write(self.wsite / "episodes.json", {"version": 1, "episodes": [{
+            "id": EP, "title": "Quiet hours", "show": "Build Wiz AI Show", "language": "en",
+            "format": "podcast-2host", "published": "2026-11-05T10:00:00Z", "duration_s": 300,
+            "size_bytes": 9, "audio": f"episodes/{EP}/episode.mp3"}]})
+        publish._rebuild_site(self.wsite)
+        _git_in(self.work, "add", "-A")
+        _git_in(self.work, "commit", "-q", "-m", "site before the move")
+        _git_in(self.work, "push", "-q", "origin", "main")
+        make_job(self.job)
+        self.media = FakeMedia()
+
+    def publish(self, verify) -> tuple[int, dict]:
+        out = io.StringIO()
+        with contextlib.ExitStack() as stack:
+            stack.enter_context(mock.patch.object(publish, "SITE", self.wsite))
+            stack.enter_context(mock.patch.object(publish, "REPO", self.work))
+            stack.enter_context(mock.patch.object(publish, "GhMedia", self.media))
+            stack.enter_context(mock.patch.object(publish, "head_audio", verify))
+            stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
+            stack.enter_context(contextlib.redirect_stdout(out))
+            code = publish.main([str(self.job), "--push"])
+        return code, json.loads(out.getvalue())
+
+    def origin_head(self) -> str:
+        return _git_in(self.origin, "rev-parse", "main").strip()
+
+    def test_failed_rebuild_keeps_the_mp3_and_never_pushes_then_a_rerun_pushes_all(self) -> None:
+        before = self.origin_head()
+
+        def broken(report, site=None):
+            report["pages_error"] = "ValueError: bad template"
+            return []
+
+        def no_verify(url):
+            raise AssertionError("HEAD-checked before a good rebuild")
+
+        with mock.patch.object(publish, "_rebuild_pages", broken), \
+                mock.patch.object(publish, "push", side_effect=AssertionError("pushed")):
+            code, report = self.publish(no_verify)
+        self.assertEqual(code, 1)
+        self.assertEqual(report["failed"], [{
+            "job": "rebuild",
+            "error": "ValueError: bad template; nothing pushed and no docs/ MP3 removed: publish again"}])
+        self.assertIsNone(report["git"])
+        self.assertEqual(self.origin_head(), before)
+        self.assertTrue(self.stale.exists())
+        self.assertIn(f"episodes/{EP}/episode.mp3", _git_in(self.origin, "show", "main:docs/feed.xml"))
+
+        # Publishing again: no second upload, the rebuild works, the copy goes, and the
+        # commit holds what the failed run left uncommitted (the index, the transcript).
+        uploads = [c for c in self.media.calls if c[0] in ("upload", "replace")]
+        code, report = self.publish(lambda url: {"status": 200, "length": len(MP3)})
+        self.assertEqual(code, 0, report)
+        self.assertEqual([c for c in self.media.calls if c[0] in ("upload", "replace")], uploads)
+        self.assertTrue(report["git"]["pushed"], report)
+        self.assertFalse(self.stale.exists())
+        files = _git_in(self.origin, "ls-tree", "-r", "--name-only", "main").split()
+        self.assertFalse([f for f in files if f.endswith(".mp3")])
+        self.assertIn(f"docs/episodes/{EP}/transcript.vtt", files)
+        index = json.loads(_git_in(self.origin, "show", "main:docs/episodes.json"))
+        self.assertEqual(index["episodes"][0]["audio"], URL)
+        feed_xml = _git_in(self.origin, "show", "main:docs/feed.xml")
+        self.assertIn(URL, feed_xml)
+        self.assertNotIn(f"episodes/{EP}/episode.mp3", feed_xml)
+        self.assertEqual(_git_in(self.work, "status", "--porcelain"), "")
 
 
 class _Redirect(http.server.BaseHTTPRequestHandler):

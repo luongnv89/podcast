@@ -229,6 +229,36 @@ def _write_json(path: Path, data: Any) -> None:
         raise
 
 
+# A line git writes around a conflict (a conflicted merge, rebase or stash pop).
+_CONFLICT_MARKER = re.compile(r"^(?:<{7}|>{7})(?: |$)|^={7}$", re.MULTILINE)
+
+
+def read_index(path: Path) -> dict[str, Any] | None:
+    """``episodes.json`` at ``path``: a dict with an ``episodes`` list, or None when there is
+    no file yet (a fresh site starts a new index). A file that is there but cannot be read
+    or parsed (git conflict markers, say, after a conflicted ``git pull --autostash``)
+    raises ``ValueError``: nothing may then replace it with a new, shorter index."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        return None
+    except (OSError, ValueError) as exc:
+        raise ValueError(f"{INDEX} cannot be read ({exc}); nothing was changed") from exc
+    if _CONFLICT_MARKER.search(text):
+        raise ValueError(
+            f"{INDEX} has git conflict markers (a conflicted pull or stash pop); resolve it "
+            "(git status, git stash list) before publishing; nothing was changed"
+        )
+    try:
+        data = json.loads(text)
+    except ValueError as exc:
+        raise ValueError(f"{INDEX} is not valid JSON ({exc}); fix or restore it before publishing; "
+                         "nothing was changed") from exc
+    if not isinstance(data, dict) or not isinstance(data.get("episodes"), list):
+        raise ValueError(f"{INDEX} has no episodes list; fix or restore it before publishing; nothing was changed")
+    return data
+
+
 def _sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -1115,7 +1145,8 @@ def episode_entry(
     episode_id = art_key(job.name)
     dest = site / EPISODES_DIR / episode_id
     title = script.get("title") or source.get("title") or episode_id
-    known = {e.get("id"): e for e in (_read_json(site / INDEX) or {}).get("episodes") or []
+    # An index that is there but unreadable stops the job here, before any upload.
+    known = {e.get("id"): e for e in (read_index(site / INDEX) or {}).get("episodes") or []
              if isinstance(e, dict)}
     # The MP3 goes to GitHub Releases (podcast #30), never into docs/: the repo of the
     # episode's show and language.
@@ -1270,8 +1301,11 @@ def _verified(answer: dict[str, Any], size: Any) -> bool:
 
 
 def update_index(site: Path, entries: list[dict[str, Any]]) -> bool:
+    """Add or replace ``entries`` in ``episodes.json``; True when the file changed. A new
+    index is started only when there is no file; one that cannot be parsed raises
+    ``ValueError`` and is left as it is (``read_index()``)."""
     path = site / INDEX
-    current = _read_json(path) or {}
+    current = read_index(path) or {}
     episodes = {e["id"]: e for e in current.get("episodes") or [] if isinstance(e, dict)}
     for entry in entries:
         episodes[entry["id"]] = entry
@@ -1354,7 +1388,8 @@ def _load_script(name: str) -> Any:
 
 
 def _rebuild_feeds(report: dict[str, Any], site: Path | None = None) -> list[Path]:
-    """Rewrite the RSS feeds (scripts/feed.py); a failure never blocks a publish."""
+    """Rewrite the RSS feeds (scripts/feed.py); a failure is recorded as ``feed_error``
+    (never raised); a publish then removes and pushes nothing."""
     try:
         return list(_load_script("feed").write_feeds(site or SITE))
     except Exception as exc:  # noqa: BLE001 - the episode is still published
@@ -1363,7 +1398,8 @@ def _rebuild_feeds(report: dict[str, Any], site: Path | None = None) -> list[Pat
 
 
 def _rebuild_pages(report: dict[str, Any], site: Path | None = None) -> list[Path]:
-    """Rewrite the episode pages and sitemap (scripts/pages.py); never blocks a publish."""
+    """Rewrite the episode pages and sitemap (scripts/pages.py); a failure is recorded as
+    ``pages_error`` (never raised); a publish then removes and pushes nothing."""
     try:
         return list(_load_script("pages").write_pages(site or SITE))
     except Exception as exc:  # noqa: BLE001 - the episode is still published
@@ -1388,9 +1424,9 @@ def backfill(
     """
     art: list[Path] = []
     path = site / INDEX
-    data = _read_json(path)
-    if not isinstance(data, dict) or not isinstance(data.get("episodes"), list):
-        raise ValueError(f"{INDEX} is missing or unreadable")
+    data = read_index(path)
+    if data is None:
+        raise ValueError(f"{INDEX} is missing")
     filled = []
     for entry in data["episodes"]:
         if not isinstance(entry, dict) or not entry.get("id"):
@@ -1454,7 +1490,7 @@ def release_problems(site: Path, entries: list[dict[str, Any]]) -> list[str]:
     either. Empty when the rebuilt site is ready for the local MP3s to go."""
     feed = _load_script("feed")
     pages = _load_script("pages")
-    index = _read_json(site / INDEX) or {}
+    index = read_index(site / INDEX) or {}
     wanted = {str(e["id"]): str(e["audio"]) for e in entries}
     local = {ep_id: f"{EPISODES_DIR}/{ep_id}/episode.mp3" for ep_id in wanted}
     problems: list[str] = []
@@ -1520,9 +1556,9 @@ def migrate_audio(
     """
     verify = verify or head_audio
     path = site / INDEX
-    data = _read_json(path)
-    if not isinstance(data, dict) or not isinstance(data.get("episodes"), list):
-        raise ValueError(f"{INDEX} is missing or unreadable")
+    data = read_index(path)
+    if data is None:
+        raise ValueError(f"{INDEX} is missing")
     todo = []
     leftovers = []
     kept = []
@@ -1719,6 +1755,15 @@ def main(argv: list[str] | None = None) -> int:
     with _lock():
         if args.push:
             _git("pull", "--rebase", "origin", "main")
+        try:
+            # An index that is there but unreadable (e.g. conflict markers) stops the run
+            # before any upload: it is never replaced by a new one-episode index.
+            read_index(SITE / INDEX)
+        except ValueError as exc:
+            report["failed"].append({"job": INDEX, "error": str(exc)})
+            report["changed"] = []
+            print(json.dumps(report, indent=2, ensure_ascii=False))
+            return 1
         entries: list[dict[str, Any]] = []
         changed: list[Path] = []
         named = set(args.jobs and [Path(j).expanduser().resolve() for j in args.jobs])
@@ -1749,19 +1794,44 @@ def main(argv: list[str] | None = None) -> int:
             entries.append(entry)
             changed += files
             report["published"].append({"id": entry["id"], "title": entry["title"]})
-        if entries and update_index(SITE, entries):
-            changed.append(SITE / INDEX)
+        blocked = False
         if entries:
-            # Leftover docs/ copies go only now: after the index update, once HEAD checks out.
-            removed, notes = remove_stale_audio(SITE, entries, head_audio)
-            changed += removed
-            if notes:
-                report.setdefault("notes", []).extend(notes)
+            try:
+                if update_index(SITE, entries):
+                    changed.append(SITE / INDEX)
+            except ValueError as exc:
+                report["failed"].append({"job": INDEX, "error": str(exc)})
+                blocked = True
+        if entries and not blocked:
             # The Once Upon a Time Show feeds (Spotify) follow episodes.json on their own.
             changed += _rebuild_feeds(report)
             # One static page per episode and the sitemap (search engines) follow it too.
             changed += _rebuild_pages(report)
-        if args.push and changed:
+            error = report.get("feed_error") or report.get("pages_error")
+            if error:
+                # Same rule as --migrate-audio: never remove a docs/ copy or push while a feed
+                # or page may still link it. The changes stay in the work tree; publishing
+                # again rebuilds and pushes them (_pending_publish()).
+                report["failed"].append({
+                    "job": "rebuild",
+                    "error": f"{error}; nothing pushed and no docs/ MP3 removed: publish again",
+                })
+                blocked = True
+            else:
+                # Leftover docs/ copies go only now: after the index update and a good
+                # rebuild, once HEAD checks out.
+                removed, notes = remove_stale_audio(SITE, entries, head_audio)
+                changed += removed
+                if notes:
+                    report.setdefault("notes", []).extend(notes)
+        if args.push and entries and not blocked:
+            # What an earlier run left uncommitted (e.g. a failed rebuild) goes in too.
+            try:
+                changed += [p for p in _pending_publish(SITE) if p not in changed]
+            except OSError as exc:
+                report["failed"].append({"job": "git", "error": str(exc)})
+                blocked = True
+        if args.push and changed and not blocked:
             report["git"] = push(changed, [e["title"] for e in entries])
             if not report["git"].get("pushed") and report["git"].get("error"):
                 report["failed"].append({"job": "git", "error": report["git"]["error"]})
@@ -1778,11 +1848,23 @@ def _pending_migration(site: Path) -> list[Path]:
     feeds, the sitemap, the episode pages, and episode MP3s removed from the work tree.
     A run that stopped after some of its changes (e.g. a failed removal) leaves them
     uncommitted, so the next ``--push`` run commits them with its own."""
+    return _pending_site(site)
+
+
+def _pending_publish(site: Path) -> list[Path]:
+    """``_pending_migration()`` plus the episode transcripts and the story art: what a
+    publish that stopped before its push (a failed rebuild) left uncommitted, so the next
+    ``--push`` run commits it with its own."""
+    rel = site.resolve().relative_to(REPO.resolve()).as_posix()
+    return _pending_site(site, f":(glob){rel}/{EPISODES_DIR}/*/transcript.vtt", f"{rel}/{ART_DIR}")
+
+
+def _pending_site(site: Path, *extra: str) -> list[Path]:
     feed = _load_script("feed")
     pages = _load_script("pages")
     rel = site.resolve().relative_to(REPO.resolve()).as_posix()
     specs = [f"{rel}/{INDEX}", f"{rel}/{pages.SITEMAP}", *(f"{rel}/{m['file']}" for m in feed.FEEDS.values()),
-             f":(glob){rel}/{EPISODES_DIR}/*/index.html", f":(glob){rel}/{EPISODES_DIR}/*/episode.mp3"]
+             f":(glob){rel}/{EPISODES_DIR}/*/index.html", f":(glob){rel}/{EPISODES_DIR}/*/episode.mp3", *extra]
     proc = _git("status", "--porcelain=v1", "-z", "--no-renames", "--untracked-files=all", "--", *specs)
     if proc.returncode != 0:
         raise OSError(f"git status failed: {(proc.stderr or '').strip()[:300]}")
@@ -1797,15 +1879,65 @@ def _pending_migration(site: Path) -> list[Path]:
     return found
 
 
+def _stashes() -> list[tuple[str, str]]:
+    """``git stash list`` as (commit sha, subject), newest first."""
+    proc = _git("stash", "list", "--format=%H %gs")
+    found = []
+    for line in (proc.stdout or "").splitlines():
+        sha, _, subject = line.strip().partition(" ")
+        if sha:
+            found.append((sha, subject))
+    return found
+
+
+def _conflicted_autostash(stashes_before: list[tuple[str, str]], pulled: subprocess.CompletedProcess[str]) -> str | None:
+    """Why the work tree is not safe to migrate after ``git pull --rebase --autostash``
+    (which exits 0 even when putting the stashed changes back conflicts), or None: unmerged
+    paths, conflict markers in ``episodes.json``, a stash this pull left behind, or git
+    saying so."""
+    unmerged = [p for p in (_git("diff", "--name-only", "--diff-filter=U", "-z").stdout or "").split("\0") if p]
+    known = {sha for sha, _ in stashes_before}
+    left = [(sha, subject) for sha, subject in _stashes() if sha not in known]
+    output = f"{pulled.stdout or ''}\n{pulled.stderr or ''}"
+    said = "resulted in conflicts" in output
+    try:
+        marked = bool(_CONFLICT_MARKER.search((SITE / INDEX).read_text(encoding="utf-8")))
+    except (OSError, ValueError):
+        marked = False
+    if not (unmerged or left or said or marked):
+        return None
+    found = []
+    if unmerged:
+        found.append("unmerged paths " + ", ".join(unmerged[:10]))
+    if marked:
+        found.append(f"conflict markers in {SITE.name}/{INDEX}")
+    if left and not found:
+        found.append("the autostash was not applied")
+    where = (f"stash {left[0][0][:12]} ({left[0][1] or 'autostash'})" if left else "the stash (git stash list)")
+    return (
+        "git pull --rebase --autostash could not put this checkout's uncommitted changes back"
+        f" ({'; '.join(found) or 'git reported conflicts'}). Nothing was uploaded, pushed or removed."
+        f" The interrupted run's changes are kept in {where}. Resolve the conflicts by hand"
+        " (git status; git stash show -p shows the stashed changes), git add the files, drop that stash"
+        " once its changes are in the work tree, then run --migrate-audio --push again."
+        " Hold the publish cron in this checkout until git status is clean."
+    )
+
+
 def _migrate_main(push_it: bool, dry_run: bool) -> int:
     report: dict[str, Any] = {"failed": [], "git": None}
     changed: list[Path] = []
     with _lock():
         if push_it:
             # --autostash: a re-run after an interrupted run starts from a dirty tree.
+            stashes = _stashes()
             pulled = _git("pull", "--rebase", "--autostash", "origin", "main")
             if pulled.returncode != 0:
                 error = (pulled.stderr or pulled.stdout or "").strip()[-300:] or f"exit {pulled.returncode}"
+            else:
+                # It exits 0 even when the autostash does not apply cleanly (git 2.43).
+                error = _conflicted_autostash(stashes, pulled)
+            if error:
                 report["failed"].append({"job": "git pull", "error": error})
                 report["changed"] = []
                 print(json.dumps(report, indent=2, ensure_ascii=False))
