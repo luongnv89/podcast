@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Once Upon a Time Show RSS feeds that Spotify and podcast apps read.
+"""Build the RSS feeds that Spotify, YouTube and podcast apps read.
 
 Usage:
     python3 scripts/feed.py build            # rewrite every feed from docs/episodes.json
@@ -9,6 +9,11 @@ Spotify has no upload API: a show hosted elsewhere is submitted once as an RSS f
 Spotify for Creators (Add a new show -> Find an existing show -> Somewhere else), and
 Spotify then checks the feed on its own and adds new episodes (Spotify Podcast Delivery
 Specification, "Supply Chain and Playout").
+
+Build Wiz AI Show has its own feed too, ``docs/feed.xml`` (key ``buildwiz``): every English
+Build Wiz AI Show episode on the site, for directories that ingest a feed such as YouTube
+(Studio -> Create -> New podcast -> Submit RSS feed). The show is hosted on Spotify for
+Creators, so this feed must never be submitted to Spotify: that would make a second show.
 
 The stories are one show in three languages, and a Spotify show has one language, so
 there is one feed per language (``FEEDS``): ``docs/stories/feed-en.xml``, ``-fr`` and
@@ -63,8 +68,11 @@ COMMON = {
     "type": "episodic",
 }
 
-# One feed per language. Descriptions stay under Spotify's 600-character limit
-# (tests/test_feed.py checks it).
+PODCAST_SHOW = "Build Wiz AI Show"
+
+# One feed per key. A story feed takes its show, page and category from COMMON; the
+# Build Wiz AI Show feed sets its own. Descriptions stay under Spotify's 600-character
+# limit (tests/test_feed.py checks it).
 FEEDS: dict[str, dict[str, str]] = {
     "en": {
         "file": "stories/feed-en.xml",
@@ -113,7 +121,36 @@ FEEDS: dict[str, dict[str, str]] = {
         "source": "Nguồn",
         "made_with": "Viết và đọc bằng AI",
     },
+    "buildwiz": {
+        "lang": "en",
+        "show": PODCAST_SHOW,
+        "page": "",
+        "author": PODCAST_SHOW,
+        "category": "Technology",
+        "subcategory": "",
+        "file": "feed.xml",
+        "image": "cover-3000.jpg",
+        "title": "Build Wiz AI Show",
+        "description": (
+            "Big AI ideas, made clear for builders. Each episode takes one source, an "
+            "article, a paper, a talk or a post on AI, agents, products or marketing, and "
+            "unpacks everything worth knowing: the main ideas, the evidence, the "
+            "counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by "
+            "recurring guests who bring in outside sources. Every claim is checked against "
+            "its source, and every source is credited. Scripts and voices are made with AI."
+        ),
+        "source": "Source",
+        "sources": "Sources",
+        "made_with": "Written and voiced with AI",
+    },
 }
+
+
+def _meta(key: str) -> dict[str, str]:
+    """A feed's settings: its own entries over the story defaults (COMMON)."""
+    meta = {"lang": key, "show": STORY_SHOW, "page": STORY_PAGE, **COMMON}
+    meta.update(FEEDS[key])
+    return meta
 
 NS = {
     "itunes": "http://www.itunes.com/dtds/podcast-1.0.dtd",
@@ -174,15 +211,21 @@ def is_story(ep: dict[str, Any]) -> bool:
     return ep.get("format") in STORY_FORMATS
 
 
-def feed_episodes(index: dict[str, Any], lang: str) -> list[dict[str, Any]]:
-    """The episodes of one language's feed, newest first."""
+def show_of(ep: dict[str, Any]) -> str:
+    return STORY_SHOW if is_story(ep) else PODCAST_SHOW
+
+
+def feed_episodes(index: dict[str, Any], key: str) -> list[dict[str, Any]]:
+    """The episodes of one feed (a show in one language), newest first."""
+    meta = _meta(key)
+    lang = meta["lang"]
     chosen = [
         e
         for e in index.get("episodes") or []
         if isinstance(e, dict)
         and e.get("id")
         and e.get("audio")
-        and is_story(e)
+        and show_of(e) == meta["show"]
         and (e.get("language") or "en") == lang
         and e.get("feed") is not False
     ]
@@ -192,6 +235,9 @@ def feed_episodes(index: dict[str, Any], lang: str) -> list[dict[str, Any]]:
 def _notes(ep: dict[str, Any], words: dict[str, str]) -> tuple[str, str]:
     """Plain-text and HTML show notes: summary, source credit, music credit, AI note."""
     lines = [str(line) for line in ep.get("summary") or [] if line]
+    many = [s for s in ep.get("sources") or [] if isinstance(s, dict)]
+    if len(many) > 1 and words.get("sources"):
+        return _notes_sources(lines, many, ep, words)
     source = ep.get("source") or {}
     url = source.get("url") if str(source.get("url") or "").startswith(("http://", "https://")) else None
     credit = None
@@ -219,15 +265,49 @@ def _notes(ep: dict[str, Any], words: dict[str, str]) -> tuple[str, str]:
     return "\n\n".join(plain), "".join(html)
 
 
+def _link(source: dict[str, Any]) -> str | None:
+    url = str(source.get("url") or "")
+    return url if url.startswith(("http://", "https://")) else None
+
+
+def _notes_sources(
+    lines: list[str], sources: list[dict[str, Any]], ep: dict[str, Any], words: dict[str, str]
+) -> tuple[str, str]:
+    """Show notes of an episode with several sources: one credit line per source."""
+    plain, html = list(lines), [f"<p>{escape(line)}</p>" for line in lines]
+    credits_plain, credits_html = [], []
+    for source in sources:
+        name = str(source.get("title") or _link(source) or "").strip()
+        if not name:
+            continue
+        by = f", {source['author']}" if source.get("author") else ""
+        url = _link(source)
+        credits_plain.append(f"- {name}{by}" + (f" ({url})" if url else ""))
+        credits_html.append(
+            f'<li>{escape(name + by)}: <a href="{escape(url)}">{escape(url)}</a></li>'
+            if url
+            else f"<li>{escape(name + by)}</li>"
+        )
+    if credits_plain:
+        plain.append(f"{words['sources']}:\n" + "\n".join(credits_plain))
+        html.append(f"<p>{escape(words['sources'])}:</p><ul>{''.join(credits_html)}</ul>")
+    voices = str(ep.get("voices") or "").strip()
+    made = f"{words['made_with']} ({voices})." if voices else f"{words['made_with']}."
+    plain.append(made)
+    html.append(f"<p>{escape(made)}</p>")
+    return "\n\n".join(plain), "".join(html)
+
+
 def _cdata(text: str) -> str:
     return "<![CDATA[" + text.replace("]]>", "]]]]><![CDATA[>") + "]]>"
 
 
-def render_feed(index: dict[str, Any], lang: str, site: Path = SITE, now: datetime | None = None) -> str:
-    """One language's feed as an RSS 2.0 string (UTF-8, iTunes/Spotify tags)."""
+def render_feed(index: dict[str, Any], key: str, site: Path = SITE, now: datetime | None = None) -> str:
+    """One feed as an RSS 2.0 string (UTF-8, iTunes/Spotify tags)."""
     now = now or datetime.now(timezone.utc)
-    meta = FEEDS[lang]
-    page = BASE_URL + STORY_PAGE
+    meta = _meta(key)
+    lang = meta["lang"]
+    page = BASE_URL + meta["page"]
     image = BASE_URL + meta["image"]
     ns = " ".join(f'xmlns:{k}="{v}"' for k, v in NS.items())
     out = [
@@ -241,10 +321,10 @@ def render_feed(index: dict[str, Any], lang: str, site: Path = SITE, now: dateti
         f"  <itunes:summary>{escape(meta['description'])}</itunes:summary>",
         f"  <language>{lang}</language>",
         f"  <lastBuildDate>{format_datetime(now.astimezone(timezone.utc))}</lastBuildDate>",
-        f"  <itunes:author>{escape(COMMON['author'])}</itunes:author>",
+        f"  <itunes:author>{escape(meta['author'])}</itunes:author>",
         "  <itunes:owner>",
-        f"    <itunes:name>{escape(COMMON['owner_name'])}</itunes:name>",
-        f"    <itunes:email>{escape(COMMON['owner_email'])}</itunes:email>",
+        f"    <itunes:name>{escape(meta['owner_name'])}</itunes:name>",
+        f"    <itunes:email>{escape(meta['owner_email'])}</itunes:email>",
         "  </itunes:owner>",
         f"  <itunes:image href={quoteattr(image)}/>",
         "  <image>",
@@ -252,13 +332,20 @@ def render_feed(index: dict[str, Any], lang: str, site: Path = SITE, now: dateti
         f"    <title>{escape(meta['title'])}</title>",
         f"    <link>{escape(page)}</link>",
         "  </image>",
-        f"  <itunes:category text={quoteattr(COMMON['category'])}>",
-        f"    <itunes:category text={quoteattr(COMMON['subcategory'])}/>",
-        "  </itunes:category>",
-        f"  <itunes:explicit>{COMMON['explicit']}</itunes:explicit>",
-        f"  <itunes:type>{COMMON['type']}</itunes:type>",
     ]
-    for ep in feed_episodes(index, lang):
+    if meta["subcategory"]:
+        out += [
+            f"  <itunes:category text={quoteattr(meta['category'])}>",
+            f"    <itunes:category text={quoteattr(meta['subcategory'])}/>",
+            "  </itunes:category>",
+        ]
+    else:
+        out.append(f"  <itunes:category text={quoteattr(meta['category'])}/>")
+    out += [
+        f"  <itunes:explicit>{meta['explicit']}</itunes:explicit>",
+        f"  <itunes:type>{meta['type']}</itunes:type>",
+    ]
+    for ep in feed_episodes(index, key):
         audio = BASE_URL + str(ep["audio"])
         version = _audio_version(site, str(ep["audio"]))
         if version:
@@ -275,7 +362,7 @@ def render_feed(index: dict[str, Any], lang: str, site: Path = SITE, now: dateti
             f'    <enclosure url={quoteattr(audio)} length="{int(ep.get("size_bytes") or 0)}"'
             ' type="audio/mpeg"/>',
             f"    <itunes:duration>{round(float(ep.get('duration_s') or 0))}</itunes:duration>",
-            f"    <itunes:explicit>{COMMON['explicit']}</itunes:explicit>",
+            f"    <itunes:explicit>{meta['explicit']}</itunes:explicit>",
             "    <itunes:episodeType>full</itunes:episodeType>",
         ]
         artwork = item_image(ep, site)
@@ -304,9 +391,9 @@ def write_feeds(site: Path = SITE, now: datetime | None = None) -> list[Path]:
     """
     index = _read_json(site / INDEX) or {}
     changed: list[Path] = []
-    for lang, meta in FEEDS.items():
+    for key, meta in FEEDS.items():
         path = site / meta["file"]
-        new = render_feed(index, lang, site, now)
+        new = render_feed(index, key, site, now)
         try:
             old = path.read_text(encoding="utf-8")
         except OSError:
@@ -331,13 +418,13 @@ def main(argv: list[str] | None = None) -> int:
         report["changed"] = [str(p.relative_to(REPO)) for p in write_feeds(SITE)]
     index = _read_json(SITE / INDEX) or {}
     report["feeds"] = {
-        lang: {
+        key: {
             "url": BASE_URL + meta["file"],
             "episodes": [
-                {"id": e["id"], "title": e.get("title")} for e in feed_episodes(index, lang)
+                {"id": e["id"], "title": e.get("title")} for e in feed_episodes(index, key)
             ],
         }
-        for lang, meta in FEEDS.items()
+        for key, meta in FEEDS.items()
     }
     print(json.dumps(report, indent=2, ensure_ascii=False))
     return 0

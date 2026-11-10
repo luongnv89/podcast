@@ -982,7 +982,7 @@ def _lock():
 
 
 def _rebuild_feeds(report: dict[str, Any]) -> list[Path]:
-    """Rewrite the story RSS feeds (scripts/feed.py); a failure never blocks a publish."""
+    """Rewrite the RSS feeds (scripts/feed.py); a failure never blocks a publish."""
     try:
         import importlib.util
 

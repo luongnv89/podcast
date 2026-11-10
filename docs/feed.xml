@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0">
+<channel>
+  <title>Build Wiz AI Show</title>
+  <link>https://luongnv.com/podcast/</link>
+  <atom:link href="https://luongnv.com/podcast/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
+  <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
+  <language>en</language>
+  <lastBuildDate>Tue, 10 Nov 2026 09:09:35 +0000</lastBuildDate>
+  <itunes:author>Build Wiz AI Show</itunes:author>
+  <itunes:owner>
+    <itunes:name>Build Wiz AI</itunes:name>
+    <itunes:email>buildwizai@gmail.com</itunes:email>
+  </itunes:owner>
+  <itunes:image href="https://luongnv.com/podcast/cover-3000.jpg"/>
+  <image>
+    <url>https://luongnv.com/podcast/cover-3000.jpg</url>
+    <title>Build Wiz AI Show</title>
+    <link>https://luongnv.com/podcast/</link>
+  </image>
+  <itunes:category text="Technology"/>
+  <itunes:explicit>false</itunes:explicit>
+  <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-09_how-to-build-a-one-person-million-dollar-agency</guid>
+    <title>How to Build a One-Person Million Dollar Agency with AI Agents</title>
+    <link>https://luongnv.com/podcast/#2026-11-09_how-to-build-a-one-person-million-dollar-agency</link>
+    <description>The Boring Marketer sketches a one-person marketing agency for plumbing and HVAC shops, run by teams of AI agents.
+
+His math: 20 clients on three tiers for about $85,000 a month, with agents that bring you only the decisions.
+
+Guests add the services-as-software trend, how to build agents with checkpoints, and why AI must never do the cold calls.
+
+Sources:
+- How to Build a One-Person Million Dollar Agency with AI Agents, The Boring Marketer (@boringmarketer) (https://x.com/boringmarketer/status/2119888053577646318)
+- Are services the new software? This Sequoia partner thinks so | Fortune, Jeremy Kahn (https://fortune.com/2026/04/21/services-are-the-new-software-sequoia-venture-capital-julien-bek-ai-native-eye-on-ai/)
+- Building effective AI agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)
+- AI-generated voices in robocalls can deceive voters. The FCC just made them illegal, Ali Swenson (https://apnews.com/article/fcc-elections-artificial-intelligence-robocalls-regulations-a8292b1371b3764916461f60660b93e6)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>The Boring Marketer sketches a one-person marketing agency for plumbing and HVAC shops, run by teams of AI agents.</p><p>His math: 20 clients on three tiers for about $85,000 a month, with agents that bring you only the decisions.</p><p>Guests add the services-as-software trend, how to build agents with checkpoints, and why AI must never do the cold calls.</p><p>Sources:</p><ul><li>How to Build a One-Person Million Dollar Agency with AI Agents, The Boring Marketer (@boringmarketer): <a href="https://x.com/boringmarketer/status/2119888053577646318">https://x.com/boringmarketer/status/2119888053577646318</a></li><li>Are services the new software? This Sequoia partner thinks so | Fortune, Jeremy Kahn: <a href="https://fortune.com/2026/04/21/services-are-the-new-software-sequoia-venture-capital-julien-bek-ai-native-eye-on-ai/">https://fortune.com/2026/04/21/services-are-the-new-software-sequoia-venture-capital-julien-bek-ai-native-eye-on-ai/</a></li><li>Building effective AI agents, Anthropic: <a href="https://www.anthropic.com/research/building-effective-agents">https://www.anthropic.com/research/building-effective-agents</a></li><li>AI-generated voices in robocalls can deceive voters. The FCC just made them illegal, Ali Swenson: <a href="https://apnews.com/article/fcc-elections-artificial-intelligence-robocalls-regulations-a8292b1371b3764916461f60660b93e6">https://apnews.com/article/fcc-elections-artificial-intelligence-robocalls-regulations-a8292b1371b3764916461f60660b93e6</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 09 Nov 2026 23:30:21 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-09_how-to-build-a-one-person-million-dollar-agency/episode.mp3?v=e8831d82" length="12028640" type="audio/mpeg"/>
+    <itunes:duration>752</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-09_how-to-build-a-one-person-million-dollar-agency/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-04_a-practical-guide-to-security-in-november-2026</guid>
+    <title>A Practical Guide to Security in November 2026</title>
+    <link>https://luongnv.com/podcast/#2026-11-04_a-practical-guide-to-security-in-november-2026</link>
+    <description>Jack Cable's X article A Practical Guide to Security in November 2026, after a chaotic few weeks of hacks and critical bugs.
+
+His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.
+
+Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today.
+
+Source: A Practical Guide to Security in November 2026, Jack Cable (@jackhcable) (https://x.com/jackhcable/status/2117731409246978489)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Jack Cable's X article A Practical Guide to Security in November 2026, after a chaotic few weeks of hacks and critical bugs.</p><p>His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.</p><p>Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today.</p><p>Source: A Practical Guide to Security in November 2026, Jack Cable (@jackhcable): <a href="https://x.com/jackhcable/status/2117731409246978489">https://x.com/jackhcable/status/2117731409246978489</a></p><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 09 Nov 2026 08:58:33 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-04_a-practical-guide-to-security-in-november-2026/episode.mp3?v=8af44fda" length="11053107" type="audio/mpeg"/>
+    <itunes:duration>691</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-04_a-practical-guide-to-security-in-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-05_marketing-engineers-100x-more-experiments-with</guid>
+    <title>Marketing Engineers: 100x More Experiments with AI agents</title>
+    <link>https://luongnv.com/podcast/#2026-11-05_marketing-engineers-100x-more-experiments-with</link>
+    <description>Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents.
+
+His playbook: write the business "brain" first, connect the data, then add agents one at a time with guardrails in the tools.
+
+Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.
+
+Sources:
+- Marketing Engineers: 100x More Experiments with AI agents, GREG ISENBERG (@gregisenberg) (https://x.com/gregisenberg/status/2108188646973313195)
+- Find a Growth Hacker for Your Startup, Sean Ellis (https://www.startup-marketing.com/where-are-all-the-growth-hackers)
+- Meta Andromeda: Supercharging Advantage+ automation with the next-gen personalized ads retrieval engine, Chonglin Sun et al. (https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine)
+- Meta will start labeling AI-generated images on Instagram and Facebook, Shannon Bond (https://www.npr.org/2024/02/06/1229317971/meta-labeling-ai-generated-images-instagram-facebook-artificial-intelligence)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents.</p><p>His playbook: write the business "brain" first, connect the data, then add agents one at a time with guardrails in the tools.</p><p>Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.</p><p>Sources:</p><ul><li>Marketing Engineers: 100x More Experiments with AI agents, GREG ISENBERG (@gregisenberg): <a href="https://x.com/gregisenberg/status/2108188646973313195">https://x.com/gregisenberg/status/2108188646973313195</a></li><li>Find a Growth Hacker for Your Startup, Sean Ellis: <a href="https://www.startup-marketing.com/where-are-all-the-growth-hackers">https://www.startup-marketing.com/where-are-all-the-growth-hackers</a></li><li>Meta Andromeda: Supercharging Advantage+ automation with the next-gen personalized ads retrieval engine, Chonglin Sun et al.: <a href="https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine">https://engineering.fb.com/2024/12/02/production-engineering/meta-andromeda-advantage-automation-next-gen-personalized-ads-retrieval-engine</a></li><li>Meta will start labeling AI-generated images on Instagram and Facebook, Shannon Bond: <a href="https://www.npr.org/2024/02/06/1229317971/meta-labeling-ai-generated-images-instagram-facebook-artificial-intelligence">https://www.npr.org/2024/02/06/1229317971/meta-labeling-ai-generated-images-instagram-facebook-artificial-intelligence</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 09 Nov 2026 08:50:04 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-05_marketing-engineers-100x-more-experiments-with/episode.mp3?v=0beb44eb" length="11684655" type="audio/mpeg"/>
+    <itunes:duration>730</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_marketing-engineers-100x-more-experiments-with/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-05_marketing-engineers-solo-explainer</guid>
+    <title>Marketing Engineers: 100x More Experiments with AI agents (solo explainer)</title>
+    <link>https://luongnv.com/podcast/#2026-11-05_marketing-engineers-solo-explainer</link>
+    <description>A solo explainer of Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents.
+
+His playbook: write the business "brain" first, connect the data, then add agents one at a time with guardrails in the tools.
+
+Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.
+
+Source: Marketing Engineers: 100x More Experiments with AI agents, GREG ISENBERG (@gregisenberg) (https://x.com/gregisenberg/status/2108188646973313195)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>A solo explainer of Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents.</p><p>His playbook: write the business "brain" first, connect the data, then add agents one at a time with guardrails in the tools.</p><p>Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.</p><p>Source: Marketing Engineers: 100x More Experiments with AI agents, GREG ISENBERG (@gregisenberg): <a href="https://x.com/gregisenberg/status/2108188646973313195">https://x.com/gregisenberg/status/2108188646973313195</a></p><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 09 Nov 2026 08:37:10 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-05_marketing-engineers-solo-explainer/episode.mp3?v=1360307a" length="8395333" type="audio/mpeg"/>
+    <itunes:duration>525</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_marketing-engineers-solo-explainer/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-05_meet-the-new-build-wiz-ai-show</guid>
+    <title>Meet the new Build Wiz AI Show</title>
+    <link>https://luongnv.com/podcast/#2026-11-05_meet-the-new-build-wiz-ai-show</link>
+    <description>A fresh introduction to Build Wiz AI Show: hosts Bob and Alice, who swap roles, and four recurring guests.
+
+How an episode is made: read in full, outlined, tested against outside sources, every claim checked word for word.
+
+Why it matters: each episode aims to give the best ideas, their limits, and one concrete thing to try.
+
+Sources:
+- Meet the new Build Wiz AI Show, Build Wiz AI Show
+- Survey of Hallucination in Natural Language Generation, Ziwei Ji et al. (https://arxiv.org/abs/2202.03629)
+- Building effective AI agents, Anthropic (https://www.anthropic.com/engineering/building-effective-agents)
+- Podcasts as a Source of News and Information, Elisa Shearer et al. (https://www.pewresearch.org/journalism/2023/04/18/podcasts-as-a-source-of-news-and-information/)
+- Meta will start labeling AI-generated images on Instagram and Facebook, Shannon Bond (https://www.npr.org/2024/02/06/1229317971/meta-labeling-ai-generated-images-instagram-facebook-artificial-intelligence)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>A fresh introduction to Build Wiz AI Show: hosts Bob and Alice, who swap roles, and four recurring guests.</p><p>How an episode is made: read in full, outlined, tested against outside sources, every claim checked word for word.</p><p>Why it matters: each episode aims to give the best ideas, their limits, and one concrete thing to try.</p><p>Sources:</p><ul><li>Meet the new Build Wiz AI Show, Build Wiz AI Show</li><li>Survey of Hallucination in Natural Language Generation, Ziwei Ji et al.: <a href="https://arxiv.org/abs/2202.03629">https://arxiv.org/abs/2202.03629</a></li><li>Building effective AI agents, Anthropic: <a href="https://www.anthropic.com/engineering/building-effective-agents">https://www.anthropic.com/engineering/building-effective-agents</a></li><li>Podcasts as a Source of News and Information, Elisa Shearer et al.: <a href="https://www.pewresearch.org/journalism/2023/04/18/podcasts-as-a-source-of-news-and-information/">https://www.pewresearch.org/journalism/2023/04/18/podcasts-as-a-source-of-news-and-information/</a></li><li>Meta will start labeling AI-generated images on Instagram and Facebook, Shannon Bond: <a href="https://www.npr.org/2024/02/06/1229317971/meta-labeling-ai-generated-images-instagram-facebook-artificial-intelligence">https://www.npr.org/2024/02/06/1229317971/meta-labeling-ai-generated-images-instagram-facebook-artificial-intelligence</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 09 Nov 2026 08:22:18 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-05_meet-the-new-build-wiz-ai-show/episode.mp3?v=1d87c6a1" length="6420432" type="audio/mpeg"/>
+    <itunes:duration>401</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_meet-the-new-build-wiz-ai-show/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-06_5t-opportunity-ai-roll-ups</guid>
+    <title>AI Roll-Ups: Buy a Boring Business, Run It with Agents</title>
+    <link>https://luongnv.com/podcast/#2026-11-06_5t-opportunity-ai-roll-ups</link>
+    <description>Greg Isenberg's X article makes the case for AI roll-ups: buy an established services business and run its back office with AI agents.
+
+His playbook: buy the customers and trust, build a rulebook and review checkpoints, and move margins from 5-10% toward 30-40%.
+
+Guests add balance: even Thrive needed more than off-the-shelf AI, and AI users get less accurate when they stop checking.
+
+Sources:
+- $5T opportunity: AI Roll Ups, GREG ISENBERG (@gregisenberg) (https://x.com/gregisenberg/status/2103927365977928019)
+- The Revolution in Services: General Catalyst's AI Rollup Strategy, with Marc Bhargava, Nathan Labenz (https://www.cognitiverevolution.ai/the-revolution-in-services-general-catalysts-ai-rollup-strategy-with-marc-bhargava)
+- OpenAI hopes to automate IT and accounting with Thrive Holdings, Nicole Kobie (https://www.itpro.com/technology/artificial-intelligence/openai-hopes-to-automate-it-and-accounting-with-thrive-holdings)
+- Centaurs and Cyborgs on the Jagged Frontier, Ethan Mollick (https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Greg Isenberg's X article makes the case for AI roll-ups: buy an established services business and run its back office with AI agents.</p><p>His playbook: buy the customers and trust, build a rulebook and review checkpoints, and move margins from 5-10% toward 30-40%.</p><p>Guests add balance: even Thrive needed more than off-the-shelf AI, and AI users get less accurate when they stop checking.</p><p>Sources:</p><ul><li>$5T opportunity: AI Roll Ups, GREG ISENBERG (@gregisenberg): <a href="https://x.com/gregisenberg/status/2103927365977928019">https://x.com/gregisenberg/status/2103927365977928019</a></li><li>The Revolution in Services: General Catalyst's AI Rollup Strategy, with Marc Bhargava, Nathan Labenz: <a href="https://www.cognitiverevolution.ai/the-revolution-in-services-general-catalysts-ai-rollup-strategy-with-marc-bhargava">https://www.cognitiverevolution.ai/the-revolution-in-services-general-catalysts-ai-rollup-strategy-with-marc-bhargava</a></li><li>OpenAI hopes to automate IT and accounting with Thrive Holdings, Nicole Kobie: <a href="https://www.itpro.com/technology/artificial-intelligence/openai-hopes-to-automate-it-and-accounting-with-thrive-holdings">https://www.itpro.com/technology/artificial-intelligence/openai-hopes-to-automate-it-and-accounting-with-thrive-holdings</a></li><li>Centaurs and Cyborgs on the Jagged Frontier, Ethan Mollick: <a href="https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged">https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 09 Nov 2026 08:13:17 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-06_5t-opportunity-ai-roll-ups/episode.mp3?v=b2cf03c3" length="12322457" type="audio/mpeg"/>
+    <itunes:duration>770</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-06_5t-opportunity-ai-roll-ups/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-06_why-software-factories-fail</guid>
+    <title>Why Software Factories Fail: The Harness Is Not Enough</title>
+    <link>https://luongnv.com/podcast/#2026-11-06_why-software-factories-fail</link>
+    <description>Dex Horthy's X article, part one of Why Software Factories Fail, argues the lights-off software factory does not work.
+
+Coding models are trained to pass tests, and there is no penalty for eroding codebase maintainability.
+
+Guests add DORA and METR data on delivery stability and developer speed, plus how SWE-bench tasks are graded.
+
+Sources:
+- Why Software Factories Fail, dex (@dexhorthy) (https://x.com/dexhorthy/status/2080697380379427275)
+- SWE-bench: Can Language Models Resolve Real-World GitHub Issues?, Carlos E. Jimenez et al. (https://arxiv.org/abs/2310.06770)
+- Announcing the 2024 DORA report | Google Cloud Blog, Nathen Harvey and Derek DeBellis (https://cloud.google.com/blog/products/devops-sre/announcing-the-2024-dora-report)
+- Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity, METR (https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Dex Horthy's X article, part one of Why Software Factories Fail, argues the lights-off software factory does not work.</p><p>Coding models are trained to pass tests, and there is no penalty for eroding codebase maintainability.</p><p>Guests add DORA and METR data on delivery stability and developer speed, plus how SWE-bench tasks are graded.</p><p>Sources:</p><ul><li>Why Software Factories Fail, dex (@dexhorthy): <a href="https://x.com/dexhorthy/status/2080697380379427275">https://x.com/dexhorthy/status/2080697380379427275</a></li><li>SWE-bench: Can Language Models Resolve Real-World GitHub Issues?, Carlos E. Jimenez et al.: <a href="https://arxiv.org/abs/2310.06770">https://arxiv.org/abs/2310.06770</a></li><li>Announcing the 2024 DORA report | Google Cloud Blog, Nathen Harvey and Derek DeBellis: <a href="https://cloud.google.com/blog/products/devops-sre/announcing-the-2024-dora-report">https://cloud.google.com/blog/products/devops-sre/announcing-the-2024-dora-report</a></li><li>Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity, METR: <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 09 Nov 2026 07:59:38 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-06_why-software-factories-fail/episode.mp3?v=07837a7b" length="11722686" type="audio/mpeg"/>
+    <itunes:duration>733</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-06_why-software-factories-fail/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-07_your-old-prompts-are-making-claude-worse</guid>
+    <title>Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude</title>
+    <link>https://luongnv.com/podcast/#2026-11-07_your-old-prompts-are-making-claude-worse</link>
+    <description>Lance Martin of Anthropic's AI Engineer talk Your Old Prompts Are Making Claude Worse, with three guests.
+
+Audit old prompt habits, use the prompt cache (up to 72% cheaper), build climbable evals and hill climb without overfitting.
+
+Guests bring METR's long-tasks paper, Hamel Husain on binary LLM judges and Ethan Mollick's jagged frontier.
+
+Sources:
+- Your Old Prompts Are Making Claude Worse, Lance Martin (https://www.youtube.com/watch?v=ys6YQ2yfBpM)
+- Measuring AI Ability to Complete Long Software Tasks, Thomas Kwa et al. (https://arxiv.org/abs/2503.14499)
+- Using LLM-as-a-Judge For Evaluation: A Complete Guide – Hamel’s Blog, Hamel Husain (https://hamel.dev/blog/posts/llm-judge/index.html)
+- Centaurs and Cyborgs on the Jagged Frontier, Ethan Mollick (https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Lance Martin of Anthropic's AI Engineer talk Your Old Prompts Are Making Claude Worse, with three guests.</p><p>Audit old prompt habits, use the prompt cache (up to 72% cheaper), build climbable evals and hill climb without overfitting.</p><p>Guests bring METR's long-tasks paper, Hamel Husain on binary LLM judges and Ethan Mollick's jagged frontier.</p><p>Sources:</p><ul><li>Your Old Prompts Are Making Claude Worse, Lance Martin: <a href="https://www.youtube.com/watch?v=ys6YQ2yfBpM">https://www.youtube.com/watch?v=ys6YQ2yfBpM</a></li><li>Measuring AI Ability to Complete Long Software Tasks, Thomas Kwa et al.: <a href="https://arxiv.org/abs/2503.14499">https://arxiv.org/abs/2503.14499</a></li><li>Using LLM-as-a-Judge For Evaluation: A Complete Guide – Hamel’s Blog, Hamel Husain: <a href="https://hamel.dev/blog/posts/llm-judge/index.html">https://hamel.dev/blog/posts/llm-judge/index.html</a></li><li>Centaurs and Cyborgs on the Jagged Frontier, Ethan Mollick: <a href="https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged">https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 09 Nov 2026 07:44:08 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-07_your-old-prompts-are-making-claude-worse/episode.mp3?v=b8c15caf" length="14250513" type="audio/mpeg"/>
+    <itunes:duration>891</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-07_your-old-prompts-are-making-claude-worse/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0</guid>
+    <title>How Two Founders Ran 60 UGC Creators With Zero Employees</title>
+    <link>https://luongnv.com/podcast/#2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0</link>
+    <description>Mau Baron's X article on how Prayer Lock grew from $25k to $150k a month with UGC, run by two founders and no employees.
+
+The playbook: an app worth filming, three creators first, base plus bonus pay, and reading every bad week as hook, retention or conversion.
+
+Guests bring Andrew Chen on why marketing channels decay and an Instagram study on disclosing sponsored posts.
+
+Sources:
+- How we ran a UGC army to $150k/month with 0 employees (The Complete Guide), Mau Baron (@maubaron) (https://x.com/maubaron/status/2118738294452150361)
+- Every marketing channel sucks right now, Andrew Chen (https://andrewchen.substack.com/p/every-marketing-channel-sucks-right)
+- Influencer Self-Disclosure Practices on Instagram: A Multi-Country Longitudinal Study, Thales Bertaglia et al. (https://arxiv.org/abs/2407.09202)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Mau Baron's X article on how Prayer Lock grew from $25k to $150k a month with UGC, run by two founders and no employees.</p><p>The playbook: an app worth filming, three creators first, base plus bonus pay, and reading every bad week as hook, retention or conversion.</p><p>Guests bring Andrew Chen on why marketing channels decay and an Instagram study on disclosing sponsored posts.</p><p>Sources:</p><ul><li>How we ran a UGC army to $150k/month with 0 employees (The Complete Guide), Mau Baron (@maubaron): <a href="https://x.com/maubaron/status/2118738294452150361">https://x.com/maubaron/status/2118738294452150361</a></li><li>Every marketing channel sucks right now, Andrew Chen: <a href="https://andrewchen.substack.com/p/every-marketing-channel-sucks-right">https://andrewchen.substack.com/p/every-marketing-channel-sucks-right</a></li><li>Influencer Self-Disclosure Practices on Instagram: A Multi-Country Longitudinal Study, Thales Bertaglia et al.: <a href="https://arxiv.org/abs/2407.09202">https://arxiv.org/abs/2407.09202</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 09 Nov 2026 07:15:18 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0/episode.mp3?v=c60bd273" length="11592702" type="audio/mpeg"/>
+    <itunes:duration>724</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-08_your-coding-agents-made-you-a-manager</guid>
+    <title>Your Coding Agents Made You a Manager</title>
+    <link>https://luongnv.com/podcast/#2026-11-08_your-coding-agents-made-you-a-manager</link>
+    <description>Addy Osmani's X article Your coding agents made you a manager: the skills for managing agents are the skills for managing a team.
+
+Give agents a check they can run, brief only what the repo can't show, plan first, restart after two failed fixes, and keep the judgment.
+
+Guests bring the Wharton cognitive surrender study via Gizmodo and METR's trial where developers were 19% slower with AI.
+
+Sources:
+- Your coding agents made you a manager, Addy Osmani (@addyosmani) (https://x.com/addyosmani/status/2119332146485891501)
+- ‘Cognitive Surrender’ Is a New and Useful Term for How AI Melts Brains, Mike Pearl (https://gizmodo.com/cognitive-surrender-is-a-new-and-useful-term-for-how-ai-melts-brains-2000742595)
+- Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity, METR (https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Addy Osmani's X article Your coding agents made you a manager: the skills for managing agents are the skills for managing a team.</p><p>Give agents a check they can run, brief only what the repo can't show, plan first, restart after two failed fixes, and keep the judgment.</p><p>Guests bring the Wharton cognitive surrender study via Gizmodo and METR's trial where developers were 19% slower with AI.</p><p>Sources:</p><ul><li>Your coding agents made you a manager, Addy Osmani (@addyosmani): <a href="https://x.com/addyosmani/status/2119332146485891501">https://x.com/addyosmani/status/2119332146485891501</a></li><li>‘Cognitive Surrender’ Is a New and Useful Term for How AI Melts Brains, Mike Pearl: <a href="https://gizmodo.com/cognitive-surrender-is-a-new-and-useful-term-for-how-ai-melts-brains-2000742595">https://gizmodo.com/cognitive-surrender-is-a-new-and-useful-term-for-how-ai-melts-brains-2000742595</a></li><li>Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity, METR: <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 09 Nov 2026 06:50:42 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-08_your-coding-agents-made-you-a-manager/episode.mp3?v=5344a928" length="12654300" type="audio/mpeg"/>
+    <itunes:duration>791</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-08_your-coding-agents-made-you-a-manager/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-03_the-most-lucrative-ai-business-to-start-in-2027</guid>
+    <title>The most lucrative AI business to start in 2027</title>
+    <link>https://luongnv.com/podcast/#2026-11-03_the-most-lucrative-ai-business-to-start-in-2027</link>
+    <description>An X article by Dan Koe on the most lucrative AI business to start in 2027.
+
+His thesis: capturing attention is the top skill, and one person using AI well can be a full creative team for their own brand or for clients.
+
+It lays out a step-by-step client process and a way to land the first client, with market data from Goldman Sachs and the IAB.
+
+Source: The most lucrative AI business to start in 2027, DAN KOE (@thedankoe) (https://x.com/thedankoe/status/2117664712532123680)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>An X article by Dan Koe on the most lucrative AI business to start in 2027.</p><p>His thesis: capturing attention is the top skill, and one person using AI well can be a full creative team for their own brand or for clients.</p><p>It lays out a step-by-step client process and a way to land the first client, with market data from Goldman Sachs and the IAB.</p><p>Source: The most lucrative AI business to start in 2027, DAN KOE (@thedankoe): <a href="https://x.com/thedankoe/status/2117664712532123680">https://x.com/thedankoe/status/2117664712532123680</a></p><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 03 Nov 2026 21:29:57 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-03_the-most-lucrative-ai-business-to-start-in-2027/episode.mp3?v=dcaa3c8e" length="12241231" type="audio/mpeg"/>
+    <itunes:duration>765</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-03_the-most-lucrative-ai-business-to-start-in-2027/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-03_the-road-to-self-improving-software</guid>
+    <title>The road to self-improving software</title>
+    <link>https://luongnv.com/podcast/#2026-11-03_the-road-to-self-improving-software</link>
+    <description>An X article by Ben Holmes on building a closed-loop software factory with agents.
+
+Agents can proactively fix alerted bugs, score their own sessions to improve skills, and mine customer data for the roadmap.
+
+It shifts the goal from faster pull requests to one loop from task to shipped product, with humans still reviewing.
+
+Source: The road to self-improving software, Ben Holmes (@BHolmesDev) (https://x.com/BHolmesDev/status/2110793920930107817)
+
+Written and voiced with AI (VoiceCast · chatterbox-turbo).</description>
+    <content:encoded><![CDATA[<p>An X article by Ben Holmes on building a closed-loop software factory with agents.</p><p>Agents can proactively fix alerted bugs, score their own sessions to improve skills, and mine customer data for the roadmap.</p><p>It shifts the goal from faster pull requests to one loop from task to shipped product, with humans still reviewing.</p><p>Source: The road to self-improving software, Ben Holmes (@BHolmesDev): <a href="https://x.com/BHolmesDev/status/2110793920930107817">https://x.com/BHolmesDev/status/2110793920930107817</a></p><p>Written and voiced with AI (VoiceCast · chatterbox-turbo).</p>]]></content:encoded>
+    <pubDate>Tue, 03 Nov 2026 17:26:26 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-03_the-road-to-self-improving-software/episode.mp3?v=91406205" length="5054252" type="audio/mpeg"/>
+    <itunes:duration>316</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-03_the-road-to-self-improving-software/transcript.vtt" type="text/vtt"/>
+  </item>
+  <item>
+    <guid isPermaLink="false">2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent</guid>
+    <title>How we scaled our app to 40 thousand dollars a month with zero dollars spent</title>
+    <link>https://luongnv.com/podcast/#2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent</link>
+    <description>An X article by app co-founder Nicholas on growing an app to about 40 thousand dollars a month with organic video.
+
+The method: a decent app built fast, heavy daily posting with trial reels, AI-assisted editing, and tested calls to action.
+
+It is a sponsored, self-reported playbook; some tactics, like buying followers or planted comments, carry real risks.
+
+Source: How we scaled our app to $40k/month with $0 spent (Full Guide), Nicholas (@nicholascalez) (https://x.com/nicholascalez/status/2117647942379057247)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>An X article by app co-founder Nicholas on growing an app to about 40 thousand dollars a month with organic video.</p><p>The method: a decent app built fast, heavy daily posting with trial reels, AI-assisted editing, and tested calls to action.</p><p>It is a sponsored, self-reported playbook; some tactics, like buying followers or planted comments, carry real risks.</p><p>Source: How we scaled our app to $40k/month with $0 spent (Full Guide), Nicholas (@nicholascalez): <a href="https://x.com/nicholascalez/status/2117647942379057247">https://x.com/nicholascalez/status/2117647942379057247</a></p><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 03 Nov 2026 17:15:34 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent/episode.mp3?v=744491fa" length="10938034" type="audio/mpeg"/>
+    <itunes:duration>684</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent/transcript.vtt" type="text/vtt"/>
+  </item>
+</channel>
+</rss>

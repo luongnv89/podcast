@@ -37,7 +37,7 @@ The site is static (`docs/`), deployed by GitHub Pages from `main`
   and every episode page, and Build Wiz AI Show's cover for share previews (rendered from
   `assets/cover/build-wiz-cover.html`, 1400 x 1400).
 - `scripts/publish.py` — copies delivered DropCast jobs into `docs/`, updates
-  `episodes.json`, rebuilds the story feeds, the episode pages and the sitemap, and (with
+  `episodes.json`, rebuilds the RSS feeds (stories and Build Wiz AI Show), the episode pages and the sitemap, and (with
   `--push`) commits and pushes. Standard library only.
 - `scripts/pages.py` — writes the episode pages and the sitemap from `episodes.json`
   (`python3 scripts/pages.py build`; `publish.py` runs it on every publish).
@@ -272,11 +272,31 @@ new episodes.
   `scripts/feed.py`.
 - Covers are 3000 x 3000 JPEGs rendered from `assets/cover/stories-cover.html?lang=<lang>`
   with headless Chromium.
-- Build Wiz AI Show stays hosted on Spotify for Creators and is not in these feeds.
+- Build Wiz AI Show stays hosted on Spotify for Creators and is not in these feeds; it has
+  its own feed for YouTube (below).
 
 **Submitting a feed (once per language):** creators.spotify.com → avatar or menu →
 **Add a new show** → **Find an existing show** → **Somewhere else** → paste the feed URL →
 enter the code emailed to buildwizai@gmail.com → check the details and submit.
+
+## Build Wiz AI Show feed (YouTube)
+
+https://luongnv.com/podcast/feed.xml holds every **English Build Wiz AI Show** episode on the
+site, newest first (key `buildwiz` in `FEEDS`; Vietnamese episodes and stories are left
+out). It is rebuilt with the story feeds on every publish, so a new episode reaches the
+platforms that read it by itself.
+
+- Channel: title Build Wiz AI Show, category Technology, not explicit, cover `docs/cover-3000.jpg`
+  (3000 x 3000, the share cover rendered at 2.14x: `--force-device-scale-factor=2.142857`),
+  owner email `buildwizai@gmail.com` (YouTube and Apple send verification codes there).
+- Item notes: the three summary lines, every source (title, author, link) and the AI-voice note.
+  Same guid and `?v=<sha8>` enclosure rules as the story feeds.
+- **For YouTube only** (YouTube Studio → Create → New podcast → Submit RSS feed). Never submit
+  it to Spotify: the show is hosted on Spotify for Creators (its own feed is
+  `https://anchor.fm/s/101f7db20/podcast/rss`), and a second submission would make a
+  duplicate show.
+- YouTube does not update an episode whose audio is re-voiced later; use "Re-upload from RSS
+  feed" on that video.
 
 ## Analytics (GA4 events)
 
