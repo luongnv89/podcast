@@ -24,8 +24,46 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-10T08:12:22Z",
+  "updated": "2026-11-10T16:53:52Z",
   "episodes": [
+    {
+      "id": "2026-11-10_three-little-pigs",
+      "title": "The Three Little Pigs, a bedtime story",
+      "summary": [
+        "A gentle bedtime retelling of The Three Little Pigs, from Joseph Jacobs's English Fairy Tales, on D. L. Ashliman's Three Little Pigs page.",
+        "A house of straw, a house of sticks, a house of bricks, and a clever little pig who outsmarts the wolf with turnips, apples and a butter churn.",
+        "Nobody is eaten: the wolf splashes into cold water, runs off for good, and the story ends with a quiet goodnight."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "en",
+      "format": "bedtime-story",
+      "published": "2026-11-10T16:42:53Z",
+      "duration_s": 489.259,
+      "size_bytes": 7830085,
+      "audio": "episodes/2026-11-10_three-little-pigs/episode.mp3",
+      "transcript": "episodes/2026-11-10_three-little-pigs/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Three Little Pigs",
+        "author": null,
+        "url": "https://sites.pitt.edu/~dash/type0124.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Marty Gots a Plan\", \"Golly Gee\", \"Carefree\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-10_three-little-pigs",
+      "image": {
+        "square": "art/2026-11-10_three-little-pigs/square.jpg",
+        "wide": "art/2026-11-10_three-little-pigs/wide.jpg",
+        "thumb": "art/2026-11-10_three-little-pigs/thumb.jpg",
+        "alt": "Pencil drawing of three smiling little pigs in coloured scarves standing in a sunny meadow in front of their red brick house, with a tree on each side."
+      },
+      "description": "The Three Little Pigs, retold as a gentle bedtime story from Joseph Jacobs's English Fairy Tales. Three houses, one huffing and puffing wolf, and a clever little pig. Nobody gets hurt.\n\nIn this episode:\n- Houses of straw, sticks and bricks\n- Turnips, apples and a butter churn rolling down the hill\n- A wolf down the chimney and a big cold splash\n\nSources: Three Little Pigs, Joseph Jacobs, via D. L. Ashliman\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - The Three Little Pigs, a bedtime story (2026-11-10).mp3"
+    },
     {
       "id": "2026-11-10_the-secret-behind-viral-product-launches",
       "title": "The Secret Behind Viral Product Launches",

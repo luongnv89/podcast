@@ -7,7 +7,7 @@
   <description>Gentle bedtime stories for children, told slowly by a warm narrator. Each episode retells a classic, public-domain tale (Cinderella, Hansel and Gretel, King Midas and more) in simple words, with soft music between the scenes and a calm goodnight at the end. The tales are adapted for bedtime, so nothing is too scary. Scripts and voices are made with AI, and every episode credits its source and its music. Also in French and Vietnamese.</description>
   <itunes:summary>Gentle bedtime stories for children, told slowly by a warm narrator. Each episode retells a classic, public-domain tale (Cinderella, Hansel and Gretel, King Midas and more) in simple words, with soft music between the scenes and a calm goodnight at the end. The tales are adapted for bedtime, so nothing is too scary. Scripts and voices are made with AI, and every episode credits its source and its music. Also in French and Vietnamese.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Fri, 06 Nov 2026 23:36:59 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 10 Nov 2026 16:53:52 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-10_three-little-pigs</guid>
+    <title>The Three Little Pigs, a bedtime story</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-10_three-little-pigs</link>
+    <description>A gentle bedtime retelling of The Three Little Pigs, from Joseph Jacobs's English Fairy Tales, on D. L. Ashliman's Three Little Pigs page.
+
+A house of straw, a house of sticks, a house of bricks, and a clever little pig who outsmarts the wolf with turnips, apples and a butter churn.
+
+Nobody is eaten: the wolf splashes into cold water, runs off for good, and the story ends with a quiet goodnight.
+
+Source: Three Little Pigs (https://sites.pitt.edu/~dash/type0124.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Marty Gots a Plan", "Golly Gee", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>A gentle bedtime retelling of The Three Little Pigs, from Joseph Jacobs's English Fairy Tales, on D. L. Ashliman's Three Little Pigs page.</p><p>A house of straw, a house of sticks, a house of bricks, and a clever little pig who outsmarts the wolf with turnips, apples and a butter churn.</p><p>Nobody is eaten: the wolf splashes into cold water, runs off for good, and the story ends with a quiet goodnight.</p><p>Source: Three Little Pigs: <a href="https://sites.pitt.edu/~dash/type0124.html">https://sites.pitt.edu/~dash/type0124.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Marty Gots a Plan", "Golly Gee", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 10 Nov 2026 16:42:53 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-10_three-little-pigs/episode.mp3?v=c274be66" length="7830085" type="audio/mpeg"/>
+    <itunes:duration>489</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-10_three-little-pigs/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-10_three-little-pigs/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-06_little-red-cap</guid>
     <title>Little Red Riding Hood, a bedtime story</title>

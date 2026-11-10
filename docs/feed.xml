@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Tue, 10 Nov 2026 09:09:35 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 10 Nov 2026 16:53:53 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,31 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-10_the-secret-behind-viral-product-launches</guid>
+    <title>The Secret Behind Viral Product Launches</title>
+    <link>https://luongnv.com/podcast/#2026-11-10_the-secret-behind-viral-product-launches</link>
+    <description>Kyle Jeong of Browserbase, with Tereza of Factory, explains how viral product launches on X are planned.
+
+His playbook: a scroll-stopping video, sharp copy, a story with a villain, friends, paid reach, partners, press and IRL events.
+
+Guests add X's ranking weights, Paul Graham on recruiting users by hand, and the FTC's rules for disclosing paid posts.
+
+Sources:
+- The secret behind viral product launches, Kyle Jeong (@kylejeong) (https://x.com/kylejeong/status/2119925224334586085)
+- the-algorithm-ml/projects/home/recap/README.md at main · twitter/the-algorithm-ml, Twitter (https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/README.md)
+- Do Things that Don't Scale, Paul Graham (https://paulgraham.com/ds.html)
+- Disclosures 101 for Social Media Influencers, Federal Trade Commission (https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Kyle Jeong of Browserbase, with Tereza of Factory, explains how viral product launches on X are planned.</p><p>His playbook: a scroll-stopping video, sharp copy, a story with a villain, friends, paid reach, partners, press and IRL events.</p><p>Guests add X's ranking weights, Paul Graham on recruiting users by hand, and the FTC's rules for disclosing paid posts.</p><p>Sources:</p><ul><li>The secret behind viral product launches, Kyle Jeong (@kylejeong): <a href="https://x.com/kylejeong/status/2119925224334586085">https://x.com/kylejeong/status/2119925224334586085</a></li><li>the-algorithm-ml/projects/home/recap/README.md at main · twitter/the-algorithm-ml, Twitter: <a href="https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/README.md">https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/README.md</a></li><li>Do Things that Don't Scale, Paul Graham: <a href="https://paulgraham.com/ds.html">https://paulgraham.com/ds.html</a></li><li>Disclosures 101 for Social Media Influencers, Federal Trade Commission: <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers">https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 10 Nov 2026 08:12:19 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-10_the-secret-behind-viral-product-launches/episode.mp3?v=e2a59c4a" length="9067795" type="audio/mpeg"/>
+    <itunes:duration>567</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-10_the-secret-behind-viral-product-launches/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-09_how-to-build-a-one-person-million-dollar-agency</guid>
     <title>How to Build a One-Person Million Dollar Agency with AI Agents</title>
