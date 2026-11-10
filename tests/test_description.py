@@ -14,6 +14,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from media_fake import FakeMedia
+
 ROOT = Path(__file__).resolve().parents[1]
 _spec = importlib.util.spec_from_file_location("publish", ROOT / "scripts" / "publish.py")
 assert _spec is not None and _spec.loader is not None
@@ -296,7 +298,7 @@ class PublishDescriptionTest(unittest.TestCase):
         self._tmp.cleanup()
 
     def entry(self) -> dict:
-        entry, _ = publish.episode_entry(self.job, self.site)
+        entry, _ = publish.episode_entry(self.job, self.site, media=FakeMedia())
         return entry
 
     def test_fallback_and_rebuilt_name(self) -> None:

@@ -13,6 +13,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from media_fake import FakeMedia
+
 ROOT = Path(__file__).resolve().parents[1]
 _spec = importlib.util.spec_from_file_location("publish", ROOT / "scripts" / "publish.py")
 assert _spec is not None and _spec.loader is not None
@@ -78,7 +80,7 @@ class EpisodeCreditsTest(unittest.TestCase):
         (job / "episode.mp3").write_bytes(b"ID3fake")
 
     def entry(self) -> dict:
-        entry, _ = publish.episode_entry(self.job, self.site)
+        entry, _ = publish.episode_entry(self.job, self.site, media=FakeMedia())
         return entry
 
     def test_single_source_entry_has_no_new_keys(self) -> None:
@@ -277,7 +279,7 @@ class IllustrationTest(EpisodeCreditsTest):
         self.story_job(group=None)
         _art(self.job)
         self.assertEqual(publish.find_illustration(self.job), self.job / "illustration")
-        entry, changed = publish.episode_entry(self.job, self.site)
+        entry, changed = publish.episode_entry(self.job, self.site, media=FakeMedia())
         key = self.job.name  # no story group: the episode id
         self.assertEqual(entry["image"], {"square": f"art/{key}/square.jpg", "wide": f"art/{key}/wide.jpg",
                                           "thumb": f"art/{key}/thumb.jpg", "alt": "A girl in a red cap."})
@@ -286,7 +288,7 @@ class IllustrationTest(EpisodeCreditsTest):
             self.assertEqual(dest.read_bytes(), JPG + name.encode())
             self.assertIn(dest, changed)
         # The same bytes again: nothing to copy, nothing changed.
-        _, again = publish.episode_entry(self.job, self.site)
+        _, again = publish.episode_entry(self.job, self.site, media=FakeMedia())
         self.assertFalse([p for p in again if "/art/" in str(p)])
 
     def test_group_fallback(self) -> None:
@@ -296,7 +298,7 @@ class IllustrationTest(EpisodeCreditsTest):
         self.sibling("2026-11-06_unrelated", group="other")
         _art(self.tmp / "2026-11-06_unrelated")
         self.assertEqual(publish.find_illustration(self.job), other / "illustration")
-        entry, changed = publish.episode_entry(self.job, self.site)
+        entry, changed = publish.episode_entry(self.job, self.site, media=FakeMedia())
         self.assertEqual(entry["image"]["wide"], f"art/{self.GROUP}/wide.jpg")
         self.assertIsNone(entry["image"]["alt"])
         self.assertEqual(len([p for p in changed if "/art/" in str(p)]), 3)
@@ -311,7 +313,7 @@ class IllustrationTest(EpisodeCreditsTest):
         self.assertEqual(publish.find_illustration(self.job), second / "illustration")
         (second / "illustration" / "thumb.jpg").unlink()
         self.assertIsNone(publish.find_illustration(self.job))
-        self.assertNotIn("image", publish.episode_entry(self.job, self.site)[0])
+        self.assertNotIn("image", publish.episode_entry(self.job, self.site, media=FakeMedia())[0])
 
     def test_unsafe_key_rejected(self) -> None:
         for key in ("../evil", "a/b", "..", "a..b", "", ".hidden", "a\\b", None, 5):
@@ -321,7 +323,7 @@ class IllustrationTest(EpisodeCreditsTest):
         self.assertEqual(publish.art_key("2026-11-06_little-red-cap"), "2026-11-06_little-red-cap")
         self.story_job(group="../evil")
         _art(self.job)
-        entry, changed = publish.episode_entry(self.job, self.site)
+        entry, changed = publish.episode_entry(self.job, self.site, media=FakeMedia())
         self.assertNotIn("image", entry)
         self.assertTrue(entry["_art_problems"])
         self.assertFalse((self.tmp / "evil").exists())
@@ -493,6 +495,13 @@ class StoryGroupTest(EpisodeCreditsTest):
         self.assertFalse(publish.update_index(self.site, [self.entry()]))
 
 
+def audio_is_published(e: dict) -> bool:
+    """The episode's MP3 is on the site (before podcast #30) or a media-repo release asset."""
+    if publish.local_audio_id(e["audio"]):
+        return (ROOT / "docs" / e["audio"]).is_file()
+    return e["audio"] == publish.audio_url(publish.entry_media_repo(e)[0], e["id"]) and bool(e.get("audio_sha256"))
+
+
 class SiteMigrationTest(unittest.TestCase):
     """The live index after #129: stories moved to their own page, nothing removed."""
 
@@ -509,13 +518,13 @@ class SiteMigrationTest(unittest.TestCase):
                 story = e.get("format") in publish.STORY_FORMATS
                 self.assertEqual(e["show"], STORY if story else BUILD)
                 if story:
-                    self.assertTrue((ROOT / "docs" / e["audio"]).is_file())
+                    self.assertTrue(audio_is_published(e))
 
     def test_no_episode_removed(self) -> None:
         self.assertGreaterEqual(len(self.episodes), 10)
         self.assertEqual(len({e["id"] for e in self.episodes}), len(self.episodes))
         for e in self.episodes:
-            self.assertTrue((ROOT / "docs" / e["audio"]).is_file(), e["id"])
+            self.assertTrue(audio_is_published(e), e["id"])
 
     def test_both_pages_share_the_index_and_script(self) -> None:
         main = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")

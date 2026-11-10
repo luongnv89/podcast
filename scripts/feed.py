@@ -26,7 +26,10 @@ unpublished on Spotify).
 The ``<guid>`` of an episode is its job id, so it never changes. Spotify downloads an
 audio file again only when its URL changes, so the enclosure URL carries
 ``?v=<first 8 hex of the MP3's SHA-256>``: a re-voiced episode keeps its guid and gets
-the new audio.
+the new audio. The episode audio lives on GitHub Releases (podcast #30): an absolute
+``audio`` URL is used as is and its version comes from the entry's ``audio_sha256``; a
+relative ``audio`` path (before the move) is ``BASE_URL`` + the path, versioned from the
+local file. ``length`` is the entry's ``size_bytes``.
 
 A story with an illustration (``image.square`` in ``episodes.json``, the file under
 ``docs/art/``) gets ``<itunes:image>`` on its item, so podcast apps show the picture as the
@@ -186,7 +189,29 @@ def _audio_version(site: Path, audio: str) -> str | None:
                 digest.update(block)
     except OSError:
         return None
-    return digest.hexdigest()[:8]
+    return digest.hexdigest()[:VERSION_HEX]
+
+
+VERSION_HEX = 8
+_SHA256 = re.compile(r"[0-9a-f]{64}")
+
+
+def is_absolute(audio: Any) -> bool:
+    """An absolute https URL (the release asset), not a path on this site."""
+    return isinstance(audio, str) and audio.startswith("https://")
+
+
+def enclosure_url(ep: dict[str, Any], site: Path = SITE) -> str:
+    """The enclosure URL: the entry's absolute ``audio``, else ``BASE_URL`` + the path, plus
+    ``?v=`` the first ``VERSION_HEX`` hex of ``audio_sha256`` (else of the local file)."""
+    audio = str(ep["audio"])
+    url = audio if is_absolute(audio) else BASE_URL + audio
+    sha = ep.get("audio_sha256")
+    if isinstance(sha, str) and _SHA256.fullmatch(sha.lower()):
+        version: str | None = sha.lower()[:VERSION_HEX]
+    else:
+        version = None if is_absolute(audio) else _audio_version(site, audio)
+    return f"{url}?v={version}" if version else url
 
 
 _ART_PATH = re.compile(r"art/[A-Za-z0-9][A-Za-z0-9._-]*/(?:wide|square|thumb)\.jpg")
@@ -346,10 +371,7 @@ def render_feed(index: dict[str, Any], key: str, site: Path = SITE, now: datetim
         f"  <itunes:type>{meta['type']}</itunes:type>",
     ]
     for ep in feed_episodes(index, key):
-        audio = BASE_URL + str(ep["audio"])
-        version = _audio_version(site, str(ep["audio"]))
-        if version:
-            audio += f"?v={version}"
+        audio = enclosure_url(ep, site)
         plain, html = _notes(ep, meta)
         out += [
             "  <item>",
