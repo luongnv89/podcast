@@ -24,8 +24,46 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-10T16:54:03Z",
+  "updated": "2026-11-10T17:00:37Z",
   "episodes": [
+    {
+      "id": "2026-11-10_three-little-pigs-fr",
+      "title": "Les Trois Petits Cochons, une histoire du soir",
+      "summary": [
+        "Une version douce des Trois Petits Cochons pour le soir, d'après les contes anglais de Joseph Jacobs, sur la page Three Little Pigs de D. L. Ashliman.",
+        "Une maison de paille, une maison de bois, une maison de briques, et un petit cochon malin qui déjoue le loup avec des navets, des pommes et une baratte.",
+        "Personne n'est mangé : le loup tombe dans l'eau froide, s'enfuit pour de bon, et l'histoire finit par une douce bonne nuit."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "fr",
+      "format": "bedtime-story",
+      "published": "2026-11-10T17:00:28Z",
+      "duration_s": 633.868,
+      "size_bytes": 10143917,
+      "audio": "episodes/2026-11-10_three-little-pigs-fr/episode.mp3",
+      "transcript": "episodes/2026-11-10_three-little-pigs-fr/transcript.vtt",
+      "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
+      "source": {
+        "title": "Three Little Pigs",
+        "author": null,
+        "url": "https://sites.pitt.edu/~dash/type0124.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Marty Gots a Plan\", \"Golly Gee\", \"Carefree\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-10_three-little-pigs",
+      "image": {
+        "square": "art/2026-11-10_three-little-pigs/square.jpg",
+        "wide": "art/2026-11-10_three-little-pigs/wide.jpg",
+        "thumb": "art/2026-11-10_three-little-pigs/thumb.jpg",
+        "alt": "Pencil drawing of three smiling little pigs in coloured scarves standing in a sunny meadow in front of their red brick house, with a tree on each side."
+      },
+      "description": "Les Trois Petits Cochons en douce histoire du soir, d'après les contes anglais de Joseph Jacobs. Trois maisons, un loup qui souffle très fort et un petit cochon bien malin. Personne n'a de mal.\n\nDans cet épisode :\n- Des maisons de paille, de bois et de briques\n- Des navets, des pommes et une baratte qui roule\n- Un loup dans la cheminée et un grand plouf\n\nSources : Three Little Pigs, Joseph Jacobs, via D. L. Ashliman\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Les Trois Petits Cochons, une histoire du soir (2026-11-10).mp3"
+    },
     {
       "id": "2026-11-10_three-little-pigs-vi",
       "title": "Ba chú heo con, chuyện kể trước giờ ngủ",

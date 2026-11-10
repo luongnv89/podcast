@@ -7,7 +7,7 @@
   <description>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</description>
   <itunes:summary>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</itunes:summary>
   <language>fr</language>
-  <lastBuildDate>Fri, 06 Nov 2026 23:36:59 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 10 Nov 2026 17:00:37 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-10_three-little-pigs-fr</guid>
+    <title>Les Trois Petits Cochons, une histoire du soir</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-10_three-little-pigs-fr</link>
+    <description>Une version douce des Trois Petits Cochons pour le soir, d'après les contes anglais de Joseph Jacobs, sur la page Three Little Pigs de D. L. Ashliman.
+
+Une maison de paille, une maison de bois, une maison de briques, et un petit cochon malin qui déjoue le loup avec des navets, des pommes et une baratte.
+
+Personne n'est mangé : le loup tombe dans l'eau froide, s'enfuit pour de bon, et l'histoire finit par une douce bonne nuit.
+
+Source: Three Little Pigs (https://sites.pitt.edu/~dash/type0124.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Marty Gots a Plan", "Golly Gee", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
+    <content:encoded><![CDATA[<p>Une version douce des Trois Petits Cochons pour le soir, d'après les contes anglais de Joseph Jacobs, sur la page Three Little Pigs de D. L. Ashliman.</p><p>Une maison de paille, une maison de bois, une maison de briques, et un petit cochon malin qui déjoue le loup avec des navets, des pommes et une baratte.</p><p>Personne n'est mangé : le loup tombe dans l'eau froide, s'enfuit pour de bon, et l'histoire finit par une douce bonne nuit.</p><p>Source: Three Little Pigs: <a href="https://sites.pitt.edu/~dash/type0124.html">https://sites.pitt.edu/~dash/type0124.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Marty Gots a Plan", "Golly Gee", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
+    <pubDate>Tue, 10 Nov 2026 17:00:28 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-10_three-little-pigs-fr/episode.mp3?v=cb835e9a" length="10143917" type="audio/mpeg"/>
+    <itunes:duration>634</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-10_three-little-pigs/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-10_three-little-pigs-fr/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-06_little-red-cap-fr</guid>
     <title>Le Petit Chaperon rouge, une histoire du soir</title>
