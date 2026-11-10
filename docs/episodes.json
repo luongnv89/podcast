@@ -24,8 +24,83 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-10T17:00:37Z",
+  "updated": "2026-11-10T21:08:33Z",
   "episodes": [
+    {
+      "id": "2026-11-10_become-a-cracked-marketer",
+      "title": "Become a Cracked Marketer: The Marketing Engineer Method",
+      "summary": [
+        "The Startup Ideas Podcast writes up Cody Schneider's Marketing Engineer Method: a coding agent set up to make and ship ads.",
+        "Give the agent data, write-only access and tools, then turn one URL into five static ads and a 30-second avatar video for about $5.",
+        "Guests add research on long contexts, the evaluator loop behind his quality gate, and the FTC's rule on AI-generated reviews."
+      ],
+      "category": "marketing",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-10T21:08:31Z",
+      "duration_s": 513.48,
+      "size_bytes": 8216846,
+      "audio": "episodes/2026-11-10_become-a-cracked-marketer/episode.mp3",
+      "transcript": "episodes/2026-11-10_become-a-cracked-marketer/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Become a Cracked Marketer",
+        "author": "The Startup Ideas Podcast (SIP) 🧃 (@startupideaspod)",
+        "url": "https://x.com/startupideaspod/status/2120222028108337379",
+        "published": "2026-11-10T18:28:17Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "Become a Cracked Marketer",
+          "author": "The Startup Ideas Podcast (SIP) 🧃 (@startupideaspod)",
+          "url": "https://x.com/startupideaspod/status/2120222028108337379"
+        },
+        {
+          "title": "Lost in the Middle: How Language Models Use Long Contexts",
+          "author": "Nelson F. Liu et al.",
+          "url": "https://arxiv.org/abs/2307.03172"
+        },
+        {
+          "title": "Building effective AI agents",
+          "author": "Anthropic",
+          "url": "https://www.anthropic.com/research/building-effective-agents"
+        },
+        {
+          "title": "FTC finalizes rule banning fake reviews, including those made with AI | TechCrunch",
+          "author": "Lauren Forristal",
+          "url": "https://techcrunch.com/2024/08/14/ftc-finalizes-rule-banning-fake-reviews/"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "Lost in the Middle: How Language Models Use Long Contexts"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Building effective AI agents"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "FTC finalizes rule banning fake reviews, including those made with AI | TechCrunch"
+          ]
+        }
+      ],
+      "description": "Can a coding agent be your best marketer? Bob and Alice unpack Become a Cracked Marketer from The Startup Ideas Podcast: Cody Schneider's Marketing Engineer Method for ads made as code.\n\nIn this episode:\n- The environment: one data warehouse, write-only ad access and the right tools.\n- One URL into five static ads, and a 30-second avatar video for about $5.\n- A vision-model quality gate, cohorts of 30, and the FTC's rule on AI-generated reviews.\n\nSources: The Startup Ideas Podcast; Nelson F. Liu et al.; Anthropic; Lauren Forristal\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Become a Cracked Marketer The Marketing Engineer Method (2026-11-10).mp3"
+    },
     {
       "id": "2026-11-10_three-little-pigs-fr",
       "title": "Les Trois Petits Cochons, une histoire du soir",

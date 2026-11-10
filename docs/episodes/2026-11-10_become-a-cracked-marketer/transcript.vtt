@@ -1,0 +1,265 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.061
+<v Alice>What if a finished ad came back while you were still talking about it?
+
+2
+00:00:04.361 --> 00:00:11.969
+<v Bob>That's what one marketer showed on a podcast. His agent researched the customer, wrote the ads, made the video and uploaded it.
+
+3
+00:00:12.269 --> 00:00:15.141
+<v Alice>So is marketing just code now?
+
+4
+00:00:19.441 --> 00:00:28.738
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and Bob is explaining today's X article.
+
+5
+00:00:29.038 --> 00:00:41.353
+<v Bob>Hi everyone. It's Become a Cracked Marketer, from The Startup Ideas Podcast. It writes up an episode where Greg talks with Cody Schneider, who has done marketing for 10 years, about what they call the Marketing Engineer Method.
+
+6
+00:00:41.653 --> 00:00:43.094
+<v Alice>And our guests?
+
+7
+00:00:43.394 --> 00:00:51.159
+<v Bob>Maya brings research on long contexts, Lena brings a guide to agent loops, and Sam brings the rules on fake reviews.
+
+8
+00:00:51.459 --> 00:00:53.101
+<v Alice>So what's the big claim?
+
+9
+00:00:53.401 --> 00:01:08.740
+<v Bob>That the work a team used to do now runs on tokens. A static ad used to take a graphic designer and a copywriter, and a video ad took a UGC creator, a video editor and a motion graphics designer. Cody's line is: all marketing is now just code.
+
+10
+00:01:09.040 --> 00:01:12.416
+<v Alice>That's a bold line for a marketer to say out loud.
+
+11
+00:01:12.716 --> 00:01:14.246
+<v Alice>Where does it start?
+
+12
+00:01:14.546 --> 00:01:28.011
+<v Bob>With the environment. Give your agent three things: data, access and tools. Cody compares it to a petri dish: the agent thrives when it has your business data, write access to your ad platforms, and tools for the work.
+
+13
+00:01:28.311 --> 00:01:32.708
+<v Alice>Start with the data. Why not just let the agent call the APIs?
+
+14
+00:01:33.008 --> 00:01:48.777
+<v Bob>Because raw API pulls flood the agent's context, and Cody says it's very likely to hallucinate on that much data. So a pipeline pulls every source into one warehouse, and the agent reads from there. It's like giving a new hire one clean spreadsheet instead of twenty logins.
+
+15
+00:01:49.077 --> 00:01:51.767
+<v Alice>Maya, does research back that up?
+
+16
+00:01:52.067 --> 00:02:03.814
+<v Maya>It fits. In Lost in the Middle, a paper on arXiv, Nelson Liu and colleagues found that model performance can degrade significantly when the relevant information moves around in a long input.
+
+17
+00:02:04.114 --> 00:02:05.432
+<v Alice>Degrade how?
+
+18
+00:02:05.732 --> 00:02:17.026
+<v Maya>Performance is often highest when the key information is at the beginning or the end. It drops when the model has to find it in the middle of a long context, even for explicitly long-context models.
+
+19
+00:02:17.326 --> 00:02:20.500
+<v Alice>So, less dumping, more querying.
+
+20
+00:02:20.800 --> 00:02:36.313
+<v Bob>Exactly. And access is write only: the agent uploads creative and turns ads off with an API token, but every read comes from the warehouse. Agents fire a thousand requests at once, and Cody says that's how people get their Facebook ads accounts banned.
+
+21
+00:02:36.613 --> 00:02:38.939
+<v Alice>Greg had a line for that, right?
+
+22
+00:02:39.239 --> 00:02:42.540
+<v Bob>Assume your agents are like drunk patrons at a restaurant.
+
+23
+00:02:42.840 --> 00:02:46.035
+<v Alice>Okay, the environment's ready. Then what?
+
+24
+00:02:46.335 --> 00:03:04.948
+<v Bob>One skill: he types slash static ads, drops in a brand URL and hits enter. The skill pulls the brand's style guide, finds its Facebook ads library and researches pain points on Reddit and other social media. Then it proposes five ad concepts, generates them, and uploads them to a new ad set.
+
+25
+00:03:05.248 --> 00:03:06.821
+<v Alice>Were the ads any good?
+
+26
+00:03:07.121 --> 00:03:14.044
+<v Bob>One headline it wrote was: Stop guessing which idea to build. Greg's review was one word: fire.
+
+27
+00:03:14.344 --> 00:03:15.522
+<v Alice>High praise.
+
+28
+00:03:15.822 --> 00:03:26.047
+<v Bob>And you can run several sessions at once. Cody fired off four brands while he talked. A short markdown file with your fonts and colors steers the look, like a style sheet for the agent.
+
+29
+00:03:26.347 --> 00:03:27.872
+<v Alice>And the video ads?
+
+30
+00:03:28.172 --> 00:03:38.397
+<v Bob>Cody sees people spend 50 dollars in tokens on one UGC ad. His workflow made one for a projected 4.75 dollars, plus a few cents for motion graphics.
+
+31
+00:03:38.697 --> 00:03:39.440
+<v Alice>How?
+
+32
+00:03:39.740 --> 00:03:57.228
+<v Bob>Lock the script, the voice and the face first. A voice clone reads the script into an MP3, and the video model gets three inputs: the MP3, the exact script and a reference image. Cody calls it a walled garden, like a film set where the actor can only say the lines on the card.
+
+33
+00:03:57.528 --> 00:03:58.997
+<v Alice>And the cost trick?
+
+34
+00:03:59.297 --> 00:04:14.845
+<v Bob>Render at 480p, then upscale: he puts a 1080p render at about 14 dollars. And check every word: the agent transcribes the video and matches it to the script. When an avatar said Calendla, the agent found the timestamps and swapped in Calendly.
+
+35
+00:04:15.145 --> 00:04:17.835
+<v Alice>Calendla sounds like a cough syrup.
+
+36
+00:04:18.135 --> 00:04:31.733
+<v Bob>It does! And the math: 10 ads for 50 dollars, 100 ads for 500, against 500 dollars or more for one ad the old way. He even sometimes sees the AI avatar beat a human reading the same script.
+
+37
+00:04:32.033 --> 00:04:34.468
+<v Alice>Who checks all this before it ships?
+
+38
+00:04:34.768 --> 00:04:52.231
+<v Bob>A vision model. Greg wants a creative director agent that scores the first pass and only shows him an 8 or 9 out of 10. Cody's team already runs this loop on static ads for clients in regulated markets like finance: make the creative, check it against the rules, send changes back, repeat.
+
+39
+00:04:52.531 --> 00:04:55.268
+<v Alice>Lena, is that a known pattern?
+
+40
+00:04:55.568 --> 00:05:08.065
+<v Lena>It is. Anthropic's guide, Building effective AI agents, calls it the evaluator-optimizer workflow: one call generates a response while another gives evaluation and feedback in a loop.
+
+41
+00:05:08.365 --> 00:05:10.006
+<v Alice>When does it work best?
+
+42
+00:05:10.306 --> 00:05:21.297
+<v Lena>The guide says it's particularly effective when there are clear evaluation criteria, and when iterative refinement provides measurable value. Brand rules for a bank are a pretty clear rubric.
+
+43
+00:05:21.597 --> 00:05:32.589
+<v Bob>And it isn't perfect. Most creative passes in two to three rounds, but Cody puts the failure rate at about 1 in 50 video generations. It's like a proofreader who still lets the odd typo through.
+
+44
+00:05:32.889 --> 00:05:35.134
+<v Alice>Then you just launch everything?
+
+45
+00:05:35.434 --> 00:05:49.624
+<v Bob>Pretty much. Cody says Facebook's ad system will show the right ad to the right person, so your job is supply. Go from 10 ads a month to 300, ship in cohorts of 30, and store the prompt for every ad next to its results.
+
+46
+00:05:49.924 --> 00:05:51.223
+<v Alice>Why so many?
+
+47
+00:05:51.523 --> 00:06:03.792
+<v Bob>Because winners burn out fast. One ad booked two demos at 50 dollars against a 150 dollar average, then Facebook stopped spending on it. It's like a hit song that the radio plays to death in a week.
+
+48
+00:06:04.092 --> 00:06:05.296
+<v Alice>And search?
+
+49
+00:06:05.596 --> 00:06:14.370
+<v Bob>Same scale. His Google Ads agent audits 5,000 search terms in 20 seconds and checks each one for buyer intent before the money goes out.
+
+50
+00:06:14.670 --> 00:06:17.964
+<v Alice>Okay, skeptic time. What could go wrong?
+
+51
+00:06:18.264 --> 00:06:30.406
+<v Bob>First, the costs are projections: 4.75 dollars was projected, and Cody only expects a new provider to bring it near 3. And these come from one live demo, not a test across many brands.
+
+52
+00:06:30.706 --> 00:06:32.345
+<v Alice>Fair. Sam?
+
+53
+00:06:32.645 --> 00:06:46.701
+<v Sam>My worry is the avatars. Lauren Forristal at TechCrunch reported that the FTC finalized a rule against fake reviews. It covers AI-generated reviews, and reviews from anyone who doesn't have experience with the actual product.
+
+54
+00:06:47.001 --> 00:06:50.029
+<v Alice>And an avatar praising a product is...
+
+55
+00:06:50.329 --> 00:07:02.690
+<v Sam>I think it's close to a review from someone who never used it, if it's presented as a real customer. And the stakes are real: the maximum civil penalty is 51,744 dollars per violation.
+
+56
+00:07:02.990 --> 00:07:12.798
+<v Bob>My take: the article never says whether the avatar ads are labeled as AI. If you try this, make it clear, and never script an avatar as a happy customer.
+
+57
+00:07:13.098 --> 00:07:16.601
+<v Alice>Agreed. Script the product, not a fake fan.
+
+58
+00:07:16.901 --> 00:07:21.426
+<v Alice>Builder's Corner time. Bob, what's one thing to try this week?
+
+59
+00:07:21.726 --> 00:07:33.832
+<v Bob>Make one write-only ad token, and point your agent at a single data store for reads. Then run one cohort of 30 ads and keep every prompt next to its results, so the agent can tell you what's working.
+
+60
+00:07:34.132 --> 00:07:35.329
+<v Alice>Takeaways?
+
+61
+00:07:35.629 --> 00:07:47.770
+<v Bob>One: the environment matters more than the prompt, so give it data, access and tools. Two: put a checker in the loop before a human looks. Three: volume feeds the algorithm, so keep the supply coming.
+
+62
+00:07:48.070 --> 00:07:51.828
+<v Alice>And Cody's version: your job is to be a conductor.
+
+63
+00:07:52.128 --> 00:07:53.510
+<v Alice>What's still open?
+
+64
+00:07:53.810 --> 00:08:03.908
+<v Bob>Whether these numbers hold beyond one demo, and how platforms and buyers react when most ads come from avatars. Cody thinks every company will be here in five years. We'll see.
+
+65
+00:08:04.208 --> 00:08:19.419
+<v Bob>This episode is based on Become a Cracked Marketer, from The Startup Ideas Podcast, with Cody Schneider and Greg. Thanks also to Nelson Liu and colleagues for Lost in the Middle, to Anthropic for Building effective AI agents, and to Lauren Forristal at TechCrunch.
+
+66
+00:08:19.719 --> 00:08:26.880
+<v Alice>Thanks for listening, everyone. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

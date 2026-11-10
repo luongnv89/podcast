@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Tue, 10 Nov 2026 16:53:53 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 10 Nov 2026 21:08:33 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,31 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-10_become-a-cracked-marketer</guid>
+    <title>Become a Cracked Marketer: The Marketing Engineer Method</title>
+    <link>https://luongnv.com/podcast/#2026-11-10_become-a-cracked-marketer</link>
+    <description>The Startup Ideas Podcast writes up Cody Schneider's Marketing Engineer Method: a coding agent set up to make and ship ads.
+
+Give the agent data, write-only access and tools, then turn one URL into five static ads and a 30-second avatar video for about $5.
+
+Guests add research on long contexts, the evaluator loop behind his quality gate, and the FTC's rule on AI-generated reviews.
+
+Sources:
+- Become a Cracked Marketer, The Startup Ideas Podcast (SIP) 🧃 (@startupideaspod) (https://x.com/startupideaspod/status/2120222028108337379)
+- Lost in the Middle: How Language Models Use Long Contexts, Nelson F. Liu et al. (https://arxiv.org/abs/2307.03172)
+- Building effective AI agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)
+- FTC finalizes rule banning fake reviews, including those made with AI | TechCrunch, Lauren Forristal (https://techcrunch.com/2024/08/14/ftc-finalizes-rule-banning-fake-reviews/)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>The Startup Ideas Podcast writes up Cody Schneider's Marketing Engineer Method: a coding agent set up to make and ship ads.</p><p>Give the agent data, write-only access and tools, then turn one URL into five static ads and a 30-second avatar video for about $5.</p><p>Guests add research on long contexts, the evaluator loop behind his quality gate, and the FTC's rule on AI-generated reviews.</p><p>Sources:</p><ul><li>Become a Cracked Marketer, The Startup Ideas Podcast (SIP) 🧃 (@startupideaspod): <a href="https://x.com/startupideaspod/status/2120222028108337379">https://x.com/startupideaspod/status/2120222028108337379</a></li><li>Lost in the Middle: How Language Models Use Long Contexts, Nelson F. Liu et al.: <a href="https://arxiv.org/abs/2307.03172">https://arxiv.org/abs/2307.03172</a></li><li>Building effective AI agents, Anthropic: <a href="https://www.anthropic.com/research/building-effective-agents">https://www.anthropic.com/research/building-effective-agents</a></li><li>FTC finalizes rule banning fake reviews, including those made with AI | TechCrunch, Lauren Forristal: <a href="https://techcrunch.com/2024/08/14/ftc-finalizes-rule-banning-fake-reviews/">https://techcrunch.com/2024/08/14/ftc-finalizes-rule-banning-fake-reviews/</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 10 Nov 2026 21:08:31 +0000</pubDate>
+    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-10_become-a-cracked-marketer/episode.mp3?v=e2d2afd4" length="8216846" type="audio/mpeg"/>
+    <itunes:duration>513</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-10_become-a-cracked-marketer/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-10_the-secret-behind-viral-product-launches</guid>
     <title>The Secret Behind Viral Product Launches</title>
