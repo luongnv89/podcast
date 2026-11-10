@@ -33,3 +33,8 @@ jobs:
           path: docs
       - id: deployment
         uses: actions/deploy-pages@v5
+        with:
+          # GitHub's Pages backend sometimes takes over 10 min to sync and switch a
+          # site this size (~240 MB); the default 10-minute wait then cancels a deploy
+          # that would have finished. Wait up to 25 min instead.
+          timeout: 1500000
