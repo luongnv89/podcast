@@ -1,0 +1,293 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.968
+<v Bob>What does it really take to get a million people to watch your product launch?
+
+2
+00:00:04.268 --> 00:00:10.999
+<v Alice>Spoiler: it's almost never luck. It's weeks of planning, a story, and a lot of friends.
+
+3
+00:00:15.299 --> 00:00:24.073
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and today I'm the one asking the questions.
+
+4
+00:00:24.373 --> 00:00:37.919
+<v Alice>And I'm Alice. Our source is an X article called The secret behind viral product launches, by Kyle Jeong, who launches things at Browserbase. He co-wrote it with Tereza, who ran launches at Factory and E2B.
+
+5
+00:00:38.219 --> 00:00:43.034
+<v Bob>So why does a launch need a whole playbook now? Can't you just post a cool video?
+
+6
+00:00:43.334 --> 00:00:55.057
+<v Alice>Kyle's point is that AI has industrialized content. Everyone can produce more of it, so you're fighting for attention against doomscrolling, dating apps and political ragebait.
+
+7
+00:00:55.357 --> 00:00:57.664
+<v Bob>And companies are getting desperate about it?
+
+8
+00:00:57.964 --> 00:01:04.660
+<v Alice>Pretty much. He mentions ads by the beach in San Francisco, and even messages in fortune cookies.
+
+9
+00:01:04.960 --> 00:01:08.208
+<v Bob>Fortune cookies. Okay, that's a new low.
+
+10
+00:01:08.508 --> 00:01:15.413
+<v Alice>And he has a line I love: like engineering, a lot of marketing is only noticed when it sucks.
+
+11
+00:01:15.713 --> 00:01:18.713
+<v Bob>Where does a launch start? The video, I guess?
+
+12
+00:01:19.013 --> 00:01:32.396
+<v Alice>Yes, a scroll-stopping video. And people badly underestimate the cost. Kyle says launch videos easily cost 100 to 250 thousand dollars, and the whole film can take a month or more.
+
+13
+00:01:32.696 --> 00:01:35.963
+<v Bob>Wait, really? For a launch video?
+
+14
+00:01:36.263 --> 00:01:48.787
+<v Alice>Really. Think of it like a short film, with a script, a set and an editor. So you pick a studio for three things: fast iteration, someone who sharpens your vision, and a real track record.
+
+15
+00:01:49.087 --> 00:01:51.952
+<v Bob>And then you write the tweet under it.
+
+16
+00:01:52.252 --> 00:02:01.328
+<v Alice>And that's where teams slip. You can't spend that much on film and then write mediocre copy. In a launch, every word must earn its place.
+
+17
+00:02:01.628 --> 00:02:03.414
+<v Bob>What makes copy good, then?
+
+18
+00:02:03.714 --> 00:02:18.746
+<v Alice>His test is short. Copy should be visualizable, falsifiable, and something no one else can say. And for X there's a checklist: proof of work, a clear problem with how the world works, your contrarian take, and a huge number.
+
+19
+00:02:19.046 --> 00:02:21.251
+<v Bob>A huge number. Like what?
+
+20
+00:02:21.551 --> 00:02:32.415
+<v Alice>His example is the Jev launch: the founder created ChatGPT and RLHF, that's the proof. The number was 200 times faster and 400 times cheaper.
+
+21
+00:02:32.715 --> 00:02:36.346
+<v Bob>Okay, video and words. What ties it together?
+
+22
+00:02:36.646 --> 00:02:46.407
+<v Alice>A damn good story, in his words. Every story needs a hero and a villain, a contrarian take, and people who'll love it and people who'll hate it.
+
+23
+00:02:46.707 --> 00:02:49.270
+<v Bob>A villain? For a software launch?
+
+24
+00:02:49.570 --> 00:02:57.845
+<v Alice>It's like a bedtime story for grown-ups. Take Factory Router. The boring version is: we launched routing between models.
+
+25
+00:02:58.145 --> 00:03:05.480
+<v Alice>The story version has a villain, the big labs. Plus cost savings, and a fight against endless token maxing.
+
+26
+00:03:05.780 --> 00:03:09.237
+<v Bob>Ha. So the labs are the big bad wolf.
+
+27
+00:03:09.537 --> 00:03:19.727
+<v Alice>And you don't tell it once. You repeat the same story to the media, at conferences, at your own community events. Good stories are curated, not invented.
+
+28
+00:03:20.027 --> 00:03:23.066
+<v Bob>Then the post goes live. Who actually sees it?
+
+29
+00:03:23.366 --> 00:03:32.105
+<v Alice>Your friends first. Kyle even suggests a Luma or Partiful invite for launch day, so you can text people at the exact moment you post.
+
+30
+00:03:32.405 --> 00:03:35.224
+<v Bob>A party invite for a tweet. Respect.
+
+31
+00:03:35.524 --> 00:03:47.282
+<v Alice>And quotes matter. He says a quote tweet from someone with 50 thousand followers can be a huge force multiplier, because the X algorithm prefers quotes and replies over reposts and likes.
+
+32
+00:03:47.582 --> 00:03:50.655
+<v Bob>Is that true, though, or launch folklore?
+
+33
+00:03:50.955 --> 00:04:03.561
+<v Theo>I checked the code. Twitter, now X, published its ranking model on GitHub, in a readme for the heavy ranker. The weights listed in April 2023 put a reply at 13.5 and a like at only 0.5.
+
+34
+00:04:03.861 --> 00:04:14.214
+<v Theo>And a reply the author engages with is weighted 75. So a conversation counts far more than a tap. One caveat: the readme says those weights can be adjusted at any time.
+
+35
+00:04:14.514 --> 00:04:17.681
+<v Bob>So replies beat likes. Good to know, Theo.
+
+36
+00:04:17.981 --> 00:04:26.035
+<v Alice>Which matches Kyle's advice. He even says to chat with the algorithm and see for yourself. The goal is conversation, not applause.
+
+37
+00:04:26.335 --> 00:04:39.544
+<v Alice>Right. And since friends get tired of your asks, Tereza builds what she calls a community engine. It scores your network: when you last interacted, whether they got favors from you, when they last engaged with you online.
+
+38
+00:04:39.844 --> 00:04:43.138
+<v Bob>A score for your friends? That sounds a bit cold.
+
+39
+00:04:43.438 --> 00:04:57.077
+<v Alice>Think of it more like a gardener's notebook. You use the same engine to give early access before launch, share free credits, and collect feedback. Tereza reached hundreds of thousands of impressions just by talking to people daily.
+
+40
+00:04:57.377 --> 00:05:09.100
+<v Lena>That's the oldest trick in startups, honestly. Paul Graham's essay Do Things that Don't Scale says the most common unscalable thing founders do is recruit users manually. You can't wait for users to come to you.
+
+41
+00:05:09.400 --> 00:05:19.370
+<v Lena>At Y Combinator they call one version the Collison installation. When someone agreed to try Stripe, the founders said give me your laptop, and set them up on the spot.
+
+42
+00:05:19.670 --> 00:05:23.859
+<v Bob>So the community engine is the Collison installation, with a spreadsheet.
+
+43
+00:05:24.159 --> 00:05:36.091
+<v Alice>My take, exactly. And then the paid part. Most companies use an agency, and Kyle says to expect 35 to 40 thousand dollars upfront for a million guaranteed views.
+
+44
+00:05:36.391 --> 00:05:40.022
+<v Bob>Hold on. Why pay for views that might be junk?
+
+45
+00:05:40.322 --> 00:05:51.488
+<v Alice>That's his own question. The answer is momentum, not views. He compares the algorithm to a snowball: you need velocity in the first half hour to reach people outside your circle.
+
+46
+00:05:51.788 --> 00:05:53.354
+<v Bob>What else is in the playbook?
+
+47
+00:05:53.654 --> 00:06:07.200
+<v Alice>Three more moves. Co-launch with other companies: Kyle's team launched with Vercel, LangChain, CrewAI and Mastra, with day zero integrations. Imagine four audiences hearing about you on the same morning.
+
+48
+00:06:07.500 --> 00:06:19.096
+<v Alice>Then earned media, like a TechCrunch article or a spot on TBPN. And real life events: launch parties, factory tours. His phrase is fans over followers.
+
+49
+00:06:19.396 --> 00:06:22.214
+<v Bob>Fans over followers. I like that one.
+
+50
+00:06:22.514 --> 00:06:29.372
+<v Alice>And who does all this? He says the most underpaid person at your company is the one who can tell its story.
+
+51
+00:06:29.672 --> 00:06:32.154
+<v Bob>The storyteller. Not the founder?
+
+52
+00:06:32.454 --> 00:06:45.489
+<v Alice>Early on, telling the story is the founders' job. But someone has to shape it with them and put a megaphone in front of them. And that group is tiny, so VCs and companies court them with influencer summer camps and even yachts.
+
+53
+00:06:45.789 --> 00:06:48.789
+<v Bob>Yachts. I'm clearly in the wrong job.
+
+54
+00:06:49.089 --> 00:06:59.024
+<v Alice>His closing line sums it up: in 2026, there's no such thing as a free launch. You either pay people for tweets, or you invest real time upfront.
+
+55
+00:06:59.324 --> 00:07:06.805
+<v Bob>Okay, my objection. Paying for amplification, and the badge most big accounts skip. Isn't that a bit deceptive?
+
+56
+00:07:07.105 --> 00:07:16.483
+<v Alice>Kyle is upfront about it. He says X added a paid partnerships badge in March 2026, but a lot of the bigger accounts still don't use it.
+
+57
+00:07:16.783 --> 00:07:30.166
+<v Sam>And that's where I'd be careful. The Federal Trade Commission's guide, Disclosures 101 for Social Media Influencers, says to disclose any financial relationship with a brand. Financial relationships aren't limited to money.
+
+58
+00:07:30.466 --> 00:07:41.121
+<v Sam>It also says don't assume a platform's disclosure tool is good enough. Use it in addition to your own clear disclosure. That's US law, and it can apply when posting from abroad.
+
+59
+00:07:41.421 --> 00:07:44.588
+<v Bob>So the badge is the floor, not the ceiling.
+
+60
+00:07:44.888 --> 00:07:54.138
+<v Alice>Right. And Kyle's own warning fits here: the chronically online notice desperate attempts, and they scrutinize paid partnership labels and bot farms.
+
+61
+00:07:54.438 --> 00:07:58.406
+<v Bob>And the budget? Most of us don't have 250 thousand for a film.
+
+62
+00:07:58.706 --> 00:08:07.754
+<v Lena>Which is why the cheap part matters most early. Paul Graham notes Airbnb went door to door in New York, recruiting users and helping them improve listings.
+
+63
+00:08:08.054 --> 00:08:20.416
+<v Alice>Builder's Corner. One thing to try before your next launch: write your launch post against Kyle's checklist. Proof of work, a clear problem, your contrarian take, one big number you can defend.
+
+64
+00:08:20.716 --> 00:08:21.579
+<v Bob>And then?
+
+65
+00:08:21.879 --> 00:08:30.618
+<v Alice>Then list ten people who'd genuinely quote it, not just like it, and send them a launch day invite. Replies and quotes are what move the ranking.
+
+66
+00:08:30.918 --> 00:08:35.606
+<v Bob>Let me sum it up. Viral launches are engineered, over weeks or months.
+
+67
+00:08:35.906 --> 00:08:39.792
+<v Alice>A story with a hero and a villain beats a feature list.
+
+68
+00:08:40.092 --> 00:08:43.911
+<v Bob>Friends and replies give you momentum in the first half hour.
+
+69
+00:08:44.211 --> 00:08:48.097
+<v Alice>And if you pay for reach, disclose it clearly, badge or not.
+
+70
+00:08:48.397 --> 00:08:53.990
+<v Bob>What I still wonder: if everyone engineers attention the same way, does the playbook stop working?
+
+71
+00:08:54.290 --> 00:09:02.135
+<v Alice>And for small teams: how much of this works without the big video budget? I'd bet story and friends carry most of it, but that's my opinion.
+
+72
+00:09:02.435 --> 00:09:14.669
+<v Alice>Thanks to Kyle Jeong for The secret behind viral product launches. And thanks to our guests: Theo on Twitter's ranking model, Lena on Paul Graham's essay, and Sam on the Federal Trade Commission guide.
+
+73
+00:09:14.969 --> 00:09:20.052
+<v Bob>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

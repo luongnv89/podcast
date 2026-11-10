@@ -24,8 +24,83 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-09T23:30:22Z",
+  "updated": "2026-11-10T08:12:22Z",
   "episodes": [
+    {
+      "id": "2026-11-10_the-secret-behind-viral-product-launches",
+      "title": "The Secret Behind Viral Product Launches",
+      "summary": [
+        "Kyle Jeong of Browserbase, with Tereza of Factory, explains how viral product launches on X are planned.",
+        "His playbook: a scroll-stopping video, sharp copy, a story with a villain, friends, paid reach, partners, press and IRL events.",
+        "Guests add X's ranking weights, Paul Graham on recruiting users by hand, and the FTC's rules for disclosing paid posts."
+      ],
+      "category": "marketing",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-10T08:12:19Z",
+      "duration_s": 566.652,
+      "size_bytes": 9067795,
+      "audio": "episodes/2026-11-10_the-secret-behind-viral-product-launches/episode.mp3",
+      "transcript": "episodes/2026-11-10_the-secret-behind-viral-product-launches/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The secret behind viral product launches",
+        "author": "Kyle Jeong (@kylejeong)",
+        "url": "https://x.com/kylejeong/status/2119925224334586085",
+        "published": "2026-11-09T22:48:54Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "The secret behind viral product launches",
+          "author": "Kyle Jeong (@kylejeong)",
+          "url": "https://x.com/kylejeong/status/2119925224334586085"
+        },
+        {
+          "title": "the-algorithm-ml/projects/home/recap/README.md at main · twitter/the-algorithm-ml",
+          "author": "Twitter",
+          "url": "https://github.com/twitter/the-algorithm-ml/blob/main/projects/home/recap/README.md"
+        },
+        {
+          "title": "Do Things that Don't Scale",
+          "author": "Paul Graham",
+          "url": "https://paulgraham.com/ds.html"
+        },
+        {
+          "title": "Disclosures 101 for Social Media Influencers",
+          "author": "Federal Trade Commission",
+          "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Theo",
+          "presents": [
+            "the-algorithm-ml/projects/home/recap/README.md at main · twitter/the-algorithm-ml"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Do Things that Don't Scale"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Disclosures 101 for Social Media Influencers"
+          ]
+        }
+      ],
+      "description": "How do startups get a million views on a product launch? Kyle Jeong, who launches products at Browserbase, says viral launches on X are engineered over weeks, not left to luck. Bob and Alice unpack his playbook.\n\nIn this episode:\n- A launch video, copy that earns every word, a story with a villain\n- Why replies and quotes beat likes on X\n- Friends, paid reach and the FTC's disclosure rules\n- A checklist for your next launch\n\nSources: Kyle Jeong; Twitter; Paul Graham; Federal Trade Commission\n\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - The Secret Behind Viral Product Launches (2026-11-10).mp3"
+    },
     {
       "id": "2026-11-09_how-to-build-a-one-person-million-dollar-agency",
       "title": "How to Build a One-Person Million Dollar Agency with AI Agents",
