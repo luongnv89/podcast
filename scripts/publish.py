@@ -1336,8 +1336,40 @@ BACKFILL_SUBJECT = "feat(site): backfill episode descriptions, pages and story a
 ORIGIN_MAIN = "refs/remotes/origin/main"
 
 
-def _git_error(proc: subprocess.CompletedProcess[str]) -> str:
-    return (proc.stderr or proc.stdout or "").strip()[-300:] or f"exit {proc.returncode}"
+# The lines of git's output that say what failed and where: a failed rebase names the
+# conflicting files only in its CONFLICT lines, which git prints on stdout, not stderr.
+_GIT_KEY_LINE = re.compile(r"(?:CONFLICT\b|error:|fatal:|could not apply\b)", re.IGNORECASE)
+GIT_ERROR_LIMIT = 800
+
+
+def _git_error(proc: subprocess.CompletedProcess[str], limit: int = GIT_ERROR_LIMIT) -> str:
+    """What a failed git command said, at most ``limit`` characters: its first line, every
+    CONFLICT/error/fatal/could-not-apply line (stderr and stdout), and its last line. git's
+    ``hint:`` lines are dropped when the whole text does not fit."""
+    err, out = (proc.stderr or "").strip(), (proc.stdout or "").strip()
+    text = err or out
+    if not text:
+        return f"exit {proc.returncode}"
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+    extra = [line.strip() for line in (out.splitlines() if err else []) if _GIT_KEY_LINE.match(line.strip())]
+    if len(text) <= limit and not extra:
+        return text
+    useful = [line for line in lines if not line.startswith("hint:")] or lines
+    key = [line for line in useful[1:-1] if _GIT_KEY_LINE.match(line)]
+    picked: list[str] = []
+    for line in [useful[0], *key, *extra, useful[-1]]:
+        if line not in picked:
+            picked.append(line)
+    kept: list[str] = []
+    size = 0
+    for line in picked:
+        line = line if len(line) <= 240 else line[:239] + "…"
+        if size + len(line) + 1 > limit:
+            kept.append("…")
+            break
+        kept.append(line)
+        size += len(line) + 1
+    return "\n".join(kept)
 
 
 def _rebase_in_progress() -> bool:
@@ -1361,17 +1393,49 @@ def _abort_rebase() -> str:
     return " The stopped rebase was aborted (git rebase --abort)."
 
 
-def _unpushed_commits() -> list[str]:
-    """The commits on HEAD that origin/main (as last fetched) does not have, when every one
-    of them is a commit this script makes: what an earlier run committed but could not push.
-    Empty otherwise, so a run never pushes someone's unrelated local work on its own."""
+def _unpushed_commits() -> tuple[list[str], str | None]:
+    """``(shas, refusal)`` for the commits on HEAD that origin/main (as last fetched) does
+    not have: what an earlier run committed but could not push.
+
+    ``shas`` is non-empty only when every one of them is this script's own: its commit
+    subject, on branch ``main``, changing files under the site folder (``docs/``) only.
+    Commits with other subjects (someone's local work) give ``([], None)``: they are left
+    alone, silently. Script-titled commits that fail the branch or file check give
+    ``([], refusal)``: they are not pushed either, and ``refusal`` says why, so the run
+    fails and a person looks."""
     proc = _git("log", "--format=%H %s", f"{ORIGIN_MAIN}..HEAD")
     if proc.returncode != 0:
-        return []
+        return [], None
     commits = [line.partition(" ") for line in proc.stdout.splitlines() if line.strip()]
-    if commits and all(s.startswith((PUBLISH_SUBJECT, MIGRATE_SUBJECT, BACKFILL_SUBJECT)) for _, _, s in commits):
-        return [sha for sha, _, _ in commits]
-    return []
+    if not commits or not all(s.startswith((PUBLISH_SUBJECT, MIGRATE_SUBJECT, BACKFILL_SUBJECT))
+                              for _, _, s in commits):
+        return [], None
+    shas = [sha for sha, _, _ in commits]
+    listed = ", ".join(sha[:12] for sha in shas[:5]) + (", …" if len(shas) > 5 else "")
+    refused = (f"{len(shas)} earlier unpushed commit(s) with this script's commit subject ({listed}) were not"
+               " pushed: {why}. Look at them (git log --stat origin/main..HEAD), then push or drop them by hand.")
+    branch = _git("symbolic-ref", "-q", "--short", "HEAD")
+    name = branch.stdout.strip() if branch.returncode == 0 else ""
+    if name != "main":
+        where = f"branch {name!r}" if name else "a detached HEAD"
+        return [], refused.format(why=f"this checkout is on {where}, not main")
+    site = SITE.resolve().relative_to(REPO.resolve()).as_posix().rstrip("/") + "/"
+    outside: list[str] = []
+    for sha in shas:
+        files = _git("diff-tree", "-r", "-m", "--root", "--no-commit-id", "--no-renames", "--name-only", "-z", sha)
+        if files.returncode != 0:
+            return [], refused.format(why=f"git diff-tree {sha[:12]} failed ({_git_error(files)})")
+        outside += [p for p in files.stdout.split("\0") if p and not p.startswith(site) and p not in outside]
+    if outside:
+        shown = ", ".join(outside[:10]) + (", …" if len(outside) > 10 else "")
+        return [], refused.format(why=f"they change files outside {site} ({shown})")
+    return shas, None
+
+
+def _has_unpushed() -> bool:
+    """Whether ``push()`` has earlier commits to push, or to refuse (``_unpushed_commits()``)."""
+    shas, refusal = _unpushed_commits()
+    return bool(shas or refusal)
 
 
 def _confirm_pushed(sha: str, note: str | None = None) -> dict[str, Any]:
@@ -1395,9 +1459,11 @@ def _confirm_pushed(sha: str, note: str | None = None) -> dict[str, Any]:
 
 
 def push(paths: list[Path], titles: list[str], subject: str | None = None) -> dict[str, Any]:
-    """Commit ``paths`` and push to origin main. ``pushed`` is True only once origin/main
-    holds the commit; a rejected push is rebased onto origin once, and a rebase that fails
-    is aborted (the local commit is kept) and reported as an error."""
+    """Commit ``paths`` (only those: nothing else staged in the index) and push to origin
+    main. With no change of its own, it pushes only the earlier commits
+    ``_unpushed_commits()`` accepts, and fails on the ones it refuses. ``pushed`` is True
+    only once origin/main holds the commit; a rejected push is rebased onto origin once,
+    and a rebase that fails is aborted (the local commit is kept) and reported as an error."""
     rel = sorted({str(p.relative_to(REPO)) for p in paths})
     present = [r for r in rel if (REPO / r).exists()]
     gone = [r for r in rel if r not in present]
@@ -1410,8 +1476,18 @@ def push(paths: list[Path], titles: list[str], subject: str | None = None) -> di
         if removed.returncode != 0:
             return {"pushed": False, "error": removed.stderr.strip()}
     note = None
-    if not _git("diff", "--cached", "--quiet").returncode:
-        earlier = _unpushed_commits()
+    # Only this run's own paths: anything else staged in the index (someone's work) is
+    # never looked at, committed or pushed. No paths of its own means no commit at all.
+    own: list[str] = []
+    if rel:
+        staged = _git("--literal-pathspecs", "diff", "--cached", "--name-only", "-z", "--no-renames", "--", *rel)
+        if staged.returncode != 0:
+            return {"pushed": False, "error": f"git diff --cached failed: {_git_error(staged)}"}
+        own = sorted({p for p in staged.stdout.split("\0") if p})
+    if not own:
+        earlier, refusal = _unpushed_commits()
+        if refusal:
+            return {"pushed": False, "error": refusal}
         if not earlier:
             return {"pushed": False, "error": None, "note": "nothing to commit"}
         # An earlier run committed but could not push (e.g. a lost rebase, resolved since).
@@ -1422,7 +1498,8 @@ def push(paths: list[Path], titles: list[str], subject: str | None = None) -> di
             if len(titles) == 1
             else f"{PUBLISH_SUBJECT}{len(titles)} episodes"
         )
-        commit = _git("commit", "-m", subject[:120], "--", *rel)
+        # --only with the run's own changed paths: the rest of the index stays as it was.
+        commit = _git("--literal-pathspecs", "commit", "--only", "-m", subject[:120], "--", *own)
         if commit.returncode != 0:
             return {"pushed": False, "error": commit.stderr.strip() or commit.stdout.strip()}
     head = _git("rev-parse", "HEAD")
@@ -1928,7 +2005,7 @@ def main(argv: list[str] | None = None) -> int:
             except OSError as exc:
                 report["failed"].append({"job": "git", "error": str(exc)})
                 blocked = True
-        if args.push and not blocked and (changed or _unpushed_commits()):
+        if args.push and not blocked and (changed or _has_unpushed()):
             report["git"] = push(changed, [e["title"] for e in entries])
             if not report["git"].get("pushed") and report["git"].get("error"):
                 report["failed"].append({"job": "git", "error": report["git"]["error"]})
@@ -2070,7 +2147,7 @@ def _migrate_main(push_it: bool, dry_run: bool) -> int:
                 changed += [p for p in _pending_migration(SITE) if p not in changed]
             except OSError as exc:
                 report["failed"].append({"job": "git", "error": str(exc)})
-        if push_it and not report["failed"] and (changed or _unpushed_commits()):
+        if push_it and not report["failed"] and (changed or _has_unpushed()):
             report["git"] = push(changed, [], MIGRATE_SUBJECT)
             if not report["git"].get("pushed") and report["git"].get("error"):
                 report["failed"].append({"job": "git", "error": report["git"]["error"]})
@@ -2097,7 +2174,7 @@ def _backfill_main(push_it: bool) -> int:
             # The story feeds carry the episode artwork too (itunes:image per item).
             changed += _rebuild_feeds(report)
             changed += _rebuild_pages(report)
-        if push_it and (changed or _unpushed_commits()):
+        if push_it and (changed or _has_unpushed()):
             report["git"] = push(changed, [], BACKFILL_SUBJECT)
             if not report["git"].get("pushed") and report["git"].get("error"):
                 report["failed"].append({"job": "git", "error": report["git"]["error"]})

@@ -1331,6 +1331,173 @@ class PublishCommandTest(Tmp):
         self.assertIn(URL, _git_in(self.origin, "show", "main:docs/episodes.json"))
         self.assertEqual(_git_in(self.work, "status", "--porcelain"), "")
 
+    # M2/L1 (third re-review): a run pushes only its own work and the script's own earlier
+    # docs/ commits from main; never someone's staged file or a look-alike commit.
+
+    def published(self) -> str:
+        """Publish the episode (pushed); a publish of it again then has nothing of its own."""
+        code, report = self.publish(self.ok)
+        self.assertEqual(code, 0, report)
+        self.assertTrue(report["git"]["pushed"], report)
+        return self.origin_head()
+
+    def script_commit(self, rel: str, subject: str = "feat(episodes): publish Z") -> str:
+        """A local commit with this script's subject, as an earlier run that could not push leaves."""
+        _write(self.work / rel, f"{rel} changed by hand\n")
+        _git_in(self.work, "add", "--", rel)
+        _git_in(self.work, "commit", "-q", "-m", subject)
+        return _git_in(self.work, "rev-parse", "HEAD").strip()
+
+    def stage_notes(self) -> None:
+        _write(self.work / "notes.txt", "someone's work in progress\n")
+        _git_in(self.work, "add", "--", "notes.txt")
+
+    def staged(self) -> list[str]:
+        return _git_in(self.work, "diff", "--cached", "--name-only").split()
+
+    def origin_files(self) -> list[str]:
+        return _git_in(self.origin, "ls-tree", "-r", "--name-only", "main").split()
+
+    def test_nothing_new_pushes_the_earlier_commit_but_never_a_staged_file(self) -> None:
+        # The review's P5: nothing new to commit, an unpushed script commit, notes.txt staged.
+        self.published()
+        earlier = self.script_commit("docs/z.txt")
+        self.stage_notes()
+        code, report = self.publish(self.ok)
+        self.assertEqual(code, 0, report)
+        self.assertTrue(report["git"]["pushed"], report)
+        self.assertIn("1 earlier unpushed commit", report["git"]["note"])
+        # Only the earlier commit went: no new commit was made, notes.txt is not on origin.
+        self.assertEqual((self.origin_head(), report["git"]["commit"]), (earlier, earlier))
+        self.assertEqual(_git_in(self.work, "rev-parse", "HEAD").strip(), earlier)
+        self.assertIn("docs/z.txt", self.origin_files())
+        self.assertNotIn("notes.txt", self.origin_files())
+        self.assertEqual(self.staged(), ["notes.txt"])  # still staged, untouched
+
+    def test_nothing_at_all_to_push_never_commits_a_staged_file(self) -> None:
+        head = self.published()
+        self.stage_notes()
+        code, report = self.publish(self.ok)
+        self.assertEqual((code, report["git"]), (0, None), report)
+        self.assertEqual(self.origin_head(), head)
+        self.assertEqual(_git_in(self.work, "rev-parse", "HEAD").strip(), head)
+        self.assertEqual(self.staged(), ["notes.txt"])
+
+    def test_a_new_publish_commits_only_its_own_paths(self) -> None:
+        self.stage_notes()
+        code, report = self.publish(self.ok)
+        self.assertEqual(code, 0, report)
+        self.assertTrue(report["git"]["pushed"], report)
+        committed = _git_in(self.work, "show", "--name-only", "--format=", "HEAD").split()
+        self.assertNotIn("notes.txt", committed)
+        self.assertTrue(committed and all(p.startswith("docs/") for p in committed), committed)
+        self.assertNotIn("notes.txt", self.origin_files())
+        self.assertEqual(self.staged(), ["notes.txt"])
+
+    def assert_refused(self, code: int, report: dict, origin_head: str, local: str, *words: str) -> None:
+        self.assertEqual(code, 1, report)
+        self.assertFalse(report["git"]["pushed"], report)
+        error = report["git"]["error"]
+        for word in ("earlier unpushed commit(s) with this script's commit subject", local[:12], "were not pushed",
+                     "git log --stat origin/main..HEAD", *words):
+            self.assertIn(word, error)
+        self.assertEqual(report["failed"], [{"job": "git", "error": error}])
+        self.assertEqual(self.origin_head(), origin_head)
+        self.assertEqual(_git_in(self.work, "rev-parse", "HEAD").strip(), local)  # kept, no new commit
+
+    def test_a_script_titled_commit_outside_docs_is_not_pushed(self) -> None:
+        # The review's P2: a hand-made commit that only looks like the script's.
+        head = self.published()
+        local = self.script_commit("scripts/tool.py", "feat(episodes): publish hotfix to tool")
+        code, report = self.publish(self.ok)
+        self.assert_refused(code, report, head, local, "outside docs/", "scripts/tool.py")
+        self.assertNotIn("scripts/tool.py", self.origin_files())
+
+    def test_a_script_titled_commit_touching_docs_and_scripts_is_not_pushed(self) -> None:
+        head = self.published()
+        _write(self.work / "docs" / "z.txt", "z\n")
+        _git_in(self.work, "add", "--", "docs/z.txt")
+        local = self.script_commit("scripts/tool.py")
+        code, report = self.publish(self.ok)
+        self.assert_refused(code, report, head, local, "scripts/tool.py")
+        self.assertFalse({"docs/z.txt", "scripts/tool.py"} & set(self.origin_files()))
+
+    def test_a_script_titled_commit_on_another_branch_is_not_pushed(self) -> None:
+        # The review's P4: docs/ only and the script's subject, but not on main.
+        head = self.published()
+        _git_in(self.work, "checkout", "-q", "-b", "experiment")
+        local = self.script_commit("docs/z.txt", publish.BACKFILL_SUBJECT)
+        code, report = self.publish(self.ok)
+        self.assert_refused(code, report, head, local, "branch 'experiment', not main")
+        self.assertNotIn("docs/z.txt", self.origin_files())
+
+    def test_a_script_titled_commit_on_a_detached_head_is_not_pushed(self) -> None:
+        head = self.published()
+        _git_in(self.work, "checkout", "-q", "--detach")
+        local = self.script_commit("docs/z.txt")
+        with mock.patch.object(publish, "_start_pull", lambda report, again: True):  # git pull needs a branch
+            code, report = self.publish(self.ok)
+        self.assert_refused(code, report, head, local, "a detached HEAD")
+
+    def test_a_hand_made_commit_is_left_alone(self) -> None:
+        # The review's P1a, unchanged: other subjects are someone's work, not refused.
+        head = self.published()
+        _write(self.work / "scripts" / "tool.py", "x\n")
+        _git_in(self.work, "add", "--", "scripts/tool.py")
+        _git_in(self.work, "commit", "-q", "-m", "chore: tweak tool by hand")
+        code, report = self.publish(self.ok)
+        self.assertEqual((code, report["git"]), (0, None), report)
+        self.assertEqual(self.origin_head(), head)
+
+    def test_a_lost_rebase_error_names_the_conflicting_file(self) -> None:
+        # L2: git prints the CONFLICT lines (the file names) on stdout, then long hints.
+        theirs: list[str] = []
+        git = _origin_moves_before_push(self.other(), "docs/episodes.json",
+                                        _retitle('"title": "Quiet hours"', '"title": "Retitled"'), theirs)
+        code, report = self.publish(self.ok, git=git)
+        self.assert_nothing_reached_origin(code, report, theirs[0])
+        error = report["git"]["error"]
+        self.assertIn("CONFLICT (content): Merge conflict in docs/episodes.json", error)
+        self.assertIn("could not apply", error.lower())
+        self.assertNotIn("hint:", error)
+
+
+class GitErrorTest(unittest.TestCase):
+    """L2: _git_error keeps what names the failure (CONFLICT lines, from stdout too), bounded."""
+
+    HINTS = "".join(f"hint: line {i} of git's advice on how to resolve conflicts by hand\n" for i in range(12))
+
+    def proc(self, stdout: str, stderr: str, code: int = 1) -> subprocess.CompletedProcess:
+        return subprocess.CompletedProcess(["git"], code, stdout, stderr)
+
+    def test_short_stderr_is_kept_whole(self) -> None:
+        self.assertEqual(publish._git_error(self.proc("", "error: cannot pull with rebase\n")),
+                         "error: cannot pull with rebase")
+        self.assertEqual(publish._git_error(self.proc("only stdout\n", "")), "only stdout")
+        self.assertEqual(publish._git_error(self.proc("", "", 128)), "exit 128")
+
+    def test_conflicting_files_from_stdout_and_the_failure_survive_long_hints(self) -> None:
+        stdout = ("Auto-merging docs/episodes.json\nCONFLICT (content): Merge conflict in docs/episodes.json\n"
+                  "CONFLICT (modify/delete): docs/feed.xml deleted in HEAD and modified in abc123.\n")
+        stderr = ("From /srv/origin\n * branch main -> FETCH_HEAD\nRebasing (1/1)\n"
+                  "error: could not apply abc123... feat(episodes): publish X\n" + self.HINTS
+                  + "Could not apply abc123... feat(episodes): publish X\n")
+        error = publish._git_error(self.proc(stdout, stderr))
+        for words in ("From /srv/origin", "error: could not apply abc123", "Merge conflict in docs/episodes.json",
+                      "docs/feed.xml deleted in HEAD", "Could not apply abc123"):
+            self.assertIn(words, error)
+        self.assertNotIn("hint:", error)
+        self.assertNotIn("Auto-merging", error)
+        self.assertLessEqual(len(error), publish.GIT_ERROR_LIMIT)
+
+    def test_bounded_however_long(self) -> None:
+        stdout = "".join(f"CONFLICT (content): Merge conflict in docs/episodes/{i:04}/index.html\n" for i in range(200))
+        error = publish._git_error(self.proc(stdout, "error: could not apply abc\n" + self.HINTS + "x" * 5000))
+        self.assertLessEqual(len(error), publish.GIT_ERROR_LIMIT)
+        self.assertTrue(error.startswith("error: could not apply abc"), error)
+        self.assertIn("docs/episodes/0000/index.html", error)
+        self.assertTrue(error.endswith("…"), error)
+
 
 class _Redirect(http.server.BaseHTTPRequestHandler):
     """/start redirects (302) to /file, which answers with a Content-Length (HEAD only)."""
