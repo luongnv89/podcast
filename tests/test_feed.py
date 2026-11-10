@@ -1,4 +1,5 @@
-"""Tests for scripts/feed.py: the Once Upon a Time Show RSS feeds (one per language).
+"""Tests for scripts/feed.py: the Once Upon a Time Show feeds (one per language) and the
+Build Wiz AI Show feed.
 
 Standard library only, no network: ``python3 -m unittest discover -s tests``.
 """
@@ -111,7 +112,7 @@ class FeedTest(unittest.TestCase):
 
     def test_write_feeds_ignores_build_date_only_changes(self) -> None:
         first = feed.write_feeds(self.site, NOW)
-        self.assertEqual(len(first), 3)
+        self.assertEqual(len(first), 4)  # en, fr, vi stories + Build Wiz AI Show
         later = datetime(2026, 11, 6, 8, 0, tzinfo=timezone.utc)
         self.assertEqual(feed.write_feeds(self.site, later), [])
         self.index["episodes"].append(story("c", "en", "2026-11-07T00:00:00Z"))
@@ -140,6 +141,54 @@ class FeedTest(unittest.TestCase):
                 self.assertIsNone(feed.item_image(ep, self.site))
         xml = feed.render_feed(self.index, "en", self.site, NOW)
         self.assertEqual(xml.count("<itunes:image"), 1)  # the channel's only
+
+
+    def test_build_wiz_feed_holds_only_english_podcasts(self) -> None:
+        self.index["episodes"] += [
+            {"id": "pod-vi", "title": "Tập", "show": "Build Wiz AI Show", "language": "vi",
+             "format": "podcast-2host", "published": "2026-11-08T00:00:00Z",
+             "audio": "episodes/pod-vi/episode.mp3"},
+            {"id": "pod-old", "title": "Older", "language": "en", "format": "solo-explainer",
+             "published": "2026-11-01T00:00:00Z", "audio": "episodes/pod-old/episode.mp3"},
+            {"id": "pod-off", "title": "Off", "show": "Build Wiz AI Show", "language": "en",
+             "format": "podcast-2host", "published": "2026-11-09T00:00:00Z",
+             "audio": "episodes/pod-off/episode.mp3", "feed": False},
+        ]
+        guids = [i.findtext("guid") for i in self.channel("buildwiz").findall("item")]
+        self.assertEqual(guids, ["pod", "pod-old"])  # no story, no Vietnamese, not opted out
+        self.assertNotIn("pod", [i.findtext("guid") for i in self.channel("en").findall("item")])
+
+    def test_build_wiz_channel_tags(self) -> None:
+        ch = self.channel("buildwiz")
+        self.assertEqual(ch.findtext("title"), "Build Wiz AI Show")
+        self.assertEqual(ch.findtext("language"), "en")
+        self.assertEqual(ch.findtext("link"), "https://luongnv.com/podcast/")
+        self.assertEqual(ch.findtext(f"{IT}author"), "Build Wiz AI Show")
+        self.assertEqual(ch.find(f"{IT}owner/{IT}email").text, "buildwizai@gmail.com")
+        self.assertEqual(ch.find(f"{IT}image").get("href"), "https://luongnv.com/podcast/cover.jpg")
+        cat = ch.find(f"{IT}category")
+        self.assertEqual(cat.get("text"), "Technology")
+        self.assertEqual(len(cat), 0)
+        self.assertEqual(ch.findtext(f"{IT}explicit"), "false")
+        self.assertEqual(feed.FEEDS["buildwiz"]["file"], "feed.xml")
+
+    def test_build_wiz_notes_credit_every_source(self) -> None:
+        self.index["episodes"][5].update(
+            summary=["One.", "Two.", "Three."],
+            voices="OpenRouter · heygen/heygen-voice-1-turbo:free",
+            sources=[
+                {"title": "Main post", "author": "Ann Author", "url": "https://x.com/a/status/1"},
+                {"title": "Guest study", "author": None, "url": "https://example.org/study"},
+                {"title": "No link", "author": "Bo", "url": "javascript:alert(1)"},
+            ],
+        )
+        item = self.channel("buildwiz").find("item")
+        notes = item.findtext("description")
+        self.assertIn("Sources:\n- Main post, Ann Author (https://x.com/a/status/1)", notes)
+        self.assertIn("- Guest study (https://example.org/study)", notes)
+        self.assertIn("- No link, Bo", notes)
+        self.assertNotIn("javascript", notes)
+        self.assertIn("Written and voiced with AI", notes)
 
 
 if __name__ == "__main__":
