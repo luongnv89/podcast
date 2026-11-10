@@ -88,12 +88,14 @@ import json
 import os
 import re
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
 import unicodedata
 import urllib.error
 import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -200,6 +202,31 @@ def _read_json(path: Path) -> Any:
         return json.loads(path.read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return None
+
+
+def _write_json(path: Path, data: Any) -> None:
+    """Write ``data`` as JSON atomically: a temp file in the same folder, then
+    ``os.replace``, so a crash mid-write never leaves a half-written ``episodes.json``. An
+    existing file keeps its mode (a new one gets 0666 less the umask, like ``write_text``)."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        mode = stat.S_IMODE(path.stat().st_mode)
+    except FileNotFoundError:
+        umask = os.umask(0)
+        os.umask(umask)
+        mode = 0o666 & ~umask
+    fd, tmp = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.chmod(tmp, mode)
+        os.replace(tmp, path)
+    except BaseException:
+        with contextlib.suppress(FileNotFoundError):
+            os.unlink(tmp)
+        raise
 
 
 def _sha256(path: Path) -> str:
@@ -315,8 +342,8 @@ class GhMedia:
             raise ValueError(f"bad media repo {repo[:80]!r}")
         self.repo = repo
 
-    def assets(self, tag: str) -> dict[str, int] | None:
-        """``{asset name: size}`` of the release ``tag``; None when there is no release."""
+    def _release(self, tag: str) -> dict[str, Any] | None:
+        """The release ``tag`` as the API returns it; None when there is no release."""
         proc = _gh("api", f"repos/{self.repo}/releases/tags/{tag}", timeout=120)
         if proc.returncode != 0:
             if "404" in (proc.stderr or "") or "Not Found" in (proc.stderr or ""):
@@ -326,9 +353,24 @@ class GhMedia:
             data = json.loads(proc.stdout)
         except ValueError as exc:
             raise UploadError(f"gh returned no JSON for release {tag}") from exc
+        if not isinstance(data, dict):
+            raise UploadError(f"gh returned no release object for {tag}")
+        return data
+
+    def _asset_list(self, tag: str) -> list[dict[str, Any]]:
+        release = self._release(tag)
+        if release is None:
+            raise UploadError(f"release {tag} is missing")
+        return [a for a in release.get("assets") or [] if isinstance(a, dict)]
+
+    def assets(self, tag: str) -> dict[str, int] | None:
+        """``{asset name: size}`` of the release ``tag``; None when there is no release."""
+        release = self._release(tag)
+        if release is None:
+            return None
         return {
             str(a.get("name")): int(a.get("size") or 0)
-            for a in data.get("assets") or []
+            for a in release.get("assets") or []
             if isinstance(a, dict)
         }
 
@@ -341,10 +383,59 @@ class GhMedia:
             raise UploadError(f"gh could not create release {tag}: {_gh_error(proc)}")
 
     def upload(self, tag: str, path: Path) -> None:
-        """Upload ``path`` (already named as the asset) to release ``tag``, replacing it."""
-        proc = _gh("release", "upload", tag, str(path), "-R", self.repo, "--clobber")
+        """Upload ``path`` (already named as the asset) to release ``tag`` as a new asset."""
+        proc = _gh("release", "upload", tag, str(path), "-R", self.repo)
         if proc.returncode != 0:
             raise UploadError(f"gh could not upload {path.name} to release {tag}: {_gh_error(proc)}")
+
+    def _delete_asset(self, tag: str, asset: dict[str, Any]) -> None:
+        proc = _gh("api", "-X", "DELETE", f"repos/{self.repo}/releases/assets/{int(asset['id'])}", timeout=120)
+        if proc.returncode != 0:
+            raise UploadError(f"gh could not delete {asset.get('name')} from release {tag}: {_gh_error(proc)}")
+
+    def replace(self, tag: str, path: Path) -> None:
+        """Replace the asset named ``path.name`` with ``path`` without a window where a failed
+        upload leaves nothing live: upload under ``staged_name()``, check its size and
+        state, delete the old asset, then rename the new one (``PATCH .../assets/{id}``).
+
+        A failure before the delete leaves the live asset untouched; a failed rename (the
+        old one already deleted) is finished by running the publish again, which finds the
+        staged asset (a leftover staged asset is deleted first)."""
+        name = path.name
+        staged = staged_name(name)
+        size = path.stat().st_size
+        for asset in self._asset_list(tag):
+            if asset.get("name") == staged:
+                self._delete_asset(tag, asset)
+        with tempfile.TemporaryDirectory(prefix="podcast-audio-") as tmp:
+            copy = Path(tmp) / staged
+            shutil.copyfile(path, copy)
+            self.upload(tag, copy)
+        found = {a.get("name"): a for a in self._asset_list(tag)}
+        new = found.get(staged)
+        if not new or new.get("state", "uploaded") != "uploaded" or int(new.get("size") or 0) != size:
+            raise UploadError(
+                f"the uploaded {staged} on release {tag} did not check out "
+                f"(size {new and new.get('size')}, expected {size}); the live {name} is unchanged"
+            )
+        old = found.get(name)
+        if old:
+            self._delete_asset(tag, old)
+        proc = _gh(
+            "api", "-X", "PATCH", f"repos/{self.repo}/releases/assets/{int(new['id'])}", "-f", f"name={name}",
+            timeout=120,
+        )
+        if proc.returncode != 0:
+            raise UploadError(
+                f"gh could not rename {staged} to {name} on release {tag}: {_gh_error(proc)}; "
+                "run the publish again to finish"
+            )
+
+
+def staged_name(name: str) -> str:
+    """The temporary name of a replacement asset: ``<id>.mp3`` -> ``<id>.new.mp3``."""
+    stem, dot, suffix = name.rpartition(".")
+    return f"{stem}.new.{suffix}" if dot else f"{name}.new"
 
 
 def upload_audio(
@@ -360,8 +451,11 @@ def upload_audio(
     The release is created when missing (title = the episode title, notes = "Audio for
     <page URL>"). The upload is skipped when the release already has an asset of that name
     and size and ``recorded_sha256`` (the entry's ``audio_sha256`` in episodes.json) is the
-    file's SHA-256. ``media`` is a ``GhMedia`` of the episode's repo (tests pass a fake).
-    Returns ``{url, asset, uploaded}``; raises ``UploadError``.
+    file's SHA-256. An existing asset (or the staged one of an interrupted replace) is
+    replaced with ``media.replace()``, which never leaves the live asset missing when the
+    upload fails; otherwise ``media.upload()`` adds it. ``media`` is a ``GhMedia`` of the
+    episode's repo (tests pass a fake). Returns ``{url, asset, uploaded}``; raises
+    ``UploadError``.
     """
     name = asset_name(episode_id)
     size = mp3.stat().st_size
@@ -377,7 +471,10 @@ def upload_audio(
     with tempfile.TemporaryDirectory(prefix="podcast-audio-") as tmp:
         named = Path(tmp) / name
         shutil.copyfile(mp3, named)
-        media.upload(episode_id, named)
+        if assets and (name in assets or staged_name(name) in assets):
+            media.replace(episode_id, named)
+        else:
+            media.upload(episode_id, named)
     return {"url": url, "asset": name, "uploaded": True}
 
 
@@ -1129,13 +1226,47 @@ def episode_entry(
     entry["file_name"] = entry_file_name(entry, _mapping(run.get("delivery")).get("file_name"))
     if media_note:
         entry["_media_note"] = media_note
-    stale = dest / "episode.mp3"
-    if stale.is_file() and not stale.is_symlink():
-        # A copy left in docs/ from before the move (podcast #30): the entry now points
-        # to the release asset, so the old file goes (``push`` stages the removal).
-        stale.unlink()
-        changed.append(stale)
+    # A copy left in docs/ from before the move (podcast #30) is removed by main() only
+    # after the index update and a HEAD check of the new URL (remove_stale_audio()).
     return entry, changed
+
+
+def remove_stale_audio(
+    site: Path, entries: list[dict[str, Any]], verify: Any = None
+) -> tuple[list[Path], list[str]]:
+    """Remove ``site/episodes/<id>/episode.mp3`` left from before the move (podcast #30)
+    for each published entry, once its release URL answers HEAD with status 200 and a
+    length equal to ``size_bytes`` (``verify``, default ``head_audio``). Call it only after
+    ``update_index()`` succeeded. A copy that fails the check is kept and noted.
+    Returns (removed files, notes)."""
+    verify = verify or head_audio
+    removed: list[Path] = []
+    notes: list[str] = []
+    for entry in entries:
+        stale = site / EPISODES_DIR / art_key(entry["id"]) / "episode.mp3"
+        url = entry.get("audio")
+        if stale.is_symlink() or not stale.is_file() or not _is_release_url(url):
+            continue
+        answer = verify(url)
+        if _verified(answer, entry.get("size_bytes")):
+            stale.unlink()
+            removed.append(stale)
+        else:
+            notes.append(
+                f"{entry['id']}: kept the old {EPISODES_DIR}/{entry['id']}/episode.mp3: HEAD {url} gave status "
+                f"{answer.get('status')}, length {answer.get('length')} (expected 200, {entry.get('size_bytes')}); "
+                "publish again to retry"
+            )
+    return removed, notes
+
+
+def _is_release_url(url: Any) -> bool:
+    return isinstance(url, str) and url.startswith("https://")
+
+
+def _verified(answer: dict[str, Any], size: Any) -> bool:
+    """A HEAD answer (``head_audio()``) of a live asset of ``size`` bytes."""
+    return answer.get("status") == 200 and isinstance(size, int) and answer.get("length") == size
 
 
 def update_index(site: Path, entries: list[dict[str, Any]]) -> bool:
@@ -1155,7 +1286,7 @@ def update_index(site: Path, entries: list[dict[str, Any]]) -> bool:
         "episodes": ordered,
     }
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    _write_json(path, data)
     return True
 
 
@@ -1210,17 +1341,22 @@ def _lock():
             fcntl.flock(handle, fcntl.LOCK_UN)
 
 
+def _load_script(name: str) -> Any:
+    """A sibling script (``scripts/<name>.py``) as a module."""
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(name, Path(__file__).with_name(f"{name}.py"))
+    if spec is None or spec.loader is None:
+        raise ImportError(f"scripts/{name}.py not found")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def _rebuild_feeds(report: dict[str, Any], site: Path | None = None) -> list[Path]:
     """Rewrite the RSS feeds (scripts/feed.py); a failure never blocks a publish."""
     try:
-        import importlib.util
-
-        spec = importlib.util.spec_from_file_location("feed", Path(__file__).with_name("feed.py"))
-        if spec is None or spec.loader is None:
-            raise ImportError("scripts/feed.py not found")
-        feed = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(feed)
-        return list(feed.write_feeds(site or SITE))
+        return list(_load_script("feed").write_feeds(site or SITE))
     except Exception as exc:  # noqa: BLE001 - the episode is still published
         report["feed_error"] = f"{type(exc).__name__}: {exc}"
         return []
@@ -1229,14 +1365,7 @@ def _rebuild_feeds(report: dict[str, Any], site: Path | None = None) -> list[Pat
 def _rebuild_pages(report: dict[str, Any], site: Path | None = None) -> list[Path]:
     """Rewrite the episode pages and sitemap (scripts/pages.py); never blocks a publish."""
     try:
-        import importlib.util
-
-        spec = importlib.util.spec_from_file_location("pages", Path(__file__).with_name("pages.py"))
-        if spec is None or spec.loader is None:
-            raise ImportError("scripts/pages.py not found")
-        pages = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(pages)
-        return list(pages.write_pages(site or SITE))
+        return list(_load_script("pages").write_pages(site or SITE))
     except Exception as exc:  # noqa: BLE001 - the episode is still published
         report["pages_error"] = f"{type(exc).__name__}: {exc}"
         return []
@@ -1298,46 +1427,115 @@ def backfill(
     if not any(set(f) - {"id", "image_problems"} for f in filled):
         return False, filled
     data["updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    _write_json(path, data)
     return True, filled
+
+
+class MigrationError(RuntimeError):
+    """The migration stopped after ``episodes.json`` was updated; running it again finishes
+    it. ``report`` is the migration report so far."""
+
+    def __init__(self, message: str, report: dict[str, Any]) -> None:
+        super().__init__(message)
+        self.report = report
+
+
+def _rebuild_site(site: Path) -> tuple[list[Path], dict[str, str]]:
+    """Rebuild the feeds and pages of ``site``: (changed files, ``feed_error``/``pages_error``)."""
+    errors: dict[str, Any] = {}
+    files = _rebuild_feeds(errors, site) + _rebuild_pages(errors, site)
+    return files, errors
+
+
+def release_problems(site: Path, entries: list[dict[str, Any]]) -> list[str]:
+    """What still points at the docs/ copy of ``entries`` (each with its release ``audio``):
+    every feed that lists an entry must have its enclosure on the release URL (any ``?v=``),
+    no feed may link ``episodes/<id>/episode.mp3`` of one of them, and no episode page may
+    either. Empty when the rebuilt site is ready for the local MP3s to go."""
+    feed = _load_script("feed")
+    pages = _load_script("pages")
+    index = _read_json(site / INDEX) or {}
+    wanted = {str(e["id"]): str(e["audio"]) for e in entries}
+    local = {ep_id: f"{EPISODES_DIR}/{ep_id}/episode.mp3" for ep_id in wanted}
+    problems: list[str] = []
+    for key, meta in feed.FEEDS.items():
+        listed = [str(e["id"]) for e in feed.feed_episodes(index, key) if str(e.get("id")) in wanted]
+        path = site / meta["file"]
+        if not listed and not path.exists():
+            continue
+        try:
+            root = ET.parse(path).getroot()
+        except (OSError, ET.ParseError) as exc:
+            problems.append(f"{meta['file']}: unreadable ({type(exc).__name__})")
+            continue
+        urls = [str(enc.get("url") or "") for enc in root.iter("enclosure")]
+        bare = {u.split("?", 1)[0] for u in urls}
+        problems += [f"{meta['file']}: no enclosure at {wanted[i]} for {i}" for i in listed if wanted[i] not in bare]
+        problems += [
+            f"{meta['file']}: {i} still links {local[i]}" for i in wanted if any(local[i] in u for u in urls)
+        ]
+    for ep_id in wanted:
+        page = site / pages.page_path(ep_id) / "index.html"
+        try:
+            html = page.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        if local[ep_id] in html:
+            problems.append(f"{pages.page_path(ep_id)}index.html still links {local[ep_id]}")
+    return problems
 
 
 def migrate_audio(
     site: Path,
     media: Any = None,
-    verify: Any = head_audio,
+    verify: Any = None,
     remove: Any = None,
     dry_run: bool = False,
+    rebuild: Any = None,
 ) -> dict[str, Any]:
-    """Move every MP3 still in ``site`` (an entry whose ``audio`` is a local
-    ``episodes/<id>/episode.mp3``) to the releases of its show/language media repo
-    (``entry_media_repo()``; podcast #30).
+    """Move every MP3 still in ``site`` to the releases of its show/language media repo
+    (``entry_media_repo()``; podcast #30), in an order where every state in between is
+    consistent and running it again finishes the job:
 
-    1. Upload each local file as ``upload_audio()`` does when publishing (``media`` is a
+    1. Find the work: entries whose ``audio`` is a local ``episodes/<id>/episode.mp3``
+       (to move), and leftovers of an interrupted run: a ``site/episodes/<id>/episode.mp3``
+       whose entry already has its release URL and an ``audio_sha256`` and ``size_bytes``
+       matching the file (any other copy is kept and noted in ``kept``).
+    2. Upload each file to move as ``upload_audio()`` does when publishing (``media`` is a
        factory ``repo -> media``, default ``GhMedia``).
-    2. Only when every upload worked, check each URL: ``verify(url)`` (default
-       ``head_audio``: HEAD, redirects followed) must answer status 200 with a length equal
-       to the file's size.
-    3. Only when every check passed, set each entry's ``audio`` (the release URL),
-       ``size_bytes`` and ``audio_sha256``, write ``episodes.json``, and ``remove(path)``
-       each local MP3 (default: ``git rm``).
+    3. Check every URL (moved and leftover): ``verify(url)`` (default ``head_audio``: HEAD,
+       redirects followed) must answer status 200 with a length equal to the size.
+    4. Set each moved entry's ``audio`` (the release URL), ``size_bytes`` and
+       ``audio_sha256`` and write ``episodes.json`` (atomically).
+    5. Rebuild the feeds and pages (``rebuild(site)`` -> (changed files, errors), default
+       feed.py and pages.py) and check them with ``release_problems()``.
+    6. Only then ``remove(path)`` each local MP3 (default: ``git rm``).
 
-    Any failure stops before step 3, so nothing is removed and the index is unchanged.
-    ``dry_run`` lists the work (ids, repos, sizes, target URLs) and uploads nothing.
-    Entries that already point elsewhere are left alone, so a second run changes nothing.
-    Returns the report (``changed`` lists the files written or removed); raises
-    ``UploadError`` or ``ValueError``.
+    A failure in 2-3 raises ``UploadError`` with nothing changed. A failure in 5-6 raises
+    ``MigrationError`` (with the report so far); the local files are still there, so the
+    entries are leftovers that the next run verifies, rebuilds and removes. ``dry_run``
+    lists the work (ids, repos, sizes, target URLs) and uploads nothing. With nothing to
+    do, nothing is called or written. Returns the report (``changed`` lists the files
+    written or removed); raises ``UploadError``, ``MigrationError`` or ``ValueError``.
     """
+    verify = verify or head_audio
     path = site / INDEX
     data = _read_json(path)
     if not isinstance(data, dict) or not isinstance(data.get("episodes"), list):
         raise ValueError(f"{INDEX} is missing or unreadable")
     todo = []
+    leftovers = []
+    kept = []
     for entry in data["episodes"]:
         if not isinstance(entry, dict):
             continue
         local_id = local_audio_id(entry.get("audio"))
         if local_id is None:
+            found = _leftover(site, entry)
+            if isinstance(found, str):
+                kept.append(found)
+            elif found is not None:
+                leftovers.append((entry, found))
             continue
         if local_id != entry.get("id"):
             raise ValueError(f"{entry.get('id')}: audio {entry['audio']!r} names another episode")
@@ -1355,8 +1553,11 @@ def migrate_audio(
         "total_bytes": sum(mp3.stat().st_size for _, mp3, _, _ in todo),
         "repos": {},
         "episodes": [],
+        "leftovers": [{"id": e["id"], "file": str(mp3.relative_to(site)), "audio": e["audio"]} for e, mp3 in leftovers],
         "changed": [],
     }
+    if kept:
+        report["kept"] = kept
     for entry, mp3, repo, note in todo:
         size = mp3.stat().st_size
         per_repo = report["repos"].setdefault(repo, {"count": 0, "total_bytes": 0})
@@ -1368,7 +1569,7 @@ def migrate_audio(
             item["note"] = note
             report.setdefault("notes", []).append(f"{entry['id']}: {note}")
         report["episodes"].append(item)
-    if dry_run or not todo:
+    if dry_run or not (todo or leftovers):
         return report
     factory = media or GhMedia
     done = []
@@ -1379,26 +1580,76 @@ def migrate_audio(
         item["uploaded"] = result["uploaded"]
         item["audio_sha256"] = sha
         done.append((entry, mp3, result["url"], sha, mp3.stat().st_size))
+    checks = [(e["id"], url, size) for e, _mp3, url, _sha, size in done]
+    checks += [(e["id"], e["audio"], e["size_bytes"]) for e, _mp3 in leftovers]
     failures = []
-    for entry, _mp3, url, _sha, size in done:
+    for ep_id, url, size in checks:
         answer = verify(url)
-        if answer.get("status") != 200 or answer.get("length") != size:
+        if not _verified(answer, size):
             failures.append(
-                f"{entry['id']}: HEAD {url} gave status {answer.get('status')}, "
+                f"{ep_id}: HEAD {url} gave status {answer.get('status')}, "
                 f"length {answer.get('length')} (expected 200, {size})"
             )
     if failures:
         raise UploadError("verification failed, nothing removed: " + "; ".join(failures))
-    for entry, _mp3, url, sha, size in done:
-        entry["audio"], entry["size_bytes"], entry["audio_sha256"] = url, size, sha
-    data["updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    report["changed"].append(path)
+    if done:
+        for entry, _mp3, url, sha, size in done:
+            entry["audio"], entry["size_bytes"], entry["audio_sha256"] = url, size, sha
+        data["updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        _write_json(path, data)
+        report["changed"].append(path)
+    files, errors = (rebuild or _rebuild_site)(site)
+    report["changed"] += [f for f in files if f not in report["changed"]]
+    if errors:
+        report.update(errors)
+        raise MigrationError(
+            "feeds or pages were not rebuilt, nothing removed (run --migrate-audio again): "
+            + "; ".join(errors.values()), report
+        )
+    moving = [e for e, *_ in done] + [e for e, _mp3 in leftovers]
+    problems = release_problems(site, moving)
+    if problems:
+        report["release_problems"] = problems
+        raise MigrationError(
+            "the rebuilt feeds or pages do not use the release URLs, nothing removed: " + "; ".join(problems[:5]),
+            report,
+        )
     remove = remove or _git_rm
-    for _entry, mp3, *_ in done:
-        remove(mp3)
+    not_removed = []
+    for mp3 in [m for _e, m, *_ in done] + [m for _e, m in leftovers]:
+        try:
+            remove(mp3)
+        except OSError as exc:
+            not_removed.append(f"{mp3.relative_to(site)}: {exc}")
+            continue
         report["changed"].append(mp3)
+    if not_removed:
+        report["not_removed"] = not_removed
+        raise MigrationError(
+            f"{len(not_removed)} local MP3(s) not removed (run --migrate-audio again to finish): "
+            + "; ".join(not_removed[:5]),
+            report,
+        )
     return report
+
+
+def _leftover(site: Path, entry: dict[str, Any]) -> Path | str | None:
+    """The docs/ MP3 of an entry already on its release URL when it is the uploaded file
+    (``audio_sha256`` and ``size_bytes`` match), a note when a copy is there but is not,
+    else None."""
+    try:
+        ep_id = art_key(entry.get("id"))
+    except ValueError:
+        return None
+    mp3 = site / EPISODES_DIR / ep_id / "episode.mp3"
+    if not _is_release_url(entry.get("audio")) or mp3.is_symlink() or not mp3.is_file():
+        return None
+    where = f"{EPISODES_DIR}/{ep_id}/episode.mp3"
+    if entry["audio"] != audio_url(entry_media_repo(entry)[0], ep_id):
+        return f"{ep_id}: kept {where}: audio {entry['audio']} is not its release URL"
+    if entry.get("size_bytes") != mp3.stat().st_size or entry.get("audio_sha256") != _sha256(mp3):
+        return f"{ep_id}: kept {where}: it is not the file of audio_sha256/size_bytes"
+    return mp3
 
 
 def _git_rm(path: Path) -> None:
@@ -1501,6 +1752,11 @@ def main(argv: list[str] | None = None) -> int:
         if entries and update_index(SITE, entries):
             changed.append(SITE / INDEX)
         if entries:
+            # Leftover docs/ copies go only now: after the index update, once HEAD checks out.
+            removed, notes = remove_stale_audio(SITE, entries, head_audio)
+            changed += removed
+            if notes:
+                report.setdefault("notes", []).extend(notes)
             # The Once Upon a Time Show feeds (Spotify) follow episodes.json on their own.
             changed += _rebuild_feeds(report)
             # One static page per episode and the sitemap (search engines) follow it too.
@@ -1517,26 +1773,67 @@ def main(argv: list[str] | None = None) -> int:
 MIGRATE_SUBJECT = "feat(site): move episode audio to GitHub Releases (#30)"
 
 
+def _pending_migration(site: Path) -> list[Path]:
+    """The migration's files that differ from HEAD (git status): ``episodes.json``, the
+    feeds, the sitemap, the episode pages, and episode MP3s removed from the work tree.
+    A run that stopped after some of its changes (e.g. a failed removal) leaves them
+    uncommitted, so the next ``--push`` run commits them with its own."""
+    feed = _load_script("feed")
+    pages = _load_script("pages")
+    rel = site.resolve().relative_to(REPO.resolve()).as_posix()
+    specs = [f"{rel}/{INDEX}", f"{rel}/{pages.SITEMAP}", *(f"{rel}/{m['file']}" for m in feed.FEEDS.values()),
+             f":(glob){rel}/{EPISODES_DIR}/*/index.html", f":(glob){rel}/{EPISODES_DIR}/*/episode.mp3"]
+    proc = _git("status", "--porcelain=v1", "-z", "--no-renames", "--untracked-files=all", "--", *specs)
+    if proc.returncode != 0:
+        raise OSError(f"git status failed: {(proc.stderr or '').strip()[:300]}")
+    found = []
+    for record in proc.stdout.split("\0"):
+        if len(record) < 4:
+            continue
+        path = REPO / record[3:]
+        if path.suffix == ".mp3" and path.exists():
+            continue  # only the removal of an MP3 is ever committed
+        found.append(path)
+    return found
+
+
 def _migrate_main(push_it: bool, dry_run: bool) -> int:
     report: dict[str, Any] = {"failed": [], "git": None}
+    changed: list[Path] = []
     with _lock():
         if push_it:
-            _git("pull", "--rebase", "origin", "main")
+            # --autostash: a re-run after an interrupted run starts from a dirty tree.
+            pulled = _git("pull", "--rebase", "--autostash", "origin", "main")
+            if pulled.returncode != 0:
+                error = (pulled.stderr or pulled.stdout or "").strip()[-300:] or f"exit {pulled.returncode}"
+                report["failed"].append({"job": "git pull", "error": error})
+                report["changed"] = []
+                print(json.dumps(report, indent=2, ensure_ascii=False))
+                return 1
         try:
-            report.update(migrate_audio(SITE, dry_run=dry_run))
+            report.update(migrate_audio(SITE, media=GhMedia, verify=head_audio, remove=_git_rm, dry_run=dry_run))
+        except MigrationError as exc:
+            report.update(exc.report)
+            report["failed"].append({"job": "migrate-audio", "error": str(exc)})
         except (OSError, ValueError, UploadError) as exc:
             report["failed"].append({"job": "migrate-audio", "error": str(exc)})
-        changed: list[Path] = list(report.pop("changed", []))
-        if changed:
-            changed += _rebuild_feeds(report)
-            changed += _rebuild_pages(report)
+        changed = list(report.pop("changed", []))
+        if (report.get("feed_error") or report.get("pages_error")) and not report["failed"]:
+            # Never push a removal while a feed or page may still link the docs/ copy.
+            error = report.get("feed_error") or report.get("pages_error")
+            report["failed"].append({"job": "rebuild", "error": error})
+        if push_it and not report["failed"]:
+            try:
+                changed += [p for p in _pending_migration(SITE) if p not in changed]
+            except OSError as exc:
+                report["failed"].append({"job": "git", "error": str(exc)})
         if push_it and changed and not report["failed"]:
             report["git"] = push(changed, [], MIGRATE_SUBJECT)
             if not report["git"].get("pushed") and report["git"].get("error"):
                 report["failed"].append({"job": "git", "error": report["git"]["error"]})
         report["changed"] = [str(p.relative_to(REPO)) for p in changed]
     print(json.dumps(report, indent=2, ensure_ascii=False))
-    return 1 if report["failed"] or report.get("pages_error") or report.get("feed_error") else 0
+    return 1 if report["failed"] else 0
 
 
 def _backfill_main(push_it: bool) -> int:

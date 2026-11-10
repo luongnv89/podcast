@@ -84,19 +84,30 @@ always Once Upon a Time Show), plus the episode's `language`.
   notes "Audio for <episode page URL>"), holding one asset, `<episode id>.mp3`. GitHub
   rewrites asset names (spaces become dots, accents and parentheses are dropped), so the
   asset is named after the id, which it keeps as is.
-- `publish.py` uploads with `gh release upload --clobber` (the GitHub CLI, already logged
-  in), so a re-render replaces the asset under the same URL. It skips the upload when the
-  release already has the asset with the same size and the SHA-256 recorded in
-  `episodes.json` matches. The entry gets `audio` (the absolute URL
+- `publish.py` uploads with `gh release upload` (the GitHub CLI, already logged in). It
+  skips the upload when the release already has the asset with the same size and the
+  SHA-256 recorded in `episodes.json` matches. The entry gets `audio` (the absolute URL
   `https://github.com/<repo>/releases/download/<id>/<id>.mp3`), `size_bytes` and
-  `audio_sha256`. The MP3 is never copied into `docs/` (a leftover copy is removed).
+  `audio_sha256`, and `episodes.json` is written atomically (temp file, then rename). The
+  MP3 is never copied into `docs/`; a leftover copy from before the move is removed only
+  after the index update, once the new URL answers HEAD with 200 and `size_bytes`
+  (otherwise it is kept and the report's `notes` say so).
+- **Re-renders never use `--clobber`.** The new file is uploaded as `<id>.new.mp3`, its
+  size and state are checked, then the old `<id>.mp3` is deleted and the new asset renamed
+  (`gh api -X PATCH repos/<repo>/releases/assets/<asset id> -f name=<id>.mp3`). A failed
+  upload or check leaves the live asset untouched. If only the rename fails (the old asset
+  already deleted), the episode's audio URL is down until you run the same publish again:
+  it finds the staged asset, deletes it, uploads again and renames.
 - Nothing private is uploaded: DropCast never hands a photo job (or a deck) to the
   publisher, and the publisher's own checks (not rendered yet, edge-tts voices for private
   use, `"publish": false`) run before any upload, so those jobs are still never published. A failed upload fails that job with the `gh` error and leaves
   `episodes.json` and `docs/` unchanged.
 - `PODCAST_MEDIA_REPO_OVERRIDE=owner/name` sends every upload to that one repo (tests,
   emergencies). The site's player only accepts the four repos above (`MEDIA_PREFIX` in
-  `site.js`), so a change of repos needs a `site.js` change too.
+  `site.js`: after parsing, origin `https://github.com` and path exactly
+  `/luongnv89/<repo>/releases/download/<id>/<id>.mp3`; percent-encoded dots, slashes and
+  backslashes are refused), so a change of repos needs a `site.js` change too. An episode
+  whose audio is refused shows no Play or Download button.
 - The asset URL redirects (302) to `release-assets.githubusercontent.com`, which answers
   HEAD with `Content-Length`, supports Range requests (206) and ignores the feeds' `?v=`.
   It serves the MP3 as `application/octet-stream` (the API records `audio/mpeg`); browsers
@@ -107,13 +118,21 @@ always Once Upon a Time Show), plus the episode's `language`.
 
 **Migration.** `python3 scripts/publish.py --migrate-audio` moves the MP3s still in
 `docs/` (entries whose `audio` is `episodes/<id>/episode.mp3`), each to its show/language
-repo: it uploads all of them, then checks every URL with HEAD (200 after redirects and
-`Content-Length` = `size_bytes`), and only then updates `episodes.json`, `git rm`s the
-local MP3s and rebuilds the feeds and pages. Any failed upload or check stops it before
-anything is removed. `--push` commits and pushes all of it as one commit
-(`feat(site): move episode audio to GitHub Releases (#30)`); without it the files change
-locally only (the uploads still happen). `--dry-run` lists the episodes, repos and bytes
-it would move and uploads nothing. A second run finds nothing to move and changes nothing.
+repo, in this order: upload all of them; check every URL with HEAD (200 after redirects
+and `Content-Length` = `size_bytes`); update `episodes.json`; rebuild the feeds and pages
+and check that every feed listing a moved episode has its enclosure on the release URL
+(and no feed or page still links the `docs/` copy); only then `git rm` the local MP3s. A
+failed upload or check stops it before anything changes; a failed rebuild, feed check or
+removal stops it before the push, with every file still in place. **Run the same command
+again to finish**: it also picks up leftovers, i.e. `docs/episodes/<id>/episode.mp3` files
+whose entry already has its release URL and an `audio_sha256`/`size_bytes` matching the
+file (other copies are kept and listed under `kept`), checks them with HEAD, rebuilds,
+removes them and commits everything the earlier run left uncommitted. `--push` first runs
+`git pull --rebase --autostash` (a failed pull stops it before any upload) and commits and
+pushes all of it as one commit (`feat(site): move episode audio to GitHub Releases (#30)`),
+only when nothing failed; without it the files change locally only (the uploads still
+happen). `--dry-run` lists the episodes, leftovers, repos and bytes it would move and
+uploads nothing. A run with nothing left to do calls nothing and changes nothing.
 Old `docs/episodes/<id>/episode.mp3` links stop working once the files are removed; the
 feeds, pages and player already point to the new URLs.
 

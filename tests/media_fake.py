@@ -48,5 +48,16 @@ class FakeMedia:
         self.releases.setdefault(tag, {})[Path(path).name] = len(data)
         self.uploaded[f"{tag}/{Path(path).name}"] = data
 
+    def replace(self, tag: str, path: Path) -> None:
+        """Like ``GhMedia.replace``: the asset named ``path.name`` now holds ``path``."""
+        data = Path(path).read_bytes()
+        self.calls.append(("replace", tag, Path(path).name, len(data), hashlib.sha256(data).hexdigest()))
+        if self.fail:
+            raise self.fail
+        assets = self.releases.setdefault(tag, {})
+        assets.pop(Path(path).name.replace(".mp3", ".new.mp3"), None)
+        assets[Path(path).name] = len(data)
+        self.uploaded[f"{tag}/{Path(path).name}"] = data
+
     def names(self) -> list[str]:
         return [c[0] for c in self.calls]

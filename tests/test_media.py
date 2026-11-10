@@ -21,8 +21,9 @@ import tempfile
 import threading
 import unittest
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
+from typing import ClassVar
 from unittest import mock
 
 from media_fake import FakeMedia
@@ -47,7 +48,7 @@ BUILDWIZ = "luongnv89/buildwiz-ai-show-media"
 URL = f"https://github.com/{BUILDWIZ}/releases/download/{EP}/{EP}.mp3"
 MP3 = b"ID3\x04fake audio bytes" * 10
 SHA = hashlib.sha256(MP3).hexdigest()
-NOW = datetime(2026, 11, 10, 12, 0, tzinfo=timezone.utc)
+NOW = datetime(2026, 11, 10, 12, 0, tzinfo=UTC)
 
 
 def _write(path: Path, data) -> None:
@@ -164,7 +165,7 @@ class GhCommandTest(Tmp):
         self.assertEqual(calls[2][:2], ["release", "upload"])
         self.assertEqual(calls[2][2], EP)
         self.assertTrue(calls[2][3].endswith(f"/{EP}.mp3"))
-        self.assertEqual(calls[2][4:], ["-R", "luongnv89/buildwiz-ai-show-media", "--clobber"])
+        self.assertEqual(calls[2][4:], ["-R", "luongnv89/buildwiz-ai-show-media"])  # a new asset: no --clobber
 
     def test_gh_errors_are_upload_errors(self) -> None:
         def broken(*args, timeout=900):
@@ -224,7 +225,7 @@ class PublishUploadTest(Tmp):
         make_job(self.job)
         media = FakeMedia(releases={EP: {f"{EP}.mp3": 1}})
         publish.episode_entry(self.job, self.site, media=media)
-        self.assertEqual(media.names(), ["assets", "upload"])
+        self.assertEqual(media.names(), ["assets", "replace"])
 
     def test_skipped_when_the_recorded_sha_and_size_match(self) -> None:
         make_job(self.job)
@@ -246,7 +247,7 @@ class PublishUploadTest(Tmp):
                 _write(self.site / "episodes.json", {"episodes": [{"id": EP, "audio": URL, "audio_sha256": recorded}]})
                 media = FakeMedia(releases={EP: {f"{EP}.mp3": size}})
                 publish.episode_entry(self.job, self.site, media=media)
-                self.assertEqual(media.names(), ["assets", "upload"])
+                self.assertEqual(media.names(), ["assets", "replace"])
 
     def test_skip_checks_run_before_any_upload(self) -> None:
         make_job(self.job, private_use=True)
@@ -259,13 +260,13 @@ class PublishUploadTest(Tmp):
             publish.episode_entry(self.job, self.site, media=media)
         self.assertEqual(media.calls, [])
 
-    def test_stale_local_copy_is_removed(self) -> None:
+    def test_stale_local_copy_is_left_to_main(self) -> None:
         make_job(self.job)
         stale = self.site / "episodes" / EP / "episode.mp3"
         _write(stale, "old bytes")
         entry, changed = publish.episode_entry(self.job, self.site, media=FakeMedia())
-        self.assertFalse(stale.exists())
-        self.assertIn(stale, changed)
+        self.assertTrue(stale.exists())
+        self.assertNotIn(stale, changed)
         self.assertEqual(entry["audio"], URL)
 
     def run_main(self, media: FakeMedia, *argv: str) -> tuple[int, dict]:
@@ -447,10 +448,413 @@ class MigrateAudioTest(Tmp):
                     self.assertEqual(publish.main(argv), 2)
 
 
+class FakeApi:
+    """A stateful ``publish._gh`` for one release: assets with ids, upload, delete, rename."""
+
+    def __init__(self, assets=None, fail=None, wrong_size=False):
+        self.assets = [dict(a) for a in assets or []]
+        self.next_id = 100
+        self.fail = fail or set()
+        self.wrong_size = wrong_size
+        self.calls: list[list[str]] = []
+
+    def __call__(self, *args, timeout=900):
+        args = list(args)
+        self.calls.append(args)
+        ok = subprocess.CompletedProcess(args, 0, "", "")
+        if args[0] == "api" and len(args) == 2:
+            return subprocess.CompletedProcess(args, 0, json.dumps({"assets": self.assets}), "")
+        if args[:2] == ["release", "upload"]:
+            if "upload" in self.fail:
+                return subprocess.CompletedProcess(args, 1, "", "HTTP 502: upload failed")
+            path = Path(args[3])
+            size = path.stat().st_size + (1 if self.wrong_size else 0)
+            self.assets.append({"id": self.next_id, "name": path.name, "size": size, "state": "uploaded"})
+            self.next_id += 1
+            return ok
+        if args[:3] == ["api", "-X", "DELETE"]:
+            if "delete" in self.fail:
+                return subprocess.CompletedProcess(args, 1, "", "HTTP 500")
+            asset_id = int(args[3].rsplit("/", 1)[-1])
+            self.assets = [a for a in self.assets if a["id"] != asset_id]
+            return ok
+        if args[:3] == ["api", "-X", "PATCH"]:
+            if "rename" in self.fail:
+                return subprocess.CompletedProcess(args, 1, "", "HTTP 500: rename failed")
+            asset_id = int(args[3].rsplit("/", 1)[-1])
+            for a in self.assets:
+                if a["id"] == asset_id:
+                    a["name"] = args[5].split("=", 1)[1]
+            return ok
+        raise AssertionError(f"unexpected gh call {args}")
+
+    def verbs(self) -> list[str]:
+        return [c[2] if c[0] == "api" and len(c) > 2 else c[1] if c[0] == "release" else "read" for c in self.calls]
+
+
+class GhReplaceTest(Tmp):
+    """L2: a re-rendered episode replaces its asset under a staged name, never with --clobber."""
+
+    REPO = "luongnv89/buildwiz-ai-show-media"
+
+    def setUp(self) -> None:
+        super().setUp()
+        self.mp3 = self.tmp / "x.mp3"
+        self.mp3.write_bytes(MP3 * 2)
+        self.old = {"id": 1, "name": f"{EP}.mp3", "size": len(MP3), "state": "uploaded"}
+
+    def publish_with(self, api: FakeApi) -> dict:
+        with mock.patch.object(publish, "_gh", api):
+            return publish.upload_audio(publish.GhMedia(self.REPO), EP, "Quiet hours", self.mp3,
+                                        hashlib.sha256(MP3 * 2).hexdigest(), SHA)
+
+    def test_staged_upload_then_delete_then_rename(self) -> None:
+        api = FakeApi([self.old])
+        self.assertEqual(self.publish_with(api)["uploaded"], True)
+        self.assertEqual(api.verbs(), ["read", "read", "upload", "read", "DELETE", "PATCH"])
+        upload = api.calls[2]
+        self.assertTrue(upload[3].endswith(f"/{EP}.new.mp3"))
+        self.assertNotIn("--clobber", upload)
+        self.assertEqual(api.calls[4], ["api", "-X", "DELETE", f"repos/{self.REPO}/releases/assets/1"])
+        self.assertEqual(api.calls[5], ["api", "-X", "PATCH", f"repos/{self.REPO}/releases/assets/100",
+                                        "-f", f"name={EP}.mp3"])
+        self.assertEqual(api.assets, [{"id": 100, "name": f"{EP}.mp3", "size": len(MP3) * 2, "state": "uploaded"}])
+        self.assertEqual(publish.staged_name(f"{EP}.mp3"), f"{EP}.new.mp3")
+
+    def test_failed_or_wrong_upload_keeps_the_live_asset(self) -> None:
+        for api in (FakeApi([self.old], fail={"upload"}), FakeApi([self.old], wrong_size=True)):
+            with self.subTest(api=api.fail or "wrong size"), self.assertRaises(publish.UploadError):
+                self.publish_with(api)
+            self.assertNotIn("DELETE", api.verbs())
+            self.assertIn(self.old, api.assets)
+
+    def test_failed_delete_keeps_the_live_asset(self) -> None:
+        api = FakeApi([self.old], fail={"delete"})
+        with self.assertRaisesRegex(publish.UploadError, "could not delete"):
+            self.publish_with(api)
+        self.assertIn(self.old, api.assets)
+
+    def test_failed_rename_is_finished_by_a_rerun(self) -> None:
+        api = FakeApi([self.old], fail={"rename"})
+        with self.assertRaisesRegex(publish.UploadError, "run the publish again"):
+            self.publish_with(api)
+        self.assertEqual([a["name"] for a in api.assets], [f"{EP}.new.mp3"])
+        api.fail = set()
+        api.calls = []
+        self.publish_with(api)
+        # The leftover staged asset is deleted first, then the replacement goes through.
+        self.assertEqual(api.verbs(), ["read", "read", "DELETE", "upload", "read", "PATCH"])
+        self.assertEqual([(a["name"], a["size"]) for a in api.assets], [(f"{EP}.mp3", len(MP3) * 2)])
+
+
+class AtomicIndexTest(Tmp):
+    """L1: episodes.json is written to a temp file in its folder, then os.replace()d."""
+
+    def test_keeps_the_mode_and_leaves_no_temp_file(self) -> None:
+        path = self.site / "episodes.json"
+        _write(path, {"episodes": []})
+        path.chmod(0o640)
+        publish._write_json(path, {"episodes": [{"id": "a"}]})
+        self.assertEqual(json.loads(path.read_text())["episodes"], [{"id": "a"}])
+        self.assertEqual(path.stat().st_mode & 0o777, 0o640)
+        self.assertEqual([p.name for p in self.site.iterdir()], ["episodes.json"])
+
+    def test_a_failed_write_keeps_the_old_index(self) -> None:
+        path = self.site / "episodes.json"
+        _write(path, {"episodes": [{"id": "old"}]})
+        before = path.read_bytes()
+        with mock.patch.object(publish.os, "replace", side_effect=OSError("disk full")), \
+                self.assertRaises(OSError):
+            publish.update_index(self.site, [{"id": "new", "published": "2026-11-10"}])
+        self.assertEqual(path.read_bytes(), before)
+        self.assertEqual([p.name for p in self.site.iterdir()], ["episodes.json"])
+
+    def test_every_index_write_is_atomic(self) -> None:
+        source = (ROOT / "scripts" / "publish.py").read_text(encoding="utf-8")
+        self.assertNotIn("path.write_text(json.dumps", source)
+        self.assertEqual(source.count("_write_json(path, data)"), 3)  # update_index, backfill, migrate
+
+
+class StaleCopyTest(Tmp):
+    """M3: a leftover docs/ MP3 goes only after the index update and a HEAD check."""
+
+    def setUp(self) -> None:
+        super().setUp()
+        make_job(self.job)
+        self.stale = self.site / "episodes" / EP / "episode.mp3"
+        _write(self.stale, "old bytes")
+
+    def run_main(self, verify) -> tuple[int, dict]:
+        out = io.StringIO()
+        with contextlib.ExitStack() as stack:
+            stack.enter_context(mock.patch.object(publish, "SITE", self.site))
+            stack.enter_context(mock.patch.object(publish, "REPO", self.tmp))
+            stack.enter_context(mock.patch.object(publish, "GhMedia", FakeMedia()))
+            stack.enter_context(mock.patch.object(publish, "head_audio", verify))
+            stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
+            stack.enter_context(contextlib.redirect_stdout(out))
+            code = publish.main([str(self.job)])
+        return code, json.loads(out.getvalue())
+
+    def test_removed_after_the_index_and_a_good_head(self) -> None:
+        checked = []
+        code, report = self.run_main(lambda url: checked.append(url) or {"status": 200, "length": len(MP3)})
+        self.assertEqual(code, 0, report)
+        self.assertEqual(checked, [URL])
+        self.assertFalse(self.stale.exists())
+        self.assertIn(f"docs/episodes/{EP}/episode.mp3", report["changed"])
+        self.assertEqual(json.loads((self.site / "episodes.json").read_text())["episodes"][0]["audio"], URL)
+
+    def test_kept_when_head_fails(self) -> None:
+        for answer in ({"status": 404, "length": None}, {"status": 200, "length": len(MP3) - 1}):
+            with self.subTest(answer=answer):
+                code, report = self.run_main(lambda url, a=answer: a)
+                self.assertEqual(code, 0, report)
+                self.assertTrue(self.stale.exists())
+                self.assertNotIn(f"docs/episodes/{EP}/episode.mp3", report["changed"])
+                self.assertTrue(any("kept the old" in n for n in report["notes"]))
+
+    def test_kept_when_the_index_update_fails(self) -> None:
+        def no_verify(url):
+            raise AssertionError("verified before the index was written")
+
+        with mock.patch.object(publish, "update_index", side_effect=OSError("disk full")), \
+                self.assertRaises(OSError):
+            self.run_main(no_verify)
+        self.assertTrue(self.stale.exists())
+
+
+def _ok_for(site: Path):
+    def ok(url: str) -> dict:
+        ep_id = url.rsplit("/", 1)[-1][:-4]
+        index = json.loads((site / "episodes.json").read_text())
+        sizes = {e["id"]: e.get("size_bytes") for e in index["episodes"]}
+        mp3 = site / "episodes" / ep_id / "episode.mp3"
+        return {"status": 200, "length": mp3.stat().st_size if mp3.exists() else sizes[ep_id]}
+    return ok
+
+
+def _feed_urls(site: Path) -> list[str]:
+    urls = []
+    for meta in feed.FEEDS.values():
+        path = site / meta["file"]
+        if path.exists():
+            urls += [e.get("url") for e in ET.parse(path).getroot().iter("enclosure")]
+    return urls
+
+
+class MigrationRecoveryTest(Tmp):
+    """M1/M2: the rebuilt feeds are checked before anything is removed, and a run that stops
+    half-way is finished by running it again."""
+
+    def setUp(self) -> None:
+        super().setUp()
+        site_with_local_audio(self.site)
+        publish._rebuild_site(self.site)  # feeds and pages of the pre-move site
+        self.ok = _ok_for(self.site)
+
+    def local_mp3s(self) -> list[str]:
+        return sorted(p.parent.name for p in self.site.rglob("episode.mp3"))
+
+    def test_failed_rebuild_removes_nothing(self) -> None:
+        def broken(site):
+            return [], {"feed_error": "ValueError: bad feed"}
+
+        with self.assertRaisesRegex(publish.MigrationError, "nothing removed") as caught:
+            publish.migrate_audio(self.site, media=FakeMedia(), verify=self.ok, remove=Path.unlink, rebuild=broken)
+        self.assertEqual(caught.exception.report["feed_error"], "ValueError: bad feed")
+        self.assertEqual(len(self.local_mp3s()), 4)
+
+    def test_stale_feeds_remove_nothing(self) -> None:
+        # A rebuild that "worked" but left the feeds on the docs/ copies.
+        with self.assertRaisesRegex(publish.MigrationError, "do not use the release URLs") as caught:
+            publish.migrate_audio(self.site, media=FakeMedia(), verify=self.ok, remove=Path.unlink,
+                                  rebuild=lambda site: ([], {}))
+        self.assertTrue(any("feed.xml" in p for p in caught.exception.report["release_problems"]))
+        self.assertEqual(len(self.local_mp3s()), 4)
+        # The next run sees the four leftovers, rebuilds for real and finishes.
+        media = FakeMedia()
+        report = publish.migrate_audio(self.site, media=media, verify=self.ok, remove=Path.unlink)
+        self.assertEqual((report["count"], len(report["leftovers"]), media.calls), (0, 4, []))
+        self.assertEqual(self.local_mp3s(), [])
+
+    def test_third_removal_fails_then_a_rerun_finishes(self) -> None:
+        removed = []
+
+        def flaky(path: Path) -> None:
+            if len(removed) == 2 and path.parent.name not in removed:
+                removed.append("failed")
+                raise OSError("git rm failed: index.lock exists")
+            removed.append(path.parent.name)
+            path.unlink()
+
+        with self.assertRaisesRegex(publish.MigrationError, "1 local MP3") as caught:
+            publish.migrate_audio(self.site, media=FakeMedia(), verify=self.ok, remove=flaky)
+        report = caught.exception.report
+        self.assertEqual(len(report["not_removed"]), 1)
+        left = self.local_mp3s()
+        self.assertEqual(len(left), 1)
+        # Consistent in between: every entry is on its release URL and every feed says so.
+        index = json.loads((self.site / "episodes.json").read_text())
+        self.assertTrue(all(e["audio"].startswith("https://github.com/") for e in index["episodes"]))
+        self.assertFalse([u for u in _feed_urls(self.site) if "/episodes/" in u and "github.com" not in u])
+        # The re-run: no upload, a HEAD check of the leftover, then it goes.
+        media, checked = FakeMedia(), []
+        again = publish.migrate_audio(self.site, media=media, verify=lambda u: checked.append(u) or self.ok(u),
+                                      remove=Path.unlink)
+        self.assertEqual(media.calls, [])
+        self.assertEqual([lo["id"] for lo in again["leftovers"]], left)
+        self.assertEqual(len(checked), 1)
+        self.assertEqual(self.local_mp3s(), [])
+        # And a third run has nothing left to do.
+        third = publish.migrate_audio(self.site, media=FakeMedia(), verify=self.no_verify, remove=Path.unlink)
+        self.assertEqual((third["count"], third["leftovers"], third["changed"]), (0, [], []))
+
+    def no_verify(self, url: str) -> dict:
+        raise AssertionError(f"verify called for {url}")
+
+    def test_leftover_not_matching_its_entry_is_kept(self) -> None:
+        publish.migrate_audio(self.site, media=FakeMedia(), verify=self.ok, remove=Path.unlink)
+        other = self.site / "episodes" / "2026-11-01_a" / "episode.mp3"
+        other.write_bytes(b"another render")
+        report = publish.migrate_audio(self.site, media=FakeMedia(), verify=self.no_verify, remove=Path.unlink)
+        self.assertEqual(report["leftovers"], [])
+        self.assertIn("2026-11-01_a", report["kept"][0])
+        self.assertTrue(other.exists())
+
+    def test_leftover_failing_head_is_kept(self) -> None:
+        publish.migrate_audio(self.site, media=FakeMedia(), verify=self.ok, remove=Path.unlink)
+        mp3 = self.site / "episodes" / "2026-11-01_a" / "episode.mp3"
+        mp3.write_bytes(MP3)  # the uploaded bytes, back in docs/
+        with self.assertRaisesRegex(publish.UploadError, "nothing removed"):
+            publish.migrate_audio(self.site, media=FakeMedia(), verify=lambda u: {"status": 404, "length": None},
+                                  remove=Path.unlink)
+        self.assertTrue(mp3.exists())
+
+
+def _git_in(repo: Path, *args: str) -> str:
+    return subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True, check=True).stdout
+
+
+@unittest.skipUnless(shutil.which("git"), "git is not installed")
+class MigrateCommandTest(Tmp):
+    """The --migrate-audio --push command against a real (local) git repo and origin: it
+    never pushes after a failure, and a re-run commits the whole move."""
+
+    def setUp(self) -> None:
+        super().setUp()
+        self.origin = self.tmp / "origin.git"
+        self.work = self.tmp / "work"
+        subprocess.run(["git", "init", "-q", "--bare", "-b", "main", str(self.origin)], check=True)
+        subprocess.run(["git", "init", "-q", "-b", "main", str(self.work)], check=True)
+        hooks = self.tmp / "no-hooks"
+        hooks.mkdir()
+        for key, value in (("user.name", "Test"), ("user.email", "test@example.com"), ("commit.gpgsign", "false"),
+                           ("core.hooksPath", str(hooks))):
+            _git_in(self.work, "config", key, value)
+        _git_in(self.work, "remote", "add", "origin", str(self.origin))
+        self.wsite = self.work / "docs"
+        site_with_local_audio(self.wsite)
+        publish._rebuild_site(self.wsite)
+        _git_in(self.work, "add", "-A")
+        _git_in(self.work, "commit", "-q", "-m", "site before the move")
+        _git_in(self.work, "push", "-q", "origin", "main")
+        self.media = FakeMedia()
+
+    def run_migrate(self, *argv: str, git_rm=None, git=None) -> tuple[int, dict]:
+        out = io.StringIO()
+        with contextlib.ExitStack() as stack:
+            stack.enter_context(mock.patch.object(publish, "SITE", self.wsite))
+            stack.enter_context(mock.patch.object(publish, "REPO", self.work))
+            stack.enter_context(mock.patch.object(publish, "GhMedia", self.media))
+            stack.enter_context(mock.patch.object(publish, "head_audio", _ok_for(self.wsite)))
+            stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
+            if git_rm:
+                stack.enter_context(mock.patch.object(publish, "_git_rm", git_rm))
+            if git:
+                stack.enter_context(mock.patch.object(publish, "_git", git))
+            stack.enter_context(contextlib.redirect_stdout(out))
+            code = publish.main(["--migrate-audio", *argv])
+        return code, json.loads(out.getvalue())
+
+    def origin_head(self) -> str:
+        return _git_in(self.origin, "rev-parse", "main").strip()
+
+    def origin_files(self) -> list[str]:
+        return _git_in(self.origin, "ls-tree", "-r", "--name-only", "main").split()
+
+    def test_a_failed_rebuild_never_pushes(self) -> None:
+        before = self.origin_head()
+
+        def broken(report, site=None):
+            report["feed_error"] = "ValueError: bad feed"
+            return []
+
+        with mock.patch.object(publish, "_rebuild_feeds", broken), \
+                mock.patch.object(publish, "push", side_effect=AssertionError("pushed")):
+            code, report = self.run_migrate("--push")
+        self.assertEqual(code, 1)
+        self.assertEqual(report["feed_error"], "ValueError: bad feed")
+        self.assertIsNone(report["git"])
+        self.assertEqual(self.origin_head(), before)
+        self.assertEqual(len(list(self.wsite.rglob("episode.mp3"))), 4)
+
+    def test_third_removal_fails_then_a_rerun_pushes_everything(self) -> None:
+        before = self.origin_head()
+        calls = []
+        real_rm = publish._git_rm
+
+        def flaky(path: Path) -> None:
+            calls.append(path)
+            if len(calls) == 3:
+                raise OSError("git rm episode.mp3 failed: index.lock exists")
+            real_rm(path)
+
+        code, report = self.run_migrate("--push", git_rm=flaky)
+        self.assertEqual(code, 1)
+        self.assertIn("run --migrate-audio again", report["failed"][0]["error"])
+        self.assertIsNone(report["git"])
+        self.assertEqual(self.origin_head(), before)
+        self.assertEqual(len(list(self.wsite.rglob("episode.mp3"))), 1)
+
+        uploads = len(self.media.calls)
+        code, report = self.run_migrate("--push")
+        self.assertEqual(code, 0, report)
+        self.assertEqual(len(self.media.calls), uploads)  # nothing uploaded again
+        self.assertEqual((report["count"], len(report["leftovers"])), (0, 1))
+        self.assertTrue(report["git"]["pushed"], report)
+        self.assertNotEqual(self.origin_head(), before)
+        files = self.origin_files()
+        self.assertFalse([f for f in files if f.endswith(".mp3")])
+        index = json.loads(_git_in(self.origin, "show", "main:docs/episodes.json"))
+        self.assertTrue(all(e["audio"].startswith("https://github.com/") for e in index["episodes"]))
+        feed_xml = _git_in(self.origin, "show", "main:docs/feed.xml")
+        self.assertIn("https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-01_a/", feed_xml)
+        self.assertNotIn("episodes/2026-11-01_a/episode.mp3", feed_xml)
+        self.assertEqual(_git_in(self.work, "status", "--porcelain"), "")
+        # A third run: nothing to do, nothing pushed.
+        head = self.origin_head()
+        code, report = self.run_migrate("--push")
+        self.assertEqual((code, report["count"], report["leftovers"], report["git"]), (0, 0, [], None))
+        self.assertEqual(self.origin_head(), head)
+
+    def test_failed_pull_stops_before_anything(self) -> None:
+        def git(*args):
+            if args[0] == "pull":
+                return subprocess.CompletedProcess(args, 1, "", "error: cannot pull with rebase: conflict")
+            raise AssertionError(f"git {args} after a failed pull")
+
+        code, report = self.run_migrate("--push", git=git)
+        self.assertEqual(code, 1)
+        self.assertEqual(report["failed"], [{"job": "git pull", "error": "error: cannot pull with rebase: conflict"}])
+        self.assertEqual(self.media.calls, [])
+        self.assertEqual(len(list(self.wsite.rglob("episode.mp3"))), 4)
+
+
 class _Redirect(http.server.BaseHTTPRequestHandler):
     """/start redirects (302) to /file, which answers with a Content-Length (HEAD only)."""
 
-    seen: list[tuple[str, str]] = []
+    seen: ClassVar[list[tuple[str, str]]] = []
 
     def do_HEAD(self) -> None:
         type(self).seen.append((self.command, self.path))
@@ -564,10 +968,17 @@ class SiteAudioTest(unittest.TestCase):
         self.js = (ROOT / "docs" / "site.js").read_text(encoding="utf-8")
 
     def test_wiring(self) -> None:
-        self.assertIn("const MEDIA_PREFIX = /^https:\\/\\/github\\.com\\/luongnv89\\/(?:buildwiz-ai-show|once-upon-a-time-(?:en|fr|vi))"
-                      "-media\\/releases\\/download\\//;", self.js)
+        self.assertIn("const MEDIA_PATH = /^\\/luongnv89\\/(?:buildwiz-ai-show|once-upon-a-time-(?:en|fr|vi))"
+                      "-media\\/releases\\/download\\/", self.js)
+        self.assertIn('if (url.origin !== "https://github.com" || url.username || url.password) return null;', self.js)
         self.assertIn("e.audio = resolveAudio(e.audio);", self.js)
         self.assertIn("audio.src = ep.audio;", self.js)
+        # L4: no playable audio, no Play button, and never audio.src = null.
+        self.assertIn("if (!ep.audio) playBtn.hidden = true;", self.js)
+        load = self.js[self.js.index("  function load(ep, at) {"):self.js.index("audio.src = ep.audio;")]
+        self.assertIn("if (!ep || !ep.audio) return;", load)
+        play = self.js[self.js.index("  function play(ep, at) {"):]
+        self.assertIn("if (!ep || !ep.audio) return;", play[:200])
         # Download keeps its analytics event and download name.
         self.assertIn('if (ep.audio) actions.append(trackLink(el("a", { class: "btn", href: ep.audio, '
                       'download: fileName(ep) }', self.js)
@@ -602,6 +1013,19 @@ console.log(JSON.stringify([
   "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/../../x",
   "",
   null,
+  "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/%2e%2e/%2E%2E/x/a/a.mp3",
+  "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/a%2fb/a.mp3",
+  "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/a%2Fb/a.mp3",
+  "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/a/b.mp3",
+  "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/a/a.mp3/x",
+  "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/a/a.wav",
+  "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/a/",
+  "https://user:pw@github.com/luongnv89/buildwiz-ai-show-media/releases/download/a/a.mp3",
+  "https://github.com:444/luongnv89/buildwiz-ai-show-media/releases/download/a/a.mp3",
+  "http://github.com/luongnv89/buildwiz-ai-show-media/releases/download/a/a.mp3",
+  "https://github.com\\\\luongnv89\\\\buildwiz-ai-show-media\\\\releases\\\\download\\\\a\\\\a.mp3",
+  "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/a/a.mp3?x=1#t",
+  "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-05_quiet-hours/2026-11-05_quiet-hours.mp3",
 ].map(resolveAudio)));
 """
         )
@@ -613,6 +1037,9 @@ console.log(JSON.stringify([
             "https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/a/a.mp3",
             "https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/a/a.mp3",
             None, None, None, None, None, None, None, None, None, None,
+            None, None, None, None, None, None, None, None, None, None, None,
+            "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/a/a.mp3",
+            f"https://github.com/{BUILDWIZ}/releases/download/{EP}/{EP}.mp3",
         ])
 
 
