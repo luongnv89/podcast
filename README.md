@@ -293,7 +293,7 @@ platforms that read it by itself.
 - **For YouTube only** (YouTube Studio → Create → New podcast → Submit RSS feed). Never submit
   it to Spotify: the show is hosted on Spotify for Creators (its own feed is
   `https://anchor.fm/s/101f7db20/podcast/rss`), and a second submission would make a
-  duplicate show. Apple Podcasts already lists the Spotify-hosted show the same way.
+  duplicate show.
 - YouTube does not update an episode whose audio is re-voiced later; use "Re-upload from RSS
   feed" on that video.
 
