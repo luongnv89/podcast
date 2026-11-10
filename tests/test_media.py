@@ -837,6 +837,49 @@ def _git_in(repo: Path, *args: str) -> str:
     return subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True, check=True).stdout
 
 
+def _clone(origin: Path, path: Path, hooks: Path) -> Path:
+    """Another checkout of the site (a publish from another clone, a merged PR)."""
+    subprocess.run(["git", "clone", "-q", str(origin), str(path)], check=True)
+    for key, value in (("user.name", "Other"), ("user.email", "other@example.com"), ("commit.gpgsign", "false"),
+                       ("core.hooksPath", str(hooks))):
+        _git_in(path, "config", key, value)
+    return path
+
+
+def _commit_and_push(repo: Path, rel: str, edit) -> str:
+    path = repo / rel
+    path.write_text(edit(path.read_text() if path.exists() else ""))
+    _git_in(repo, "add", "--", rel)
+    _git_in(repo, "commit", "-q", "-m", f"change {rel} elsewhere")
+    _git_in(repo, "push", "-q", "origin", "main")
+    return _git_in(repo, "rev-parse", "HEAD").strip()
+
+
+def _origin_moves_before_push(other: Path, rel: str, edit, pushed: list[str]):
+    """publish._git, except that just before this run's first ``git push`` another clone
+    pushes a commit (sha appended to ``pushed``) that conflicts with the run's own."""
+    real = publish._git
+
+    def git(*args: str):
+        if args[0] == "push" and not pushed:
+            pushed.append(_commit_and_push(other, rel, edit))
+        return real(*args)
+
+    return git
+
+
+def _rebase_stopped(repo: Path) -> bool:
+    return any((repo / _git_in(repo, "rev-parse", "--git-path", name).strip()).exists()
+               for name in ("rebase-merge", "rebase-apply"))
+
+
+def _retitle(old: str, new: str):
+    def edit(text: str) -> str:
+        assert old in text, old
+        return text.replace(old, new)
+    return edit
+
+
 @unittest.skipUnless(shutil.which("git"), "git is not installed")
 class MigrateCommandTest(Tmp):
     """The --migrate-audio --push command against a real (local) git repo and origin: it
@@ -945,11 +988,14 @@ class MigrateCommandTest(Tmp):
                 return subprocess.CompletedProcess(args, 1, "", "error: cannot pull with rebase: conflict")
             if args[:2] == ("stash", "list"):  # read before the pull (N1)
                 return subprocess.CompletedProcess(args, 0, "", "")
+            if args[:2] == ("rev-parse", "--git-path"):  # is a rebase stopped? (M1): no
+                return subprocess.CompletedProcess(args, 0, str(self.tmp / "none" / args[2]) + "\n", "")
             raise AssertionError(f"git {args} after a failed pull")
 
         code, report = self.run_migrate("--push", git=git)
         self.assertEqual(code, 1)
         self.assertEqual(report["failed"], [{"job": "git pull", "error": "error: cannot pull with rebase: conflict"}])
+        self.assertEqual(report["git"], {"pushed": False, "error": "error: cannot pull with rebase: conflict"})
         self.assertEqual(self.media.calls, [])
         self.assertEqual(len(list(self.wsite.rglob("episode.mp3"))), 4)
 
@@ -979,7 +1025,7 @@ class MigrateCommandTest(Tmp):
         for words in ("autostash", "docs/episodes.json", "conflict markers", "Nothing was uploaded, pushed or removed",
                       "stash", "--migrate-audio --push again"):
             self.assertIn(words, error)
-        self.assertIsNone(report["git"])
+        self.assertEqual(report["git"], {"pushed": False, "error": error})
         self.assertEqual((self.media.calls, report["changed"]), ([], []))
         self.assertEqual(self.origin_head(), remote_head)
         self.assertEqual(len(list(self.wsite.rglob("episode.mp3"))), 4)
@@ -988,8 +1034,9 @@ class MigrateCommandTest(Tmp):
         self.assertEqual(len(left), len(stashes.splitlines()) + 1)
         self.assertIn(left[0][:12], error)
 
-        # A normal publish in this checkout now refuses the conflicted index instead of
-        # rewriting it with only its own episode.
+        # A normal publish --push in this checkout now stops at its start-of-run pull (M1:
+        # its result is no longer ignored) instead of rewriting the conflicted index with
+        # only its own episode. (Without --push, read_index() refuses it: UnreadableIndexTest.)
         make_job(self.job)
         conflicted = index.read_bytes()
         out = io.StringIO()
@@ -1002,9 +1049,69 @@ class MigrateCommandTest(Tmp):
             stack.enter_context(contextlib.redirect_stdout(out))
             code = publish.main([str(self.job), "--push"])
         self.assertEqual(code, 1)
-        self.assertIn("conflict markers", json.loads(out.getvalue())["failed"][0]["error"])
+        stopped = json.loads(out.getvalue())
+        self.assertEqual(stopped["failed"][0]["job"], "git pull")
+        self.assertIn("unmerged files", stopped["failed"][0]["error"])
+        self.assertFalse(stopped["git"]["pushed"])
         self.assertEqual(self.media.calls, [])
         self.assertEqual(index.read_bytes(), conflicted)
+
+    def test_push_that_loses_its_rebase_fails_then_a_rerun_pushes(self) -> None:
+        # M1: another clone publishes (changing episodes.json) between this run's commit and
+        # its push. The push is rejected, the retry rebase conflicts: no "pushed": true.
+        other = _clone(self.origin, self.tmp / "other", self.tmp / "no-hooks")
+        theirs: list[str] = []
+        git = _origin_moves_before_push(other, "docs/episodes.json",
+                                        _retitle('"title": "Episode 2026-11-01_a"', '"title": "Remote"'), theirs)
+        code, report = self.run_migrate("--push", git=git)
+        self.assertEqual(code, 1, report)
+        self.assertFalse(report["git"]["pushed"], report)
+        error = report["git"]["error"]
+        for words in ("git push was rejected", "git pull --rebase origin main failed", "rebase was aborted",
+                      "Nothing was pushed", "kept on the local branch", "run the same command again"):
+            self.assertIn(words, error)
+        self.assertEqual(report["failed"], [{"job": "git", "error": error}])
+        # Origin is the other clone's commit, with every MP3 still there.
+        self.assertEqual(self.origin_head(), theirs[0])
+        self.assertEqual(len([f for f in self.origin_files() if f.endswith(".mp3")]), 4)
+        # This checkout: out of the rebase, on its own migration commit, nothing lost.
+        self.assertFalse(_rebase_stopped(self.work))
+        local = _git_in(self.work, "rev-parse", "HEAD").strip()
+        self.assertEqual(report["git"]["commit"], local)
+        self.assertEqual(_git_in(self.work, "log", "-1", "--format=%s").strip(), publish.MIGRATE_SUBJECT)
+        self.assertEqual(_git_in(self.work, "status", "--porcelain"), "")
+
+        # Resolved by hand (here: the migration's side of each conflict), then the same command.
+        _git_in(self.work, "pull", "-q", "--rebase", "-X", "theirs", "origin", "main")
+        uploads = len(self.media.calls)
+        code, report = self.run_migrate("--push")
+        self.assertEqual(code, 0, report)
+        self.assertTrue(report["git"]["pushed"], report)
+        self.assertIn("earlier unpushed commit", report["git"]["note"])
+        self.assertEqual(len(self.media.calls), uploads)
+        self.assertEqual(report["git"]["commit"], self.origin_head())
+        self.assertEqual(_git_in(self.origin, "log", "-1", "--format=%s", "main").strip(), publish.MIGRATE_SUBJECT)
+        _git_in(self.origin, "merge-base", "--is-ancestor", theirs[0], "main")  # raises if lost
+        self.assertFalse([f for f in self.origin_files() if f.endswith(".mp3")])
+
+    def test_backfill_stops_on_a_failed_pull(self) -> None:
+        def git(*args):
+            if args[0] == "pull":
+                return subprocess.CompletedProcess(args, 1, "", "error: cannot pull with rebase")
+            if args[:2] in (("stash", "list"), ("rev-parse", "--git-path")):
+                return subprocess.CompletedProcess(args, 0, str(self.tmp / "none") + "\n", "")
+            raise AssertionError(f"git {args} after a failed pull")
+
+        out = io.StringIO()
+        with mock.patch.object(publish, "SITE", self.wsite), mock.patch.object(publish, "REPO", self.work), \
+                mock.patch.object(publish, "_lock", contextlib.nullcontext), mock.patch.object(publish, "_git", git), \
+                mock.patch.object(publish, "backfill", side_effect=AssertionError("backfilled")), \
+                contextlib.redirect_stdout(out):
+            code = publish.main(["--backfill", "--push"])
+        report = json.loads(out.getvalue())
+        self.assertEqual(code, 1)
+        self.assertEqual(report["git"], {"pushed": False, "error": "error: cannot pull with rebase"})
+        self.assertEqual(report["failed"][0]["job"], "git pull")
 
 
 @unittest.skipUnless(shutil.which("git"), "git is not installed")
@@ -1039,7 +1146,7 @@ class PublishCommandTest(Tmp):
         make_job(self.job)
         self.media = FakeMedia()
 
-    def publish(self, verify) -> tuple[int, dict]:
+    def publish(self, verify, git=None) -> tuple[int, dict]:
         out = io.StringIO()
         with contextlib.ExitStack() as stack:
             stack.enter_context(mock.patch.object(publish, "SITE", self.wsite))
@@ -1047,6 +1154,8 @@ class PublishCommandTest(Tmp):
             stack.enter_context(mock.patch.object(publish, "GhMedia", self.media))
             stack.enter_context(mock.patch.object(publish, "head_audio", verify))
             stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
+            if git:
+                stack.enter_context(mock.patch.object(publish, "_git", git))
             stack.enter_context(contextlib.redirect_stdout(out))
             code = publish.main([str(self.job), "--push"])
         return code, json.loads(out.getvalue())
@@ -1092,6 +1201,134 @@ class PublishCommandTest(Tmp):
         feed_xml = _git_in(self.origin, "show", "main:docs/feed.xml")
         self.assertIn(URL, feed_xml)
         self.assertNotIn(f"episodes/{EP}/episode.mp3", feed_xml)
+        self.assertEqual(_git_in(self.work, "status", "--porcelain"), "")
+
+    # M1: a publish never reports a push that did not reach origin.
+
+    def ok(self, url: str) -> dict:
+        return {"status": 200, "length": len(MP3)}
+
+    def uploads(self) -> list:
+        return [c for c in self.media.calls if c[0] in ("upload", "replace")]
+
+    def other(self) -> Path:
+        return _clone(self.origin, self.tmp / "other", self.tmp / "no-hooks")
+
+    def assert_nothing_reached_origin(self, code: int, report: dict, origin_head: str) -> None:
+        self.assertEqual(code, 1, report)
+        self.assertFalse(report["git"]["pushed"], report)
+        self.assertTrue(report["git"]["error"])
+        self.assertEqual(self.origin_head(), origin_head)
+        self.assertNotIn(URL, _git_in(self.origin, "show", "main:docs/episodes.json"))
+        self.assertFalse(_rebase_stopped(self.work))
+
+    def test_push_that_loses_its_rebase_fails_then_a_rerun_pushes(self) -> None:
+        theirs: list[str] = []
+        git = _origin_moves_before_push(self.other(), "docs/episodes.json",
+                                        _retitle('"title": "Quiet hours"', '"title": "Retitled"'), theirs)
+        code, report = self.publish(self.ok, git=git)
+        self.assert_nothing_reached_origin(code, report, theirs[0])
+        self.assertIn("rebase was aborted", report["git"]["error"])
+        self.assertEqual(report["failed"], [{"job": "git", "error": report["git"]["error"]}])
+        local = _git_in(self.work, "rev-parse", "HEAD").strip()
+        self.assertEqual(report["git"]["commit"], local)
+        self.assertEqual(_git_in(self.work, "log", "-1", "--format=%s").strip(), "feat(episodes): publish Quiet hours")
+        self.assertEqual(_git_in(self.work, "status", "--porcelain"), "")
+
+        # Publishing again before it is resolved: the start-of-run pull conflicts the same
+        # way; it is aborted and the run stops before any upload, keeping the local commit.
+        uploads = self.uploads()
+        code, report = self.publish(self.ok)
+        self.assert_nothing_reached_origin(code, report, theirs[0])
+        self.assertEqual(report["failed"][0]["job"], "git pull")
+        for words in ("rebase was aborted", "Nothing was uploaded, pushed or removed", "the same publish again"):
+            self.assertIn(words, report["git"]["error"])
+        self.assertEqual(self.uploads(), uploads)
+        self.assertEqual(_git_in(self.work, "rev-parse", "HEAD").strip(), local)
+
+        # Resolved by hand (here: this checkout's side), then publishing again pushes it.
+        _git_in(self.work, "pull", "-q", "--rebase", "-X", "theirs", "origin", "main")
+        code, report = self.publish(self.ok)
+        self.assertEqual(code, 0, report)
+        self.assertTrue(report["git"]["pushed"], report)
+        self.assertEqual(report["git"]["commit"], self.origin_head())
+        self.assertEqual(self.uploads(), uploads)
+        _git_in(self.origin, "merge-base", "--is-ancestor", theirs[0], "main")
+        self.assertEqual(json.loads(_git_in(self.origin, "show", "main:docs/episodes.json"))["episodes"][0]["audio"],
+                         URL)
+        self.assertEqual(_git_in(self.work, "status", "--porcelain"), "")
+
+    def test_push_that_exits_0_without_reaching_origin_is_not_pushed(self) -> None:
+        real = publish._git
+
+        def git(*args):
+            if args[0] == "push":  # "succeeds" without sending anything
+                return subprocess.CompletedProcess(args, 0, "", "Everything up-to-date")
+            return real(*args)
+
+        before = self.origin_head()
+        code, report = self.publish(self.ok, git=git)
+        self.assert_nothing_reached_origin(code, report, before)
+        self.assertIn("origin/main does not hold this run's commit", report["git"]["error"])
+        local = _git_in(self.work, "rev-parse", "HEAD").strip()
+        self.assertEqual(report["git"]["commit"], local)
+        # The next run pushes the commit it left.
+        code, report = self.publish(self.ok)
+        self.assertEqual(code, 0, report)
+        self.assertTrue(report["git"]["pushed"], report)
+        _git_in(self.origin, "merge-base", "--is-ancestor", local, "main")
+
+    def fail_rebuild(self) -> None:
+        def broken(report, site=None):
+            report["pages_error"] = "ValueError: bad template"
+            return []
+
+        with mock.patch.object(publish, "_rebuild_pages", broken):
+            code, report = self.publish(self.ok)
+        self.assertEqual((code, report["failed"][0]["job"], report["git"]), (1, "rebuild", None))
+        self.assertNotEqual(_git_in(self.work, "status", "--porcelain"), "")  # left for the next run
+
+    def test_rerun_after_a_failed_rebuild_stops_when_origin_conflicts(self) -> None:
+        # The review's second reproduction: the start-of-run pull used to be refused on the
+        # dirty tree, the run committed on a stale base and reported origin's commit as pushed.
+        self.fail_rebuild()
+        theirs = _commit_and_push(self.other(), "docs/episodes.json",
+                                  _retitle('"title": "Quiet hours"', '"title": "Retitled"'))
+        stashes = _git_in(self.work, "stash", "list", "--format=%H").split()
+        uploads = self.uploads()
+        code, report = self.publish(self.ok)
+        self.assert_nothing_reached_origin(code, report, theirs)
+        self.assertEqual(report["failed"][0]["job"], "git pull")
+        for words in ("autostash", "Nothing was uploaded, pushed or removed", "the same publish again"):
+            self.assertIn(words, report["git"]["error"])
+        self.assertEqual(self.uploads(), uploads)
+        left = _git_in(self.work, "stash", "list", "--format=%H").split()
+        self.assertEqual(len(left), len(stashes) + 1)  # the earlier run's changes, kept
+
+        # Resolved by hand: drop the earlier run's leftovers (the publisher rebuilds them),
+        # then publishing again goes on origin's commit and pushes.
+        _git_in(self.work, "reset", "-q", "--hard", "HEAD")
+        _git_in(self.work, "stash", "drop", "-q", "stash@{0}")
+        code, report = self.publish(self.ok)
+        self.assertEqual(code, 0, report)
+        self.assertTrue(report["git"]["pushed"], report)
+        self.assertEqual(report["git"]["commit"], self.origin_head())
+        _git_in(self.origin, "merge-base", "--is-ancestor", theirs, "main")
+        self.assertIn(URL, _git_in(self.origin, "show", "main:docs/episodes.json"))
+        self.assertFalse(self.stale.exists())
+        self.assertEqual(_git_in(self.work, "status", "--porcelain"), "")
+
+    def test_rerun_after_a_failed_rebuild_publishes_on_origins_latest(self) -> None:
+        # Same, but origin's new commit does not touch this run's files: the autostash puts
+        # the earlier run's changes back on origin's commit, and the push holds both.
+        self.fail_rebuild()
+        theirs = _commit_and_push(self.other(), "docs/elsewhere.txt", lambda text: "a merged PR\n")
+        code, report = self.publish(self.ok)
+        self.assertEqual(code, 0, report)
+        self.assertTrue(report["git"]["pushed"], report)
+        self.assertEqual(report["git"]["commit"], self.origin_head())
+        self.assertEqual(_git_in(self.origin, "rev-parse", "main~1").strip(), theirs)
+        self.assertIn(URL, _git_in(self.origin, "show", "main:docs/episodes.json"))
         self.assertEqual(_git_in(self.work, "status", "--porcelain"), "")
 
 

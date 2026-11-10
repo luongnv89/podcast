@@ -1330,7 +1330,74 @@ def _git(*args: str) -> subprocess.CompletedProcess[str]:
     )
 
 
+PUBLISH_SUBJECT = "feat(episodes): publish "
+MIGRATE_SUBJECT = "feat(site): move episode audio to GitHub Releases (#30)"
+BACKFILL_SUBJECT = "feat(site): backfill episode descriptions, pages and story art"
+ORIGIN_MAIN = "refs/remotes/origin/main"
+
+
+def _git_error(proc: subprocess.CompletedProcess[str]) -> str:
+    return (proc.stderr or proc.stdout or "").strip()[-300:] or f"exit {proc.returncode}"
+
+
+def _rebase_in_progress() -> bool:
+    for name in ("rebase-merge", "rebase-apply"):
+        path = _git("rev-parse", "--git-path", name).stdout.strip()
+        if path and (REPO / path).exists():
+            return True
+    return False
+
+
+def _abort_rebase() -> str:
+    """Abort a rebase that a failed ``git pull --rebase`` left stopped (it would leave
+    ``HEAD`` on origin's commit, without this run's), so the local branch and its commit
+    are back as they were. Returns a sentence for the error ('' when there was none)."""
+    if not _rebase_in_progress():
+        return ""
+    aborted = _git("rebase", "--abort")
+    if aborted.returncode != 0 or _rebase_in_progress():
+        return (f" git rebase --abort failed too ({_git_error(aborted)}): this checkout is still"
+                " mid-rebase; run git rebase --abort by hand before anything else.")
+    return " The stopped rebase was aborted (git rebase --abort)."
+
+
+def _unpushed_commits() -> list[str]:
+    """The commits on HEAD that origin/main (as last fetched) does not have, when every one
+    of them is a commit this script makes: what an earlier run committed but could not push.
+    Empty otherwise, so a run never pushes someone's unrelated local work on its own."""
+    proc = _git("log", "--format=%H %s", f"{ORIGIN_MAIN}..HEAD")
+    if proc.returncode != 0:
+        return []
+    commits = [line.partition(" ") for line in proc.stdout.splitlines() if line.strip()]
+    if commits and all(s.startswith((PUBLISH_SUBJECT, MIGRATE_SUBJECT, BACKFILL_SUBJECT)) for _, _, s in commits):
+        return [sha for sha, _, _ in commits]
+    return []
+
+
+def _confirm_pushed(sha: str, note: str | None = None) -> dict[str, Any]:
+    """``git push`` exited 0: fetch origin/main and report ``pushed`` only if it holds
+    ``sha`` (a push from a stopped rebase "succeeds" with origin's own commit)."""
+    result: dict[str, Any] = {"pushed": False, "commit": sha}
+    if note:
+        result["note"] = note
+    fetched = _git("fetch", "-q", "origin", f"+refs/heads/main:{ORIGIN_MAIN}")
+    if fetched.returncode != 0:
+        result["error"] = (f"git push exited 0 but origin/main could not be fetched to check that it holds"
+                           f" {sha[:12]} ({_git_error(fetched)}); check origin before publishing again")
+        return result
+    if _git("merge-base", "--is-ancestor", sha, ORIGIN_MAIN).returncode != 0:
+        result["error"] = (f"git push exited 0 but origin/main does not hold this run's commit {sha[:12]}:"
+                           " it did not reach origin. The commit is kept on the local branch; run the same"
+                           " command again to push it")
+        return result
+    result["pushed"] = True
+    return result
+
+
 def push(paths: list[Path], titles: list[str], subject: str | None = None) -> dict[str, Any]:
+    """Commit ``paths`` and push to origin main. ``pushed`` is True only once origin/main
+    holds the commit; a rejected push is rebased onto origin once, and a rebase that fails
+    is aborted (the local commit is kept) and reported as an error."""
     rel = sorted({str(p.relative_to(REPO)) for p in paths})
     present = [r for r in rel if (REPO / r).exists()]
     gone = [r for r in rel if r not in present]
@@ -1342,23 +1409,52 @@ def push(paths: list[Path], titles: list[str], subject: str | None = None) -> di
         removed = _git("rm", "-q", "--cached", "--ignore-unmatch", "--", *gone)
         if removed.returncode != 0:
             return {"pushed": False, "error": removed.stderr.strip()}
+    note = None
     if not _git("diff", "--cached", "--quiet").returncode:
-        return {"pushed": False, "error": None, "note": "nothing to commit"}
-    subject = subject or (
-        f"feat(episodes): publish {titles[0]}"
-        if len(titles) == 1
-        else f"feat(episodes): publish {len(titles)} episodes"
-    )
-    commit = _git("commit", "-m", subject[:120], "--", *rel)
-    if commit.returncode != 0:
-        return {"pushed": False, "error": commit.stderr.strip() or commit.stdout.strip()}
-    for attempt in range(2):
-        pushed = _git("push", "origin", "HEAD:main")
-        if pushed.returncode == 0:
-            return {"pushed": True, "commit": _git("rev-parse", "HEAD").stdout.strip()}
-        if attempt == 0:
-            _git("pull", "--rebase", "origin", "main")
-    return {"pushed": False, "error": pushed.stderr.strip()}
+        earlier = _unpushed_commits()
+        if not earlier:
+            return {"pushed": False, "error": None, "note": "nothing to commit"}
+        # An earlier run committed but could not push (e.g. a lost rebase, resolved since).
+        note = f"nothing new to commit; pushing {len(earlier)} earlier unpushed commit(s)"
+    else:
+        subject = subject or (
+            f"{PUBLISH_SUBJECT}{titles[0]}"
+            if len(titles) == 1
+            else f"{PUBLISH_SUBJECT}{len(titles)} episodes"
+        )
+        commit = _git("commit", "-m", subject[:120], "--", *rel)
+        if commit.returncode != 0:
+            return {"pushed": False, "error": commit.stderr.strip() or commit.stdout.strip()}
+    head = _git("rev-parse", "HEAD")
+    if head.returncode != 0:
+        return {"pushed": False, "error": f"git rev-parse HEAD failed: {_git_error(head)}"}
+    sha = head.stdout.strip()
+    pushed = _git("push", "origin", "HEAD:main")
+    if pushed.returncode == 0:
+        return _confirm_pushed(sha, note)
+    # Rejected (origin moved on): replay this commit on origin/main once, then push again.
+    pulled = _git("pull", "--rebase", "origin", "main")
+    if pulled.returncode != 0:
+        aborted = _abort_rebase()
+        kept = _git("rev-parse", "HEAD").stdout.strip()
+        where = (f"this run's commit {sha[:12]} is kept on the local branch" if kept == sha
+                 else f"HEAD is now {kept[:12] or 'unknown'}, not this run's commit {sha[:12]}")
+        return {"pushed": False, "commit": sha, "error": (
+            f"git push was rejected (origin/main moved) and git pull --rebase origin main failed"
+            f" ({_git_error(pulled)}).{aborted} Nothing was pushed; {where}. Resolve it by hand"
+            " (git pull --rebase origin main, fix the conflicts, git add, git rebase --continue),"
+            " then run the same command again: it pushes that commit."
+        )}
+    head = _git("rev-parse", "HEAD")
+    sha = head.stdout.strip()
+    if head.returncode != 0 or not _git("log", "-1", "--format=%H", f"{ORIGIN_MAIN}..HEAD").stdout.strip():
+        return {"pushed": False, "commit": sha or None, "error": (
+            "git pull --rebase origin main left no local commit to push (origin/main may already"
+            " have the same changes); nothing was pushed: check origin/main")}
+    pushed = _git("push", "origin", "HEAD:main")
+    if pushed.returncode != 0:
+        return {"pushed": False, "commit": sha, "error": _git_error(pushed)}
+    return _confirm_pushed(sha, note)
 
 
 @contextlib.contextmanager
@@ -1753,8 +1849,9 @@ def main(argv: list[str] | None = None) -> int:
 
     report: dict[str, Any] = {"published": [], "skipped": [], "failed": [], "git": None}
     with _lock():
-        if args.push:
-            _git("pull", "--rebase", "origin", "main")
+        if args.push and not _start_pull(report, "the same publish"):
+            print(json.dumps(report, indent=2, ensure_ascii=False))
+            return 1
         try:
             # An index that is there but unreadable (e.g. conflict markers) stops the run
             # before any upload: it is never replaced by a new one-episode index.
@@ -1831,16 +1928,13 @@ def main(argv: list[str] | None = None) -> int:
             except OSError as exc:
                 report["failed"].append({"job": "git", "error": str(exc)})
                 blocked = True
-        if args.push and changed and not blocked:
+        if args.push and not blocked and (changed or _unpushed_commits()):
             report["git"] = push(changed, [e["title"] for e in entries])
             if not report["git"].get("pushed") and report["git"].get("error"):
                 report["failed"].append({"job": "git", "error": report["git"]["error"]})
         report["changed"] = [str(p.relative_to(REPO)) for p in changed]
     print(json.dumps(report, indent=2, ensure_ascii=False))
     return 1 if report["failed"] else 0
-
-
-MIGRATE_SUBJECT = "feat(site): move episode audio to GitHub Releases (#30)"
 
 
 def _pending_migration(site: Path) -> list[Path]:
@@ -1890,11 +1984,12 @@ def _stashes() -> list[tuple[str, str]]:
     return found
 
 
-def _conflicted_autostash(stashes_before: list[tuple[str, str]], pulled: subprocess.CompletedProcess[str]) -> str | None:
-    """Why the work tree is not safe to migrate after ``git pull --rebase --autostash``
-    (which exits 0 even when putting the stashed changes back conflicts), or None: unmerged
-    paths, conflict markers in ``episodes.json``, a stash this pull left behind, or git
-    saying so."""
+def _conflicted_autostash(stashes_before: list[tuple[str, str]], pulled: subprocess.CompletedProcess[str],
+                          again: str = "--migrate-audio --push") -> str | None:
+    """Why the work tree is not safe to publish or migrate after ``git pull --rebase
+    --autostash`` (which exits 0 even when putting the stashed changes back conflicts), or
+    None: unmerged paths, conflict markers in ``episodes.json``, a stash this pull left
+    behind, or git saying so. ``again`` names the command to run once it is resolved."""
     unmerged = [p for p in (_git("diff", "--name-only", "--diff-filter=U", "-z").stdout or "").split("\0") if p]
     known = {sha for sha, _ in stashes_before}
     left = [(sha, subject) for sha, subject in _stashes() if sha not in known]
@@ -1919,29 +2014,45 @@ def _conflicted_autostash(stashes_before: list[tuple[str, str]], pulled: subproc
         f" ({'; '.join(found) or 'git reported conflicts'}). Nothing was uploaded, pushed or removed."
         f" The interrupted run's changes are kept in {where}. Resolve the conflicts by hand"
         " (git status; git stash show -p shows the stashed changes), git add the files, drop that stash"
-        " once its changes are in the work tree, then run --migrate-audio --push again."
+        f" once its changes are in the work tree, then run {again} again."
         " Hold the publish cron in this checkout until git status is clean."
     )
+
+
+def _start_pull(report: dict[str, Any], again: str) -> bool:
+    """The pull every ``--push`` command runs first: ``git pull --rebase --autostash``
+    (a re-run after a failed or interrupted run starts from a dirty tree, which a plain pull
+    refuses, and would then commit on a stale base). False, with the error in ``report``,
+    when this checkout is not on origin/main with its own changes back in place: the run
+    must stop before any upload, write or commit."""
+    stashes = _stashes()
+    pulled = _git("pull", "--rebase", "--autostash", "origin", "main")
+    if pulled.returncode != 0:
+        error = _git_error(pulled).rstrip(".")
+        aborted = _abort_rebase()
+        if aborted:
+            # A commit an earlier run could not push conflicts with origin/main.
+            error += (f".{aborted} Nothing was uploaded, pushed or removed. A local commit conflicts with"
+                      " origin/main: resolve it by hand (git pull --rebase origin main, fix the conflicts,"
+                      f" git add, git rebase --continue), then run {again} again.")
+    else:
+        # It exits 0 even when the autostash does not apply cleanly (git 2.43).
+        error = _conflicted_autostash(stashes, pulled, again)
+    if not error:
+        return True
+    report["failed"].append({"job": "git pull", "error": error})
+    report["git"] = {"pushed": False, "error": error}
+    report["changed"] = []
+    return False
 
 
 def _migrate_main(push_it: bool, dry_run: bool) -> int:
     report: dict[str, Any] = {"failed": [], "git": None}
     changed: list[Path] = []
     with _lock():
-        if push_it:
-            # --autostash: a re-run after an interrupted run starts from a dirty tree.
-            stashes = _stashes()
-            pulled = _git("pull", "--rebase", "--autostash", "origin", "main")
-            if pulled.returncode != 0:
-                error = (pulled.stderr or pulled.stdout or "").strip()[-300:] or f"exit {pulled.returncode}"
-            else:
-                # It exits 0 even when the autostash does not apply cleanly (git 2.43).
-                error = _conflicted_autostash(stashes, pulled)
-            if error:
-                report["failed"].append({"job": "git pull", "error": error})
-                report["changed"] = []
-                print(json.dumps(report, indent=2, ensure_ascii=False))
-                return 1
+        if push_it and not _start_pull(report, "--migrate-audio --push"):
+            print(json.dumps(report, indent=2, ensure_ascii=False))
+            return 1
         try:
             report.update(migrate_audio(SITE, media=GhMedia, verify=head_audio, remove=_git_rm, dry_run=dry_run))
         except MigrationError as exc:
@@ -1959,7 +2070,7 @@ def _migrate_main(push_it: bool, dry_run: bool) -> int:
                 changed += [p for p in _pending_migration(SITE) if p not in changed]
             except OSError as exc:
                 report["failed"].append({"job": "git", "error": str(exc)})
-        if push_it and changed and not report["failed"]:
+        if push_it and not report["failed"] and (changed or _unpushed_commits()):
             report["git"] = push(changed, [], MIGRATE_SUBJECT)
             if not report["git"].get("pushed") and report["git"].get("error"):
                 report["failed"].append({"job": "git", "error": report["git"]["error"]})
@@ -1972,8 +2083,9 @@ def _backfill_main(push_it: bool) -> int:
     report: dict[str, Any] = {"filled": [], "failed": [], "git": None}
     art: list[Path] = []
     with _lock():
-        if push_it:
-            _git("pull", "--rebase", "origin", "main")
+        if push_it and not _start_pull(report, "--backfill --push"):
+            print(json.dumps(report, indent=2, ensure_ascii=False))
+            return 1
         try:
             index_changed, report["filled"] = backfill(SITE, _jobs_root(), art)
         except (OSError, ValueError) as exc:
@@ -1985,10 +2097,8 @@ def _backfill_main(push_it: bool) -> int:
             # The story feeds carry the episode artwork too (itunes:image per item).
             changed += _rebuild_feeds(report)
             changed += _rebuild_pages(report)
-        if push_it and changed:
-            report["git"] = push(
-                changed, [], "feat(site): backfill episode descriptions, pages and story art"
-            )
+        if push_it and (changed or _unpushed_commits()):
+            report["git"] = push(changed, [], BACKFILL_SUBJECT)
             if not report["git"].get("pushed") and report["git"].get("error"):
                 report["failed"].append({"job": "git", "error": report["git"]["error"]})
         report["changed"] = [str(p.relative_to(REPO)) for p in changed]

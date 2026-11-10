@@ -95,6 +95,15 @@ always Once Upon a Time Show), plus the episode's `language`.
   say so). A failed feed or page rebuild fails the run (`rebuild` in `failed`): nothing is
   removed or pushed, and publishing again rebuilds and pushes what that run left
   uncommitted.
+- `--push` (publish, `--backfill` and `--migrate-audio` alike) starts with
+  `git pull --rebase --autostash origin main`, so a re-run from a dirty tree builds on
+  origin's latest commit. If that pull fails, or leaves conflicts, the run stops before any
+  upload or write (a stopped rebase is aborted). `git.pushed` is `true` only once a fetch of
+  origin/main shows it holds the run's commit. When the push is rejected and the rebase onto
+  origin conflicts, the rebase is aborted, the commit stays on the local branch, and the run
+  fails (`pushed: false`, exit 1). Resolve the conflict by hand
+  (`git pull --rebase origin main`, then `git rebase --continue`) and run the same command
+  again: it pushes that commit, even when nothing new changed.
 - An `episodes.json` that is there but cannot be parsed (git conflict markers, say) stops
   every `publish.py` command before any upload or write, so it is never replaced by a new
   index; only a missing file starts a new one.
@@ -139,7 +148,7 @@ removes them and commits everything the earlier run left uncommitted. `--push` f
 `git pull --rebase --autostash` (a failed pull stops it before any upload, and so does a
 pull that exits 0 but leaves conflicts: unmerged paths, conflict markers in
 `episodes.json` or the autostash left in `git stash list`; the error names the stash to
-resolve by hand before running again) and commits and
+resolve by hand before running again; see `--push` above) and commits and
 pushes all of it as one commit (`feat(site): move episode audio to GitHub Releases (#30)`),
 only when nothing failed; without it the files change locally only (the uploads still
 happen). `--dry-run` lists the episodes, leftovers, repos and bytes it would move and
