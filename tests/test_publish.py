@@ -496,10 +496,13 @@ class StoryGroupTest(EpisodeCreditsTest):
 
 
 def audio_is_published(e: dict) -> bool:
-    """The episode's MP3 is on the site (before podcast #30) or a media-repo release asset."""
+    """The episode's MP3 is on the site (before podcast #30), a media-repo release asset
+    (#30), or on the media repo's GitHub Pages site (#33)."""
     if publish.local_audio_id(e["audio"]):
         return (ROOT / "docs" / e["audio"]).is_file()
-    return e["audio"] == publish.audio_url(publish.entry_media_repo(e)[0], e["id"]) and bool(e.get("audio_sha256"))
+    repo = publish.entry_media_repo(e)[0]
+    return e["audio"] in (publish.audio_url(repo, e["id"]), publish.pages_url(repo, e["id"])) \
+        and bool(e.get("audio_sha256"))
 
 
 class SiteMigrationTest(unittest.TestCase):
