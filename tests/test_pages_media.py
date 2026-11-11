@@ -376,6 +376,159 @@ class PagesMediaTest(Tmp):
         self.assertEqual((result["uploaded"], result["commit"]), (True, None))
         self.assertEqual(self.origin_log(), [f"feat: add {EP}", "docs: add README"])
 
+    # Only this script's own commits ever leave a checkout (review of #34).
+
+    def fresh(self) -> None:
+        """A new BUILDWIZ origin and no checkout (for subtests)."""
+        for path in (self.remote(BUILDWIZ), self.checkouts / "buildwiz-ai-show-media", self.tmp / "other",
+                     self.tmp / "seed" / BUILDWIZ):
+            shutil.rmtree(path, ignore_errors=True)
+        self.make_origin(BUILDWIZ)
+        self.web.calls.clear()
+
+    def move_origin(self) -> None:
+        """Someone else pushes a README change to origin main."""
+        other = self.tmp / "other"
+        if not other.exists():
+            subprocess.run(["git", "clone", "-q", self.remote(BUILDWIZ), str(other)], check=True)
+        _git_in(other, "pull", "-q", "origin", "main")
+        with (other / "README.md").open("a", encoding="utf-8") as fh:
+            fh.write("changed elsewhere\n")
+        _git_in(other, "commit", "-q", "-am", "docs: change README")
+        _git_in(other, "push", "-q", "origin", "main")
+
+    def local_commit(self, subject: str, files: dict[str, bytes | str]) -> str:
+        """A commit in the BUILDWIZ checkout that never reaches origin; returns its sha."""
+        checkout = self.media().path
+        for name, data in files.items():
+            path = checkout / name
+            path.write_bytes(data) if isinstance(data, bytes) else path.write_text(data, encoding="utf-8")
+        _git_in(checkout, "add", "--", *files)
+        _git_in(checkout, "commit", "-q", "-m", subject)
+        return _git_in(checkout, "rev-parse", "HEAD").strip()
+
+    def assert_refused(self, sha: str, origin_head: str) -> None:
+        with self.assertRaisesRegex(publish.UploadError, "not this script's own") as caught:
+            self.media().publish(EP, self.mp3, SHA)
+        self.assertIn(sha[:12], str(caught.exception))
+        self.assertIn("nothing was pushed", str(caught.exception))
+        self.assertEqual(_git_in(Path(self.remote(BUILDWIZ)), "rev-parse", "main").strip(), origin_head)
+        checkout = self.media().path
+        self.assertEqual(_git_in(checkout, "rev-parse", "HEAD").strip(), sha)  # kept, as it was
+        self.assertEqual(_git_in(checkout, "status", "--porcelain", "--", f"{EP}.mp3"), "")  # no copy made
+        self.assertEqual(self.web.calls, [])  # never waited for, never recorded
+
+    def test_an_unrelated_local_commit_is_never_pushed(self) -> None:
+        for origin_moved in (False, True):
+            with self.subTest(origin_moved=origin_moved):
+                self.fresh()
+                self.media().checkout()
+                sha = self.local_commit("wip: local notes", {"README.md": "edited locally\n", "notes.txt": "x\n"})
+                if origin_moved:
+                    self.move_origin()
+                origin_head = _git_in(Path(self.remote(BUILDWIZ)), "rev-parse", "main").strip()
+                self.assert_refused(sha, origin_head)
+                self.assertNotIn("edited locally", self.origin_file("README.md").decode())
+                with self.assertRaises(subprocess.CalledProcessError):
+                    self.origin_file("notes.txt")
+
+    def test_a_script_titled_commit_of_anything_else_is_refused(self) -> None:
+        for subject, files in (
+            (f"feat: add {EP}", {f"{EP}.mp3": MP3, "notes.txt": "x\n"}),  # the mp3 and another file
+            (f"feat: update {EP}", {"README.md": "edited locally\n"}),  # another file alone
+            ("feat: add 2026-11-06_other", {f"{EP}.mp3": MP3}),  # another episode's mp3
+            (f"feat: add {EP}", {f"sub/{EP}.mp3": MP3}),  # not at the root
+            (f"feat: add {EP} and more", {f"{EP}.mp3": MP3}),  # not the script's subject
+        ):
+            with self.subTest(subject=subject, files=sorted(files)):
+                self.fresh()
+                (self.media().checkout() / "sub").mkdir()
+                self.assert_refused(self.local_commit(subject, files), self.origin_head())
+
+    def origin_head(self) -> str:
+        return _git_in(Path(self.remote(BUILDWIZ)), "rev-parse", "main").strip()
+
+    def test_a_merge_or_symlink_commit_is_refused(self) -> None:
+        checkout = self.media().checkout()
+        os.symlink("README.md", checkout / "2026-11-06_other.mp3")  # the right name, not a regular file
+        _git_in(checkout, "add", "--", "2026-11-06_other.mp3")
+        _git_in(checkout, "commit", "-q", "-m", "feat: add 2026-11-06_other")
+        self.assert_refused(_git_in(checkout, "rev-parse", "HEAD").strip(), self.origin_head())
+        _git_in(checkout, "reset", "-q", "--hard", publish.ORIGIN_MAIN)
+        _git_in(checkout, "checkout", "-q", "-b", "side")
+        self.local_commit("feat: add 2026-11-07_side", {"2026-11-07_side.mp3": MP3})
+        _git_in(checkout, "checkout", "-q", "main")
+        self.local_commit("feat: add 2026-11-08_main", {"2026-11-08_main.mp3": MP3})
+        _git_in(checkout, "merge", "-q", "--no-ff", "-m", "feat: add 2026-11-09_merged", "side")
+        self.assert_refused(_git_in(checkout, "rev-parse", "HEAD").strip(), self.origin_head())
+
+    def test_an_earlier_script_commit_of_its_mp3_alone_is_still_pushed(self) -> None:
+        for origin_moved in (False, True):
+            with self.subTest(origin_moved=origin_moved):
+                self.fresh()
+                self.media().checkout()
+                self.local_commit("feat: add 2026-11-06_other", {"2026-11-06_other.mp3": MP3 * 2})
+                if origin_moved:
+                    self.move_origin()
+                result = self.media().publish(EP, self.mp3, SHA)
+                self.assertTrue(result["uploaded"])
+                expected = [f"feat: add {EP}", "feat: add 2026-11-06_other"]
+                self.assertEqual(self.origin_log()[:2], expected)
+                self.assertEqual(self.origin_log()[2:],
+                                 ["docs: change README", "docs: add README"] if origin_moved else ["docs: add README"])
+                self.assertEqual(self.origin_file("2026-11-06_other.mp3"), MP3 * 2)
+
+    def test_a_staged_unrelated_file_is_never_committed(self) -> None:
+        checkout = self.media().checkout()
+        _write(checkout / "notes.txt", "staged, not the script's\n")
+        _write(checkout / "README.md", "edited and staged\n")
+        _git_in(checkout, "add", "--", "notes.txt", "README.md")
+        result = self.media().publish(EP, self.mp3, SHA)
+        self.assertTrue(result["uploaded"])
+        files = _git_in(checkout, "diff-tree", "--no-commit-id", "--name-only", "-r", result["commit"]).split()
+        self.assertEqual(files, [f"{EP}.mp3"])
+        self.assertEqual(self.origin_log(), [f"feat: add {EP}", "docs: add README"])
+        self.assertEqual(self.origin_file("README.md"), b"media\n")
+        with self.assertRaises(subprocess.CalledProcessError):
+            self.origin_file("notes.txt")
+        self.assertEqual(sorted(_git_in(checkout, "diff", "--cached", "--name-only").split()),
+                         ["README.md", "notes.txt"])  # still staged, left alone
+
+    def test_a_refused_publish_marks_nothing_published(self) -> None:
+        _write(self.site / "episodes.json", {"version": 1, "episodes": []})
+        before = (self.site / "episodes.json").read_bytes()
+        self.media().checkout()
+        self.local_commit("wip: local notes", {"README.md": "edited locally\n", "notes.txt": "x\n"})
+        make_job(self.job)
+        out = io.StringIO()
+        with mock.patch.object(publish, "SITE", self.site), mock.patch.object(publish, "REPO", self.tmp), \
+                mock.patch.object(publish, "MEDIA_BACKEND", self.media_for), \
+                mock.patch.object(publish, "_lock", contextlib.nullcontext), contextlib.redirect_stdout(out):
+            code = publish.main([str(self.job)])
+        report = json.loads(out.getvalue())
+        self.assertEqual(code, 1)
+        self.assertIn("not this script's own", report["failed"][0]["error"])
+        self.assertEqual((self.site / "episodes.json").read_bytes(), before)
+        self.assertFalse((self.site / "episodes" / EP).exists())
+        self.assertEqual(self.origin_log(), ["docs: add README"])
+
+    def test_a_rebase_blocked_by_uncommitted_changes_says_so(self) -> None:
+        # Whatever the user's git config says, a pull --rebase refuses a dirty work tree here.
+        no_autostash = {"GIT_CONFIG_COUNT": "3", "GIT_CONFIG_KEY_2": "rebase.autoStash", "GIT_CONFIG_VALUE_2": "false"}
+        env = mock.patch.dict(os.environ, no_autostash)
+        env.start()
+        self.addCleanup(env.stop)
+        self.media().checkout()
+        self.local_commit("feat: add 2026-11-06_other", {"2026-11-06_other.mp3": MP3})
+        self.move_origin()
+        _write(self.media().path / ".nojekyll", "edited, not committed\n")
+        with self.assertRaises(publish.UploadError) as caught:
+            self.media().publish(EP, self.mp3, SHA)
+        message = str(caught.exception)
+        self.assertIn("no rebase was started: the checkout has uncommitted changes", message)
+        self.assertNotIn("abort it by hand", message)
+        self.assertEqual(self.origin_log(), ["docs: change README", "docs: add README"])
+
     def test_a_push_that_exits_0_without_reaching_origin_fails(self) -> None:
         real = publish._run_git
 

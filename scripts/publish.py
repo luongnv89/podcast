@@ -608,7 +608,7 @@ MEDIA_WAIT_ENV = "PODCAST_MEDIA_WAIT"
 MEDIA_WAIT_DEFAULT = 600  # seconds: a Pages deploy usually takes one or two minutes
 MEDIA_WAIT_INTERVAL = 15
 AUDIO_TYPES = ("audio/mpeg", "audio/mp3")
-# The commits PagesMedia makes in a media checkout (the only ones it ever rebases).
+# The commits PagesMedia makes in a media checkout (the only ones it ever rebases or pushes).
 _MEDIA_COMMIT = re.compile(r"feat: (?:add|update) [A-Za-z0-9][A-Za-z0-9._-]*")
 
 
@@ -764,20 +764,67 @@ class PagesMedia:
         if branch != "main":
             raise UploadError(f"{self.repo}: {self.path} is on {branch or 'a detached HEAD'!r}, not main")
         pulled = self._git("pull", "-q", "--ff-only", "origin", "main")
+        # Checked whether or not the pull moved anything: a push sends every commit ahead.
+        ahead = self._own_commits_ahead()
         if pulled.returncode != 0:
-            ahead = [s for s in self._git("log", "--format=%s", f"{ORIGIN_MAIN}..HEAD").stdout.split("\n") if s]
-            if not ahead or not all(_MEDIA_COMMIT.fullmatch(s) for s in ahead):
+            if not ahead:
                 raise self._fail("git pull --ff-only origin main", pulled)
             # An earlier run's commit that never reached origin, which has moved on since.
             self._rebase_or_fail(pulled)
         return self.path
 
+    def _own_commits_ahead(self) -> list[str]:
+        """The commits in ``origin/main..HEAD`` (oldest first), once each one is checked to
+        be this class's own: no merge, subject ``feat: add <id>`` or ``feat: update <id>``,
+        and it adds or changes ``<that id>.mp3`` at the checkout's root as a regular file and
+        nothing else. Any other commit raises ``UploadError`` (so nothing is pushed)."""
+        listed = self._git("rev-list", "--reverse", "--parents", f"{ORIGIN_MAIN}..HEAD")
+        if listed.returncode != 0:
+            raise self._fail(f"git rev-list {ORIGIN_MAIN}..HEAD", listed)
+        ahead = []
+        for line in listed.stdout.splitlines():
+            sha, *parents = line.split()
+            subject = self._git("log", "-1", "--format=%s", sha).stdout.rstrip("\n")
+            changes = self._git("diff-tree", "--no-commit-id", "-r", "--raw", "-z", "--no-renames", sha)
+            fields = changes.stdout.split("\0")[:-1] if changes.returncode == 0 else []
+            touched = list(zip(fields[0::2], fields[1::2], strict=False))  # (":<modes> <shas> <status>", path)
+            own = (
+                len(parents) == 1
+                and _MEDIA_COMMIT.fullmatch(subject)
+                and len(touched) == 1
+                and touched[0][1] == f"{subject.split(' ', 2)[2]}.mp3"
+                and touched[0][0].split(" ")[1] == "100644"
+                and touched[0][0].split(" ")[-1] in ("A", "M")
+            )
+            if not own:
+                files = ", ".join(path for _, path in touched)[:200] or "no files"
+                raise UploadError(
+                    f"{self.repo}: {self.path} holds a local commit that is not this script's own"
+                    f" ({sha[:12]} {subject[:80]!r}: {files}); only 'feat: add|update <id>' commits of <id>.mp3"
+                    " alone are pushed, so nothing was pushed: push, move or drop it by hand, then run the"
+                    " same command again"
+                )
+            ahead.append(sha)
+        return ahead
+
+    def _rebasing(self) -> bool:
+        for name in ("rebase-merge", "rebase-apply"):
+            where = self._git("rev-parse", "--git-path", name).stdout.strip()
+            if where and (self.path / where).exists():
+                return True
+        return False
+
     def _rebase_or_fail(self, why: subprocess.CompletedProcess[str]) -> None:
         rebased = self._git("pull", "-q", "--rebase", "origin", "main")
         if rebased.returncode == 0:
             return
-        aborted = self._git("rebase", "--abort")
-        note = "" if aborted.returncode == 0 else " (git rebase --abort failed too: abort it by hand)"
+        if self._rebasing():
+            aborted = self._git("rebase", "--abort")
+            note = "" if aborted.returncode == 0 else " (git rebase --abort failed too: abort it by hand)"
+        elif self._git("status", "--porcelain", "--untracked-files=no").stdout.strip():
+            note = " (no rebase was started: the checkout has uncommitted changes; commit or remove them)"
+        else:
+            note = " (no rebase was started)"
         raise UploadError(
             f"{self.repo}: {_git_error(why)}; git pull --rebase origin main failed in {self.path}"
             f" ({_git_error(rebased)}){note}; nothing was pushed: resolve it by hand, then run the same command again"
@@ -788,11 +835,15 @@ class PagesMedia:
 
     def _push(self) -> str:
         """Push HEAD to origin main (rejected: rebase once, then push again); returns the
-        pushed sha once a fetched origin/main holds it, else raises ``UploadError``."""
+        pushed sha once a fetched origin/main holds it, else raises ``UploadError``. Before
+        each push, every commit ahead of origin/main must be this class's own
+        (``_own_commits_ahead()``)."""
+        self._own_commits_ahead()
         sha = self._git("rev-parse", "HEAD").stdout.strip()
         pushed = self._git("push", "-q", "origin", "HEAD:main")
         if pushed.returncode != 0:
             self._rebase_or_fail(pushed)
+            self._own_commits_ahead()
             sha = self._git("rev-parse", "HEAD").stdout.strip()
             pushed = self._git("push", "-q", "origin", "HEAD:main")
             if pushed.returncode != 0:
@@ -810,7 +861,9 @@ class PagesMedia:
 
         Copies it into the checkout unless the file there already has ``sha256``, commits it
         when git sees a change (``feat: add <id>``, or ``feat: update <id>`` when HEAD had
-        it), pushes whatever is unpushed (this run's commit or an earlier run's), then waits
+        it; only that path, never anything else staged), pushes what is unpushed (this
+        run's commit or an earlier run's; any commit ahead that is not one of these stops
+        the publish before the copy, see ``_own_commits_ahead()``), then waits
         for the Pages URL (``wait_until_live()``). Returns ``{url, uploaded, commit}``;
         raises ``UploadError``."""
         name = asset_name(episode_id)
