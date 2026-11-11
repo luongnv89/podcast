@@ -467,6 +467,8 @@
       svg([PLAY]), el("span", { class: "eq", "aria-hidden": "true" }, [el("b"), el("b"), el("b")]),
     ]);
     playBtn.addEventListener("click", () => toggle(ep));
+    // No playable audio (resolveAudio() refused it): no Play button, as with Download.
+    if (!ep.audio) playBtn.hidden = true;
 
     const detailId = `det-${ep.id}`;
     const titleText = el("span", grouped ? { text: ep.title, lang: ep._lang } : { text: ep.title });
@@ -543,7 +545,7 @@
       tBtn.addEventListener("click", () => openTranscript(ep, panel, tBtn));
       actions.append(tBtn);
     }
-    actions.append(trackLink(el("a", { class: "btn", href: ep.audio, download: fileName(ep) }, [svg(["M12 4v12M6 10l6 6 6-6M5 20h14"]), "Download MP3"]), "episode_download", ep));
+    if (ep.audio) actions.append(trackLink(el("a", { class: "btn", href: ep.audio, download: fileName(ep) }, [svg(["M12 4v12M6 10l6 6 6-6M5 20h14"]), "Download MP3"]), "episode_download", ep));
     // The copy-paste podcast description (DropCast #163), exactly as in episodes.json.
     if (typeof ep.description === "string" && ep.description.trim()) {
       const descLabel = el("span", { text: "Copy description", "aria-live": "polite" });
@@ -723,6 +725,7 @@
 
   // Put an episode in the player (without starting it).
   function load(ep, at) {
+    if (!ep || !ep.audio) return; // never audio.src = null (it would request "null")
     if (current) current._node.classList.remove("is-current", "is-playing");
     current = ep;
     audio.src = ep.audio;
@@ -744,6 +747,7 @@
   }
 
   function play(ep, at) {
+    if (!ep || !ep.audio) return;
     if (current !== ep) load(ep, at);
     else if (at != null) audio.currentTime = at;
     audio.play().catch(() => sync());
@@ -857,13 +861,36 @@
   // ---------- Load ----------
   // Media paths in episodes.json are relative to it, so a page in a subfolder resolves them.
   const resolve = (path) => (typeof path === "string" && path ? new URL(path, DATA_URL).href : path);
+  // The episode audio is a GitHub Releases asset of its show/language media repo (podcast
+  // #30; publish.py MEDIA_REPOS): an absolute URL is used only when, after parsing, its
+  // origin is https://github.com and its path is exactly
+  // /luongnv89/<media repo>/releases/download/<tag>/<tag>.mp3 (MEDIA_PATH; no credentials,
+  // no "..", no backslash and no percent-encoded dot, slash or backslash, which the parser
+  // would turn into a dot segment or a slash); a relative path (before the move) resolves
+  // as above. Anything else (another host or repo, a javascript: or data: URL) is
+  // dropped, and an episode without audio gets no Play or Download button. The download
+  // name of a release asset is GitHub's (cross-origin `download` attributes are ignored).
+  const MEDIA_PATH = /^\/luongnv89\/(?:buildwiz-ai-show|once-upon-a-time-(?:en|fr|vi))-media\/releases\/download\/([A-Za-z0-9][A-Za-z0-9._-]*)\/([A-Za-z0-9][A-Za-z0-9._-]*)\.mp3$/;
+  const mediaUrl = (path) => {
+    if (/%2e|%2f|%5c|\.\.|\\/i.test(path)) return null;
+    let url;
+    try { url = new URL(path); } catch { return null; }
+    if (url.origin !== "https://github.com" || url.username || url.password) return null;
+    const m = MEDIA_PATH.exec(url.pathname);
+    return m && m[1] === m[2] ? url.origin + url.pathname : null;
+  };
+  const resolveAudio = (path) => {
+    if (typeof path !== "string" || !path) return null;
+    if (/^[a-z][a-z0-9+.-]*:|^[\\/]{2}/i.test(path)) return mediaUrl(path);
+    return resolve(path);
+  };
   if (!readUrl()) return;
   qInput.value = state.q;
   fetch(DATA_URL, { cache: "no-cache" })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
     .then((data) => {
       const all = Array.isArray(data.episodes) ? data.episodes.filter((e) => e && e.id) : [];
-      for (const e of all) { e.audio = resolve(e.audio); e.transcript = resolve(e.transcript); }
+      for (const e of all) { e.audio = resolveAudio(e.audio); e.transcript = resolve(e.transcript); }
       episodes = all.filter((e) => showOf(e) === PAGE.show);
       others = all.filter((e) => showOf(e) !== PAGE.show);
       units = groupUnits(episodes);
