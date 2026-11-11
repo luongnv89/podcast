@@ -169,8 +169,8 @@ does not play ("Could not load audio"). Those releases are kept as they are. `Gh
   emergencies). Its checkout is `$PODCAST_MEDIA_CHECKOUTS/<name>`, with origin
   `git@github.com:owner/name.git`, and its URL is `https://<owner>.github.io/<name>/<id>.mp3`
   (or the owner's custom domain). The site's player only accepts the four repos above
-  (`mediaUrl()`, `docs/site.js:1083`). After parsing, it accepts no credentials and only
-  origin `https://luongnv.com` with a path that `PAGES_PATH` (`docs/site.js:1081`) matches
+  (`mediaUrl()`, `docs/site.js:1067`). After parsing, it accepts no credentials and only
+  origin `https://luongnv.com` with a path that `PAGES_PATH` (`docs/site.js:1065`) matches
   exactly, `/<media repo>/<id>.mp3`. Until every entry is re-pointed, it also accepts the
   release URL (origin `https://github.com`, `MEDIA_PATH`,
   `/luongnv89/<repo>/releases/download/<id>/<id>.mp3`, with the same `<id>` twice). The URL
@@ -412,7 +412,7 @@ Once Upon a Time Show has one page per language (#35): `/podcast/stories/en/`, `
   keys the old stories page read go along: `q`, `sort`, `order` and `tab` (`OLD_QUERY`,
   `docs/site.js:162`). A query with one of them and no known episode (`?q=pigs`, from a
   shared search) goes to the visitor's language page: the language last picked on the
-  site, else the browser's first of English, French and Vietnamese, else English. A plain
+  site (saved by a language switch; the language pages have none since #40), else the browser's first of English, French and Vietnamese, else English. A plain
   `/podcast/stories/`, an unknown id without such a key, or a link with only tracking tags
   (`?fbclid=…`, `?utm_source=…`, `?gclid=…`) stays on the chooser, so a shared or
   advertised link shows the three languages. The story feeds still link `/podcast/stories/`
@@ -457,14 +457,14 @@ version's `script.json` carries the same `story_group` (a string) and its own `l
 the publisher copies both into the version's `episodes.json` entry (`story_group` only
 when set, so older entries are unchanged; `result.json` is not read for it).
 
-Each story language page (#35) lists that language's version only, with a language
-switch (English / Français / Tiếng Việt, shortened to EN / FR / VI on a phone, each
-labelled in its own language): the current language is marked, and the others are links
-to the same story on their language's page (`../fr/#<episode id>`; `linkVersions()` and
-`versionLinks()`, `docs/site.js:339,358`). Following one sends `language_switch` and is
-remembered in the browser as the visitor's language. Every version keeps its own id, so
-`#<episode id>` opens that version; given another language's id, a page sends the visitor
-on to that language's page. Languages compare by their primary subtag (`en-US` is `en`).
+Each story language page (#35) lists that language's version only. Its cards carry no
+links to the story's other languages (#40): the podcast switcher at the top moves between
+the language pages. The page still knows each story's other versions (`_alts`,
+`linkVersions()`, `docs/site.js:341`), only so a version without its own illustration shows
+the story's (`artSource()`, `docs/site.js:253`). Each episode page keeps its "Also in:"
+links to the other versions. Every version keeps its own id, so `#<episode id>` opens that
+version; given another language's id, a page sends the visitor on to that language's page.
+Languages compare by their primary subtag (`en-US` is `en`).
 
 `site.js` can still show the versions of one `story_group` as **one story** with an
 in-place switch (the title, player, transcript and the rest follow it, a playing story
@@ -544,7 +544,7 @@ a reload counts again.
 |---|---|---|
 | `episode_play` | an episode starts playing for the first time in the page view (a resume after a pause is not counted) | |
 | `episode_progress` | the player reaches 25, 50, 75 and 100 % of the episode (100: it played to the end), each once per episode, only after its `episode_play` (so loading a resume point sends nothing; seeking ahead does reach a milestone, and playing from a saved resume point counts the milestones already passed, so `percent` is the position reached, not proof it was all heard) | `percent` (25, 50, 75, 100) |
-| `language_switch` | the visitor follows a story's language switch (EN / FR / VI) to its version on another language page; a deep link does not count | `from_language`, `to_language` |
+| `language_switch` | the visitor uses the in-place language switch (EN / FR / VI) of a story shown as one row in several languages; a deep link does not count. No page shows such a row since #35, and the language pages' cards have no language links since #40, so no current page sends it | `from_language`, `to_language` |
 | `episode_download` | the "Download MP3" link (click or middle click) | |
 | `source_click` | an outbound source link: "Based on …", "Read the source" and the Sources list | |
 | `description_copy` | the "Copy description" button copied the description (not sent when copying failed) | |

@@ -258,10 +258,6 @@ mark { background: none; color: var(--accent); text-decoration-line: underline; 
 .lang[aria-pressed="true"] { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
 .lang:focus-visible { outline-offset: -2px; }
 .lang .l-short { display: none; }
-/* On a language page the other versions are links to their pages, this one is marked. */
-a.lang, span.lang { display: inline-flex; align-items: center; text-decoration: none; }
-.lang[aria-current="true"] { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); cursor: default; }
-.lang[aria-current="true"]:hover { background: transparent; }
 .chev { width: 20px; height: 20px; fill: none; stroke: var(--text-2); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease, stroke .15s ease; }
 .ep-row:hover .chev { stroke: var(--white); }
 .ep.is-open .chev { transform: rotate(180deg); }

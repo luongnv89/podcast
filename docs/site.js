@@ -335,7 +335,9 @@
   }
   // On a language page (podcast #35) a story is listed in that language only, and its other
   // versions are on their own language's page: "_alts" holds one per other language, newest
-  // first, each one listed on a page this one links to.
+  // first, each one listed on another language page. The card shows no links to them
+  // (podcast #40: the podcast switcher moves between languages); they only lend the story's
+  // art to a version without its own (artSource).
   function linkVersions(eps, all) {
     const newest = all.slice().sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0));
     for (const e of eps) {
@@ -351,25 +353,6 @@
       }
       e._alts.sort((a, b) => langRank(storyLang(a)) - langRank(storyLang(b)));
     }
-  }
-  // The language switch on a language page: this version, then links to the others on their
-  // pages. Following one is a language switch (the same event as the in-place switch, with
-  // the new version's parameters) and becomes the visitor's language choice.
-  function versionLinks(ep) {
-    const from = storyLang(ep);
-    const items = [ep, ...ep._alts].sort((a, b) => langRank(storyLang(a)) - langRank(storyLang(b)));
-    return el("div", { class: "langs", role: "group", "aria-label": T.langSwitch }, items.map((v) => {
-      const lang = storyLang(v);
-      const [short, name] = langLabel(lang);
-      const kids = [el("span", { class: "sr-only", text: name }), el("span", { class: "l-long", text: name, "aria-hidden": "true" }), el("span", { class: "l-short", text: short, "aria-hidden": "true" })];
-      if (v === ep) return el("span", { class: "lang", lang, title: name, "aria-current": "true" }, kids);
-      const a = el("a", { class: "lang", href: `${pageFor(v)}#${encodeURIComponent(v.id)}`, lang, hreflang: lang, title: name }, kids);
-      a.addEventListener("click", () => {
-        store.set("lang", lang);
-        track("language_switch", { ...epParams(v), from_language: from, to_language: lang });
-      });
-      return a;
-    }));
   }
   // The version shown first: the visitor's last choice, else the browser's languages, else
   // English, else the first one.
@@ -686,7 +669,8 @@
       where ? el("span", { text: where }) : null,
       status,
     ]);
-    // The language switch of a story in several languages, labelled in each language.
+    // The in-place language switch of a story shown as one row in several languages, labelled
+    // in each language. A language page's card has none (podcast #40).
     const langBtns = new Map();
     const langs = grouped
       ? el("div", { class: "langs", role: "group", "aria-label": T.langSwitch }, u.versions.map((v) => {
@@ -698,7 +682,7 @@
         langBtns.set(v._lang, b);
         return b;
       }))
-      : ep._alts && ep._alts.length ? versionLinks(ep) : null;
+      : null;
     // The story's square thumbnail next to the title (decorative there: the title names it).
     const thumbUrl = artOf(ep, "thumb");
     const thumb = thumbUrl ? el("img", { class: "thumb", src: thumbUrl, alt: "", loading: "lazy", decoding: "async", width: 64, height: 64 }) : null;
