@@ -259,6 +259,30 @@ class SiteJsStaticTest(unittest.TestCase):
         self.assertIn("others = all.filter((e) => !onPage(e));", self.js)
         self.assertIn("const page = away && pageFor(away);", self.js)
 
+    def test_language_page_cards_have_no_language_links(self) -> None:
+        # podcast #40: a card on a language page links no other language (the podcast
+        # switcher moves between the pages); only an in-place switch of a story shown as one
+        # row in several languages has buttons, and none of them is a link.
+        css = (DOCS / "site.css").read_text(encoding="utf-8")
+        self.assertNotIn("versionLinks", self.js)
+        self.assertNotIn("hreflang", self.js)
+        self.assertNotIn('"aria-current"', self.js)
+        card = _block(self.js, "  function card(ep, i, u) {", "  // The story's square thumbnail")
+        self.assertRegex(card, r"const langs = grouped\n\s*\? el\(\"div\", \{ class: \"langs\"")
+        self.assertRegex(card, r"\}\)\)\n\s*: null;\n")
+        self.assertNotIn("_alts", card)
+        self.assertNotIn('el("a", { class: "lang"', self.js)
+        self.assertNotRegex(css, r"a\.lang|span\.lang|\.lang\[aria-current")
+        # language_switch is sent by the in-place switch only, never from a link.
+        self.assertEqual(self.js.count('"language_switch"'), 1)
+        self.assertIn('track("language_switch"', _block(self.js, "  function selectVersion(", "  // Puts a version on show."))
+        # The other versions are still looked up on a language page, for the art only.
+        self.assertIn("if (PAGE.lang) linkVersions(episodes, all);", self.js)
+        rest = self.js.replace(_block(self.js, "  const artSource = ", "  const artOf = "), "")
+        rest = rest.replace(_block(rest, "  // On a language page (podcast #35)", "  // The version shown first"), "")
+        self.assertIn("_alts", self.js)
+        self.assertNotIn("_alts", rest)   # read by artSource only, set by linkVersions only
+
 
 def _block(js: str, start: str, end: str) -> str:
     return js[js.index(start):js.index(end)]
@@ -290,10 +314,15 @@ const showOf = (e) => (STORY_FORMATS.includes(e.format) || e.show === STORY_SHOW
         {"id": "nolang", "show": "Once Upon a Time Show", "format": "bedtime-story"},
     ]
 
-    def run_js(self, page: dict, body: str, routing_only: bool = True):
+    ART = ('const DATA_URL = "https://luongnv.com/podcast/episodes.json";\n'
+           'const T = { illustration: (t) => `Illustration: ${t}` };\n')
+
+    def run_js(self, page: dict, body: str, routing_only: bool = True, art: bool = False):
         code = _block(self.js, "  // ---------- Which page lists an episode", "  // ---------- end of page routing")
         if not routing_only:
-            code += _block(self.js, "  const LANGS = {", "  // The language switch on a language page")
+            code += _block(self.js, "  const LANGS = {", "  // The version shown first")
+        if art:
+            code += self.ART + _block(self.js, "  const ART_PATH", "  // The description's hook")
         script = (self.PRELUDE + f"const PAGE = {json.dumps(page)};\n" + code
                   + f"const EPS = {json.dumps(self.EPS)};\n" + "console.log(JSON.stringify((() => {" + body + "})()));")
         out = subprocess.run(["node", "-e", script], capture_output=True, text=True, timeout=60)
@@ -360,7 +389,7 @@ const showOf = (e) => (STORY_FORMATS.includes(e.format) || e.show === STORY_SHOW
         bare = {"chooser": True, "show": "Once Upon a Time Show", "pages": {}}
         self.assertIsNone(self.run_js(bare, 'return chooserTarget(EPS, "", "?q=x", ["fr"]);'))
 
-    def test_other_versions_link_to_their_language_pages(self) -> None:
+    def test_other_versions_are_known_on_a_language_page(self) -> None:
         fr = {"show": "Once Upon a Time Show", "lang": "fr", "pages": {"Build Wiz AI Show": "../../", "Once Upon a Time Show": "../{lang}/"}}
         got = self.run_js(fr, """
 const eps = EPS.filter(onPage);
@@ -370,6 +399,29 @@ return Object.fromEntries(eps.map((e) => [e.id, (e._alts || []).map((o) => [o.id
         # One per other language (the newest), in EN / FR / VI order; never the same language.
         self.assertEqual(got, {"pigs-fr": [["pigs", "../en/"], ["pigs-vi", "../vi/"]],
                                "pigs-fr-old": [["pigs", "../en/"], ["pigs-vi", "../vi/"]]})
+
+    def test_a_version_without_art_shows_the_storys_art(self) -> None:
+        # The language page's cards have no language links (#40), but a version without its
+        # own illustration still borrows the story's from another language's version (_alts).
+        body = """
+const own = (k) => ({ wide: `art/${k}/wide.jpg`, square: `art/${k}/square.jpg`, thumb: `art/${k}/thumb.jpg`, alt: `Drawing ${k}` });
+const byId = Object.fromEntries(EPS.map((e) => [e.id, e]));
+byId["pigs"].image = own("pigs");
+byId["pigs-fr-old"].image = own("old");
+const eps = EPS.filter(onPage);
+const before = eps.map((e) => artOf(e, "thumb"));
+linkVersions(eps, EPS);
+return { before, after: Object.fromEntries(eps.map((e) => [e.id, [artOf(e, "thumb"), artAlt(e)]])) };
+"""
+        base = "https://luongnv.com/podcast/art/"
+        fr = {"show": "Once Upon a Time Show", "lang": "fr", "pages": {"Build Wiz AI Show": "../../", "Once Upon a Time Show": "../{lang}/"}}
+        got = self.run_js(fr, body, routing_only=False, art=True)
+        self.assertEqual(got["before"], [None, base + "old/thumb.jpg"])
+        self.assertEqual(got["after"], {"pigs-fr": [base + "pigs/thumb.jpg", "Drawing pigs"],
+                                        "pigs-fr-old": [base + "old/thumb.jpg", "Drawing old"]})
+        vi = dict(fr, lang="vi")
+        got = self.run_js(vi, body, routing_only=False, art=True)
+        self.assertEqual(got["after"], {"pigs-vi": [base + "pigs/thumb.jpg", "Drawing pigs"]})
 
     def test_words_exist_in_every_language(self) -> None:
         code = _block(self.js, "  const TEXT = {", "  // ---------- end of words")
