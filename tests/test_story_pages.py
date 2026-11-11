@@ -440,7 +440,9 @@ class SitemapAndEpisodePagesTest(unittest.TestCase):
                 with self.subTest(id=ep["id"]):
                     html = pages.render_page(ep, self.EPS, Path(tmp))
                     self.assertIn(f'<a class="show" href="../../{page}">', html)
-                    self.assertIn(f'href="../../{page}#{ep["id"]}">Listen on', html)
+                    # The button is in the page's language (podcast #38): "Écouter sur" for French.
+                    listen = pages.ui_of(ep)["listen"].format(show=pages.show_of(ep))
+                    self.assertIn(f'href="../../{page}#{ep["id"]}">{listen}</a>', html)
                     self.assertIn(f'"url": "{BASE}{page}"', html)
 
     def test_live_story_pages_link_to_their_language(self) -> None:

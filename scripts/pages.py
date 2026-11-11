@@ -21,6 +21,11 @@ shows the wide picture at the top of its page, uses it for ``og:image``/``twitte
 (``summary_large_image``) and the square one for the JSON-LD ``image``. Without one the page
 is exactly as before.
 
+A story's page is in the story's language (podcast #38): ``<html lang>`` and every word
+around the episode's own text come from ``UI``, French or Vietnamese for a story listed on
+those pages. Every Build Wiz AI Show page, and every English story page, is in English, word
+for word as before.
+
 ``publish.py`` rebuilds them after every publish (and with ``--backfill``), so they always
 follow ``episodes.json``. A file is rewritten only when its bytes change, and nothing
 depends on the clock, so a rebuild with no new episode changes nothing.
@@ -58,6 +63,50 @@ LANG_NAMES = {"en": "English", "fr": "Français", "vi": "Tiếng Việt"}
 # the English page (as its audio goes to the English stories repo). site.js: STORY_LANGS.
 STORY_LANGS = tuple(LANG_NAMES)
 LOCALES = {"en": "en_US", "fr": "fr_FR", "vi": "vi_VN"}
+# The words of an episode page (podcast #38). A story's page is in its language (the one of
+# the page that lists it, ``story_lang()``); every Build Wiz AI Show page is in English,
+# whatever its language, word for word as before. The English is the text the pages always
+# had. The French and Vietnamese speak of stories ("histoire", "truyện") like the story
+# pages; "download", "transcript", "based on ... by", "min" and "illustration" are the words
+# of site.js's TEXT (docs/site.js:20) and the footer follows the story pages' own footer.
+# French puts a no-break space (\u00a0) before ":" and in "7 min", as in site.js. The
+# show's name is a name and stays as it is, as on the story pages.
+UI = {
+    "en": {
+        "listen": "Listen on {show}",
+        "download": "Download MP3",
+        "transcript": "Transcript",
+        "also_in": "Also in: ",
+        "based_on": "Based on ",
+        "by": " by ",
+        "min": "{n} min",
+        "illustration": "Illustration: {title}",
+        "footer": "AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.",
+    },
+    "fr": {
+        "listen": "Écouter sur {show}",
+        "download": "Télécharger le MP3",
+        "transcript": "Transcription",
+        "also_in": "Aussi disponible en\u00a0: ",
+        "based_on": "D’après ",
+        "by": ", de ",
+        "min": "{n}\u00a0min",
+        "illustration": "Illustration\u00a0: {title}",
+        "footer": "Histoire réalisée avec DropCast et lue par une voix de synthèse. "
+        "Chaque histoire cite le texte dont elle s’inspire.",
+    },
+    "vi": {
+        "listen": "Nghe trên {show}",
+        "download": "Tải MP3",
+        "transcript": "Lời kể",
+        "also_in": "Truyện này còn có bản: ",
+        "based_on": "Dựa theo ",
+        "by": " của ",
+        "min": "{n} phút",
+        "illustration": "Hình minh họa: {title}",
+        "footer": "Truyện được làm bằng DropCast và kể bằng giọng đọc nhân tạo. Mỗi truyện đều ghi nguồn văn bản gốc.",
+    },
+}
 SITEMAP = "sitemap.xml"
 _SAFE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*")
 
@@ -84,6 +133,12 @@ def show_page(ep: dict[str, Any]) -> str:
     """The page (relative to the site root) that lists the episode: ``""`` for Build Wiz AI
     Show, ``stories/<lang>/`` for a story."""
     return SHOWS[show_of(ep)]["page"].format(lang=story_lang(ep))
+
+
+def ui_of(ep: dict[str, Any]) -> dict[str, str]:
+    """The words of the episode's page (``UI``): its story language's for a story, English
+    for Build Wiz AI Show."""
+    return UI[story_lang(ep) if show_of(ep) == STORY_SHOW else "en"]
 
 
 def _hook(text: Any) -> str:
@@ -133,7 +188,7 @@ def art_of(ep: dict[str, Any], site: Path = SITE) -> dict[str, str] | None:
         "wide": BASE_URL + str(paths["wide"]),
         "square": BASE_URL + str(paths["square"]),
         "wide_rel": "../../" + str(paths["wide"]),
-        "alt": re.sub(r"\s+", " ", alt).strip() if alt else f"Illustration: {title}",
+        "alt": re.sub(r"\s+", " ", alt).strip() if alt else ui_of(ep)["illustration"].format(title=title),
     }
 
 
@@ -147,9 +202,9 @@ def _iso_duration(seconds: Any) -> str | None:
     return "PT" + (f"{h}H" if h else "") + (f"{m}M" if m or h else "") + f"{s}S"
 
 
-def _minutes(seconds: Any) -> str:
+def _minutes(seconds: Any, unit: str = UI["en"]["min"]) -> str:
     try:
-        return f"{max(1, round(float(seconds) / 60))} min"
+        return unit.format(n=max(1, round(float(seconds) / 60)))
     except (TypeError, ValueError):
         return ""
 
@@ -182,6 +237,7 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     ep_id = str(ep["id"])
     show = show_of(ep)
     lang = _lang(ep)
+    ui = ui_of(ep)
     title = str(ep.get("title") or ep_id)
     description = str(ep.get("description") or "").strip()
     hook = _hook(description) or " ".join(s for s in ep.get("summary") or [] if isinstance(s, str))
@@ -205,6 +261,7 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     src_url = _web_url(src.get("url"))
     others = versions_of(ep, episodes)
     duration = _iso_duration(ep.get("duration_s"))
+    minutes = _minutes(ep.get("duration_s"), ui["min"])
 
     ld: dict[str, Any] = {
         "@context": "https://schema.org",
@@ -309,7 +366,7 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
         + " · ".join(
             x
             for x in (
-                f'<span class="dur">{e(_minutes(ep.get("duration_s")))}</span>' if _minutes(ep.get("duration_s")) else "",
+                f'<span class="dur">{e(minutes)}</span>' if minutes else "",
                 f'<time datetime="{e(published)}">{e(day)}</time>' if day else "",
                 e(LANG_NAMES.get(lang, lang.upper())),
             )
@@ -319,25 +376,25 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
         f'  <audio controls preload="none" src="{e(player_src)}" aria-labelledby="title"></audio>',
         f'  <p class="desc" id="description">{e(description or hook)}</p>',
         '  <p class="actions">',
-        f'    <a class="btn" href="{e(back)}">Listen on {e(show)}</a>',
-        f'    <a class="btn" href="{e(player_src)}" download="{e(file_name)}">Download MP3</a>',
+        f'    <a class="btn" href="{e(back)}">{e(ui["listen"].format(show=show))}</a>',
+        f'    <a class="btn" href="{e(player_src)}" download="{e(file_name)}">{e(ui["download"])}</a>',
     ]
     if ep.get("transcript"):
-        body.append('    <a class="btn" href="transcript.vtt">Transcript</a>')
+        body.append(f'    <a class="btn" href="transcript.vtt">{e(ui["transcript"])}</a>')
     body.append("  </p>")
     if others:
         links = ", ".join(
             f'<a href="../{e(o["id"])}/" hreflang="{e(_lang(o))}" lang="{e(_lang(o))}">{e(LANG_NAMES.get(_lang(o), _lang(o).upper()))}</a>'
             for o in others
         )
-        body.append(f'  <p class="langs">Also in: {links}</p>')
+        body.append(f'  <p class="langs">{e(ui["also_in"])}{links}</p>')
     if src_url:
-        author = f" by {e(src.get('author'))}" if src.get("author") else ""
+        author = f"{e(ui['by'])}{e(src.get('author'))}" if src.get("author") else ""
         body.append(
-            f'  <p class="credit">Based on <a href="{e(src_url)}" rel="noopener">{e(src.get("title") or src_url)}</a>{author}</p>'
+            f'  <p class="credit">{e(ui["based_on"])}<a href="{e(src_url)}" rel="noopener">{e(src.get("title") or src_url)}</a>{author}</p>'
         )
     body += [
-        "  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>",
+        f"  <footer>{e(ui['footer'])}</footer>",
         "</main>",
         "</body>",
         "</html>",
