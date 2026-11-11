@@ -169,8 +169,8 @@ does not play ("Could not load audio"). Those releases are kept as they are. `Gh
   emergencies). Its checkout is `$PODCAST_MEDIA_CHECKOUTS/<name>`, with origin
   `git@github.com:owner/name.git`, and its URL is `https://<owner>.github.io/<name>/<id>.mp3`
   (or the owner's custom domain). The site's player only accepts the four repos above
-  (`mediaUrl()`, `docs/site.js:879`). After parsing, it accepts no credentials and only
-  origin `https://luongnv.com` with a path that `PAGES_PATH` (`docs/site.js:877`) matches
+  (`mediaUrl()`, `docs/site.js:1071`). After parsing, it accepts no credentials and only
+  origin `https://luongnv.com` with a path that `PAGES_PATH` (`docs/site.js:1069`) matches
   exactly, `/<media repo>/<id>.mp3`. Until every entry is re-pointed, it also accepts the
   release URL (origin `https://github.com`, `MEDIA_PATH`,
   `/luongnv89/<repo>/releases/download/<id>/<id>.mp3`, with the same `<id>` twice). The URL
