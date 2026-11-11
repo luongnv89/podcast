@@ -1718,25 +1718,40 @@ ORIGIN_MAIN = "refs/remotes/origin/main"
 # conflicting files only in its CONFLICT lines, which git prints on stdout, not stderr.
 _GIT_KEY_LINE = re.compile(r"(?:CONFLICT\b|error:|fatal:|could not apply\b)", re.IGNORECASE)
 GIT_ERROR_LIMIT = 800
+# What git fetch prints on its way (``git pull``): where it fetched from and the refs it
+# updated. It names no failure, so it is left out of an error. A ``!`` ref line (rejected,
+# remote rejected: the reason a push or fetch failed) is never one of them.
+_GIT_FETCH_LINE = re.compile(
+    r"From \S+$|(?:[*+=-] )?(?:\[(?![a-z ]*rejected)[a-z ]+\]|branch|tag|[0-9a-f]{7,}\.\.\.?[0-9a-f]{7,})\s.*->\s\S")
+
+
+def _same_git_line(line: str) -> str:
+    """``line`` without its ``error:``/``fatal:`` prefix, case-folded: git says "could not
+    apply X" twice (``error: could not apply X`` and ``Could not apply X``)."""
+    return re.sub(r"^(?:error|fatal):\s*", "", line, flags=re.IGNORECASE).casefold()
 
 
 def _git_error(proc: subprocess.CompletedProcess[str], limit: int = GIT_ERROR_LIMIT) -> str:
     """What a failed git command said, at most ``limit`` characters: its first line, every
-    CONFLICT/error/fatal/could-not-apply line (stderr and stdout), and its last line. git's
-    ``hint:`` lines are dropped when the whole text does not fit."""
+    CONFLICT/error/fatal/could-not-apply line (stderr and stdout), and its last line, each
+    said once (``_same_git_line()``). git fetch's ``From <remote>`` and ref-update lines are
+    dropped; so are git's ``hint:`` lines when the whole text does not fit."""
     err, out = (proc.stderr or "").strip(), (proc.stdout or "").strip()
     text = err or out
     if not text:
         return f"exit {proc.returncode}"
     lines = [line.strip() for line in text.splitlines() if line.strip()]
+    lines = [line for line in lines if not _GIT_FETCH_LINE.match(line)] or lines
     extra = [line.strip() for line in (out.splitlines() if err else []) if _GIT_KEY_LINE.match(line.strip())]
-    if len(text) <= limit and not extra:
-        return text
+    if len(text) <= limit and not extra and len(lines) == len({_same_git_line(line) for line in lines}):
+        return "\n".join(lines)
     useful = [line for line in lines if not line.startswith("hint:")] or lines
     key = [line for line in useful[1:-1] if _GIT_KEY_LINE.match(line)]
     picked: list[str] = []
+    seen: set[str] = set()
     for line in [useful[0], *key, *extra, useful[-1]]:
-        if line not in picked:
+        if _same_git_line(line) not in seen:
+            seen.add(_same_git_line(line))
             picked.append(line)
     kept: list[str] = []
     size = 0
@@ -1771,7 +1786,15 @@ def _abort_rebase() -> str:
     return " The stopped rebase was aborted (git rebase --abort)."
 
 
-def _unpushed_commits() -> tuple[list[str], str | None]:
+SCRIPT_SUBJECTS = (PUBLISH_SUBJECT, MIGRATE_SUBJECT, BACKFILL_SUBJECT, REPOINT_SUBJECT)
+
+
+def _site_prefix() -> str:
+    """The site folder relative to the repo, with a trailing slash (``docs/``)."""
+    return SITE.resolve().relative_to(REPO.resolve()).as_posix().rstrip("/") + "/"
+
+
+def _unpushed_commits(strict: bool = False) -> tuple[list[str], str | None]:
     """``(shas, refusal)`` for the commits on HEAD that origin/main (as last fetched) does
     not have: what an earlier run committed but could not push.
 
@@ -1780,13 +1803,28 @@ def _unpushed_commits() -> tuple[list[str], str | None]:
     Commits with other subjects (someone's local work) give ``([], None)``: they are left
     alone, silently. Script-titled commits that fail the branch or file check give
     ``([], refusal)``: they are not pushed either, and ``refusal`` says why, so the run
-    fails and a person looks."""
+    fails and a person looks.
+
+    ``strict`` is the check ``push()`` runs before it commits and before every push: a
+    push of ``HEAD:main`` sends every commit under HEAD, so there any commit ahead that is
+    not this script's own is refused as well (whatever its subject), so is a checkout that
+    is not on ``main`` (even with nothing ahead yet) and a ``git log`` that fails."""
     proc = _git("log", "--format=%H %s", f"{ORIGIN_MAIN}..HEAD")
     if proc.returncode != 0:
-        return [], None
+        if not strict:
+            return [], None
+        return [], (f"git log {ORIGIN_MAIN}..HEAD failed ({_git_error(proc)}), so the commits a push would send"
+                    " could not be checked; nothing was pushed.")
     commits = [line.partition(" ") for line in proc.stdout.splitlines() if line.strip()]
-    if not commits or not all(s.startswith((PUBLISH_SUBJECT, MIGRATE_SUBJECT, BACKFILL_SUBJECT, REPOINT_SUBJECT))
-                              for _, _, s in commits):
+    others = [(sha, s) for sha, _, s in commits if not s.startswith(SCRIPT_SUBJECTS)]
+    if others:
+        if not strict:
+            return [], None
+        listed = ", ".join(f"{sha[:12]} {s[:60]!r}" for sha, s in others[:5]) + (", …" if len(others) > 5 else "")
+        return [], (f"{len(others)} local commit(s) ahead of origin/main are not this script's own ({listed}):"
+                    " a push of HEAD:main would send them too, so nothing was pushed. Look at them"
+                    " (git log --stat origin/main..HEAD), then push, move or drop them by hand.")
+    if not commits and not strict:
         return [], None
     shas = [sha for sha, _, _ in commits]
     listed = ", ".join(sha[:12] for sha in shas[:5]) + (", …" if len(shas) > 5 else "")
@@ -1796,8 +1834,12 @@ def _unpushed_commits() -> tuple[list[str], str | None]:
     name = branch.stdout.strip() if branch.returncode == 0 else ""
     if name != "main":
         where = f"branch {name!r}" if name else "a detached HEAD"
+        if not shas:
+            return [], (f"this checkout is on {where}, not main: this script commits and pushes to origin main"
+                        " only from main, so nothing was pushed. Switch to main (git switch main), then run the"
+                        " same command again.")
         return [], refused.format(why=f"this checkout is on {where}, not main")
-    site = SITE.resolve().relative_to(REPO.resolve()).as_posix().rstrip("/") + "/"
+    site = _site_prefix()
     outside: list[str] = []
     for sha in shas:
         files = _git("diff-tree", "-r", "-m", "--root", "--no-commit-id", "--no-renames", "--name-only", "-z", sha)
@@ -1836,12 +1878,25 @@ def _confirm_pushed(sha: str, note: str | None = None) -> dict[str, Any]:
     return result
 
 
+def _refuse_push(sha: str) -> dict[str, Any] | None:
+    """The result for a push that must not go (``_unpushed_commits(strict=True)`` refuses
+    a commit ahead of origin/main), else None. The local commits are kept."""
+    _, refusal = _unpushed_commits(strict=True)
+    if not refusal:
+        return None
+    return {"pushed": False, "commit": sha, "error": f"{refusal} The local commits are kept; HEAD is {sha[:12]}."}
+
+
 def push(paths: list[Path], titles: list[str], subject: str | None = None) -> dict[str, Any]:
     """Commit ``paths`` (only those: nothing else staged in the index) and push to origin
     main. With no change of its own, it pushes only the earlier commits
-    ``_unpushed_commits()`` accepts, and fails on the ones it refuses. ``pushed`` is True
-    only once origin/main holds the commit; a rejected push is rebased onto origin once,
-    and a rebase that fails is aborted (the local commit is kept) and reported as an error."""
+    ``_unpushed_commits()`` accepts, and fails on the ones it refuses. Before it commits
+    and before every push (the retried one too), every commit ahead of origin/main must
+    pass ``_unpushed_commits(strict=True)``, since ``HEAD:main`` sends them all: one that
+    does not stops the run with nothing pushed (and, before the commit, nothing committed).
+    ``pushed`` is True only once origin/main holds the commit; a rejected push is rebased
+    onto origin once, and a rebase that fails is aborted (the local commit is kept) and
+    reported as an error."""
     rel = sorted({str(p.relative_to(REPO)) for p in paths})
     present = [r for r in rel if (REPO / r).exists()]
     gone = [r for r in rel if r not in present]
@@ -1871,6 +1926,18 @@ def push(paths: list[Path], titles: list[str], subject: str | None = None) -> di
         # An earlier run committed but could not push (e.g. a lost rebase, resolved since).
         note = f"nothing new to commit; pushing {len(earlier)} earlier unpushed commit(s)"
     else:
+        # Before committing: the push below sends every commit under HEAD, so it goes only
+        # when each one ahead of origin/main is this script's own (and this run's would be).
+        _, refusal = _unpushed_commits(strict=True)
+        site = _site_prefix()
+        outside = [p for p in own if not p.startswith(site)]
+        if not refusal and outside:
+            refusal = f"this run's own change includes files outside {site} ({', '.join(outside[:10])})."
+        if refusal:
+            return {"pushed": False, "commit": None, "error": (
+                f"{refusal} This run's own change ({len(own)} file(s)) was not committed: it is left in the"
+                " work tree (staged); run the same command again once that is fixed and it commits and pushes it."
+            )}
         subject = subject or (
             f"{PUBLISH_SUBJECT}{titles[0]}"
             if len(titles) == 1
@@ -1884,6 +1951,9 @@ def push(paths: list[Path], titles: list[str], subject: str | None = None) -> di
     if head.returncode != 0:
         return {"pushed": False, "error": f"git rev-parse HEAD failed: {_git_error(head)}"}
     sha = head.stdout.strip()
+    refused = _refuse_push(sha)
+    if refused:
+        return refused
     pushed = _git("push", "origin", "HEAD:main")
     if pushed.returncode == 0:
         return _confirm_pushed(sha, note)
@@ -1906,6 +1976,9 @@ def push(paths: list[Path], titles: list[str], subject: str | None = None) -> di
         return {"pushed": False, "commit": sha or None, "error": (
             "git pull --rebase origin main left no local commit to push (origin/main may already"
             " have the same changes); nothing was pushed: check origin/main")}
+    refused = _refuse_push(sha)
+    if refused:
+        return refused
     pushed = _git("push", "origin", "HEAD:main")
     if pushed.returncode != 0:
         return {"pushed": False, "commit": sha, "error": _git_error(pushed)}

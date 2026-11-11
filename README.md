@@ -141,6 +141,16 @@ does not play ("Could not load audio"). Those releases are kept as they are. `Gh
   fails (`pushed: false`, exit 1). Resolve the conflict by hand
   (`git pull --rebase origin main`, then `git rebase --continue`) and run the same command
   again: it pushes that commit, even when nothing new changed.
+- The push sends `HEAD:main`, so it carries every local commit ahead of origin/main. Before
+  it commits and before every push (the retry after a rebase too), each of those commits must
+  be the script's own: its commit subject, on `main`, files under `docs/` only
+  (`_unpushed_commits(strict=True)` in `scripts/publish.py`). Any other commit (another
+  branch, a hand-made commit, a change outside `docs/`), or a checkout not on `main`, fails
+  the run (`pushed: false`, exit 1): nothing is pushed, and the run's own change is left
+  uncommitted (staged). Push, move or drop that commit by hand, then run the same command
+  again. With nothing new to commit, a hand-made commit is left alone and nothing is pushed.
+  A checkout without an `origin/main` tracking ref cannot be checked, so it fails the same
+  way (`git fetch origin` makes one).
 - An `episodes.json` that is there but cannot be parsed (git conflict markers, say) stops
   every `publish.py` command before any upload or write, so it is never replaced by a new
   index; only a missing file starts a new one.
