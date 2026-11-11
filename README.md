@@ -320,16 +320,33 @@ description's hook (its first paragraph), canonical URL, Open Graph and Twitter 
 the show's cover (`docs/cover.jpg`, or the story cover of the episode's language),
 `PodcastEpisode` JSON-LD, the audio player, the full description, Download MP3 (same
 name), the transcript and a link back to `#<id>` on the page that lists it (a story's
-language page, `stories/<lang>/`: `show_page()`, `scripts/pages.py:83`); a story's versions
+language page, `stories/<lang>/`: `show_page()`, `scripts/pages.py:132`); a story's versions
 link each other (`hreflang`). The list pages link each title to its page (a plain click still
 opens the details; a middle or Ctrl/Cmd click opens the page). `docs/sitemap.xml` lists
 Build Wiz AI Show's page, the stories' chooser, the three story language pages (each with
 its newest story's day as `lastmod`) and every episode page (`render_sitemap()`,
-`scripts/pages.py:349`). Pages and sitemap are rebuilt from
+`scripts/pages.py:406`). Pages and sitemap are rebuilt from
 `episodes.json` on every publish and change only when an episode does. Crawlers read
 `robots.txt` only at the domain root, which lives in the luongnv.com repository: add
 `Sitemap: https://luongnv.com/podcast/sitemap.xml` there (or submit the sitemap in Search
 Console); `docs/robots.txt` names it too.
+
+**The page's language (#38).** A story's episode page is in the story's language: the
+language of the page that lists it (`story_lang()`), so French and Vietnamese stories get
+French and Vietnamese pages and a story in another language an English one. That covers
+every word of the page around the episode's own text: the
+duration ("7 min", "8 phút"), **Listen on Once Upon a Time Show** ("Écouter sur…", "Nghe
+trên…"), **Download MP3**, **Transcript**, **Also in:**, **Based on … by …**, the picture's
+fallback alt text and the footer. The words are `UI` (`scripts/pages.py:74`), picked by
+`ui_of()` (`scripts/pages.py:138`); the ones the story pages also use (download,
+transcript, based on, by, minutes, illustration) are site.js's `TEXT` word for word, and a
+test keeps them in step. The show's name stays as it is, as on the story pages. The
+episode's own text (title, description, source title and author, the picture's `alt` from
+`image.alt`) is shown as `episodes.json` has it. Every Build Wiz AI Show page stays in
+English, whatever the episode's language, and English story pages are byte for byte what
+they were (`tests/fixtures/episode_pages_38/expected/`). `<html lang>` and `og:locale` are
+the episode's own language, as before, so they match the words on every EN, FR and VI story
+page.
 
 **Backfill.** `python3 scripts/publish.py --backfill` gives every entry without one a
 `description` and a `file_name` (a job folder still in `$DROPCAST_HOME/jobs` gives its
@@ -384,7 +401,7 @@ Once Upon a Time Show has one page per language (#35): `/podcast/stories/en/`, `
 - **What a language page lists**: the story-format entries (`showOf()`) whose `language`
   is the page's (`onPage()`, `docs/site.js:153`). A story in a language without a page is
   listed on the English one (`storyLang()`, `docs/site.js:152`; `story_lang()`,
-  `scripts/pages.py:77`), as its audio goes to the English stories repo.
+  `scripts/pages.py:126`), as its audio goes to the English stories repo.
 - **The chooser** shows the show, three large choices (the story icon with its badge, the
   language's own name and the tagline in that language) and the listening links of all
   three languages.

@@ -1,0 +1,68 @@
+{
+  "episodes": [
+    {
+      "id": "2026-11-05_tale", "title": "The Glass Slipper", "show": "Once Upon a Time Show",
+      "format": "bedtime-story", "language": "en", "published": "2026-11-05T14:59:09Z", "duration_s": 402.4,
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-05_tale.mp3",
+      "transcript": "episodes/2026-11-05_tale/transcript.vtt",
+      "description": "A gentle bedtime story.\n\nIn this episode:\n- A pumpkin\n- A slipper",
+      "file_name": "Once Upon a Time Show - The Glass Slipper (2026-11-05).mp3",
+      "source": {"title": "Cinderella", "author": "Charles Perrault", "url": "https://example.org/cinderella"},
+      "story_group": "2026-11-05_tale",
+      "image": {"wide": "art/2026-11-05_tale/wide.jpg", "square": "art/2026-11-05_tale/square.jpg", "thumb": "art/2026-11-05_tale/thumb.jpg"}
+    },
+    {
+      "id": "2026-11-05_tale-fr", "title": "La pantoufle de verre", "show": "Once Upon a Time Show",
+      "format": "bedtime-story", "language": "fr", "published": "2026-11-05T15:10:00Z", "duration_s": 431,
+      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-05_tale-fr.mp3",
+      "transcript": "episodes/2026-11-05_tale-fr/transcript.vtt",
+      "description": "Une douce histoire du soir.\n\nDans cet épisode :\n- Une citrouille\n- Une pantoufle",
+      "file_name": "Once Upon a Time Show - La pantoufle de verre (2026-11-05).mp3",
+      "source": {"title": "Cendrillon", "author": "Charles Perrault", "url": "https://example.org/cendrillon"},
+      "story_group": "2026-11-05_tale",
+      "image": {"wide": "art/2026-11-05_tale/wide.jpg", "square": "art/2026-11-05_tale/square.jpg", "thumb": "art/2026-11-05_tale/thumb.jpg"}
+    },
+    {
+      "id": "2026-11-05_tale-vi", "title": "Chiếc giày thủy tinh", "show": "Once Upon a Time Show",
+      "format": "bedtime-story", "language": "vi", "published": "2026-11-05T15:20:00Z", "duration_s": 455,
+      "audio": "https://luongnv.com/once-upon-a-time-vi-media/2026-11-05_tale-vi.mp3",
+      "transcript": "episodes/2026-11-05_tale-vi/transcript.vtt",
+      "description": "Một câu chuyện nhẹ nhàng trước giờ đi ngủ.\n\nTrong tập này:\n- Quả bí ngô\n- Chiếc giày",
+      "file_name": "Once Upon a Time Show - Chiếc giày thủy tinh (2026-11-05).mp3",
+      "source": {"title": "Cô bé Lọ Lem", "author": "Charles Perrault", "url": "https://example.org/lo-lem"},
+      "story_group": "2026-11-05_tale",
+      "image": {"wide": "art/2026-11-05_tale/wide.jpg", "square": "art/2026-11-05_tale/square.jpg", "thumb": "art/2026-11-05_tale/thumb.jpg"}
+    },
+    {
+      "id": "2026-11-06_plain", "title": "A Short Tale", "show": "Once Upon a Time Show",
+      "format": "storytelling", "language": "en", "published": "2026-11-06T08:00:00Z",
+      "audio": "episodes/2026-11-06_plain/episode.mp3",
+      "description": "A short tale.",
+      "source": {"title": "Old Tale", "url": "https://example.org/old"}
+    },
+    {
+      "id": "2026-11-07_marchen", "title": "Ein Märchen", "show": "Once Upon a Time Show",
+      "format": "bedtime-story", "language": "de", "published": "2026-11-07T08:00:00Z", "duration_s": 300,
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-07_marchen.mp3",
+      "transcript": "episodes/2026-11-07_marchen/transcript.vtt",
+      "description": "Ein Märchen zum Einschlafen.",
+      "source": {"title": "Märchen", "author": "Brüder Grimm", "url": "https://example.org/maerchen"}
+    },
+    {
+      "id": "2026-11-08_pod", "title": "Roll-ups", "show": "Build Wiz AI Show",
+      "format": "podcast-2host", "language": "en", "published": "2026-11-08T07:50:23Z", "duration_s": 770,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-08_pod.mp3",
+      "transcript": "episodes/2026-11-08_pod/transcript.vtt",
+      "description": "Hook.\n\nRest.",
+      "source": {"title": "A talk", "author": "Someone", "url": "https://example.org/talk"}
+    },
+    {
+      "id": "2026-11-09_pod-vi", "title": "Tư duy phản biện", "show": "Build Wiz AI Show",
+      "format": "podcast-2host", "language": "vi", "published": "2026-11-09T07:50:23Z", "duration_s": 1210,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-09_pod-vi.mp3",
+      "transcript": "episodes/2026-11-09_pod-vi/transcript.vtt",
+      "description": "Mở đầu.\n\nPhần còn lại.",
+      "source": {"title": "Bài nói", "author": "Ai đó", "url": "https://example.org/bai-noi"}
+    }
+  ]
+}
