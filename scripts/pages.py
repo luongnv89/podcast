@@ -21,10 +21,11 @@ shows the wide picture at the top of its page, uses it for ``og:image``/``twitte
 (``summary_large_image``) and the square one for the JSON-LD ``image``. Without one the page
 is exactly as before.
 
-A story's page is in the story's language (podcast #38): ``<html lang>`` and every word
-around the episode's own text come from ``UI``, French or Vietnamese for a story listed on
-those pages. Every Build Wiz AI Show page, and every English story page, is in English, word
-for word as before.
+A story's page is in the story's language (podcast #38): every word around the episode's
+own text comes from ``UI``, French or Vietnamese for a story listed on those pages. Every
+Build Wiz AI Show page, and every English story page, is in English, word for word as
+before. ``<html lang>`` is the episode's own language, as before (so a Vietnamese Build Wiz
+AI Show episode keeps ``lang="vi"`` around the English words).
 
 ``publish.py`` rebuilds them after every publish (and with ``--backfill``), so they always
 follow ``episodes.json``. A file is rewritten only when its bytes change, and nothing
@@ -87,7 +88,7 @@ UI = {
         "listen": "Écouter sur {show}",
         "download": "Télécharger le MP3",
         "transcript": "Transcription",
-        "also_in": "Aussi disponible en\u00a0: ",
+        "also_in": "Également disponible en\u00a0: ",
         "based_on": "D’après ",
         "by": ", de ",
         "min": "{n}\u00a0min",
@@ -104,7 +105,7 @@ UI = {
         "by": " của ",
         "min": "{n} phút",
         "illustration": "Hình minh họa: {title}",
-        "footer": "Truyện được làm bằng DropCast và kể bằng giọng đọc nhân tạo. Mỗi truyện đều ghi nguồn văn bản gốc.",
+        "footer": "Truyện này được làm bằng DropCast và kể bằng giọng đọc nhân tạo. Mỗi truyện đều ghi nguồn văn bản gốc.",
     },
 }
 SITEMAP = "sitemap.xml"

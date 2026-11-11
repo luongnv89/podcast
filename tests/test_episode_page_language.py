@@ -32,6 +32,10 @@ ENGLISH_UI = (
     ">Listen on ", ">Download MP3<", ">Transcript<", ">Also in: ", ">Based on ", "</a> by ",
     "AI-voiced", "Voices are synthetic", "credits its source", '"Illustration: ',
 )
+# The same English words in the page's text with every tag, script and style removed, so a
+# label written with other markup is caught too ("Transcript" as a word: not "Transcription").
+ENGLISH_WORDS = re.compile(r"Listen on|Download MP3|\bTranscript\b|Also in|Based on|AI-voiced|"
+                           r"Voices are synthetic|credits its source|Illustration:")
 # The English duration ("7 min", plain space). Vietnamese says "phút"; French writes "min"
 # too, but with a no-break space, as site.js does ("7 min").
 ENGLISH_MINUTES = re.compile(r'class="dur">\d+ min<')
@@ -104,7 +108,8 @@ class UnchangedPagesTest(Fixture):
         eps = pages.site_episodes(DOCS)
         checked = 0
         for ep in eps:
-            if pages.ui_of(ep) is not pages.UI["en"]:
+            # Chosen without ui_of(), so a Build Wiz page turned French would fail here.
+            if pages.show_of(ep) == pages.STORY_SHOW and pages.story_lang(ep) != "en":
                 continue
             with self.subTest(id=ep["id"]):
                 html = (DOCS / "episodes" / ep["id"] / "index.html").read_text(encoding="utf-8")
@@ -123,6 +128,8 @@ class StoryLanguageTest(Fixture):
         for word in ENGLISH_UI:
             self.assertNotIn(word, ui)
         self.assertIsNone(ENGLISH_MINUTES.search(ui))
+        text = re.sub(r"<(script|style)\b.*?</\1>|<[^>]*>", " ", ui, flags=re.S)
+        self.assertIsNone(ENGLISH_WORDS.search(text))
 
     def test_french_story_page(self) -> None:
         html = self.render("2026-11-05_tale-fr")
@@ -131,7 +138,7 @@ class StoryLanguageTest(Fixture):
         self.assertIn('#2026-11-05_tale-fr">Écouter sur Once Upon a Time Show</a>', html)
         self.assertIn('download="Once Upon a Time Show - La pantoufle de verre (2026-11-05).mp3">Télécharger le MP3</a>', html)
         self.assertIn('<a class="btn" href="transcript.vtt">Transcription</a>', html)
-        self.assertIn('<p class="langs">Aussi disponible en\u00a0: <a href="../2026-11-05_tale/"', html)
+        self.assertIn('<p class="langs">Également disponible en\u00a0: <a href="../2026-11-05_tale/"', html)
         self.assertIn('<p class="credit">D’après <a href="https://example.org/cendrillon" rel="noopener">Cendrillon</a>'
                       ", de Charles Perrault</p>", html)
         self.assertIn('class="dur">7\u00a0min<', html)
@@ -152,7 +159,7 @@ class StoryLanguageTest(Fixture):
         self.assertIn('<p class="credit">Dựa theo <a href="https://example.org/lo-lem" rel="noopener">Cô bé Lọ Lem</a>'
                       " của Charles Perrault</p>", html)
         self.assertIn('class="dur">8 phút<', html)
-        self.assertIn("<footer>Truyện được làm bằng DropCast", html)
+        self.assertIn("<footer>Truyện này được làm bằng DropCast", html)
         self.assertIn('alt="Hình minh họa: Chiếc giày thủy tinh"', html)
         self.assert_no_english_ui(html, self.by_id["2026-11-05_tale-vi"])
 

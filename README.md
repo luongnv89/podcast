@@ -334,7 +334,7 @@ Console); `docs/robots.txt` names it too.
 **The page's language (#38).** A story's episode page is in the story's language: the
 language of the page that lists it (`story_lang()`), so French and Vietnamese stories get
 French and Vietnamese pages and a story in another language an English one. That covers
-`<html lang>`, `og:locale` and every word of the page around the episode's own text: the
+every word of the page around the episode's own text: the
 duration ("7 min", "8 phút"), **Listen on Once Upon a Time Show** ("Écouter sur…", "Nghe
 trên…"), **Download MP3**, **Transcript**, **Also in:**, **Based on … by …**, the picture's
 fallback alt text and the footer. The words are `UI` (`scripts/pages.py:74`), picked by
@@ -344,7 +344,9 @@ test keeps them in step. The show's name stays as it is, as on the story pages. 
 episode's own text (title, description, source title and author, the picture's `alt` from
 `image.alt`) is shown as `episodes.json` has it. Every Build Wiz AI Show page stays in
 English, whatever the episode's language, and English story pages are byte for byte what
-they were (`tests/fixtures/episode_pages_38/expected/`).
+they were (`tests/fixtures/episode_pages_38/expected/`). `<html lang>` and `og:locale` are
+the episode's own language, as before, so they match the words on every EN, FR and VI story
+page.
 
 **Backfill.** `python3 scripts/publish.py --backfill` gives every entry without one a
 `description` and a `file_name` (a job folder still in `$DROPCAST_HOME/jobs` gives its
