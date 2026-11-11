@@ -10,9 +10,11 @@ their own. So each episode in ``docs/episodes.json`` also gets
 = the description's hook (its first paragraph), a canonical URL, Open Graph and Twitter
 tags with the show's cover, ``PodcastEpisode`` JSON-LD, the audio player (the entry's
 ``audio``: its media site URL or release asset URL, or the page's own ``episode.mp3`` for a relative path), the full
-description, the download link and a link back to ``#<id>`` on the show page. A story in
-several languages links its other versions (``hreflang``). ``docs/sitemap.xml`` lists the
-two show pages and every episode page.
+description, the download link and a link back to ``#<id>`` on the page that lists it (a
+story's language page, ``stories/<lang>/``, podcast #35). A story in several languages links
+its other versions (``hreflang``). ``docs/sitemap.xml`` lists Build Wiz AI Show's page, the
+stories' language chooser (``stories/``), the three story language pages and every episode
+page.
 
 A story with an illustration (``image`` in ``episodes.json``, its files under ``docs/art/``)
 shows the wide picture at the top of its page, uses it for ``og:image``/``twitter:image``
@@ -44,11 +46,17 @@ BUILD_SHOW = "Build Wiz AI Show"
 STORY_SHOW = "Once Upon a Time Show"
 STORY_FORMATS = ("bedtime-story", "storytelling")
 GA_ID = "G-FZV5YX8YPT"
+# A show's page lists its episodes; the stories have one page per language (podcast #35),
+# under the chooser ``stories/`` (``STORY_CHOOSER``).
 SHOWS = {
     BUILD_SHOW: {"page": "", "cover": "cover.jpg", "accent": "#22C55E"},
-    STORY_SHOW: {"page": "stories/", "cover": "stories/cover-{lang}.jpg", "accent": "#F2C46D"},
+    STORY_SHOW: {"page": "stories/{lang}/", "cover": "stories/cover-{lang}.jpg", "accent": "#F2C46D"},
 }
+STORY_CHOOSER = "stories/"
 LANG_NAMES = {"en": "English", "fr": "Français", "vi": "Tiếng Việt"}
+# The story languages with a page of their own; a story in any other language is listed on
+# the English page (as its audio goes to the English stories repo). site.js: STORY_LANGS.
+STORY_LANGS = tuple(LANG_NAMES)
 LOCALES = {"en": "en_US", "fr": "fr_FR", "vi": "vi_VN"}
 SITEMAP = "sitemap.xml"
 _SAFE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*")
@@ -64,6 +72,18 @@ def show_of(ep: dict[str, Any]) -> str:
 def _lang(ep: dict[str, Any]) -> str:
     lang = str(ep.get("language") or "en").strip().lower().split("-")[0].split("_")[0]
     return lang if re.fullmatch(r"[a-z]{2,3}", lang) else "en"
+
+
+def story_lang(ep: dict[str, Any]) -> str:
+    """The language page that lists a story: its own language when it has one, else English."""
+    lang = _lang(ep)
+    return lang if lang in STORY_LANGS else "en"
+
+
+def show_page(ep: dict[str, Any]) -> str:
+    """The page (relative to the site root) that lists the episode: ``""`` for Build Wiz AI
+    Show, ``stories/<lang>/`` for a story."""
+    return SHOWS[show_of(ep)]["page"].format(lang=story_lang(ep))
 
 
 def _hook(text: Any) -> str:
@@ -166,8 +186,8 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     description = str(ep.get("description") or "").strip()
     hook = _hook(description) or " ".join(s for s in ep.get("summary") or [] if isinstance(s, str))
     url = page_url(ep_id)
-    show_url = BASE_URL + SHOWS[show]["page"]
-    back = f"../../{SHOWS[show]['page']}#{ep_id}"
+    show_url = BASE_URL + show_page(ep)
+    back = f"../../{show_page(ep)}#{ep_id}"
     # The audio is an absolute https URL (the media repo's Pages site, podcast #33, or a
     # release asset, #30) or, before #30, the episode.mp3 next to this page; the relative
     # case renders as before.
@@ -278,7 +298,7 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     body = [
         "<body>",
         "<main>",
-        f'  <a class="show" href="../../{SHOWS[show]["page"]}">{e(show)}</a>',
+        f'  <a class="show" href="../../{show_page(ep)}">{e(show)}</a>',
         *(
             [f'  <img class="hero" src="{e(art["wide_rel"])}" alt="{e(art["alt"])}" width="1920" height="1080" decoding="async" fetchpriority="high">']
             if art
@@ -327,15 +347,19 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
 
 
 def render_sitemap(episodes: list[dict[str, Any]]) -> str:
+    """Build Wiz AI Show's page, the stories' chooser, the three story language pages, then
+    every episode page. A list page's ``lastmod`` is its newest episode's day (the chooser's:
+    the newest story's); a page with no episode has none."""
     latest: dict[str, str] = {}
     rows = []
     for ep in episodes:
         day = str(ep.get("published") or "")[:10]
-        show = show_of(ep)
-        if day > latest.get(show, ""):
-            latest[show] = day
+        for page in {show_page(ep), STORY_CHOOSER if show_of(ep) == STORY_SHOW else show_page(ep)}:
+            if day > latest.get(page, ""):
+                latest[page] = day
         rows.append((page_url(str(ep["id"])), day))
-    urls = [(BASE_URL + SHOWS[s]["page"], latest.get(s, "")) for s in (BUILD_SHOW, STORY_SHOW)] + rows
+    lists = [SHOWS[BUILD_SHOW]["page"], STORY_CHOOSER] + [SHOWS[STORY_SHOW]["page"].format(lang=lang) for lang in STORY_LANGS]
+    urls = [(BASE_URL + page, latest.get(page, "")) for page in lists] + rows
     lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for loc, day in urls:
         lastmod = f"<lastmod>{escape(day)}</lastmod>" if re.fullmatch(r"\d{4}-\d{2}-\d{2}", day) else ""

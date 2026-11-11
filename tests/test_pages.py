@@ -129,12 +129,13 @@ class PageTest(unittest.TestCase):
         self.assertEqual(ld["@type"], "PodcastEpisode")
         self.assertEqual(ld["description"], DESC)
         self.assertEqual(ld["timeRequired"], "PT6M42S")
-        self.assertEqual(ld["partOfSeries"]["url"], "https://luongnv.com/podcast/stories/")
+        # The story's show is its language page (podcast #35), not the chooser.
+        self.assertEqual(ld["partOfSeries"]["url"], "https://luongnv.com/podcast/stories/en/")
         self.assertNotIn("</script>", head.ld[0])  # the title cannot close the element
         self.assertEqual(head.desc, DESC)
         download = [a for a in head.anchors if "download" in a]
         self.assertEqual(download[0]["download"], "Once Upon a Time Show - Cinderella (2026-11-05).mp3")
-        self.assertIn({"class": "btn", "href": "../../stories/#2026-11-05_cinderella"},
+        self.assertIn({"class": "btn", "href": "../../stories/en/#2026-11-05_cinderella"},
                       [{k: a[k] for k in ("class", "href") if k in a} for a in head.anchors])
         # The French cover is missing here, so the English one is used.
         fr = parse(pages.render_page(self.eps[1], self.eps, self.site))
@@ -194,9 +195,11 @@ class PageTest(unittest.TestCase):
         self.assertEqual(pages.write_pages(self.site), [])  # nothing changes on a rebuild
         tree = ET.parse(self.site / "sitemap.xml")
         locs = [u.findtext(f"{SM}loc") for u in tree.getroot()]
-        self.assertEqual(locs[:2], ["https://luongnv.com/podcast/", "https://luongnv.com/podcast/stories/"])
+        self.assertEqual(locs[:5], ["https://luongnv.com/podcast/", "https://luongnv.com/podcast/stories/",
+                                    "https://luongnv.com/podcast/stories/en/", "https://luongnv.com/podcast/stories/fr/",
+                                    "https://luongnv.com/podcast/stories/vi/"])
         self.assertIn("https://luongnv.com/podcast/episodes/2026-11-06_pod/", locs)
-        self.assertEqual(len(locs), 5)
+        self.assertEqual(len(locs), 8)
 
 
 class LiveSiteTest(unittest.TestCase):
