@@ -26,10 +26,13 @@ unpublished on Spotify).
 The ``<guid>`` of an episode is its job id, so it never changes. Spotify downloads an
 audio file again only when its URL changes, so the enclosure URL carries
 ``?v=<first 8 hex of the MP3's SHA-256>``: a re-voiced episode keeps its guid and gets
-the new audio. The episode audio lives on GitHub Releases (podcast #30): an absolute
-``audio`` URL is used as is and its version comes from the entry's ``audio_sha256``; a
-relative ``audio`` path (before the move) is ``BASE_URL`` + the path, versioned from the
-local file. ``length`` is the entry's ``size_bytes``.
+the new audio. The episode audio lives on its media repo's GitHub Pages site (podcast #33,
+``https://luongnv.com/<media repo>/<id>.mp3``; before that a GitHub Release asset, #30): an
+absolute ``audio`` URL is used as is and its version comes from the entry's
+``audio_sha256``, so moving an episode between hosts changes only the URL before ``?v=``
+(guid, ``length``, ``type="audio/mpeg"`` and the version stay); a relative ``audio`` path
+(before #30) is ``BASE_URL`` + the path, versioned from the local file. ``length`` is the
+entry's ``size_bytes``.
 
 A story with an illustration (``image.square`` in ``episodes.json``, the file under
 ``docs/art/``) gets ``<itunes:image>`` on its item, so podcast apps show the picture as the
@@ -197,7 +200,7 @@ _SHA256 = re.compile(r"[0-9a-f]{64}")
 
 
 def is_absolute(audio: Any) -> bool:
-    """An absolute https URL (the release asset), not a path on this site."""
+    """An absolute https URL (the media site's file, or a release asset), not a path on this site."""
     return isinstance(audio, str) and audio.startswith("https://")
 
 

@@ -274,7 +274,7 @@ class PublishUploadTest(Tmp):
         with contextlib.ExitStack() as stack:
             stack.enter_context(mock.patch.object(publish, "SITE", self.site))
             stack.enter_context(mock.patch.object(publish, "REPO", self.tmp))
-            stack.enter_context(mock.patch.object(publish, "GhMedia", media))
+            stack.enter_context(mock.patch.object(publish, "MEDIA_BACKEND", media))
             stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
             stack.enter_context(contextlib.redirect_stdout(out))
             code = publish.main(list(argv))
@@ -339,7 +339,7 @@ class MigrateAudioTest(Tmp):
 
     def ok(self, url: str) -> dict:
         ep_id = url.rsplit("/", 1)[-1][:-4]
-        return {"status": 200, "length": (self.site / "episodes" / ep_id / "episode.mp3").stat().st_size}
+        return {"status": 200, "type": "audio/mpeg", "length": (self.site / "episodes" / ep_id / "episode.mp3").stat().st_size}
 
     def test_dry_run_lists_without_uploading(self) -> None:
         before = (self.site / "episodes.json").read_bytes()
@@ -572,7 +572,7 @@ class AtomicIndexTest(Tmp):
     def test_every_index_write_is_atomic(self) -> None:
         source = (ROOT / "scripts" / "publish.py").read_text(encoding="utf-8")
         self.assertNotIn("path.write_text(json.dumps", source)
-        self.assertEqual(source.count("_write_json(path, data)"), 3)  # update_index, backfill, migrate
+        self.assertEqual(source.count("_write_json(path, data)"), 4)  # update_index, backfill, migrate, repoint
 
 
 class StaleCopyTest(Tmp):
@@ -589,7 +589,7 @@ class StaleCopyTest(Tmp):
         with contextlib.ExitStack() as stack:
             stack.enter_context(mock.patch.object(publish, "SITE", self.site))
             stack.enter_context(mock.patch.object(publish, "REPO", self.tmp))
-            stack.enter_context(mock.patch.object(publish, "GhMedia", FakeMedia()))
+            stack.enter_context(mock.patch.object(publish, "MEDIA_BACKEND", FakeMedia()))
             stack.enter_context(mock.patch.object(publish, "head_audio", verify))
             stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
             stack.enter_context(contextlib.redirect_stdout(out))
@@ -598,7 +598,7 @@ class StaleCopyTest(Tmp):
 
     def test_removed_after_the_index_and_a_good_head(self) -> None:
         checked = []
-        code, report = self.run_main(lambda url: checked.append(url) or {"status": 200, "length": len(MP3)})
+        code, report = self.run_main(lambda url: checked.append(url) or {"status": 200, "type": "audio/mpeg", "length": len(MP3)})
         self.assertEqual(code, 0, report)
         self.assertEqual(checked, [URL])
         self.assertFalse(self.stale.exists())
@@ -606,7 +606,7 @@ class StaleCopyTest(Tmp):
         self.assertEqual(json.loads((self.site / "episodes.json").read_text())["episodes"][0]["audio"], URL)
 
     def test_kept_when_head_fails(self) -> None:
-        for answer in ({"status": 404, "length": None}, {"status": 200, "length": len(MP3) - 1}):
+        for answer in ({"status": 404, "length": None}, {"status": 200, "type": "audio/mpeg", "length": len(MP3) - 1}):
             with self.subTest(answer=answer):
                 code, report = self.run_main(lambda url, a=answer: a)
                 self.assertEqual(code, 0, report)
@@ -697,7 +697,7 @@ class UnreadableIndexTest(Tmp):
         with contextlib.ExitStack() as stack:
             stack.enter_context(mock.patch.object(publish, "SITE", self.site))
             stack.enter_context(mock.patch.object(publish, "REPO", self.tmp))
-            stack.enter_context(mock.patch.object(publish, "GhMedia", media))
+            stack.enter_context(mock.patch.object(publish, "MEDIA_BACKEND", media))
             stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
             stack.enter_context(contextlib.redirect_stdout(out))
             code = publish.main([str(self.job)])
@@ -731,7 +731,7 @@ def _ok_for(site: Path):
         index = json.loads((site / "episodes.json").read_text())
         sizes = {e["id"]: e.get("size_bytes") for e in index["episodes"]}
         mp3 = site / "episodes" / ep_id / "episode.mp3"
-        return {"status": 200, "length": mp3.stat().st_size if mp3.exists() else sizes[ep_id]}
+        return {"status": 200, "type": "audio/mpeg", "length": mp3.stat().st_size if mp3.exists() else sizes[ep_id]}
     return ok
 
 
@@ -910,7 +910,7 @@ class MigrateCommandTest(Tmp):
         with contextlib.ExitStack() as stack:
             stack.enter_context(mock.patch.object(publish, "SITE", self.wsite))
             stack.enter_context(mock.patch.object(publish, "REPO", self.work))
-            stack.enter_context(mock.patch.object(publish, "GhMedia", self.media))
+            stack.enter_context(mock.patch.object(publish, "MEDIA_BACKEND", self.media))
             stack.enter_context(mock.patch.object(publish, "head_audio", _ok_for(self.wsite)))
             stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
             if git_rm:
@@ -1043,7 +1043,7 @@ class MigrateCommandTest(Tmp):
         with contextlib.ExitStack() as stack:
             stack.enter_context(mock.patch.object(publish, "SITE", self.wsite))
             stack.enter_context(mock.patch.object(publish, "REPO", self.work))
-            stack.enter_context(mock.patch.object(publish, "GhMedia", self.media))
+            stack.enter_context(mock.patch.object(publish, "MEDIA_BACKEND", self.media))
             stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
             stack.enter_context(mock.patch.object(publish, "push", side_effect=AssertionError("pushed")))
             stack.enter_context(contextlib.redirect_stdout(out))
@@ -1151,7 +1151,7 @@ class PublishCommandTest(Tmp):
         with contextlib.ExitStack() as stack:
             stack.enter_context(mock.patch.object(publish, "SITE", self.wsite))
             stack.enter_context(mock.patch.object(publish, "REPO", self.work))
-            stack.enter_context(mock.patch.object(publish, "GhMedia", self.media))
+            stack.enter_context(mock.patch.object(publish, "MEDIA_BACKEND", self.media))
             stack.enter_context(mock.patch.object(publish, "head_audio", verify))
             stack.enter_context(mock.patch.object(publish, "_lock", contextlib.nullcontext))
             if git:
@@ -1188,7 +1188,7 @@ class PublishCommandTest(Tmp):
         # Publishing again: no second upload, the rebuild works, the copy goes, and the
         # commit holds what the failed run left uncommitted (the index, the transcript).
         uploads = [c for c in self.media.calls if c[0] in ("upload", "replace")]
-        code, report = self.publish(lambda url: {"status": 200, "length": len(MP3)})
+        code, report = self.publish(lambda url: {"status": 200, "type": "audio/mpeg", "length": len(MP3)})
         self.assertEqual(code, 0, report)
         self.assertEqual([c for c in self.media.calls if c[0] in ("upload", "replace")], uploads)
         self.assertTrue(report["git"]["pushed"], report)
@@ -1206,7 +1206,7 @@ class PublishCommandTest(Tmp):
     # M1: a publish never reports a push that did not reach origin.
 
     def ok(self, url: str) -> dict:
-        return {"status": 200, "length": len(MP3)}
+        return {"status": 200, "type": "audio/mpeg", "length": len(MP3)}
 
     def uploads(self) -> list:
         return [c for c in self.media.calls if c[0] in ("upload", "replace")]
@@ -1513,6 +1513,7 @@ class _Redirect(http.server.BaseHTTPRequestHandler):
         else:
             self.send_response(200)
             self.send_header("Content-Length", "1234")
+            self.send_header("Content-Type", "audio/mp3")
         self.end_headers()
 
     def do_GET(self) -> None:
@@ -1535,7 +1536,7 @@ class HeadAudioTest(unittest.TestCase):
         finally:
             server.shutdown()
             server.server_close()
-        self.assertEqual(got, {"status": 200, "length": 1234})
+        self.assertEqual(got, {"status": 200, "length": 1234, "type": "audio/mp3"})
         self.assertEqual(_Redirect.seen, [("HEAD", "/start"), ("HEAD", "/file?sig=1")])
 
 
@@ -1618,7 +1619,9 @@ class SiteAudioTest(unittest.TestCase):
     def test_wiring(self) -> None:
         self.assertIn("const MEDIA_PATH = /^\\/luongnv89\\/(?:buildwiz-ai-show|once-upon-a-time-(?:en|fr|vi))"
                       "-media\\/releases\\/download\\/", self.js)
-        self.assertIn('if (url.origin !== "https://github.com" || url.username || url.password) return null;', self.js)
+        self.assertIn("if (url.username || url.password) return null;", self.js)
+        self.assertIn('if (url.origin === "https://luongnv.com") return PAGES_PATH.test(url.pathname)', self.js)
+        self.assertIn('if (url.origin !== "https://github.com") return null;', self.js)
         self.assertIn("e.audio = resolveAudio(e.audio);", self.js)
         self.assertIn("audio.src = ep.audio;", self.js)
         # L4: no playable audio, no Play button, and never audio.src = null.
@@ -1634,8 +1637,11 @@ class SiteAudioTest(unittest.TestCase):
         self.assertIn('track("episode_play", epParams(current));', self.js)
         # site.js plays exactly the repos publish.py uploads to.
         prefix = re.compile(r"https://github\.com/luongnv89/(?:buildwiz-ai-show|once-upon-a-time-(?:en|fr|vi))-media/")
+        pages = re.compile(r"https://luongnv\.com/(?:buildwiz-ai-show|once-upon-a-time-(?:en|fr|vi))-media/[^/]+\.mp3$")
         for repo in publish.MEDIA_REPOS.values():
             self.assertTrue(prefix.match(f"https://github.com/{repo}/"), repo)
+            self.assertTrue(pages.match(publish.pages_url(repo, EP)), repo)
+        self.assertIn('const MEDIA_REPO = "(?:buildwiz-ai-show|once-upon-a-time-(?:en|fr|vi))-media";', self.js)
 
     @unittest.skipUnless(shutil.which("node"), "node is not installed")
     def test_resolve_audio_in_node(self) -> None:
@@ -1675,10 +1681,42 @@ console.log(JSON.stringify([
   "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/a/a.mp3?x=1#t",
   "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-05_quiet-hours/2026-11-05_quiet-hours.mp3",
 ].map(resolveAudio)));
+console.log(JSON.stringify([
+  "https://luongnv.com/buildwiz-ai-show-media/2026-11-05_quiet-hours.mp3",
+  "https://luongnv.com/once-upon-a-time-en-media/a.mp3",
+  "https://luongnv.com/once-upon-a-time-fr-media/a.mp3",
+  "https://luongnv.com/once-upon-a-time-vi-media/a.mp3",
+  "https://luongnv.com/once-upon-a-time-vi-media/a.mp3?v=1234abcd#t",
+  "https://luongnv.com/once-upon-a-time-de-media/a.mp3",
+  "https://luongnv.com/podcast/episodes/a/episode.mp3",
+  "https://luongnv.com/buildwiz-ai-show-media/x/a.mp3",
+  "https://luongnv.com/buildwiz-ai-show-media/a.wav",
+  "https://luongnv.com/buildwiz-ai-show-media/.mp3",
+  "https://luongnv.com/buildwiz-ai-show-media/../podcast/a.mp3",
+  "https://luongnv.com/buildwiz-ai-show-media/%2e%2e/a.mp3",
+  "https://luongnv.com/buildwiz-ai-show-media%2fa.mp3",
+  "https://luongnv.com/luongnv89/buildwiz-ai-show-media/a.mp3",
+  "http://luongnv.com/buildwiz-ai-show-media/a.mp3",
+  "https://luongnv.com:8443/buildwiz-ai-show-media/a.mp3",
+  "https://user:pw@luongnv.com/buildwiz-ai-show-media/a.mp3",
+  "https://evil.luongnv.com/buildwiz-ai-show-media/a.mp3",
+  "https://luongnv.com.evil.example/buildwiz-ai-show-media/a.mp3",
+  "https://luongnv89.github.io/buildwiz-ai-show-media/a.mp3",
+  "https://luongnv.com\\\\buildwiz-ai-show-media\\\\a.mp3",
+].map(resolveAudio)));
 """
         )
         out = subprocess.run(["node", "-e", script], capture_output=True, text=True, timeout=60, check=True)
-        self.assertEqual(json.loads(out.stdout), [
+        releases, sites = (json.loads(line) for line in out.stdout.splitlines())
+        self.assertEqual(sites, [
+            f"https://luongnv.com/buildwiz-ai-show-media/{EP}.mp3",
+            "https://luongnv.com/once-upon-a-time-en-media/a.mp3",
+            "https://luongnv.com/once-upon-a-time-fr-media/a.mp3",
+            "https://luongnv.com/once-upon-a-time-vi-media/a.mp3",
+            "https://luongnv.com/once-upon-a-time-vi-media/a.mp3",  # query and hash dropped
+            *[None] * 16,
+        ])
+        self.assertEqual(releases, [
             "https://luongnv.com/podcast/episodes/a/episode.mp3",
             "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/a/a.mp3",
             "https://github.com/luongnv89/once-upon-a-time-en-media/releases/download/a/a.mp3",

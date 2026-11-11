@@ -861,21 +861,28 @@
   // ---------- Load ----------
   // Media paths in episodes.json are relative to it, so a page in a subfolder resolves them.
   const resolve = (path) => (typeof path === "string" && path ? new URL(path, DATA_URL).href : path);
-  // The episode audio is a GitHub Releases asset of its show/language media repo (podcast
-  // #30; publish.py MEDIA_REPOS): an absolute URL is used only when, after parsing, its
-  // origin is https://github.com and its path is exactly
-  // /luongnv89/<media repo>/releases/download/<tag>/<tag>.mp3 (MEDIA_PATH; no credentials,
-  // no "..", no backslash and no percent-encoded dot, slash or backslash, which the parser
-  // would turn into a dot segment or a slash); a relative path (before the move) resolves
-  // as above. Anything else (another host or repo, a javascript: or data: URL) is
-  // dropped, and an episode without audio gets no Play or Download button. The download
-  // name of a release asset is GitHub's (cross-origin `download` attributes are ignored).
+  // The episode audio is a file on the GitHub Pages site of its show/language media repo
+  // (podcast #33; publish.py MEDIA_REPOS, pages_url()): an absolute URL is used only when,
+  // after parsing, its origin is https://luongnv.com and its path is exactly
+  // /<media repo>/<id>.mp3 (PAGES_PATH), or, until every entry is re-pointed, its origin is
+  // https://github.com and its path is exactly
+  // /luongnv89/<media repo>/releases/download/<tag>/<tag>.mp3 (MEDIA_PATH, podcast #30;
+  // iPhone Safari does not play those). Never with credentials, "..", a backslash or a
+  // percent-encoded dot, slash or backslash, which the parser would turn into a dot segment
+  // or a slash; a relative path (before #30) resolves as above. Anything else (another
+  // host, path or repo, a javascript: or data: URL) is dropped, and an episode without
+  // audio gets no Play or Download button. Cross-origin `download` attributes are ignored,
+  // so the download name is the file's.
+  const MEDIA_REPO = "(?:buildwiz-ai-show|once-upon-a-time-(?:en|fr|vi))-media";
+  const PAGES_PATH = new RegExp(`^\\/${MEDIA_REPO}\\/[A-Za-z0-9][A-Za-z0-9._-]*\\.mp3$`);
   const MEDIA_PATH = /^\/luongnv89\/(?:buildwiz-ai-show|once-upon-a-time-(?:en|fr|vi))-media\/releases\/download\/([A-Za-z0-9][A-Za-z0-9._-]*)\/([A-Za-z0-9][A-Za-z0-9._-]*)\.mp3$/;
   const mediaUrl = (path) => {
     if (/%2e|%2f|%5c|\.\.|\\/i.test(path)) return null;
     let url;
     try { url = new URL(path); } catch { return null; }
-    if (url.origin !== "https://github.com" || url.username || url.password) return null;
+    if (url.username || url.password) return null;
+    if (url.origin === "https://luongnv.com") return PAGES_PATH.test(url.pathname) ? url.origin + url.pathname : null;
+    if (url.origin !== "https://github.com") return null;
     const m = MEDIA_PATH.exec(url.pathname);
     return m && m[1] === m[2] ? url.origin + url.pathname : null;
   };

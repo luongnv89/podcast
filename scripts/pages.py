@@ -9,7 +9,7 @@ their own. So each episode in ``docs/episodes.json`` also gets
 ``docs/episodes/<id>/index.html``: title ``<Title> | <Show>``, ``<meta name="description">``
 = the description's hook (its first paragraph), a canonical URL, Open Graph and Twitter
 tags with the show's cover, ``PodcastEpisode`` JSON-LD, the audio player (the entry's
-``audio``: the GitHub Releases URL, or the page's own ``episode.mp3`` for a relative path), the full
+``audio``: its media site URL or release asset URL, or the page's own ``episode.mp3`` for a relative path), the full
 description, the download link and a link back to ``#<id>`` on the show page. A story in
 several languages links its other versions (``hreflang``). ``docs/sitemap.xml`` lists the
 two show pages and every episode page.
@@ -168,8 +168,9 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     url = page_url(ep_id)
     show_url = BASE_URL + SHOWS[show]["page"]
     back = f"../../{SHOWS[show]['page']}#{ep_id}"
-    # The audio is a GitHub Releases asset (podcast #30, an absolute https URL) or, before
-    # the move, the episode.mp3 next to this page; the relative case renders as before.
+    # The audio is an absolute https URL (the media repo's Pages site, podcast #33, or a
+    # release asset, #30) or, before #30, the episode.mp3 next to this page; the relative
+    # case renders as before.
     given = str(ep.get("audio") or f"episodes/{ep_id}/episode.mp3")
     remote = given.startswith("https://")
     audio = given if remote else BASE_URL + given
