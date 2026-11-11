@@ -50,8 +50,8 @@ one story with a language switch. Without it (older jobs) the key is left out.
 
 Each episode gets one ``show``: **Once Upon a Time Show** for a story (a ``bedtime-story``
 or ``storytelling`` script, or a job whose ``script.json`` or ``brief.json`` names that
-show or a story register), listed on ``docs/stories/``; else **Build Wiz AI Show**, listed
-on ``docs/index.html``. The format wins over the name, so a story briefed before the
+show or a story register), listed on its language's page ``docs/stories/<lang>/``; else
+**Build Wiz AI Show**, listed on ``docs/index.html``. The format wins over the name, so a story briefed before the
 stories had their own show (its script says Build Wiz AI Show) still goes to the story
 show. Any other job is Build Wiz AI Show unless its script or brief names the story show
 or a story register (DropCast never writes that for a podcast). ``result.json``

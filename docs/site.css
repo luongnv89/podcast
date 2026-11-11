@@ -71,6 +71,66 @@ h1 .ai, h1 .hl { color: var(--accent); }
 .show-link a { color: var(--white); font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
 .show-link a:hover { color: var(--accent); }
 
+/* ---------- Podcast switcher (podcast #35): one bar on top of every page ---------- */
+/* Build Wiz AI Show, then Once Upon a Time Show in English, French and Vietnamese, each with
+   its show's icon. Every item keeps its own show's highlight (green, or the story gold)
+   whatever the page, so the two shows read apart at a glance; the current page gets a
+   2px underline like the tabs. */
+.shows { border-bottom: 1px solid var(--line); }
+.shows-inner { display: flex; align-items: stretch; gap: 2px; min-height: 54px; }
+.show-item {
+  --item-accent: var(--green);
+  position: relative; flex: none; display: inline-flex; align-items: center; gap: 13px;
+  padding: 0 12px; color: var(--text-2); text-decoration: none; white-space: nowrap;
+  font: 700 14px/1.2 var(--display); letter-spacing: -0.01em; transition: color .15s ease;
+}
+.show-item.story { --item-accent: #F2C46D; }
+.show-item:first-child { padding-left: 0; }
+.show-item:hover { color: var(--white); }
+.show-item::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: -1px; height: 2px; background: transparent; }
+.show-item:first-child::after { left: 0; }
+.show-item[aria-current="page"] { color: var(--white); }
+.show-item[aria-current="page"]::after { background: var(--item-accent); }
+.show-item:focus-visible { outline-offset: -2px; }
+.show-item .l-short { display: none; }
+.shows-sep { flex: none; width: 1px; margin: 15px 10px; background: var(--line-strong); }
+.shows-label { flex: none; align-self: center; margin-right: 2px; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--text-3); }
+/* The show's mark on a small black tile. */
+.show-icon { position: relative; flex: none; display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--black); transition: border-color .15s ease; }
+.show-icon svg { width: 22px; height: 22px; }
+.show-item:hover .show-icon { border-color: var(--white); }
+.show-item[aria-current="page"] .show-icon { border-color: var(--item-accent); }
+/* The language badge on the story icon (EN / FR / VI, no flags): black on the story gold
+   (about 12:1), heavy display face, ringed in black so it stays legible where it overlaps
+   the tile's corner. */
+.badge {
+  position: absolute; right: -8px; bottom: -6px; padding: 2px 3px 1.5px; border-radius: 4px;
+  background: #F2C46D; color: var(--black); box-shadow: 0 0 0 2px var(--black);
+  font: 800 9.5px/1 var(--display); letter-spacing: .03em;
+}
+/* The header mark of a language page carries the same badge. */
+.brand .mark { position: relative; flex: none; display: grid; margin-right: 6px; }
+.brand .mark .badge { right: -9px; bottom: -5px; font-size: 10px; }
+
+/* ---------- Chooser (stories/): the three languages of Once Upon a Time Show ---------- */
+.choices { list-style: none; margin: 4px 0 26px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.choice {
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto 1fr auto; gap: 6px 22px; height: 100%;
+  padding: 24px 22px 20px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--black);
+  box-shadow: var(--shadow); text-decoration: none; transition: border-color .15s ease, transform .2s ease;
+}
+.choice:hover { border-color: var(--accent); transform: translateY(-2px); }
+.choice:focus-visible { border-radius: var(--radius); }
+.choice .show-icon { grid-row: 1 / span 2; width: 64px; height: 64px; border-radius: 16px; }
+.choice .show-icon svg { width: 46px; height: 46px; }
+.choice .badge { right: -11px; bottom: -8px; padding: 3px 5px 2px; border-radius: 6px; font-size: 14px; box-shadow: 0 0 0 3px var(--black); }
+.choice h2 { margin: 2px 0 0; font: 800 24px/1.1 var(--display); letter-spacing: -0.02em; }
+.choice p { margin: 0; font-size: 14px; color: var(--text-2); }
+.choice .go { grid-column: 1 / -1; justify-self: start; align-self: end; margin-top: 12px; font-weight: 600; color: var(--white); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
+.choice:hover .go { color: var(--accent); }
+.listen { margin: 0 0 28px; }
+.listen .show-link { margin: 4px 0 0; }
+
 /* ---------- Toolbar: sticky so tabs, search and sort are always in reach ---------- */
 .toolbar {
   position: sticky; top: 0; z-index: 40;
@@ -198,6 +258,10 @@ mark { background: none; color: var(--accent); text-decoration-line: underline; 
 .lang[aria-pressed="true"] { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); }
 .lang:focus-visible { outline-offset: -2px; }
 .lang .l-short { display: none; }
+/* On a language page the other versions are links to their pages, this one is marked. */
+a.lang, span.lang { display: inline-flex; align-items: center; text-decoration: none; }
+.lang[aria-current="true"] { color: var(--accent); box-shadow: inset 0 -2px 0 var(--accent); cursor: default; }
+.lang[aria-current="true"]:hover { background: transparent; }
 .chev { width: 20px; height: 20px; fill: none; stroke: var(--text-2); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s ease, stroke .15s ease; }
 .ep-row:hover .chev { stroke: var(--white); }
 .ep.is-open .chev { transform: rotate(180deg); }
@@ -291,6 +355,19 @@ footer .keys span { display: inline-flex; align-items: center; gap: 6px; }
 
 @media (max-width: 640px) {
   body { font-size: 15px; }
+  /* The switcher: four equal columns, the icon over a short name, no group label. */
+  .shows-inner { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; min-height: 0; }
+  .shows-sep, .shows-label { display: none; }
+  .show-item { flex-direction: column; justify-content: center; gap: 7px; min-height: 64px; padding: 9px 2px 8px; font-size: 12px; letter-spacing: 0; }
+  .show-item:first-child { padding-left: 2px; }
+  .show-item::after, .show-item:first-child::after { left: 14%; right: 14%; }
+  .show-item .l-long { display: none; }
+  .show-item .l-short { display: inline; }
+  .choices { grid-template-columns: 1fr; gap: 12px; }
+  .choice { padding: 20px 18px 16px; gap: 4px 20px; }
+  .choice .show-icon { width: 56px; height: 56px; border-radius: 14px; }
+  .choice .show-icon svg { width: 40px; height: 40px; }
+  .choice h2 { font-size: 22px; }
   .mast-inner { grid-template-columns: 1fr; padding-top: 16px; padding-bottom: 12px; }
   .stats { justify-content: flex-start; font-size: 13px; }
   .stats div { padding: 0 10px; }

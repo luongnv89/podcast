@@ -14,8 +14,9 @@ two shows, each on its own page:
   article, thread or paper, fact-checked against the source and credited in every
   episode. Listen: **https://luongnv.com/podcast/**
 - **Once Upon a Time Show**: gentle stories for bedtime and story time, told slowly by a
-  warm narrator (the `bedtime-story` and `storytelling` formats). Listen:
-  **https://luongnv.com/podcast/stories/**
+  warm narrator (the `bedtime-story` and `storytelling` formats), one page per language:
+  **https://luongnv.com/podcast/stories/en/**, **/fr/** and **/vi/**
+  (https://luongnv.com/podcast/stories/ lets the visitor choose).
 
 ## How it updates
 
@@ -23,20 +24,25 @@ The site is static (`docs/`), deployed by GitHub Pages from `main`
 (`.github/workflows/pages.yml`).
 
 - `docs/index.html` — Build Wiz AI Show's page (tabs, search, player).
-- `docs/stories/index.html` — Once Upon a Time Show's page (one list, search, player).
-- `docs/site.js`, `docs/site.css` — the list and player both pages share. Each page sets
-  `window.SHOW_PAGE` (its show, tabs and the path to `episodes.json`) before loading
-  `site.js`; both read the same `docs/episodes.json` and list only their show's episodes.
-  Both pages load them as `site.js?v=<version>` / `site.css?v=<version>`: bump the
-  version on both pages whenever either file changes (GitHub Pages caches them for 10 min).
+- `docs/stories/en/index.html`, `docs/stories/fr/index.html`, `docs/stories/vi/index.html` —
+  Once Upon a Time Show's pages, one per language (one list, search, player), each written
+  entirely in its language (see "Story language pages and the podcast switcher").
+- `docs/stories/index.html` — the stories' chooser: the three languages and the listening
+  links. It lists no stories; it forwards old links to the right language page.
+- `docs/site.js`, `docs/site.css` — the list and player every page shares. Each page sets
+  `window.SHOW_PAGE` (its show, its language for a story page, tabs, the path to
+  `episodes.json` and the other pages) before loading `site.js`; they all read the same
+  `docs/episodes.json` and list only their own episodes. All five pages load them as
+  `site.js?v=<version>` / `site.css?v=<version>`: bump the version on all five whenever
+  either file changes (GitHub Pages caches them for 10 min).
 - `docs/episodes/<job id>/` — each episode's `transcript.vtt` and its own page
   `index.html` (see "Descriptions, download names and episode pages"). The MP3s are not in
   `docs/`: they are served by the media repos' own GitHub Pages sites (see "Where the audio
   lives").
 - `docs/art/<story group>/` — each story's illustration (`wide.jpg`, `square.jpg`,
   `thumb.jpg`), copied by the publisher (see "Story illustrations").
-- `docs/sitemap.xml`, `docs/robots.txt`, `docs/cover.jpg` — the sitemap of both show pages
-  and every episode page, and Build Wiz AI Show's cover for share previews (rendered from
+- `docs/sitemap.xml`, `docs/robots.txt`, `docs/cover.jpg` — the sitemap of the show pages
+  (Build Wiz AI Show, the stories' chooser and its three language pages) and every episode page, and Build Wiz AI Show's cover for share previews (rendered from
   `assets/cover/build-wiz-cover.html`, 1400 x 1400).
 - `scripts/publish.py` — pushes each delivered DropCast job's MP3 to its media repo's
   GitHub Pages site and waits until it is served, copies its transcript and art into `docs/`, updates
@@ -163,8 +169,8 @@ does not play ("Could not load audio"). Those releases are kept as they are. `Gh
   emergencies). Its checkout is `$PODCAST_MEDIA_CHECKOUTS/<name>`, with origin
   `git@github.com:owner/name.git`, and its URL is `https://<owner>.github.io/<name>/<id>.mp3`
   (or the owner's custom domain). The site's player only accepts the four repos above
-  (`mediaUrl()`, `docs/site.js:879`). After parsing, it accepts no credentials and only
-  origin `https://luongnv.com` with a path that `PAGES_PATH` (`docs/site.js:877`) matches
+  (`mediaUrl()`, `docs/site.js:1083`). After parsing, it accepts no credentials and only
+  origin `https://luongnv.com` with a path that `PAGES_PATH` (`docs/site.js:1081`) matches
   exactly, `/<media repo>/<id>.mp3`. Until every entry is re-pointed, it also accepts the
   release URL (origin `https://github.com`, `MEDIA_PATH`,
   `/luongnv89/<repo>/releases/download/<id>/<id>.mp3`, with the same `<id>` twice). The URL
@@ -313,10 +319,13 @@ written by `scripts/pages.py`: title `<Title> | <Show>`, `<meta name="descriptio
 description's hook (its first paragraph), canonical URL, Open Graph and Twitter tags with
 the show's cover (`docs/cover.jpg`, or the story cover of the episode's language),
 `PodcastEpisode` JSON-LD, the audio player, the full description, Download MP3 (same
-name), the transcript and a link back to `#<id>` on the show page; a story's versions link
-each other (`hreflang`). The list pages link each title to its page (a plain click still
+name), the transcript and a link back to `#<id>` on the page that lists it (a story's
+language page, `stories/<lang>/`: `show_page()`, `scripts/pages.py:83`); a story's versions
+link each other (`hreflang`). The list pages link each title to its page (a plain click still
 opens the details; a middle or Ctrl/Cmd click opens the page). `docs/sitemap.xml` lists
-the two show pages and every episode page. Pages and sitemap are rebuilt from
+Build Wiz AI Show's page, the stories' chooser, the three story language pages (each with
+its newest story's day as `lastmod`) and every episode page (`render_sitemap()`,
+`scripts/pages.py:349`). Pages and sitemap are rebuilt from
 `episodes.json` on every publish and change only when an episode does. Crawlers read
 `robots.txt` only at the domain root, which lives in the luongnv.com repository: add
 `Sitemap: https://luongnv.com/podcast/sitemap.xml` there (or submit the sitemap in Search
@@ -352,10 +361,53 @@ it, in this order:
 3. otherwise **Build Wiz AI Show** (an older or unknown show name is not copied).
 
 `result.json` is not read for it: DropCast runs the publisher before that file is final.
-The pages apply the same rule (a story format is always on the story page), so an entry
-never shows up on both. The top-level `shows` lists both shows and their pages.
-Each page shows the counts and minutes of its own show only. Old links follow the
-stories: `?tab=bedtime` and `#<story id>` on the main page open the story page.
+The pages apply the same rule (a story format is always on a story page), so an entry
+never shows up on both shows. The top-level `shows` lists both shows and their pages (the
+stories' page is the chooser, `stories/`). Each page shows the counts and minutes of its
+own episodes only. Old links follow the stories: `?tab=bedtime` and `#<story id>` on the
+main page open the story's language page.
+
+## Story language pages and the podcast switcher
+
+Once Upon a Time Show has one page per language (#35): `/podcast/stories/en/`, `/fr/` and
+`/vi/`, and `/podcast/stories/` is a small chooser of the three.
+
+- **Each language page is entirely in its language**: title, tagline, buttons, labels,
+  player, empty states, `<html lang>`, meta description, Open Graph and Twitter tags (with
+  the language's cover, `docs/stories/cover-<lang>.jpg`), `PodcastSeries` JSON-LD, the
+  listening links (Spotify, Apple Podcasts and YouTube of that language only) and the feed
+  link (`feed-<lang>.xml`). The static text is in the page; the text `site.js` writes
+  (counts, sort labels, status, buttons, player labels, dates) comes from `TEXT`
+  (`docs/site.js:20`), picked by `SHOW_PAGE.lang`; a page without one (Build Wiz AI Show)
+  is in English, word for word as before. The taglines are DropCast's
+  (`scripts/description_labels.json`).
+- **What a language page lists**: the story-format entries (`showOf()`) whose `language`
+  is the page's (`onPage()`, `docs/site.js:153`). A story in a language without a page is
+  listed on the English one (`storyLang()`, `docs/site.js:152`; `story_lang()`,
+  `scripts/pages.py:77`), as its audio goes to the English stories repo.
+- **The chooser** shows the show, three large choices (the story icon with its badge, the
+  language's own name and the tagline in that language) and the listening links of all
+  three languages.
+- **Old links keep working.** `/podcast/stories/` stays valid (it is the chooser). With a
+  `#<episode id>` it loads `episodes.json` and sends the visitor on to the page that lists
+  that episode, hash kept (`chooserTarget()`, `docs/site.js:175`, run before anything
+  else, `docs/site.js:188`); a Build Wiz AI Show id goes to `../#<id>`. Only the query
+  keys the old stories page read go along: `q`, `sort`, `order` and `tab` (`OLD_QUERY`,
+  `docs/site.js:162`). A query with one of them and no known episode (`?q=pigs`, from a
+  shared search) goes to the visitor's language page: the language last picked on the
+  site, else the browser's first of English, French and Vietnamese, else English. A plain
+  `/podcast/stories/`, an unknown id without such a key, or a link with only tracking tags
+  (`?fbclid=…`, `?utm_source=…`, `?gclid=…`) stays on the chooser, so a shared or
+  advertised link shows the three languages. The story feeds still link `/podcast/stories/`
+  and `/podcast/stories/#<id>`, so they did not change.
+- **The podcast switcher** is a bar at the top of every page (all five), in the page's
+  markup: Build Wiz AI Show, then Once Upon a Time Show in English, Français and Tiếng
+  Việt, each with its show's icon, the current page marked (`aria-current="page"`; the
+  chooser marks none). Build Wiz AI Show's icon is its W-equalizer mark (green spark);
+  the story icon is the open book with the gold star from `assets/cover/stories-cover.html`,
+  with an **EN / FR / VI** badge (no flags): black on the story gold, about 12:1
+  (`.badge`, `docs/site.css:106`). On a phone it is four equal columns, the icon over a
+  short name. The icons are not on episode cards, favicons or feed art.
 
 ## Sources and guests
 
@@ -388,23 +440,19 @@ version's `script.json` carries the same `story_group` (a string) and its own `l
 the publisher copies both into the version's `episodes.json` entry (`story_group` only
 when set, so older entries are unchanged; `result.json` is not read for it).
 
-The story page lists the versions of one `story_group` as **one story** with a language
+Each story language page (#35) lists that language's version only, with a language
 switch (English / Français / Tiếng Việt, shortened to EN / FR / VI on a phone, each
-labelled in its own language). Switching changes the title, summary, duration, player,
-transcript, download, source link and music credit; a playing story keeps playing in the
-new language. The version shown first is the visitor's last choice (remembered in the
-browser), else the first browser language (`navigator.languages`) that has a version,
-else English, else the first version. Every version keeps its own id, so `#<episode id>`
-opens that version. A search matches a story when any of its versions matches; while
-the search is on, the story shows its first matching version (unless the chosen one
-matches, or was picked during that search), without remembering it, and clearing the
-search brings the chosen version back. Languages compare by their primary subtag
-(`en-US` is `en`), and an unknown language is labelled with its code (at most 3
-letters, uppercased). The
-counts count stories (one per group), and the minutes count the version shown first, so
-a story in three languages counts once. Entries without `story_group` (and a second
-version in a language the group already has) show as before; the main page has no
-groups.
+labelled in its own language): the current language is marked, and the others are links
+to the same story on their language's page (`../fr/#<episode id>`; `linkVersions()` and
+`versionLinks()`, `docs/site.js:339,358`). Following one sends `language_switch` and is
+remembered in the browser as the visitor's language. Every version keeps its own id, so
+`#<episode id>` opens that version; given another language's id, a page sends the visitor
+on to that language's page. Languages compare by their primary subtag (`en-US` is `en`).
+
+`site.js` can still show the versions of one `story_group` as **one story** with an
+in-place switch (the title, player, transcript and the rest follow it, a playing story
+keeps playing): that is what a page without `SHOW_PAGE.lang` listing stories does. No page
+does that since #35; the main page has no groups.
 
 Tests (standard library, no network): `python3 -m unittest discover -s tests`.
 
@@ -468,8 +516,8 @@ platforms that read it by itself.
 
 ## Analytics (GA4 events)
 
-Both pages load Google Analytics 4 (`G-FZV5YX8YPT`, the luongnv.com property) for page
-views. The shared `docs/site.js` also sends these events through the page's own `gtag`
+Every page (Build Wiz AI Show, the stories' chooser and the three story language pages)
+loads Google Analytics 4 (`G-FZV5YX8YPT`, the luongnv.com property) for page views. The shared `docs/site.js` also sends these events through the page's own `gtag`
 (DropCast #138). There is no other tracker and no new cookie, and no personal data is
 sent. Every call is guarded (`typeof gtag === "function"`, inside `try`), so a blocked,
 missing or throwing `gtag` changes nothing on the page. "Once" means once per page view:
@@ -479,7 +527,7 @@ a reload counts again.
 |---|---|---|
 | `episode_play` | an episode starts playing for the first time in the page view (a resume after a pause is not counted) | |
 | `episode_progress` | the player reaches 25, 50, 75 and 100 % of the episode (100: it played to the end), each once per episode, only after its `episode_play` (so loading a resume point sends nothing; seeking ahead does reach a milestone, and playing from a saved resume point counts the milestones already passed, so `percent` is the position reached, not proof it was all heard) | `percent` (25, 50, 75, 100) |
-| `language_switch` | the visitor picks another language of a story (EN / FR / VI); a deep link does not count | `from_language`, `to_language` |
+| `language_switch` | the visitor follows a story's language switch (EN / FR / VI) to its version on another language page; a deep link does not count | `from_language`, `to_language` |
 | `episode_download` | the "Download MP3" link (click or middle click) | |
 | `source_click` | an outbound source link: "Based on …", "Read the source" and the Sources list | |
 | `description_copy` | the "Copy description" button copied the description (not sent when copying failed) | |
@@ -506,7 +554,7 @@ are created; then use them in the event report or an **Explore** (e.g. rows
 
 Build Wiz AI Show's page has three tabs: **AI podcast**, **Marketing** and **Others**
 (the stories, once the **Bedtime stories** tab, are on their own page, linked from the
-header). The story page has no tabs. Each episode in `episodes.json` has one `category`:
+header). The story pages have no tabs. Each episode in `episodes.json` has one `category`:
 `ai`, `bedtime`, `marketing` or `others` (`bedtime` is kept for the stories; on the main
 page an unknown category lands in Others). The publisher picks it in this order:
 

@@ -10,6 +10,111 @@
   const showOf = (e) => (STORY_FORMATS.includes(e.format) || e.show === STORY_SHOW ? STORY_SHOW : BUILD_SHOW);
   const PAGE = Object.assign({ show: BUILD_SHOW, data: "episodes.json", tabs: [], pages: {}, legacyTabs: {} }, window.SHOW_PAGE || {});
   const DATA_URL = new URL(PAGE.data, location.href);
+
+  // ---------- Words on the page (podcast #35) ----------
+  // Each story page is written in its own language (SHOW_PAGE.lang: en, fr or vi); the main
+  // page has no lang and is in English. The English is the text the pages always had. The
+  // French and Vietnamese are only used on the story pages, so they speak of stories
+  // ("histoires", "truyện"); they are written for their readers, not word for word, and
+  // French puts a no-break space before ":" and inside « ».
+  const TEXT = {
+    en: {
+      locale: "en",
+      min: (n) => `${n} min`,
+      left: (m) => `${m} left`,
+      finished: "Finished",
+      sorts: { published: ["Oldest first", "Newest first"], duration: ["Shortest first", "Longest first"], title: ["A to Z", "Z to A"], source: ["Oldest source first", "Newest source first"] },
+      order: (cur, other) => `Order: ${cur}. Switch to ${other}.`,
+      of: (total, n) => ` of ${total} ${n}`,
+      noMatch: "No matching episodes",
+      noMatchText: (q) => `Nothing matches “${q}”. Try fewer or different words.`,
+      newSoon: "New episodes appear here as soon as they are published.",
+      clearSearch: "Clear search",
+      empty: "No episodes yet",
+      emptyText: "The first one will appear here as soon as it is generated.",
+      basedOn: "Based on ", by: " by ",
+      sources: "Sources", untitled: "Untitled source",
+      guests: "Guests: ", presents: (list) => ` (presents ${list})`,
+      music: (c) => `Music: ${c}`,
+      transcript: "Transcript", transcriptOf: (t) => `Transcript of ${t}`,
+      loadingTranscript: "Loading transcript…", transcriptFailed: "The transcript could not be loaded. The audio still plays.",
+      download: "Download MP3",
+      copyDesc: "Copy description", copied: "Copied", copyFailed: "Copy failed",
+      readSource: "Read the source",
+      copyLink: "Copy link", linkCopied: "Link copied", linkInBar: "Link in address bar",
+      langSwitch: "Language",
+      play: "Play", pause: "Pause", playEp: (t) => `Play ${t}`, pauseEp: (t) => `Pause ${t}`,
+      audioFailed: (t) => `Could not load audio: ${t}`,
+      speed: (r) => `Playback speed ${r}×`,
+      loadFailed: "Episodes could not be loaded.", loadFailedTitle: "Episodes could not be loaded", loadFailedText: "Check your connection and reload the page.",
+      illustration: (t) => `Illustration: ${t}`,
+    },
+    fr: {
+      locale: "fr",
+      min: (n) => `${n} min`,
+      left: (m) => `Il reste ${m}`,
+      finished: "Écoutée",
+      sorts: { published: ["Plus anciennes d’abord", "Plus récentes d’abord"], duration: ["Plus courtes d’abord", "Plus longues d’abord"], title: ["De A à Z", "De Z à A"], source: ["Source la plus ancienne d’abord", "Source la plus récente d’abord"] },
+      order: (cur, other) => `Ordre : ${cur}. Passer à : ${other}.`,
+      of: (total, n) => ` sur ${total} ${n}`,
+      noMatch: "Aucune histoire ne correspond",
+      noMatchText: (q) => `Rien ne correspond à « ${q} ». Essayez avec moins de mots, ou d’autres.`,
+      newSoon: "Les nouvelles histoires arrivent ici dès leur publication.",
+      clearSearch: "Effacer la recherche",
+      empty: "Pas encore d’histoire",
+      emptyText: "La première arrivera ici dès sa publication.",
+      basedOn: "D’après ", by: ", de ",
+      sources: "Sources", untitled: "Source sans titre",
+      guests: "Invités : ", presents: (list) => ` (présente ${list})`,
+      music: (c) => `Musique : ${c}`,
+      transcript: "Transcription", transcriptOf: (t) => `Transcription de ${t}`,
+      loadingTranscript: "Chargement de la transcription…", transcriptFailed: "Impossible de charger la transcription. Vous pouvez quand même écouter l’histoire.",
+      download: "Télécharger le MP3",
+      copyDesc: "Copier la description", copied: "Copiée", copyFailed: "Échec de la copie",
+      readSource: "Lire le texte original",
+      copyLink: "Copier le lien", linkCopied: "Lien copié", linkInBar: "Lien dans la barre d’adresse",
+      langSwitch: "Langue",
+      play: "Lecture", pause: "Pause", playEp: (t) => `Écouter ${t}`, pauseEp: (t) => `Mettre en pause ${t}`,
+      audioFailed: (t) => `Impossible de charger l’audio : ${t}`,
+      speed: (r) => `Vitesse de lecture ${r}×`,
+      loadFailed: "Impossible de charger les histoires.", loadFailedTitle: "Impossible de charger les histoires", loadFailedText: "Vérifiez votre connexion, puis rechargez la page.",
+      illustration: (t) => `Illustration : ${t}`,
+    },
+    vi: {
+      locale: "vi",
+      min: (n) => `${n} phút`,
+      left: (m) => `Còn ${m}`,
+      finished: "Đã nghe xong",
+      sorts: { published: ["Cũ nhất trước", "Mới nhất trước"], duration: ["Ngắn nhất trước", "Dài nhất trước"], title: ["Từ A đến Z", "Từ Z đến A"], source: ["Bản gốc cũ nhất trước", "Bản gốc mới nhất trước"] },
+      order: (cur, other) => `Thứ tự: ${cur}. Đổi sang: ${other}.`,
+      of: (total, n) => ` trên ${total} ${n}`,
+      noMatch: "Không tìm thấy truyện nào",
+      noMatchText: (q) => `Không có truyện nào khớp với “${q}”. Hãy thử bớt từ hoặc dùng từ khác.`,
+      newSoon: "Truyện mới sẽ xuất hiện ở đây ngay khi được đăng.",
+      clearSearch: "Xóa tìm kiếm",
+      empty: "Chưa có truyện nào",
+      emptyText: "Truyện đầu tiên sẽ xuất hiện ở đây ngay khi được đăng.",
+      basedOn: "Dựa theo ", by: " của ",
+      sources: "Nguồn", untitled: "Nguồn không có tên",
+      guests: "Khách mời: ", presents: (list) => ` (giới thiệu ${list})`,
+      music: (c) => `Nhạc: ${c}`,
+      transcript: "Lời kể", transcriptOf: (t) => `Lời kể của truyện ${t}`,
+      loadingTranscript: "Đang tải lời kể…", transcriptFailed: "Không tải được lời kể. Bạn vẫn có thể nghe truyện bình thường.",
+      download: "Tải MP3",
+      copyDesc: "Sao chép mô tả", copied: "Đã sao chép", copyFailed: "Không sao chép được",
+      readSource: "Đọc bản gốc",
+      copyLink: "Sao chép liên kết", linkCopied: "Đã sao chép liên kết", linkInBar: "Liên kết ở thanh địa chỉ",
+      langSwitch: "Ngôn ngữ",
+      play: "Phát", pause: "Tạm dừng", playEp: (t) => `Phát truyện ${t}`, pauseEp: (t) => `Tạm dừng truyện ${t}`,
+      audioFailed: (t) => `Không tải được âm thanh: ${t}`,
+      speed: (r) => `Tốc độ phát ${r}×`,
+      loadFailed: "Không tải được danh sách truyện.", loadFailedTitle: "Không tải được danh sách truyện", loadFailedText: "Hãy kiểm tra kết nối mạng rồi tải lại trang.",
+      illustration: (t) => `Hình minh họa: ${t}`,
+    },
+  };
+  const T = TEXT[Object.prototype.hasOwnProperty.call(TEXT, PAGE.lang) ? PAGE.lang : "en"];
+  // ---------- end of words ----------
+
   const NOUN = PAGE.noun || ["episode", "episodes"];   // [one, many]: "story", "stories"
   const noun = (n) => NOUN[n === 1 ? 0 : 1];
   const PLAY = "M8 5v14l11-7z";
@@ -33,6 +138,67 @@
     get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* ignore */ } },
   };
+
+  // ---------- Which page lists an episode (podcast #35) ----------
+  // Once Upon a Time Show has one page per language (stories/en/, fr/, vi/) and a chooser
+  // (stories/). A page with SHOW_PAGE.lang lists only its show's episodes in that language; a
+  // story in a language without a page is on the English one (its audio is in the English
+  // stories repo too). SHOW_PAGE.pages maps a show to its page, "{lang}" standing for the
+  // episode's language, so a deep link to an episode listed elsewhere goes straight there.
+  const STORY_LANGS = ["en", "fr", "vi"];
+  // Languages compare by their primary subtag ("en-US" is "en"), like the browser's.
+  const primaryLang = (l) => (typeof l === "string" ? l.trim().toLowerCase().split(/[-_;]/)[0] : "");
+  const langOf = (e) => primaryLang(e.language) || "en";
+  const storyLang = (e) => (STORY_LANGS.includes(langOf(e)) ? langOf(e) : "en");
+  const onPage = (e) => showOf(e) === PAGE.show && (!PAGE.lang || storyLang(e) === PAGE.lang);
+  const pageOfShow = (show, lang) => {
+    const p = Object.prototype.hasOwnProperty.call(PAGE.pages, show) ? PAGE.pages[show] : null;
+    return typeof p === "string" && p ? p.replace("{lang}", lang) : null;
+  };
+  const pageFor = (e) => pageOfShow(showOf(e), storyLang(e));
+  const hashId = (hash) => { try { return decodeURIComponent(String(hash || "").slice(1)); } catch { return ""; } };
+  // The keys the old stories page read from its query. Anything else (fbclid, utm_*, gclid)
+  // is a tracking tag a share or an ad added, not a setting.
+  const OLD_QUERY = ["q", "sort", "order", "tab"];
+  // The query with only those keys, as written (same encoding and order), or "".
+  const keptQuery = (search) => {
+    const kept = String(search || "").replace(/^\?/, "").split("&").filter((part) => {
+      try { return OLD_QUERY.includes(decodeURIComponent(part.split("=")[0].replace(/\+/g, " "))); } catch { return false; }
+    });
+    return kept.length ? `?${kept.join("&")}` : "";
+  };
+  // The chooser (stories/) lists nothing: a link made before the language pages (#<id>, a
+  // search) goes on to the page that lists that episode, keeping the hash and the old page's
+  // keys. A search without a known episode goes to the visitor's language: the last one
+  // picked on the site, else the browser's, else English. Anything else, a link with only
+  // tracking tags included, stays on the chooser (null).
+  function chooserTarget(all, hash, search, prefer) {
+    const query = keptQuery(search);
+    const id = hashId(hash);
+    const ep = id ? all.find((e) => e && e.id === id) : null;
+    const page = ep ? pageFor(ep) : null;
+    if (page) return `${page}${query}${hash}`;
+    if (!query) return null;
+    const lang = prefer.map(primaryLang).find((l) => STORY_LANGS.includes(l)) || "en";
+    const stories = pageOfShow(STORY_SHOW, lang);
+    return stories ? `${stories}${query}${hash}` : null;
+  }
+  // ---------- end of page routing ----------
+
+  if (PAGE.chooser) {
+    if (location.hash.length > 1 || location.search.length > 1) {
+      const prefer = [store.get("lang"), ...(navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language])];
+      fetch(DATA_URL, { cache: "no-cache" })
+        .then((r) => (r.ok ? r.json() : {}))
+        .catch(() => ({}))
+        .then((data) => {
+          const all = data && Array.isArray(data.episodes) ? data.episodes : [];
+          const to = chooserTarget(all, location.hash, location.search, prefer);
+          if (to) location.replace(to);
+        });
+    }
+    return;
+  }
   const el = (tag, props = {}, kids = []) => {
     const n = document.createElement(tag);
     for (const [k, v] of Object.entries(props)) {
@@ -57,10 +223,10 @@
     const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), r = String(s % 60).padStart(2, "0");
     return h ? `${h}:${String(m).padStart(2, "0")}:${r}` : `${m}:${r}`;
   };
-  const minutes = (s) => `${Math.max(1, Math.round((s || 0) / 60))} min`;
+  const minutes = (s) => T.min(Math.max(1, Math.round((s || 0) / 60)));
   const day = (iso, year = true) => {
     const d = new Date(iso);
-    return isNaN(d) ? "" : d.toLocaleDateString("en", year ? { year: "numeric", month: "short", day: "numeric" } : { month: "short", day: "numeric" });
+    return isNaN(d) ? "" : d.toLocaleDateString(T.locale, year ? { year: "numeric", month: "short", day: "numeric" } : { month: "short", day: "numeric" });
   };
   const host = (url) => { try { return new URL(url).hostname.replace(/^www\./, ""); } catch { return ""; } };
   const safeUrl = (url) => { try { const u = new URL(url); return /^https?:$/.test(u.protocol) ? u.href : null; } catch { return null; } };
@@ -82,13 +248,14 @@
     const p = img && typeof img === "object" ? img[kind] : null;
     return typeof p === "string" && ART_PATH.test(p) && !p.includes("..") ? new URL(p, DATA_URL).href : null;
   };
-  // The episode's own art, else another language version's: every version of a story shows the same picture.
-  const artSource = (ep, kind) => [ep, ...((ep._unit && ep._unit.versions) || [])].find((v) => artPath(v.image, kind));
+  // The episode's own art, else another language version's (on its page or another language's
+  // page): every version of a story shows the same picture.
+  const artSource = (ep, kind) => [ep, ...((ep._unit && ep._unit.versions) || []), ...(ep._alts || [])].find((v) => artPath(v.image, kind));
   const artOf = (ep, kind) => { const v = artSource(ep, kind); return v ? artPath(v.image, kind) : null; };
   const artAlt = (ep) => {
     const v = artSource(ep, "wide");
     const alt = v && typeof v.image.alt === "string" ? v.image.alt.trim() : "";
-    return alt || `Illustration: ${ep.title}`;
+    return alt || T.illustration(ep.title);
   };
   // The description's hook (its first paragraph): the page's meta description while a deep link is open.
   const hookOf = (d) => String(d || "").trim().split(/\n\s*\n/)[0].replace(/\s+/g, " ").trim();
@@ -141,9 +308,6 @@
   // id (deep link), audio, transcript and resume point. Entries without one are unchanged.
   const LANGS = { en: ["EN", "English"], fr: ["FR", "Français"], vi: ["VI", "Tiếng Việt"] };
   const LANG_ORDER = Object.keys(LANGS);
-  // Languages compare by their primary subtag ("en-US" is "en"), like the browser's.
-  const primaryLang = (l) => (typeof l === "string" ? l.trim().toLowerCase().split(/[-_;]/)[0] : "");
-  const langOf = (e) => primaryLang(e.language) || "en";
   // An unknown language is labelled with its code, cut to 3 letters so the switch stays small.
   const langLabel = (l) => LANGS[l] || [l.slice(0, 3).toUpperCase(), l.slice(0, 3).toUpperCase()];
   const langRank = (l) => (LANG_ORDER.includes(l) ? LANG_ORDER.indexOf(l) : LANG_ORDER.length);
@@ -168,6 +332,44 @@
       u.sel = u.chosen = pickVersion(u);   // sel: the version on show; chosen: without a search
     }
     return out;
+  }
+  // On a language page (podcast #35) a story is listed in that language only, and its other
+  // versions are on their own language's page: "_alts" holds one per other language, newest
+  // first, each one listed on a page this one links to.
+  function linkVersions(eps, all) {
+    const newest = all.slice().sort((a, b) => (Date.parse(b.published) || 0) - (Date.parse(a.published) || 0));
+    for (const e of eps) {
+      const g = typeof e.story_group === "string" ? e.story_group.trim() : "";
+      if (!g) continue;
+      const seen = new Set([storyLang(e)]);
+      e._alts = [];
+      for (const o of newest) {
+        if (o === e || !o || typeof o.story_group !== "string" || o.story_group.trim() !== g || showOf(o) !== showOf(e)) continue;
+        if (seen.has(storyLang(o)) || !pageFor(o)) continue;
+        seen.add(storyLang(o));
+        e._alts.push(o);
+      }
+      e._alts.sort((a, b) => langRank(storyLang(a)) - langRank(storyLang(b)));
+    }
+  }
+  // The language switch on a language page: this version, then links to the others on their
+  // pages. Following one is a language switch (the same event as the in-place switch, with
+  // the new version's parameters) and becomes the visitor's language choice.
+  function versionLinks(ep) {
+    const from = storyLang(ep);
+    const items = [ep, ...ep._alts].sort((a, b) => langRank(storyLang(a)) - langRank(storyLang(b)));
+    return el("div", { class: "langs", role: "group", "aria-label": T.langSwitch }, items.map((v) => {
+      const lang = storyLang(v);
+      const [short, name] = langLabel(lang);
+      const kids = [el("span", { class: "sr-only", text: name }), el("span", { class: "l-long", text: name, "aria-hidden": "true" }), el("span", { class: "l-short", text: short, "aria-hidden": "true" })];
+      if (v === ep) return el("span", { class: "lang", lang, title: name, "aria-current": "true" }, kids);
+      const a = el("a", { class: "lang", href: `${pageFor(v)}#${encodeURIComponent(v.id)}`, lang, hreflang: lang, title: name }, kids);
+      a.addEventListener("click", () => {
+        store.set("lang", lang);
+        track("language_switch", { ...epParams(v), from_language: from, to_language: lang });
+      });
+      return a;
+    }));
   }
   // The version shown first: the visitor's last choice, else the browser's languages, else
   // English, else the first one.
@@ -233,17 +435,18 @@
     const pos = Number(store.get(`pos:${ep.id}`)) || 0;
     ep._status.hidden = st === "new";
     ep._status.textContent = st === "progress"
-      ? `${minutes((ep.duration_s || 0) - pos)} left`
-      : st === "done" ? "Finished" : "";
+      ? T.left(minutes((ep.duration_s || 0) - pos))
+      : st === "done" ? T.finished : "";
   }
 
   // ---------- Tab, search and sort state ----------
   const SORTS = {
-    published: { def: "desc", asc: "Oldest first", desc: "Newest first", key: (e) => Date.parse(e.published) || null },
-    duration: { def: "desc", asc: "Shortest first", desc: "Longest first", key: (e) => e.duration_s ?? null },
-    title: { def: "asc", asc: "A to Z", desc: "Z to A", key: (e) => fold(e.title) || null },
-    source: { def: "desc", asc: "Oldest source first", desc: "Newest source first", key: (e) => Date.parse(e.source?.published) || null },
+    published: { def: "desc", key: (e) => Date.parse(e.published) || null },
+    duration: { def: "desc", key: (e) => e.duration_s ?? null },
+    title: { def: "asc", key: (e) => fold(e.title) || null },
+    source: { def: "desc", key: (e) => Date.parse(e.source?.published) || null },
   };
+  for (const [k, [asc, desc]] of Object.entries(T.sorts)) Object.assign(SORTS[k], { asc, desc });
   // Own keys only, so a hand-edited ?sort=constructor (or __proto__) falls back to the default.
   const isSort = (v) => Object.prototype.hasOwnProperty.call(SORTS, v);
   const KIND = { x: "X", article: "Article", paper: "Paper", thread: "Thread", blog: "Blog", web: "Web", pdf: "PDF", arxiv: "arXiv", youtube: "YouTube", reddit: "Reddit", hn: "Hacker News", github: "GitHub", substack: "Substack", medium: "Medium" };
@@ -383,17 +586,17 @@
     const active = !!ts.length;
     const count = $("count");
     count.replaceChildren(...(active
-      ? [el("b", { text: shown }), ` of ${total} ${noun(total)}`]
-      : [el("b", { text: total }), ` ${noun(total)} · ${SORTS[state.sort][state.dir].toLowerCase()}`]));
+      ? [el("b", { text: shown }), T.of(total, noun(total))]
+      : [el("b", { text: total }), ` ${noun(total)} · ${SORTS[state.sort][state.dir].toLocaleLowerCase(T.locale)}`]));
     $("clear-all").hidden = !active;
     noMatch.hidden = shown > 0 || !units.length;
     noMatch.querySelector("div").hidden = !total;
     if (!total) {
       noMatch.querySelector("strong").textContent = TABS.find((t) => t.id === state.tab).empty;
-      noMatch.querySelector("span").textContent = "New episodes appear here as soon as they are published.";
+      noMatch.querySelector("span").textContent = T.newSoon;
     } else if (!shown) {
-      noMatch.querySelector("strong").textContent = "No matching episodes";
-      noMatch.querySelector("span").textContent = `Nothing matches “${state.q.trim()}”. Try fewer or different words.`;
+      noMatch.querySelector("strong").textContent = T.noMatch;
+      noMatch.querySelector("span").textContent = T.noMatchText(state.q.trim());
     }
     // Sort controls reflect the state (it may come from the URL).
     $("sort").value = state.sort;
@@ -401,7 +604,7 @@
     ob.dataset.dir = state.dir;
     $("order-label").textContent = SORTS[state.sort][state.dir];
     const other = SORTS[state.sort][state.dir === "asc" ? "desc" : "asc"];
-    ob.setAttribute("aria-label", `Order: ${SORTS[state.sort][state.dir]}. Switch to ${other.toLowerCase()}.`);
+    ob.setAttribute("aria-label", T.order(SORTS[state.sort][state.dir], other.toLocaleLowerCase(T.locale)));
     $("search").classList.toggle("has-q", !!state.q);
     writeUrl();
   }
@@ -419,12 +622,12 @@
     list.replaceChildren();
     list.removeAttribute("aria-busy");
     noMatch = el("li", { class: "state", hidden: true }, [
-      el("strong", { text: "No matching episodes" }), el("span"),
-      el("div", {}, el("button", { class: "btn", type: "button", text: "Clear search", onclick: clearAll })),
+      el("strong", { text: T.noMatch }), el("span"),
+      el("div", {}, el("button", { class: "btn", type: "button", text: T.clearSearch, onclick: clearAll })),
     ]);
     list.append(noMatch);
     if (!units.length) {
-      list.prepend(el("li", { class: "state" }, [el("strong", { text: "No episodes yet" }), "The first one will appear here as soon as it is generated."]));
+      list.prepend(el("li", { class: "state" }, [el("strong", { text: T.empty }), T.emptyText]));
     }
     units.forEach((u, i) => list.insertBefore(row(u, i), noMatch));
     // A story counts once, in its counts and in its minutes (the version shown first).
@@ -463,7 +666,7 @@
     ep._hay = fold([ep.title, ...ep.summary, src.title, src.author, host(src.url), KIND[src.kind] || src.kind, (ep.hosts || []).join(" "), ep.voices,
       ...extras.flatMap((x) => [x.title, x.author, host(x.url)]), ...guests.map((g) => g.name)].join(" \n "));
 
-    const playBtn = el("button", { class: "play", type: "button", "aria-label": `Play ${ep.title}` }, [
+    const playBtn = el("button", { class: "play", type: "button", "aria-label": T.playEp(ep.title) }, [
       svg([PLAY]), el("span", { class: "eq", "aria-hidden": "true" }, [el("b"), el("b"), el("b")]),
     ]);
     playBtn.addEventListener("click", () => toggle(ep));
@@ -486,7 +689,7 @@
     // The language switch of a story in several languages, labelled in each language.
     const langBtns = new Map();
     const langs = grouped
-      ? el("div", { class: "langs", role: "group", "aria-label": "Language" }, u.versions.map((v) => {
+      ? el("div", { class: "langs", role: "group", "aria-label": T.langSwitch }, u.versions.map((v) => {
         const [short, name] = langLabel(v._lang);
         const b = el("button", { class: "lang", type: "button", lang: v._lang, title: name, "aria-label": name, "aria-pressed": String(v === ep) }, [
           el("span", { class: "l-long", text: name }), el("span", { class: "l-short", text: short, "aria-hidden": "true" }),
@@ -495,7 +698,7 @@
         langBtns.set(v._lang, b);
         return b;
       }))
-      : null;
+      : ep._alts && ep._alts.length ? versionLinks(ep) : null;
     // The story's square thumbnail next to the title (decorative there: the title names it).
     const thumbUrl = artOf(ep, "thumb");
     const thumb = thumbUrl ? el("img", { class: "thumb", src: thumbUrl, alt: "", loading: "lazy", decoding: "async", width: 64, height: 64 }) : null;
@@ -508,53 +711,53 @@
 
     const summaryItems = ep.summary.map((line) => el("li", grouped ? { text: line, lang: ep._lang } : { text: line }));
     const credit = el("p", { class: "credit" }, url
-      ? ["Based on ", trackLink(el("a", { href: url, target: "_blank", rel: "noopener", text: src.title || host(url) }), "source_click", ep), src.author ? ` by ${src.author}` : "", ` · ${host(url)}`]
-      : [src.title ? `Based on ${src.title}` : ""]);
+      ? [T.basedOn, trackLink(el("a", { href: url, target: "_blank", rel: "noopener", text: src.title || host(url) }), "source_click", ep), src.author ? `${T.by}${src.author}` : "", ` · ${host(url)}`]
+      : [src.title ? `${T.basedOn}${src.title}` : ""]);
     let sourceList = null;
     if (sources.length > 1) {
       sourceList = el("div", { class: "sources" }, [
-        el("h4", { text: "Sources" }),
+        el("h4", { text: T.sources }),
         el("ol", {}, sources.map((x) => {
           const u = safeUrl(x.url);
-          const name = String(x.title || host(u) || "Untitled source");
+          const name = String(x.title || host(u) || T.untitled);
           return el("li", {}, [
             u ? trackLink(el("a", { href: u, target: "_blank", rel: "noopener", text: name }), "source_click", ep) : name,
-            x.author ? ` by ${x.author}` : "",
+            x.author ? `${T.by}${x.author}` : "",
             u ? ` · ${host(u)}` : "",
           ]);
         })),
       ]);
     }
     const guestLine = guests.length
-      ? el("p", { class: "guests" }, ["Guests: ", ...guests.flatMap((g, i) => {
+      ? el("p", { class: "guests" }, [T.guests, ...guests.flatMap((g, i) => {
         const shows = (Array.isArray(g.presents) ? g.presents : []).filter((t) => typeof t === "string" && t);
-        return [i ? ", " : "", el("strong", { text: g.name }), shows.length ? ` (presents ${shows.join(", ")})` : ""];
+        return [i ? ", " : "", el("strong", { text: g.name }), shows.length ? T.presents(shows.join(", ")) : ""];
       })])
       : null;
     // Licensed music that needs attribution (CC-BY): shown as plain text.
     const musicCredit = typeof ep.music_credit === "string" ? ep.music_credit.trim() : "";
-    const musicLine = musicCredit ? el("p", { class: "music", text: `Music: ${musicCredit}` }) : null;
+    const musicLine = musicCredit ? el("p", { class: "music", text: T.music(musicCredit) }) : null;
     const actions = el("div", { class: "actions" });
     let panel = null;
     let tBtn = null;
     if (ep.transcript) {
       panel = el("div", { class: "transcript", hidden: true, id: `tr-${ep.id}` });
       tBtn = el("button", { class: "btn", type: "button", "aria-expanded": "false", "aria-controls": `tr-${ep.id}` }, [
-        svg(["M4 6h16M4 12h16M4 18h10"]), "Transcript",
+        svg(["M4 6h16M4 12h16M4 18h10"]), T.transcript,
       ]);
       tBtn.addEventListener("click", () => openTranscript(ep, panel, tBtn));
       actions.append(tBtn);
     }
-    if (ep.audio) actions.append(trackLink(el("a", { class: "btn", href: ep.audio, download: fileName(ep) }, [svg(["M12 4v12M6 10l6 6 6-6M5 20h14"]), "Download MP3"]), "episode_download", ep));
+    if (ep.audio) actions.append(trackLink(el("a", { class: "btn", href: ep.audio, download: fileName(ep) }, [svg(["M12 4v12M6 10l6 6 6-6M5 20h14"]), T.download]), "episode_download", ep));
     // The copy-paste podcast description (DropCast #163), exactly as in episodes.json.
     if (typeof ep.description === "string" && ep.description.trim()) {
-      const descLabel = el("span", { text: "Copy description", "aria-live": "polite" });
+      const descLabel = el("span", { text: T.copyDesc, "aria-live": "polite" });
       const descBtn = el("button", { class: "btn", type: "button", "data-copy": "description" }, [svg(["M9 9h10v11H9zM5 15V4h10"]), descLabel]);
       descBtn.addEventListener("click", () => copyDescription(ep, descBtn, descLabel));
       actions.append(descBtn);
     }
-    if (url) actions.append(trackLink(el("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, [svg(["M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"]), "Read the source"]), "source_click", ep));
-    const linkLabel = el("span", { text: "Copy link" });
+    if (url) actions.append(trackLink(el("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, [svg(["M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"]), T.readSource]), "source_click", ep));
+    const linkLabel = el("span", { text: T.copyLink });
     const linkBtn = el("button", { class: "btn", type: "button" }, [svg(["M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"]), linkLabel]);
     linkBtn.addEventListener("click", () => copyLink(ep, linkBtn, linkLabel));
     actions.append(linkBtn);
@@ -596,10 +799,10 @@
 
   async function copyLink(ep, btn, label) {
     const link = `${location.origin}${location.pathname}#${encodeURIComponent(ep.id)}`;
-    try { await navigator.clipboard.writeText(link); label.textContent = "Link copied"; }
-    catch { history.replaceState(null, "", `${location.pathname}${location.search}#${encodeURIComponent(ep.id)}`); label.textContent = "Link in address bar"; }
+    try { await navigator.clipboard.writeText(link); label.textContent = T.linkCopied; }
+    catch { history.replaceState(null, "", `${location.pathname}${location.search}#${encodeURIComponent(ep.id)}`); label.textContent = T.linkInBar; }
     btn.classList.add("is-done");
-    setTimeout(() => { label.textContent = "Copy link"; btn.classList.remove("is-done"); }, 1800);
+    setTimeout(() => { label.textContent = T.copyLink; btn.classList.remove("is-done"); }, 1800);
   }
 
   // Clipboard API, else a hidden textarea and execCommand (older browsers, http pages).
@@ -621,23 +824,24 @@
 
   async function copyDescription(ep, btn, label) {
     const ok = await copyText(ep.description);
-    label.textContent = ok ? "Copied" : "Copy failed";
+    label.textContent = ok ? T.copied : T.copyFailed;
     btn.classList.toggle("is-done", ok);
     if (ok) track("description_copy", epParams(ep));
     clearTimeout(btn._t);
-    btn._t = setTimeout(() => { label.textContent = "Copy description"; btn.classList.remove("is-done"); }, 1800);
+    btn._t = setTimeout(() => { label.textContent = T.copyDesc; btn.classList.remove("is-done"); }, 1800);
   }
 
   // A shared link (#<episode id>) opens that episode in its tab. If the search
   // hides it, the search is cleared so the link never lands on nothing.
   function openTarget(fromHashChange) {
-    const id = decodeURIComponent(location.hash.slice(1));
+    const id = hashId(location.hash);
     const ep = id && episodes.find((e) => e.id === id);
     setMetaDesc(ep || null);
     if (!ep) {
-      // A link to the other show's episode (shared before the stories moved): forward it.
+      // A link to an episode listed on another page (the other show's, shared before the
+      // stories moved, or a story in another language): forward it.
       const away = id && others.find((e) => e.id === id);
-      const page = away && PAGE.pages[showOf(away)];
+      const page = away && pageFor(away);
       if (page) location.replace(`${page}${location.hash}`);
       return;
     }
@@ -677,12 +881,12 @@
     btn.setAttribute("aria-expanded", String(!open));
     panel.hidden = open;
     if (open || cues.has(ep.id)) return;
-    panel.replaceChildren(el("p", { class: "t-state", text: "Loading transcript…" }));
+    panel.replaceChildren(el("p", { class: "t-state", text: T.loadingTranscript }));
     try {
       const res = await fetch(ep.transcript);
       if (!res.ok) throw new Error(res.status);
       const items = parseVtt(await res.text());
-      const ol = el("ol", { "aria-label": `Transcript of ${ep.title}` });
+      const ol = el("ol", { "aria-label": T.transcriptOf(ep.title) });
       for (const c of items) {
         const b = el("button", { class: "cue", type: "button" }, [
           el("time", { text: clock(c.start) }),
@@ -696,7 +900,7 @@
       panel.replaceChildren(ol);
       if (current === ep) highlight();
     } catch {
-      panel.replaceChildren(el("p", { class: "t-state", text: "The transcript could not be loaded. The audio still plays." }));
+      panel.replaceChildren(el("p", { class: "t-state", text: T.transcriptFailed }));
     }
   }
 
@@ -756,11 +960,11 @@
   function sync() {
     const playing = current && !audio.paused;
     $("p-glyph").setAttribute("d", playing ? PAUSE : PLAY);
-    $("p-toggle").setAttribute("aria-label", playing ? "Pause" : "Play");
+    $("p-toggle").setAttribute("aria-label", playing ? T.pause : T.play);
     for (const ep of episodes) {
       const on = ep === current && playing;
       ep._node.classList.toggle("is-playing", on);
-      ep._btn.setAttribute("aria-label", `${on ? "Pause" : "Play"} ${ep.title}`);
+      ep._btn.setAttribute("aria-label", on ? T.pauseEp(ep.title) : T.playEp(ep.title));
       ep._btn.querySelector("path").setAttribute("d", on ? PAUSE : PLAY);
     }
   }
@@ -798,13 +1002,13 @@
   audio.addEventListener("ended", () => { trackProgress(true); if (current) { store.set(`done:${current.id}`, true); savePos(0); } sync(); });
   audio.addEventListener("timeupdate", tick);
   audio.addEventListener("loadedmetadata", tick);
-  audio.addEventListener("error", () => { if (current) $("p-title").textContent = `Could not load audio: ${current.title}`; sync(); });
+  audio.addEventListener("error", () => { if (current) $("p-title").textContent = T.audioFailed(current.title); sync(); });
   seek.addEventListener("input", () => { audio.currentTime = Number(seek.value); tick(); });
   $("p-toggle").addEventListener("click", () => current && toggle(current));
   $("p-back").addEventListener("click", () => { audio.currentTime = Math.max(0, audio.currentTime - 15); });
   $("p-fwd").addEventListener("click", () => { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 30); });
   const speedBtn = $("p-speed");
-  const showSpeed = () => { speedBtn.textContent = `${audio.playbackRate}×`; speedBtn.setAttribute("aria-label", `Playback speed ${audio.playbackRate}×`); };
+  const showSpeed = () => { speedBtn.textContent = `${audio.playbackRate}×`; speedBtn.setAttribute("aria-label", T.speed(audio.playbackRate)); };
   audio.playbackRate = Number(store.get("speed")) || 1; showSpeed();
   speedBtn.addEventListener("click", () => {
     const next = SPEEDS[(SPEEDS.indexOf(audio.playbackRate) + 1) % SPEEDS.length];
@@ -898,15 +1102,16 @@
     .then((data) => {
       const all = Array.isArray(data.episodes) ? data.episodes.filter((e) => e && e.id) : [];
       for (const e of all) { e.audio = resolveAudio(e.audio); e.transcript = resolve(e.transcript); }
-      episodes = all.filter((e) => showOf(e) === PAGE.show);
-      others = all.filter((e) => showOf(e) !== PAGE.show);
+      episodes = all.filter(onPage);
+      others = all.filter((e) => !onPage(e));
+      if (PAGE.lang) linkVersions(episodes, all);
       units = groupUnits(episodes);
       render();
     })
     .catch(() => {
       list.removeAttribute("aria-busy");
-      $("count").textContent = "Episodes could not be loaded.";
+      $("count").textContent = T.loadFailed;
       for (const c of document.querySelectorAll("#toolbar input, #toolbar select, #toolbar button")) c.disabled = true;
-      list.replaceChildren(el("li", { class: "state" }, [el("strong", { text: "Episodes could not be loaded" }), "Check your connection and reload the page."]));
+      list.replaceChildren(el("li", { class: "state" }, [el("strong", { text: T.loadFailedTitle }), T.loadFailedText]));
     });
 })();
