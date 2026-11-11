@@ -7,7 +7,7 @@
   <description>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</description>
   <itunes:summary>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</itunes:summary>
   <language>fr</language>
-  <lastBuildDate>Wed, 11 Nov 2026 00:48:05 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 11 Nov 2026 09:00:19 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -41,7 +41,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure"
 Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
     <content:encoded><![CDATA[<p>Une version douce des Trois Petits Cochons pour le soir, d'après les contes anglais de Joseph Jacobs, sur la page Three Little Pigs de D. L. Ashliman.</p><p>Une maison de paille, une maison de bois, une maison de briques, et un petit cochon malin qui déjoue le loup avec des navets, des pommes et une baratte.</p><p>Personne n'est mangé : le loup tombe dans l'eau froide, s'enfuit pour de bon, et l'histoire finit par une douce bonne nuit.</p><p>Source: Three Little Pigs: <a href="https://sites.pitt.edu/~dash/type0124.html">https://sites.pitt.edu/~dash/type0124.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Marty Gots a Plan", "Golly Gee", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
     <pubDate>Tue, 10 Nov 2026 17:00:28 +0000</pubDate>
-    <enclosure url="https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-10_three-little-pigs-fr/2026-11-10_three-little-pigs-fr.mp3?v=cb835e9a" length="10143917" type="audio/mpeg"/>
+    <enclosure url="https://luongnv.com/once-upon-a-time-fr-media/2026-11-10_three-little-pigs-fr.mp3?v=cb835e9a" length="10143917" type="audio/mpeg"/>
     <itunes:duration>634</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
@@ -65,7 +65,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback",
 Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
     <content:encoded><![CDATA[<p>Une version douce du Petit Chaperon rouge pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.</p><p>Un loup rusé, une Mère-Grand cachée dans son armoire, et un chasseur qui fait fuir le loup au fond des bois.</p><p>Personne n'a de mal, un second loup tombe dans un bac d'eau de saucisses, et l'histoire finit par une douce bonne nuit.</p><p>Source: Little Red Cap: <a href="https://sites.pitt.edu/~dash/grimm026.html">https://sites.pitt.edu/~dash/grimm026.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Golly Gee", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
     <pubDate>Fri, 06 Nov 2026 18:18:40 +0000</pubDate>
-    <enclosure url="https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-06_little-red-cap-fr/2026-11-06_little-red-cap-fr.mp3?v=06c587a5" length="7193540" type="audio/mpeg"/>
+    <enclosure url="https://luongnv.com/once-upon-a-time-fr-media/2026-11-06_little-red-cap-fr.mp3?v=06c587a5" length="7193540" type="audio/mpeg"/>
     <itunes:duration>449</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
@@ -89,7 +89,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure"
 Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
     <content:encoded><![CDATA[<p>Une version douce de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.</p><p>Des cailloux qui brillent, une maison en pain et en gâteau, et une sœur maligne qui libère son frère.</p><p>Un gentil canard blanc les ramène chez leur papa, et l'histoire se termine par une bonne nuit tout en douceur.</p><p>Source: Hansel and Gretel: <a href="https://sites.pitt.edu/~dash/grimm015.html">https://sites.pitt.edu/~dash/grimm015.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
     <pubDate>Thu, 05 Nov 2026 22:10:03 +0000</pubDate>
-    <enclosure url="https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-05_hansel-and-gretel-fr/2026-11-05_hansel-and-gretel-fr.mp3?v=90a804ab" length="8190709" type="audio/mpeg"/>
+    <enclosure url="https://luongnv.com/once-upon-a-time-fr-media/2026-11-05_hansel-and-gretel-fr.mp3?v=90a804ab" length="8190709" type="audio/mpeg"/>
     <itunes:duration>512</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
@@ -113,7 +113,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy
 Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
     <content:encoded><![CDATA[<p>Le roi Midas, raconté tout en douceur pour l'heure du coucher, d'après « Le toucher d'or » de Nathaniel Hawthorne.</p><p>Un roi qui aimait l'or voit son vœu exaucé : tout ce qu'il touche devient or, même sa petite Marygold.</p><p>L'eau de la rivière répare tout, et il comprend ce qui vaut plus que l'or.</p><p>Source: THE GOLDEN TOUCH.: <a href="https://www.ibiblio.org/eldritch/nh/wb2b.html">https://www.ibiblio.org/eldritch/nh/wb2b.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Golly Gee", "Touching Moments Four - Melody", "Call to Adventure", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
     <pubDate>Thu, 05 Nov 2026 16:32:38 +0000</pubDate>
-    <enclosure url="https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-04_the-golden-touch-fr/2026-11-04_the-golden-touch-fr.mp3?v=f3c1a19b" length="9250669" type="audio/mpeg"/>
+    <enclosure url="https://luongnv.com/once-upon-a-time-fr-media/2026-11-04_the-golden-touch-fr.mp3?v=f3c1a19b" length="9250669" type="audio/mpeg"/>
     <itunes:duration>578</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
@@ -137,7 +137,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy
 Écrit et lu avec l'IA (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
     <content:encoded><![CDATA[<p>Cendrillon, racontée tout en douceur pour l'heure du coucher, d'après le conte de Charles Perrault.</p><p>Une jeune fille au grand cœur, une marraine fée, un carrosse-citrouille et une pantoufle de verre.</p><p>Une histoire qui finit par le pardon et un bonsoir tout calme : être gentil, c'est la plus belle des magies.</p><p>Source: Cinderella; or, The Little Glass Slipper: <a href="https://sites.pitt.edu/~dash/perrault06.html">https://sites.pitt.edu/~dash/perrault06.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Marty Gots a Plan", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
     <pubDate>Thu, 05 Nov 2026 15:24:08 +0000</pubDate>
-    <enclosure url="https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-05_cinderella-or-the-little-glass-slipper-fr/2026-11-05_cinderella-or-the-little-glass-slipper-fr.mp3?v=f787e672" length="5628995" type="audio/mpeg"/>
+    <enclosure url="https://luongnv.com/once-upon-a-time-fr-media/2026-11-05_cinderella-or-the-little-glass-slipper-fr.mp3?v=f787e672" length="5628995" type="audio/mpeg"/>
     <itunes:duration>352</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>

@@ -24,7 +24,7 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-11T00:48:05Z",
+  "updated": "2026-11-11T09:00:19Z",
   "episodes": [
     {
       "id": "2026-11-10_state-of-the-tech-job-market-late-2026",
@@ -45,7 +45,7 @@
       "published": "2026-11-10T21:30:15Z",
       "duration_s": 587.618,
       "size_bytes": 9403033,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-10_state-of-the-tech-job-market-late-2026/2026-11-10_state-of-the-tech-job-market-late-2026.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-10_state-of-the-tech-job-market-late-2026.mp3",
       "transcript": "episodes/2026-11-10_state-of-the-tech-job-market-late-2026/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -121,7 +121,7 @@
       "published": "2026-11-10T21:08:31Z",
       "duration_s": 513.48,
       "size_bytes": 8216846,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-10_become-a-cracked-marketer/2026-11-10_become-a-cracked-marketer.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-10_become-a-cracked-marketer.mp3",
       "transcript": "episodes/2026-11-10_become-a-cracked-marketer/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -194,7 +194,7 @@
       "published": "2026-11-10T17:00:28Z",
       "duration_s": 633.868,
       "size_bytes": 10143917,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-10_three-little-pigs-fr/2026-11-10_three-little-pigs-fr.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-10_three-little-pigs-fr.mp3",
       "transcript": "episodes/2026-11-10_three-little-pigs-fr/transcript.vtt",
       "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
       "source": {
@@ -233,7 +233,7 @@
       "published": "2026-11-10T16:53:40Z",
       "duration_s": 505.877,
       "size_bytes": 8095934,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-10_three-little-pigs-vi/2026-11-10_three-little-pigs-vi.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-vi-media/2026-11-10_three-little-pigs-vi.mp3",
       "transcript": "episodes/2026-11-10_three-little-pigs-vi/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -272,7 +272,7 @@
       "published": "2026-11-10T16:42:53Z",
       "duration_s": 489.259,
       "size_bytes": 7830085,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-en-media/releases/download/2026-11-10_three-little-pigs/2026-11-10_three-little-pigs.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-10_three-little-pigs.mp3",
       "transcript": "episodes/2026-11-10_three-little-pigs/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -314,7 +314,7 @@
       "published": "2026-11-10T08:12:19Z",
       "duration_s": 566.652,
       "size_bytes": 9067795,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-10_the-secret-behind-viral-product-launches/2026-11-10_the-secret-behind-viral-product-launches.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-10_the-secret-behind-viral-product-launches.mp3",
       "transcript": "episodes/2026-11-10_the-secret-behind-viral-product-launches/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -390,7 +390,7 @@
       "published": "2026-11-09T23:30:21Z",
       "duration_s": 751.703,
       "size_bytes": 12028640,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-09_how-to-build-a-one-person-million-dollar-agency/2026-11-09_how-to-build-a-one-person-million-dollar-agency.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-09_how-to-build-a-one-person-million-dollar-agency.mp3",
       "transcript": "episodes/2026-11-09_how-to-build-a-one-person-million-dollar-agency/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -466,7 +466,7 @@
       "published": "2026-11-09T08:58:33Z",
       "duration_s": 690.743,
       "size_bytes": 11053107,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-04_a-practical-guide-to-security-in-november-2026/2026-11-04_a-practical-guide-to-security-in-november-2026.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-04_a-practical-guide-to-security-in-november-2026.mp3",
       "transcript": "episodes/2026-11-04_a-practical-guide-to-security-in-november-2026/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -500,7 +500,7 @@
       "published": "2026-11-09T08:50:04Z",
       "duration_s": 730.203,
       "size_bytes": 11684655,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-05_marketing-engineers-100x-more-experiments-with/2026-11-05_marketing-engineers-100x-more-experiments-with.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-05_marketing-engineers-100x-more-experiments-with.mp3",
       "transcript": "episodes/2026-11-05_marketing-engineers-100x-more-experiments-with/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -576,7 +576,7 @@
       "published": "2026-11-09T08:37:10Z",
       "duration_s": 524.633,
       "size_bytes": 8395333,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-05_marketing-engineers-solo-explainer/2026-11-05_marketing-engineers-solo-explainer.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-05_marketing-engineers-solo-explainer.mp3",
       "transcript": "episodes/2026-11-05_marketing-engineers-solo-explainer/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -610,7 +610,7 @@
       "published": "2026-11-09T08:22:18Z",
       "duration_s": 401.21,
       "size_bytes": 6420432,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-05_meet-the-new-build-wiz-ai-show/2026-11-05_meet-the-new-build-wiz-ai-show.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-05_meet-the-new-build-wiz-ai-show.mp3",
       "transcript": "episodes/2026-11-05_meet-the-new-build-wiz-ai-show/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -697,7 +697,7 @@
       "published": "2026-11-09T08:13:17Z",
       "duration_s": 770.085,
       "size_bytes": 12322457,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-06_5t-opportunity-ai-roll-ups/2026-11-06_5t-opportunity-ai-roll-ups.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-06_5t-opportunity-ai-roll-ups.mp3",
       "transcript": "episodes/2026-11-06_5t-opportunity-ai-roll-ups/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -773,7 +773,7 @@
       "published": "2026-11-09T07:59:38Z",
       "duration_s": 732.579,
       "size_bytes": 11722686,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-06_why-software-factories-fail/2026-11-06_why-software-factories-fail.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-06_why-software-factories-fail.mp3",
       "transcript": "episodes/2026-11-06_why-software-factories-fail/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -849,7 +849,7 @@
       "published": "2026-11-09T07:44:08Z",
       "duration_s": 890.579,
       "size_bytes": 14250513,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-07_your-old-prompts-are-making-claude-worse/2026-11-07_your-old-prompts-are-making-claude-worse.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-07_your-old-prompts-are-making-claude-worse.mp3",
       "transcript": "episodes/2026-11-07_your-old-prompts-are-making-claude-worse/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -925,7 +925,7 @@
       "published": "2026-11-09T07:15:18Z",
       "duration_s": 724.479,
       "size_bytes": 11592702,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0.mp3",
       "transcript": "episodes/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -990,7 +990,7 @@
       "published": "2026-11-09T06:50:42Z",
       "duration_s": 790.818,
       "size_bytes": 12654300,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-08_your-coding-agents-made-you-a-manager/2026-11-08_your-coding-agents-made-you-a-manager.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-08_your-coding-agents-made-you-a-manager.mp3",
       "transcript": "episodes/2026-11-08_your-coding-agents-made-you-a-manager/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1052,7 +1052,7 @@
       "published": "2026-11-06T18:18:40Z",
       "duration_s": 449.488,
       "size_bytes": 7193540,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-06_little-red-cap-fr/2026-11-06_little-red-cap-fr.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-06_little-red-cap-fr.mp3",
       "transcript": "episodes/2026-11-06_little-red-cap-fr/transcript.vtt",
       "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
       "source": {
@@ -1091,7 +1091,7 @@
       "published": "2026-11-06T18:13:22Z",
       "duration_s": 370.269,
       "size_bytes": 5926317,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-06_little-red-cap-vi/2026-11-06_little-red-cap-vi.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-vi-media/2026-11-06_little-red-cap-vi.mp3",
       "transcript": "episodes/2026-11-06_little-red-cap-vi/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1130,7 +1130,7 @@
       "published": "2026-11-06T18:03:45Z",
       "duration_s": 377.098,
       "size_bytes": 6035367,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-en-media/releases/download/2026-11-06_little-red-cap/2026-11-06_little-red-cap.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-06_little-red-cap.mp3",
       "transcript": "episodes/2026-11-06_little-red-cap/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1169,7 +1169,7 @@
       "published": "2026-11-05T22:10:03Z",
       "duration_s": 511.796,
       "size_bytes": 8190709,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-05_hansel-and-gretel-fr/2026-11-05_hansel-and-gretel-fr.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-05_hansel-and-gretel-fr.mp3",
       "transcript": "episodes/2026-11-05_hansel-and-gretel-fr/transcript.vtt",
       "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
       "source": {
@@ -1208,7 +1208,7 @@
       "published": "2026-11-05T21:34:30Z",
       "duration_s": 403.098,
       "size_bytes": 6451581,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-05_hansel-and-gretel-vi/2026-11-05_hansel-and-gretel-vi.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-vi-media/2026-11-05_hansel-and-gretel-vi.mp3",
       "transcript": "episodes/2026-11-05_hansel-and-gretel-vi/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1247,7 +1247,7 @@
       "published": "2026-11-05T21:28:03Z",
       "duration_s": 403.562,
       "size_bytes": 6458686,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-en-media/releases/download/2026-11-05_hansel-and-gretel/2026-11-05_hansel-and-gretel.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-05_hansel-and-gretel.mp3",
       "transcript": "episodes/2026-11-05_hansel-and-gretel/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1289,7 +1289,7 @@
       "published": "2026-11-05T16:32:38Z",
       "duration_s": 578.048,
       "size_bytes": 9250669,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-04_the-golden-touch-fr/2026-11-04_the-golden-touch-fr.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-04_the-golden-touch-fr.mp3",
       "transcript": "episodes/2026-11-04_the-golden-touch-fr/transcript.vtt",
       "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
       "source": {
@@ -1331,7 +1331,7 @@
       "published": "2026-11-05T15:47:28Z",
       "duration_s": 487.673,
       "size_bytes": 7804530,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-en-media/releases/download/2026-11-04_the-golden-touch-en/2026-11-04_the-golden-touch-en.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-04_the-golden-touch-en.mp3",
       "transcript": "episodes/2026-11-04_the-golden-touch-en/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1373,7 +1373,7 @@
       "published": "2026-11-05T15:40:52Z",
       "duration_s": 458.343,
       "size_bytes": 7335162,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-04_the-golden-touch/2026-11-04_the-golden-touch.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-vi-media/2026-11-04_the-golden-touch.mp3",
       "transcript": "episodes/2026-11-04_the-golden-touch/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1415,7 +1415,7 @@
       "published": "2026-11-05T15:28:54Z",
       "duration_s": 335.896,
       "size_bytes": 5376130,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-05_cinderella-or-the-little-glass-slipper-vi/2026-11-05_cinderella-or-the-little-glass-slipper-vi.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-vi-media/2026-11-05_cinderella-or-the-little-glass-slipper-vi.mp3",
       "transcript": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper-vi/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1457,7 +1457,7 @@
       "published": "2026-11-05T15:24:08Z",
       "duration_s": 351.693,
       "size_bytes": 5628995,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-05_cinderella-or-the-little-glass-slipper-fr/2026-11-05_cinderella-or-the-little-glass-slipper-fr.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-05_cinderella-or-the-little-glass-slipper-fr.mp3",
       "transcript": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper-fr/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1499,7 +1499,7 @@
       "published": "2026-11-05T14:59:09Z",
       "duration_s": 353.421,
       "size_bytes": 5656580,
-      "audio": "https://github.com/luongnv89/once-upon-a-time-en-media/releases/download/2026-11-05_cinderella-or-the-little-glass-slipper/2026-11-05_cinderella-or-the-little-glass-slipper.mp3",
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-05_cinderella-or-the-little-glass-slipper.mp3",
       "transcript": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1541,7 +1541,7 @@
       "published": "2026-11-04T10:46:09Z",
       "duration_s": 702.041,
       "size_bytes": 11233950,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-04_critical-thinking-when-agents-do-the-work/2026-11-04_critical-thinking-when-agents-do-the-work.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-04_critical-thinking-when-agents-do-the-work.mp3",
       "transcript": "episodes/2026-11-04_critical-thinking-when-agents-do-the-work/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1575,7 +1575,7 @@
       "published": "2026-11-03T21:29:57Z",
       "duration_s": 765.006,
       "size_bytes": 12241231,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-03_the-most-lucrative-ai-business-to-start-in-2027/2026-11-03_the-most-lucrative-ai-business-to-start-in-2027.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-03_the-most-lucrative-ai-business-to-start-in-2027.mp3",
       "transcript": "episodes/2026-11-03_the-most-lucrative-ai-business-to-start-in-2027/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1609,7 +1609,7 @@
       "published": "2026-11-03T17:26:26Z",
       "duration_s": 315.8,
       "size_bytes": 5054252,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-03_the-road-to-self-improving-software/2026-11-03_the-road-to-self-improving-software.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-03_the-road-to-self-improving-software.mp3",
       "transcript": "episodes/2026-11-03_the-road-to-self-improving-software/transcript.vtt",
       "voices": "VoiceCast · chatterbox-turbo",
       "source": {
@@ -1643,7 +1643,7 @@
       "published": "2026-11-03T17:15:34Z",
       "duration_s": 683.555,
       "size_bytes": 10938034,
-      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent.mp3",
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent.mp3",
       "transcript": "episodes/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
