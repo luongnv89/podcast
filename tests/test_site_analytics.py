@@ -87,10 +87,11 @@ class SiteIllustrationTest(unittest.TestCase):
 
     def test_wide_image_in_the_details_and_media_session(self) -> None:
         self.assertIn('el("img", { class: "art", src: wideUrl, alt: artAlt(ep), loading: "lazy"', self.js)
-        self.assertIn("return alt || `Illustration: ${ep.title}`;", self.js)
+        self.assertIn("return alt || T.illustration(ep.title);", self.js)
+        self.assertIn("illustration: (t) => `Illustration: ${t}`,", self.js)
         self.assertRegex(self.js, r"\[\s*art, summaryItems\.length")
-        # Every language version of a story shows the same art.
-        self.assertIn("[ep, ...((ep._unit && ep._unit.versions) || [])]", self.js)
+        # Every language version of a story shows the same art, also on a language page (#35).
+        self.assertIn("[ep, ...((ep._unit && ep._unit.versions) || []), ...(ep._alts || [])]", self.js)
         # Lock screen: only the small thumbnail, never the 3000 px square (mobile data).
         self.assertIn('const artwork = [["thumb", "640x640"]]', self.js)
         self.assertNotIn('["square", "3000x3000"]', self.js)
@@ -111,6 +112,7 @@ class ArtHelpersRunInNode(unittest.TestCase):
         end = js.index("  // The description's hook")
         script = (
             'const DATA_URL = "https://luongnv.com/podcast/episodes.json";\n'
+            'const T = { illustration: (t) => `Illustration: ${t}` };\n'
             + js[start:end]
             + """
 const ok = (p) => artPath({ square: p }, "square");
