@@ -5,20 +5,32 @@ Usage:
     python3 scripts/publish.py JOB [JOB ...] [--push]   # one or more job folders
     python3 scripts/publish.py --all [--push]           # every job in $DROPCAST_HOME/jobs
     python3 scripts/publish.py --backfill [--push]      # descriptions, art, feeds, pages
-    python3 scripts/publish.py --migrate-audio [--dry-run | --push]  # MP3s to Releases
+    python3 scripts/publish.py --migrate-audio [--dry-run | --push]  # docs/ MP3s to the media repos
+    python3 scripts/publish.py --repoint-audio [--dry-run | --push]  # release URLs to the media sites
 
-For each delivered DropCast job it uploads ``episode.mp3`` to GitHub Releases (podcast #30:
-the asset ``<job id>.mp3`` of the release tagged ``<job id>`` in the media repo of its show
-and language, ``MEDIA_REPOS``, or ``$PODCAST_MEDIA_REPO_OVERRIDE``, through ``gh``), copies ``transcript.vtt`` to
-``docs/episodes/<job id>/`` and records the episode in ``docs/episodes.json`` (title,
-summary, source, duration, voices, show, category; ``audio`` = the asset's URL,
-``size_bytes`` and ``audio_sha256``). The MP3 is never copied into ``docs/``. A failed upload
-fails that job and leaves ``episodes.json`` as it was. Only public facts are copied: no
-local paths, no source text, no keys.
+For each delivered DropCast job it puts ``episode.mp3`` on the GitHub Pages site of the media
+repo of its show and language (podcast #33; ``MEDIA_REPOS``, or ``$PODCAST_MEDIA_REPO_OVERRIDE``):
+``<job id>.mp3`` at the root of that repo's checkout (``$PODCAST_MEDIA_CHECKOUTS/<repo name>``,
+default ``~/workspace/media/<repo name>``, cloned over SSH when missing), committed and pushed
+to its ``main``. It then waits (up to ``$PODCAST_MEDIA_WAIT`` seconds, default 600) until
+``https://luongnv.com/<repo name>/<job id>.mp3`` answers 200 with the file's length and an
+``audio/mpeg`` or ``audio/mp3`` type. Only then does it copy ``transcript.vtt`` to
+``docs/episodes/<job id>/`` and record the episode in ``docs/episodes.json`` (title, summary,
+source, duration, voices, show, category; ``audio`` = that URL, ``size_bytes`` and
+``audio_sha256``). The MP3 is never copied into ``docs/``. A failed upload or check fails
+that job and leaves ``episodes.json`` as it was; running it again picks up from there (the
+same bytes are not committed twice). Only public facts are copied: no local paths, no
+source text, no keys.
 
-``--migrate-audio`` moves the MP3s already in ``docs/`` (entries whose ``audio`` is
-``episodes/<id>/episode.mp3``) the same way, each to its show/language repo: upload all, check every URL with HEAD (200 and
-the right length), and only then update ``episodes.json``, ``git rm`` the local files and
+``--repoint-audio`` moves the entries still on a GitHub Release asset URL (podcast #30, which
+iPhone Safari does not play: GitHub serves it as an ``application/octet-stream`` attachment) to
+the same file on the media site: check every Pages URL (putting the file there only when it
+is missing), and only then rewrite ``episodes.json``, rebuild the feeds and pages and check
+them. ``--dry-run`` lists the work and checks each URL once (HEAD, nothing written).
+
+``--migrate-audio`` moves the MP3s still in ``docs/`` (entries whose ``audio`` is
+``episodes/<id>/episode.mp3``) the same way, each to its show/language repo: upload all, check every URL with HEAD (200,
+the right length and type), and only then update ``episodes.json``, ``git rm`` the local files and
 rebuild the feeds and pages. ``--dry-run`` lists the work without uploading.
 
 An episode with extra sources presented by guests (DropCast #94) also gets ``sources``
@@ -277,10 +289,12 @@ def _copy(src: Path, dest: Path) -> bool:
     return True
 
 
-# ---------- Episode audio on GitHub Releases (podcast #30) ----------
-# The MP3s are not in docs/ (Pages deploys of a ~240 MB site hit the 10-minute cap): each
-# one is the asset ``<episode id>.mp3`` of the release tagged ``<episode id>`` in the media
-# repo, and the entry's ``audio`` is the asset's absolute URL. GitHub rewrites asset names
+# ---------- Episode audio in the media repos (podcast #30, #33) ----------
+# The MP3s are not in docs/ (Pages deploys of a ~240 MB site hit the 10-minute cap). Since
+# #33 each one is ``<episode id>.mp3`` at the root of its media repo, served by that repo's
+# GitHub Pages site, and the entry's ``audio`` is its Pages URL (``PagesMedia`` below).
+# From #30 each is also the asset ``<episode id>.mp3`` of the release tagged ``<episode id>``
+# in the same repo (``GhMedia``; iPhone Safari does not play those). GitHub rewrites asset names
 # (spaces become dots, accents and parentheses are dropped), so the asset is named after the
 # id, which it keeps as is. ``audio_sha256`` (the MP3's SHA-256) versions the feeds' URLs
 # and lets a re-publish of the same bytes skip the upload.
@@ -301,7 +315,7 @@ _LOCAL_AUDIO = re.compile(rf"{EPISODES_DIR}/([A-Za-z0-9][A-Za-z0-9._-]*)/episode
 
 
 class UploadError(RuntimeError):
-    """The episode audio could not be uploaded (or checked) on GitHub Releases."""
+    """The episode audio could not be uploaded to (or checked on) its media repo."""
 
 
 def _media_override() -> str | None:
@@ -344,6 +358,44 @@ def asset_name(episode_id: str) -> str:
 def audio_url(repo: str, episode_id: str) -> str:
     """The asset's permanent URL (it redirects to release-assets.githubusercontent.com)."""
     return f"https://github.com/{repo}/releases/download/{art_key(episode_id)}/{asset_name(episode_id)}"
+
+
+_RELEASE_AUDIO = re.compile(
+    r"https://github\.com/([A-Za-z0-9][A-Za-z0-9-]*/[A-Za-z0-9._-]+)/releases/download/"
+    r"([A-Za-z0-9][A-Za-z0-9._-]*)/\2\.mp3"
+)
+
+
+def release_audio(audio: Any) -> tuple[str, str] | None:
+    """``(repo, episode id)`` of a release asset URL (``audio_url()``), else None."""
+    match = _RELEASE_AUDIO.fullmatch(audio) if isinstance(audio, str) else None
+    if not match or ".." in audio:
+        return None
+    return match.group(1), match.group(2)
+
+
+_PAGES_PATH = re.compile(r"([A-Za-z0-9._-]+)/([A-Za-z0-9][A-Za-z0-9._-]*)\.mp3")
+_GITHUB_IO = re.compile(r"https://([a-z0-9][a-z0-9-]*)\.github\.io/(.+)")
+
+
+def pages_audio(audio: Any) -> tuple[str, str] | None:
+    """``(repo, episode id)`` of a media site URL (``pages_url()``), else None."""
+    if not isinstance(audio, str) or ".." in audio:
+        return None
+    for owner, base in PAGES_OWNER_DOMAIN.items():
+        if audio.startswith(base):
+            match = _PAGES_PATH.fullmatch(audio[len(base):])
+            return (f"{owner}/{match.group(1)}", match.group(2)) if match else None
+    site = _GITHUB_IO.fullmatch(audio)
+    match = _PAGES_PATH.fullmatch(site.group(2)) if site else None
+    return (f"{site.group(1)}/{match.group(1)}", match.group(2)) if site and match else None
+
+
+def download(url: str, dest: Path, timeout: int = 300) -> None:
+    """GET ``url`` (redirects followed) into ``dest``: a read, never a write, on the server."""
+    request = urllib.request.Request(url, headers={"User-Agent": "podcast-publish"})
+    with urllib.request.urlopen(request, timeout=timeout) as response, dest.open("wb") as out:
+        shutil.copyfileobj(response, out, 1 << 20)
 
 
 def local_audio_id(audio: Any) -> str | None:
@@ -486,8 +538,15 @@ def upload_audio(
     upload fails; otherwise ``media.upload()`` adds it. ``media`` is a ``GhMedia`` of the
     episode's repo (tests pass a fake). Returns ``{url, asset, uploaded}``; raises
     ``UploadError``.
+
+    A Pages backend (``PagesMedia``, the default since podcast #33: anything with a
+    ``publish`` method) is handed the file instead; it skips the copy when the site already
+    holds these bytes and returns only once the Pages URL serves them.
     """
     name = asset_name(episode_id)
+    if hasattr(media, "publish"):
+        done = media.publish(episode_id, mp3, sha256)
+        return {"url": done["url"], "asset": name, "uploaded": bool(done.get("uploaded"))}
     size = mp3.stat().st_size
     url = audio_url(media.repo, episode_id)
     assets = media.assets(episode_id)
@@ -509,7 +568,8 @@ def upload_audio(
 
 
 def head_audio(url: str, timeout: int = 60) -> dict[str, Any]:
-    """HEAD ``url``, following redirects as HEAD: ``{status, length}`` of the last answer."""
+    """HEAD ``url``, following redirects as HEAD: ``{status, length, type}`` of the last
+    answer (``type`` is its ``Content-Type``)."""
 
     class _Keep(urllib.request.HTTPRedirectHandler):
         def redirect_request(self, req, fp, code, msg, headers, newurl):
@@ -523,11 +583,272 @@ def head_audio(url: str, timeout: int = 60) -> dict[str, Any]:
     try:
         with opener.open(request, timeout=timeout) as response:
             length = response.headers.get("Content-Length")
-            return {"status": response.status, "length": int(length) if length else None}
+            return {"status": response.status, "length": int(length) if length else None,
+                    "type": response.headers.get("Content-Type")}
     except urllib.error.HTTPError as exc:
-        return {"status": exc.code, "length": None}
+        return {"status": exc.code, "length": None, "type": None}
     except (urllib.error.URLError, OSError, ValueError) as exc:
-        return {"status": None, "length": None, "error": f"{type(exc).__name__}: {exc}"[:200]}
+        return {"status": None, "length": None, "type": None, "error": f"{type(exc).__name__}: {exc}"[:200]}
+
+
+# ---------- Episode audio on the media repos' GitHub Pages (podcast #33) ----------
+# GitHub serves a release asset as application/octet-stream, as an attachment, with nosniff
+# and no CORS: Safari on iPhone does not play it. So each media repo is also a GitHub Pages
+# site (branch main, folder /, with .nojekyll) holding ``<episode id>.mp3`` at its root, and
+# the entry's ``audio`` is that file's Pages URL. luongnv.com is the custom domain of
+# luongnv89's user site, so luongnv89's project sites are served under it:
+# ``https://luongnv.com/<repo name>/<id>.mp3``. GitHub Pages serves .mp3 as ``audio/mp3``
+# (2026-11-11), so either MP3 type passes the check; anything else (the releases'
+# application/octet-stream) fails it. The feeds' enclosure ``type`` stays ``audio/mpeg``.
+# The release assets stay where they are (the URLs of #30 keep working).
+PAGES_OWNER_DOMAIN = {"luongnv89": "https://luongnv.com/"}
+MEDIA_CHECKOUTS_ENV = "PODCAST_MEDIA_CHECKOUTS"
+MEDIA_CHECKOUTS_DEFAULT = "~/workspace/media"
+MEDIA_WAIT_ENV = "PODCAST_MEDIA_WAIT"
+MEDIA_WAIT_DEFAULT = 600  # seconds: a Pages deploy usually takes one or two minutes
+MEDIA_WAIT_INTERVAL = 15
+AUDIO_TYPES = ("audio/mpeg", "audio/mp3")
+# The commits PagesMedia makes in a media checkout (the only ones it ever rebases).
+_MEDIA_COMMIT = re.compile(r"feat: (?:add|update) [A-Za-z0-9][A-Za-z0-9._-]*")
+
+
+def pages_url(repo: str, episode_id: str) -> str:
+    """The Pages URL of ``<episode id>.mp3`` in ``repo``: under the owner's custom domain
+    (``https://luongnv.com/<name>/``) when it has one, else ``https://<owner>.github.io/<name>/``."""
+    owner, _, name = repo.partition("/")
+    base = PAGES_OWNER_DOMAIN.get(owner) or f"https://{owner.lower()}.github.io/"
+    return f"{base}{name}/{asset_name(episode_id)}"
+
+
+def media_checkouts() -> Path:
+    """The folder holding one checkout per media repo (``<folder>/<repo name>``):
+    ``$PODCAST_MEDIA_CHECKOUTS``, else ``~/workspace/media``."""
+    return Path(os.environ.get(MEDIA_CHECKOUTS_ENV) or MEDIA_CHECKOUTS_DEFAULT).expanduser()
+
+
+def ssh_remote(repo: str) -> str:
+    return f"git@github.com:{repo}.git"
+
+
+def _media_wait() -> float:
+    try:
+        return max(0.0, float(os.environ.get(MEDIA_WAIT_ENV) or MEDIA_WAIT_DEFAULT))
+    except ValueError:
+        return float(MEDIA_WAIT_DEFAULT)
+
+
+def _audio_type(value: Any) -> str:
+    return str(value or "").split(";", 1)[0].strip().lower()
+
+
+def _verified(answer: dict[str, Any], size: Any) -> bool:
+    """A HEAD answer (``head_audio()``) of a live MP3 of ``size`` bytes that a browser plays:
+    status 200, ``Content-Length`` = ``size`` and ``Content-Type`` ``audio/mpeg`` or
+    ``audio/mp3`` (parameters ignored). A release asset (``application/octet-stream``) fails."""
+    return (
+        answer.get("status") == 200
+        and isinstance(size, int)
+        and answer.get("length") == size
+        and _audio_type(answer.get("type")) in AUDIO_TYPES
+    )
+
+
+def _answer_text(answer: dict[str, Any]) -> str:
+    return (f"status {answer.get('status')}, type {answer.get('type')}, length {answer.get('length')}"
+            + (f", {answer['error']}" if answer.get("error") else ""))
+
+
+def wait_until_live(
+    url: str,
+    size: int,
+    verify: Any = None,
+    wait: float | None = None,
+    interval: float = MEDIA_WAIT_INTERVAL,
+    sleep: Any = None,
+    clock: Any = None,
+) -> dict[str, Any]:
+    """Check ``url`` with ``verify`` (default ``head_audio``) until it passes
+    ``_verified(answer, size)`` or ``wait`` seconds (default ``$PODCAST_MEDIA_WAIT``, else
+    600) have passed, checking every ``interval`` seconds. Returns the passing answer;
+    raises ``UploadError`` with the last answer when the wait runs out."""
+    import time
+
+    verify = verify or head_audio
+    sleep = sleep or time.sleep
+    clock = clock or time.monotonic
+    wait = _media_wait() if wait is None else wait
+    deadline = clock() + wait
+    checks = 0
+    while True:
+        answer = verify(url)
+        checks += 1
+        if _verified(answer, size):
+            return answer
+        left = deadline - clock()
+        if left <= 0:
+            raise UploadError(
+                f"{url} is not live after {int(wait)} s and {checks} check(s) (last: {_answer_text(answer)};"
+                f" expected 200, audio/mpeg or audio/mp3, {size}); nothing was changed in the podcast repo:"
+                " run the same command again once the media site has deployed"
+            )
+        sleep(min(interval, left))
+
+
+def _run_git(cwd: Path, *args: str, timeout: int = 900) -> subprocess.CompletedProcess[str]:
+    try:
+        return subprocess.run(["git", "-C", str(cwd), *args], capture_output=True, text=True, timeout=timeout,
+                              check=False)
+    except (OSError, subprocess.SubprocessError) as exc:
+        return subprocess.CompletedProcess(["git", *args], 1, "", f"{type(exc).__name__}: {exc}")
+
+
+class PagesMedia:
+    """A media repo's GitHub Pages site, through a local checkout and git over SSH.
+
+    The checkout is ``root/<repo name>`` (``root`` defaults to ``media_checkouts()``). It
+    is cloned from ``remote(repo)`` (default ``git@github.com:<repo>.git``) when missing;
+    an existing one must be a checkout of its own, on ``main``, with that ``origin`` (so an
+    override repo never pushes through another repo's checkout). ``verify``, ``wait``,
+    ``sleep`` and ``clock`` go to ``wait_until_live()`` (tests pass fakes)."""
+
+    def __init__(
+        self,
+        repo: str,
+        root: Path | None = None,
+        remote: Any = None,
+        verify: Any = None,
+        wait: float | None = None,
+        sleep: Any = None,
+        clock: Any = None,
+    ) -> None:
+        if not _REPO_NAME.fullmatch(repo) or ".." in repo:
+            raise ValueError(f"bad media repo {repo[:80]!r}")
+        self.repo = repo
+        self.root = Path(root) if root is not None else media_checkouts()
+        self.path = self.root / repo.split("/", 1)[1]
+        self.remote = (remote or ssh_remote)(repo)
+        self.verify = verify
+        self.wait = wait
+        self.sleep = sleep
+        self.clock = clock
+
+    def url(self, episode_id: str) -> str:
+        return pages_url(self.repo, episode_id)
+
+    def _git(self, *args: str) -> subprocess.CompletedProcess[str]:
+        return _run_git(self.path, *args)
+
+    def _fail(self, what: str, proc: subprocess.CompletedProcess[str]) -> UploadError:
+        return UploadError(f"{self.repo}: {what} failed in {self.path} ({_git_error(proc)})")
+
+    def file(self, episode_id: str) -> Path:
+        """``<id>.mp3`` in the checkout (it may not exist)."""
+        return self.path / asset_name(episode_id)
+
+    def checkout(self) -> Path:
+        """Clone the checkout when missing, check it, and bring it up to date with origin
+        (``git pull --ff-only``; when that fails because of this class's own earlier
+        unpushed commits, they are rebased onto origin once, a failed rebase is aborted)."""
+        if not self.path.exists():
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            cloned = _run_git(self.path.parent, "clone", "-q", "--branch", "main", self.remote, str(self.path))
+            if cloned.returncode != 0:
+                raise UploadError(f"{self.repo}: git clone {self.remote} failed ({_git_error(cloned)})")
+        top = self._git("rev-parse", "--show-toplevel")
+        if top.returncode != 0 or Path(top.stdout.strip()).resolve() != self.path.resolve():
+            raise UploadError(f"{self.repo}: {self.path} is not a git checkout of its own")
+        origin = self._git("remote", "get-url", "origin").stdout.strip()
+        if origin != self.remote:
+            raise UploadError(f"{self.repo}: {self.path} has origin {origin or 'none'!r}, expected {self.remote!r}")
+        branch = self._git("symbolic-ref", "-q", "--short", "HEAD").stdout.strip()
+        if branch != "main":
+            raise UploadError(f"{self.repo}: {self.path} is on {branch or 'a detached HEAD'!r}, not main")
+        pulled = self._git("pull", "-q", "--ff-only", "origin", "main")
+        if pulled.returncode != 0:
+            ahead = [s for s in self._git("log", "--format=%s", f"{ORIGIN_MAIN}..HEAD").stdout.split("\n") if s]
+            if not ahead or not all(_MEDIA_COMMIT.fullmatch(s) for s in ahead):
+                raise self._fail("git pull --ff-only origin main", pulled)
+            # An earlier run's commit that never reached origin, which has moved on since.
+            self._rebase_or_fail(pulled)
+        return self.path
+
+    def _rebase_or_fail(self, why: subprocess.CompletedProcess[str]) -> None:
+        rebased = self._git("pull", "-q", "--rebase", "origin", "main")
+        if rebased.returncode == 0:
+            return
+        aborted = self._git("rebase", "--abort")
+        note = "" if aborted.returncode == 0 else " (git rebase --abort failed too: abort it by hand)"
+        raise UploadError(
+            f"{self.repo}: {_git_error(why)}; git pull --rebase origin main failed in {self.path}"
+            f" ({_git_error(rebased)}){note}; nothing was pushed: resolve it by hand, then run the same command again"
+        )
+
+    def _unpushed(self) -> bool:
+        return bool(self._git("rev-list", "-1", f"{ORIGIN_MAIN}..HEAD").stdout.strip())
+
+    def _push(self) -> str:
+        """Push HEAD to origin main (rejected: rebase once, then push again); returns the
+        pushed sha once a fetched origin/main holds it, else raises ``UploadError``."""
+        sha = self._git("rev-parse", "HEAD").stdout.strip()
+        pushed = self._git("push", "-q", "origin", "HEAD:main")
+        if pushed.returncode != 0:
+            self._rebase_or_fail(pushed)
+            sha = self._git("rev-parse", "HEAD").stdout.strip()
+            pushed = self._git("push", "-q", "origin", "HEAD:main")
+            if pushed.returncode != 0:
+                raise self._fail("git push origin HEAD:main", pushed)
+        fetched = self._git("fetch", "-q", "origin", f"+refs/heads/main:{ORIGIN_MAIN}")
+        if fetched.returncode != 0:
+            raise self._fail(f"git push exited 0, but checking that origin holds {sha[:12]}: git fetch", fetched)
+        if self._git("merge-base", "--is-ancestor", sha, ORIGIN_MAIN).returncode != 0:
+            raise UploadError(f"{self.repo}: git push exited 0 but origin/main does not hold {sha[:12]}; the commit"
+                              " is kept in the checkout: run the same command again to push it")
+        return sha
+
+    def publish(self, episode_id: str, mp3: Path, sha256: str) -> dict[str, Any]:
+        """Make the site hold ``mp3`` as ``<id>.mp3`` and wait until it is served.
+
+        Copies it into the checkout unless the file there already has ``sha256``, commits it
+        when git sees a change (``feat: add <id>``, or ``feat: update <id>`` when HEAD had
+        it), pushes whatever is unpushed (this run's commit or an earlier run's), then waits
+        for the Pages URL (``wait_until_live()``). Returns ``{url, uploaded, commit}``;
+        raises ``UploadError``."""
+        name = asset_name(episode_id)
+        self.checkout()
+        target = self.path / name
+        if target.is_symlink() or (target.exists() and not target.is_file()):
+            raise UploadError(f"{self.repo}: {target} is not a regular file")
+        if not (target.is_file() and _sha256(target) == sha256):
+            fd, tmp = tempfile.mkstemp(prefix=f".{name}.", suffix=".tmp", dir=self.path)
+            os.close(fd)
+            try:
+                shutil.copyfile(mp3, tmp)
+                os.chmod(tmp, 0o644)
+                os.replace(tmp, target)
+            except BaseException:
+                with contextlib.suppress(FileNotFoundError):
+                    os.unlink(tmp)
+                raise
+            if _sha256(target) != sha256:
+                raise UploadError(f"{self.repo}: the copy of {mp3.name} at {target} does not match its sha256")
+        commit = None
+        if self._git("status", "--porcelain", "--", name).stdout.strip():
+            tracked = self._git("cat-file", "-e", f"HEAD:{name}").returncode == 0
+            subject = f"feat: {'update' if tracked else 'add'} {episode_id}"
+            for args in (("add", "--", name), ("commit", "-q", "--only", "-m", subject, "--", name)):
+                proc = self._git(*args)
+                if proc.returncode != 0:
+                    raise self._fail(f"git {args[0]} {name}", proc)
+            commit = self._git("rev-parse", "HEAD").stdout.strip()
+        pushed = self._push() if self._unpushed() else None
+        url = self.url(episode_id)
+        wait_until_live(url, mp3.stat().st_size, self.verify, self.wait, sleep=self.sleep, clock=self.clock)
+        return {"url": url, "uploaded": bool(commit or pushed), "commit": commit}
+
+
+# The media backend of a publish, --migrate-audio and --repoint-audio: a factory
+# ``repo -> media`` (tests replace it with fakes). ``GhMedia`` (releases) is kept for reference.
+MEDIA_BACKEND: Any = PagesMedia
 
 
 # ---------- Story illustrations (Luong's decision 2026-11-06) ----------
@@ -1115,7 +1436,7 @@ def episode_entry(
     job: Path, site: Path, category: str | None = None, media: Any = None
 ) -> tuple[dict[str, Any], list[Path]]:
     """Upload one job's MP3 to the releases of its show/language media repo (``media`` is a
-    factory ``repo -> media``, default ``GhMedia``; ``media_repo()`` picks the repo),
+    factory ``repo -> media``, default ``MEDIA_BACKEND``, the repo's Pages site; ``media_repo()`` picks the repo),
     copy its transcript and art into ``site``, and return its index entry and changed files.
 
     The skip checks (not rendered, private voices, opted out) run before any upload, and the
@@ -1154,7 +1475,7 @@ def episode_entry(
     repo, media_note = media_repo(show, script.get("language") or "en")
     audio_sha256 = _sha256(episode)
     uploaded = upload_audio(
-        (media or GhMedia)(repo),
+        (media or MEDIA_BACKEND)(repo),
         episode_id,
         title,
         episode,
@@ -1284,20 +1605,23 @@ def remove_stale_audio(
             removed.append(stale)
         else:
             notes.append(
-                f"{entry['id']}: kept the old {EPISODES_DIR}/{entry['id']}/episode.mp3: HEAD {url} gave status "
-                f"{answer.get('status')}, length {answer.get('length')} (expected 200, {entry.get('size_bytes')}); "
+                f"{entry['id']}: kept the old {EPISODES_DIR}/{entry['id']}/episode.mp3: HEAD {url} gave "
+                f"{_answer_text(answer)} (expected 200, audio/mpeg or audio/mp3, {entry.get('size_bytes')}); "
                 "publish again to retry"
             )
     return removed, notes
 
 
+def _target_url(factory: Any, repo: str, episode_id: str) -> str:
+    """Where ``factory``'s media puts the episode, without making one: the Pages URL for a
+    Pages backend (a factory with ``publish``, or a ``functools.partial`` of one), else the
+    release asset URL."""
+    kind = getattr(factory, "func", factory)
+    return pages_url(repo, episode_id) if hasattr(kind, "publish") else audio_url(repo, episode_id)
+
+
 def _is_release_url(url: Any) -> bool:
     return isinstance(url, str) and url.startswith("https://")
-
-
-def _verified(answer: dict[str, Any], size: Any) -> bool:
-    """A HEAD answer (``head_audio()``) of a live asset of ``size`` bytes."""
-    return answer.get("status") == 200 and isinstance(size, int) and answer.get("length") == size
 
 
 def update_index(site: Path, entries: list[dict[str, Any]]) -> bool:
@@ -1333,6 +1657,7 @@ def _git(*args: str) -> subprocess.CompletedProcess[str]:
 PUBLISH_SUBJECT = "feat(episodes): publish "
 MIGRATE_SUBJECT = "feat(site): move episode audio to GitHub Releases (#30)"
 BACKFILL_SUBJECT = "feat(site): backfill episode descriptions, pages and story art"
+REPOINT_SUBJECT = "fix(site): play episode audio from the media sites (#33)"
 ORIGIN_MAIN = "refs/remotes/origin/main"
 
 
@@ -1407,7 +1732,7 @@ def _unpushed_commits() -> tuple[list[str], str | None]:
     if proc.returncode != 0:
         return [], None
     commits = [line.partition(" ") for line in proc.stdout.splitlines() if line.strip()]
-    if not commits or not all(s.startswith((PUBLISH_SUBJECT, MIGRATE_SUBJECT, BACKFILL_SUBJECT))
+    if not commits or not all(s.startswith((PUBLISH_SUBJECT, MIGRATE_SUBJECT, BACKFILL_SUBJECT, REPOINT_SUBJECT))
                               for _, _, s in commits):
         return [], None
     shas = [sha for sha, _, _ in commits]
@@ -1661,11 +1986,21 @@ def release_problems(site: Path, entries: list[dict[str, Any]]) -> list[str]:
     every feed that lists an entry must have its enclosure on the release URL (any ``?v=``),
     no feed may link ``episodes/<id>/episode.mp3`` of one of them, and no episode page may
     either. Empty when the rebuilt site is ready for the local MP3s to go."""
+    return link_problems(
+        site,
+        {str(e["id"]): str(e["audio"]) for e in entries},
+        {str(e["id"]): f"{EPISODES_DIR}/{e['id']}/episode.mp3" for e in entries},
+    )
+
+
+def link_problems(site: Path, wanted: dict[str, str], stale: dict[str, str]) -> list[str]:
+    """What the rebuilt feeds and pages of ``site`` get wrong: every feed that lists an
+    episode of ``wanted`` (id -> audio URL) must have its enclosure on that URL (any
+    ``?v=``), and no feed or episode page may still link the episode's ``stale`` text (an
+    old audio path or URL). Empty when they are right."""
     feed = _load_script("feed")
     pages = _load_script("pages")
     index = read_index(site / INDEX) or {}
-    wanted = {str(e["id"]): str(e["audio"]) for e in entries}
-    local = {ep_id: f"{EPISODES_DIR}/{ep_id}/episode.mp3" for ep_id in wanted}
     problems: list[str] = []
     for key, meta in feed.FEEDS.items():
         listed = [str(e["id"]) for e in feed.feed_episodes(index, key) if str(e.get("id")) in wanted]
@@ -1681,16 +2016,16 @@ def release_problems(site: Path, entries: list[dict[str, Any]]) -> list[str]:
         bare = {u.split("?", 1)[0] for u in urls}
         problems += [f"{meta['file']}: no enclosure at {wanted[i]} for {i}" for i in listed if wanted[i] not in bare]
         problems += [
-            f"{meta['file']}: {i} still links {local[i]}" for i in wanted if any(local[i] in u for u in urls)
+            f"{meta['file']}: {i} still links {stale[i]}" for i in stale if any(stale[i] in u for u in urls)
         ]
-    for ep_id in wanted:
+    for ep_id, old in stale.items():
         page = site / pages.page_path(ep_id) / "index.html"
         try:
             html = page.read_text(encoding="utf-8")
         except OSError:
             continue
-        if local[ep_id] in html:
-            problems.append(f"{pages.page_path(ep_id)}index.html still links {local[ep_id]}")
+        if old in html:
+            problems.append(f"{pages.page_path(ep_id)}index.html still links {old}")
     return problems
 
 
@@ -1711,7 +2046,7 @@ def migrate_audio(
        whose entry already has its release URL and an ``audio_sha256`` and ``size_bytes``
        matching the file (any other copy is kept and noted in ``kept``).
     2. Upload each file to move as ``upload_audio()`` does when publishing (``media`` is a
-       factory ``repo -> media``, default ``GhMedia``).
+       factory ``repo -> media``, default ``MEDIA_BACKEND``).
     3. Check every URL (moved and leftover): ``verify(url)`` (default ``head_audio``: HEAD,
        redirects followed) must answer status 200 with a length equal to the size.
     4. Set each moved entry's ``audio`` (the release URL), ``size_bytes`` and
@@ -1767,20 +2102,20 @@ def migrate_audio(
     }
     if kept:
         report["kept"] = kept
+    factory = media or MEDIA_BACKEND
     for entry, mp3, repo, note in todo:
         size = mp3.stat().st_size
         per_repo = report["repos"].setdefault(repo, {"count": 0, "total_bytes": 0})
         per_repo["count"] += 1
         per_repo["total_bytes"] += size
         item = {"id": entry["id"], "repo": repo, "file": entry["audio"], "size_bytes": size,
-                "audio": audio_url(repo, entry["id"])}
+                "audio": _target_url(factory, repo, entry["id"])}
         if note:
             item["note"] = note
             report.setdefault("notes", []).append(f"{entry['id']}: {note}")
         report["episodes"].append(item)
     if dry_run or not (todo or leftovers):
         return report
-    factory = media or GhMedia
     done = []
     for (entry, mp3, repo, _note), item in zip(todo, report["episodes"]):
         sha = _sha256(mp3)
@@ -1795,10 +2130,7 @@ def migrate_audio(
     for ep_id, url, size in checks:
         answer = verify(url)
         if not _verified(answer, size):
-            failures.append(
-                f"{ep_id}: HEAD {url} gave status {answer.get('status')}, "
-                f"length {answer.get('length')} (expected 200, {size})"
-            )
+            failures.append(f"{ep_id}: HEAD {url} gave {_answer_text(answer)} (expected 200, audio/mpeg or audio/mp3, {size})")
     if failures:
         raise UploadError("verification failed, nothing removed: " + "; ".join(failures))
     if done:
@@ -1854,11 +2186,172 @@ def _leftover(site: Path, entry: dict[str, Any]) -> Path | str | None:
     if not _is_release_url(entry.get("audio")) or mp3.is_symlink() or not mp3.is_file():
         return None
     where = f"{EPISODES_DIR}/{ep_id}/episode.mp3"
-    if entry["audio"] != audio_url(entry_media_repo(entry)[0], ep_id):
-        return f"{ep_id}: kept {where}: audio {entry['audio']} is not its release URL"
+    repo = entry_media_repo(entry)[0]
+    if entry["audio"] not in (audio_url(repo, ep_id), pages_url(repo, ep_id)):
+        return f"{ep_id}: kept {where}: audio {entry['audio']} is not its media URL"
     if entry.get("size_bytes") != mp3.stat().st_size or entry.get("audio_sha256") != _sha256(mp3):
         return f"{ep_id}: kept {where}: it is not the file of audio_sha256/size_bytes"
     return mp3
+
+
+_SHA256 = re.compile(r"[0-9a-f]{64}")
+
+
+def _pages_links(data: dict[str, Any]) -> tuple[dict[str, str], dict[str, str]]:
+    """``(wanted, stale)`` for ``link_problems()``: every entry on its media site URL, and
+    the release asset URL it must no longer be linked by."""
+    wanted: dict[str, str] = {}
+    stale: dict[str, str] = {}
+    for entry in data.get("episodes") or []:
+        if not isinstance(entry, dict):
+            continue
+        parts = pages_audio(entry.get("audio"))
+        if parts and parts[1] == entry.get("id"):
+            wanted[parts[1]] = str(entry["audio"])
+            stale[parts[1]] = audio_url(*parts)
+    return wanted, stale
+
+
+def _repoint_source(entry: dict[str, Any], media: Any, jobs_root: Path | None, fetch: Any, tmp: Path) -> Path:
+    """A local file with the entry's ``audio_sha256``: the media checkout's ``<id>.mp3``,
+    else the DropCast job's ``episode.mp3``, else the release asset downloaded (``fetch``)."""
+    ep_id, sha = str(entry["id"]), entry["audio_sha256"]
+    candidates = []
+    if hasattr(media, "file"):
+        candidates.append(media.file(ep_id))
+    if jobs_root is not None:
+        candidates.append(jobs_root / ep_id / "episode.mp3")
+    for path in candidates:
+        if not path.is_symlink() and path.is_file() and _sha256(path) == sha:
+            return path
+    dest = tmp / asset_name(ep_id)
+    try:
+        fetch(entry["audio"], dest)
+    except (OSError, ValueError) as exc:
+        raise UploadError(f"no local copy, and the release asset could not be downloaded ({exc})"[:300]) from exc
+    if _sha256(dest) != sha:
+        raise UploadError(f"the downloaded {entry['audio']} is not the file of audio_sha256")
+    return dest
+
+
+def repoint_audio(
+    site: Path,
+    media: Any = None,
+    verify: Any = None,
+    dry_run: bool = False,
+    rebuild: Any = None,
+    jobs_root: Path | None = None,
+    fetch: Any = None,
+) -> dict[str, Any]:
+    """Move every entry whose ``audio`` is a release asset URL (podcast #30) to the same
+    file on its media repo's Pages site (podcast #33), in an order where every state in
+    between is consistent and running it again finishes the job:
+
+    1. Find the work: entries whose ``audio`` is ``https://github.com/<repo>/releases/
+       download/<id>/<id>.mp3`` (with ``size_bytes`` and ``audio_sha256``); the target is
+       ``pages_url(<repo>, <id>)``, the same repo.
+    2. Check each target with ``verify`` (default ``head_audio``): 200, ``size_bytes`` and
+       ``audio/mpeg`` or ``audio/mp3``. One that fails is put there (``media``, a factory
+       ``repo -> media``, default ``MEDIA_BACKEND``; the file comes from ``_repoint_source()``,
+       ``fetch`` defaults to ``download``) and waited for (``wait_until_live()``).
+    3. Only when every target passed: set each entry's ``audio`` (``size_bytes``,
+       ``audio_sha256`` and everything else unchanged) and write ``episodes.json``.
+    4. Rebuild the feeds and pages (``rebuild(site)``, default feed.py and pages.py) and
+       check them with ``link_problems()``: each enclosure on the media site URL, no feed or
+       page left on a release URL.
+
+    A failure in 2 raises ``UploadError`` with ``episodes.json`` untouched. A failure in 4
+    raises ``MigrationError``; the next run finds nothing to move, sees the feeds or pages
+    are wrong, and rebuilds them. With nothing to move and everything right, nothing is
+    called or written. ``dry_run`` lists the work and checks each target once (HEAD only:
+    no upload, no wait, no write). Returns the report (``changed`` lists the files written).
+    """
+    verify = verify or head_audio
+    path = site / INDEX
+    data = read_index(path)
+    if data is None:
+        raise ValueError(f"{INDEX} is missing")
+    todo = []
+    local = []
+    for entry in data["episodes"]:
+        if not isinstance(entry, dict):
+            continue
+        parts = release_audio(entry.get("audio"))
+        if parts is None:
+            if local_audio_id(entry.get("audio")):
+                local.append(str(entry.get("id")))
+            continue
+        repo, ep_id = parts
+        if ep_id != entry.get("id"):
+            raise ValueError(f"{entry.get('id')}: audio {entry['audio']!r} names another episode")
+        if not isinstance(entry.get("size_bytes"), int) or not _SHA256.fullmatch(str(entry.get("audio_sha256"))):
+            raise ValueError(f"{ep_id}: no size_bytes or audio_sha256 to check {pages_url(repo, ep_id)} against")
+        todo.append((entry, repo, pages_url(repo, ep_id)))
+    report: dict[str, Any] = {
+        "dry_run": dry_run,
+        "count": len(todo),
+        "already_repointed": len(_pages_links(data)[0]),
+        "repos": {},
+        "episodes": [],
+        "changed": [],
+    }
+    if local:
+        report["notes"] = [f"{i}: its MP3 is still in {site.name}/ (run --migrate-audio)" for i in local]
+    for entry, repo, url in todo:
+        report["repos"][repo] = report["repos"].get(repo, 0) + 1
+        report["episodes"].append({"id": entry["id"], "repo": repo, "size_bytes": entry["size_bytes"],
+                                   "from": entry["audio"], "to": url})
+    if dry_run:
+        for (entry, _repo, url), item in zip(todo, report["episodes"]):
+            answer = verify(url)
+            item["live"] = _verified(answer, entry["size_bytes"])
+            if not item["live"]:
+                item["check"] = _answer_text(answer)
+        report["live"] = sum(1 for item in report["episodes"] if item["live"])
+        return report
+    if todo:
+        factory = media or MEDIA_BACKEND
+        failures = []
+        with tempfile.TemporaryDirectory(prefix="podcast-repoint-") as tmp:
+            for (entry, repo, url), item in zip(todo, report["episodes"]):
+                if _verified(verify(url), entry["size_bytes"]):
+                    item["uploaded"] = False
+                    continue
+                try:
+                    target = factory(repo)
+                    if hasattr(target, "checkout"):
+                        target.checkout()
+                    mp3 = _repoint_source(entry, target, jobs_root, fetch or download, Path(tmp))
+                    result = upload_audio(target, entry["id"], entry.get("title") or entry["id"], mp3,
+                                          entry["audio_sha256"], entry["audio_sha256"])
+                    if result["url"] != url:
+                        raise UploadError(f"the media backend put it at {result['url']}, not {url}")
+                    item["uploaded"] = result["uploaded"]
+                except (OSError, ValueError, UploadError) as exc:
+                    failures.append(f"{entry['id']}: {exc}")
+        if failures:
+            raise UploadError(f"{len(failures)} media site URL(s) not ready, {INDEX} not changed: "
+                              + "; ".join(failures[:5]))
+        for entry, _repo, url in todo:
+            entry["audio"] = url
+        data["updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        _write_json(path, data)
+        report["changed"].append(path)
+    wanted, stale = _pages_links(data)
+    if not todo and not link_problems(site, wanted, stale):
+        return report
+    files, errors = (rebuild or _rebuild_site)(site)
+    report["changed"] += [f for f in files if f not in report["changed"]]
+    if errors:
+        report.update(errors)
+        raise MigrationError("feeds or pages were not rebuilt (run --repoint-audio again): "
+                             + "; ".join(errors.values()), report)
+    problems = link_problems(site, wanted, stale)
+    if problems:
+        report["link_problems"] = problems
+        raise MigrationError("the rebuilt feeds or pages do not use the media site URLs (run --repoint-audio"
+                             " again): " + "; ".join(problems[:5]), report)
+    return report
 
 
 def _git_rm(path: Path) -> None:
@@ -1892,14 +2385,26 @@ def main(argv: list[str] | None = None) -> int:
         help="move the MP3s still in docs/ to GitHub Releases (uploads, checks, then git rm)",
     )
     parser.add_argument(
-        "--dry-run", action="store_true", help="with --migrate-audio: list the work, upload nothing"
+        "--repoint-audio", action="store_true",
+        help="point every entry on a release asset URL at its media site (Pages) URL, after checking it",
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true",
+        help="with --migrate-audio or --repoint-audio: list the work, upload and write nothing",
     )
     args = parser.parse_args(argv)
     jobs = [Path(j).expanduser() for j in args.jobs]
-    if args.dry_run and not args.migrate_audio:
+    if args.dry_run and not (args.migrate_audio or args.repoint_audio):
         parser.print_usage(sys.stderr)
-        print("error: --dry-run goes with --migrate-audio", file=sys.stderr)
+        print("error: --dry-run goes with --migrate-audio or --repoint-audio", file=sys.stderr)
         return 2
+    if args.repoint_audio:
+        if (args.all or jobs or args.category or args.backfill or args.migrate_audio
+                or (args.dry_run and args.push)):
+            parser.print_usage(sys.stderr)
+            print("error: --repoint-audio takes only --push or --dry-run", file=sys.stderr)
+            return 2
+        return _repoint_main(args.push, args.dry_run)
     if args.migrate_audio:
         if args.all or jobs or args.category or args.backfill or (args.dry_run and args.push):
             parser.print_usage(sys.stderr)
@@ -1943,7 +2448,7 @@ def main(argv: list[str] | None = None) -> int:
         named = set(args.jobs and [Path(j).expanduser().resolve() for j in args.jobs])
         for job in jobs:
             try:
-                entry, files = episode_entry(job.resolve(), SITE, args.category, GhMedia)
+                entry, files = episode_entry(job.resolve(), SITE, args.category, MEDIA_BACKEND)
             except NotReady as why:
                 bucket = "failed" if job.resolve() in named else "skipped"
                 key = "error" if bucket == "failed" else "reason"
@@ -2131,7 +2636,7 @@ def _migrate_main(push_it: bool, dry_run: bool) -> int:
             print(json.dumps(report, indent=2, ensure_ascii=False))
             return 1
         try:
-            report.update(migrate_audio(SITE, media=GhMedia, verify=head_audio, remove=_git_rm, dry_run=dry_run))
+            report.update(migrate_audio(SITE, media=MEDIA_BACKEND, verify=head_audio, remove=_git_rm, dry_run=dry_run))
         except MigrationError as exc:
             report.update(exc.report)
             report["failed"].append({"job": "migrate-audio", "error": str(exc)})
@@ -2149,6 +2654,36 @@ def _migrate_main(push_it: bool, dry_run: bool) -> int:
                 report["failed"].append({"job": "git", "error": str(exc)})
         if push_it and not report["failed"] and (changed or _has_unpushed()):
             report["git"] = push(changed, [], MIGRATE_SUBJECT)
+            if not report["git"].get("pushed") and report["git"].get("error"):
+                report["failed"].append({"job": "git", "error": report["git"]["error"]})
+        report["changed"] = [str(p.relative_to(REPO)) for p in changed]
+    print(json.dumps(report, indent=2, ensure_ascii=False))
+    return 1 if report["failed"] else 0
+
+
+def _repoint_main(push_it: bool, dry_run: bool) -> int:
+    report: dict[str, Any] = {"failed": [], "git": None}
+    changed: list[Path] = []
+    with _lock():
+        if push_it and not _start_pull(report, "--repoint-audio --push"):
+            print(json.dumps(report, indent=2, ensure_ascii=False))
+            return 1
+        try:
+            report.update(repoint_audio(SITE, media=MEDIA_BACKEND, verify=head_audio, dry_run=dry_run,
+                                        jobs_root=_jobs_root()))
+        except MigrationError as exc:
+            report.update(exc.report)
+            report["failed"].append({"job": "repoint-audio", "error": str(exc)})
+        except (OSError, ValueError, UploadError) as exc:
+            report["failed"].append({"job": "repoint-audio", "error": str(exc)})
+        changed = list(report.pop("changed", []))
+        if push_it and not report["failed"]:
+            try:
+                changed += [p for p in _pending_site(SITE) if p not in changed]
+            except OSError as exc:
+                report["failed"].append({"job": "git", "error": str(exc)})
+        if push_it and not report["failed"] and (changed or _has_unpushed()):
+            report["git"] = push(changed, [], REPOINT_SUBJECT)
             if not report["git"].get("pushed") and report["git"].get("error"):
                 report["failed"].append({"job": "git", "error": report["git"]["error"]})
         report["changed"] = [str(p.relative_to(REPO)) for p in changed]

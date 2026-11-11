@@ -31,14 +31,15 @@ The site is static (`docs/`), deployed by GitHub Pages from `main`
   version on both pages whenever either file changes (GitHub Pages caches them for 10 min).
 - `docs/episodes/<job id>/` — each episode's `transcript.vtt` and its own page
   `index.html` (see "Descriptions, download names and episode pages"). The MP3s are not in
-  `docs/`: they are GitHub Release assets (see "Where the audio lives").
+  `docs/`: they are served by the media repos' own GitHub Pages sites (see "Where the audio
+  lives").
 - `docs/art/<story group>/` — each story's illustration (`wide.jpg`, `square.jpg`,
   `thumb.jpg`), copied by the publisher (see "Story illustrations").
 - `docs/sitemap.xml`, `docs/robots.txt`, `docs/cover.jpg` — the sitemap of both show pages
   and every episode page, and Build Wiz AI Show's cover for share previews (rendered from
   `assets/cover/build-wiz-cover.html`, 1400 x 1400).
-- `scripts/publish.py` — uploads each delivered DropCast job's MP3 to GitHub Releases,
-  copies its transcript and art into `docs/`, updates
+- `scripts/publish.py` — pushes each delivered DropCast job's MP3 to its media repo's
+  GitHub Pages site and waits until it is served, copies its transcript and art into `docs/`, updates
   `episodes.json`, rebuilds the RSS feeds (stories and Build Wiz AI Show), the episode pages and the sitemap, and (with
   `--push`) commits and pushes. Standard library only.
 - `scripts/pages.py` — writes the episode pages and the sitemap from `episodes.json`
@@ -59,44 +60,80 @@ python3 scripts/publish.py ~/dropcast/jobs/2026-11-03_some-episode --push
 python3 scripts/publish.py --all            # every delivered job, no git
 python3 scripts/publish.py ~/dropcast/jobs/2026-11-03_some-episode --category marketing
 python3 scripts/publish.py --backfill [--push]   # descriptions, names, story art, feeds, pages
+python3 scripts/publish.py --repoint-audio --dry-run   # list entries still on release URLs, check their Pages URLs
+python3 scripts/publish.py --repoint-audio [--push]    # point them at the media sites
 python3 scripts/publish.py --migrate-audio --dry-run   # list the MP3s still in docs/
-python3 scripts/publish.py --migrate-audio [--push]    # move them to GitHub Releases
+python3 scripts/publish.py --migrate-audio [--push]    # move them to the media repos
 ```
 
 ## Where the audio lives
 
 GitHub Pages deploys of the whole site (about 243 MB, 232 MB of it MP3s) ran into the
-deploy's fixed 10-minute cap, so the episode audio lives on **GitHub Releases** (#30),
-one public media repo per show and language (`MEDIA_REPOS` in `scripts/publish.py`):
+deploy's fixed 10-minute cap, so the episode audio lives in one public media repo per show
+and language (`MEDIA_REPOS` in `scripts/publish.py`):
 
-| Show | Language | Media repo |
-|---|---|---|
-| Build Wiz AI Show | any | [`luongnv89/buildwiz-ai-show-media`](https://github.com/luongnv89/buildwiz-ai-show-media) |
-| Once Upon a Time Show | en | [`luongnv89/once-upon-a-time-en-media`](https://github.com/luongnv89/once-upon-a-time-en-media) |
-| Once Upon a Time Show | fr | [`luongnv89/once-upon-a-time-fr-media`](https://github.com/luongnv89/once-upon-a-time-fr-media) |
-| Once Upon a Time Show | vi | [`luongnv89/once-upon-a-time-vi-media`](https://github.com/luongnv89/once-upon-a-time-vi-media) |
+| Show | Language | Media repo | Audio URL |
+|---|---|---|---|
+| Build Wiz AI Show | any | [`luongnv89/buildwiz-ai-show-media`](https://github.com/luongnv89/buildwiz-ai-show-media) | `https://luongnv.com/buildwiz-ai-show-media/<id>.mp3` |
+| Once Upon a Time Show | en | [`luongnv89/once-upon-a-time-en-media`](https://github.com/luongnv89/once-upon-a-time-en-media) | `https://luongnv.com/once-upon-a-time-en-media/<id>.mp3` |
+| Once Upon a Time Show | fr | [`luongnv89/once-upon-a-time-fr-media`](https://github.com/luongnv89/once-upon-a-time-fr-media) | `https://luongnv.com/once-upon-a-time-fr-media/<id>.mp3` |
+| Once Upon a Time Show | vi | [`luongnv89/once-upon-a-time-vi-media`](https://github.com/luongnv89/once-upon-a-time-vi-media) | `https://luongnv.com/once-upon-a-time-vi-media/<id>.mp3` |
 
 A story in any other language goes to the English stories repo (the publish report says
 so in `notes`). The show is picked as everywhere else (`episode_show()`: a story format is
 always Once Upon a Time Show), plus the episode's `language`.
 
-- Each episode is one release, tagged with the episode id (title = the episode title,
-  notes "Audio for <episode page URL>"), holding one asset, `<episode id>.mp3`. GitHub
-  rewrites asset names (spaces become dots, accents and parentheses are dropped), so the
-  asset is named after the id, which it keeps as is.
-- `publish.py` uploads with `gh release upload` (the GitHub CLI, already logged in). It
-  skips the upload when the release already has the asset with the same size and the
-  SHA-256 recorded in `episodes.json` matches. The entry gets `audio` (the absolute URL
-  `https://github.com/<repo>/releases/download/<id>/<id>.mp3`), `size_bytes` and
-  `audio_sha256`, and `episodes.json` is written atomically (temp file, then rename). The
-  MP3 is never copied into `docs/`; a leftover copy from before the move is removed only
-  after the index update and a successful rebuild of the feeds and pages, once the new URL
-  answers HEAD with 200 and `size_bytes` (otherwise it is kept and the report's `notes`
-  say so). A failed feed or page rebuild fails the run (`rebuild` in `failed`): nothing is
-  removed or pushed, and publishing again rebuilds and pushes what that run left
-  uncommitted.
-- `--push` (publish, `--backfill` and `--migrate-audio` alike) starts with
-  `git pull --rebase --autostash origin main`, so a re-run from a dirty tree builds on
+**GitHub Pages, not Releases (#33).** Each media repo is its own GitHub Pages site (branch
+`main`, folder `/`, with a `.nojekyll`) holding every episode as `<episode id>.mp3` at its
+root. luongnv.com is the custom domain of luongnv89's user site, so the project sites are
+served under it (`pages_url()`, `scripts/publish.py:604,615`). GitHub Pages serves `.mp3`
+as `audio/mp3` with `Access-Control-Allow-Origin: *`, so every browser plays it. From #30
+to #33 the audio was served as GitHub Release assets
+(`https://github.com/<repo>/releases/download/<id>/<id>.mp3`). GitHub serves those as an
+`application/octet-stream` attachment with `nosniff` and no CORS, which Safari on iPhone
+does not play ("Could not load audio"). Those releases are kept as they are. `GhMedia` (the
+`gh` uploader) is still in `publish.py`, but it is no longer the default
+(`MEDIA_BACKEND = PagesMedia`, `scripts/publish.py:851`).
+
+- **Checkouts.** `publish.py` keeps one git checkout per media repo in
+  `$PODCAST_MEDIA_CHECKOUTS/<repo name>`, default `~/workspace/media/<repo name>`
+  (`media_checkouts()`, `scripts/publish.py:606,623`); on the bot's machine that is
+  `/home/adminuser/workspace/media/`. A missing checkout is cloned over SSH from
+  `git@github.com:<repo>.git` (`ssh_remote()`, `scripts/publish.py:629`). An existing one must
+  be a checkout of its own, on `main`, with that `origin`, or the run stops
+  (`PagesMedia.checkout()`, `scripts/publish.py:748`). Each run starts with
+  `git pull --ff-only origin main`. If that fails because of the publisher's own earlier
+  unpushed `feat: add|update <id>` commits, they are rebased onto origin once.
+- **Publishing an episode** (`PagesMedia.publish()`, `scripts/publish.py:808`): copy
+  `episode.mp3` to `<id>.mp3` in the checkout, unless the file there already has the same
+  SHA-256. Then commit only that file (`feat: add <id>`, or `feat: update <id>` when it was
+  already there) and push it to `main`, with the same care as the podcast's own push
+  (`_push()`, `scripts/publish.py:789`): a rejected push is rebased onto origin once and
+  pushed again, a failed rebase is aborted (the commit stays in the checkout), and the push
+  counts only once a fetch of origin/main holds the commit. Any earlier unpushed commit is
+  pushed too. The entry gets `audio` (its Pages URL), `size_bytes` and `audio_sha256`, and
+  `episodes.json` is written atomically (temp file, then rename). The MP3 is never copied
+  into `docs/`.
+- **The verify rule** (`_verified()`, `scripts/publish.py:644`). An audio URL counts as
+  live only when a HEAD (redirects followed) answers status 200, `Content-Length` =
+  `size_bytes`, and `Content-Type` `audio/mpeg` or `audio/mp3` (parameters ignored,
+  `AUDIO_TYPES`, `scripts/publish.py:610`). Anything else fails, including a release
+  asset's `application/octet-stream`. A Pages deploy takes a minute or two, so after a push
+  the publisher checks every 15 s, for at most `$PODCAST_MEDIA_WAIT` seconds (default 600,
+  `wait_until_live()`, `scripts/publish.py:608-609,661`). Nothing in `docs/` or
+  `episodes.json` changes before the check passes. When the wait runs out, that job fails
+  with the last answer, and the podcast repo is left as it was.
+- **Re-running.** Run the same command again: the file is already in the media repo with
+  the same SHA-256, so nothing is committed twice. An unpushed commit is pushed, and the run
+  only checks the URL again. A re-render (new bytes) is a new commit of the same
+  `<id>.mp3`: the URL stays, and the feeds' `?v=` changes with `audio_sha256`.
+- A leftover `docs/episodes/<id>/episode.mp3` from before #30 is removed only after the
+  index update and a successful rebuild of the feeds and pages, and only once the new URL
+  passes the verify rule. Otherwise it is kept, and the report's `notes` say so. A failed
+  feed or page rebuild fails the run (`rebuild` in `failed`): nothing is removed or pushed,
+  and publishing again rebuilds and pushes what that run left uncommitted.
+- `--push` (publish, `--backfill`, `--migrate-audio` and `--repoint-audio` alike) starts
+  with `git pull --rebase --autostash origin main`, so a re-run from a dirty tree builds on
   origin's latest commit. If that pull fails, or leaves conflicts, the run stops before any
   upload or write (a stopped rebase is aborted). `git.pushed` is `true` only once a fetch of
   origin/main shows it holds the run's commit. When the push is rejected and the rebase onto
@@ -107,42 +144,60 @@ always Once Upon a Time Show), plus the episode's `language`.
 - An `episodes.json` that is there but cannot be parsed (git conflict markers, say) stops
   every `publish.py` command before any upload or write, so it is never replaced by a new
   index; only a missing file starts a new one.
-- **Re-renders never use `--clobber`.** The new file is uploaded as `<id>.new.mp3`, its
-  size and state are checked, then the old `<id>.mp3` is deleted and the new asset renamed
-  (`gh api -X PATCH repos/<repo>/releases/assets/<asset id> -f name=<id>.mp3`). A failed
-  upload or check leaves the live asset untouched. If only the rename fails (the old asset
-  already deleted), the episode's audio URL is down until you run the same publish again:
-  it finds the staged asset, deletes it, uploads again and renames.
 - Nothing private is uploaded: DropCast never hands a photo job (or a deck) to the
   publisher, and the publisher's own checks (not rendered yet, edge-tts voices for private
-  use, `"publish": false`) run before any upload, so those jobs are still never published. A failed upload fails that job with the `gh` error and leaves
-  `episodes.json` and `docs/` unchanged.
+  use, `"publish": false`) run before any upload, so those jobs are still never published. A
+  failed push or check fails that job with the error and leaves `episodes.json` and
+  `docs/` unchanged.
 - `PODCAST_MEDIA_REPO_OVERRIDE=owner/name` sends every upload to that one repo (tests,
-  emergencies). The site's player only accepts the four repos above (`mediaUrl()` in
-  `site.js`: after parsing, no credentials, origin `https://github.com` and a path that
-  `MEDIA_PATH` matches exactly, `/luongnv89/<repo>/releases/download/<id>/<id>.mp3` with
-  the same `<id>` twice; the URL is rebuilt from that origin and path, and `..`,
-  backslashes and percent-encoded dots, slashes and backslashes are refused), so a change
-  of repos needs a `site.js` change too. An episode whose audio is refused shows no Play
-  or Download button.
-- The asset URL redirects (302) to `release-assets.githubusercontent.com`, which answers
-  HEAD with `Content-Length`, supports Range requests (206) and ignores the feeds' `?v=`.
-  It serves the MP3 as `application/octet-stream` (the API records `audio/mpeg`); browsers
-  and podcast apps play it, and the feeds' enclosure says `type="audio/mpeg"`. The answer
-  carries `Content-Disposition: attachment; filename=<id>.mp3`, and a cross-origin
-  `download` attribute is ignored, so **Download MP3** saves the file as `<id>.mp3`, not
-  `file_name`.
+  emergencies). Its checkout is `$PODCAST_MEDIA_CHECKOUTS/<name>`, with origin
+  `git@github.com:owner/name.git`, and its URL is `https://<owner>.github.io/<name>/<id>.mp3`
+  (or the owner's custom domain). The site's player only accepts the four repos above
+  (`mediaUrl()`, `docs/site.js:879`). After parsing, it accepts no credentials and only
+  origin `https://luongnv.com` with a path that `PAGES_PATH` (`docs/site.js:877`) matches
+  exactly, `/<media repo>/<id>.mp3`. Until every entry is re-pointed, it also accepts the
+  release URL (origin `https://github.com`, `MEDIA_PATH`,
+  `/luongnv89/<repo>/releases/download/<id>/<id>.mp3`, with the same `<id>` twice). The URL
+  is rebuilt from that origin and path, and `..`, backslashes and percent-encoded dots,
+  slashes and backslashes are refused. So a change of repos needs a `site.js` change too.
+  An episode whose audio is refused shows no Play or Download button.
+- A cross-origin `download` attribute is ignored, so **Download MP3** saves the file under
+  its URL name, `<id>.mp3`, not `file_name`. The feeds' enclosure keeps
+  `type="audio/mpeg"`, its `length` and the episode's guid (see "Spotify and podcast apps").
+
+**Re-pointing the release URLs (#33).** `python3 scripts/publish.py --repoint-audio`
+(`repoint_audio()`, `scripts/publish.py:2237`) moves every entry whose `audio` is still a
+release asset URL to the same file on that repo's Pages site. It runs in this order:
+
+1. Check each Pages URL with the verify rule.
+2. Put a missing file there and wait for it, as when publishing. The file comes from the
+   media checkout, else the DropCast job's `episode.mp3`, else the release asset downloaded
+   (`_repoint_source()`, `scripts/publish.py:2215`); its SHA-256 must equal `audio_sha256`.
+3. Only when every URL passed: rewrite `audio` in `episodes.json` (`size_bytes`,
+   `audio_sha256` and everything else unchanged).
+4. Rebuild the feeds and pages, and check that every enclosure is on the Pages URL and that
+   no feed or page still links a release URL (`link_problems()`,
+   `scripts/publish.py:1996`).
+
+A failed check leaves `episodes.json` untouched. A failed rebuild or feed check stops it
+before the push. **Run the same command again to finish**: it finds nothing to move, sees
+the wrong feeds or pages, and rebuilds them. With `--push` it commits all of it as one
+commit (`fix(site): play episode audio from the media sites (#33)`, `REPOINT_SUBJECT`,
+`scripts/publish.py:1660`) after the same start-of-run pull as above. A second run calls
+nothing and changes nothing. `--dry-run` lists every entry (`from`, `to`, repo, size) and
+HEAD-checks each Pages URL once (`live`, and `check` for a failing one): nothing is
+uploaded, waited for or written.
 
 **Migration.** `python3 scripts/publish.py --migrate-audio` moves the MP3s still in
 `docs/` (entries whose `audio` is `episodes/<id>/episode.mp3`), each to its show/language
-repo, in this order: upload all of them; check every URL with HEAD (200 after redirects
-and `Content-Length` = `size_bytes`); update `episodes.json`; rebuild the feeds and pages
-and check that every feed listing a moved episode has its enclosure on the release URL
+repo (its Pages site since #33), in this order: upload all of them; check every URL with
+the verify rule above; update `episodes.json`; rebuild the feeds and pages
+and check that every feed listing a moved episode has its enclosure on the new URL
 (and no feed or page still links the `docs/` copy); only then `git rm` the local MP3s. A
 failed upload or check stops it before anything changes; a failed rebuild, feed check or
 removal stops it before the push, with every file still in place. **Run the same command
 again to finish**: it also picks up leftovers, i.e. `docs/episodes/<id>/episode.mp3` files
-whose entry already has its release URL and an `audio_sha256`/`size_bytes` matching the
+whose entry already has its media URL and an `audio_sha256`/`size_bytes` matching the
 file (other copies are kept and listed under `kept`), checks them with HEAD, rebuilds,
 removes them and commits everything the earlier run left uncommitted. `--push` first runs
 `git pull --rebase --autostash` (a failed pull stops it before any upload, and so does a
@@ -234,8 +289,8 @@ date is the published day in Europe/Paris). The MP3 keeps its URL; only the save
 changes.
 
 On the site, **Download MP3** saves the file under `file_name` (else `<id>.mp3`) while the
-MP3 is on the site; for a GitHub Releases asset the browser uses GitHub's name,
-`<id>.mp3` (see "Where the audio lives"). Each
+MP3 is on the site; for audio on a media repo's site (another origin) the browser uses the
+file's own name, `<id>.mp3` (see "Where the audio lives"). Each
 episode's details have a **Copy description** button: one click copies the description
 exactly as in `episodes.json` (Clipboard API, else a hidden text area and
 `execCommand("copy")`), shows "Copied" for a moment and sends `description_copy`. A story
@@ -365,8 +420,10 @@ new episodes.
   credit, the music credit (CC BY) and the AI-voice note; enclosure with size and
   duration; transcript (`podcast:transcript`). The enclosure URL ends in
   `?v=<sha8>` of the MP3 (from `audio_sha256`, else the local file), so a re-voiced episode
-  is downloaded again under the same guid. An absolute `audio` (GitHub Releases) is the
-  enclosure URL as is; `length` is `size_bytes`.
+  is downloaded again under the same guid. An absolute `audio` (the media site, or a release asset before #33)
+  is the enclosure URL as is; `length` is `size_bytes`. Moving an episode between hosts
+  changes only the URL before `?v=`: guid, `length`, `type="audio/mpeg"` and `?v=` stay
+  (`scripts/feed.py` `enclosure_url()`).
 - Channel: category Kids & Family › Stories for Kids, not explicit, owner email
   `buildwizai@gmail.com` (public in the feed: Spotify emails its 8-digit code there).
   Titles and descriptions (each under Spotify's 600-character limit) are in `FEEDS` in

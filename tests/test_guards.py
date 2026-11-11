@@ -48,3 +48,22 @@ def test_other_commands_still_run() -> None:
     assert out.stdout.split() == ["high", "ghost"]
     out = subprocess.run([sys.executable, "-c", "print('ok')"], capture_output=True, text=True, check=True)
     assert out.stdout.strip() == "ok"
+
+
+@pytest.mark.parametrize("args", [
+    ["git", "clone", "git@github.com:luongnv89/buildwiz-ai-show-media.git", "/tmp/x"],
+    ["/usr/bin/git", "ls-remote", "https://github.com/luongnv89/podcast.git"],
+    "git push git@github.com:luongnv89/once-upon-a-time-en-media.git HEAD:main",
+])
+def test_git_against_github_is_refused(args) -> None:
+    with pytest.raises(OSError, match="must not run git against github.com"):
+        subprocess.run(args, shell=isinstance(args, str), capture_output=True, check=False)
+
+
+def test_media_pushes_cannot_reach_the_real_checkouts_or_ssh() -> None:
+    import os
+
+    assert "/workspace/media" not in os.environ["PODCAST_MEDIA_CHECKOUTS"]
+    assert os.environ["GIT_SSH_COMMAND"] == "false"
+    out = subprocess.run(["git", "--version"], capture_output=True, text=True, check=True)
+    assert out.stdout.startswith("git version")
