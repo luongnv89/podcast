@@ -24,7 +24,7 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-10T21:30:17Z",
+  "updated": "2026-11-11T00:48:05Z",
   "episodes": [
     {
       "id": "2026-11-10_state-of-the-tech-job-market-late-2026",
@@ -45,7 +45,7 @@
       "published": "2026-11-10T21:30:15Z",
       "duration_s": 587.618,
       "size_bytes": 9403033,
-      "audio": "episodes/2026-11-10_state-of-the-tech-job-market-late-2026/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-10_state-of-the-tech-job-market-late-2026/2026-11-10_state-of-the-tech-job-market-late-2026.mp3",
       "transcript": "episodes/2026-11-10_state-of-the-tech-job-market-late-2026/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -99,7 +99,8 @@
       ],
       "description": "The job AI was supposed to kill is growing fastest. Bob and Alice unpack Lenny Rachitsky's report on the tech job market in late 2026.\n\nIn this episode:\n- PM openings up 75% from their low, while engineering openings stall.\n- Record lows for design, user research and remote roles, and the pull of the Bay Area.\n- LLM and Claude top the job posts, forward deployed engineers boom, and why openings aren't hires.\n\nSources: Lenny Rachitsky; Guillermo Gallacher; Joe Schmidt; Jeff Cox\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - PMs Are Winning, Engineers Are Plateauing The Tech Job Market in Late 2026 (2026-11-10).mp3"
+      "file_name": "Build Wiz AI Show - PMs Are Winning, Engineers Are Plateauing The Tech Job Market in Late 2026 (2026-11-10).mp3",
+      "audio_sha256": "a18d4c8d3fe26a99991c476768b9291e19065363a517f60074d7fe2863f622b2"
     },
     {
       "id": "2026-11-10_become-a-cracked-marketer",
@@ -120,7 +121,7 @@
       "published": "2026-11-10T21:08:31Z",
       "duration_s": 513.48,
       "size_bytes": 8216846,
-      "audio": "episodes/2026-11-10_become-a-cracked-marketer/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-10_become-a-cracked-marketer/2026-11-10_become-a-cracked-marketer.mp3",
       "transcript": "episodes/2026-11-10_become-a-cracked-marketer/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -174,7 +175,8 @@
       ],
       "description": "Can a coding agent be your best marketer? Bob and Alice unpack Become a Cracked Marketer from The Startup Ideas Podcast: Cody Schneider's Marketing Engineer Method for ads made as code.\n\nIn this episode:\n- The environment: one data warehouse, write-only ad access and the right tools.\n- One URL into five static ads, and a 30-second avatar video for about $5.\n- A vision-model quality gate, cohorts of 30, and the FTC's rule on AI-generated reviews.\n\nSources: The Startup Ideas Podcast; Nelson F. Liu et al.; Anthropic; Lauren Forristal\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Become a Cracked Marketer The Marketing Engineer Method (2026-11-10).mp3"
+      "file_name": "Build Wiz AI Show - Become a Cracked Marketer The Marketing Engineer Method (2026-11-10).mp3",
+      "audio_sha256": "e2d2afd43329a51791debd00c0405b721f9d148cf17a8657e543ae7c316726ef"
     },
     {
       "id": "2026-11-10_three-little-pigs-fr",
@@ -192,7 +194,7 @@
       "published": "2026-11-10T17:00:28Z",
       "duration_s": 633.868,
       "size_bytes": 10143917,
-      "audio": "episodes/2026-11-10_three-little-pigs-fr/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-10_three-little-pigs-fr/2026-11-10_three-little-pigs-fr.mp3",
       "transcript": "episodes/2026-11-10_three-little-pigs-fr/transcript.vtt",
       "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
       "source": {
@@ -212,7 +214,8 @@
       },
       "description": "Les Trois Petits Cochons en douce histoire du soir, d'après les contes anglais de Joseph Jacobs. Trois maisons, un loup qui souffle très fort et un petit cochon bien malin. Personne n'a de mal.\n\nDans cet épisode :\n- Des maisons de paille, de bois et de briques\n- Des navets, des pommes et une baratte qui roule\n- Un loup dans la cheminée et un grand plouf\n\nSources : Three Little Pigs, Joseph Jacobs, via D. L. Ashliman\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Les Trois Petits Cochons, une histoire du soir (2026-11-10).mp3"
+      "file_name": "Once Upon a Time Show - Les Trois Petits Cochons, une histoire du soir (2026-11-10).mp3",
+      "audio_sha256": "cb835e9a25fb6c697dfca46bc544b8a29582f598cb435b5ee7c45a3c99602c6e"
     },
     {
       "id": "2026-11-10_three-little-pigs-vi",
@@ -230,7 +233,7 @@
       "published": "2026-11-10T16:53:40Z",
       "duration_s": 505.877,
       "size_bytes": 8095934,
-      "audio": "episodes/2026-11-10_three-little-pigs-vi/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-10_three-little-pigs-vi/2026-11-10_three-little-pigs-vi.mp3",
       "transcript": "episodes/2026-11-10_three-little-pigs-vi/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -250,7 +253,8 @@
       },
       "description": "Ba chú heo con, kể lại nhẹ nhàng trước giờ ngủ theo truyện cổ nước Anh của Joseph Jacobs. Ba ngôi nhà, một con sói thổi phù phù và một chú heo con thật thông minh, không ai bị đau cả.\n\nTrong tập này:\n- Nhà rơm, nhà gỗ và nhà gạch\n- Củ cải, quả táo và chiếc thùng đánh bơ lăn xuống dốc\n- Con sói chui ống khói và rơi tõm vào nồi nước lạnh\n\nNguồn: Three Little Pigs, Joseph Jacobs, D. L. Ashliman\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Ba chú heo con, chuyện kể trước giờ ngủ (2026-11-10).mp3"
+      "file_name": "Once Upon a Time Show - Ba chú heo con, chuyện kể trước giờ ngủ (2026-11-10).mp3",
+      "audio_sha256": "0ca3102bdd8ec25d052b73bb3eb73f839346e2b77eea84971a98ba2e11824162"
     },
     {
       "id": "2026-11-10_three-little-pigs",
@@ -268,7 +272,7 @@
       "published": "2026-11-10T16:42:53Z",
       "duration_s": 489.259,
       "size_bytes": 7830085,
-      "audio": "episodes/2026-11-10_three-little-pigs/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-en-media/releases/download/2026-11-10_three-little-pigs/2026-11-10_three-little-pigs.mp3",
       "transcript": "episodes/2026-11-10_three-little-pigs/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -288,7 +292,8 @@
       },
       "description": "The Three Little Pigs, retold as a gentle bedtime story from Joseph Jacobs's English Fairy Tales. Three houses, one huffing and puffing wolf, and a clever little pig. Nobody gets hurt.\n\nIn this episode:\n- Houses of straw, sticks and bricks\n- Turnips, apples and a butter churn rolling down the hill\n- A wolf down the chimney and a big cold splash\n\nSources: Three Little Pigs, Joseph Jacobs, via D. L. Ashliman\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - The Three Little Pigs, a bedtime story (2026-11-10).mp3"
+      "file_name": "Once Upon a Time Show - The Three Little Pigs, a bedtime story (2026-11-10).mp3",
+      "audio_sha256": "c274be6650ef09c54aebd64a38c5680430ecf8f40d75d4e8ddd63843ff9ec55f"
     },
     {
       "id": "2026-11-10_the-secret-behind-viral-product-launches",
@@ -309,7 +314,7 @@
       "published": "2026-11-10T08:12:19Z",
       "duration_s": 566.652,
       "size_bytes": 9067795,
-      "audio": "episodes/2026-11-10_the-secret-behind-viral-product-launches/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-10_the-secret-behind-viral-product-launches/2026-11-10_the-secret-behind-viral-product-launches.mp3",
       "transcript": "episodes/2026-11-10_the-secret-behind-viral-product-launches/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -363,7 +368,8 @@
       ],
       "description": "How do startups get a million views on a product launch? Kyle Jeong, who launches products at Browserbase, says viral launches on X are engineered over weeks, not left to luck. Bob and Alice unpack his playbook.\n\nIn this episode:\n- A launch video, copy that earns every word, a story with a villain\n- Why replies and quotes beat likes on X\n- Friends, paid reach and the FTC's disclosure rules\n- A checklist for your next launch\n\nSources: Kyle Jeong; Twitter; Paul Graham; Federal Trade Commission\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - The Secret Behind Viral Product Launches (2026-11-10).mp3"
+      "file_name": "Build Wiz AI Show - The Secret Behind Viral Product Launches (2026-11-10).mp3",
+      "audio_sha256": "e2a59c4a5ed44b448ba70f8b697a3bbe5d1b9a5c2475db86ebed8c3b75b28d43"
     },
     {
       "id": "2026-11-09_how-to-build-a-one-person-million-dollar-agency",
@@ -384,7 +390,7 @@
       "published": "2026-11-09T23:30:21Z",
       "duration_s": 751.703,
       "size_bytes": 12028640,
-      "audio": "episodes/2026-11-09_how-to-build-a-one-person-million-dollar-agency/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-09_how-to-build-a-one-person-million-dollar-agency/2026-11-09_how-to-build-a-one-person-million-dollar-agency.mp3",
       "transcript": "episodes/2026-11-09_how-to-build-a-one-person-million-dollar-agency/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -438,7 +444,8 @@
       ],
       "description": "Can one person run a million dollar marketing agency with AI agents? Bob and Alice unpack The Boring Marketer's plan for plumbing and HVAC shops: three tiers, sales agents, and delivery agents that ask first.\n\nIn this episode:\n- The math: 20 clients for about $85,000 a month, and why you plan on signing 28.\n- Approvals: runs on its own, asks you first, never.\n- What breaks: vendor numbers, approval fatigue, and AI voices on cold calls.\n\nSources: The Boring Marketer; Jeremy Kahn; Anthropic; Ali Swenson\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - How to Build a One-Person Million Dollar Agency with AI Agents (2026-11-10).mp3"
+      "file_name": "Build Wiz AI Show - How to Build a One-Person Million Dollar Agency with AI Agents (2026-11-10).mp3",
+      "audio_sha256": "e8831d820afef13aa613f19bd2076c9bf1c43961ffb9924b7e9b8ecb7f65076b"
     },
     {
       "id": "2026-11-04_a-practical-guide-to-security-in-november-2026",
@@ -459,7 +466,7 @@
       "published": "2026-11-09T08:58:33Z",
       "duration_s": 690.743,
       "size_bytes": 11053107,
-      "audio": "episodes/2026-11-04_a-practical-guide-to-security-in-november-2026/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-04_a-practical-guide-to-security-in-november-2026/2026-11-04_a-practical-guide-to-security-in-november-2026.mp3",
       "transcript": "episodes/2026-11-04_a-practical-guide-to-security-in-november-2026/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -471,7 +478,8 @@
       },
       "description": "Jack Cable's X article A Practical Guide to Security in November 2026, after a chaotic few weeks of hacks and critical bugs. Bob and Alice unpack it.\n\nIn this episode:\n- His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.\n- Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today.\n\nSources: A Practical Guide to Security in November 2026 by Jack Cable (@jackhcable)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - A Practical Guide to Security in November 2026 (2026-11-09).mp3"
+      "file_name": "Build Wiz AI Show - A Practical Guide to Security in November 2026 (2026-11-09).mp3",
+      "audio_sha256": "8af44fda89447d2655b9fa59d6311712a608bc9fab85e2ac08ba188e4edbc143"
     },
     {
       "id": "2026-11-05_marketing-engineers-100x-more-experiments-with",
@@ -492,7 +500,7 @@
       "published": "2026-11-09T08:50:04Z",
       "duration_s": 730.203,
       "size_bytes": 11684655,
-      "audio": "episodes/2026-11-05_marketing-engineers-100x-more-experiments-with/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-05_marketing-engineers-100x-more-experiments-with/2026-11-05_marketing-engineers-100x-more-experiments-with.mp3",
       "transcript": "episodes/2026-11-05_marketing-engineers-100x-more-experiments-with/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -546,7 +554,8 @@
       ],
       "description": "Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents. Bob and Alice unpack it.\n\nIn this episode:\n- His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.\n- Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.\n\nSources: Greg Isenberg; Sean Ellis; Chonglin Sun et al.; Shannon Bond\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Marketing Engineers 100x More Experiments with AI agents (2026-11-09).mp3"
+      "file_name": "Build Wiz AI Show - Marketing Engineers 100x More Experiments with AI agents (2026-11-09).mp3",
+      "audio_sha256": "0beb44ebcab082aed63c73be238bf04e2e12e0af6ac7ea35f17f05e4d94bac02"
     },
     {
       "id": "2026-11-05_marketing-engineers-solo-explainer",
@@ -567,7 +576,7 @@
       "published": "2026-11-09T08:37:10Z",
       "duration_s": 524.633,
       "size_bytes": 8395333,
-      "audio": "episodes/2026-11-05_marketing-engineers-solo-explainer/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-05_marketing-engineers-solo-explainer/2026-11-05_marketing-engineers-solo-explainer.mp3",
       "transcript": "episodes/2026-11-05_marketing-engineers-solo-explainer/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -579,7 +588,8 @@
       },
       "description": "A solo explainer of Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents. Alice unpacks it on her own.\n\nIn this episode:\n- His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.\n- Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.\n\nSources: Marketing Engineers: 100x More Experiments with AI agents by Greg Isenberg (@gregisenberg)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Marketing Engineers 100x More Experiments with AI agents (solo explainer) (2026-11-09).mp3"
+      "file_name": "Build Wiz AI Show - Marketing Engineers 100x More Experiments with AI agents (solo explainer) (2026-11-09).mp3",
+      "audio_sha256": "1360307ac7dbd88bf690e08ce698533ebde05fde2a4b003c96bd6898daf956fd"
     },
     {
       "id": "2026-11-05_meet-the-new-build-wiz-ai-show",
@@ -600,7 +610,7 @@
       "published": "2026-11-09T08:22:18Z",
       "duration_s": 401.21,
       "size_bytes": 6420432,
-      "audio": "episodes/2026-11-05_meet-the-new-build-wiz-ai-show/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-05_meet-the-new-build-wiz-ai-show/2026-11-05_meet-the-new-build-wiz-ai-show.mp3",
       "transcript": "episodes/2026-11-05_meet-the-new-build-wiz-ai-show/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -665,7 +675,8 @@
       ],
       "description": "A fresh introduction to Build Wiz AI Show: hosts Bob and Alice, who swap roles, and four recurring guests. Bob and Alice unpack it.\n\nIn this episode:\n- How an episode is made: read in full, outlined, tested against outside sources, every claim checked word for word.\n- Why it matters: each episode aims to give the best ideas, their limits, and one concrete thing to try.\n\nSources: Build Wiz AI Show; Ziwei Ji et al.; Anthropic; Elisa Shearer et al.; Shannon Bond\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Meet the new Build Wiz AI Show (2026-11-09).mp3"
+      "file_name": "Build Wiz AI Show - Meet the new Build Wiz AI Show (2026-11-09).mp3",
+      "audio_sha256": "1d87c6a1d2263d7ca5537bfb45173b872b3555ebf0cb5ea5b5e4df26bab7235b"
     },
     {
       "id": "2026-11-06_5t-opportunity-ai-roll-ups",
@@ -686,7 +697,7 @@
       "published": "2026-11-09T08:13:17Z",
       "duration_s": 770.085,
       "size_bytes": 12322457,
-      "audio": "episodes/2026-11-06_5t-opportunity-ai-roll-ups/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-06_5t-opportunity-ai-roll-ups/2026-11-06_5t-opportunity-ai-roll-ups.mp3",
       "transcript": "episodes/2026-11-06_5t-opportunity-ai-roll-ups/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -740,7 +751,8 @@
       ],
       "description": "Greg Isenberg's X article makes the case for AI roll-ups: buy an established services business and run its back office with AI agents. Bob and Alice unpack it.\n\nIn this episode:\n- His playbook: buy the customers and trust, build a rulebook and review checkpoints, and move margins from 5-10% toward 30-40%.\n- Guests add balance: even Thrive needed more than off-the-shelf AI, and AI users get less accurate when they stop checking.\n\nSources: Greg Isenberg; Nathan Labenz; Nicole Kobie; Ethan Mollick\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - AI Roll-Ups Buy a Boring Business, Run It with Agents (2026-11-09).mp3"
+      "file_name": "Build Wiz AI Show - AI Roll-Ups Buy a Boring Business, Run It with Agents (2026-11-09).mp3",
+      "audio_sha256": "b2cf03c37c79067ab8a892fe0528c12c1443422fdeaf38f044b786e107968d2e"
     },
     {
       "id": "2026-11-06_why-software-factories-fail",
@@ -761,7 +773,7 @@
       "published": "2026-11-09T07:59:38Z",
       "duration_s": 732.579,
       "size_bytes": 11722686,
-      "audio": "episodes/2026-11-06_why-software-factories-fail/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-06_why-software-factories-fail/2026-11-06_why-software-factories-fail.mp3",
       "transcript": "episodes/2026-11-06_why-software-factories-fail/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -815,7 +827,8 @@
       ],
       "description": "Can a lights-off software factory, where no human reads or writes the code, really work? Bob and Alice unpack Dex Horthy's Why Software Factories Fail: why coding agents erode codebase maintainability, and why harness engineering can't fix it.\n\nIn this episode:\n- Why review became the bottleneck once agents write the code\n- Why models are rewarded for passing tests, not good design\n- What DORA and METR data say about stability and speed\n\nSources: Dex Horthy; Carlos E. Jimenez et al.; Nathen Harvey and Derek DeBellis; METR\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Why Software Factories Fail The Harness Is Not Enough (2026-11-09).mp3"
+      "file_name": "Build Wiz AI Show - Why Software Factories Fail The Harness Is Not Enough (2026-11-09).mp3",
+      "audio_sha256": "07837a7b0750d1bd0c62ae1ed6318dc9dbb626c1ff512d98963577324cdf7087"
     },
     {
       "id": "2026-11-07_your-old-prompts-are-making-claude-worse",
@@ -836,7 +849,7 @@
       "published": "2026-11-09T07:44:08Z",
       "duration_s": 890.579,
       "size_bytes": 14250513,
-      "audio": "episodes/2026-11-07_your-old-prompts-are-making-claude-worse/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-07_your-old-prompts-are-making-claude-worse/2026-11-07_your-old-prompts-are-making-claude-worse.mp3",
       "transcript": "episodes/2026-11-07_your-old-prompts-are-making-claude-worse/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -890,7 +903,8 @@
       ],
       "description": "Old prompt tricks like think step by step can now make Claude worse and pricier. Bob and Alice unpack Lance Martin's AI Engineer talk on getting more from frontier models.\n\nIn this episode:\n- Prompt audits and the prompt cache: up to 72% cheaper\n- Evals Claude can climb, and hill climbing without overfitting\n- Days-long agents with Claude Managed Agents\n\nSources: Lance Martin; Thomas Kwa et al.; Hamel Husain; Ethan Mollick\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Your Old Prompts Are Making Claude Worse Cheaper, Better Claude (2026-11-09).mp3"
+      "file_name": "Build Wiz AI Show - Your Old Prompts Are Making Claude Worse Cheaper, Better Claude (2026-11-09).mp3",
+      "audio_sha256": "b8c15cafa3b06e82ce5c391c6aed5c0fb9ad0ef42c815f1e833cd960f989e098"
     },
     {
       "id": "2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0",
@@ -911,7 +925,7 @@
       "published": "2026-11-09T07:15:18Z",
       "duration_s": 724.479,
       "size_bytes": 11592702,
-      "audio": "episodes/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0.mp3",
       "transcript": "episodes/2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -954,7 +968,8 @@
       ],
       "description": "How did two founders run 60 UGC creators with zero employees? Bob and Alice unpack Mau Baron's playbook for growing a mobile app from $25k to $150k a month.\n\nIn this episode:\n- An app worth filming and a funnel that converts\n- Hiring, paying and managing creators\n- Running every video as TikTok Spark Ads\n\nSources: Mau Baron; Andrew Chen; Thales Bertaglia et al.\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - How Two Founders Ran 60 UGC Creators With Zero Employees (2026-11-09).mp3"
+      "file_name": "Build Wiz AI Show - How Two Founders Ran 60 UGC Creators With Zero Employees (2026-11-09).mp3",
+      "audio_sha256": "c60bd273bf487bd7b8e83c7d1d4be26809947c1197822b875c1aad5488c6fe3f"
     },
     {
       "id": "2026-11-08_your-coding-agents-made-you-a-manager",
@@ -975,7 +990,7 @@
       "published": "2026-11-09T06:50:42Z",
       "duration_s": 790.818,
       "size_bytes": 12654300,
-      "audio": "episodes/2026-11-08_your-coding-agents-made-you-a-manager/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-08_your-coding-agents-made-you-a-manager/2026-11-08_your-coding-agents-made-you-a-manager.mp3",
       "transcript": "episodes/2026-11-08_your-coding-agents-made-you-a-manager/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1018,7 +1033,8 @@
       ],
       "description": "Spend your day with a coding agent and you are already a manager. Bob and Alice unpack Addy Osmani's guide to managing coding agents like a good engineering manager would.\n\nIn this episode:\n- Give agents a check they can run, and ask for proof\n- Brief what the repo can't show; restart after two failed fixes\n- Delegate the task, never the judgment\n\nSources: Addy Osmani; Mike Pearl; METR\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Your Coding Agents Made You a Manager (2026-11-09).mp3"
+      "file_name": "Build Wiz AI Show - Your Coding Agents Made You a Manager (2026-11-09).mp3",
+      "audio_sha256": "5344a928590cd15f67174acc0e95c608f2fbb9c1ea0293f363d254ae9cc90547"
     },
     {
       "id": "2026-11-06_little-red-cap-fr",
@@ -1036,7 +1052,7 @@
       "published": "2026-11-06T18:18:40Z",
       "duration_s": 449.488,
       "size_bytes": 7193540,
-      "audio": "episodes/2026-11-06_little-red-cap-fr/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-06_little-red-cap-fr/2026-11-06_little-red-cap-fr.mp3",
       "transcript": "episodes/2026-11-06_little-red-cap-fr/transcript.vtt",
       "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
       "source": {
@@ -1056,7 +1072,8 @@
         "wide": "art/2026-11-06_little-red-cap/wide.jpg",
         "thumb": "art/2026-11-06_little-red-cap/thumb.jpg",
         "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
-      }
+      },
+      "audio_sha256": "06c587a5e4f218081f1b6effff9c9edf5816cad1c0a720b189118ad01e1926d7"
     },
     {
       "id": "2026-11-06_little-red-cap-vi",
@@ -1074,7 +1091,7 @@
       "published": "2026-11-06T18:13:22Z",
       "duration_s": 370.269,
       "size_bytes": 5926317,
-      "audio": "episodes/2026-11-06_little-red-cap-vi/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-06_little-red-cap-vi/2026-11-06_little-red-cap-vi.mp3",
       "transcript": "episodes/2026-11-06_little-red-cap-vi/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1094,7 +1111,8 @@
         "wide": "art/2026-11-06_little-red-cap/wide.jpg",
         "thumb": "art/2026-11-06_little-red-cap/thumb.jpg",
         "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
-      }
+      },
+      "audio_sha256": "44a6aa169e01f2fcdbf9464cf0793591e490778c79f3ec3e8ce0458817556880"
     },
     {
       "id": "2026-11-06_little-red-cap",
@@ -1112,7 +1130,7 @@
       "published": "2026-11-06T18:03:45Z",
       "duration_s": 377.098,
       "size_bytes": 6035367,
-      "audio": "episodes/2026-11-06_little-red-cap/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-en-media/releases/download/2026-11-06_little-red-cap/2026-11-06_little-red-cap.mp3",
       "transcript": "episodes/2026-11-06_little-red-cap/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1132,7 +1150,8 @@
         "wide": "art/2026-11-06_little-red-cap/wide.jpg",
         "thumb": "art/2026-11-06_little-red-cap/thumb.jpg",
         "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
-      }
+      },
+      "audio_sha256": "0d6c649a719c41ad40c0ce8f00556151084649c70d178756e86b2ee777e40a5a"
     },
     {
       "id": "2026-11-05_hansel-and-gretel-fr",
@@ -1150,7 +1169,7 @@
       "published": "2026-11-05T22:10:03Z",
       "duration_s": 511.796,
       "size_bytes": 8190709,
-      "audio": "episodes/2026-11-05_hansel-and-gretel-fr/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-05_hansel-and-gretel-fr/2026-11-05_hansel-and-gretel-fr.mp3",
       "transcript": "episodes/2026-11-05_hansel-and-gretel-fr/transcript.vtt",
       "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
       "source": {
@@ -1170,7 +1189,8 @@
         "wide": "art/2026-11-05_hansel-and-gretel/wide.jpg",
         "thumb": "art/2026-11-05_hansel-and-gretel/thumb.jpg",
         "alt": "Pencil drawing of Hansel and Gretel walking hand in hand under the moon, following shining white pebbles home to a little lit house."
-      }
+      },
+      "audio_sha256": "90a804abd8dcbd52178e8446707609c42285d16bf9dea17e131cafb21ec72ee6"
     },
     {
       "id": "2026-11-05_hansel-and-gretel-vi",
@@ -1188,7 +1208,7 @@
       "published": "2026-11-05T21:34:30Z",
       "duration_s": 403.098,
       "size_bytes": 6451581,
-      "audio": "episodes/2026-11-05_hansel-and-gretel-vi/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-05_hansel-and-gretel-vi/2026-11-05_hansel-and-gretel-vi.mp3",
       "transcript": "episodes/2026-11-05_hansel-and-gretel-vi/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1208,7 +1228,8 @@
         "wide": "art/2026-11-05_hansel-and-gretel/wide.jpg",
         "thumb": "art/2026-11-05_hansel-and-gretel/thumb.jpg",
         "alt": "Pencil drawing of Hansel and Gretel walking hand in hand under the moon, following shining white pebbles home to a little lit house."
-      }
+      },
+      "audio_sha256": "895769aaac4c3ea78c5a570b015ed9336fe5a45f2c8a1365790b22e4de67b1ad"
     },
     {
       "id": "2026-11-05_hansel-and-gretel",
@@ -1226,7 +1247,7 @@
       "published": "2026-11-05T21:28:03Z",
       "duration_s": 403.562,
       "size_bytes": 6458686,
-      "audio": "episodes/2026-11-05_hansel-and-gretel/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-en-media/releases/download/2026-11-05_hansel-and-gretel/2026-11-05_hansel-and-gretel.mp3",
       "transcript": "episodes/2026-11-05_hansel-and-gretel/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1246,7 +1267,8 @@
         "wide": "art/2026-11-05_hansel-and-gretel/wide.jpg",
         "thumb": "art/2026-11-05_hansel-and-gretel/thumb.jpg",
         "alt": "Pencil drawing of Hansel and Gretel walking hand in hand under the moon, following shining white pebbles home to a little lit house."
-      }
+      },
+      "audio_sha256": "a9a27dde9373e249be804133aae3d51006fdaacb3a0faae5cd25cc72c777ab7c"
     },
     {
       "id": "2026-11-04_the-golden-touch-fr",
@@ -1267,7 +1289,7 @@
       "published": "2026-11-05T16:32:38Z",
       "duration_s": 578.048,
       "size_bytes": 9250669,
-      "audio": "episodes/2026-11-04_the-golden-touch-fr/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-04_the-golden-touch-fr/2026-11-04_the-golden-touch-fr.mp3",
       "transcript": "episodes/2026-11-04_the-golden-touch-fr/transcript.vtt",
       "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
       "source": {
@@ -1287,7 +1309,8 @@
         "wide": "art/2026-11-04_the-golden-touch/wide.jpg",
         "thumb": "art/2026-11-04_the-golden-touch/thumb.jpg",
         "alt": "Pencil drawing of King Midas sprinkling river water on a rose bush from a clay jug while his daughter Marygold holds up a red rose."
-      }
+      },
+      "audio_sha256": "f3c1a19bf980e1171bfafbdec3d815a3fe7ae6122dc0212a1bd52e61c47116c6"
     },
     {
       "id": "2026-11-04_the-golden-touch-en",
@@ -1308,7 +1331,7 @@
       "published": "2026-11-05T15:47:28Z",
       "duration_s": 487.673,
       "size_bytes": 7804530,
-      "audio": "episodes/2026-11-04_the-golden-touch-en/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-en-media/releases/download/2026-11-04_the-golden-touch-en/2026-11-04_the-golden-touch-en.mp3",
       "transcript": "episodes/2026-11-04_the-golden-touch-en/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1328,7 +1351,8 @@
         "wide": "art/2026-11-04_the-golden-touch/wide.jpg",
         "thumb": "art/2026-11-04_the-golden-touch/thumb.jpg",
         "alt": "Pencil drawing of King Midas sprinkling river water on a rose bush from a clay jug while his daughter Marygold holds up a red rose."
-      }
+      },
+      "audio_sha256": "789a90d2bf4b320293ea13979cf54e9c673476daa7e49c601702de465fbcad97"
     },
     {
       "id": "2026-11-04_the-golden-touch",
@@ -1349,7 +1373,7 @@
       "published": "2026-11-05T15:40:52Z",
       "duration_s": 458.343,
       "size_bytes": 7335162,
-      "audio": "episodes/2026-11-04_the-golden-touch/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-04_the-golden-touch/2026-11-04_the-golden-touch.mp3",
       "transcript": "episodes/2026-11-04_the-golden-touch/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1369,7 +1393,8 @@
         "wide": "art/2026-11-04_the-golden-touch/wide.jpg",
         "thumb": "art/2026-11-04_the-golden-touch/thumb.jpg",
         "alt": "Pencil drawing of King Midas sprinkling river water on a rose bush from a clay jug while his daughter Marygold holds up a red rose."
-      }
+      },
+      "audio_sha256": "af079c28666e71088313c3beeef8ce0454dab90aa019413f58f43b4e139e1343"
     },
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper-vi",
@@ -1390,7 +1415,7 @@
       "published": "2026-11-05T15:28:54Z",
       "duration_s": 335.896,
       "size_bytes": 5376130,
-      "audio": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper-vi/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-05_cinderella-or-the-little-glass-slipper-vi/2026-11-05_cinderella-or-the-little-glass-slipper-vi.mp3",
       "transcript": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper-vi/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1410,7 +1435,8 @@
         "wide": "art/2026-11-05_cinderella-or-the-little-glass-slipper/wide.jpg",
         "thumb": "art/2026-11-05_cinderella-or-the-little-glass-slipper/thumb.jpg",
         "alt": "Pencil drawing of Cinderella in a blue ball gown beside a pumpkin coach with two little mice, a palace glowing on the hill at dusk."
-      }
+      },
+      "audio_sha256": "26e01b099dcf873eefb6c2644113c0e60e9711f426c4ca41599b0d3ceceb89b8"
     },
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper-fr",
@@ -1431,7 +1457,7 @@
       "published": "2026-11-05T15:24:08Z",
       "duration_s": 351.693,
       "size_bytes": 5628995,
-      "audio": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper-fr/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-fr-media/releases/download/2026-11-05_cinderella-or-the-little-glass-slipper-fr/2026-11-05_cinderella-or-the-little-glass-slipper-fr.mp3",
       "transcript": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper-fr/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1451,7 +1477,8 @@
         "wide": "art/2026-11-05_cinderella-or-the-little-glass-slipper/wide.jpg",
         "thumb": "art/2026-11-05_cinderella-or-the-little-glass-slipper/thumb.jpg",
         "alt": "Pencil drawing of Cinderella in a blue ball gown beside a pumpkin coach with two little mice, a palace glowing on the hill at dusk."
-      }
+      },
+      "audio_sha256": "f787e672c8e2e5103358eb2d34987d06f8901fb9f54c3e59099a86f783d590d7"
     },
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper",
@@ -1472,7 +1499,7 @@
       "published": "2026-11-05T14:59:09Z",
       "duration_s": 353.421,
       "size_bytes": 5656580,
-      "audio": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper/episode.mp3",
+      "audio": "https://github.com/luongnv89/once-upon-a-time-en-media/releases/download/2026-11-05_cinderella-or-the-little-glass-slipper/2026-11-05_cinderella-or-the-little-glass-slipper.mp3",
       "transcript": "episodes/2026-11-05_cinderella-or-the-little-glass-slipper/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1492,7 +1519,8 @@
         "wide": "art/2026-11-05_cinderella-or-the-little-glass-slipper/wide.jpg",
         "thumb": "art/2026-11-05_cinderella-or-the-little-glass-slipper/thumb.jpg",
         "alt": "Pencil drawing of Cinderella in a blue ball gown beside a pumpkin coach with two little mice, a palace glowing on the hill at dusk."
-      }
+      },
+      "audio_sha256": "6ee9804cddc8b55a57a095d043915577390886401188b608fbcba87669671b41"
     },
     {
       "id": "2026-11-04_critical-thinking-when-agents-do-the-work",
@@ -1513,7 +1541,7 @@
       "published": "2026-11-04T10:46:09Z",
       "duration_s": 702.041,
       "size_bytes": 11233950,
-      "audio": "episodes/2026-11-04_critical-thinking-when-agents-do-the-work/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-04_critical-thinking-when-agents-do-the-work/2026-11-04_critical-thinking-when-agents-do-the-work.mp3",
       "transcript": "episodes/2026-11-04_critical-thinking-when-agents-do-the-work/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1525,7 +1553,8 @@
       },
       "description": "Addy Osmani viết trên X về tư duy phản biện khi agent AI làm phần lớn công việc thay ta. Bob và Alice cùng phân tích trong 12 phút.\n\nTrong tập này:\n- Từ giao việc, phó thác đến đầu hàng nhận thức: hãy đặt giả thuyết trước, hỏi dấu xanh chứng minh gì và đọc bằng chứng.\n- Bạn giao được việc và phần lớn khâu kiểm tra, nhưng không giao được trách nhiệm cho thứ mình ship.\n\nNguồn: Critical thinking when agents do the work của Addy Osmani (@addyosmani)\nNhững ý tưởng lớn về AI, giải thích dễ hiểu cho người làm sản phẩm. luongnv.com/podcast",
       "file_name": "Build Wiz AI Show - Tư duy phản biện khi agent làm việc thay mình (2026-11-04).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "audio_sha256": "e070387922b9619378f1971d64c651f62192a8b71c8731158caa9147a149077c"
     },
     {
       "id": "2026-11-03_the-most-lucrative-ai-business-to-start-in-2027",
@@ -1546,7 +1575,7 @@
       "published": "2026-11-03T21:29:57Z",
       "duration_s": 765.006,
       "size_bytes": 12241231,
-      "audio": "episodes/2026-11-03_the-most-lucrative-ai-business-to-start-in-2027/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-03_the-most-lucrative-ai-business-to-start-in-2027/2026-11-03_the-most-lucrative-ai-business-to-start-in-2027.mp3",
       "transcript": "episodes/2026-11-03_the-most-lucrative-ai-business-to-start-in-2027/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1558,7 +1587,8 @@
       },
       "description": "An X article by Dan Koe on the most lucrative AI business to start in 2027. Bob and Alice unpack it in 13 minutes.\n\nIn this episode:\n- His thesis: capturing attention is the top skill, and one person using AI well can be a full creative team for their own brand or for clients.\n- It lays out a step-by-step client process and a way to land the first client, with market data from Goldman Sachs and the IAB.\n\nSources: The most lucrative AI business to start in 2027 by Dan Koe (@thedankoe)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "file_name": "Build Wiz AI Show - The most lucrative AI business to start in 2027 (2026-11-03).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "audio_sha256": "dcaa3c8e30aeef8a4c1466e5d0819c3ea0ed94842258a54af44fb3a8202cf929"
     },
     {
       "id": "2026-11-03_the-road-to-self-improving-software",
@@ -1579,7 +1609,7 @@
       "published": "2026-11-03T17:26:26Z",
       "duration_s": 315.8,
       "size_bytes": 5054252,
-      "audio": "episodes/2026-11-03_the-road-to-self-improving-software/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-03_the-road-to-self-improving-software/2026-11-03_the-road-to-self-improving-software.mp3",
       "transcript": "episodes/2026-11-03_the-road-to-self-improving-software/transcript.vtt",
       "voices": "VoiceCast · chatterbox-turbo",
       "source": {
@@ -1591,7 +1621,8 @@
       },
       "description": "An X article by Ben Holmes on building a closed-loop software factory with agents. Bob and Alice unpack it in 5 minutes.\n\nIn this episode:\n- Agents can proactively fix alerted bugs, score their own sessions to improve skills, and mine customer data for the roadmap.\n- It shifts the goal from faster pull requests to one loop from task to shipped product, with humans still reviewing.\n\nSources: The road to self-improving software by Ben Holmes (@BHolmesDev)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "file_name": "Build Wiz AI Show - The road to self-improving software (2026-11-03).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "audio_sha256": "91406205d251a5f37fbebcd49a163c5e6a04435bb58378f60ed6fe97f08ee905"
     },
     {
       "id": "2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent",
@@ -1612,7 +1643,7 @@
       "published": "2026-11-03T17:15:34Z",
       "duration_s": 683.555,
       "size_bytes": 10938034,
-      "audio": "episodes/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent/episode.mp3",
+      "audio": "https://github.com/luongnv89/buildwiz-ai-show-media/releases/download/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent.mp3",
       "transcript": "episodes/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent/transcript.vtt",
       "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
       "source": {
@@ -1624,7 +1655,8 @@
       },
       "description": "An X article by app co-founder Nicholas on growing an app to about 40 thousand dollars a month with organic video. Bob and Alice unpack it in 11 minutes.\n\nIn this episode:\n- The method: a decent app built fast, heavy daily posting with trial reels, AI-assisted editing, and tested calls to action.\n- It is a sponsored, self-reported playbook; some tactics, like buying followers or planted comments, carry real risks.\n\nSources: How we scaled our app to $40k/month with $0 spent (Full Guide) by Nicholas (@nicholascalez)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "file_name": "Build Wiz AI Show - How we scaled our app to 40 thousand dollars a month with zero dollars spent (2026-11-03).mp3",
-      "description_source": "generated"
+      "description_source": "generated",
+      "audio_sha256": "744491fa45a2dbd8302b3145927a8404feb86d941bbc271aab9d0dcaccfc11a9"
     }
   ]
 }

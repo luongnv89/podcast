@@ -7,7 +7,7 @@
   <description>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</description>
   <itunes:summary>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</itunes:summary>
   <language>vi</language>
-  <lastBuildDate>Tue, 10 Nov 2026 16:54:03 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 11 Nov 2026 00:48:05 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -41,7 +41,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure"
 Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
     <content:encoded><![CDATA[<p>Truyện Ba chú heo con kể nhẹ nhàng trước giờ ngủ, theo truyện cổ nước Anh của Joseph Jacobs, trên trang Three Little Pigs của D. L. Ashliman.</p><p>Một nhà rơm, một nhà gỗ, một nhà gạch, và chú heo con thông minh qua mặt con sói nhờ củ cải, quả táo và chiếc thùng đánh bơ.</p><p>Chẳng ai bị ăn thịt: con sói rơi tõm vào nồi nước lạnh, chạy mất luôn, và câu chuyện khép lại bằng lời chúc ngủ ngon.</p><p>Nguồn: Three Little Pigs: <a href="https://sites.pitt.edu/~dash/type0124.html">https://sites.pitt.edu/~dash/type0124.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Marty Gots a Plan", "Golly Gee", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
     <pubDate>Tue, 10 Nov 2026 16:53:40 +0000</pubDate>
-    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-10_three-little-pigs-vi/episode.mp3?v=0ca3102b" length="8095934" type="audio/mpeg"/>
+    <enclosure url="https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-10_three-little-pigs-vi/2026-11-10_three-little-pigs-vi.mp3?v=0ca3102b" length="8095934" type="audio/mpeg"/>
     <itunes:duration>506</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
@@ -65,7 +65,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback",
 Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
     <content:encoded><![CDATA[<p>Truyện Cô bé quàng khăn đỏ kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman.</p><p>Một con sói ranh mãnh, bà ngoại trốn trong tủ, và bác thợ săn làm sói chạy biến vào rừng sâu.</p><p>Chẳng ai bị đau, một con sói khác rơi tõm xuống máng nước luộc xúc xích, và câu chuyện khép lại bằng lời chúc ngủ ngon.</p><p>Nguồn: Little Red Cap: <a href="https://sites.pitt.edu/~dash/grimm026.html">https://sites.pitt.edu/~dash/grimm026.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Golly Gee", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
     <pubDate>Fri, 06 Nov 2026 18:13:22 +0000</pubDate>
-    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap-vi/episode.mp3?v=44a6aa16" length="5926317" type="audio/mpeg"/>
+    <enclosure url="https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-06_little-red-cap-vi/2026-11-06_little-red-cap-vi.mp3?v=44a6aa16" length="5926317" type="audio/mpeg"/>
     <itunes:duration>370</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
@@ -89,7 +89,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure"
 Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
     <content:encoded><![CDATA[<p>Truyện Hansel và Gretel kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman.</p><p>Những viên sỏi lấp lánh, ngôi nhà bằng bánh mì và bánh ngọt, và cô em gái thông minh cứu anh trai.</p><p>Chú vịt trắng hiền lành đưa hai anh em về với cha, và câu chuyện khép lại bằng lời chúc ngủ ngon.</p><p>Nguồn: Hansel and Gretel: <a href="https://sites.pitt.edu/~dash/grimm015.html">https://sites.pitt.edu/~dash/grimm015.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
     <pubDate>Thu, 05 Nov 2026 21:34:30 +0000</pubDate>
-    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel-vi/episode.mp3?v=895769aa" length="6451581" type="audio/mpeg"/>
+    <enclosure url="https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-05_hansel-and-gretel-vi/2026-11-05_hansel-and-gretel-vi.mp3?v=895769aa" length="6451581" type="audio/mpeg"/>
     <itunes:duration>403</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
@@ -113,7 +113,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy
 Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
     <content:encoded><![CDATA[<p>Vua Midas, kể thật nhẹ nhàng trước giờ đi ngủ, theo truyện "Bàn tay vàng" của Nathaniel Hawthorne.</p><p>Ông vua mê vàng được toại nguyện: chạm vào gì cũng hóa vàng, kể cả cô con gái nhỏ Marygold.</p><p>Nước sông làm mọi thứ trở lại như cũ, và vua hiểu ra điều quý hơn vàng.</p><p>Nguồn: THE GOLDEN TOUCH.: <a href="https://www.ibiblio.org/eldritch/nh/wb2b.html">https://www.ibiblio.org/eldritch/nh/wb2b.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Golly Gee", "Touching Moments Four - Melody", "Call to Adventure", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
     <pubDate>Thu, 05 Nov 2026 15:40:52 +0000</pubDate>
-    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-04_the-golden-touch/episode.mp3?v=af079c28" length="7335162" type="audio/mpeg"/>
+    <enclosure url="https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-04_the-golden-touch/2026-11-04_the-golden-touch.mp3?v=af079c28" length="7335162" type="audio/mpeg"/>
     <itunes:duration>458</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
@@ -137,7 +137,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy
 Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
     <content:encoded><![CDATA[<p>Cô bé Lọ Lem, kể thật nhẹ nhàng trước giờ đi ngủ, theo truyện cổ của Charles Perrault.</p><p>Một cô bé hiền lành, bà tiên đỡ đầu, cỗ xe bí ngô và chiếc giày thủy tinh vừa khít.</p><p>Câu chuyện khép lại bằng sự tha thứ và lời chúc ngủ ngon: ở hiền thì gặp lành.</p><p>Nguồn: Cinderella; or, The Little Glass Slipper: <a href="https://sites.pitt.edu/~dash/perrault06.html">https://sites.pitt.edu/~dash/perrault06.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy Flashback", "Marty Gots a Plan", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
     <pubDate>Thu, 05 Nov 2026 15:28:54 +0000</pubDate>
-    <enclosure url="https://luongnv.com/podcast/episodes/2026-11-05_cinderella-or-the-little-glass-slipper-vi/episode.mp3?v=26e01b09" length="5376130" type="audio/mpeg"/>
+    <enclosure url="https://github.com/luongnv89/once-upon-a-time-vi-media/releases/download/2026-11-05_cinderella-or-the-little-glass-slipper-vi/2026-11-05_cinderella-or-the-little-glass-slipper-vi.mp3?v=26e01b09" length="5376130" type="audio/mpeg"/>
     <itunes:duration>336</itunes:duration>
     <itunes:explicit>false</itunes:explicit>
     <itunes:episodeType>full</itunes:episodeType>
