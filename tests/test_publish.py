@@ -532,7 +532,7 @@ class SiteMigrationTest(unittest.TestCase):
     def test_both_pages_share_the_index_and_script(self) -> None:
         main = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
         stories = (ROOT / "docs" / "stories" / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="stories/"', main)
+        self.assertIn('href="stories/en/"', main)
         self.assertNotIn('id: "bedtime"', main)
         # Both pages load the same shared script and stylesheet, with the same cache-busting version.
         main_v = re.search(r'<script src="site\.js\?v=(\w+)"></script>', main)

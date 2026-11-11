@@ -157,19 +157,31 @@
   };
   const pageFor = (e) => pageOfShow(showOf(e), storyLang(e));
   const hashId = (hash) => { try { return decodeURIComponent(String(hash || "").slice(1)); } catch { return ""; } };
+  // The keys the old stories page read from its query. Anything else (fbclid, utm_*, gclid)
+  // is a tracking tag a share or an ad added, not a setting.
+  const OLD_QUERY = ["q", "sort", "order", "tab"];
+  // The query with only those keys, as written (same encoding and order), or "".
+  const keptQuery = (search) => {
+    const kept = String(search || "").replace(/^\?/, "").split("&").filter((part) => {
+      try { return OLD_QUERY.includes(decodeURIComponent(part.split("=")[0].replace(/\+/g, " "))); } catch { return false; }
+    });
+    return kept.length ? `?${kept.join("&")}` : "";
+  };
   // The chooser (stories/) lists nothing: a link made before the language pages (#<id>, a
-  // search) goes on to the page that lists that episode, keeping the query and the hash. A
-  // search without a known episode goes to the visitor's language: the last one picked on
-  // the site, else the browser's, else English. Anything else stays on the chooser (null).
+  // search) goes on to the page that lists that episode, keeping the hash and the old page's
+  // keys. A search without a known episode goes to the visitor's language: the last one
+  // picked on the site, else the browser's, else English. Anything else, a link with only
+  // tracking tags included, stays on the chooser (null).
   function chooserTarget(all, hash, search, prefer) {
+    const query = keptQuery(search);
     const id = hashId(hash);
     const ep = id ? all.find((e) => e && e.id === id) : null;
     const page = ep ? pageFor(ep) : null;
-    if (page) return `${page}${search}${hash}`;
-    if (!search || search === "?") return null;
+    if (page) return `${page}${query}${hash}`;
+    if (!query) return null;
     const lang = prefer.map(primaryLang).find((l) => STORY_LANGS.includes(l)) || "en";
     const stories = pageOfShow(STORY_SHOW, lang);
-    return stories ? `${stories}${search}${hash}` : null;
+    return stories ? `${stories}${query}${hash}` : null;
   }
   // ---------- end of page routing ----------
 

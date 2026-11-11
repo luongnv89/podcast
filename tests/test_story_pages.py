@@ -236,7 +236,11 @@ class PagesTest(unittest.TestCase):
         html = PAGES["build"][0].read_text(encoding="utf-8")
         self.assertIn('pages: { "Once Upon a Time Show": "stories/{lang}/" },', html)
         self.assertIn('legacyTabs: { bedtime: "stories/" },', html)
-        self.assertIn('<p class="show-link">Our story show: <a href="stories/">Once Upon a Time Show →</a></p>', html)
+        # The switcher replaces the old "Our story show" line.
+        self.assertNotIn("Our story show", html)
+        self.assertNotIn('<a href="stories/">', html)
+        for lang in LANGS:
+            self.assertIn(f'<a class="show-item story" href="stories/{lang}/" hreflang="{lang}">', html)
         self.assertNotIn("lang:", re.search(r"window\.SHOW_PAGE = \{.*?\};", html, re.S).group(0))
 
 
@@ -336,6 +340,17 @@ const showOf = (e) => (STORY_FORMATS.includes(e.format) || e.show === STORY_SHOW
             "empty query": ("", "?", ["fr"], None),
             "unknown id": ("#nope", "", ["fr"], None),
             "malformed hash": ("#%E0%A4%A", "", ["fr"], None),
+            # Tracking tags are not settings: such a link shows the chooser.
+            "fbclid only": ("", "?fbclid=x", ["fr"], None),
+            "utm only": ("", "?utm_source=n", ["fr"], None),
+            "tracking tags only": ("", "?gclid=g&utm_medium=social&ref=x", ["fr"], None),
+            "unknown id with tracking": ("#nope", "?utm_source=n", ["fr"], None),
+            "search and tracking": ("", "?q=pigs&utm_source=n", ["fr"], "fr/?q=pigs"),
+            "tracking around keys": ("", "?fbclid=x&sort=title&utm_source=n&order=asc", [], "en/?sort=title&order=asc"),
+            "story with tracking": ("#pigs-fr", "?fbclid=x", [], "fr/#pigs-fr"),
+            "encoded key and value": ("", "?%71=big%20pigs", ["vi"], "vi/?%71=big%20pigs"),
+            "malformed tag dropped": ("", "?q=pig&%E0%A4%A=1", ["fr"], "fr/?q=pig"),
+            "key without a value": ("", "?tab", ["fr"], "fr/?tab"),
         }
         for label, (hash_, search, prefer, want) in cases.items():
             with self.subTest(case=label):

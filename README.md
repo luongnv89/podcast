@@ -169,8 +169,8 @@ does not play ("Could not load audio"). Those releases are kept as they are. `Gh
   emergencies). Its checkout is `$PODCAST_MEDIA_CHECKOUTS/<name>`, with origin
   `git@github.com:owner/name.git`, and its URL is `https://<owner>.github.io/<name>/<id>.mp3`
   (or the owner's custom domain). The site's player only accepts the four repos above
-  (`mediaUrl()`, `docs/site.js:1071`). After parsing, it accepts no credentials and only
-  origin `https://luongnv.com` with a path that `PAGES_PATH` (`docs/site.js:1069`) matches
+  (`mediaUrl()`, `docs/site.js:1083`). After parsing, it accepts no credentials and only
+  origin `https://luongnv.com` with a path that `PAGES_PATH` (`docs/site.js:1081`) matches
   exactly, `/<media repo>/<id>.mp3`. Until every entry is re-pointed, it also accepts the
   release URL (origin `https://github.com`, `MEDIA_PATH`,
   `/luongnv89/<repo>/releases/download/<id>/<id>.mp3`, with the same `<id>` twice). The URL
@@ -390,12 +390,15 @@ Once Upon a Time Show has one page per language (#35): `/podcast/stories/en/`, `
   three languages.
 - **Old links keep working.** `/podcast/stories/` stays valid (it is the chooser). With a
   `#<episode id>` it loads `episodes.json` and sends the visitor on to the page that lists
-  that episode, query and hash kept (`chooserTarget()`, `docs/site.js:164`, run before
-  anything else, `docs/site.js:176`); a Build Wiz AI Show id goes to `../#<id>`. A query
-  without a known episode (`?q=pigs`, from a shared search) goes to the visitor's language
-  page: the language last picked on the site, else the browser's first of English,
-  French and Vietnamese, else English. A plain `/podcast/stories/`, or an unknown id
-  without a query, stays on the chooser. The story feeds still link `/podcast/stories/`
+  that episode, hash kept (`chooserTarget()`, `docs/site.js:175`, run before anything
+  else, `docs/site.js:188`); a Build Wiz AI Show id goes to `../#<id>`. Only the query
+  keys the old stories page read go along: `q`, `sort`, `order` and `tab` (`OLD_QUERY`,
+  `docs/site.js:162`). A query with one of them and no known episode (`?q=pigs`, from a
+  shared search) goes to the visitor's language page: the language last picked on the
+  site, else the browser's first of English, French and Vietnamese, else English. A plain
+  `/podcast/stories/`, an unknown id without such a key, or a link with only tracking tags
+  (`?fbclid=…`, `?utm_source=…`, `?gclid=…`) stays on the chooser, so a shared or
+  advertised link shows the three languages. The story feeds still link `/podcast/stories/`
   and `/podcast/stories/#<id>`, so they did not change.
 - **The podcast switcher** is a bar at the top of every page (all five), in the page's
   markup: Build Wiz AI Show, then Once Upon a Time Show in English, Français and Tiếng
@@ -441,7 +444,7 @@ Each story language page (#35) lists that language's version only, with a langua
 switch (English / Français / Tiếng Việt, shortened to EN / FR / VI on a phone, each
 labelled in its own language): the current language is marked, and the others are links
 to the same story on their language's page (`../fr/#<episode id>`; `linkVersions()` and
-`versionLinks()`, `docs/site.js:327,346`). Following one sends `language_switch` and is
+`versionLinks()`, `docs/site.js:339,358`). Following one sends `language_switch` and is
 remembered in the browser as the visitor's language. Every version keeps its own id, so
 `#<episode id>` opens that version; given another language's id, a page sends the visitor
 on to that language's page. Languages compare by their primary subtag (`en-US` is `en`).
