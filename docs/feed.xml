@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Thu, 12 Nov 2026 07:44:38 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 12 Nov 2026 09:15:27 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,31 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-12_welcome-to-the-b2a-economy</guid>
+    <title>Welcome to the B2A Economy: When Your Customer Is an AI Agent</title>
+    <link>https://luongnv.com/podcast/#2026-11-12_welcome-to-the-b2a-economy</link>
+    <description>Olivia Moore at a16z argues AI agents are becoming the internet's main customers: welcome to the B2A, business-to-agent, economy.
+
+Agent traffic is surging and converts well, plug-ins and MCPs are becoming an app store for agents, and coding shows what comes next.
+
+Guests add Imperva's bot-traffic data, Anthropic's Model Context Protocol, and the Amazon v. Perplexity appeal ruling on shopping agents.
+
+Sources:
+- Welcome to the B2A Economy, Olivia Moore (https://www.a16z.news/p/welcome-to-the-b2a-economy)
+- AI-Driven Bots Surpass Human Traffic - Bad Bot Report 2025, Thales Group (https://cpl.thalesgroup.com/about-us/newsroom/2025-imperva-bad-bot-report-ai-internet-traffic)
+- Introducing the Model Context Protocol, Anthropic (https://www.anthropic.com/news/model-context-protocol)
+- Ninth Circuit Narrows CFAA Reach in Perplexity Agentic Commerce Ruling | PYMNTS.com, PYMNTS (https://www.pymnts.com/news/artificial-intelligence/2026/ninth-circuit-narrows-cfaa-reach-in-perplexity-agentic-commerce-ruling/)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Olivia Moore at a16z argues AI agents are becoming the internet's main customers: welcome to the B2A, business-to-agent, economy.</p><p>Agent traffic is surging and converts well, plug-ins and MCPs are becoming an app store for agents, and coding shows what comes next.</p><p>Guests add Imperva's bot-traffic data, Anthropic's Model Context Protocol, and the Amazon v. Perplexity appeal ruling on shopping agents.</p><p>Sources:</p><ul><li>Welcome to the B2A Economy, Olivia Moore: <a href="https://www.a16z.news/p/welcome-to-the-b2a-economy">https://www.a16z.news/p/welcome-to-the-b2a-economy</a></li><li>AI-Driven Bots Surpass Human Traffic - Bad Bot Report 2025, Thales Group: <a href="https://cpl.thalesgroup.com/about-us/newsroom/2025-imperva-bad-bot-report-ai-internet-traffic">https://cpl.thalesgroup.com/about-us/newsroom/2025-imperva-bad-bot-report-ai-internet-traffic</a></li><li>Introducing the Model Context Protocol, Anthropic: <a href="https://www.anthropic.com/news/model-context-protocol">https://www.anthropic.com/news/model-context-protocol</a></li><li>Ninth Circuit Narrows CFAA Reach in Perplexity Agentic Commerce Ruling | PYMNTS.com, PYMNTS: <a href="https://www.pymnts.com/news/artificial-intelligence/2026/ninth-circuit-narrows-cfaa-reach-in-perplexity-agentic-commerce-ruling/">https://www.pymnts.com/news/artificial-intelligence/2026/ninth-circuit-narrows-cfaa-reach-in-perplexity-agentic-commerce-ruling/</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Thu, 12 Nov 2026 09:12:17 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-12_welcome-to-the-b2a-economy.mp3?v=b8bb86c6" length="8577132" type="audio/mpeg"/>
+    <itunes:duration>536</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-12_welcome-to-the-b2a-economy/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-12_morning-edition-thursday-12-november-2026</guid>
     <title>AI Daily, 12 November 2026: Nvidia's board weighs ousting Jensen Huang, United bans AI agents</title>

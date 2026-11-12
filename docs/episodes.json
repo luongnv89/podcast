@@ -24,8 +24,84 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-12T07:44:38Z",
+  "updated": "2026-11-12T09:15:27Z",
   "episodes": [
+    {
+      "id": "2026-11-12_welcome-to-the-b2a-economy",
+      "title": "Welcome to the B2A Economy: When Your Customer Is an AI Agent",
+      "summary": [
+        "Olivia Moore at a16z argues AI agents are becoming the internet's main customers: welcome to the B2A, business-to-agent, economy.",
+        "Agent traffic is surging and converts well, plug-ins and MCPs are becoming an app store for agents, and coding shows what comes next.",
+        "Guests add Imperva's bot-traffic data, Anthropic's Model Context Protocol, and the Amazon v. Perplexity appeal ruling on shopping agents."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-12T09:12:17Z",
+      "duration_s": 535.998,
+      "size_bytes": 8577132,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-12_welcome-to-the-b2a-economy.mp3",
+      "audio_sha256": "b8bb86c6814b1b294f2d59820b2330c7d66bf8f3103fdf91cbb16ed5ac9ee061",
+      "transcript": "episodes/2026-11-12_welcome-to-the-b2a-economy/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Welcome to the B2A Economy",
+        "author": "Olivia Moore",
+        "url": "https://www.a16z.news/p/welcome-to-the-b2a-economy",
+        "published": "2026-11-11T15:02:38Z",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "Welcome to the B2A Economy",
+          "author": "Olivia Moore",
+          "url": "https://www.a16z.news/p/welcome-to-the-b2a-economy"
+        },
+        {
+          "title": "AI-Driven Bots Surpass Human Traffic - Bad Bot Report 2025",
+          "author": "Thales Group",
+          "url": "https://cpl.thalesgroup.com/about-us/newsroom/2025-imperva-bad-bot-report-ai-internet-traffic"
+        },
+        {
+          "title": "Introducing the Model Context Protocol",
+          "author": "Anthropic",
+          "url": "https://www.anthropic.com/news/model-context-protocol"
+        },
+        {
+          "title": "Ninth Circuit Narrows CFAA Reach in Perplexity Agentic Commerce Ruling | PYMNTS.com",
+          "author": "PYMNTS",
+          "url": "https://www.pymnts.com/news/artificial-intelligence/2026/ninth-circuit-narrows-cfaa-reach-in-perplexity-agentic-commerce-ruling/"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "AI-Driven Bots Surpass Human Traffic - Bad Bot Report 2025"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Introducing the Model Context Protocol"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Ninth Circuit Narrows CFAA Reach in Perplexity Agentic Commerce Ruling | PYMNTS.com"
+          ]
+        }
+      ],
+      "description": "What if your next customer isn't a person? Bob and Alice unpack Welcome to the B2A Economy, Olivia Moore's a16z piece on AI agents as buyers.\n\nIn this episode:\n- AI-driven traffic and orders surging, and why agent visitors convert better.\n- Plug-ins and MCPs as an app store for agents, and who wins in B2A.\n- Coding agents as the preview, and the Amazon v. Perplexity ruling on shopping agents.\n\nSources: Olivia Moore; Thales Group; Anthropic; PYMNTS\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Welcome to the B2A Economy When Your Customer Is an AI Agent (2026-11-12).mp3"
+    },
     {
       "id": "2026-11-12_morning-edition-thursday-12-november-2026",
       "title": "AI Daily, 12 November 2026: Nvidia's board weighs ousting Jensen Huang, United bans AI agents",
