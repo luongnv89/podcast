@@ -109,9 +109,10 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
   <p class="credit">D’après <a href="https://www.ibiblio.org/eldritch/nh/wb2b.html" rel="noopener">THE GOLDEN TOUCH.</a></p>
   <footer>Histoire réalisée avec DropCast et lue par une voix de synthèse. Chaque histoire cite le texte dont elle s’inspire.</footer>
 </main>
+<script src="../../share.js?v=202611130200"></script>
 <script>
 (() => {
-  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-04_the-golden-touch-fr/", "title": "Le roi Midas et le toucher d'or", "label": "Partager", "copied": "Lien copié", "failed": "Échec de la copie", "params": {"episode_id": "2026-11-04_the-golden-touch-fr", "episode_title": "Le roi Midas et le toucher d'or", "show": "Once Upon a Time Show", "episode_language": "fr", "story_group": "2026-11-04_the-golden-touch", "category": "bedtime"}};
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-04_the-golden-touch-fr/", "title": "Le roi Midas et le toucher d'or", "label": "Partager", "copied": "Lien copié", "failed": "Échec de la copie", "lang": "fr", "params": {"episode_id": "2026-11-04_the-golden-touch-fr", "episode_title": "Le roi Midas et le toucher d'or", "show": "Once Upon a Time Show", "episode_language": "fr", "story_group": "2026-11-04_the-golden-touch", "category": "bedtime"}, "ep": {"id": "2026-11-04_the-golden-touch-fr", "title": "Le roi Midas et le toucher d'or", "summary": ["Le roi Midas, raconté tout en douceur pour l'heure du coucher, d'après « Le toucher d'or » de Nathaniel Hawthorne.", "Un roi qui aimait l'or voit son vœu exaucé : tout ce qu'il touche devient or, même sa petite Marygold.", "L'eau de la rivière répare tout, et il comprend ce qui vaut plus que l'or."], "description": "Le roi Midas, raconté tout en douceur pour l'heure du coucher, d'après « Le toucher d'or » de Nathaniel Hawthorne. 10 minutes d'écoute, avec une petite musique entre les scènes.\n\nDans cet épisode :\n- Un roi qui aimait l'or voit son vœu exaucé : tout ce qu'il touche devient or, même sa petite Marygold.\n- L'eau de la rivière répare tout, et il comprend ce qui vaut plus que l'or.\n\nSources : The Golden Touch\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories", "format": "bedtime-story", "show": "Once Upon a Time Show", "language": "fr", "category": "bedtime", "source": {"title": "THE GOLDEN TOUCH.", "url": "https://www.ibiblio.org/eldritch/nh/wb2b.html", "kind": "article"}}};
   const btn = document.getElementById("share");
   const label = btn.querySelector("span");
   const track = (method) => {
@@ -121,6 +122,7 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
     try {
       if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
     } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
     const ta = document.createElement("textarea");
     ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
     ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
@@ -129,13 +131,12 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
     let ok = false;
     try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
     ta.remove();
-    btn.focus({ preventScroll: true });
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
     return ok;
   };
-  let busy = false, timer = 0;
-  btn.addEventListener("click", async () => {
-    if (busy) return;
-    busy = true;
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
     try {
       const data = { title: S.title, url: S.url };
       if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
@@ -143,14 +144,19 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
         catch (err) { if (err && err.name === "AbortError") return; }
       }
       const ok = await copy(S.url);
-      label.textContent = ok ? S.copied : S.failed;
-      btn.classList.toggle("is-done", ok);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
       if (ok) track("copy");
-      clearTimeout(timer);
-      timer = setTimeout(() => { label.textContent = S.label; btn.classList.remove("is-done"); }, 1800);
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
     } finally {
-      busy = false;
+      b._busy = false;
     }
+  };
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
   });
   btn.hidden = false;
 })();

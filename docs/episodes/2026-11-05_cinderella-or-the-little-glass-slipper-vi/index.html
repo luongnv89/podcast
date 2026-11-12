@@ -109,9 +109,10 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
   <p class="credit">Dựa theo <a href="https://sites.pitt.edu/~dash/perrault06.html" rel="noopener">Cinderella; or, The Little Glass Slipper</a></p>
   <footer>Truyện này được làm bằng DropCast và kể bằng giọng đọc nhân tạo. Mỗi truyện đều ghi nguồn văn bản gốc.</footer>
 </main>
+<script src="../../share.js?v=202611130200"></script>
 <script>
 (() => {
-  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-05_cinderella-or-the-little-glass-slipper-vi/", "title": "Cô bé Lọ Lem, chuyện kể trước giờ ngủ", "label": "Chia sẻ", "copied": "Đã sao chép liên kết", "failed": "Không sao chép được", "params": {"episode_id": "2026-11-05_cinderella-or-the-little-glass-slipper-vi", "episode_title": "Cô bé Lọ Lem, chuyện kể trước giờ ngủ", "show": "Once Upon a Time Show", "episode_language": "vi", "story_group": "2026-11-05_cinderella-or-the-little-glass-slipper", "category": "bedtime"}};
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-05_cinderella-or-the-little-glass-slipper-vi/", "title": "Cô bé Lọ Lem, chuyện kể trước giờ ngủ", "label": "Chia sẻ", "copied": "Đã sao chép liên kết", "failed": "Không sao chép được", "lang": "vi", "params": {"episode_id": "2026-11-05_cinderella-or-the-little-glass-slipper-vi", "episode_title": "Cô bé Lọ Lem, chuyện kể trước giờ ngủ", "show": "Once Upon a Time Show", "episode_language": "vi", "story_group": "2026-11-05_cinderella-or-the-little-glass-slipper", "category": "bedtime"}, "ep": {"id": "2026-11-05_cinderella-or-the-little-glass-slipper-vi", "title": "Cô bé Lọ Lem, chuyện kể trước giờ ngủ", "summary": ["Cô bé Lọ Lem, kể thật nhẹ nhàng trước giờ đi ngủ, theo truyện cổ của Charles Perrault.", "Một cô bé hiền lành, bà tiên đỡ đầu, cỗ xe bí ngô và chiếc giày thủy tinh vừa khít.", "Câu chuyện khép lại bằng sự tha thứ và lời chúc ngủ ngon: ở hiền thì gặp lành."], "description": "Cô bé Lọ Lem, kể thật nhẹ nhàng trước giờ đi ngủ, theo truyện cổ của Charles Perrault. 6 phút nghe, có nhạc nhẹ giữa các cảnh.\n\nTrong tập này:\n- Một cô bé hiền lành, bà tiên đỡ đầu, cỗ xe bí ngô và chiếc giày thủy tinh vừa khít.\n- Câu chuyện khép lại bằng sự tha thứ và lời chúc ngủ ngon: ở hiền thì gặp lành.\n\nNguồn: Cinderella; or, The Little Glass Slipper\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories", "format": "bedtime-story", "show": "Once Upon a Time Show", "language": "vi", "category": "bedtime", "source": {"title": "Cinderella; or, The Little Glass Slipper", "url": "https://sites.pitt.edu/~dash/perrault06.html", "kind": "article"}}};
   const btn = document.getElementById("share");
   const label = btn.querySelector("span");
   const track = (method) => {
@@ -121,6 +122,7 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
     try {
       if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
     } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
     const ta = document.createElement("textarea");
     ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
     ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
@@ -129,13 +131,12 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
     let ok = false;
     try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
     ta.remove();
-    btn.focus({ preventScroll: true });
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
     return ok;
   };
-  let busy = false, timer = 0;
-  btn.addEventListener("click", async () => {
-    if (busy) return;
-    busy = true;
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
     try {
       const data = { title: S.title, url: S.url };
       if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
@@ -143,14 +144,19 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
         catch (err) { if (err && err.name === "AbortError") return; }
       }
       const ok = await copy(S.url);
-      label.textContent = ok ? S.copied : S.failed;
-      btn.classList.toggle("is-done", ok);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
       if (ok) track("copy");
-      clearTimeout(timer);
-      timer = setTimeout(() => { label.textContent = S.label; btn.classList.remove("is-done"); }, 1800);
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
     } finally {
-      busy = false;
+      b._busy = false;
     }
+  };
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
   });
   btn.hidden = false;
 })();

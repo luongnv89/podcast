@@ -197,9 +197,13 @@ class CardTest(unittest.TestCase):
 
     def test_card_has_a_share_button(self) -> None:
         js = site_js()
-        self.assertIn('const shareBtn = el("button", { class: "btn", type: "button", "data-share": "episode" }, [svg([', js)
+        self.assertIn('const shareBtn = el("button", { class: "btn", type: "button", "data-share": "episode", "aria-expanded": "false" }, [svg([', js)
         self.assertIn('const shareLabel = el("span", { text: T.share, "aria-live": "polite" });', js)
-        self.assertIn("shareBtn.addEventListener(\"click\", () => shareEpisode(ep, shareBtn, shareLabel));", js)
+        # Since #45 it opens the drafts panel (share.js); shareEpisode() is the panel's "More…"
+        # and the fallback without share.js.
+        self.assertIn("shareBtn.addEventListener(\"click\", () => openShare(ep, shareBtn, shareLabel, actions));", js)
+        self.assertIn("if (!P || typeof P.toggle !== \"function\") { shareEpisode(ep, btn, label); return; }", js)
+        self.assertIn("more: (b, l, rest) => shareEpisode(ep, b, l, rest),", js)
         self.assertIn("actions.append(shareBtn);", js)
 
     def test_copy_link_button_is_gone(self) -> None:
@@ -221,15 +225,21 @@ class CardTest(unittest.TestCase):
 
     def test_every_list_page_loads_the_new_site_js(self) -> None:
         # The five pages share one version, bumped with each change (checked in test_story_pages):
-        # 202611122200 added Share, 202611122300 dropped Copy link.
+        # 202611122200 added Share, 202611122300 dropped Copy link, 202611130100 added share.js
+        # (the drafts panel, #45), loaded just before site.js with the same version, as on the
+        # episode pages (pages.ASSET_VERSION); 202611130200: hashtags on their own line, clean
+        # credits and openers in the drafts.
+        self.assertEqual(pages.ASSET_VERSION, "202611130200")
         for name, path in LIST_PAGES.items():
             with self.subTest(page=name):
                 html = path.read_text(encoding="utf-8")
-                for old in ("202611112100", "202611122200"):
+                for old in ("202611112100", "202611122200", "202611122300", "202611130100"):
                     self.assertNotIn(f"site.js?v={old}", html)
                     self.assertNotIn(f"site.css?v={old}", html)
-                self.assertIn("site.js?v=202611122300", html)
-                self.assertIn("site.css?v=202611122300", html)
+                self.assertIn("site.js?v=202611130200", html)
+                self.assertIn("site.css?v=202611130200", html)
+                prefix = "" if name == "build" else "../../"
+                self.assertIn(f'<script src="{prefix}share.js?v=202611130200"></script>\n<script src="{prefix}site.js?v=202611130200"></script>', html)
 
 
 class EpisodePageTest(unittest.TestCase):
@@ -268,7 +278,7 @@ class EpisodePageTest(unittest.TestCase):
     def test_title_cannot_close_the_script(self) -> None:
         ep = {"id": "z", "title": "</script><b>&", "description": "d"}
         html = pages.render_page(ep, [ep], DOCS)
-        self.assertEqual(html.count("</script>"), 4)  # gtag loader, gtag, JSON-LD, share
+        self.assertEqual(html.count("</script>"), 5)  # gtag loader, gtag, JSON-LD, share.js, share
         self.assertEqual(page_data(html)["title"], "</script><b>&")
 
 

@@ -35,6 +35,10 @@ The site is static (`docs/`), deployed by GitHub Pages from `main`
   `docs/episodes.json` and list only their own episodes. All five pages load them as
   `site.js?v=<version>` / `site.css?v=<version>`: bump the version on all five whenever
   either file changes (GitHub Pages caches them for 10 min).
+- `docs/share.js` — the Share panel's X and LinkedIn drafts (see "Share drafts (#45)"),
+  loaded just before `site.js` by the four list pages and by every episode page, with the
+  same `?v=<version>` (`ASSET_VERSION` in `scripts/pages.py`): bump it with the others, then
+  rebuild the episode pages.
 - `docs/episodes/<job id>/` — each episode's `transcript.vtt` and its own page
   `index.html` (see "Descriptions, download names and episode pages"). The MP3s are not in
   `docs/`: they are served by the media repos' own GitHub Pages sites (see "Where the audio
@@ -328,13 +332,53 @@ a moment. The label and confirmation are in the page's language: "Share" / "Link
 inline script, the button hidden until it runs) do the same thing. Share replaces the
 list pages' older **Copy link** button (it copied the list page's `#<id>` link), which is gone.
 
+**Share drafts (#45).** Since #45 the **Share** button (on the list pages' cards and on each
+episode page) opens a small panel under the episode's buttons instead of sharing at once. It
+holds two editable drafts and **More…**, which does what Share did in #43 (the share sheet,
+else the link copied):
+
+- **Post for X**: one post (not a thread): a hook line, one or two key points, the episode
+  page's link and the source credit, at most 280 characters as X counts them (a link is 23,
+  a code point outside X's light ranges, such as a Vietnamese letter with two marks, an arrow
+  or an emoji, is 2). A live counter shows the length. **Post on X** opens
+  `https://x.com/intent/post?text=<the post>` in a new tab; **Copy** copies it.
+- **Post for LinkedIn**: one short post, readable without "see more": the same hook, points,
+  link and credit, at most 400 characters besides the link, and at most two topic hashtags
+  (by category: `#AI #Podcast`, `#AI #News` for Daily, `#Marketing #AI`). **Post on LinkedIn**
+  opens `https://www.linkedin.com/feed/?shareActive=true&text=<the post>` (LinkedIn's
+  `sharing/share-offsite/?url=` when the text is empty or the address too long) and also copies
+  the text, so it can be pasted when LinkedIn opens without it; **Copy** copies it.
+
+The drafts are written by `drafts()` in `docs/share.js` from the episode's own entry only:
+the hook is the description's first sentence when it is a question, else the title; the
+points are the description's "In this episode" lines (else the summary after its first line);
+nothing is invented, so no number or claim appears that the entry does not hold. Each draft
+is in the episode's language (EN, FR, VI written for their readers; another language gets
+English), the panel's words in the page's language (every Build Wiz AI Show page is in
+English). The credit names the main `source`: on X, an X source whose author is written
+`Name (@handle)` is tagged as "Based on a post by @handle" (French "D’après une publication
+de @handle", Vietnamese "Dựa trên bài đăng của @handle"), and nothing else is ever tagged:
+no handle is guessed from a name, `@` and `#` in the episode's text lose their sign, and
+LinkedIn names the author in words. Other sources read "Based on an article by <name>",
+"Source: <name>" or "Based on “<title>”"; the show's own text gets no credit. A story is
+framed gently ("A gentle story to listen to at bedtime", or "at story time" for the
+`storytelling` format, in its language) with its description's hook, its points and its
+description's own "Sources:" line, and no tags at all (no `@`, no `#`). When a draft does not
+fit, it keeps one point, then (stories) drops points, credit and later sentences, and last
+cuts a line at a word with "…". The panel is keyboard accessible (Share says it is expanded,
+focus moves to the panel's heading; Esc or Close closes it and gives the focus back to Share;
+a click outside closes it), one panel is open at a time, and it fits a 360 px screen. Nothing
+is fetched: the X and LinkedIn links open only when the visitor clicks them. Episode pages
+carry the entry's draft fields (`ep` in `share_data()`) next to the Share script; a page that
+cannot load `share.js` falls back to #43's direct share.
+
 **Episode pages.** The show pages are single pages, so each episode also gets a small
 static page, `docs/episodes/<id>/index.html` (`https://luongnv.com/podcast/episodes/<id>/`),
 written by `scripts/pages.py`: title `<Title> | <Show>`, `<meta name="description">` = the
 description's hook (its first paragraph), canonical URL, Open Graph and Twitter tags with
 the show's cover (`docs/cover.jpg`, or the story cover of the episode's language),
 `PodcastEpisode` JSON-LD, the audio player, the full description, Download MP3 (same
-name), the transcript, a **Share** button (see "Share (#43)" above) and a link back to `#<id>` on the page that lists it (a story's
+name), the transcript, a **Share** button (see "Share (#43)" and "Share drafts (#45)" above) and a link back to `#<id>` on the page that lists it (a story's
 language page, `stories/<lang>/`: `show_page()`, `scripts/pages.py:132`); a story's versions
 link each other (`hreflang`). The list pages link each title to its page (a plain click still
 opens the details; a middle or Ctrl/Cmd click opens the page). `docs/sitemap.xml` lists
@@ -563,7 +607,7 @@ a reload counts again.
 | `episode_download` | the "Download MP3" link (click or middle click) | |
 | `source_click` | an outbound source link: "Based on …", "Read the source" and the Sources list | |
 | `description_copy` | the "Copy description" button copied the description (not sent when copying failed) | |
-| `episode_share` | the "Share" button, on a list page or an episode page, shared the episode: the share sheet completed, or the link was copied. Not sent for a cancelled sheet or a failed copy | `method` (`share_sheet` or `copy`) |
+| `episode_share` | an action in the Share panel (#45), on a list page or an episode page: **Post on X** (`x`) or **Post on LinkedIn** (`linkedin`) clicked (or middle-clicked), a draft copied (`copy`), or **More…** shared the episode: the share sheet completed (`share_sheet`) or the link was copied (`copy`). Opening the panel sends nothing; neither does a cancelled sheet or a failed copy | `method` (`x`, `linkedin`, `copy` or `share_sheet`) |
 
 Every event carries the episode it is about: `episode_id` (the job id), `episode_title`
 (at most 100 characters, GA4's limit), `show` (Build Wiz AI Show or Once Upon a Time
