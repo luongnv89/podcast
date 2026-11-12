@@ -158,6 +158,17 @@ class FeedTest(unittest.TestCase):
         self.assertEqual(guids, ["pod", "pod-old"])  # no story, no Vietnamese, not opted out
         self.assertNotIn("pod", [i.findtext("guid") for i in self.channel("en").findall("item")])
 
+    def test_daily_episode_is_in_the_build_wiz_feed_only(self) -> None:
+        self.index["episodes"].append(
+            {"id": "daily-1", "title": "AI news, Nov 12", "show": "Build Wiz AI Show",
+             "language": "en", "format": "podcast-2host", "category": "daily",
+             "published": "2026-11-12T07:50:00Z", "audio": "episodes/daily-1/episode.mp3"})
+        guids = [i.findtext("guid") for i in self.channel("buildwiz").findall("item")]
+        self.assertEqual(guids, ["daily-1", "pod"])
+        for lang in ("en", "fr", "vi"):
+            with self.subTest(lang=lang):
+                self.assertNotIn("daily-1", [i.findtext("guid") for i in self.channel(lang).findall("item")])
+
     def test_build_wiz_channel_tags(self) -> None:
         ch = self.channel("buildwiz")
         self.assertEqual(ch.findtext("title"), "Build Wiz AI Show")
