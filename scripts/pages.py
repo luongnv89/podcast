@@ -10,8 +10,9 @@ their own. So each episode in ``docs/episodes.json`` also gets
 = the description's hook (its first paragraph), a canonical URL, Open Graph and Twitter
 tags with the show's cover, ``PodcastEpisode`` JSON-LD, the audio player (the entry's
 ``audio``: its media site URL or release asset URL, or the page's own ``episode.mp3`` for a relative path), the full
-description, the download link and a link back to ``#<id>`` on the page that lists it (a
-story's language page, ``stories/<lang>/``, podcast #35). A story in several languages links
+description, the download link, a Share button (podcast #43: the share sheet, else the
+page's URL copied) and a link back to ``#<id>`` on the page that lists it (a story's
+language page, ``stories/<lang>/``, podcast #35). A story in several languages links
 its other versions (``hreflang``). ``docs/sitemap.xml`` lists Build Wiz AI Show's page, the
 stories' language chooser (``stories/``), the three story language pages and every episode
 page.
@@ -68,10 +69,11 @@ LOCALES = {"en": "en_US", "fr": "fr_FR", "vi": "vi_VN"}
 # the page that lists it, ``story_lang()``); every Build Wiz AI Show page is in English,
 # whatever its language, word for word as before. The English is the text the pages always
 # had. The French and Vietnamese speak of stories ("histoire", "truyện") like the story
-# pages; "download", "transcript", "based on ... by", "min" and "illustration" are the words
-# of site.js's TEXT (docs/site.js:20) and the footer follows the story pages' own footer.
-# French puts a no-break space (\u00a0) before ":" and in "7 min", as in site.js. The
-# show's name is a name and stays as it is, as on the story pages.
+# pages; "download", "transcript", "based on ... by", "min", "illustration" and the Share
+# button's words (podcast #43) are the words of site.js's TEXT (docs/site.js:20), and the
+# footer follows the story pages' own footer. French puts a no-break space (\u00a0) before
+# ":" and in "7 min", as in site.js. The show's name is a name and stays as it is, as on
+# the story pages.
 UI = {
     "en": {
         "listen": "Listen on {show}",
@@ -82,6 +84,9 @@ UI = {
         "by": " by ",
         "min": "{n} min",
         "illustration": "Illustration: {title}",
+        "share": "Share",
+        "link_copied": "Link copied",
+        "copy_failed": "Copy failed",
         "footer": "AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.",
     },
     "fr": {
@@ -93,6 +98,9 @@ UI = {
         "by": ", de ",
         "min": "{n}\u00a0min",
         "illustration": "Illustration\u00a0: {title}",
+        "share": "Partager",
+        "link_copied": "Lien copié",
+        "copy_failed": "Échec de la copie",
         "footer": "Histoire réalisée avec DropCast et lue par une voix de synthèse. "
         "Chaque histoire cite le texte dont elle s’inspire.",
     },
@@ -105,9 +113,63 @@ UI = {
         "by": " của ",
         "min": "{n} phút",
         "illustration": "Hình minh họa: {title}",
+        "share": "Chia sẻ",
+        "link_copied": "Đã sao chép liên kết",
+        "copy_failed": "Không sao chép được",
         "footer": "Truyện này được làm bằng DropCast và kể bằng giọng đọc nhân tạo. Mỗi truyện đều ghi nguồn văn bản gốc.",
     },
 }
+# The Share button (podcast #43), the same behaviour as site.js's shareEpisode(): the device's
+# share sheet where navigator.share exists (title and the page's URL, nothing else; a
+# cancelled sheet does nothing), else the URL copied (Clipboard API, else a hidden text area
+# and execCommand) with a short confirmation. GA4's episode_share goes through the page's own
+# gtag, guarded, only on success. The button stays hidden until this script runs, so a page
+# without JavaScript shows no dead button. ``SHARE`` is the JSON from ``share_data()``.
+SHARE_SCRIPT = """\
+(() => {
+  const S = SHARE;
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    btn.focus({ preventScroll: true });
+    return ok;
+  };
+  let busy = false, timer = 0;
+  btn.addEventListener("click", async () => {
+    if (busy) return;
+    busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      label.textContent = ok ? S.copied : S.failed;
+      btn.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(timer);
+      timer = setTimeout(() => { label.textContent = S.label; btn.classList.remove("is-done"); }, 1800);
+    } finally {
+      busy = false;
+    }
+  });
+  btn.hidden = false;
+})();"""
 SITEMAP = "sitemap.xml"
 _SAFE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*")
 
@@ -210,10 +272,37 @@ def _minutes(seconds: Any, unit: str = UI["en"]["min"]) -> str:
         return ""
 
 
-def _json_ld(data: dict[str, Any]) -> str:
+def _json_ld(data: dict[str, Any], indent: int | None = 1) -> str:
     # "<" escaped so a title can never close the script element.
-    text = json.dumps(data, ensure_ascii=False, indent=1)
+    text = json.dumps(data, ensure_ascii=False, indent=indent)
     return text.replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+
+
+def share_data(ep: dict[str, Any]) -> dict[str, Any]:
+    """What the episode page's Share button needs (podcast #43): the page's own URL, the
+    title, the button's words in the page's language and the GA4 parameters every site.js
+    event carries (``epParams()``)."""
+    ui = ui_of(ep)
+    title = str(ep.get("title") or ep.get("id"))
+    params: dict[str, Any] = {
+        "episode_id": str(ep["id"]),
+        "episode_title": title[:100],
+        "show": show_of(ep),
+        "episode_language": _lang(ep),
+    }
+    group = ep.get("story_group").strip() if isinstance(ep.get("story_group"), str) else ""
+    if group:
+        params["story_group"] = group
+    if isinstance(ep.get("category"), str) and ep["category"]:
+        params["category"] = ep["category"]
+    return {
+        "url": page_url(str(ep["id"])),
+        "title": title,
+        "label": ui["share"],
+        "copied": ui["link_copied"],
+        "failed": ui["copy_failed"],
+        "params": params,
+    }
 
 
 def versions_of(ep: dict[str, Any], episodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -343,6 +432,9 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
         "  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }",
         "  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }",
         "  .btn:hover { border-color: #fff; color: #fff; }",
+        "  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }",
+        "  .btn.is-done { border-color: var(--accent); color: var(--accent); }",
+        "  .btn[hidden] { display: none; }",
         "  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }",
         "  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }",
         *(
@@ -382,6 +474,7 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     ]
     if ep.get("transcript"):
         body.append(f'    <a class="btn" href="transcript.vtt">{e(ui["transcript"])}</a>')
+    body.append(f'    <button class="btn" type="button" id="share" hidden><span aria-live="polite">{e(ui["share"])}</span></button>')
     body.append("  </p>")
     if others:
         links = ", ".join(
@@ -397,6 +490,9 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     body += [
         f"  <footer>{e(ui['footer'])}</footer>",
         "</main>",
+        "<script>",
+        SHARE_SCRIPT.replace("SHARE;", _json_ld(share_data(ep), indent=None) + ";", 1),
+        "</script>",
         "</body>",
         "</html>",
         "",

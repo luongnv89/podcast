@@ -75,6 +75,9 @@
   .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
   .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
   .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
   .hero { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; margin: 16px 0 0; background: #111; }
@@ -100,10 +103,57 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
     <a class="btn" href="../../stories/fr/#2026-11-05_hansel-and-gretel-fr">Écouter sur Once Upon a Time Show</a>
     <a class="btn" href="https://luongnv.com/once-upon-a-time-fr-media/2026-11-05_hansel-and-gretel-fr.mp3" download="Once Upon a Time Show - Hansel et Gretel, une histoire du soir (2026-11-05).mp3">Télécharger le MP3</a>
     <a class="btn" href="transcript.vtt">Transcription</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Partager</span></button>
   </p>
   <p class="langs">Également disponible en : <a href="../2026-11-05_hansel-and-gretel/" hreflang="en" lang="en">English</a>, <a href="../2026-11-05_hansel-and-gretel-vi/" hreflang="vi" lang="vi">Tiếng Việt</a></p>
   <p class="credit">D’après <a href="https://sites.pitt.edu/~dash/grimm015.html" rel="noopener">Hansel and Gretel</a></p>
   <footer>Histoire réalisée avec DropCast et lue par une voix de synthèse. Chaque histoire cite le texte dont elle s’inspire.</footer>
 </main>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel-fr/", "title": "Hansel et Gretel, une histoire du soir", "label": "Partager", "copied": "Lien copié", "failed": "Échec de la copie", "params": {"episode_id": "2026-11-05_hansel-and-gretel-fr", "episode_title": "Hansel et Gretel, une histoire du soir", "show": "Once Upon a Time Show", "episode_language": "fr", "story_group": "2026-11-05_hansel-and-gretel", "category": "bedtime"}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    btn.focus({ preventScroll: true });
+    return ok;
+  };
+  let busy = false, timer = 0;
+  btn.addEventListener("click", async () => {
+    if (busy) return;
+    busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      label.textContent = ok ? S.copied : S.failed;
+      btn.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(timer);
+      timer = setTimeout(() => { label.textContent = S.label; btn.classList.remove("is-done"); }, 1800);
+    } finally {
+      busy = false;
+    }
+  });
+  btn.hidden = false;
+})();
+</script>
 </body>
 </html>
