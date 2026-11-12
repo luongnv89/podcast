@@ -569,18 +569,21 @@ are created; then use them in the event report or an **Explore** (e.g. rows
 
 ## Tabs (categories)
 
-Build Wiz AI Show's page has three tabs: **AI podcast**, **Marketing** and **Others**
-(the stories, once the **Bedtime stories** tab, are on their own page, linked from the
-header). The story pages have no tabs. Each episode in `episodes.json` has one `category`:
-`ai`, `bedtime`, `marketing` or `others` (`bedtime` is kept for the stories; on the main
-page an unknown category lands in Others). The publisher picks it in this order:
+Build Wiz AI Show's page has four tabs: **AI podcast**, **Daily**, **Marketing** and
+**Others** (the stories, once the **Bedtime stories** tab, are on their own page, linked
+from the header). The story pages have no tabs. Each episode in `episodes.json` has one
+`category`: `ai`, `daily`, `bedtime`, `marketing` or `others` (`bedtime` is kept for the
+stories; on the main page an unknown category lands in Others). `daily` is the daily
+AI-news roundup (about eight minutes, every morning): it shares Build Wiz AI Show's feed
+(`docs/feed.xml`) and YouTube like the other tabs, and is never guessed, so a daily job
+names it in its `category.txt` (or `--category daily`). The publisher picks it in this order:
 
 1. `--category` (one job at a time);
-2. a `category.txt` in the job folder, holding one of the four words;
+2. a `category.txt` in the job folder, holding one of the five words;
 3. `bedtime` for a `bedtime-story` script;
 4. the category already in `episodes.json`, so a hand fix survives a re-publish;
 5. a keyword guess from the title and summary (AI words → `ai`, more marketing words
-   → `marketing`, neither → `others`).
+   → `marketing`, neither → `others`; never `daily`).
 
 To move a live episode, edit its `category` in `docs/episodes.json`. Links keep the tab
 in the query (`?tab=marketing`); a shared episode link (`#<job id>`) opens its own tab.

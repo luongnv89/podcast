@@ -6,7 +6,9 @@ Each test builds a fake delivered DropCast job and a fake site in a temp folder.
 
 from __future__ import annotations
 
+import contextlib
 import importlib.util
+import io
 import json
 import re
 import tempfile
@@ -495,6 +497,55 @@ class StoryGroupTest(EpisodeCreditsTest):
         self.assertFalse(publish.update_index(self.site, [self.entry()]))
 
 
+class DailyCategoryTest(EpisodeCreditsTest):
+    """The Daily tab: named by category.txt or --category, kept on re-publish, never guessed."""
+
+    def test_categories_put_daily_after_ai(self) -> None:
+        self.assertEqual(publish.CATEGORIES, ("ai", "daily", "bedtime", "marketing", "others"))
+
+    def test_category_txt_daily_is_accepted(self) -> None:
+        self.make_job([MAIN["url"]], HOSTS)
+        (self.job / "category.txt").write_text("Daily\n", encoding="utf-8")
+        self.assertEqual(self.entry()["category"], "daily")
+
+    def test_category_argument_daily_wins(self) -> None:
+        self.make_job([MAIN["url"]], HOSTS)
+        (self.job / "category.txt").write_text("ai", encoding="utf-8")
+        entry, _ = publish.episode_entry(self.job, self.site, "daily", media=FakeMedia())
+        self.assertEqual(entry["category"], "daily")
+
+    def test_cli_accepts_category_daily(self) -> None:
+        # A valid choice reaches publish.py's own check (one job folder needed); a bad one
+        # is refused by argparse itself.
+        err = io.StringIO()
+        with contextlib.redirect_stderr(err):
+            self.assertEqual(publish.main(["--category", "daily"]), 2)
+        self.assertIn("--category needs exactly one job folder", err.getvalue())
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            publish.main(["--category", "weekly"])
+
+    def test_existing_daily_entry_is_kept(self) -> None:
+        self.make_job([MAIN["url"]], HOSTS)
+        _write(self.site / "episodes.json",
+               {"version": 1, "episodes": [{"id": self.job.name, "category": "daily"}]})
+        self.assertEqual(self.entry()["category"], "daily")
+
+    def test_guess_never_returns_daily(self) -> None:
+        cases = [
+            ("Daily AI news: the last day in agents", ["Today's AI news, daily."], "podcast-2host"),
+            ("Daily", ["daily daily daily"], None),
+            ("Your daily marketing brief", ["Growth and SEO, every day."], "podcast-2host"),
+            ("Daily", [], "bedtime-story"),
+        ]
+        for title, summary, fmt in cases:
+            with self.subTest(title=title):
+                self.assertNotEqual(publish.guess_category(title, summary, fmt), "daily")
+        self.make_job([MAIN["url"]], HOSTS)
+        script = json.loads((self.job / "script.json").read_text(encoding="utf-8"))
+        _write(self.job / "script.json", dict(script, title="Daily AI news roundup"))
+        self.assertEqual(self.entry()["category"], "ai")  # no category.txt: guessed, not daily
+
+
 def audio_is_published(e: dict) -> bool:
     """The episode's MP3 is on the site (before podcast #30), a media-repo release asset
     (#30), or on the media repo's GitHub Pages site (#33)."""
@@ -544,6 +595,14 @@ class SiteMigrationTest(unittest.TestCase):
         self.assertIn('data: "../episodes.json"', stories)
         self.assertIn("<h1>Once Upon a <span", stories)
         self.assertEqual([s["name"] for s in self.data["shows"]], [BUILD, STORY])
+
+    def test_build_wiz_tabs_include_daily_after_ai(self) -> None:
+        main = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
+        tabs = main[main.index("tabs: ["):main.index("],\n  };")]
+        self.assertEqual(re.findall(r'\{ id: "(\w+)"', tabs), ["ai", "daily", "marketing", "others"])
+        self.assertIn('{ id: "daily", label: "Daily", empty: "No daily episodes yet.",', tabs)
+        self.assertIn('"The AI news of the last day, in about eight minutes. ", ["Bob"], " and ", '
+                      '["Alice"], " unpack the stories every morning."', tabs)
 
 
 if __name__ == "__main__":

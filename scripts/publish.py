@@ -57,11 +57,12 @@ show. Any other job is Build Wiz AI Show unless its script or brief names the st
 or a story register (DropCast never writes that for a podcast). ``result.json``
 is not read for it (DropCast runs the publisher before that file is final).
 
-Each episode gets one ``category``, the site's tab: ``ai`` (AI podcast), ``bedtime``
-(bedtime stories), ``marketing`` or ``others``. The first that applies wins:
-``--category`` (when publishing one job), the job's ``category.txt`` (one word),
-``bedtime`` for a ``bedtime-story`` script, the category already in ``episodes.json``
-(so a hand fix survives a re-publish), then a keyword guess from the title and summary.
+Each episode gets one ``category``, the site's tab: ``ai`` (AI podcast), ``daily`` (the
+daily AI-news roundup), ``bedtime`` (bedtime stories), ``marketing`` or ``others``. The
+first that applies wins: ``--category`` (when publishing one job), the job's
+``category.txt`` (one word), ``bedtime`` for a ``bedtime-story`` script, the category
+already in ``episodes.json`` (so a hand fix survives a re-publish), then a keyword guess
+from the title and summary (never ``daily``).
 
 Each entry also gets ``description`` (the copy-paste podcast description, at most 600
 characters: the job's ``description.txt``, else the one already in ``episodes.json``, else
@@ -138,7 +139,9 @@ ENGINE_LABELS = {
 }
 
 
-CATEGORIES = ("ai", "bedtime", "marketing", "others")
+# ``daily`` (the daily AI-news roundup) is never guessed: it comes only from
+# ``--category``, ``category.txt`` or the entry already in ``episodes.json``.
+CATEGORIES = ("ai", "daily", "bedtime", "marketing", "others")
 # Keyword guess, used only when nothing else names the category. Lower-case, matched as
 # whole words in the title (counted three times) and the summary.
 AI_WORDS = (
@@ -159,7 +162,10 @@ def _count(words: tuple[str, ...], text: str) -> int:
 
 
 def guess_category(title: str, summary: list[str], fmt: str | None) -> str:
-    """Best guess from the words alone: ``bedtime``, ``marketing``, ``ai`` or ``others``."""
+    """Best guess from the words alone: ``bedtime``, ``marketing``, ``ai`` or ``others``.
+
+    Never ``daily``: a daily episode is named by ``category.txt`` or ``--category``.
+    """
     if fmt == "bedtime-story":
         return "bedtime"
     head = (title or "").lower()
