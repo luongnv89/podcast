@@ -227,18 +227,19 @@ class CardTest(unittest.TestCase):
         # The five pages share one version, bumped with each change (checked in test_story_pages):
         # 202611122200 added Share, 202611122300 dropped Copy link, 202611130100 added share.js
         # (the drafts panel, #45), loaded just before site.js with the same version, as on the
-        # episode pages (pages.ASSET_VERSION).
-        self.assertEqual(pages.ASSET_VERSION, "202611130100")
+        # episode pages (pages.ASSET_VERSION); 202611130200: hashtags on their own line, clean
+        # credits and openers in the drafts.
+        self.assertEqual(pages.ASSET_VERSION, "202611130200")
         for name, path in LIST_PAGES.items():
             with self.subTest(page=name):
                 html = path.read_text(encoding="utf-8")
-                for old in ("202611112100", "202611122200", "202611122300"):
+                for old in ("202611112100", "202611122200", "202611122300", "202611130100"):
                     self.assertNotIn(f"site.js?v={old}", html)
                     self.assertNotIn(f"site.css?v={old}", html)
-                self.assertIn("site.js?v=202611130100", html)
-                self.assertIn("site.css?v=202611130100", html)
+                self.assertIn("site.js?v=202611130200", html)
+                self.assertIn("site.css?v=202611130200", html)
                 prefix = "" if name == "build" else "../../"
-                self.assertIn(f'<script src="{prefix}share.js?v=202611130100"></script>\n<script src="{prefix}site.js?v=202611130100"></script>', html)
+                self.assertIn(f'<script src="{prefix}share.js?v=202611130200"></script>\n<script src="{prefix}site.js?v=202611130200"></script>', html)
 
 
 class EpisodePageTest(unittest.TestCase):

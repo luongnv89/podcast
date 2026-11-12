@@ -94,6 +94,25 @@ def entry_text(ep: dict) -> str:
     return "\n".join(str(p) for p in parts if p)
 
 
+# A display name as a credit writes it: no handle, no emoji, no trailing "(ABBR)"; case kept.
+_EMOJI = re.compile("[\u00a9\u00ae\u203c\u2049\u2122\u2139\u2194-\u21aa\u231a-\u23ff\u24c2\u25aa-\u27bf"
+                    "\u2934\u2935\u2b05-\u2b55\u3030\u303d\u3297\u3299\U0001f000-\U0001faff\u200d\ufe0f\u20e3]")
+
+
+def credit_name(author: str) -> str:
+    name = re.sub(r"\s+", " ", _EMOJI.sub("", HANDLE.sub("", author))).strip()
+    return re.sub(r"\s*\([A-Z0-9&.]{2,}\)$", "", name)
+
+
+# A point's "His/Her/Their …:" opener, dropped when the draft has not named the person yet.
+OPENER = re.compile(r"^(?:His|Her|Their)(?:\s+[^\s:]+){1,3}:\s+(?=\S)")
+
+
+def without_opener(point: str) -> str:
+    rest = OPENER.sub("", point)
+    return rest[:1].upper() + rest[1:] if rest != point else point
+
+
 def entry_points(ep: dict) -> list[str]:
     desc = str(ep.get("description") or "")
     bullets = [m.group(1) for m in re.finditer(r"^\s*[-•]\s+(.+)$", desc, re.M)]
@@ -187,7 +206,8 @@ class LiveEpisodesTest(unittest.TestCase):
                 for line in draft.split("\n"):
                     if line.startswith("→ "):
                         p = line[2:]
-                        self.assertTrue(p in points or (p.endswith("…") and any(q.startswith(p[:-1].rstrip()) for q in points)), p)
+                        own = points + [without_opener(q) for q in points]
+                        self.assertTrue(p in own or (p.endswith("…") and any(q.startswith(p[:-1].rstrip()) for q in own)), p)
                 hook = draft.split("\n\n")[0]
                 core = hook[:-1].rstrip() if hook.endswith("…") else hook
                 self.assertIn(re.sub(r"\s+", " ", core), re.sub(r"\s+", " ", text))
@@ -206,8 +226,8 @@ class LiveEpisodesTest(unittest.TestCase):
             # Only "based on a post by @handle", the post's last line: no endorsement implied.
             last = d["x"].split("\n")[-1]
             self.assertEqual(last, BASED_ON_POST[d["lang"]] + "@" + handle)
-            name = HANDLE.sub("", ep["source"]["author"]).strip()
-            self.assertIn(BASED_ON_POST[d["lang"]] + name, d["linkedin"])
+            name = credit_name(ep["source"]["author"])
+            self.assertIn(BASED_ON_POST[d["lang"]] + name + "\n", d["linkedin"])
         self.assertGreater(tagged, 5)
 
     def test_each_draft_in_the_episode_language(self) -> None:
@@ -231,6 +251,7 @@ class LiveEpisodesTest(unittest.TestCase):
         for ep, d, url in self.each():
             if not is_story(ep):
                 self.assertRegex(d["linkedin"], r"#\w+$")  # Build Wiz AI Show: topic hashtags at the end
+                self.assertRegex(d["linkedin"].split("\n")[-1], r"^#\w+(?: #\w+)?$")  # on their own line
                 self.assertNotIn("#", d["x"].replace(url, ""))
                 continue
             stories += 1
@@ -239,6 +260,46 @@ class LiveEpisodesTest(unittest.TestCase):
                 self.assertNotIn("#", draft.replace(url, ""))
                 self.assertIn("🌙 " + FRAME[d["lang"]][ep["format"]] + "\n" + url, draft)
         self.assertGreater(stories, 10)
+
+    def test_linkedin_hashtags_on_their_own_line(self) -> None:
+        for ep, d, url in self.each():
+            if is_story(ep):
+                continue
+            lines = d["linkedin"].split("\n")
+            self.assertRegex(lines[-1], r"^#\w+(?: #\w+)?$")
+            self.assertNotRegex("\n".join(lines[:-1]), r"(?<!\S)#\w")   # no tag anywhere else
+            credit = lines[-2]
+            if credit.startswith(BASED_ON_POST[d["lang"]]):
+                name = credit[len(BASED_ON_POST[d["lang"]]):]
+                self.assertEqual(name, credit_name(ep["source"]["author"]))
+                self.assertNotRegex(name, r"\([A-Z0-9&.]{2,}\)$|[\U0001f000-\U0001faff]")
+
+    def test_no_pronoun_before_the_person_is_named(self) -> None:
+        for ep, d, url in self.each():
+            name = credit_name(str((ep.get("source") or {}).get("author") or "")).lower()
+            for draft in (d["x"], d["linkedin"]):
+                before = ""
+                for line in draft.split("\n"):
+                    if line.startswith("→ ") and re.match(r"(?:His|Her|Their)\b", line[2:]):
+                        self.assertTrue(name and name in before.lower(), line)
+                    before += line + "\n"
+
+    # The five live drafts whose first point opened on "His …" with the person named only in the credit.
+    PRONOUN_FIXES = {
+        "2026-11-04_a-practical-guide-to-security-in-november-2026": "Years-old best practices still work, from passkeys",
+        "2026-11-05_marketing-engineers-100x-more-experiments-with": "Write the business \"brain\" first, connect the data",
+        "2026-11-05_marketing-engineers-solo-explainer": "Write the business \"brain\" first, connect the data",
+        "2026-11-06_5t-opportunity-ai-roll-ups": "Buy the customers and trust, build a rulebook",
+        "2026-11-03_the-most-lucrative-ai-business-to-start-in-2027": "Capturing attention is the top skill",
+    }
+
+    def test_the_five_his_openers_are_dropped(self) -> None:
+        for id_, start in self.PRONOUN_FIXES.items():
+            with self.subTest(id=id_):
+                d = self.drafts[id_]
+                for draft in (d["x"], d["linkedin"]):
+                    self.assertIn("\n\n→ " + start, draft)
+                    self.assertNotIn("→ His ", draft)
 
     def test_intent_urls_are_encoded(self) -> None:
         for ep, d, url in self.each():
@@ -263,7 +324,7 @@ class RulesTest(unittest.TestCase):
     def test_handle_only_from_an_x_source(self) -> None:
         d = self.drafts()
         self.assertTrue(d["x"].endswith("\nBased on a post by @janedoe"))
-        self.assertIn("Based on a post by Jane Doe #AI #Podcast", d["linkedin"])
+        self.assertTrue(d["linkedin"].endswith("\nBased on a post by Jane Doe\n#AI #Podcast"))
         # An article whose author has a handle: named, never tagged.
         d = self.drafts(source={"title": "T", "author": "Jane Doe (@janedoe)", "url": "https://example.com/a", "kind": "article"})
         self.assertNotIn("@", d["x"])
@@ -282,6 +343,50 @@ class RulesTest(unittest.TestCase):
         self.assertTrue(d["x"].endswith("\nBased on “A talk”"))
         d = self.drafts(source={"title": "Meet", "author": "Build Wiz AI Show", "url": None, "kind": "text"})
         self.assertTrue(d["x"].endswith("/2026-11-20_test/"))
+
+    def test_credit_names_lose_their_decorations(self) -> None:
+        d = self.drafts(source={"title": "T", "author": "The Startup Ideas Podcast (SIP) 🧃 (@startupideaspod)", "url": "https://x.com/startupideaspod/status/1", "kind": "x"})
+        self.assertTrue(d["x"].endswith("\nBased on a post by @startupideaspod"))   # the handle untouched
+        self.assertTrue(d["linkedin"].endswith("\nBased on a post by The Startup Ideas Podcast\n#AI #Podcast"))
+        # All-caps and lowercase names stay as written; a handle's own case and digits too.
+        d = self.drafts(source={"title": "T", "author": "GREG ISENBERG (@GregIsenberg_1)", "url": "https://x.com/a/status/1", "kind": "x"})
+        self.assertTrue(d["x"].endswith("\nBased on a post by @GregIsenberg_1"))
+        self.assertIn("\nBased on a post by GREG ISENBERG\n", d["linkedin"])
+        d = self.drafts(source={"title": "T", "author": "dex 🚀👩🏽‍💻 (@dexhorthy)", "url": "https://x.com/a/status/1", "kind": "x"})
+        self.assertIn("\nBased on a post by dex\n", d["linkedin"])
+        # Without a handle, X names the cleaned name too; a "(…)" that is not an abbreviation stays.
+        d = self.drafts(source={"title": "T", "author": "Jane Doe (AI) 🧃", "url": "https://example.com/a", "kind": "article"})
+        self.assertTrue(d["x"].endswith("\nBased on an article by Jane Doe"))
+        d = self.drafts(source={"title": "T", "author": "Jane Doe (she/her)", "url": "https://example.com/a", "kind": "article"})
+        self.assertTrue(d["x"].endswith("\nBased on an article by Jane Doe (she/her)"))
+        # A name of emoji only: the source's title instead.
+        d = self.drafts(source={"title": "A talk", "author": "🧃 (@juice)", "url": "https://example.com/a", "kind": "article"})
+        self.assertTrue(d["x"].endswith("\nBased on “A talk”"))
+
+    def test_pronoun_openers(self) -> None:
+        desc = "A statement.\n\nIn this episode:\n- {0}\n- Two\n"
+        # Named only in the credit: the "His …:" opener goes, the rest is capitalised.
+        d = self.drafts(description=desc.format("His playbook: buy the customers first."))
+        for text in (d["x"], d["linkedin"]):
+            self.assertIn("\n\n→ Buy the customers first.\n→ Two\n", text)
+        d = self.drafts(description=desc.format("Their take on AI: it is early."))
+        self.assertIn("→ It is early.", d["x"])
+        # No "…:" opener: the pronoun becomes the author's name from the entry.
+        d = self.drafts(description=desc.format("Her team shipped it in a week."))
+        self.assertIn("→ Jane Doe’s team shipped it in a week.", d["x"])
+        # Named in the hook already: the point is kept as written.
+        d = self.drafts(title="Jane Doe on agents", description=desc.format("Her point: agents need tests."))
+        self.assertIn("→ Her point: agents need tests.", d["x"])
+        # Named in an earlier point: the later one keeps its pronoun.
+        d = self.drafts(description="A statement.\n\nIn this episode:\n- Jane Doe built it.\n- His point: tests.\n")
+        self.assertIn("→ Jane Doe built it.\n→ His point: tests.", d["linkedin"])
+        # No author to name and no opener to drop: the point is left out.
+        d = self.drafts(description=desc.format("His team shipped it."), source={"title": "T", "author": None, "url": None, "kind": "text"})
+        self.assertNotIn("His", d["x"] + d["linkedin"])
+        self.assertIn("→ Two", d["x"])
+        # A word that only starts with the pronoun is not one.
+        d = self.drafts(description=desc.format("Heroes are rare."))
+        self.assertIn("→ Heroes are rare.", d["x"])
 
     def test_free_text_tags_nobody(self) -> None:
         d = self.drafts(description="Did @sama say it? Yes. #hype\n\nIn this episode:\n- Ask @pg and #yc\n- Two\n")

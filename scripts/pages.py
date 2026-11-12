@@ -181,7 +181,7 @@ SHARE_SCRIPT = """\
 })();"""
 # The version of docs/share.js the episode pages load (``share.js?v=``): the list pages'
 # site.js/site.css/share.js version, bumped with them (a test keeps them in step).
-ASSET_VERSION = "202611130100"
+ASSET_VERSION = "202611130200"
 # The entry's fields the drafts are written from (docs/share.js drafts()).
 DRAFT_FIELDS = ("id", "title", "summary", "description", "format", "show", "language", "category")
 DRAFT_SOURCE_FIELDS = ("title", "author", "url", "kind")

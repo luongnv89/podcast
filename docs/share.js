@@ -14,7 +14,8 @@
 // - A Build Wiz AI Show post: a hook line, one or two key points, the link, the source credit.
 //   On X it tags only a handle the data holds, an X source's author "Name (@handle)"; it
 //   never guesses one from a name, and never says more than "based on a post by @handle".
-//   LinkedIn names the author in words.
+//   LinkedIn names the author in words (no emoji, no trailing "(ABBR)") and puts its two
+//   hashtags on their own last line.
 // - A story: a gentle bedtime (or story-time) framing, and no tags at all (no @, no #).
 // Nothing here makes a request: the X and LinkedIn links open only when the visitor clicks.
 (() => {
@@ -123,7 +124,11 @@
     const m = src.author.match(HANDLE);
     return m ? m[1] : null;
   }
-  const nameOf = (author) => untag(typeof author === "string" ? author.replace(HANDLE, "") : "");
+  // A display name's decorations: emoji, then a trailing "(ABBR)". The name's own case is kept
+  // ("GREG ISENBERG" stays as written) and the handle is read apart (handleOf), never edited.
+  const EMOJI = /[\p{Extended_Pictographic}\p{Emoji_Modifier}\p{Regional_Indicator}\u200d\ufe0f\u20e3]/gu;
+  const ABBR = /\s*\([\p{Lu}\p{N}&.]{2,}\)$/u;
+  const nameOf = (author) => clean(untag(typeof author === "string" ? author.replace(HANDLE, "") : "").replace(EMOJI, "")).replace(ABBR, "");
   // Sentences, without splitting initials ("D. L. Ashliman") or decimals ("1.4").
   const sentences = (s) => clean(s).split(/(?<=[^\s.]{2}[.?!…])\s+(?=[\p{Lu}\p{N}"“«‘'])/u).filter(Boolean);
   const paragraphs = (d) => (typeof d === "string" ? d.trim().split(/\n\s*\n/) : []);
@@ -133,6 +138,29 @@
     const desc = typeof ep.description === "string" ? ep.description : "";
     const bullets = desc.split("\n").map((l) => l.match(/^\s*[-•]\s+(.+)$/)).filter(Boolean).map((m) => untag(m[1])).filter(Boolean);
     return bullets.length ? bullets : summaryOf(ep).slice(1);
+  }
+  // A point opening on "His/Her/Their …" refers to a person; when the draft has not named
+  // them before it (the hook was the title), the opener is dropped ("His playbook: buy …" ->
+  // "Buy …"), or, with no "…:" opener, the pronoun becomes the author's name from the entry.
+  // With neither, the point is left out. Nothing is guessed.
+  const PRONOUN = /^(?:His|Her|Their)\b/;
+  const OPENER = /^(?:His|Her|Their)(?:\s+[^\s:]+){1,3}:\s+(?=\S)/;
+  function ownPoints(points, hook, name) {
+    const named = (s) => !!name && s.toLowerCase().includes(name.toLowerCase());
+    let before = hook;
+    const out = [];
+    for (const p of points) {
+      let q = p;
+      if (PRONOUN.test(p) && !named(before)) {
+        const rest = p.replace(OPENER, "");
+        if (rest !== p) q = rest.charAt(0).toUpperCase() + rest.slice(1);
+        else if (name) q = p.replace(PRONOUN, `${name}’s`);
+        else continue;
+      }
+      out.push(q);
+      before += `\n${q}`;
+    }
+    return out;
   }
   const hookParagraph = (ep) => untag(paragraphs(ep.description)[0] || "") || summaryOf(ep)[0] || untag(ep.title);
 
@@ -184,7 +212,7 @@
   function compose(p) {
     const blocks = [p.hook];
     if (p.points.length) blocks.push(p.points.map((x) => `→ ${x}`).join("\n"));
-    blocks.push([p.link, p.credit].filter(Boolean).join("\n"));
+    blocks.push([p.link, p.credit, p.tags].filter(Boolean).join("\n"));   // LinkedIn's hashtags: their own last line
     return blocks.filter(Boolean).join("\n\n");
   }
   // The longest start of a text that still fits, cut at a word with "…" (at least 3 words).
@@ -234,12 +262,14 @@
     const first = sentences(paragraphs(ep.description)[0] || "")[0] || "";
     const title = untag(ep.title);
     const hook = /\?[»"”’)]*$/.test(first) ? untag(first) : title || untag(first);
-    const points = pointsOf(ep).filter((x) => x !== hook);
+    const src = ep.source && typeof ep.source === "object" ? ep.source : {};
+    const author = nameOf(src.author);
+    const person = author.toLowerCase() === BUILD_SHOW.toLowerCase() ? "" : author;
+    const points = ownPoints(pointsOf(ep).filter((x) => x !== hook), hook, person);
     const link = `${D.listen}${url}`;
     const tags = (TAGS[ep.category] || DEFAULT_TAGS).slice(0, 2).join(" ");
     const x = fit({ hook, points, link, credit: creditOf(ep, D, true) }, xOk, false);
-    const credit = creditOf(ep, D, false);
-    const linkedin = fit({ hook, points, link, credit: credit ? `${credit} ${tags}` : tags }, liOk, false);
+    const linkedin = fit({ hook, points, link, credit: creditOf(ep, D, false), tags }, liOk, false);
     return { lang, x, linkedin };
   }
 
