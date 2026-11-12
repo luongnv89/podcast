@@ -100,9 +100,10 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
   <p class="credit">Based on <a href="https://www.youtube.com/watch?v=ys6YQ2yfBpM" rel="noopener">Your Old Prompts Are Making Claude Worse</a> by Lance Martin</p>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
+<script src="../../share.js?v=202611130100"></script>
 <script>
 (() => {
-  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-07_your-old-prompts-are-making-claude-worse/", "title": "Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "params": {"episode_id": "2026-11-07_your-old-prompts-are-making-claude-worse", "episode_title": "Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}};
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-07_your-old-prompts-are-making-claude-worse/", "title": "Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-07_your-old-prompts-are-making-claude-worse", "episode_title": "Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-07_your-old-prompts-are-making-claude-worse", "title": "Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude", "summary": ["Lance Martin of Anthropic's AI Engineer talk Your Old Prompts Are Making Claude Worse, with three guests.", "Audit old prompt habits, use the prompt cache (up to 72% cheaper), build climbable evals and hill climb without overfitting.", "Guests bring METR's long-tasks paper, Hamel Husain on binary LLM judges and Ethan Mollick's jagged frontier."], "description": "Old prompt tricks like think step by step can now make Claude worse and pricier. Bob and Alice unpack Lance Martin's AI Engineer talk on getting more from frontier models.\n\nIn this episode:\n- Prompt audits and the prompt cache: up to 72% cheaper\n- Evals Claude can climb, and hill climbing without overfitting\n- Days-long agents with Claude Managed Agents\n\nSources: Lance Martin; Thomas Kwa et al.; Hamel Husain; Ethan Mollick\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "Your Old Prompts Are Making Claude Worse", "author": "Lance Martin", "url": "https://www.youtube.com/watch?v=ys6YQ2yfBpM", "kind": "text"}}};
   const btn = document.getElementById("share");
   const label = btn.querySelector("span");
   const track = (method) => {
@@ -112,6 +113,7 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     try {
       if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
     } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
     const ta = document.createElement("textarea");
     ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
     ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
@@ -120,13 +122,12 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     let ok = false;
     try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
     ta.remove();
-    btn.focus({ preventScroll: true });
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
     return ok;
   };
-  let busy = false, timer = 0;
-  btn.addEventListener("click", async () => {
-    if (busy) return;
-    busy = true;
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
     try {
       const data = { title: S.title, url: S.url };
       if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
@@ -134,14 +135,19 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
         catch (err) { if (err && err.name === "AbortError") return; }
       }
       const ok = await copy(S.url);
-      label.textContent = ok ? S.copied : S.failed;
-      btn.classList.toggle("is-done", ok);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
       if (ok) track("copy");
-      clearTimeout(timer);
-      timer = setTimeout(() => { label.textContent = S.label; btn.classList.remove("is-done"); }, 1800);
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
     } finally {
-      busy = false;
+      b._busy = false;
     }
+  };
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
   });
   btn.hidden = false;
 })();

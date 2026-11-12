@@ -736,10 +736,11 @@
       actions.append(tBtn);
     }
     if (ep.audio) actions.append(trackLink(el("a", { class: "btn", href: ep.audio, download: fileName(ep) }, [svg(["M12 4v12M6 10l6 6 6-6M5 20h14"]), T.download]), "episode_download", ep));
-    // Share (podcast #43): the device's share sheet, else the episode page's link copied.
+    // Share (podcast #43, #45): opens the panel of X and LinkedIn drafts (share.js) under
+    // these buttons; without share.js, the device's share sheet, else the link copied.
     const shareLabel = el("span", { text: T.share, "aria-live": "polite" });
-    const shareBtn = el("button", { class: "btn", type: "button", "data-share": "episode" }, [svg(["M12 15V4M7 9l5-5 5 5M5 13v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6"]), shareLabel]);
-    shareBtn.addEventListener("click", () => shareEpisode(ep, shareBtn, shareLabel));
+    const shareBtn = el("button", { class: "btn", type: "button", "data-share": "episode", "aria-expanded": "false" }, [svg(["M12 15V4M7 9l5-5 5 5M5 13v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6"]), shareLabel]);
+    shareBtn.addEventListener("click", () => openShare(ep, shareBtn, shareLabel, actions));
     actions.append(shareBtn);
     // The copy-paste podcast description (DropCast #163), exactly as in episodes.json.
     if (typeof ep.description === "string" && ep.description.trim()) {
@@ -820,7 +821,8 @@
   // Where navigator.share exists (phones) it opens the share sheet; a cancelled sheet
   // (AbortError) does nothing. Elsewhere, or when the sheet cannot open, the link is copied
   // (copyText) and "Link copied" shows for a moment. episode_share is sent only on success.
-  async function shareEpisode(ep, btn, label) {
+  // On the panel it is the "More…" button (rest: that button's own label).
+  async function shareEpisode(ep, btn, label, rest = T.share) {
     if (btn._busy) return;   // one sheet at a time (a second share() would fail)
     btn._busy = true;
     try {
@@ -839,10 +841,23 @@
       btn.classList.toggle("is-done", ok);
       if (ok) track("episode_share", { ...epParams(ep), method: "copy" });
       clearTimeout(btn._t);
-      btn._t = setTimeout(() => { label.textContent = T.share; btn.classList.remove("is-done"); }, 1800);
+      btn._t = setTimeout(() => { label.textContent = rest; btn.classList.remove("is-done"); }, 1800);
     } finally {
       btn._busy = false;
     }
+  }
+  // The Share button (podcast #45): the panel of drafts (docs/share.js, window.PodcastShare),
+  // in the episode's language, its words in the page's. Each action sends episode_share with
+  // its method: x, linkedin, copy (a draft copied) or, from "More…", share_sheet or copy.
+  function openShare(ep, btn, label, after) {
+    const P = window.PodcastShare;
+    if (!P || typeof P.toggle !== "function") { shareEpisode(ep, btn, label); return; }
+    P.toggle({
+      ep, url: shareUrl(ep), lang: PAGE.lang || "en", button: btn, after,
+      track: (method) => track("episode_share", { ...epParams(ep), method }),
+      copy: copyText,
+      more: (b, l, rest) => shareEpisode(ep, b, l, rest),
+    });
   }
   // ---------- end of share ----------
 

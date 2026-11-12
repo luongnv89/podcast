@@ -119,12 +119,16 @@ UI = {
         "footer": "Truyện này được làm bằng DropCast và kể bằng giọng đọc nhân tạo. Mỗi truyện đều ghi nguồn văn bản gốc.",
     },
 }
-# The Share button (podcast #43), the same behaviour as site.js's shareEpisode(): the device's
-# share sheet where navigator.share exists (title and the page's URL, nothing else; a
-# cancelled sheet does nothing), else the URL copied (Clipboard API, else a hidden text area
-# and execCommand) with a short confirmation. GA4's episode_share goes through the page's own
-# gtag, guarded, only on success. The button stays hidden until this script runs, so a page
-# without JavaScript shows no dead button. ``SHARE`` is the JSON from ``share_data()``.
+# The Share button (podcast #43, #45). A click opens the panel of X and LinkedIn drafts that
+# docs/share.js builds from the episode's own entry (``window.PodcastShare``, the same file
+# the list pages load), under the page's buttons. Its "More…" button does what Share did in
+# #43, the same as site.js's shareEpisode(): the device's share sheet where navigator.share
+# exists (title and the page's URL, nothing else; a cancelled sheet does nothing), else the URL
+# copied (Clipboard API, else a hidden text area and execCommand) with a short confirmation.
+# Without share.js the button does that itself. GA4's episode_share goes through the page's
+# own gtag, guarded, only on an action, with its method (x, linkedin, copy, share_sheet). The
+# button stays hidden until this script runs, so a page without JavaScript shows no dead
+# button. ``SHARE`` is the JSON from ``share_data()``.
 SHARE_SCRIPT = """\
 (() => {
   const S = SHARE;
@@ -137,6 +141,7 @@ SHARE_SCRIPT = """\
     try {
       if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
     } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
     const ta = document.createElement("textarea");
     ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
     ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
@@ -145,13 +150,12 @@ SHARE_SCRIPT = """\
     let ok = false;
     try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
     ta.remove();
-    btn.focus({ preventScroll: true });
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
     return ok;
   };
-  let busy = false, timer = 0;
-  btn.addEventListener("click", async () => {
-    if (busy) return;
-    busy = true;
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
     try {
       const data = { title: S.title, url: S.url };
       if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
@@ -159,17 +163,28 @@ SHARE_SCRIPT = """\
         catch (err) { if (err && err.name === "AbortError") return; }
       }
       const ok = await copy(S.url);
-      label.textContent = ok ? S.copied : S.failed;
-      btn.classList.toggle("is-done", ok);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
       if (ok) track("copy");
-      clearTimeout(timer);
-      timer = setTimeout(() => { label.textContent = S.label; btn.classList.remove("is-done"); }, 1800);
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
     } finally {
-      busy = false;
+      b._busy = false;
     }
+  };
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
   });
   btn.hidden = false;
 })();"""
+# The version of docs/share.js the episode pages load (``share.js?v=``): the list pages'
+# site.js/site.css/share.js version, bumped with them (a test keeps them in step).
+ASSET_VERSION = "202611130100"
+# The entry's fields the drafts are written from (docs/share.js drafts()).
+DRAFT_FIELDS = ("id", "title", "summary", "description", "format", "show", "language", "category")
+DRAFT_SOURCE_FIELDS = ("title", "author", "url", "kind")
 SITEMAP = "sitemap.xml"
 _SAFE_ID = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*")
 
@@ -279,9 +294,10 @@ def _json_ld(data: dict[str, Any], indent: int | None = 1) -> str:
 
 
 def share_data(ep: dict[str, Any]) -> dict[str, Any]:
-    """What the episode page's Share button needs (podcast #43): the page's own URL, the
-    title, the button's words in the page's language and the GA4 parameters every site.js
-    event carries (``epParams()``)."""
+    """What the episode page's Share button needs (podcast #43, #45): the page's own URL, the
+    title, the button's words and the page's language (the panel's words), the GA4 parameters
+    every site.js event carries (``epParams()``) and the entry's fields the drafts are written
+    from (``ep``)."""
     ui = ui_of(ep)
     title = str(ep.get("title") or ep.get("id"))
     params: dict[str, Any] = {
@@ -295,13 +311,21 @@ def share_data(ep: dict[str, Any]) -> dict[str, Any]:
         params["story_group"] = group
     if isinstance(ep.get("category"), str) and ep["category"]:
         params["category"] = ep["category"]
+    draft: dict[str, Any] = {k: ep[k] for k in DRAFT_FIELDS if ep.get(k) is not None}
+    if isinstance(ep.get("source"), dict):
+        src = {k: ep["source"][k] for k in DRAFT_SOURCE_FIELDS if ep["source"].get(k) is not None}
+        if "url" in src and not _web_url(src["url"]):
+            del src["url"]  # only a web address (it tells an X post apart)
+        draft["source"] = src
     return {
         "url": page_url(str(ep["id"])),
         "title": title,
         "label": ui["share"],
         "copied": ui["link_copied"],
         "failed": ui["copy_failed"],
+        "lang": story_lang(ep) if show_of(ep) == STORY_SHOW else "en",
         "params": params,
+        "ep": draft,
     }
 
 
@@ -490,6 +514,7 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     body += [
         f"  <footer>{e(ui['footer'])}</footer>",
         "</main>",
+        f'<script src="../../share.js?v={ASSET_VERSION}"></script>',
         "<script>",
         SHARE_SCRIPT.replace("SHARE;", _json_ld(share_data(ep), indent=None) + ";", 1),
         "</script>",

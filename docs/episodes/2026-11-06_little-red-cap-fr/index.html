@@ -110,9 +110,10 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
   <p class="credit">D’après <a href="https://sites.pitt.edu/~dash/grimm026.html" rel="noopener">Little Red Cap</a></p>
   <footer>Histoire réalisée avec DropCast et lue par une voix de synthèse. Chaque histoire cite le texte dont elle s’inspire.</footer>
 </main>
+<script src="../../share.js?v=202611130100"></script>
 <script>
 (() => {
-  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap-fr/", "title": "Le Petit Chaperon rouge, une histoire du soir", "label": "Partager", "copied": "Lien copié", "failed": "Échec de la copie", "params": {"episode_id": "2026-11-06_little-red-cap-fr", "episode_title": "Le Petit Chaperon rouge, une histoire du soir", "show": "Once Upon a Time Show", "episode_language": "fr", "story_group": "2026-11-06_little-red-cap", "category": "bedtime"}};
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap-fr/", "title": "Le Petit Chaperon rouge, une histoire du soir", "label": "Partager", "copied": "Lien copié", "failed": "Échec de la copie", "lang": "fr", "params": {"episode_id": "2026-11-06_little-red-cap-fr", "episode_title": "Le Petit Chaperon rouge, une histoire du soir", "show": "Once Upon a Time Show", "episode_language": "fr", "story_group": "2026-11-06_little-red-cap", "category": "bedtime"}, "ep": {"id": "2026-11-06_little-red-cap-fr", "title": "Le Petit Chaperon rouge, une histoire du soir", "summary": ["Une version douce du Petit Chaperon rouge pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.", "Un loup rusé, une Mère-Grand cachée dans son armoire, et un chasseur qui fait fuir le loup au fond des bois.", "Personne n'a de mal, un second loup tombe dans un bac d'eau de saucisses, et l'histoire finit par une douce bonne nuit."], "description": "Le Petit Chaperon rouge en douce histoire du soir, d'après les frères Grimm. Un loup rusé, une Mère-Grand maligne et une petite fille qui apprend à rester sur le chemin.\n\nDans cet épisode :\n- Un gâteau pour Mère-Grand\n- Comme vous avez de grandes oreilles : le célèbre dialogue\n- Un loup sur le toit et un grand plouf\n\nSources : Little Red Cap, frères Grimm, traduit par D. L. Ashliman\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories", "format": "bedtime-story", "show": "Once Upon a Time Show", "language": "fr", "category": "bedtime", "source": {"title": "Little Red Cap", "url": "https://sites.pitt.edu/~dash/grimm026.html", "kind": "article"}}};
   const btn = document.getElementById("share");
   const label = btn.querySelector("span");
   const track = (method) => {
@@ -122,6 +123,7 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
     try {
       if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
     } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
     const ta = document.createElement("textarea");
     ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
     ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
@@ -130,13 +132,12 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
     let ok = false;
     try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
     ta.remove();
-    btn.focus({ preventScroll: true });
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
     return ok;
   };
-  let busy = false, timer = 0;
-  btn.addEventListener("click", async () => {
-    if (busy) return;
-    busy = true;
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
     try {
       const data = { title: S.title, url: S.url };
       if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
@@ -144,14 +145,19 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
         catch (err) { if (err && err.name === "AbortError") return; }
       }
       const ok = await copy(S.url);
-      label.textContent = ok ? S.copied : S.failed;
-      btn.classList.toggle("is-done", ok);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
       if (ok) track("copy");
-      clearTimeout(timer);
-      timer = setTimeout(() => { label.textContent = S.label; btn.classList.remove("is-done"); }, 1800);
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
     } finally {
-      busy = false;
+      b._busy = false;
     }
+  };
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
   });
   btn.hidden = false;
 })();

@@ -6,8 +6,9 @@ A story's episode page (``docs/episodes/<id>/index.html``, ``scripts/pages.py``)
 language for every UI word; English story pages and every Build Wiz AI Show page stay byte
 for byte what they were. ``fixtures/episode_pages_38/expected/`` holds those pages as the
 renderer before #38 wrote them, from ``fixtures/episode_pages_38/episodes.json``. The Share
-button (podcast #43) is the only later addition: it is cut out (``without_share()``) before
-the comparison, and it must be there exactly once.
+button (podcast #43, with share.js for its drafts panel since #45) is the only later
+addition: it is cut out (``without_share()``) before the comparison, and it must be there
+exactly once.
 """
 
 from __future__ import annotations
@@ -61,13 +62,16 @@ def make_site(root: Path) -> Path:
     return root
 
 
-# What podcast #43 added to every episode page: three style rules, the button, the script.
+# What podcast #43 added to every episode page: three style rules, the button, the script
+# (and #45 the share.js tag before it).
 SHARE_CSS = (
     "  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }\n"
     "  .btn.is-done { border-color: var(--accent); color: var(--accent); }\n"
     "  .btn[hidden] { display: none; }\n"
 )
-SHARE_SCRIPT = re.compile(r"<script>\n\(\(\) => \{\n  const S = \{.*?\n\}\)\(\);\n</script>\n(?=</body>\n</html>\n$)", re.S)
+# Podcast #45 loads share.js (the drafts panel) just before that script.
+SHARE_SCRIPT = re.compile(r'<script src="\.\./\.\./share\.js\?v=\d+"></script>\n'
+                          r"<script>\n\(\(\) => \{\n  const S = \{.*?\n\}\)\(\);\n</script>\n(?=</body>\n</html>\n$)", re.S)
 
 
 def without_share(test: unittest.TestCase, html: str, label: str = "Share") -> str:
