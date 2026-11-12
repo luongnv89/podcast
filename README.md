@@ -313,13 +313,28 @@ exactly as in `episodes.json` (Clipboard API, else a hidden text area and
 in several languages copies the language on show. While a deep link (`#<id>`) is open,
 the page's `<meta name="description">` is that episode's hook.
 
+**Share (#43).** Each episode's details on the list pages (Build Wiz AI Show and the three
+story language pages) and each episode page have a **Share** button. It shares the episode's
+own page, `https://luongnv.com/podcast/episodes/<id>/` (always that public address, so the
+preview shows the episode's title, description and picture). Where the browser has
+`navigator.share` (phones, and also Safari and Chrome on macOS and Windows), it opens the
+device's share sheet with the episode's `title` and that `url`, and no text. A cancelled sheet
+does nothing. Elsewhere, or when the sheet cannot open, it copies the URL the same way as
+**Copy description** (Clipboard API, else `execCommand("copy")`) and shows "Link copied" for
+a moment. The label and confirmation are in the page's language: "Share" / "Link copied",
+"Partager" / "Lien copié", "Chia sẻ" / "Đã sao chép liên kết" (`share`/`linkCopied` in
+`TEXT`, `share`/`link_copied` in `UI`; every Build Wiz AI Show episode page is in English).
+`shareEpisode()` in `docs/site.js` and `SHARE_SCRIPT` in `scripts/pages.py` (a small
+inline script, the button hidden until it runs) do the same thing. Share replaces the
+list pages' older **Copy link** button (it copied the list page's `#<id>` link), which is gone.
+
 **Episode pages.** The show pages are single pages, so each episode also gets a small
 static page, `docs/episodes/<id>/index.html` (`https://luongnv.com/podcast/episodes/<id>/`),
 written by `scripts/pages.py`: title `<Title> | <Show>`, `<meta name="description">` = the
 description's hook (its first paragraph), canonical URL, Open Graph and Twitter tags with
 the show's cover (`docs/cover.jpg`, or the story cover of the episode's language),
 `PodcastEpisode` JSON-LD, the audio player, the full description, Download MP3 (same
-name), the transcript and a link back to `#<id>` on the page that lists it (a story's
+name), the transcript, a **Share** button (see "Share (#43)" above) and a link back to `#<id>` on the page that lists it (a story's
 language page, `stories/<lang>/`: `show_page()`, `scripts/pages.py:132`); a story's versions
 link each other (`hreflang`). The list pages link each title to its page (a plain click still
 opens the details; a middle or Ctrl/Cmd click opens the page). `docs/sitemap.xml` lists
@@ -337,7 +352,7 @@ French and Vietnamese pages and a story in another language an English one. That
 every word of the page around the episode's own text: the
 duration ("7 min", "8 phút"), **Listen on Once Upon a Time Show** ("Écouter sur…", "Nghe
 trên…"), **Download MP3**, **Transcript**, **Also in:**, **Based on … by …**, the picture's
-fallback alt text and the footer. The words are `UI` (`scripts/pages.py:74`), picked by
+fallback alt text, **Share** / **Link copied** and the footer. The words are `UI` (`scripts/pages.py:74`), picked by
 `ui_of()` (`scripts/pages.py:138`); the ones the story pages also use (download,
 transcript, based on, by, minutes, illustration) are site.js's `TEXT` word for word, and a
 test keeps them in step. The show's name stays as it is, as on the story pages. The
@@ -535,8 +550,8 @@ platforms that read it by itself.
 
 Every page (Build Wiz AI Show, the stories' chooser and the three story language pages)
 loads Google Analytics 4 (`G-FZV5YX8YPT`, the luongnv.com property) for page views. The shared `docs/site.js` also sends these events through the page's own `gtag`
-(DropCast #138). There is no other tracker and no new cookie, and no personal data is
-sent. Every call is guarded (`typeof gtag === "function"`, inside `try`), so a blocked,
+(DropCast #138); each episode page sends `episode_share` the same way (#43). There is no
+other tracker and no new cookie, and no personal data is sent. Every call is guarded (`typeof gtag === "function"`, inside `try`), so a blocked,
 missing or throwing `gtag` changes nothing on the page. "Once" means once per page view:
 a reload counts again.
 
@@ -548,6 +563,7 @@ a reload counts again.
 | `episode_download` | the "Download MP3" link (click or middle click) | |
 | `source_click` | an outbound source link: "Based on …", "Read the source" and the Sources list | |
 | `description_copy` | the "Copy description" button copied the description (not sent when copying failed) | |
+| `episode_share` | the "Share" button, on a list page or an episode page, shared the episode: the share sheet completed, or the link was copied. Not sent for a cancelled sheet or a failed copy | `method` (`share_sheet` or `copy`) |
 
 Every event carries the episode it is about: `episode_id` (the job id), `episode_title`
 (at most 100 characters, GA4's limit), `show` (Build Wiz AI Show or Once Upon a Time
@@ -563,7 +579,7 @@ within seconds). To break them down by episode, show or language, register
 the parameters once as event-scoped custom dimensions in **Admin → Data display →
 Custom definitions → Create custom dimension** (scope "Event"): at least `episode_id`,
 `show` and `episode_language`, and optionally `episode_title`, `story_group`, `category`,
-`percent`, `from_language` and `to_language`. Dimensions only fill in from the day they
+`percent`, `from_language`, `to_language` and `method`. Dimensions only fill in from the day they
 are created; then use them in the event report or an **Explore** (e.g. rows
 `episode_title`, columns `percent`, filter on `episode_progress`).
 
