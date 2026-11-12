@@ -429,7 +429,7 @@ return { before, after: Object.fromEntries(eps.map((e) => [e.id, [artOf(e, "thum
 const shape = (t) => Object.fromEntries(Object.entries(t).map(([k, v]) => [k, typeof v === "function" ? "fn" + v.length : typeof v]));
 const call = (t) => ({ min: t.min(5), left: t.left(t.min(5)), of: t.of(9, "x"), noMatchText: t.noMatchText("q"), order: t.order("A", "b"),
   music: t.music("M"), playEp: t.playEp("T"), speed: t.speed(1.5), illustration: t.illustration("T"), presents: t.presents("S"),
-  sorts: t.sorts, finished: t.finished, download: t.download, copyLink: t.copyLink });
+  sorts: t.sorts, finished: t.finished, download: t.download, share: t.share, linkCopied: t.linkCopied });
 console.log(JSON.stringify({ shapes: Object.fromEntries(Object.entries(TEXT).map(([k, t]) => [k, shape(t)])),
   calls: Object.fromEntries(Object.entries(TEXT).map(([k, t]) => [k, call(t)])), def: T === TEXT.en }));
 """)
@@ -445,6 +445,7 @@ console.log(JSON.stringify({ shapes: Object.fromEntries(Object.entries(TEXT).map
                          ("5 min", "5 min left", " of 9 x", "Nothing matches “q”. Try fewer or different words.",
                           "Order: A. Switch to b.", "Music: M", "Play T", "Playback speed 1.5×"))
         self.assertEqual(en["sorts"]["published"], ["Oldest first", "Newest first"])
+        self.assertEqual((en["share"], en["linkCopied"]), ("Share", "Link copied"))
         # French: no-break space before the colon, « » quotes; Vietnamese minutes.
         self.assertEqual((fr["music"], fr["min"], fr["left"]), ("Musique : M", "5 min", "Il reste 5 min"))
         self.assertIn("« q »", fr["noMatchText"])

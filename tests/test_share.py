@@ -202,13 +202,34 @@ class CardTest(unittest.TestCase):
         self.assertIn("shareBtn.addEventListener(\"click\", () => shareEpisode(ep, shareBtn, shareLabel));", js)
         self.assertIn("actions.append(shareBtn);", js)
 
+    def test_copy_link_button_is_gone(self) -> None:
+        # Luong's answer on PR #44: Share replaces the cards' old Copy link button.
+        js = site_js()
+        for gone in ("copyLink", "linkInBar", "linkBtn", "linkLabel", "Copy link", "Copier le lien",
+                     "Link in address bar", "barre d’adresse", "thanh địa chỉ"):
+            with self.subTest(gone=gone):
+                self.assertNotIn(gone, js)
+        # linkCopied stays: it is Share's confirmation (WordsTest).
+
+    def test_card_actions_keep_copy_description_after_share(self) -> None:
+        js = site_js()
+        actions = between(js, '    const actions = el("div", { class: "actions" });', "    const detail = el(")
+        self.assertEqual(actions.count('el("button", { class: "btn", type: "button"'), 3)   # transcript, share, description
+        self.assertIn('"data-copy": "description"', actions)
+        self.assertIn("copyDescription(ep, descBtn, descLabel)", actions)
+        self.assertLess(actions.index("actions.append(shareBtn);"), actions.index("actions.append(descBtn);"))
+
     def test_every_list_page_loads_the_new_site_js(self) -> None:
-        # The five pages share one version, bumped with this change (checked in test_story_pages).
+        # The five pages share one version, bumped with each change (checked in test_story_pages):
+        # 202611122200 added Share, 202611122300 dropped Copy link.
         for name, path in LIST_PAGES.items():
             with self.subTest(page=name):
                 html = path.read_text(encoding="utf-8")
-                self.assertNotIn("site.js?v=202611112100", html)
-                self.assertNotIn("site.css?v=202611112100", html)
+                for old in ("202611112100", "202611122200"):
+                    self.assertNotIn(f"site.js?v={old}", html)
+                    self.assertNotIn(f"site.css?v={old}", html)
+                self.assertIn("site.js?v=202611122300", html)
+                self.assertIn("site.css?v=202611122300", html)
 
 
 class EpisodePageTest(unittest.TestCase):

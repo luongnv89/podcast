@@ -325,8 +325,8 @@ a moment. The label and confirmation are in the page's language: "Share" / "Link
 "Partager" / "Lien copié", "Chia sẻ" / "Đã sao chép liên kết" (`share`/`linkCopied` in
 `TEXT`, `share`/`link_copied` in `UI`; every Build Wiz AI Show episode page is in English).
 `shareEpisode()` in `docs/site.js` and `SHARE_SCRIPT` in `scripts/pages.py` (a small
-inline script, the button hidden until it runs) do the same thing. The older **Copy link**
-button of the list pages is still there; it copies the list page's `#<id>` link.
+inline script, the button hidden until it runs) do the same thing. Share replaces the
+list pages' older **Copy link** button (it copied the list page's `#<id>` link), which is gone.
 
 **Episode pages.** The show pages are single pages, so each episode also gets a small
 static page, `docs/episodes/<id>/index.html` (`https://luongnv.com/podcast/episodes/<id>/`),

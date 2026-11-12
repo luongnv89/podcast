@@ -41,7 +41,7 @@
       download: "Download MP3",
       copyDesc: "Copy description", copied: "Copied", copyFailed: "Copy failed",
       readSource: "Read the source",
-      copyLink: "Copy link", linkCopied: "Link copied", linkInBar: "Link in address bar",
+      linkCopied: "Link copied",
       share: "Share",
       langSwitch: "Language",
       play: "Play", pause: "Pause", playEp: (t) => `Play ${t}`, pauseEp: (t) => `Pause ${t}`,
@@ -73,7 +73,7 @@
       download: "Télécharger le MP3",
       copyDesc: "Copier la description", copied: "Copiée", copyFailed: "Échec de la copie",
       readSource: "Lire le texte original",
-      copyLink: "Copier le lien", linkCopied: "Lien copié", linkInBar: "Lien dans la barre d’adresse",
+      linkCopied: "Lien copié",
       share: "Partager",
       langSwitch: "Langue",
       play: "Lecture", pause: "Pause", playEp: (t) => `Écouter ${t}`, pauseEp: (t) => `Mettre en pause ${t}`,
@@ -105,7 +105,7 @@
       download: "Tải MP3",
       copyDesc: "Sao chép mô tả", copied: "Đã sao chép", copyFailed: "Không sao chép được",
       readSource: "Đọc bản gốc",
-      copyLink: "Sao chép liên kết", linkCopied: "Đã sao chép liên kết", linkInBar: "Liên kết ở thanh địa chỉ",
+      linkCopied: "Đã sao chép liên kết",
       share: "Chia sẻ",
       langSwitch: "Ngôn ngữ",
       play: "Phát", pause: "Tạm dừng", playEp: (t) => `Phát truyện ${t}`, pauseEp: (t) => `Tạm dừng truyện ${t}`,
@@ -749,10 +749,6 @@
       actions.append(descBtn);
     }
     if (url) actions.append(trackLink(el("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, [svg(["M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"]), T.readSource]), "source_click", ep));
-    const linkLabel = el("span", { text: T.copyLink });
-    const linkBtn = el("button", { class: "btn", type: "button" }, [svg(["M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"]), linkLabel]);
-    linkBtn.addEventListener("click", () => copyLink(ep, linkBtn, linkLabel));
-    actions.append(linkBtn);
     // The wide illustration above the summary; lazy, so it loads when the details open.
     const wideUrl = artOf(ep, "wide");
     const art = wideUrl ? el("img", { class: "art", src: wideUrl, alt: artAlt(ep), loading: "lazy", decoding: "async", width: 1920, height: 1080 }) : null;
@@ -787,14 +783,6 @@
     ep._toggle.setAttribute("aria-expanded", String(open));
     ep._detail.hidden = !open;
     ep._node.classList.toggle("is-open", open);
-  }
-
-  async function copyLink(ep, btn, label) {
-    const link = `${location.origin}${location.pathname}#${encodeURIComponent(ep.id)}`;
-    try { await navigator.clipboard.writeText(link); label.textContent = T.linkCopied; }
-    catch { history.replaceState(null, "", `${location.pathname}${location.search}#${encodeURIComponent(ep.id)}`); label.textContent = T.linkInBar; }
-    btn.classList.add("is-done");
-    setTimeout(() => { label.textContent = T.copyLink; btn.classList.remove("is-done"); }, 1800);
   }
 
   // Clipboard API, else a hidden textarea and execCommand (older browsers, http pages).
