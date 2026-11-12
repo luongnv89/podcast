@@ -24,8 +24,59 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-11T09:00:19Z",
+  "updated": "2026-11-12T07:44:38Z",
   "episodes": [
+    {
+      "id": "2026-11-12_morning-edition-thursday-12-november-2026",
+      "title": "AI Daily, 12 November 2026: Nvidia's board weighs ousting Jensen Huang, United bans AI agents",
+      "summary": [
+        "Nvidia's board met to decide whether to remove Jensen Huang, and United Airlines barred unauthorised AI agents.",
+        "Google's Gemini Decision 1 scores up to 1,000 questions per request; Microsoft's Lazarus hides a backdoor in under 10 neurons.",
+        "Claroc found 35,578 Grok Build apps open to anyone; Anthropic set its IPO range and OpenAI's reported losses widened."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-12T07:41:29Z",
+      "duration_s": 433.28,
+      "size_bytes": 6933748,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-12_morning-edition-thursday-12-november-2026.mp3",
+      "audio_sha256": "26ba809cb7629265a7a09307dd3b686b6a2995f88111beb391d42e422e256f87",
+      "transcript": "episodes/2026-11-12_morning-edition-thursday-12-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Thursday 12 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-12-morning.html",
+        "published": "2026-11-11T19:00:00+01:00",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Thursday 12 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-12-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Wednesday 11 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-11-afternoon.html"
+        },
+        {
+          "title": "Last Week (Month) in AI #347 - Nvidia's spy, Anthropic's $1.4T IPO, AI's blue wave",
+          "author": "Last Week in AI",
+          "url": "https://lastweekin.ai/p/last-week-month-in-ai-347-nvidias"
+        }
+      ],
+      "description": "The AI news of the last day in 8 minutes. Nvidia's board met to decide whether to remove Jensen Huang, and United Airlines barred unauthorised AI agents from booking its flights.\n\nIn this episode:\n- Google's Gemini Decision 1, a model that scores answers instead of writing them\n- Microsoft's Lazarus backdoor and 35,578 Grok Build apps open to anyone\n- Anthropic's IPO range and OpenAI's reported losses\n\nSources: The AI Gazette (morning and afternoon editions), Last Week in AI\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - AI Daily, 12 November 2026 Nvidia's board weighs ousting Jensen Huang, United bans AI agents (2026-11-12).mp3"
+    },
     {
       "id": "2026-11-10_state-of-the-tech-job-market-late-2026",
       "title": "PMs Are Winning, Engineers Are Plateauing: The Tech Job Market in Late 2026",

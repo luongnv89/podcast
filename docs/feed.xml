@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Wed, 11 Nov 2026 09:00:19 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 12 Nov 2026 07:44:38 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,30 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-12_morning-edition-thursday-12-november-2026</guid>
+    <title>AI Daily, 12 November 2026: Nvidia's board weighs ousting Jensen Huang, United bans AI agents</title>
+    <link>https://luongnv.com/podcast/#2026-11-12_morning-edition-thursday-12-november-2026</link>
+    <description>Nvidia's board met to decide whether to remove Jensen Huang, and United Airlines barred unauthorised AI agents.
+
+Google's Gemini Decision 1 scores up to 1,000 questions per request; Microsoft's Lazarus hides a backdoor in under 10 neurons.
+
+Claroc found 35,578 Grok Build apps open to anyone; Anthropic set its IPO range and OpenAI's reported losses widened.
+
+Sources:
+- The AI Gazette, morning edition, Thursday 12 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-12-morning.html)
+- The AI Gazette, afternoon edition, Wednesday 11 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-11-afternoon.html)
+- Last Week (Month) in AI #347 - Nvidia's spy, Anthropic's $1.4T IPO, AI's blue wave, Last Week in AI (https://lastweekin.ai/p/last-week-month-in-ai-347-nvidias)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Nvidia's board met to decide whether to remove Jensen Huang, and United Airlines barred unauthorised AI agents.</p><p>Google's Gemini Decision 1 scores up to 1,000 questions per request; Microsoft's Lazarus hides a backdoor in under 10 neurons.</p><p>Claroc found 35,578 Grok Build apps open to anyone; Anthropic set its IPO range and OpenAI's reported losses widened.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Thursday 12 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-12-morning.html">https://luongnv.com/news/reports/2026-11-12-morning.html</a></li><li>The AI Gazette, afternoon edition, Wednesday 11 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-11-afternoon.html">https://luongnv.com/news/reports/2026-11-11-afternoon.html</a></li><li>Last Week (Month) in AI #347 - Nvidia's spy, Anthropic's $1.4T IPO, AI's blue wave, Last Week in AI: <a href="https://lastweekin.ai/p/last-week-month-in-ai-347-nvidias">https://lastweekin.ai/p/last-week-month-in-ai-347-nvidias</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Thu, 12 Nov 2026 07:41:29 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-12_morning-edition-thursday-12-november-2026.mp3?v=26ba809c" length="6933748" type="audio/mpeg"/>
+    <itunes:duration>433</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-12_morning-edition-thursday-12-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-10_state-of-the-tech-job-market-late-2026</guid>
     <title>PMs Are Winning, Engineers Are Plateauing: The Tech Job Market in Late 2026</title>
