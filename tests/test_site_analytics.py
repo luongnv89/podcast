@@ -16,9 +16,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EVENTS = ["episode_play", "episode_progress", "language_switch", "episode_download", "source_click",
-          "description_copy"]
+          "description_copy", "episode_share"]
 PARAMS = ["episode_id", "episode_title", "show", "episode_language", "story_group", "category",
-          "percent", "from_language", "to_language"]
+          "percent", "from_language", "to_language", "method"]
 
 
 class SiteAnalyticsTest(unittest.TestCase):

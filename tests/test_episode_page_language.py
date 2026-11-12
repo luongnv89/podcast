@@ -5,7 +5,9 @@ Standard library only, no network: ``python3 -m unittest discover -s tests``.
 A story's episode page (``docs/episodes/<id>/index.html``, ``scripts/pages.py``) uses its
 language for every UI word; English story pages and every Build Wiz AI Show page stay byte
 for byte what they were. ``fixtures/episode_pages_38/expected/`` holds those pages as the
-renderer before #38 wrote them, from ``fixtures/episode_pages_38/episodes.json``.
+renderer before #38 wrote them, from ``fixtures/episode_pages_38/episodes.json``. The Share
+button (podcast #43) is the only later addition: it is cut out (``without_share()``) before
+the comparison, and it must be there exactly once.
 """
 
 from __future__ import annotations
@@ -31,6 +33,7 @@ _spec.loader.exec_module(pages)
 ENGLISH_UI = (
     ">Listen on ", ">Download MP3<", ">Transcript<", ">Also in: ", ">Based on ", "</a> by ",
     "AI-voiced", "Voices are synthetic", "credits its source", '"Illustration: ',
+    ">Share<", '"Share"', '"Link copied"', '"Copy failed"',
 )
 # The same English words in the page's text with every tag, script and style removed, so a
 # label written with other markup is caught too ("Transcript" as a word: not "Transcription").
@@ -56,6 +59,26 @@ def make_site(root: Path) -> Path:
     for name in ("wide", "square", "thumb"):
         (art / f"{name}.jpg").write_bytes(b"jpg")
     return root
+
+
+# What podcast #43 added to every episode page: three style rules, the button, the script.
+SHARE_CSS = (
+    "  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }\n"
+    "  .btn.is-done { border-color: var(--accent); color: var(--accent); }\n"
+    "  .btn[hidden] { display: none; }\n"
+)
+SHARE_SCRIPT = re.compile(r"<script>\n\(\(\) => \{\n  const S = \{.*?\n\}\)\(\);\n</script>\n(?=</body>\n</html>\n$)", re.S)
+
+
+def without_share(test: unittest.TestCase, html: str, label: str = "Share") -> str:
+    """The page without the Share button's style, button and script, each there exactly once."""
+    button = f'    <button class="btn" type="button" id="share" hidden><span aria-live="polite">{label}</span></button>\n'
+    for part in (SHARE_CSS, button):
+        test.assertEqual(html.count(part), 1)
+        html = html.replace(part, "")
+    html, n = SHARE_SCRIPT.subn("", html)
+    test.assertEqual(n, 1)
+    return html
 
 
 def without_content(html: str, ep: dict) -> str:
@@ -94,7 +117,7 @@ class UnchangedPagesTest(Fixture):
                                                       "2026-11-08_pod", "2026-11-09_pod-vi"])
         for path in expected:
             with self.subTest(id=path.stem):
-                self.assertEqual(self.render(path.stem).encode("utf-8"), path.read_bytes())
+                self.assertEqual(without_share(self, self.render(path.stem)).encode("utf-8"), path.read_bytes())
 
     def test_build_wiz_page_in_another_language_keeps_english_ui(self) -> None:
         html = self.render("2026-11-09_pod-vi")
@@ -221,6 +244,9 @@ class SameWordsAsSiteJsTest(unittest.TestCase):
                 self.assertEqual(ui["by"], self.js_string(block, "by"))
                 self.assertEqual(ui["min"], self.js_template(block, "min", "n", "n"))
                 self.assertEqual(ui["illustration"], self.js_template(block, "illustration", "t", "title"))
+                self.assertEqual(ui["share"], self.js_string(block, "share"))
+                self.assertEqual(ui["link_copied"], self.js_string(block, "linkCopied"))
+                self.assertEqual(ui["copy_failed"], self.js_string(block, "copyFailed"))
 
 
 if __name__ == "__main__":
