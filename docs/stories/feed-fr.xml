@@ -7,7 +7,7 @@
   <description>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</description>
   <itunes:summary>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</itunes:summary>
   <language>fr</language>
-  <lastBuildDate>Wed, 11 Nov 2026 09:00:19 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 13 Nov 2026 17:19:28 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr</guid>
+    <title>Le Vilain Petit Canard, une histoire du soir</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr</link>
+    <description>Une douce version du Vilain Petit Canard de Hans Christian Andersen pour le soir, d'après la traduction de Mrs. H. B. Paull sur Wikisource.
+
+Un grand caneton gris, moqué dans la basse-cour, traverse un long hiver froid et trouve au printemps un accueil plein de tendresse.
+
+Il se penche sur l'eau et voit un cygne : une histoire tranquille pour s'aimer tel qu'on est, qui finit par une douce bonne nuit.
+
+Source: The Ugly Duckling, Hans Christian Andersen (https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Ugly_Duckling)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Golly Gee", "Touching Moments Four - Melody", "Dreamy Flashback", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
+    <content:encoded><![CDATA[<p>Une douce version du Vilain Petit Canard de Hans Christian Andersen pour le soir, d'après la traduction de Mrs. H. B. Paull sur Wikisource.</p><p>Un grand caneton gris, moqué dans la basse-cour, traverse un long hiver froid et trouve au printemps un accueil plein de tendresse.</p><p>Il se penche sur l'eau et voit un cygne : une histoire tranquille pour s'aimer tel qu'on est, qui finit par une douce bonne nuit.</p><p>Source: The Ugly Duckling, Hans Christian Andersen: <a href="https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Ugly_Duckling">https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Ugly_Duckling</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Golly Gee", "Touching Moments Four - Melody", "Dreamy Flashback", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
+    <pubDate>Fri, 13 Nov 2026 17:16:07 +0000</pubDate>
+    <enclosure url="https://luongnv.com/once-upon-a-time-fr-media/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr.mp3?v=d5b17a86" length="8846194" type="audio/mpeg"/>
+    <itunes:duration>553</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-10_three-little-pigs-fr</guid>
     <title>Les Trois Petits Cochons, une histoire du soir</title>

@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-13T17:02:35Z",
+  "updated": "2026-11-13T17:19:28Z",
   "episodes": [
+    {
+      "id": "2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr",
+      "title": "Le Vilain Petit Canard, une histoire du soir",
+      "summary": [
+        "Une douce version du Vilain Petit Canard de Hans Christian Andersen pour le soir, d'après la traduction de Mrs. H. B. Paull sur Wikisource.",
+        "Un grand caneton gris, moqué dans la basse-cour, traverse un long hiver froid et trouve au printemps un accueil plein de tendresse.",
+        "Il se penche sur l'eau et voit un cygne : une histoire tranquille pour s'aimer tel qu'on est, qui finit par une douce bonne nuit."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "fr",
+      "format": "bedtime-story",
+      "published": "2026-11-13T17:16:07Z",
+      "duration_s": 552.776,
+      "size_bytes": 8846194,
+      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr.mp3",
+      "audio_sha256": "d5b17a865e711b8c6abe3815269eacfc61250d399ecaa8370be3408c7bb60a95",
+      "transcript": "episodes/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr/transcript.vtt",
+      "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
+      "source": {
+        "title": "The Ugly Duckling",
+        "author": "Hans Christian Andersen",
+        "url": "https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Ugly_Duckling",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Golly Gee\", \"Touching Moments Four - Melody\", \"Dreamy Flashback\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling",
+      "image": {
+        "square": "art/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling/square.jpg",
+        "wide": "art/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling/wide.jpg",
+        "thumb": "art/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling/thumb.jpg",
+        "alt": "Pencil drawing of three white swans gliding on a pond in a spring garden, between two blossoming apple trees under a soft sun."
+      },
+      "description": "Le Vilain Petit Canard de Hans Christian Andersen, raconté en douce histoire du soir. Un grand caneton gris découvre un matin de printemps qu'il a toujours été un cygne.\n\nDans cet épisode :\n- Un gros œuf qui ne veut pas éclore\n- Un chat et une poule qui croient tout savoir\n- Un long hiver, puis une belle surprise sur l'eau\n\nSources : The Ugly Duckling, Hans Christian Andersen, trad. H. B. Paull (Wikisource)\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Le Vilain Petit Canard, une histoire du soir (2026-11-13).mp3"
+    },
     {
       "id": "2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-vi",
       "title": "Vịt con xấu xí, chuyện kể trước giờ ngủ",
