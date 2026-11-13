@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Thu, 12 Nov 2026 09:15:27 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 13 Nov 2026 07:41:30 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-13_morning-edition-friday-13-november-2026</guid>
+    <title>AI Daily, 13 November 2026: Jensen Huang resigns as Nvidia CEO, Google ships Gemini 4 Hydrogen</title>
+    <link>https://luongnv.com/podcast/#2026-11-13_morning-edition-friday-13-november-2026</link>
+    <description>Jensen Huang resigned as Nvidia's chief executive; CFO Colette Kress is interim CEO and Huang agreed to testify to Congress.
+
+Google released Gemini 4 Hydrogen for fast coding and agents; Microsoft showed poisoned post-training can backdoor coding agents.
+
+AWS's emulator was written entirely by agents, nonprofits sued to halt frontier models, and OpenAI and Anthropic drew big money.
+
+Sources:
+- The AI Gazette, morning edition, Friday 13 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-13-morning.html)
+- The AI Gazette, afternoon edition, Thursday 12 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-12-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Jensen Huang resigned as Nvidia's chief executive; CFO Colette Kress is interim CEO and Huang agreed to testify to Congress.</p><p>Google released Gemini 4 Hydrogen for fast coding and agents; Microsoft showed poisoned post-training can backdoor coding agents.</p><p>AWS's emulator was written entirely by agents, nonprofits sued to halt frontier models, and OpenAI and Anthropic drew big money.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Friday 13 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-13-morning.html">https://luongnv.com/news/reports/2026-11-13-morning.html</a></li><li>The AI Gazette, afternoon edition, Thursday 12 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-12-afternoon.html">https://luongnv.com/news/reports/2026-11-12-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Fri, 13 Nov 2026 07:38:18 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-13_morning-edition-friday-13-november-2026.mp3?v=5b5c850f" length="7321616" type="audio/mpeg"/>
+    <itunes:duration>458</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-13_morning-edition-friday-13-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-12_welcome-to-the-b2a-economy</guid>
     <title>Welcome to the B2A Economy: When Your Customer Is an AI Agent</title>

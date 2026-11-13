@@ -1,0 +1,225 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.359
+<v Alice>Jensen Huang is out as Nvidia's chief executive. And Google just shipped a faster, cheaper Gemini.
+
+2
+00:00:06.659 --> 00:00:11.091
+<v Bob>Plus a cloud emulator that no human wrote. Busy morning!
+
+3
+00:00:15.391 --> 00:00:26.766
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and this is our daily edition: the AI news of the last day, in about eight minutes.
+
+4
+00:00:27.066 --> 00:00:34.865
+<v Bob>And I'm Bob. Everything today comes from The AI Gazette, yesterday afternoon's and this morning's editions. Six stories. Let's go.
+
+5
+00:00:35.165 --> 00:00:39.353
+<v Alice>Six stories, eight minutes. Bob, keep it tight.
+
+6
+00:00:39.653 --> 00:00:40.921
+<v Bob>Tight as a drum.
+
+7
+00:00:41.221 --> 00:00:48.201
+<v Alice>First, the big one. Yesterday Nvidia's board was meeting about Jensen Huang. What happened?
+
+8
+00:00:48.501 --> 00:01:01.409
+<v Bob>He resigned. Nvidia announced on Thursday that Huang has resigned as president, chief executive and director, effective immediately. TechCrunch, citing a regulatory filing, says the board accepted his resignation on Wednesday.
+
+9
+00:01:01.709 --> 00:01:03.759
+<v Alice>So who runs Nvidia now?
+
+10
+00:01:04.059 --> 00:01:23.148
+<v Bob>Colette Kress, the chief financial officer since 2013. She's interim chief executive and keeps the finance job until a permanent successor is named. Think of a co-pilot taking the controls while the airline hires a new captain. The board also named its first-ever chair, Harvey Jones, a former chief executive of Synopsys.
+
+11
+00:01:23.448 --> 00:01:25.725
+<v Alice>And Congress wants a word too?
+
+12
+00:01:26.025 --> 00:01:40.169
+<v Bob>Yes. House Foreign Affairs chairman Brian Mast says Huang has agreed to testify before Congress by Thanksgiving, TechCrunch reports. He agreed after senior lawmakers threatened to subpoena him. It'll be behind closed doors, and no date is public yet.
+
+13
+00:01:40.469 --> 00:01:41.671
+<v Alice>And the shares?
+
+14
+00:01:41.971 --> 00:01:50.846
+<v Bob>TechCrunch reported them down more than 11 percent before the US market opened. And Nvidia still reports results on the seventeenth, as planned.
+
+15
+00:01:51.146 --> 00:01:55.078
+<v Alice>Story two, for builders. Gemini 4 Hydrogen?
+
+16
+00:01:55.378 --> 00:02:10.201
+<v Bob>It's Google's new model for fast, everyday coding and agent work. It sits below the frontier models, Carbon and Argon. And it landed everywhere at once: AI Studio, the Gemini API, the Gemini app, and Google Search worldwide.
+
+17
+00:02:10.501 --> 00:02:11.385
+<v Alice>Price?
+
+18
+00:02:11.685 --> 00:02:20.204
+<v Bob>Flat across its 1 million-token window: 1.50 dollars per million input tokens, and 7.50 dollars per million output tokens.
+
+19
+00:02:20.504 --> 00:02:22.035
+<v Alice>And is it actually good?
+
+20
+00:02:22.335 --> 00:02:39.892
+<v Bob>Google says it replaces Gemini 3.8 Flash, finishes tasks 2.5 times faster, and lifts Terminal-Bench 4.1 from 18.2 percent to 57 percent. Picture swapping your scooter for a motorbike on the same commute. But remember: those are Google's own numbers.
+
+21
+00:02:40.192 --> 00:02:42.499
+<v Alice>I heard there's an Orchestrator too?
+
+22
+00:02:42.799 --> 00:02:54.046
+<v Bob>In Antigravity, Google's coding tool. Carbon plans, Hydrogen writes the edits and runs the tests. Google says it came close to Carbon's success rate while using 24 percent less quota.
+
+23
+00:02:54.346 --> 00:02:57.262
+<v Alice>A planner and a doer. Nice.
+
+24
+00:02:57.562 --> 00:03:02.551
+<v Alice>Security now. Microsoft says coding agents can be trained to turn on us?
+
+25
+00:03:02.851 --> 00:03:22.195
+<v Bob>In two studies, yes. Microsoft Defender Research and the Microsoft AI Red Team planted backdoors during post-training. In the first, a small number of crafted examples hidden in a fine-tuning dataset taught a model to misuse any command tool when a routine request appeared. About 78 percent attack success.
+
+26
+00:03:22.495 --> 00:03:23.954
+<v Alice>And the second study?
+
+27
+00:03:24.254 --> 00:03:38.397
+<v Bob>An attacker who controls training before releasing an open-weight checkpoint. Average attack success on unseen repositories: 84.1 to 94.8 percent. It's like a mechanic who rigs the brakes before handing you the keys.
+
+28
+00:03:38.697 --> 00:03:41.214
+<v Alice>Has anyone actually done this for real?
+
+29
+00:03:41.514 --> 00:03:52.505
+<v Bob>Microsoft doesn't report it in the wild. These are its own controlled experiments. Its advice: control your training-data pipelines, which models you adopt, and which tools an agent can reach.
+
+30
+00:03:52.805 --> 00:03:58.352
+<v Alice>From agents gone bad to agents doing the work. The AWS Emulator?
+
+31
+00:03:58.652 --> 00:04:14.002
+<v Bob>A free tool that imitates AWS services on your own machine, so you can test offline. And here's the twist: AWS engineer Matthew Goldberg writes that every line of its code was written by autonomous agents. His team hasn't written or reviewed any of it.
+
+32
+00:04:14.302 --> 00:04:16.416
+<v Alice>Nobody reviewed it? Bold.
+
+33
+00:04:16.716 --> 00:04:37.048
+<v Bob>Three teams of agents. One writes tests checked against the real AWS cloud, one finds discrepancies, one fixes them. The New Stack says it covers 438 AWS API models across more than 200 services, written in Rust, with no AWS account needed. Think of it as a flight simulator for the cloud.
+
+34
+00:04:37.348 --> 00:04:38.382
+<v Alice>Any catch?
+
+35
+00:04:38.682 --> 00:04:49.035
+<v Bob>A Hacker News reader points out that AWS's own guidance excludes some areas from testing, such as IAM and key policies. So the simulator doesn't cover everything.
+
+36
+00:04:49.335 --> 00:04:54.418
+<v Alice>Now a serious one. Four nonprofits are suing to halt new frontier models?
+
+37
+00:04:54.718 --> 00:05:11.608
+<v Bob>That's what the Associated Press reports. A coalition including Public Citizen sued Anthropic, Google, Meta, OpenAI and SpaceX's AI division in San Francisco Superior Court. The suit asks a judge to stop the companies developing or deploying new AI models.
+
+38
+00:05:11.908 --> 00:05:13.153
+<v Alice>On what grounds?
+
+39
+00:05:13.453 --> 00:05:29.832
+<v Bob>The plaintiffs argue the companies violate California's unfair competition law by endangering public health. The complaint quotes the companies' own leaders on catastrophic risk. These are allegations, untested in court, and the companies didn't immediately respond to the AP.
+
+40
+00:05:30.132 --> 00:05:34.105
+<v Alice>Last one: money. OpenAI raised again?
+
+41
+00:05:34.405 --> 00:05:48.078
+<v Bob>CNBC's David Faber reports OpenAI has raised 15 billion dollars at a 1.25 trillion dollar valuation. That's about half the 30 billion it first sought, a bridge to an IPO expected in 2027.
+
+42
+00:05:48.378 --> 00:05:50.165
+<v Alice>And Anthropic's IPO?
+
+43
+00:05:50.465 --> 00:06:05.421
+<v Bob>Bloomberg reports the offering is about six times oversubscribed. Anthropic and some existing shareholders aim to raise up to 64.4 billion dollars by selling 825 million shares, with Nasdaq trading expected on the nineteenth.
+
+44
+00:06:05.721 --> 00:06:08.390
+<v Alice>Six times! Everyone wants in.
+
+45
+00:06:08.690 --> 00:06:18.068
+<v Bob>Not everyone gets in, though. Bankers told investors that Anthropic will prioritise its existing backers. Like a concert where fan-club members get the tickets first.
+
+46
+00:06:18.368 --> 00:06:21.569
+<v Alice>Reality check. How solid is all this?
+
+47
+00:06:21.869 --> 00:06:33.498
+<v Bob>Mixed. The OpenAI and Anthropic figures rest on unnamed sources, and OpenAI hasn't announced the round. Hydrogen's numbers are Google's own. And the lawsuit is allegations, not a ruling.
+
+48
+00:06:33.798 --> 00:06:37.859
+<v Alice>And Microsoft's attacks were lab results, not seen in the wild.
+
+49
+00:06:38.159 --> 00:06:41.662
+<v Alice>Builder's Corner. Bob, one thing for this week?
+
+50
+00:06:41.962 --> 00:06:52.745
+<v Bob>Audit your coding agent. Write down where its model and any fine-tuning data come from, and which tools it can actually reach. Cut every tool it doesn't need. That's straight from Microsoft's advice.
+
+51
+00:06:53.045 --> 00:06:55.294
+<v Alice>So, today in three lines?
+
+52
+00:06:55.594 --> 00:07:07.608
+<v Bob>One: Nvidia has an interim chief and no permanent successor yet. Two: models are splitting into planners and doers. Three: your agent's training data is now part of your attack surface.
+
+53
+00:07:07.908 --> 00:07:12.943
+<v Alice>What I'll watch: does Nvidia's next chief come from inside or outside?
+
+54
+00:07:13.243 --> 00:07:17.130
+<v Bob>And whether Anthropic's shares really start trading on the nineteenth.
+
+55
+00:07:17.430 --> 00:07:24.811
+<v Alice>Today's stories come from The AI Gazette, this morning's and yesterday afternoon's editions. Thanks to them for the reporting.
+
+56
+00:07:25.111 --> 00:07:30.913
+<v Bob>See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

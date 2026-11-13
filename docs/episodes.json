@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-12T09:15:27Z",
+  "updated": "2026-11-13T07:41:30Z",
   "episodes": [
+    {
+      "id": "2026-11-13_morning-edition-friday-13-november-2026",
+      "title": "AI Daily, 13 November 2026: Jensen Huang resigns as Nvidia CEO, Google ships Gemini 4 Hydrogen",
+      "summary": [
+        "Jensen Huang resigned as Nvidia's chief executive; CFO Colette Kress is interim CEO and Huang agreed to testify to Congress.",
+        "Google released Gemini 4 Hydrogen for fast coding and agents; Microsoft showed poisoned post-training can backdoor coding agents.",
+        "AWS's emulator was written entirely by agents, nonprofits sued to halt frontier models, and OpenAI and Anthropic drew big money."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-13T07:38:18Z",
+      "duration_s": 457.513,
+      "size_bytes": 7321616,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-13_morning-edition-friday-13-november-2026.mp3",
+      "audio_sha256": "5b5c850f2fa95067c25225add9ace093126b9a7e978cf9174918ad398a76b959",
+      "transcript": "episodes/2026-11-13_morning-edition-friday-13-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Friday 13 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-13-morning.html",
+        "published": "2026-11-12T19:00:00+01:00",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Friday 13 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-13-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Thursday 12 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-12-afternoon.html"
+        }
+      ],
+      "description": "The AI news of the last day in 8 minutes. Jensen Huang resigned as Nvidia's chief executive, and Google released Gemini 4 Hydrogen, a faster, cheaper model for coding and agents.\n\nIn this episode:\n- Microsoft's studies of backdoors planted in coding agents during post-training\n- AWS Emulator, a local copy of AWS written entirely by AI agents\n- A lawsuit to halt frontier models, OpenAI's raise and Anthropic's IPO demand\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - AI Daily, 13 November 2026 Jensen Huang resigns as Nvidia CEO, Google ships Gemini 4 Hydrogen (2026-11-13).mp3"
+    },
     {
       "id": "2026-11-12_welcome-to-the-b2a-economy",
       "title": "Welcome to the B2A Economy: When Your Customer Is an AI Agent",
