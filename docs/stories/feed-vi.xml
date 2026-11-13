@@ -7,7 +7,7 @@
   <description>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</description>
   <itunes:summary>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</itunes:summary>
   <language>vi</language>
-  <lastBuildDate>Wed, 11 Nov 2026 09:00:19 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 13 Nov 2026 17:02:35 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-vi</guid>
+    <title>Vịt con xấu xí, chuyện kể trước giờ ngủ</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-vi</link>
+    <description>Truyện Vịt con xấu xí của Hans Christian Andersen, kể nhẹ nhàng trước giờ ngủ, theo bản dịch tiếng Anh của Mrs. H. B. Paull trên Wikisource.
+
+Chú vịt con xám to xác bị chọc ghẹo trong sân, đi qua một mùa đông lạnh giá, rồi được chào đón thật dịu dàng khi mùa xuân đến.
+
+Chú cúi xuống mặt nước và thấy một con thiên nga: câu chuyện êm đềm về việc yêu chính mình, khép lại bằng lời chúc ngủ ngon.
+
+Nguồn: The Ugly Duckling, Hans Christian Andersen (https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Ugly_Duckling)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Golly Gee", "Touching Moments Four - Melody", "Dreamy Flashback", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Truyện Vịt con xấu xí của Hans Christian Andersen, kể nhẹ nhàng trước giờ ngủ, theo bản dịch tiếng Anh của Mrs. H. B. Paull trên Wikisource.</p><p>Chú vịt con xám to xác bị chọc ghẹo trong sân, đi qua một mùa đông lạnh giá, rồi được chào đón thật dịu dàng khi mùa xuân đến.</p><p>Chú cúi xuống mặt nước và thấy một con thiên nga: câu chuyện êm đềm về việc yêu chính mình, khép lại bằng lời chúc ngủ ngon.</p><p>Nguồn: The Ugly Duckling, Hans Christian Andersen: <a href="https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Ugly_Duckling">https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Ugly_Duckling</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Golly Gee", "Touching Moments Four - Melody", "Dreamy Flashback", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Fri, 13 Nov 2026 16:55:57 +0000</pubDate>
+    <enclosure url="https://luongnv.com/once-upon-a-time-vi-media/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-vi.mp3?v=a1b50902" length="6884734" type="audio/mpeg"/>
+    <itunes:duration>430</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-vi/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-10_three-little-pigs-vi</guid>
     <title>Ba chú heo con, chuyện kể trước giờ ngủ</title>
