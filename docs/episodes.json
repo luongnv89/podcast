@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-13T07:41:30Z",
+  "updated": "2026-11-13T16:59:20Z",
   "episodes": [
+    {
+      "id": "2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling",
+      "title": "The Ugly Duckling, a bedtime story",
+      "summary": [
+        "A gentle bedtime retelling of The Ugly Duckling by Hans Christian Andersen, from Mrs. H. B. Paull's translation on Wikisource.",
+        "A big grey duckling is teased in the farmyard, wanders through a cold winter, and finds a kind welcome in the spring.",
+        "He bends down to the water and sees a swan: a quiet story about being lovely just as you are, ending with a soft goodnight."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "en",
+      "format": "bedtime-story",
+      "published": "2026-11-13T16:44:08Z",
+      "duration_s": 443.085,
+      "size_bytes": 7091171,
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling.mp3",
+      "audio_sha256": "fe7e0f8d770f6ca5f1ab89c5dc002f0ba81fd285559cddcf7f529fdca55cdccc",
+      "transcript": "episodes/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The Ugly Duckling",
+        "author": "Hans Christian Andersen",
+        "url": "https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Ugly_Duckling",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Golly Gee\", \"Touching Moments Four - Melody\", \"Dreamy Flashback\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling",
+      "image": {
+        "square": "art/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling/square.jpg",
+        "wide": "art/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling/wide.jpg",
+        "thumb": "art/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling/thumb.jpg",
+        "alt": "Pencil drawing of three white swans gliding on a pond in a spring garden, between two blossoming apple trees under a soft sun."
+      },
+      "description": "The Ugly Duckling by Hans Christian Andersen, retold as a gentle bedtime story. A big grey duckling who looks different from everyone finds out, one spring morning, that he was a swan all along.\n\nIn this episode:\n- A big egg that will not hatch\n- A cat and a hen who think they know everything\n- A long winter, then a lovely surprise on the water\n\nSources: The Ugly Duckling, Hans Christian Andersen, translated by Mrs. H. B. Paull (Wikisource)\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - The Ugly Duckling, a bedtime story (2026-11-13).mp3"
+    },
     {
       "id": "2026-11-13_morning-edition-friday-13-november-2026",
       "title": "AI Daily, 13 November 2026: Jensen Huang resigns as Nvidia CEO, Google ships Gemini 4 Hydrogen",
