@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Fri, 13 Nov 2026 07:41:30 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 14 Nov 2026 07:45:20 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-14_morning-edition-saturday-14-november-2026</guid>
+    <title>AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0</title>
+    <link>https://luongnv.com/podcast/#2026-11-14_morning-edition-saturday-14-november-2026</link>
+    <description>OpenAI's ChatGPT Wallet lets agents pay for purchases, while Google keeps Gemini read-only on Google Wallet.
+
+llama.cpp reaches version one with semantic versioning, and LangChain raises $300 million at a $3 billion valuation.
+
+An AI tool faces questions after the FAA ground stop, Fed contacts rank AI the top risk, and Nvidia seeks a new chief.
+
+Sources:
+- The AI Gazette, morning edition, Saturday 14 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-14-morning.html)
+- The AI Gazette, afternoon edition, Friday 13 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-13-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>OpenAI's ChatGPT Wallet lets agents pay for purchases, while Google keeps Gemini read-only on Google Wallet.</p><p>llama.cpp reaches version one with semantic versioning, and LangChain raises $300 million at a $3 billion valuation.</p><p>An AI tool faces questions after the FAA ground stop, Fed contacts rank AI the top risk, and Nvidia seeks a new chief.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Saturday 14 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-14-morning.html">https://luongnv.com/news/reports/2026-11-14-morning.html</a></li><li>The AI Gazette, afternoon edition, Friday 13 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-13-afternoon.html">https://luongnv.com/news/reports/2026-11-13-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Sat, 14 Nov 2026 07:42:10 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-14_morning-edition-saturday-14-november-2026.mp3?v=2f344382" length="7863696" type="audio/mpeg"/>
+    <itunes:duration>491</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-14_morning-edition-saturday-14-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-13_morning-edition-friday-13-november-2026</guid>
     <title>AI Daily, 13 November 2026: Jensen Huang resigns as Nvidia CEO, Google ships Gemini 4 Hydrogen</title>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0 | Build Wiz AI Show</title>
+<meta name="description" content="The AI news of the last day in 8 minutes. OpenAI&#x27;s ChatGPT Wallet lets AI agents pay for purchases, while Google keeps Gemini read-only on Google Wallet. And the local-inference library from ggml-org reaches version one with semantic versioning.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-14_morning-edition-saturday-14-november-2026/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-14_morning-edition-saturday-14-november-2026/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0">
+<meta property="og:description" content="The AI news of the last day in 8 minutes. OpenAI&#x27;s ChatGPT Wallet lets AI agents pay for purchases, while Google keeps Gemini read-only on Google Wallet. And the local-inference library from ggml-org reaches version one with semantic versioning.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-14_morning-edition-saturday-14-november-2026/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-14_morning-edition-saturday-14-november-2026.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0">
+<meta name="twitter:description" content="The AI news of the last day in 8 minutes. OpenAI&#x27;s ChatGPT Wallet lets AI agents pay for purchases, while Google keeps Gemini read-only on Google Wallet. And the local-inference library from ggml-org reaches version one with semantic versioning.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0",
+ "description": "The AI news of the last day in 8 minutes. OpenAI's ChatGPT Wallet lets AI agents pay for purchases, while Google keeps Gemini read-only on Google Wallet. And the local-inference library from ggml-org reaches version one with semantic versioning.\n\nIn this episode:\n- LangChain's $300 million round for model-neutral agent tools\n- The FAA ground stop and questions over its AI planning tool\n- The Fed's survey naming AI the top financial risk, and Nvidia's search for a new chief\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-14_morning-edition-saturday-14-november-2026/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-14_morning-edition-saturday-14-november-2026.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT8M11S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-14T07:42:10Z",
+ "timeRequired": "PT8M11S",
+ "isBasedOn": "https://luongnv.com/news/reports/2026-11-14-morning.html"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0</h1>
+  <p class="meta"><span class="dur">8 min</span> · <time datetime="2026-11-14T07:42:10Z">2026-11-14</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-14_morning-edition-saturday-14-november-2026.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">The AI news of the last day in 8 minutes. OpenAI&#x27;s ChatGPT Wallet lets AI agents pay for purchases, while Google keeps Gemini read-only on Google Wallet. And the local-inference library from ggml-org reaches version one with semantic versioning.
+
+In this episode:
+- LangChain&#x27;s $300 million round for model-neutral agent tools
+- The FAA ground stop and questions over its AI planning tool
+- The Fed&#x27;s survey naming AI the top financial risk, and Nvidia&#x27;s search for a new chief
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-14_morning-edition-saturday-14-november-2026">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-14_morning-edition-saturday-14-november-2026.mp3" download="Build Wiz AI Show - AI Daily, 14 November 2026 ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0 (2026-11-14).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://luongnv.com/news/reports/2026-11-14-morning.html" rel="noopener">The AI Gazette, morning edition, Saturday 14 November 2026</a> by The AI Gazette</p>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-14_morning-edition-saturday-14-november-2026/", "title": "AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-14_morning-edition-saturday-14-november-2026", "episode_title": "AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0", "show": "Build Wiz AI Show", "episode_language": "en", "category": "daily"}, "ep": {"id": "2026-11-14_morning-edition-saturday-14-november-2026", "title": "AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0", "summary": ["OpenAI's ChatGPT Wallet lets agents pay for purchases, while Google keeps Gemini read-only on Google Wallet.", "llama.cpp reaches version one with semantic versioning, and LangChain raises $300 million at a $3 billion valuation.", "An AI tool faces questions after the FAA ground stop, Fed contacts rank AI the top risk, and Nvidia seeks a new chief."], "description": "The AI news of the last day in 8 minutes. OpenAI's ChatGPT Wallet lets AI agents pay for purchases, while Google keeps Gemini read-only on Google Wallet. And the local-inference library from ggml-org reaches version one with semantic versioning.\n\nIn this episode:\n- LangChain's $300 million round for model-neutral agent tools\n- The FAA ground stop and questions over its AI planning tool\n- The Fed's survey naming AI the top financial risk, and Nvidia's search for a new chief\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "daily", "source": {"title": "The AI Gazette, morning edition, Saturday 14 November 2026", "author": "The AI Gazette", "url": "https://luongnv.com/news/reports/2026-11-14-morning.html", "kind": "article"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>
