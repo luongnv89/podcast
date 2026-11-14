@@ -121,7 +121,9 @@ def entry_points(ep: dict) -> list[str]:
 
 # ---------- node ----------
 def node(script: str) -> object:
-    out = subprocess.run(["node", "-e", script], capture_output=True, text=True, timeout=60, check=True)
+    # On stdin, not "-e": with every live episode inlined, the script is longer than one
+    # command-line argument may be (Linux MAX_ARG_STRLEN, 128 KiB), and exec fails with E2BIG.
+    out = subprocess.run(["node", "-"], input=script, capture_output=True, text=True, timeout=60, check=True)
     return json.loads(out.stdout)
 
 
