@@ -47,6 +47,7 @@
       play: "Play", pause: "Pause", playEp: (t) => `Play ${t}`, pauseEp: (t) => `Pause ${t}`,
       audioFailed: (t) => `Could not load audio: ${t}`,
       speed: (r) => `Playback speed ${r}×`,
+      autoplay: "Autoplay", next: "Next:",
       loadFailed: "Episodes could not be loaded.", loadFailedTitle: "Episodes could not be loaded", loadFailedText: "Check your connection and reload the page.",
       illustration: (t) => `Illustration: ${t}`,
     },
@@ -79,6 +80,7 @@
       play: "Lecture", pause: "Pause", playEp: (t) => `Écouter ${t}`, pauseEp: (t) => `Mettre en pause ${t}`,
       audioFailed: (t) => `Impossible de charger l’audio : ${t}`,
       speed: (r) => `Vitesse de lecture ${r}×`,
+      autoplay: "Lecture automatique", next: "Ensuite :",
       loadFailed: "Impossible de charger les histoires.", loadFailedTitle: "Impossible de charger les histoires", loadFailedText: "Vérifiez votre connexion, puis rechargez la page.",
       illustration: (t) => `Illustration : ${t}`,
     },
@@ -111,6 +113,7 @@
       play: "Phát", pause: "Tạm dừng", playEp: (t) => `Phát truyện ${t}`, pauseEp: (t) => `Tạm dừng truyện ${t}`,
       audioFailed: (t) => `Không tải được âm thanh: ${t}`,
       speed: (r) => `Tốc độ phát ${r}×`,
+      autoplay: "Tự động phát", next: "Tiếp theo:",
       loadFailed: "Không tải được danh sách truyện.", loadFailedTitle: "Không tải được danh sách truyện", loadFailedText: "Hãy kiểm tra kết nối mạng rồi tải lại trang.",
       illustration: (t) => `Hình minh họa: ${t}`,
     },
@@ -593,6 +596,7 @@
     ob.setAttribute("aria-label", T.order(SORTS[state.sort][state.dir], other.toLocaleLowerCase(T.locale)));
     $("search").classList.toggle("has-q", !!state.q);
     writeUrl();
+    showNext();   // "Next:" follows the list's new order
   }
 
   function clearAll(e) {
@@ -951,6 +955,47 @@
     }
   }
 
+  // ---------- Autoplay (podcast #47) ----------
+  // Off by default, with a switch in the player; the visitor's choice is kept ("autoplay" in
+  // localStorage). When an episode plays to its end, the next episode in the list as shown at
+  // that moment (its tab, search and sort) that is not finished starts. "Finished" is the
+  // per-visitor "done:<id>" flag; a started episode resumes from its "pos:<id>", as on a
+  // manual play.
+  let autoplay = store.get("autoplay") === true;
+  let autoStarted = null;   // the episode autoplay started, until it plays (episode_play's trigger)
+  function setAutoplay(on) {
+    autoplay = !!on;   // kept for this page view even where storage is unavailable
+    store.set("autoplay", autoplay);
+  }
+  const isDone = (ep) => !!store.get(`done:${ep.id}`);
+  // The episodes the list shows, in its order: each row on the tab that matches the search,
+  // as the version on show.
+  const shownEpisodes = () => sorted().filter(matches).map((u) => u.sel);
+  // The first episode after `from` in `order` that is not finished and has audio. A row is
+  // found by its story (a version a search swapped is the same row); when `from` is not in
+  // the list, the search starts at the top. Nothing left after it: null (no wrap-around).
+  function nextUnfinished(order, from, done) {
+    const at = from ? order.findIndex((e) => e === from || (!!from._unit && e._unit === from._unit)) : -1;
+    return order.slice(at + 1).find((e) => e !== from && e.audio && !done(e)) || null;
+  }
+  // Puts the next unfinished episode in the player and starts it. A browser that refuses to
+  // start audio without a gesture leaves it loaded and paused, with no message. "auto": the
+  // end of an episode (its episode_play says trigger "autoplay"); otherwise the Media
+  // Session's "next track", which first keeps the current resume point. Returns the episode
+  // started, or null when nothing unfinished is left after the current one.
+  function playNext(auto) {
+    const next = current ? nextUnfinished(shownEpisodes(), current, isDone) : null;
+    if (!next) { showNext(); return null; }
+    if (!auto) savePos(audio.currentTime);
+    autoStarted = auto ? next : null;
+    load(next);
+    sync();
+    const started = audio.play();
+    if (started && typeof started.catch === "function") started.catch(() => { if (autoStarted === next) autoStarted = null; sync(); });
+    return next;
+  }
+  // ---------- end of autoplay choice ----------
+
   // ---------- Playback ----------
   function toggle(ep) {
     if (current === ep && !audio.paused) audio.pause();
@@ -978,10 +1023,12 @@
         .filter(Boolean);
       navigator.mediaSession.metadata = new MediaMetadata({ title: ep.title, artist: PAGE.artist || (ep.hosts || []).join(" & "), album: PAGE.show, ...(artwork.length ? { artwork } : {}) });
     }
+    showNext();
   }
 
   function play(ep, at) {
     if (!ep || !ep.audio) return;
+    autoStarted = null;   // a play by the visitor
     if (current !== ep) load(ep, at);
     else if (at != null) audio.currentTime = at;
     audio.play().catch(() => sync());
@@ -1023,13 +1070,24 @@
 
   audio.addEventListener("play", sync);
   // The first time an episode really starts in this page view (not a resume after a pause).
+  // An episode autoplay started says so (trigger: "autoplay"); a play by the visitor sends
+  // the event as before.
   audio.addEventListener("playing", () => {
+    const auto = !!current && autoStarted === current;
+    autoStarted = null;
     if (!current || played.has(current.id)) return;
     played.add(current.id);
-    track("episode_play", epParams(current));
+    if (auto) track("episode_play", { ...epParams(current), trigger: "autoplay" });
+    else track("episode_play", epParams(current));
   });
   audio.addEventListener("pause", () => { sync(); savePos(audio.currentTime); });
-  audio.addEventListener("ended", () => { trackProgress(true); if (current) { store.set(`done:${current.id}`, true); savePos(0); } sync(); });
+  // Only a natural end starts the next episode (autoplay); an error or a pause never does.
+  audio.addEventListener("ended", () => {
+    trackProgress(true);
+    if (current) { store.set(`done:${current.id}`, true); savePos(0); }
+    sync();
+    if (autoplay) playNext(true); else showNext();
+  });
   audio.addEventListener("timeupdate", tick);
   audio.addEventListener("loadedmetadata", tick);
   audio.addEventListener("error", () => { if (current) $("p-title").textContent = T.audioFailed(current.title); sync(); });
@@ -1050,6 +1108,35 @@
     navigator.mediaSession.setActionHandler("pause", () => audio.pause());
     navigator.mediaSession.setActionHandler("seekbackward", () => { audio.currentTime -= 15; });
     navigator.mediaSession.setActionHandler("seekforward", () => { audio.currentTime += 30; });
+  }
+
+  // ---------- Autoplay switch and "Next:" (podcast #47) ----------
+  // The switch sits next to the speed button, the "Next:" line under the seek bar; both are
+  // made here so their words come from TEXT, in the page's language.
+  const autoBtn = el("button", { class: "autoplay", type: "button", role: "switch", id: "p-auto", "aria-checked": String(autoplay) }, [
+    el("span", { class: "sw", "aria-hidden": "true" }), el("span", { text: T.autoplay }),
+  ]);
+  const side = el("div", { class: "p-side" });
+  speedBtn.replaceWith(side);
+  side.append(autoBtn, speedBtn);
+  const nextTitle = el("span", { class: "p-next-t" });
+  const nextLine = el("div", { class: "p-next", id: "p-next", hidden: true }, [el("span", { class: "p-next-l", text: T.next }), " ", nextTitle]);
+  seek.closest(".p-info").append(nextLine);
+  autoBtn.addEventListener("click", () => {
+    setAutoplay(!autoplay);
+    track("autoplay_toggle", { enabled: autoplay });
+    showNext();
+  });
+  // What plays next while autoplay is on, when there is one; the lock screen's or
+  // headphones' "next track" plays it too (no such button while autoplay is off).
+  function showNext() {
+    autoBtn.setAttribute("aria-checked", String(autoplay));
+    const next = autoplay && current ? nextUnfinished(shownEpisodes(), current, isDone) : null;
+    nextLine.hidden = !next;
+    nextTitle.textContent = next ? next.title : "";
+    if ("mediaSession" in navigator) {
+      try { navigator.mediaSession.setActionHandler("nexttrack", next ? () => playNext(false) : null); } catch { /* not supported */ }
+    }
   }
 
   // ---------- Toolbar wiring ----------
@@ -1088,7 +1175,11 @@
     document.documentElement.style.setProperty("--toolbar-h", `${toolbar.offsetHeight}px`);
     if (player.classList.contains("is-on")) document.documentElement.style.setProperty("--player-h", `${player.offsetHeight}px`);
   };
-  if ("ResizeObserver" in window) new ResizeObserver(measure).observe(toolbar);
+  if ("ResizeObserver" in window) {
+    const ro = new ResizeObserver(measure);
+    ro.observe(toolbar);
+    ro.observe(player);   // the "Next:" line comes and goes
+  }
   addEventListener("resize", measure);
   measure();
 
