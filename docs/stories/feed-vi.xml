@@ -7,7 +7,7 @@
   <description>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</description>
   <itunes:summary>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</itunes:summary>
   <language>vi</language>
-  <lastBuildDate>Sun, 15 Nov 2026 08:51:18 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 15 Nov 2026 16:15:17 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-05_hansel-and-gretel-vi</guid>
+    <title>Hansel và Gretel: bản kể lại trước giờ ngủ (theo anh em Grimm)</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-05_hansel-and-gretel-vi</link>
+    <description>Truyện Hansel và Gretel kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của Margaret Hunt.
+
+Những viên sỏi trắng sáng dưới trăng, ngôi nhà bằng bánh mì và bánh ngọt, và cô em gái thông minh cứu anh trai.
+
+Chú vịt trắng tốt bụng cõng hai anh em qua sông về với cha, và câu chuyện khép lại bằng lời chúc ngủ ngon.
+
+Nguồn: Hänsel and Grethel, Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt (https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/H%C3%A4nsel_and_Grethel)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Truyện Hansel và Gretel kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của Margaret Hunt.</p><p>Những viên sỏi trắng sáng dưới trăng, ngôi nhà bằng bánh mì và bánh ngọt, và cô em gái thông minh cứu anh trai.</p><p>Chú vịt trắng tốt bụng cõng hai anh em qua sông về với cha, và câu chuyện khép lại bằng lời chúc ngủ ngon.</p><p>Nguồn: Hänsel and Grethel, Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt: <a href="https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/H%C3%A4nsel_and_Grethel">https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/H%C3%A4nsel_and_Grethel</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Sun, 15 Nov 2026 15:27:57 +0000</pubDate>
+    <enclosure url="https://luongnv.com/once-upon-a-time-vi-media/2026-11-05_hansel-and-gretel-vi.mp3?v=72dc5060" length="6987149" type="audio/mpeg"/>
+    <itunes:duration>437</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-05_hansel-and-gretel/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel-vi/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-vi</guid>
     <title>Vịt con xấu xí: bản kể lại trước giờ ngủ (theo Andersen)</title>
@@ -95,30 +119,6 @@ Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</d
     <itunes:episodeType>full</itunes:episodeType>
     <itunes:image href="https://luongnv.com/podcast/art/2026-11-06_little-red-cap/square.jpg"/>
     <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap-vi/transcript.vtt" type="text/vtt"/>
-  </item>
-  <item>
-    <guid isPermaLink="false">2026-11-05_hansel-and-gretel-vi</guid>
-    <title>Hansel và Gretel: bản kể lại trước giờ ngủ (theo anh em Grimm)</title>
-    <link>https://luongnv.com/podcast/stories/#2026-11-05_hansel-and-gretel-vi</link>
-    <description>Truyện Hansel và Gretel kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman.
-
-Những viên sỏi lấp lánh, ngôi nhà bằng bánh mì và bánh ngọt, và cô em gái thông minh cứu anh trai.
-
-Chú vịt trắng hiền lành đưa hai anh em về với cha, và câu chuyện khép lại bằng lời chúc ngủ ngon.
-
-Nguồn: Hansel and Gretel (https://sites.pitt.edu/~dash/grimm015.html)
-
-Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
-
-Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
-    <content:encoded><![CDATA[<p>Truyện Hansel và Gretel kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman.</p><p>Những viên sỏi lấp lánh, ngôi nhà bằng bánh mì và bánh ngọt, và cô em gái thông minh cứu anh trai.</p><p>Chú vịt trắng hiền lành đưa hai anh em về với cha, và câu chuyện khép lại bằng lời chúc ngủ ngon.</p><p>Nguồn: Hansel and Gretel: <a href="https://sites.pitt.edu/~dash/grimm015.html">https://sites.pitt.edu/~dash/grimm015.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
-    <pubDate>Thu, 05 Nov 2026 21:34:30 +0000</pubDate>
-    <enclosure url="https://luongnv.com/once-upon-a-time-vi-media/2026-11-05_hansel-and-gretel-vi.mp3?v=895769aa" length="6451581" type="audio/mpeg"/>
-    <itunes:duration>403</itunes:duration>
-    <itunes:explicit>false</itunes:explicit>
-    <itunes:episodeType>full</itunes:episodeType>
-    <itunes:image href="https://luongnv.com/podcast/art/2026-11-05_hansel-and-gretel/square.jpg"/>
-    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel-vi/transcript.vtt" type="text/vtt"/>
   </item>
   <item>
     <guid isPermaLink="false">2026-11-04_the-golden-touch</guid>
