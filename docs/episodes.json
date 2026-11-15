@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-15T07:42:39Z",
+  "updated": "2026-11-15T16:03:59Z",
   "episodes": [
+    {
+      "id": "2026-11-05_hansel-and-gretel",
+      "title": "Hansel and Gretel: our bedtime retelling (after the Brothers Grimm)",
+      "summary": [
+        "A gentle bedtime retelling of Hansel and Gretel, from the Brothers Grimm's tale as translated by Margaret Hunt.",
+        "White stones shining under the moon, a little house of bread and cake, and a clever sister who frees her brother.",
+        "A kind white duck carries them over the water, home to their father, and the story ends with a soft goodnight."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "en",
+      "format": "bedtime-story",
+      "published": "2026-11-15T15:07:35Z",
+      "duration_s": 437.365,
+      "size_bytes": 6999679,
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-05_hansel-and-gretel.mp3",
+      "audio_sha256": "5629a84d7c7f0abb7c128bde051be59c16d6c676a22e485516ea99d1a1ef6684",
+      "transcript": "episodes/2026-11-05_hansel-and-gretel/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Hänsel and Grethel",
+        "author": "Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt",
+        "url": "https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/H%C3%A4nsel_and_Grethel",
+        "published": "2010-08-27T08:05:14Z",
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Carefree\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-05_hansel-and-gretel",
+      "image": {
+        "square": "art/2026-11-05_hansel-and-gretel/square.jpg",
+        "wide": "art/2026-11-05_hansel-and-gretel/wide.jpg",
+        "thumb": "art/2026-11-05_hansel-and-gretel/thumb.jpg",
+        "alt": "Pencil drawing of Hansel and Gretel walking hand in hand under the moon, following shining white pebbles home to a little lit house."
+      },
+      "description": "Hansel and Gretel, told in our own words as a gentle bedtime story after the Brothers Grimm. Two children lost in the woods, a house of bread and cake, and a clever way home. Nobody gets hurt.\n\nIn this episode:\n- White stones that shine like silver under the moon\n- A sugar-window house and a grumpy old witch\n- A kind white duck and the road back home\n\nSources: Hänsel and Grethel, Brothers Grimm, translated by Margaret Hunt (Wikisource)\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Hansel and Gretel our bedtime retelling (after the Brothers Grimm) (2026-11-15).mp3"
+    },
     {
       "id": "2026-11-15_morning-edition-sunday-15-november-2026",
       "title": "AI Daily, 15 November 2026: Test agents hit Epoch AI's live website, 1,000 servers tied to AI attacks",
@@ -1612,45 +1651,6 @@
         "alt": "Pencil drawing of Hansel and Gretel walking hand in hand under the moon, following shining white pebbles home to a little lit house."
       },
       "audio_sha256": "895769aaac4c3ea78c5a570b015ed9336fe5a45f2c8a1365790b22e4de67b1ad"
-    },
-    {
-      "id": "2026-11-05_hansel-and-gretel",
-      "title": "Hansel and Gretel: our bedtime retelling (after the Brothers Grimm)",
-      "summary": [
-        "A gentle bedtime retelling of Hansel and Gretel, from the Brothers Grimm's tale as translated by D. L. Ashliman.",
-        "Shining pebbles, a house made of bread and cake, and a clever sister who sets her brother free.",
-        "A kind white duck carries them home to their father, and the story ends with a quiet goodnight."
-      ],
-      "category": "bedtime",
-      "show": "Once Upon a Time Show",
-      "hosts": [],
-      "language": "en",
-      "format": "bedtime-story",
-      "published": "2026-11-05T21:28:03Z",
-      "duration_s": 403.562,
-      "size_bytes": 6458686,
-      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-05_hansel-and-gretel.mp3",
-      "transcript": "episodes/2026-11-05_hansel-and-gretel/transcript.vtt",
-      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
-      "source": {
-        "title": "Hansel and Gretel",
-        "author": null,
-        "url": "https://sites.pitt.edu/~dash/grimm015.html",
-        "published": null,
-        "kind": "article"
-      },
-      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Carefree\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
-      "story_group": "2026-11-05_hansel-and-gretel",
-      "description": "Our own gentle bedtime retelling of Hansel and Gretel, after the Brothers Grimm's tale. Soft music plays between the scenes.\n\nIn this episode:\n- Shining pebbles, a house made of bread and cake, and a clever sister who sets her brother free.\n- A kind white duck carries them home to their father, and the story ends with a quiet goodnight.\n\nSources: Hansel and Gretel\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
-      "file_name": "Once Upon a Time Show - Hansel and Gretel our bedtime retelling (after the Brothers Grimm) (2026-11-05).mp3",
-      "description_source": "generated",
-      "image": {
-        "square": "art/2026-11-05_hansel-and-gretel/square.jpg",
-        "wide": "art/2026-11-05_hansel-and-gretel/wide.jpg",
-        "thumb": "art/2026-11-05_hansel-and-gretel/thumb.jpg",
-        "alt": "Pencil drawing of Hansel and Gretel walking hand in hand under the moon, following shining white pebbles home to a little lit house."
-      },
-      "audio_sha256": "a9a27dde9373e249be804133aae3d51006fdaacb3a0faae5cd25cc72c777ab7c"
     },
     {
       "id": "2026-11-04_the-golden-touch-fr",
