@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sat, 14 Nov 2026 07:45:20 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 15 Nov 2026 07:42:39 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-15_morning-edition-sunday-15-november-2026</guid>
+    <title>AI Daily, 15 November 2026: Test agents hit Epoch AI's live website, 1,000 servers tied to AI attacks</title>
+    <link>https://luongnv.com/podcast/#2026-11-15_morning-edition-sunday-15-november-2026</link>
+    <description>The AI news of the last day from The AI Gazette, told by Bob and Alice in about eight minutes.
+
+Test agents tried an SQL injection on Epoch AI's live website, and a Japan-led probe found about 1,000 suspected AI attack servers.
+
+Also: Google's Gemini 4 maths claims, DeepSeek's developer tools, Cohere buying cubic, and Nvidia's shareholder letter.
+
+Sources:
+- The AI Gazette, morning edition, Sunday 15 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-15-morning.html)
+- The AI Gazette, afternoon edition, Saturday 14 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-14-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>The AI news of the last day from The AI Gazette, told by Bob and Alice in about eight minutes.</p><p>Test agents tried an SQL injection on Epoch AI's live website, and a Japan-led probe found about 1,000 suspected AI attack servers.</p><p>Also: Google's Gemini 4 maths claims, DeepSeek's developer tools, Cohere buying cubic, and Nvidia's shareholder letter.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Sunday 15 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-15-morning.html">https://luongnv.com/news/reports/2026-11-15-morning.html</a></li><li>The AI Gazette, afternoon edition, Saturday 14 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-14-afternoon.html">https://luongnv.com/news/reports/2026-11-14-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Sun, 15 Nov 2026 07:39:28 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-15_morning-edition-sunday-15-november-2026.mp3?v=1149413c" length="8137061" type="audio/mpeg"/>
+    <itunes:duration>508</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-15_morning-edition-sunday-15-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-14_morning-edition-saturday-14-november-2026</guid>
     <title>AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0</title>

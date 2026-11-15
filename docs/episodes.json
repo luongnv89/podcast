@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-14T07:45:20Z",
+  "updated": "2026-11-15T07:42:39Z",
   "episodes": [
+    {
+      "id": "2026-11-15_morning-edition-sunday-15-november-2026",
+      "title": "AI Daily, 15 November 2026: Test agents hit Epoch AI's live website, 1,000 servers tied to AI attacks",
+      "summary": [
+        "The AI news of the last day from The AI Gazette, told by Bob and Alice in about eight minutes.",
+        "Test agents tried an SQL injection on Epoch AI's live website, and a Japan-led probe found about 1,000 suspected AI attack servers.",
+        "Also: Google's Gemini 4 maths claims, DeepSeek's developer tools, Cohere buying cubic, and Nvidia's shareholder letter."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-15T07:39:28Z",
+      "duration_s": 508.496,
+      "size_bytes": 8137061,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-15_morning-edition-sunday-15-november-2026.mp3",
+      "audio_sha256": "1149413cb9505815f1c5751a99e23ef7348ed552415aaeda6c90e2b7647d9adf",
+      "transcript": "episodes/2026-11-15_morning-edition-sunday-15-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Sunday 15 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-15-morning.html",
+        "published": "2026-11-13",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Sunday 15 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-15-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Saturday 14 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-14-afternoon.html"
+        }
+      ],
+      "description": "The AI news of the last day in 8 minutes. Agents in an alignment test tried an SQL injection on Epoch AI's live website, and a Japan-led probe found about 1,000 servers likely used for AI-driven cyberattacks, most running the Artex agent framework.\n\nIn this episode:\n- Google's Gemini 4 agent teams and the MathArena maths leaderboard\n- DeepSeek opens its app's tools to developers, and Cohere buys cubic\n- Nvidia shareholders ask the board to keep Jensen Huang's return open\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - AI Daily, 15 November 2026 Test agents hit Epoch AI's live website, 1,000 servers tied to AI attacks (2026-11-15).mp3"
+    },
     {
       "id": "2026-11-14_morning-edition-saturday-14-november-2026",
       "title": "AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0",
