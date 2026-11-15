@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-15T16:37:48Z",
+  "updated": "2026-11-15T16:49:20Z",
   "episodes": [
+    {
+      "id": "2026-11-05_hansel-and-gretel-fr",
+      "title": "Hansel et Gretel : notre version pour le soir (d'après les frères Grimm)",
+      "summary": [
+        "Une douce version de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par Margaret Hunt.",
+        "Des cailloux blancs qui brillent sous la lune, une maison de pain et de gâteau, et une sœur maligne qui délivre son frère.",
+        "Un gentil canard blanc leur fait traverser l'eau jusqu'à leur papa, et l'histoire finit par une douce bonne nuit."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "fr",
+      "format": "bedtime-story",
+      "published": "2026-11-15T16:06:02Z",
+      "duration_s": 546.716,
+      "size_bytes": 8749263,
+      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-05_hansel-and-gretel-fr.mp3",
+      "audio_sha256": "cbb324bcc92a177db546edf937c67c9ff7a74d1de322af441978d1814a186014",
+      "transcript": "episodes/2026-11-05_hansel-and-gretel-fr/transcript.vtt",
+      "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
+      "source": {
+        "title": "Hänsel and Grethel",
+        "author": "Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt",
+        "url": "https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/H%C3%A4nsel_and_Grethel",
+        "published": "2010-08-27T08:05:14Z",
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Carefree\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-05_hansel-and-gretel",
+      "image": {
+        "square": "art/2026-11-05_hansel-and-gretel/square.jpg",
+        "wide": "art/2026-11-05_hansel-and-gretel/wide.jpg",
+        "thumb": "art/2026-11-05_hansel-and-gretel/thumb.jpg",
+        "alt": "Pencil drawing of Hansel and Gretel walking hand in hand under the moon, following shining white pebbles home to a little lit house."
+      },
+      "description": "Hansel et Gretel, notre version pour le soir, d'après les frères Grimm. Deux enfants perdus, une maison de pain et de gâteau, et une idée maligne pour rentrer. Personne n'a de mal.\n\nDans cet épisode :\n- Des cailloux qui brillent sous la lune\n- Des fenêtres en sucre et une sorcière grincheuse\n- Un gentil canard et le chemin du retour\n\nSources : Hänsel and Grethel, frères Grimm, traduit par Margaret Hunt (Wikisource)\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Hansel et Gretel notre version pour le soir (d'après les frères Grimm) (2026-11-15).mp3"
+    },
     {
       "id": "2026-11-06_little-red-cap-vi",
       "title": "Cô bé quàng khăn đỏ: bản kể lại trước giờ ngủ (theo anh em Grimm)",
@@ -1612,45 +1651,6 @@
         "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
       },
       "audio_sha256": "06c587a5e4f218081f1b6effff9c9edf5816cad1c0a720b189118ad01e1926d7"
-    },
-    {
-      "id": "2026-11-05_hansel-and-gretel-fr",
-      "title": "Hansel et Gretel : notre version pour le soir (d'après les frères Grimm)",
-      "summary": [
-        "Une version douce de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.",
-        "Des cailloux qui brillent, une maison en pain et en gâteau, et une sœur maligne qui libère son frère.",
-        "Un gentil canard blanc les ramène chez leur papa, et l'histoire se termine par une bonne nuit tout en douceur."
-      ],
-      "category": "bedtime",
-      "show": "Once Upon a Time Show",
-      "hosts": [],
-      "language": "fr",
-      "format": "bedtime-story",
-      "published": "2026-11-05T22:10:03Z",
-      "duration_s": 511.796,
-      "size_bytes": 8190709,
-      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-05_hansel-and-gretel-fr.mp3",
-      "transcript": "episodes/2026-11-05_hansel-and-gretel-fr/transcript.vtt",
-      "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
-      "source": {
-        "title": "Hansel and Gretel",
-        "author": null,
-        "url": "https://sites.pitt.edu/~dash/grimm015.html",
-        "published": null,
-        "kind": "article"
-      },
-      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Carefree\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
-      "story_group": "2026-11-05_hansel-and-gretel",
-      "description": "Hansel et Gretel, notre version douce pour le soir, d'après le conte des frères Grimm. Une petite musique accompagne le passage d'une scène à l'autre.\n\nDans cet épisode :\n- Des cailloux qui brillent, une maison en pain et en gâteau, et une sœur maligne qui libère son frère.\n- Un gentil canard blanc les ramène chez leur papa, et l'histoire se termine par une bonne nuit tout en douceur.\n\nSources : Hansel and Gretel\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
-      "file_name": "Once Upon a Time Show - Hansel et Gretel notre version pour le soir (d'après les frères Grimm) (2026-11-05).mp3",
-      "description_source": "generated",
-      "image": {
-        "square": "art/2026-11-05_hansel-and-gretel/square.jpg",
-        "wide": "art/2026-11-05_hansel-and-gretel/wide.jpg",
-        "thumb": "art/2026-11-05_hansel-and-gretel/thumb.jpg",
-        "alt": "Pencil drawing of Hansel and Gretel walking hand in hand under the moon, following shining white pebbles home to a little lit house."
-      },
-      "audio_sha256": "90a804abd8dcbd52178e8446707609c42285d16bf9dea17e131cafb21ec72ee6"
     },
     {
       "id": "2026-11-04_the-golden-touch-fr",

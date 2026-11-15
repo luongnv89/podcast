@@ -7,7 +7,7 @@
   <description>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</description>
   <itunes:summary>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</itunes:summary>
   <language>fr</language>
-  <lastBuildDate>Sun, 15 Nov 2026 08:51:18 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 15 Nov 2026 16:49:20 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-05_hansel-and-gretel-fr</guid>
+    <title>Hansel et Gretel : notre version pour le soir (d'après les frères Grimm)</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-05_hansel-and-gretel-fr</link>
+    <description>Une douce version de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par Margaret Hunt.
+
+Des cailloux blancs qui brillent sous la lune, une maison de pain et de gâteau, et une sœur maligne qui délivre son frère.
+
+Un gentil canard blanc leur fait traverser l'eau jusqu'à leur papa, et l'histoire finit par une douce bonne nuit.
+
+Source: Hänsel and Grethel, Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt (https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/H%C3%A4nsel_and_Grethel)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
+    <content:encoded><![CDATA[<p>Une douce version de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par Margaret Hunt.</p><p>Des cailloux blancs qui brillent sous la lune, une maison de pain et de gâteau, et une sœur maligne qui délivre son frère.</p><p>Un gentil canard blanc leur fait traverser l'eau jusqu'à leur papa, et l'histoire finit par une douce bonne nuit.</p><p>Source: Hänsel and Grethel, Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt: <a href="https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/H%C3%A4nsel_and_Grethel">https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/H%C3%A4nsel_and_Grethel</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
+    <pubDate>Sun, 15 Nov 2026 16:06:02 +0000</pubDate>
+    <enclosure url="https://luongnv.com/once-upon-a-time-fr-media/2026-11-05_hansel-and-gretel-fr.mp3?v=cbb324bc" length="8749263" type="audio/mpeg"/>
+    <itunes:duration>547</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-05_hansel-and-gretel/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel-fr/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr</guid>
     <title>Le Vilain Petit Canard : notre version pour le soir (d'après Andersen)</title>
@@ -95,30 +119,6 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback",
     <itunes:episodeType>full</itunes:episodeType>
     <itunes:image href="https://luongnv.com/podcast/art/2026-11-06_little-red-cap/square.jpg"/>
     <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap-fr/transcript.vtt" type="text/vtt"/>
-  </item>
-  <item>
-    <guid isPermaLink="false">2026-11-05_hansel-and-gretel-fr</guid>
-    <title>Hansel et Gretel : notre version pour le soir (d'après les frères Grimm)</title>
-    <link>https://luongnv.com/podcast/stories/#2026-11-05_hansel-and-gretel-fr</link>
-    <description>Une version douce de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.
-
-Des cailloux qui brillent, une maison en pain et en gâteau, et une sœur maligne qui libère son frère.
-
-Un gentil canard blanc les ramène chez leur papa, et l'histoire se termine par une bonne nuit tout en douceur.
-
-Source: Hansel and Gretel (https://sites.pitt.edu/~dash/grimm015.html)
-
-Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
-
-Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
-    <content:encoded><![CDATA[<p>Une version douce de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.</p><p>Des cailloux qui brillent, une maison en pain et en gâteau, et une sœur maligne qui libère son frère.</p><p>Un gentil canard blanc les ramène chez leur papa, et l'histoire se termine par une bonne nuit tout en douceur.</p><p>Source: Hansel and Gretel: <a href="https://sites.pitt.edu/~dash/grimm015.html">https://sites.pitt.edu/~dash/grimm015.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
-    <pubDate>Thu, 05 Nov 2026 22:10:03 +0000</pubDate>
-    <enclosure url="https://luongnv.com/once-upon-a-time-fr-media/2026-11-05_hansel-and-gretel-fr.mp3?v=90a804ab" length="8190709" type="audio/mpeg"/>
-    <itunes:duration>512</itunes:duration>
-    <itunes:explicit>false</itunes:explicit>
-    <itunes:episodeType>full</itunes:episodeType>
-    <itunes:image href="https://luongnv.com/podcast/art/2026-11-05_hansel-and-gretel/square.jpg"/>
-    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-05_hansel-and-gretel-fr/transcript.vtt" type="text/vtt"/>
   </item>
   <item>
     <guid isPermaLink="false">2026-11-04_the-golden-touch-fr</guid>
