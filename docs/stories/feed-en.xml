@@ -7,7 +7,7 @@
   <description>Gentle bedtime stories for children, told slowly by a warm narrator. Each episode retells a classic, public-domain tale (Cinderella, Hansel and Gretel, King Midas and more) in simple words, with soft music between the scenes and a calm goodnight at the end. The tales are adapted for bedtime, so nothing is too scary. Scripts and voices are made with AI, and every episode credits its source and its music. Also in French and Vietnamese.</description>
   <itunes:summary>Gentle bedtime stories for children, told slowly by a warm narrator. Each episode retells a classic, public-domain tale (Cinderella, Hansel and Gretel, King Midas and more) in simple words, with soft music between the scenes and a calm goodnight at the end. The tales are adapted for bedtime, so nothing is too scary. Scripts and voices are made with AI, and every episode credits its source and its music. Also in French and Vietnamese.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sun, 15 Nov 2026 16:03:59 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 15 Nov 2026 16:26:33 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-06_little-red-cap</guid>
+    <title>Little Red Riding Hood: our bedtime retelling (after the Brothers Grimm)</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-06_little-red-cap</link>
+    <description>A gentle bedtime retelling of Little Red Riding Hood, after Little Red-Cap by the Brothers Grimm, translated by Margaret Hunt.
+
+A sly wolf, a clever grandmother who hides in her cupboard, and a huntsman who sends the wolf running back to the woods.
+
+Nobody is hurt, a second wolf slides off the roof into a trough of sausage water, and the story ends with a quiet goodnight.
+
+Source: Little Red-Cap, Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt (https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/Little_Red-Cap)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Golly Gee", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>A gentle bedtime retelling of Little Red Riding Hood, after Little Red-Cap by the Brothers Grimm, translated by Margaret Hunt.</p><p>A sly wolf, a clever grandmother who hides in her cupboard, and a huntsman who sends the wolf running back to the woods.</p><p>Nobody is hurt, a second wolf slides off the roof into a trough of sausage water, and the story ends with a quiet goodnight.</p><p>Source: Little Red-Cap, Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt: <a href="https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/Little_Red-Cap">https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/Little_Red-Cap</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Golly Gee", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Sun, 15 Nov 2026 15:35:47 +0000</pubDate>
+    <enclosure url="https://luongnv.com/once-upon-a-time-en-media/2026-11-06_little-red-cap.mp3?v=7d59b7cb" length="5611590" type="audio/mpeg"/>
+    <itunes:duration>351</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-06_little-red-cap/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-05_hansel-and-gretel</guid>
     <title>Hansel and Gretel: our bedtime retelling (after the Brothers Grimm)</title>
@@ -95,30 +119,6 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
     <itunes:episodeType>full</itunes:episodeType>
     <itunes:image href="https://luongnv.com/podcast/art/2026-11-10_three-little-pigs/square.jpg"/>
     <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-10_three-little-pigs/transcript.vtt" type="text/vtt"/>
-  </item>
-  <item>
-    <guid isPermaLink="false">2026-11-06_little-red-cap</guid>
-    <title>Little Red Riding Hood: our bedtime retelling (after the Brothers Grimm)</title>
-    <link>https://luongnv.com/podcast/stories/#2026-11-06_little-red-cap</link>
-    <description>A gentle bedtime retelling of Little Red Riding Hood, from the Brothers Grimm's Little Red Cap as translated by D. L. Ashliman.
-
-A sneaky wolf, a grandmother hiding in her cupboard, and a hunter who sends the wolf running back to the woods.
-
-Nobody is hurt, a second wolf slips into a tub of sausage water, and the story ends with a quiet goodnight.
-
-Source: Little Red Cap (https://sites.pitt.edu/~dash/grimm026.html)
-
-Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Golly Gee", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
-
-Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
-    <content:encoded><![CDATA[<p>A gentle bedtime retelling of Little Red Riding Hood, from the Brothers Grimm's Little Red Cap as translated by D. L. Ashliman.</p><p>A sneaky wolf, a grandmother hiding in her cupboard, and a hunter who sends the wolf running back to the woods.</p><p>Nobody is hurt, a second wolf slips into a tub of sausage water, and the story ends with a quiet goodnight.</p><p>Source: Little Red Cap: <a href="https://sites.pitt.edu/~dash/grimm026.html">https://sites.pitt.edu/~dash/grimm026.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback", "Marty Gots a Plan", "Carefree", "Golly Gee", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
-    <pubDate>Fri, 06 Nov 2026 18:03:45 +0000</pubDate>
-    <enclosure url="https://luongnv.com/once-upon-a-time-en-media/2026-11-06_little-red-cap.mp3?v=0d6c649a" length="6035367" type="audio/mpeg"/>
-    <itunes:duration>377</itunes:duration>
-    <itunes:explicit>false</itunes:explicit>
-    <itunes:episodeType>full</itunes:episodeType>
-    <itunes:image href="https://luongnv.com/podcast/art/2026-11-06_little-red-cap/square.jpg"/>
-    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-06_little-red-cap/transcript.vtt" type="text/vtt"/>
   </item>
   <item>
     <guid isPermaLink="false">2026-11-04_the-golden-touch-en</guid>

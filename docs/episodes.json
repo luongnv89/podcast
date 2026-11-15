@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-15T16:15:17Z",
+  "updated": "2026-11-15T16:26:33Z",
   "episodes": [
+    {
+      "id": "2026-11-06_little-red-cap",
+      "title": "Little Red Riding Hood: our bedtime retelling (after the Brothers Grimm)",
+      "summary": [
+        "A gentle bedtime retelling of Little Red Riding Hood, after Little Red-Cap by the Brothers Grimm, translated by Margaret Hunt.",
+        "A sly wolf, a clever grandmother who hides in her cupboard, and a huntsman who sends the wolf running back to the woods.",
+        "Nobody is hurt, a second wolf slides off the roof into a trough of sausage water, and the story ends with a quiet goodnight."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "en",
+      "format": "bedtime-story",
+      "published": "2026-11-15T15:35:47Z",
+      "duration_s": 350.615,
+      "size_bytes": 5611590,
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-06_little-red-cap.mp3",
+      "audio_sha256": "7d59b7cbb5cb86096b39d27ac10efab8b6e51ff75dd527d406fe07a5ebbe2d64",
+      "transcript": "episodes/2026-11-06_little-red-cap/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Little Red-Cap",
+        "author": "Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt",
+        "url": "https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/Little_Red-Cap",
+        "published": "2010-09-03T00:56:32Z",
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Carefree\", \"Golly Gee\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-06_little-red-cap",
+      "image": {
+        "square": "art/2026-11-06_little-red-cap/square.jpg",
+        "wide": "art/2026-11-06_little-red-cap/wide.jpg",
+        "thumb": "art/2026-11-06_little-red-cap/thumb.jpg",
+        "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
+      },
+      "description": "Little Red Riding Hood from the Brothers Grimm, told in our own words as a gentle bedtime story. A sly wolf, a clever grandmother and a girl who learns to stay on the path. Nobody gets hurt.\n\nIn this episode:\n- A red velvet cap and a walk through the woods\n- What big ears you have: the bedside talk\n- A wolf on the roof and a sausage-water splash\n\nSources: Little Red-Cap, Brothers Grimm, translated by Margaret Hunt (Wikisource)\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Little Red Riding Hood our bedtime retelling (after the Brothers Grimm) (2026-11-15).mp3"
+    },
     {
       "id": "2026-11-05_hansel-and-gretel-vi",
       "title": "Hansel và Gretel: bản kể lại trước giờ ngủ (theo anh em Grimm)",
@@ -1573,45 +1612,6 @@
         "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
       },
       "audio_sha256": "44a6aa169e01f2fcdbf9464cf0793591e490778c79f3ec3e8ce0458817556880"
-    },
-    {
-      "id": "2026-11-06_little-red-cap",
-      "title": "Little Red Riding Hood: our bedtime retelling (after the Brothers Grimm)",
-      "summary": [
-        "A gentle bedtime retelling of Little Red Riding Hood, from the Brothers Grimm's Little Red Cap as translated by D. L. Ashliman.",
-        "A sneaky wolf, a grandmother hiding in her cupboard, and a hunter who sends the wolf running back to the woods.",
-        "Nobody is hurt, a second wolf slips into a tub of sausage water, and the story ends with a quiet goodnight."
-      ],
-      "category": "bedtime",
-      "show": "Once Upon a Time Show",
-      "hosts": [],
-      "language": "en",
-      "format": "bedtime-story",
-      "published": "2026-11-06T18:03:45Z",
-      "duration_s": 377.098,
-      "size_bytes": 6035367,
-      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-06_little-red-cap.mp3",
-      "transcript": "episodes/2026-11-06_little-red-cap/transcript.vtt",
-      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
-      "source": {
-        "title": "Little Red Cap",
-        "author": null,
-        "url": "https://sites.pitt.edu/~dash/grimm026.html",
-        "published": null,
-        "kind": "article"
-      },
-      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Carefree\", \"Golly Gee\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
-      "story_group": "2026-11-06_little-red-cap",
-      "description": "Little Red Riding Hood in our own words, a gentle bedtime story after the Brothers Grimm's Little Red Cap. A sneaky wolf, a clever grandmother and a girl who learns to stay on the path. Nobody gets hurt.\n\nIn this episode:\n- A walk in the woods with cake for Grandmother\n- What big ears you have: the famous bedside talk\n- A wolf on the roof and a big sausage-water splash\n\nSources: Little Red Cap, Brothers Grimm, translated by D. L. Ashliman\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
-      "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Little Red Riding Hood our bedtime retelling (after the Brothers Grimm) (2026-11-06).mp3",
-      "image": {
-        "square": "art/2026-11-06_little-red-cap/square.jpg",
-        "wide": "art/2026-11-06_little-red-cap/wide.jpg",
-        "thumb": "art/2026-11-06_little-red-cap/thumb.jpg",
-        "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
-      },
-      "audio_sha256": "0d6c649a719c41ad40c0ce8f00556151084649c70d178756e86b2ee777e40a5a"
     },
     {
       "id": "2026-11-05_hansel-and-gretel-fr",
