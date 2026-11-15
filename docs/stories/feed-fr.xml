@@ -7,7 +7,7 @@
   <description>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</description>
   <itunes:summary>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</itunes:summary>
   <language>fr</language>
-  <lastBuildDate>Fri, 13 Nov 2026 17:19:28 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 15 Nov 2026 08:51:18 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -26,7 +26,7 @@
   <itunes:type>episodic</itunes:type>
   <item>
     <guid isPermaLink="false">2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr</guid>
-    <title>Le Vilain Petit Canard, une histoire du soir</title>
+    <title>Le Vilain Petit Canard : notre version pour le soir (d'après Andersen)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr</link>
     <description>Une douce version du Vilain Petit Canard de Hans Christian Andersen pour le soir, d'après la traduction de Mrs. H. B. Paull sur Wikisource.
 
@@ -50,7 +50,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure"
   </item>
   <item>
     <guid isPermaLink="false">2026-11-10_three-little-pigs-fr</guid>
-    <title>Les Trois Petits Cochons, une histoire du soir</title>
+    <title>Les Trois Petits Cochons : notre version pour le soir (d'après Joseph Jacobs)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-10_three-little-pigs-fr</link>
     <description>Une version douce des Trois Petits Cochons pour le soir, d'après les contes anglais de Joseph Jacobs, sur la page Three Little Pigs de D. L. Ashliman.
 
@@ -74,7 +74,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure"
   </item>
   <item>
     <guid isPermaLink="false">2026-11-06_little-red-cap-fr</guid>
-    <title>Le Petit Chaperon rouge, une histoire du soir</title>
+    <title>Le Petit Chaperon rouge : notre version pour le soir (d'après les frères Grimm)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-06_little-red-cap-fr</link>
     <description>Une version douce du Petit Chaperon rouge pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.
 
@@ -98,7 +98,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Dreamy Flashback",
   </item>
   <item>
     <guid isPermaLink="false">2026-11-05_hansel-and-gretel-fr</guid>
-    <title>Hansel et Gretel, une histoire du soir</title>
+    <title>Hansel et Gretel : notre version pour le soir (d'après les frères Grimm)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-05_hansel-and-gretel-fr</link>
     <description>Une version douce de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par D. L. Ashliman.
 
@@ -122,7 +122,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure"
   </item>
   <item>
     <guid isPermaLink="false">2026-11-04_the-golden-touch-fr</guid>
-    <title>Le roi Midas et le toucher d'or</title>
+    <title>Le roi Midas et le toucher d'or : notre version pour le soir (d'après Hawthorne)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-04_the-golden-touch-fr</link>
     <description>Le roi Midas, raconté tout en douceur pour l'heure du coucher, d'après « Le toucher d'or » de Nathaniel Hawthorne.
 
@@ -146,7 +146,7 @@ Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Carefree", "Dreamy
   </item>
   <item>
     <guid isPermaLink="false">2026-11-05_cinderella-or-the-little-glass-slipper-fr</guid>
-    <title>Cendrillon, une histoire du soir</title>
+    <title>Cendrillon : notre version pour le soir (d'après Perrault)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-05_cinderella-or-the-little-glass-slipper-fr</link>
     <description>Cendrillon, racontée tout en douceur pour l'heure du coucher, d'après le conte de Charles Perrault.
 

@@ -7,7 +7,7 @@
   <description>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</description>
   <itunes:summary>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</itunes:summary>
   <language>vi</language>
-  <lastBuildDate>Fri, 13 Nov 2026 17:02:35 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 15 Nov 2026 08:51:18 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -26,7 +26,7 @@
   <itunes:type>episodic</itunes:type>
   <item>
     <guid isPermaLink="false">2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-vi</guid>
-    <title>Vịt con xấu xí, chuyện kể trước giờ ngủ</title>
+    <title>Vịt con xấu xí: bản kể lại trước giờ ngủ (theo Andersen)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-vi</link>
     <description>Truyện Vịt con xấu xí của Hans Christian Andersen, kể nhẹ nhàng trước giờ ngủ, theo bản dịch tiếng Anh của Mrs. H. B. Paull trên Wikisource.
 
@@ -50,7 +50,7 @@ Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</d
   </item>
   <item>
     <guid isPermaLink="false">2026-11-10_three-little-pigs-vi</guid>
-    <title>Ba chú heo con, chuyện kể trước giờ ngủ</title>
+    <title>Ba chú heo con: bản kể lại trước giờ ngủ (theo Joseph Jacobs)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-10_three-little-pigs-vi</link>
     <description>Truyện Ba chú heo con kể nhẹ nhàng trước giờ ngủ, theo truyện cổ nước Anh của Joseph Jacobs, trên trang Three Little Pigs của D. L. Ashliman.
 
@@ -74,7 +74,7 @@ Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</d
   </item>
   <item>
     <guid isPermaLink="false">2026-11-06_little-red-cap-vi</guid>
-    <title>Cô bé quàng khăn đỏ, chuyện kể trước giờ ngủ</title>
+    <title>Cô bé quàng khăn đỏ: bản kể lại trước giờ ngủ (theo anh em Grimm)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-06_little-red-cap-vi</link>
     <description>Truyện Cô bé quàng khăn đỏ kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman.
 
@@ -98,7 +98,7 @@ Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</d
   </item>
   <item>
     <guid isPermaLink="false">2026-11-05_hansel-and-gretel-vi</guid>
-    <title>Hansel và Gretel, chuyện kể trước giờ ngủ</title>
+    <title>Hansel và Gretel: bản kể lại trước giờ ngủ (theo anh em Grimm)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-05_hansel-and-gretel-vi</link>
     <description>Truyện Hansel và Gretel kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman.
 
@@ -122,7 +122,7 @@ Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</d
   </item>
   <item>
     <guid isPermaLink="false">2026-11-04_the-golden-touch</guid>
-    <title>Vua Midas và Bàn Tay Vàng</title>
+    <title>Vua Midas và Bàn Tay Vàng: bản kể lại trước giờ ngủ (theo Hawthorne)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-04_the-golden-touch</link>
     <description>Vua Midas, kể thật nhẹ nhàng trước giờ đi ngủ, theo truyện "Bàn tay vàng" của Nathaniel Hawthorne.
 
@@ -146,7 +146,7 @@ Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</d
   </item>
   <item>
     <guid isPermaLink="false">2026-11-05_cinderella-or-the-little-glass-slipper-vi</guid>
-    <title>Cô bé Lọ Lem, chuyện kể trước giờ ngủ</title>
+    <title>Cô bé Lọ Lem: bản kể lại trước giờ ngủ (theo Perrault)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-05_cinderella-or-the-little-glass-slipper-vi</link>
     <description>Cô bé Lọ Lem, kể thật nhẹ nhàng trước giờ đi ngủ, theo truyện cổ của Charles Perrault.
 
