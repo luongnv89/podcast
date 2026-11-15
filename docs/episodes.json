@@ -24,8 +24,84 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-15T17:00:38Z",
+  "updated": "2026-11-15T21:47:08Z",
   "episodes": [
+    {
+      "id": "2026-11-15_all-code-is-slop-except-mine",
+      "title": "All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents",
+      "summary": [
+        "Lauren Tan of the Grok Bot team argues coding agents become trustworthy when you invest in their environment: code, lint rules and checks first, prose last.",
+        "Banning what agents misuse, turning every correction into a lint rule, and runtime plus formal verification let her team ship 11,000 PRs in a month with few reverts.",
+        "Guests add Martin Kleppmann on AI and formal proofs, GitClear research on AI code quality, and Veracode's security test of AI-generated code."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-15T21:43:57Z",
+      "duration_s": 803.536,
+      "size_bytes": 12857888,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-15_all-code-is-slop-except-mine.mp3",
+      "audio_sha256": "d0558ac27b1c8351b9e006e94fbf3213f6d8031a4095c0c686cc9e2f0f1cc33b",
+      "transcript": "episodes/2026-11-15_all-code-is-slop-except-mine/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "All Code Is Slop (Except Mine)",
+        "author": "Lauren Tan",
+        "url": "https://www.youtube.com/watch?v=O_zcc6Xl12g",
+        "published": "2026-11-14",
+        "kind": "text"
+      },
+      "sources": [
+        {
+          "title": "All Code Is Slop (Except Mine)",
+          "author": "Lauren Tan",
+          "url": "https://www.youtube.com/watch?v=O_zcc6Xl12g"
+        },
+        {
+          "title": "Prediction: AI will make formal verification go mainstream",
+          "author": "Martin Kleppmann",
+          "url": "https://martin.kleppmann.com/2025/12/08/ai-formal-verification.html"
+        },
+        {
+          "title": "Code maintainability plummets in the AI coding era",
+          "author": "Bill Doerrfeld",
+          "url": "https://leaddev.com/ai/code-maintainability-plummets-in-the-ai-coding-era"
+        },
+        {
+          "title": "We Asked 100+ AI Models to Write Code. Here’s How Many Failed Security Tests. | Veracode",
+          "author": "Jens Wessling",
+          "url": "https://www.veracode.com/blog/genai-code-security-report"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Lena",
+          "presents": [
+            "Prediction: AI will make formal verification go mainstream"
+          ]
+        },
+        {
+          "name": "Maya",
+          "presents": [
+            "Code maintainability plummets in the AI coding era"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "We Asked 100+ AI Models to Write Code. Here’s How Many Failed Security Tests. | Veracode"
+          ]
+        }
+      ],
+      "description": "Can a team ship 11,000 pull requests a month without drowning in slop? Bob and Alice unpack Lauren Tan's AI Engineer talk on trusting AI coding agents.\n\nIn this episode:\n- The trust pyramid: code, lint rules and tests before prompts.\n- Banning what agents misuse; every correction becomes a lint rule.\n- Runtime and formal verification with TLA+ and Lean.\n- Guests on AI proofs, code-quality research and AI code security.\n\nSources: Lauren Tan; Prediction: AI will make formal verification go mainstream; Bill Doerrfeld; Jens Wessling\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - All Code Is Slop (Except Mine) How One Team Learned to Trust Its Coding Agents (2026-11-15).mp3"
+    },
     {
       "id": "2026-11-06_little-red-cap-fr",
       "title": "Le Petit Chaperon rouge : notre version pour le soir (d'après les frères Grimm)",

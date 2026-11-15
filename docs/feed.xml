@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sun, 15 Nov 2026 07:42:39 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 15 Nov 2026 21:47:08 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,31 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-15_all-code-is-slop-except-mine</guid>
+    <title>All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents</title>
+    <link>https://luongnv.com/podcast/#2026-11-15_all-code-is-slop-except-mine</link>
+    <description>Lauren Tan of the Grok Bot team argues coding agents become trustworthy when you invest in their environment: code, lint rules and checks first, prose last.
+
+Banning what agents misuse, turning every correction into a lint rule, and runtime plus formal verification let her team ship 11,000 PRs in a month with few reverts.
+
+Guests add Martin Kleppmann on AI and formal proofs, GitClear research on AI code quality, and Veracode's security test of AI-generated code.
+
+Sources:
+- All Code Is Slop (Except Mine), Lauren Tan (https://www.youtube.com/watch?v=O_zcc6Xl12g)
+- Prediction: AI will make formal verification go mainstream, Martin Kleppmann (https://martin.kleppmann.com/2025/12/08/ai-formal-verification.html)
+- Code maintainability plummets in the AI coding era, Bill Doerrfeld (https://leaddev.com/ai/code-maintainability-plummets-in-the-ai-coding-era)
+- We Asked 100+ AI Models to Write Code. Here’s How Many Failed Security Tests. | Veracode, Jens Wessling (https://www.veracode.com/blog/genai-code-security-report)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Lauren Tan of the Grok Bot team argues coding agents become trustworthy when you invest in their environment: code, lint rules and checks first, prose last.</p><p>Banning what agents misuse, turning every correction into a lint rule, and runtime plus formal verification let her team ship 11,000 PRs in a month with few reverts.</p><p>Guests add Martin Kleppmann on AI and formal proofs, GitClear research on AI code quality, and Veracode's security test of AI-generated code.</p><p>Sources:</p><ul><li>All Code Is Slop (Except Mine), Lauren Tan: <a href="https://www.youtube.com/watch?v=O_zcc6Xl12g">https://www.youtube.com/watch?v=O_zcc6Xl12g</a></li><li>Prediction: AI will make formal verification go mainstream, Martin Kleppmann: <a href="https://martin.kleppmann.com/2025/12/08/ai-formal-verification.html">https://martin.kleppmann.com/2025/12/08/ai-formal-verification.html</a></li><li>Code maintainability plummets in the AI coding era, Bill Doerrfeld: <a href="https://leaddev.com/ai/code-maintainability-plummets-in-the-ai-coding-era">https://leaddev.com/ai/code-maintainability-plummets-in-the-ai-coding-era</a></li><li>We Asked 100+ AI Models to Write Code. Here’s How Many Failed Security Tests. | Veracode, Jens Wessling: <a href="https://www.veracode.com/blog/genai-code-security-report">https://www.veracode.com/blog/genai-code-security-report</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Sun, 15 Nov 2026 21:43:57 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-15_all-code-is-slop-except-mine.mp3?v=d0558ac2" length="12857888" type="audio/mpeg"/>
+    <itunes:duration>804</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-15_all-code-is-slop-except-mine/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-15_morning-edition-sunday-15-november-2026</guid>
     <title>AI Daily, 15 November 2026: Test agents hit Epoch AI's live website, 1,000 servers tied to AI attacks</title>
