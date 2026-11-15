@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-15T16:26:33Z",
+  "updated": "2026-11-15T16:37:48Z",
   "episodes": [
+    {
+      "id": "2026-11-06_little-red-cap-vi",
+      "title": "Cô bé quàng khăn đỏ: bản kể lại trước giờ ngủ (theo anh em Grimm)",
+      "summary": [
+        "Truyện Cô bé quàng khăn đỏ kể nhẹ nhàng trước giờ ngủ, theo Little Red-Cap của anh em nhà Grimm, bản dịch của Margaret Hunt.",
+        "Một con sói ranh mãnh, bà ngoại khôn ngoan trốn trong tủ, và bác thợ săn làm sói chạy biến vào rừng sâu.",
+        "Chẳng ai bị đau, một con sói khác trượt từ mái nhà xuống máng nước luộc xúc xích, và câu chuyện khép lại bằng lời chúc ngủ ngon."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "vi",
+      "format": "bedtime-story",
+      "published": "2026-11-15T15:53:22Z",
+      "duration_s": 341.737,
+      "size_bytes": 5469928,
+      "audio": "https://luongnv.com/once-upon-a-time-vi-media/2026-11-06_little-red-cap-vi.mp3",
+      "audio_sha256": "e1fac031f7bf02112e81a8cb0b703e112c1e03004dea7e0c61448111970cf448",
+      "transcript": "episodes/2026-11-06_little-red-cap-vi/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Little Red-Cap",
+        "author": "Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt",
+        "url": "https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/Little_Red-Cap",
+        "published": "2010-09-03T00:56:32Z",
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Carefree\", \"Golly Gee\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-06_little-red-cap",
+      "image": {
+        "square": "art/2026-11-06_little-red-cap/square.jpg",
+        "wide": "art/2026-11-06_little-red-cap/wide.jpg",
+        "thumb": "art/2026-11-06_little-red-cap/thumb.jpg",
+        "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
+      },
+      "description": "Cô bé quàng khăn đỏ của anh em nhà Grimm, kể lại bằng lời của chúng tôi trước giờ ngủ. Một con sói ranh mãnh, bà ngoại khôn ngoan và cô bé học cách đi đúng lối mòn.\n\nTrong tập này:\n- Chiếc khăn nhung đỏ và đường vào rừng\n- Bà ơi, sao tai bà to thế\n- Con sói trên mái nhà rơi tõm xuống máng nước\n\nNguồn: Little Red-Cap, anh em nhà Grimm, bản dịch của Margaret Hunt (Wikisource)\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Cô bé quàng khăn đỏ bản kể lại trước giờ ngủ (theo anh em Grimm) (2026-11-15).mp3"
+    },
     {
       "id": "2026-11-06_little-red-cap",
       "title": "Little Red Riding Hood: our bedtime retelling (after the Brothers Grimm)",
@@ -1573,45 +1612,6 @@
         "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
       },
       "audio_sha256": "06c587a5e4f218081f1b6effff9c9edf5816cad1c0a720b189118ad01e1926d7"
-    },
-    {
-      "id": "2026-11-06_little-red-cap-vi",
-      "title": "Cô bé quàng khăn đỏ: bản kể lại trước giờ ngủ (theo anh em Grimm)",
-      "summary": [
-        "Truyện Cô bé quàng khăn đỏ kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của D. L. Ashliman.",
-        "Một con sói ranh mãnh, bà ngoại trốn trong tủ, và bác thợ săn làm sói chạy biến vào rừng sâu.",
-        "Chẳng ai bị đau, một con sói khác rơi tõm xuống máng nước luộc xúc xích, và câu chuyện khép lại bằng lời chúc ngủ ngon."
-      ],
-      "category": "bedtime",
-      "show": "Once Upon a Time Show",
-      "hosts": [],
-      "language": "vi",
-      "format": "bedtime-story",
-      "published": "2026-11-06T18:13:22Z",
-      "duration_s": 370.269,
-      "size_bytes": 5926317,
-      "audio": "https://luongnv.com/once-upon-a-time-vi-media/2026-11-06_little-red-cap-vi.mp3",
-      "transcript": "episodes/2026-11-06_little-red-cap-vi/transcript.vtt",
-      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
-      "source": {
-        "title": "Little Red Cap",
-        "author": null,
-        "url": "https://sites.pitt.edu/~dash/grimm026.html",
-        "published": null,
-        "kind": "article"
-      },
-      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Carefree\", \"Golly Gee\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
-      "story_group": "2026-11-06_little-red-cap",
-      "description": "Cô bé quàng khăn đỏ, kể lại bằng lời của chúng tôi, theo truyện cổ anh em nhà Grimm. Một con sói ranh mãnh, một bà ngoại thông minh và cô bé học cách đi đúng lối mòn, không ai bị đau cả.\n\nTrong tập này:\n- Đường vào rừng và chiếc bánh mang cho bà\n- Bà ơi, sao tai bà to thế: cuộc trò chuyện nổi tiếng\n- Con sói trên mái nhà rơi tõm xuống máng nước\n\nNguồn: Little Red Cap, anh em nhà Grimm, bản dịch của D. L. Ashliman\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
-      "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Cô bé quàng khăn đỏ bản kể lại trước giờ ngủ (theo anh em Grimm) (2026-11-06).mp3",
-      "image": {
-        "square": "art/2026-11-06_little-red-cap/square.jpg",
-        "wide": "art/2026-11-06_little-red-cap/wide.jpg",
-        "thumb": "art/2026-11-06_little-red-cap/thumb.jpg",
-        "alt": "Pencil drawing of a little girl in a red hooded cape carrying a basket along a meadow path toward her grandmother's cottage."
-      },
-      "audio_sha256": "44a6aa169e01f2fcdbf9464cf0793591e490778c79f3ec3e8ce0458817556880"
     },
     {
       "id": "2026-11-05_hansel-and-gretel-fr",
