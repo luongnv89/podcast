@@ -36,9 +36,10 @@ The site is static (`docs/`), deployed by GitHub Pages from `main`
   `site.js?v=<version>` / `site.css?v=<version>`: bump the version on all five whenever
   either file changes (GitHub Pages caches them for 10 min).
 - `docs/share.js` — the Share panel's X and LinkedIn drafts (see "Share drafts (#45)"),
-  loaded just before `site.js` by the four list pages and by every episode page, with the
-  same `?v=<version>` (`ASSET_VERSION` in `scripts/pages.py`): bump it with the others, then
-  rebuild the episode pages.
+  loaded just before `site.js` by the four list pages and by every episode page, with its
+  own `?v=<version>` (`ASSET_VERSION` in `scripts/pages.py`): when `share.js` changes, bump
+  it on the four list pages and in `ASSET_VERSION`, then rebuild the episode pages. A change
+  to `site.js` or `site.css` only (autoplay, #47) leaves it as it is.
 - `docs/episodes/<job id>/` — each episode's `transcript.vtt` and its own page
   `index.html` (see "Descriptions, download names and episode pages"). The MP3s are not in
   `docs/`: they are served by the media repos' own GitHub Pages sites (see "Where the audio
@@ -173,8 +174,8 @@ does not play ("Could not load audio"). Those releases are kept as they are. `Gh
   emergencies). Its checkout is `$PODCAST_MEDIA_CHECKOUTS/<name>`, with origin
   `git@github.com:owner/name.git`, and its URL is `https://<owner>.github.io/<name>/<id>.mp3`
   (or the owner's custom domain). The site's player only accepts the four repos above
-  (`mediaUrl()`, `docs/site.js:1067`). After parsing, it accepts no credentials and only
-  origin `https://luongnv.com` with a path that `PAGES_PATH` (`docs/site.js:1065`) matches
+  (`mediaUrl()`, `docs/site.js:1204`). After parsing, it accepts no credentials and only
+  origin `https://luongnv.com` with a path that `PAGES_PATH` (`docs/site.js:1202`) matches
   exactly, `/<media repo>/<id>.mp3`. Until every entry is re-pointed, it also accepts the
   release URL (origin `https://github.com`, `MEDIA_PATH`,
   `/luongnv89/<repo>/releases/download/<id>/<id>.mp3`, with the same `<id>` twice). The URL
@@ -458,18 +459,18 @@ Once Upon a Time Show has one page per language (#35): `/podcast/stories/en/`, `
   is in English, word for word as before. The taglines are DropCast's
   (`scripts/description_labels.json`).
 - **What a language page lists**: the story-format entries (`showOf()`) whose `language`
-  is the page's (`onPage()`, `docs/site.js:153`). A story in a language without a page is
-  listed on the English one (`storyLang()`, `docs/site.js:152`; `story_lang()`,
+  is the page's (`onPage()`, `docs/site.js:159`). A story in a language without a page is
+  listed on the English one (`storyLang()`, `docs/site.js:158`; `story_lang()`,
   `scripts/pages.py:126`), as its audio goes to the English stories repo.
 - **The chooser** shows the show, three large choices (the story icon with its badge, the
   language's own name and the tagline in that language) and the listening links of all
   three languages.
 - **Old links keep working.** `/podcast/stories/` stays valid (it is the chooser). With a
   `#<episode id>` it loads `episodes.json` and sends the visitor on to the page that lists
-  that episode, hash kept (`chooserTarget()`, `docs/site.js:175`, run before anything
-  else, `docs/site.js:188`); a Build Wiz AI Show id goes to `../#<id>`. Only the query
+  that episode, hash kept (`chooserTarget()`, `docs/site.js:181`, run before anything
+  else, `docs/site.js:194`); a Build Wiz AI Show id goes to `../#<id>`. Only the query
   keys the old stories page read go along: `q`, `sort`, `order` and `tab` (`OLD_QUERY`,
-  `docs/site.js:162`). A query with one of them and no known episode (`?q=pigs`, from a
+  `docs/site.js:168`). A query with one of them and no known episode (`?q=pigs`, from a
   shared search) goes to the visitor's language page: the language last picked on the
   site (saved by a language switch; the language pages have none since #40), else the browser's first of English, French and Vietnamese, else English. A plain
   `/podcast/stories/`, an unknown id without such a key, or a link with only tracking tags
@@ -519,8 +520,8 @@ when set, so older entries are unchanged; `result.json` is not read for it).
 Each story language page (#35) lists that language's version only. Its cards carry no
 links to the story's other languages (#40): the podcast switcher at the top moves between
 the language pages. The page still knows each story's other versions (`_alts`,
-`linkVersions()`, `docs/site.js:341`), only so a version without its own illustration shows
-the story's (`artSource()`, `docs/site.js:253`). Each episode page keeps its "Also in:"
+`linkVersions()`, `docs/site.js:347`), only so a version without its own illustration shows
+the story's (`artSource()`, `docs/site.js:259`). Each episode page keeps its "Also in:"
 links to the other versions. Every version keeps its own id, so `#<episode id>` opens that
 version; given another language's id, a page sends the visitor on to that language's page.
 Languages compare by their primary subtag (`en-US` is `en`).
@@ -590,6 +591,33 @@ platforms that read it by itself.
 - YouTube does not update an episode whose audio is re-voiced later; use "Re-upload from RSS
   feed" on that video.
 
+## Autoplay (#47)
+
+The player on Build Wiz AI Show's page and on the three story language pages has an
+**Autoplay** switch next to the speed button ("Lecture automatique" in French, "Tự động
+phát" in Vietnamese; `autoplay` in `TEXT`). It is **off** by default; the visitor's choice is
+kept in the browser (`autoplay` in localStorage, like the resume points), so a reload keeps
+it. The chooser and the episode pages have no list, so no autoplay.
+
+- **What plays next**: when an episode plays to its end, the next episode in the list **as it
+  is shown at that moment** (the tab, the search and the sort: newest or oldest, length,
+  title, source date) that is **not finished** starts. Finished is the per-visitor
+  `done:<id>` flag (set when an episode plays to its end); a started episode is not
+  finished and resumes from its `pos:<id>`, as on a manual play. It looks from the ended
+  episode's place in the list, or from the top when that episode is no longer in it (another
+  tab or a search); when nothing unfinished is left after it, playback stops (no
+  wrap-around). An episode without playable audio is skipped. `nextUnfinished()` and
+  `playNext()` in `docs/site.js`.
+- Only a natural end (`ended`) starts the next one, never an error or a pause.
+- A browser may refuse to start audio without a click (`play()` rejected): the next episode
+  is then loaded in the player, paused, with no error message; Play starts it.
+- While autoplay is on, the player shows what plays next under the seek bar, "Next: <title>"
+  ("Ensuite : …", "Tiếp theo: …"; `next` in `TEXT`), when there is one. The Media Session
+  **next track** (lock screen, headphones) plays that same episode; with autoplay off there is
+  no such action.
+- The switch is a `role="switch"` button (`aria-checked`), usable with the keyboard (Tab, then
+  Space or Enter), and fits a 360 px screen.
+
 ## Analytics (GA4 events)
 
 Every page (Build Wiz AI Show, the stories' chooser and the three story language pages)
@@ -601,15 +629,16 @@ a reload counts again.
 
 | Event | When | Extra parameters |
 |---|---|---|
-| `episode_play` | an episode starts playing for the first time in the page view (a resume after a pause is not counted) | |
+| `episode_play` | an episode starts playing for the first time in the page view (a resume after a pause is not counted) | `trigger` (`autoplay`, only when autoplay started it, #47) |
 | `episode_progress` | the player reaches 25, 50, 75 and 100 % of the episode (100: it played to the end), each once per episode, only after its `episode_play` (so loading a resume point sends nothing; seeking ahead does reach a milestone, and playing from a saved resume point counts the milestones already passed, so `percent` is the position reached, not proof it was all heard) | `percent` (25, 50, 75, 100) |
 | `language_switch` | the visitor uses the in-place language switch (EN / FR / VI) of a story shown as one row in several languages; a deep link does not count. No page shows such a row since #35, and the language pages' cards have no language links since #40, so no current page sends it | `from_language`, `to_language` |
 | `episode_download` | the "Download MP3" link (click or middle click) | |
 | `source_click` | an outbound source link: "Based on …", "Read the source" and the Sources list | |
 | `description_copy` | the "Copy description" button copied the description (not sent when copying failed) | |
+| `autoplay_toggle` | the visitor turns the player's Autoplay switch on or off (#47); it carries no episode | `enabled` (`true` or `false`) |
 | `episode_share` | an action in the Share panel (#45), on a list page or an episode page: **Post on X** (`x`) or **Post on LinkedIn** (`linkedin`) clicked (or middle-clicked), a draft copied (`copy`), or **More…** shared the episode: the share sheet completed (`share_sheet`) or the link was copied (`copy`). Opening the panel sends nothing; neither does a cancelled sheet or a failed copy | `method` (`x`, `linkedin`, `copy` or `share_sheet`) |
 
-Every event carries the episode it is about: `episode_id` (the job id), `episode_title`
+Every event but `autoplay_toggle` carries the episode it is about: `episode_id` (the job id), `episode_title`
 (at most 100 characters, GA4's limit), `show` (Build Wiz AI Show or Once Upon a Time
 Show), `episode_language` (the version's primary language, e.g. `fr`; not `language`, which GA4 reserves for the visitor's browser language), `category` (when set) and
 `story_group` (only for a story in several languages). A language switch carries the new
@@ -623,7 +652,7 @@ within seconds). To break them down by episode, show or language, register
 the parameters once as event-scoped custom dimensions in **Admin → Data display →
 Custom definitions → Create custom dimension** (scope "Event"): at least `episode_id`,
 `show` and `episode_language`, and optionally `episode_title`, `story_group`, `category`,
-`percent`, `from_language`, `to_language` and `method`. Dimensions only fill in from the day they
+`percent`, `from_language`, `to_language`, `method`, `trigger` and `enabled`. Dimensions only fill in from the day they
 are created; then use them in the event report or an **Explore** (e.g. rows
 `episode_title`, columns `percent`, filter on `episode_progress`).
 
