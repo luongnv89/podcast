@@ -98,6 +98,15 @@ Những ý tưởng lớn về AI, giải thích dễ hiểu cho người làm s
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-04_critical-thinking-when-agents-do-the-work.mp3" download="Build Wiz AI Show - Tư duy phản biện khi dùng AI agent bài học từ Addy Osmani (2026-11-04).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Tư duy phản biện khi dùng AI agent: bài học từ Addy Osmani" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Addy Osmani viết trên X về tư duy phản biện khi agent AI làm phần lớn công việc thay ta. Bob và Alice cùng phân tích.
+
+Trong tập này:
+- Từ giao việc, phó thác đến đầu hàng nhận thức: hãy đặt giả thuyết trước, hỏi dấu xanh chứng minh gì và đọc bằng chứng.
+- Bạn giao được việc và phần lớn khâu kiểm tra, nhưng không giao được trách nhiệm cho thứ mình ship.
+
+Nguồn: Critical thinking when agents do the work của Addy Osmani (@addyosmani)
+Những ý tưởng lớn về AI, giải thích dễ hiểu cho người làm sản phẩm. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/addyosmani/status/2117512471930167377" rel="noopener">Critical thinking when agents do the work</a> by Addy Osmani (@addyosmani)</p>
   <details class="transcript" id="transcript">
@@ -245,6 +254,21 @@ Những ý tưởng lớn về AI, giải thích dễ hiểu cho người làm s
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

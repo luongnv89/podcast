@@ -99,6 +99,16 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-16_morning-edition-monday-16-november-2026.mp3" download="Build Wiz AI Show - Qwen4-Max Launches, Cursor&#x27;s Breach Traced to a Key AI Daily 16 Nov (2026-11-16).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Qwen4-Max Launches, Cursor&#x27;s Breach Traced to a Key | AI Daily 16 Nov" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Alibaba released Qwen4-Max, its new paid flagship model, and Cursor traced the tampered Claude Code extension to an access key it had issued to Fireworks. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- Bessent&#x27;s deadline for Nvidia&#x27;s board, and reports Jensen Huang weighs a return
+- OpenAI&#x27;s science blog and a lattice proof built with GPT-6 Astra
+- The San Francisco Declaration on AI supply chains, and Apple&#x27;s health AI study
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://luongnv.com/news/reports/2026-11-16-morning.html" rel="noopener">The AI Gazette, morning edition, Monday 16 November 2026</a> by The AI Gazette</p>
   <details class="transcript" id="transcript">
@@ -203,6 +213,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

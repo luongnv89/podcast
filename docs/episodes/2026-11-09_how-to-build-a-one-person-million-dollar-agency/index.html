@@ -99,6 +99,16 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-09_how-to-build-a-one-person-million-dollar-agency.mp3" download="Build Wiz AI Show - How to Build a One-Person $1M Marketing Agency with AI Agents (2026-11-10).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="How to Build a One-Person $1M Marketing Agency with AI Agents" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Can one person run a million dollar marketing agency with AI agents? Bob and Alice unpack The Boring Marketer&#x27;s plan for plumbing and HVAC shops: three tiers, sales agents, and delivery agents that ask first.
+
+In this episode:
+- The math: 20 clients for about $85,000 a month, and why you plan on signing 28.
+- Approvals: runs on its own, asks you first, never.
+- What breaks: vendor numbers, approval fatigue, and AI voices on cold calls.
+
+Sources: The Boring Marketer; Jeremy Kahn; Anthropic; Ali Swenson
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/boringmarketer/status/2119888053577646318" rel="noopener">How to Build a One-Person Million Dollar Agency with AI Agents</a> by The Boring Marketer (@boringmarketer)</p>
   <details class="transcript" id="transcript">
@@ -245,6 +255,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

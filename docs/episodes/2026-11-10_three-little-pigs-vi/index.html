@@ -108,6 +108,17 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
     <a class="btn" href="https://luongnv.com/once-upon-a-time-vi-media/2026-11-10_three-little-pigs-vi.mp3" download="Once Upon a Time Show - Ba chú heo con truyện kể trước giờ ngủ cho bé, bản kể lại (theo Joseph Jacobs) (2026-11-10).mp3">Tải MP3</a>
     <a class="btn" href="transcript.vtt">Lời kể</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Chia sẻ</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Ba chú heo con: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Joseph Jacobs)" data-done="Đã sao chép" hidden><span aria-live="polite">Sao chép tiêu đề</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Ba chú heo con, kể lại bằng lời của chúng tôi, theo truyện cổ nước Anh của Joseph Jacobs. Ba ngôi nhà, một con sói thổi phù phù và một chú heo con thật thông minh, không ai bị đau cả.
+
+Trong tập này:
+- Nhà rơm, nhà gỗ và nhà gạch
+- Củ cải, quả táo và chiếc thùng đánh bơ lăn xuống dốc
+- Con sói chui ống khói và rơi tõm vào nồi nước lạnh
+
+Nguồn: Three Little Pigs, Joseph Jacobs, D. L. Ashliman
+Nhạc: Kevin MacLeod (incompetech.com), CC BY 4.0
+Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories" data-done="Đã sao chép" hidden><span aria-live="polite">Sao chép mô tả</span></button>
   </p>
   <p class="langs">Truyện này còn có bản: <a href="../2026-11-10_three-little-pigs/" hreflang="en" lang="en">English</a>, <a href="../2026-11-10_three-little-pigs-fr/" hreflang="fr" lang="fr">Français</a></p>
   <p class="credit">Dựa theo <a href="https://sites.pitt.edu/~dash/type0124.html" rel="noopener">Three Little Pigs</a></p>
@@ -170,6 +181,21 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

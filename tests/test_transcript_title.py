@@ -108,10 +108,45 @@ class TranscriptParseTest(unittest.TestCase):
     def test_name_prefix_only_without_voice_tags(self) -> None:
         vtt = "WEBVTT\n\n00:00.000 --> 00:01.000\nAlice: Hi there.\n\n00:01.000 --> 00:02.000\nAlice: Again.\n\n" \
               "00:02.000 --> 00:03.000\nno speaker here\n"
-        self.assertEqual(pages.transcript_paragraphs(vtt), [("Alice", "Hi there. Again."), ("", "no speaker here")])
+        self.assertEqual(pages.transcript_paragraphs(vtt, ("Bob", "Alice")), [("Alice", "Hi there. Again."), ("", "no speaker here")])
         # With voice tags, a "Thesis: ..." line is text, not a speaker.
         tagged = VTT + "\n5\n00:00:20.000 --> 00:00:21.000\nThesis: loops matter.\n"
         self.assertEqual(pages.transcript_paragraphs(tagged)[-1], ("", "Thesis: loops matter."))
+
+    def test_name_prefix_needs_a_known_speaker(self) -> None:
+        def cue(text: str) -> str:
+            return f"WEBVTT\n\n00:00.000 --> 00:01.000\n{text}\n"
+
+        known = ("Bob", "Alice", "Le Roi")
+        # Review nit 4: an ordinary label is not a speaker.
+        self.assertEqual(pages.transcript_cues(cue("Note: this is not a speaker"), known), [("", "Note: this is not a speaker")])
+        # Nor is a name the episode does not have, nor anything without the episode's speakers.
+        self.assertEqual(pages.transcript_cues(cue("Carol: hello"), known), [("", "Carol: hello")])
+        self.assertEqual(pages.transcript_cues(cue("Alice: hello")), [("", "Alice: hello")])
+        # One or two capitalised words only (a lowercase accented first letter is not a name).
+        self.assertEqual(pages.transcript_cues(cue("Le Roi: bonjour"), known), [("Le Roi", "bonjour")])
+        self.assertEqual(pages.transcript_cues(cue("le roi: bonjour"), ("le roi",)), [("", "le roi: bonjour")])
+        self.assertEqual(pages.transcript_cues(cue("élise: oui"), ("élise",)), [("", "élise: oui")])
+        self.assertEqual(pages.transcript_cues(cue("Dear Old Bob: hi"), ("Dear Old Bob",)), [("", "Dear Old Bob: hi")])
+
+    def test_every_voice_span_has_its_own_speaker(self) -> None:
+        vtt = (
+            "WEBVTT\n\n00:00.000 --> 00:02.000\n<v Bob>first</v>\n<v Alice>second</v>\n\n"
+            "00:02.000 --> 00:03.000\n<i><v Carol>in italics</v></i>\n\n"
+            "00:03.000 --> 00:04.000\n<v.loud Bob>tagged with a class <v Alice>and Alice\n"
+        )
+        self.assertEqual(
+            pages.transcript_cues(vtt),
+            [("Bob", "first"), ("Alice", "second"), ("Carol", "in italics"), ("Bob", "tagged with a class"), ("Alice", "and Alice")],
+        )
+        self.assertEqual(
+            pages.transcript_paragraphs(vtt),
+            [("Bob", "first"), ("Alice", "second"), ("Carol", "in italics"), ("Bob", "tagged with a class"), ("Alice", "and Alice")],
+        )
+        # Text before the first voice tag keeps no speaker.
+        self.assertEqual(
+            pages.transcript_cues("WEBVTT\n\n00:00.000 --> 00:01.000\nIntro <v Bob>hi\n"), [("", "Intro"), ("Bob", "hi")]
+        )
 
     def test_long_run_is_cut_and_named_once(self) -> None:
         cues = "".join(f"\n{i}\n00:00:{i:02d}.000 --> 00:00:{i + 1:02d}.000\n<v Narrator>{'word ' * 40}{i}.\n" for i in range(10))
@@ -144,7 +179,9 @@ class TranscriptParseTest(unittest.TestCase):
                     self.assertNotRegex(text, r"\d\d:\d\d[:.]\d\d|-->|<v ")
 
 
-class TranscriptPageTest(unittest.TestCase):
+class PageCase(unittest.TestCase):
+    """Renders pages into a temporary site."""
+
     def setUp(self) -> None:
         self.tmp = tempfile.TemporaryDirectory()
         self.site = Path(self.tmp.name) / "docs"
@@ -166,6 +203,8 @@ class TranscriptPageTest(unittest.TestCase):
             (folder / "transcript.vtt").unlink()
         return pages.render_page(ep, [ep], self.site)
 
+
+class TranscriptPageTest(PageCase):
     def test_page_without_transcript_is_unchanged(self) -> None:
         ep = entry("2026-11-10_no-vtt")
         before = self.render(ep, None)
@@ -226,6 +265,110 @@ class TranscriptPageTest(unittest.TestCase):
                 html = (DOCS / pages.page_path(ep["id"]) / "index.html").read_text(encoding="utf-8")
                 self.assertEqual(html, pages.render_page(ep, pages.site_episodes(DOCS), DOCS))
                 self.assertEqual(html.count('<details class="transcript" id="transcript">'), 1)
+
+
+class RoleNameTest(PageCase):
+    NARRATED = "WEBVTT\n\n00:00.000 --> 00:01.000\n<v Narrator>Il était une fois.\n\n00:01.000 --> 00:02.000\n<v King Midas>Gold!\n"
+
+    def test_generic_role_in_the_page_language(self) -> None:
+        self.assertEqual(pages.role_name("Narrator", "fr"), "Narrateur")
+        self.assertEqual(pages.role_name("narrator", "vi"), "Người kể")
+        self.assertEqual(pages.role_name("Narrator", "en"), "Narrator")
+        self.assertEqual(pages.role_name("King Midas", "fr"), "King Midas")
+        self.assertEqual(pages.role_name("Narratrice", "fr"), "Narratrice")
+        story = {"format": "bedtime-story", "show": "Once Upon a Time Show"}
+        cases = {
+            "fr": (entry("2026-11-10_role-fr", language="fr", **story), "Narrateur\u00a0:", "King Midas\u00a0:"),
+            "vi": (entry("2026-11-10_role-vi", language="vi", **story), "Người kể:", "King Midas:"),
+            "en": (entry("2026-11-10_role-en", **story), "Narrator:", "King Midas:"),
+            # A Build Wiz AI Show page is in English whatever its language.
+            "build-fr": (entry("2026-11-10_role-build-fr", language="fr"), "Narrator:", "King Midas:"),
+        }
+        for name, (ep, narrator, king) in cases.items():
+            with self.subTest(page=name):
+                parser = Text()
+                parser.feed(self.render(ep, self.NARRATED))
+                self.assertTrue(parser.paras[0].startswith(narrator + " Il était une fois."))
+                self.assertTrue(parser.paras[1].startswith(king))
+
+
+class Buttons(HTMLParser):
+    """The page's copy buttons: ``data-copy`` -> attributes (unescaped) and label."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.buttons: dict[str, dict] = {}
+        self._in = None
+
+    def handle_starttag(self, tag, attrs):
+        a = dict(attrs)
+        if tag == "button" and "data-copy" in a:
+            self._in = a["data-copy"]
+            self.buttons[self._in] = {**a, "label": ""}
+
+    def handle_endtag(self, tag):
+        if tag == "button":
+            self._in = None
+
+    def handle_data(self, data):
+        if self._in:
+            self.buttons[self._in]["label"] += data
+
+
+class EpisodePageCopyTest(PageCase):
+    TITLE = 'A <Title> & "more" \'x\' </button><script>alert(1)</script>'
+    DESC = 'Hook "line" & <b>bold</b>.\n\nIn this episode:\n- one\n- two </button><script>alert(2)</script>\n'
+
+    def buttons(self, ep: dict) -> tuple[str, dict]:
+        html = self.render(ep, None)
+        parser = Buttons()
+        parser.feed(html)
+        return html, parser.buttons
+
+    def test_buttons_copy_the_exact_text_escaped(self) -> None:
+        html, found = self.buttons(entry("2026-11-10_copy", title=self.TITLE, description=self.DESC))
+        self.assertEqual(list(found), ["title", "description"])
+        self.assertEqual(found["title"]["data-text"], self.TITLE)
+        self.assertEqual(found["description"]["data-text"], self.DESC)
+        self.assertNotIn("<script>alert", html)
+        self.assertNotIn("</button><script>", html)
+        for b in found.values():
+            self.assertIn("hidden", b)  # shown by the page's script, so no dead button without JS
+        # Share, then Copy title, then Copy description, as on the list pages.
+        self.assertLess(html.index('id="share"'), html.index('data-copy="title"'))
+        self.assertLess(html.index('data-copy="title"'), html.index('data-copy="description"'))
+        self.assertIn('document.querySelectorAll("button[data-copy]")', html)
+        self.assertIn('copy(b.getAttribute("data-text")', html)
+
+    def test_words_in_the_page_language(self) -> None:
+        story = {"format": "bedtime-story", "show": "Once Upon a Time Show"}
+        cases = {
+            "en": (entry("2026-11-10_w-en"), ("Copy title", "Copied"), ("Copy description", "Copied")),
+            "story-en": (entry("2026-11-10_w-sen", **story), ("Copy title", "Copied"), ("Copy description", "Copied")),
+            "fr": (entry("2026-11-10_w-fr", language="fr", **story), ("Copier le titre", "Copié"), ("Copier la description", "Copiée")),
+            "vi": (entry("2026-11-10_w-vi", language="vi", **story), ("Sao chép tiêu đề", "Đã sao chép"), ("Sao chép mô tả", "Đã sao chép")),
+            "build-vi": (entry("2026-11-10_w-bvi", language="vi"), ("Copy title", "Copied"), ("Copy description", "Copied")),
+        }
+        for name, (ep, title, desc) in cases.items():
+            with self.subTest(page=name):
+                _, found = self.buttons(ep)
+                self.assertEqual((found["title"]["label"], found["title"]["data-done"]), title)
+                self.assertEqual((found["description"]["label"], found["description"]["data-done"]), desc)
+
+    def test_no_description_no_description_button(self) -> None:
+        for desc in (None, "", "   "):
+            with self.subTest(desc=desc):
+                _, found = self.buttons(entry("2026-11-10_nodesc", description=desc))
+                self.assertEqual(list(found), ["title"])
+
+    def test_live_pages_copy_their_entry(self) -> None:
+        for ep in pages.site_episodes(DOCS):
+            with self.subTest(ep=ep["id"]):
+                parser = Buttons()
+                parser.feed((DOCS / pages.page_path(ep["id"]) / "index.html").read_text(encoding="utf-8"))
+                self.assertEqual(parser.buttons["title"]["data-text"], ep["title"])
+                if (ep.get("description") or "").strip():
+                    self.assertEqual(parser.buttons["description"]["data-text"], ep["description"])
 
 
 class CopyTitleTest(unittest.TestCase):

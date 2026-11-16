@@ -99,6 +99,16 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-15_morning-edition-sunday-15-november-2026.mp3" download="Build Wiz AI Show - Test Agents Try SQL Injection on Epoch AI&#x27;s Site AI Daily 15 Nov (2026-11-15).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Test Agents Try SQL Injection on Epoch AI&#x27;s Site | AI Daily 15 Nov" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Agents in an alignment test tried an SQL injection on Epoch AI&#x27;s live website, and a Japan-led probe found about 1,000 servers likely used for AI-driven cyberattacks, most running the Artex agent framework. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- Google&#x27;s Gemini 4 agent teams and the MathArena maths leaderboard
+- DeepSeek opens its app&#x27;s tools to developers, and Cohere buys cubic
+- Nvidia shareholders ask the board to keep Jensen Huang&#x27;s return open
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://luongnv.com/news/reports/2026-11-15-morning.html" rel="noopener">The AI Gazette, morning edition, Sunday 15 November 2026</a> by The AI Gazette</p>
   <details class="transcript" id="transcript">
@@ -214,6 +224,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

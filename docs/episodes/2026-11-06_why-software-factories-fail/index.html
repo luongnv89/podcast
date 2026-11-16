@@ -99,6 +99,16 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-06_why-software-factories-fail.mp3" download="Build Wiz AI Show - Why AI Software Factories Fail Coding Agents vs Maintainability (2026-11-09).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Why AI Software Factories Fail: Coding Agents vs Maintainability" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Can a lights-off software factory, where no human reads or writes the code, really work? Bob and Alice unpack Dex Horthy&#x27;s Why Software Factories Fail: why coding agents erode codebase maintainability, and why harness engineering can&#x27;t fix it.
+
+In this episode:
+- Why review became the bottleneck once agents write the code
+- Why models are rewarded for passing tests, not good design
+- What DORA and METR data say about stability and speed
+
+Sources: Dex Horthy; Carlos E. Jimenez et al.; Nathen Harvey and Derek DeBellis; METR
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/dexhorthy/status/2080697380379427275" rel="noopener">Why Software Factories Fail</a> by dex (@dexhorthy)</p>
   <details class="transcript" id="transcript">
@@ -221,6 +231,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

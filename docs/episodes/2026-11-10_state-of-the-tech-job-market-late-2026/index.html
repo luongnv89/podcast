@@ -99,6 +99,16 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-10_state-of-the-tech-job-market-late-2026.mp3" download="Build Wiz AI Show - Tech Job Market Late 2026 PM Openings Up 75%, Engineers Plateau (2026-11-10).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Tech Job Market Late 2026: PM Openings Up 75%, Engineers Plateau" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="The job AI was supposed to kill is growing fastest. Bob and Alice unpack Lenny Rachitsky&#x27;s report on the tech job market in late 2026.
+
+In this episode:
+- PM openings up 75% from their low, while engineering openings stall.
+- Record lows for design, user research and remote roles, and the pull of the Bay Area.
+- LLM and Claude top the job posts, forward deployed engineers boom, and why openings aren&#x27;t hires.
+
+Sources: Lenny Rachitsky; Guillermo Gallacher; Joe Schmidt; Jeff Cox
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late" rel="noopener">State of the tech job market: late 2026</a> by Lenny Rachitsky</p>
   <details class="transcript" id="transcript">
@@ -215,6 +225,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

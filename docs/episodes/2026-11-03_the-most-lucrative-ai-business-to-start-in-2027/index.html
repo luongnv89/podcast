@@ -98,6 +98,15 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-03_the-most-lucrative-ai-business-to-start-in-2027.mp3" download="Build Wiz AI Show - The Most Lucrative AI Business to Start in 2027 (Dan Koe) (2026-11-03).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="The Most Lucrative AI Business to Start in 2027 (Dan Koe)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Dan Koe argues that capturing attention is the top skill for the most lucrative AI business to start in 2027. Bob and Alice unpack his plan.
+
+In this episode:
+- His thesis: capturing attention is the top skill, and one person using AI well can be a full creative team for their own brand or for clients.
+- It lays out a step-by-step client process and a way to land the first client, with market data from Goldman Sachs and the IAB.
+
+Sources: The most lucrative AI business to start in 2027 by Dan Koe (@thedankoe)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/thedankoe/status/2117664712532123680" rel="noopener">The most lucrative AI business to start in 2027</a> by DAN KOE (@thedankoe)</p>
   <details class="transcript" id="transcript">
@@ -242,6 +251,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

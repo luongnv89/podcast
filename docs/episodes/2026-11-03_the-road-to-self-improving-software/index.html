@@ -98,6 +98,15 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-03_the-road-to-self-improving-software.mp3" download="Build Wiz AI Show - Self-Improving Software A Closed-Loop Software Factory with Agents (2026-11-03).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Self-Improving Software: A Closed-Loop Software Factory with Agents" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Ben Holmes describes a closed-loop software factory where AI agents fix alerted bugs, score their own sessions and mine customer data. Bob and Alice unpack the road to self-improving software.
+
+In this episode:
+- Agents can proactively fix alerted bugs, score their own sessions to improve skills, and mine customer data for the roadmap.
+- It shifts the goal from faster pull requests to one loop from task to shipped product, with humans still reviewing.
+
+Sources: The road to self-improving software by Ben Holmes (@BHolmesDev)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/BHolmesDev/status/2110793920930107817" rel="noopener">The road to self-improving software</a> by Ben Holmes (@BHolmesDev)</p>
   <details class="transcript" id="transcript">
@@ -200,6 +209,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

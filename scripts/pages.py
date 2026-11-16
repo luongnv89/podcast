@@ -25,8 +25,10 @@ is exactly as before.
 The episode's ``transcript.vtt`` next to its page (copied there by ``publish.py``) is also
 written into the page as plain text (podcast #51, for search engines and AI answer engines):
 under a collapsed ``<details>`` "Transcript" heading in the page's language, one paragraph per
-run of lines by the same speaker, the speaker's name in bold, no timestamps
-(``transcript_paragraphs()``). A page without that file is exactly as before.
+run of lines by the same speaker, the speaker's name in bold (a generic role such as
+``Narrator`` in the page's language, ``ROLE_NAMES``), no timestamps
+(``transcript_paragraphs()``). A page without that file has no transcript block. Every page
+also has Copy title and Copy description buttons (podcast #50) after Share.
 
 A story's page is in the story's language (podcast #38): every word around the episode's
 own text comes from ``UI``, French or Vietnamese for a story listed on those pages. Every
@@ -94,6 +96,10 @@ UI = {
         "share": "Share",
         "link_copied": "Link copied",
         "copy_failed": "Copy failed",
+        "copy_title": "Copy title",
+        "title_copied": "Copied",
+        "copy_desc": "Copy description",
+        "desc_copied": "Copied",
         "footer": "AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.",
     },
     "fr": {
@@ -109,6 +115,10 @@ UI = {
         "share": "Partager",
         "link_copied": "Lien copié",
         "copy_failed": "Échec de la copie",
+        "copy_title": "Copier le titre",
+        "title_copied": "Copié",
+        "copy_desc": "Copier la description",
+        "desc_copied": "Copiée",
         "footer": "Histoire réalisée avec DropCast et lue par une voix de synthèse. "
         "Chaque histoire cite le texte dont elle s’inspire.",
     },
@@ -125,8 +135,18 @@ UI = {
         "share": "Chia sẻ",
         "link_copied": "Đã sao chép liên kết",
         "copy_failed": "Không sao chép được",
+        "copy_title": "Sao chép tiêu đề",
+        "title_copied": "Đã sao chép",
+        "copy_desc": "Sao chép mô tả",
+        "desc_copied": "Đã sao chép",
         "footer": "Truyện này được làm bằng DropCast và kể bằng giọng đọc nhân tạo. Mỗi truyện đều ghi nguồn văn bản gốc.",
     },
+}
+# A transcript's generic role names (a voice tag such as ``<v Narrator>``), in the words of the
+# page's language; a real name (Bob, Le roi Midas) is shown as it is (podcast #51 review).
+ROLE_NAMES = {
+    "fr": {"narrator": "Narrateur", "character": "Personnage"},
+    "vi": {"narrator": "Người kể", "character": "Nhân vật"},
 }
 # The Share button (podcast #43, #45). A click opens the panel of X and LinkedIn drafts that
 # docs/share.js builds from the episode's own entry (``window.PodcastShare``, the same file
@@ -181,6 +201,21 @@ SHARE_SCRIPT = """\
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
@@ -357,8 +392,8 @@ def versions_of(ep: dict[str, Any], episodes: list[dict[str, Any]]) -> list[dict
 
 TRANSCRIPT = "transcript.vtt"
 PARAGRAPH_CHARS = 600  # a speaker's run starts a new paragraph after this many characters
-_VOICE = re.compile(r"^<v(?:\.[^\s>]*)?\s+([^>]*)>(.*)$", re.DOTALL)
-_PREFIX = re.compile(r"^([A-Z\u00c0-\u1ef9][^:<>\n]{0,39}):\s+(.+)$", re.DOTALL)
+_VOICE = re.compile(r"<v(?:\.[^\s>]*)?\s+([^>]*)>")
+_PREFIX = re.compile(r"^([^:<>\n]{1,40}):\s+(.+)$", re.DOTALL)
 _TAG = re.compile(r"</?[^>]*>")
 
 
@@ -367,12 +402,40 @@ def _cue_text(text: str) -> str:
     return re.sub(r"\s+", " ", unescape(_TAG.sub("", text))).strip()
 
 
-def transcript_cues(vtt: str) -> list[tuple[str, str]]:
-    """``(speaker, text)`` per cue of a WebVTT file, in order, without timestamps.
+def _voice_spans(payload: str) -> list[tuple[str, str]]:
+    """A cue's ``(speaker, raw text)`` per voice span: each ``<v Name>`` starts its own, so a
+    cue with two voices gives two speakers and ``<i><v Carol>...`` keeps Carol. Text before the
+    first voice tag (other than formatting tags) has no speaker."""
+    found = list(_VOICE.finditer(payload))
+    spans = []
+    if _cue_text(payload[: found[0].start()]):
+        spans.append(("", payload[: found[0].start()]))
+    for i, m in enumerate(found):
+        end = found[i + 1].start() if i + 1 < len(found) else len(payload)
+        spans.append((_cue_text(m.group(1)), payload[m.end() : end]))
+    return spans
 
-    The speaker is the cue's voice tag (``<v Bob>``, as DropCast writes them) or, in a file
-    with no voice tag at all, a short ``Name:`` prefix; else ``""``. Header, NOTE, STYLE and
-    REGION blocks and empty cues are skipped."""
+
+def _speaker_prefix(text: str, speakers: tuple[str, ...]) -> tuple[str, str] | None:
+    """``(name, rest)`` for a ``Name: ...`` line whose name is one or two capitalised words and a
+    known speaker of the episode (its hosts or guests); else None, so ``Note: ...`` stays text."""
+    m = _PREFIX.match(text)
+    if not m:
+        return None
+    name = m.group(1).strip()
+    words = name.split()
+    if not 1 <= len(words) <= 2 or not all(w[0].isupper() for w in words):
+        return None
+    return (name, m.group(2)) if name in speakers else None
+
+
+def transcript_cues(vtt: str, speakers: tuple[str, ...] | list[str] = ()) -> list[tuple[str, str]]:
+    """``(speaker, text)`` per voice span of a WebVTT file, in order, without timestamps.
+
+    The speaker is the voice tag (``<v Bob>``, as DropCast writes them; every ``<v>`` span of a
+    cue is its own) or, in a file with no voice tag at all, a ``Name:`` prefix naming one of the
+    episode's ``speakers``; else ``""``. Header, NOTE, STYLE and REGION blocks and empty cues are
+    skipped."""
     blocks = re.split(r"\n[ \t]*\n", vtt.replace("\r\n", "\n").replace("\r", "\n").lstrip("\ufeff"))
     payloads = []
     for block in blocks:
@@ -383,32 +446,27 @@ def transcript_cues(vtt: str) -> list[tuple[str, str]]:
         payload = "\n".join(lines[at + 1 :]).strip()
         if payload:
             payloads.append(payload)
-    voiced = any(_VOICE.match(p) for p in payloads)
+    voiced = any(_VOICE.search(p) for p in payloads)
+    known = tuple(str(n).strip() for n in speakers if isinstance(n, str) and n.strip())
     cues = []
     for payload in payloads:
-        who, text = "", payload
-        voice = _VOICE.match(payload)
-        if voice:
-            who, text = _cue_text(voice.group(1)), voice.group(2)
+        if _VOICE.search(payload):
+            spans = [(who, _cue_text(raw)) for who, raw in _voice_spans(payload)]
         else:
             text = _cue_text(payload)
-            prefix = None if voiced else _PREFIX.match(text)
-            if prefix and len(prefix.group(1).split()) <= 3:
-                who, text = prefix.group(1).strip(), prefix.group(2)
-        if voice:
-            text = _cue_text(text)
-        if text:
-            cues.append((who, text))
+            prefix = None if voiced else _speaker_prefix(text, known)
+            spans = [prefix] if prefix else [("", text)]
+        cues += [(who, text) for who, text in spans if text]
     return cues
 
 
-def transcript_paragraphs(vtt: str) -> list[tuple[str, str]]:
+def transcript_paragraphs(vtt: str, speakers: tuple[str, ...] | list[str] = ()) -> list[tuple[str, str]]:
     """The cues joined into paragraphs: consecutive cues of the same speaker (or of no
     speaker) become one ``(speaker, text)``. A long run (a story's narrator) is cut at a cue
     boundary once a paragraph reaches ``PARAGRAPH_CHARS``; the next paragraph keeps the
     speaker, and the page names the speaker only when it changes."""
     out: list[tuple[str, str]] = []
-    for who, text in transcript_cues(vtt):
+    for who, text in transcript_cues(vtt, speakers):
         if out and out[-1][0] == who and len(out[-1][1]) < PARAGRAPH_CHARS:
             out[-1] = (who, out[-1][1] + " " + text)
         else:
@@ -432,11 +490,24 @@ def transcript_html(paragraphs: list[tuple[str, str]], ui: dict[str, str]) -> li
     return lines
 
 
-def read_transcript(ep_id: str, site: Path = SITE) -> list[tuple[str, str]]:
+def speakers_of(ep: dict[str, Any]) -> tuple[str, ...]:
+    """The episode's named speakers (``hosts`` and ``guests`` in episodes.json)."""
+    names = [h for h in ep.get("hosts") or [] if isinstance(h, str)]
+    names += [g.get("name") for g in ep.get("guests") or [] if isinstance(g, dict) and isinstance(g.get("name"), str)]
+    return tuple(n.strip() for n in names if n.strip())
+
+
+def role_name(who: str, lang: str) -> str:
+    """A generic role name (``Narrator``) in the page's language (``ROLE_NAMES``); a real name as
+    it is."""
+    return ROLE_NAMES.get(lang, {}).get(who.strip().casefold(), who)
+
+
+def read_transcript(ep_id: str, site: Path = SITE, speakers: tuple[str, ...] | list[str] = ()) -> list[tuple[str, str]]:
     """The paragraphs of ``docs/episodes/<id>/transcript.vtt``; ``[]`` when there is none."""
     path = site / page_path(ep_id) / TRANSCRIPT
     try:
-        return transcript_paragraphs(path.read_text(encoding="utf-8"))
+        return transcript_paragraphs(path.read_text(encoding="utf-8"), speakers)
     except (OSError, UnicodeDecodeError):
         return []
 
@@ -471,7 +542,8 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     others = versions_of(ep, episodes)
     duration = _iso_duration(ep.get("duration_s"))
     minutes = _minutes(ep.get("duration_s"), ui["min"])
-    spoken = read_transcript(ep_id, site)
+    page_lang = story_lang(ep) if show == STORY_SHOW else "en"
+    spoken = [(role_name(who, page_lang), text) for who, text in read_transcript(ep_id, site, speakers_of(ep))]
 
     ld: dict[str, Any] = {
         "@context": "https://schema.org",
@@ -604,6 +676,14 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     if ep.get("transcript"):
         body.append(f'    <a class="btn" href="transcript.vtt">{e(ui["transcript"])}</a>')
     body.append(f'    <button class="btn" type="button" id="share" hidden><span aria-live="polite">{e(ui["share"])}</span></button>')
+    copies = [("title", str(ep.get("title") or ""), "copy_title", "title_copied")]
+    copies.append(("description", ep.get("description") if isinstance(ep.get("description"), str) else "", "copy_desc", "desc_copied"))
+    for kind, text, label, done in copies:
+        if text.strip():
+            body.append(
+                f'    <button class="btn" type="button" data-copy="{kind}" data-text="{e(text)}" data-done="{e(ui[done])}" hidden>'
+                f'<span aria-live="polite">{e(ui[label])}</span></button>'
+            )
     body.append("  </p>")
     if others:
         links = ", ".join(

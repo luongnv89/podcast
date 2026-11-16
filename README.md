@@ -317,7 +317,10 @@ exactly as in `episodes.json` (Clipboard API, else a hidden text area and
 `execCommand("copy")`), shows "Copied" for a moment and sends `description_copy`. A
 **Copy title** button just before it (#50) copies the entry's `title` exactly, with the
 same feedback ("Copier le titre", "Sao chép tiêu đề" on the French and Vietnamese pages),
-and sends `title_copy`. A story
+and sends `title_copy`. Each episode page has both buttons too, after **Share**
+(`data-copy` buttons whose `data-text` holds the entry's exact `title` and `description`,
+HTML-escaped, handled by the page's inline `SHARE_SCRIPT` and hidden until it runs; the
+words in the page's language, `copy_title`/`copy_desc` in `UI`). A story
 in several languages copies the language on show. While a deep link (`#<id>`) is open,
 the page's `<meta name="description">` is that episode's hook.
 
@@ -400,10 +403,12 @@ a collapsed `<details>` under the heading **Transcript** in the page's language
 (“Transcription”, “Lời kể”, the same word as the Transcript button), one paragraph per run
 of cues by the same speaker with the name in bold (a long run, such as a story's narrator, is
 cut into paragraphs of about 600 characters at cue boundaries, the name shown once; the
-cue's `<v Name>` voice tag gives the name, or a
-short `Name:` prefix in a file with no voice tags), no timestamps, every name and line
-escaped (`transcript_paragraphs()`, `transcript_html()` in `scripts/pages.py`). A page
-without the file is byte for byte what it was. The JSON-LD gets no `transcript`: schema.org
+cue's `<v Name>` voice tag gives the name, each `<v>` span of a cue its own speaker, or, in
+a file with no voice tags, a `Name:` prefix of one or two capitalised words that is one of
+the episode's `hosts` or `guests`; a generic role such as `Narrator` is shown in the page's
+language, `ROLE_NAMES`: “Narrateur”, “Người kể”), no timestamps, every name and line
+escaped (`transcript_paragraphs()`, `transcript_html()` in `scripts/pages.py`). Without
+the file a page has no transcript block. The JSON-LD gets no `transcript`: schema.org
 defines it on `AudioObject`/`VideoObject`, and the page's `associatedMedia` is a
 `MediaObject`.
 

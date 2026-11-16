@@ -108,6 +108,17 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
     <a class="btn" href="https://luongnv.com/once-upon-a-time-vi-media/2026-11-06_little-red-cap-vi.mp3" download="Once Upon a Time Show - Cô bé quàng khăn đỏ truyện kể trước giờ ngủ cho bé, bản kể lại (theo anh em Grimm) (2026-11-15).mp3">Tải MP3</a>
     <a class="btn" href="transcript.vtt">Lời kể</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Chia sẻ</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Cô bé quàng khăn đỏ: truyện kể trước giờ ngủ cho bé, bản kể lại (theo anh em Grimm)" data-done="Đã sao chép" hidden><span aria-live="polite">Sao chép tiêu đề</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Cô bé quàng khăn đỏ của anh em nhà Grimm, kể lại bằng lời của chúng tôi trước giờ ngủ. Một con sói ranh mãnh, bà ngoại khôn ngoan và cô bé học cách đi đúng lối mòn.
+
+Trong tập này:
+- Chiếc khăn nhung đỏ và đường vào rừng
+- Bà ơi, sao tai bà to thế
+- Con sói trên mái nhà rơi tõm xuống máng nước
+
+Nguồn: Little Red-Cap, anh em nhà Grimm, bản dịch của Margaret Hunt (Wikisource)
+Nhạc: Kevin MacLeod (incompetech.com), CC BY 4.0
+Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories" data-done="Đã sao chép" hidden><span aria-live="polite">Sao chép mô tả</span></button>
   </p>
   <p class="langs">Truyện này còn có bản: <a href="../2026-11-06_little-red-cap/" hreflang="en" lang="en">English</a>, <a href="../2026-11-06_little-red-cap-fr/" hreflang="fr" lang="fr">Français</a></p>
   <p class="credit">Dựa theo <a href="https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/Little_Red-Cap" rel="noopener">Little Red-Cap</a> của Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt</p>
@@ -167,6 +178,21 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

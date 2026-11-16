@@ -99,6 +99,16 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-13_morning-edition-friday-13-november-2026.mp3" download="Build Wiz AI Show - Jensen Huang Resigns as Nvidia CEO, Gemini 4 Hydrogen AI Daily 13 Nov (2026-11-13).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Jensen Huang Resigns as Nvidia CEO, Gemini 4 Hydrogen | AI Daily 13 Nov" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Jensen Huang resigned as Nvidia&#x27;s chief executive, and Google released Gemini 4 Hydrogen, a faster, cheaper model for coding and agents. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- Microsoft&#x27;s studies of backdoors planted in coding agents during post-training
+- AWS Emulator, a local copy of AWS written entirely by AI agents
+- A lawsuit to halt frontier models, OpenAI&#x27;s raise and Anthropic&#x27;s IPO demand
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://luongnv.com/news/reports/2026-11-13-morning.html" rel="noopener">The AI Gazette, morning edition, Friday 13 November 2026</a> by The AI Gazette</p>
   <details class="transcript" id="transcript">
@@ -204,6 +214,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

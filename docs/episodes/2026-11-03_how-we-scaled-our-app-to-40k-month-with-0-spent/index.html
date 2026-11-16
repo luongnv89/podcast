@@ -98,6 +98,15 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent.mp3" download="Build Wiz AI Show - How an App Hit $40K a Month with Zero Ad Spend Organic Video (2026-11-03).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="How an App Hit $40K a Month with Zero Ad Spend: Organic Video" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="App co-founder Nicholas explains how organic video grew an app to about 40 thousand dollars a month. Bob and Alice unpack his playbook and its risks.
+
+In this episode:
+- The method: a decent app built fast, heavy daily posting with trial reels, AI-assisted editing, and tested calls to action.
+- It is a sponsored, self-reported playbook; some tactics, like buying followers or planted comments, carry real risks.
+
+Sources: How we scaled our app to $40k/month with $0 spent (Full Guide) by Nicholas (@nicholascalez)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/nicholascalez/status/2117647942379057247" rel="noopener">How we scaled our app to $40k/month with $0 spent (Full Guide)</a> by Nicholas (@nicholascalez)</p>
   <details class="transcript" id="transcript">
@@ -242,6 +251,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

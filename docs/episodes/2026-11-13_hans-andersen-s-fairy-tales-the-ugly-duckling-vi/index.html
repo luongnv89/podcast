@@ -108,6 +108,17 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
     <a class="btn" href="https://luongnv.com/once-upon-a-time-vi-media/2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-vi.mp3" download="Once Upon a Time Show - Vịt con xấu xí truyện kể trước giờ ngủ cho bé, bản kể lại (theo Andersen) (2026-11-13).mp3">Tải MP3</a>
     <a class="btn" href="transcript.vtt">Lời kể</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Chia sẻ</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Vịt con xấu xí: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Andersen)" data-done="Đã sao chép" hidden><span aria-live="polite">Sao chép tiêu đề</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Vịt con xấu xí của Andersen, kể lại bằng lời của chúng tôi trước giờ ngủ. Chú vịt con xám to xác, chẳng giống ai, một sáng mùa xuân mới biết mình vẫn luôn là thiên nga.
+
+Trong tập này:
+- Quả trứng to mãi không chịu nở
+- Chú mèo và cô gà mái tưởng mình biết hết mọi thứ
+- Mùa đông dài, rồi một bất ngờ đẹp trên mặt nước
+
+Nguồn: The Ugly Duckling, Hans Christian Andersen, bản dịch của Mrs. H. B. Paull (Wikisource)
+Nhạc: Kevin MacLeod (incompetech.com), CC BY 4.0
+Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories" data-done="Đã sao chép" hidden><span aria-live="polite">Sao chép mô tả</span></button>
   </p>
   <p class="langs">Truyện này còn có bản: <a href="../2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling/" hreflang="en" lang="en">English</a>, <a href="../2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr/" hreflang="fr" lang="fr">Français</a></p>
   <p class="credit">Dựa theo <a href="https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Ugly_Duckling" rel="noopener">The Ugly Duckling</a> của Hans Christian Andersen</p>
@@ -169,6 +180,21 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

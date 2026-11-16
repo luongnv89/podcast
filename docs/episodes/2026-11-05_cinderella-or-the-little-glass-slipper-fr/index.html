@@ -107,6 +107,16 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
     <a class="btn" href="https://luongnv.com/once-upon-a-time-fr-media/2026-11-05_cinderella-or-the-little-glass-slipper-fr.mp3" download="Once Upon a Time Show - Cendrillon histoire du soir pour enfants, notre version (d&#x27;après Perrault) (2026-11-05).mp3">Télécharger le MP3</a>
     <a class="btn" href="transcript.vtt">Transcription</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Partager</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Cendrillon : histoire du soir pour enfants, notre version (d&#x27;après Perrault)" data-done="Copié" hidden><span aria-live="polite">Copier le titre</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Cendrillon, notre version douce pour le coucher, d&#x27;après le conte de Charles Perrault. Une petite musique relie les scènes.
+
+Dans cet épisode :
+- Une jeune fille au grand cœur, une marraine fée, un carrosse-citrouille et une pantoufle de verre.
+- Une histoire qui finit par le pardon et un bonsoir tout calme : être gentil, c&#x27;est la plus belle des magies.
+
+Sources : Cinderella; or, The Little Glass Slipper
+Musique : Kevin MacLeod (incompetech.com), CC BY 4.0
+De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories" data-done="Copiée" hidden><span aria-live="polite">Copier la description</span></button>
   </p>
   <p class="langs">Également disponible en : <a href="../2026-11-05_cinderella-or-the-little-glass-slipper/" hreflang="en" lang="en">English</a>, <a href="../2026-11-05_cinderella-or-the-little-glass-slipper-vi/" hreflang="vi" lang="vi">Tiếng Việt</a></p>
   <p class="credit">D’après <a href="https://sites.pitt.edu/~dash/perrault06.html" rel="noopener">Cinderella; or, The Little Glass Slipper</a></p>
@@ -167,6 +177,21 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

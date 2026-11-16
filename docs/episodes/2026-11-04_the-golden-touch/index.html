@@ -107,6 +107,16 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
     <a class="btn" href="https://luongnv.com/once-upon-a-time-vi-media/2026-11-04_the-golden-touch.mp3" download="Once Upon a Time Show - Vua Midas và Bàn Tay Vàng truyện kể trước giờ ngủ cho bé, bản kể lại (theo Hawthorne) (2026-11-05).mp3">Tải MP3</a>
     <a class="btn" href="transcript.vtt">Lời kể</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Chia sẻ</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Vua Midas và Bàn Tay Vàng: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Hawthorne)" data-done="Đã sao chép" hidden><span aria-live="polite">Sao chép tiêu đề</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Vua Midas, kể lại bằng lời của chúng tôi trước giờ đi ngủ, theo truyện &quot;Bàn tay vàng&quot; của Nathaniel Hawthorne. Có nhạc nhẹ giữa các cảnh.
+
+Trong tập này:
+- Ông vua mê vàng được toại nguyện: chạm vào gì cũng hóa vàng, kể cả cô con gái nhỏ Marygold.
+- Nước sông làm mọi thứ trở lại như cũ, và vua hiểu ra điều quý hơn vàng.
+
+Nguồn: The Golden Touch
+Nhạc: Kevin MacLeod (incompetech.com), CC BY 4.0
+Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories" data-done="Đã sao chép" hidden><span aria-live="polite">Sao chép mô tả</span></button>
   </p>
   <p class="langs">Truyện này còn có bản: <a href="../2026-11-04_the-golden-touch-en/" hreflang="en" lang="en">English</a>, <a href="../2026-11-04_the-golden-touch-fr/" hreflang="fr" lang="fr">Français</a></p>
   <p class="credit">Dựa theo <a href="https://www.ibiblio.org/eldritch/nh/wb2b.html" rel="noopener">THE GOLDEN TOUCH.</a></p>
@@ -181,6 +191,21 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

@@ -107,6 +107,16 @@ Gentle stories for bedtime and story time, told slowly by a warm narrator. luong
     <a class="btn" href="https://luongnv.com/once-upon-a-time-en-media/2026-11-04_the-golden-touch-en.mp3" download="Once Upon a Time Show - King Midas and the Golden Touch Bedtime Story for Kids, Our Retelling (after Hawthorne) (2026-11-05).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="King Midas and the Golden Touch: Bedtime Story for Kids, Our Retelling (after Hawthorne)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Our own gentle bedtime retelling of King Midas, after Nathaniel Hawthorne&#x27;s public-domain story &quot;The Golden Touch&quot;. Soft music plays between the scenes.
+
+In this episode:
+- A king who loved gold gets his wish: everything he touches turns to gold, even his little daughter Marygold.
+- River water makes all right again, and he learns what is worth more than gold.
+
+Sources: The Golden Touch
+Music: Kevin MacLeod (incompetech.com), CC BY 4.0
+Gentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="langs">Also in: <a href="../2026-11-04_the-golden-touch-fr/" hreflang="fr" lang="fr">Français</a>, <a href="../2026-11-04_the-golden-touch/" hreflang="vi" lang="vi">Tiếng Việt</a></p>
   <p class="credit">Based on <a href="https://www.ibiblio.org/eldritch/nh/wb2b.html" rel="noopener">THE GOLDEN TOUCH.</a></p>
@@ -181,6 +191,21 @@ Gentle stories for bedtime and story time, told slowly by a warm narrator. luong
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

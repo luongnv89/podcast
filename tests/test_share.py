@@ -97,6 +97,7 @@ function env(o) {
     createElement: () => textarea(),
     execCommand: (c) => { log.exec.push(c); return !!o.exec; },
     getElementById: (id) => (id === "share" ? btn : null),
+    querySelectorAll: () => [],  // the copy buttons (#50) are checked in a browser and in test_transcript_title
   };
   const timers = [];
   const setTimeout = (fn) => { timers.push(fn); return timers.length; };

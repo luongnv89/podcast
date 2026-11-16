@@ -108,6 +108,17 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
     <a class="btn" href="https://luongnv.com/once-upon-a-time-fr-media/2026-11-10_three-little-pigs-fr.mp3" download="Once Upon a Time Show - Les Trois Petits Cochons histoire du soir pour enfants, notre version (d&#x27;après Joseph Jacobs) (2026-11-10).mp3">Télécharger le MP3</a>
     <a class="btn" href="transcript.vtt">Transcription</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Partager</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Les Trois Petits Cochons : histoire du soir pour enfants, notre version (d&#x27;après Joseph Jacobs)" data-done="Copié" hidden><span aria-live="polite">Copier le titre</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Les Trois Petits Cochons, notre version douce pour le soir, d&#x27;après les contes anglais de Joseph Jacobs. Trois maisons, un loup qui souffle fort et un petit cochon malin. Personne n&#x27;a de mal.
+
+Dans cet épisode :
+- Des maisons de paille, de bois et de briques
+- Des navets, des pommes et une baratte qui roule
+- Un loup dans la cheminée et un grand plouf
+
+Sources : Three Little Pigs, Joseph Jacobs, via D. L. Ashliman
+Musique : Kevin MacLeod (incompetech.com), CC BY 4.0
+De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories" data-done="Copiée" hidden><span aria-live="polite">Copier la description</span></button>
   </p>
   <p class="langs">Également disponible en : <a href="../2026-11-10_three-little-pigs/" hreflang="en" lang="en">English</a>, <a href="../2026-11-10_three-little-pigs-vi/" hreflang="vi" lang="vi">Tiếng Việt</a></p>
   <p class="credit">D’après <a href="https://sites.pitt.edu/~dash/type0124.html" rel="noopener">Three Little Pigs</a></p>
@@ -171,6 +182,21 @@ De douces histoires pour le soir et l&#x27;heure du conte, racontées lentement 
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
