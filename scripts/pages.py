@@ -22,6 +22,12 @@ shows the wide picture at the top of its page, uses it for ``og:image``/``twitte
 (``summary_large_image``) and the square one for the JSON-LD ``image``. Without one the page
 is exactly as before.
 
+The episode's ``transcript.vtt`` next to its page (copied there by ``publish.py``) is also
+written into the page as plain text (podcast #51, for search engines and AI answer engines):
+under a collapsed ``<details>`` "Transcript" heading in the page's language, one paragraph per
+run of lines by the same speaker, the speaker's name in bold, no timestamps
+(``transcript_paragraphs()``). A page without that file is exactly as before.
+
 A story's page is in the story's language (podcast #38): every word around the episode's
 own text comes from ``UI``, French or Vietnamese for a story listed on those pages. Every
 Build Wiz AI Show page, and every English story page, is in English, word for word as
@@ -41,7 +47,7 @@ import argparse
 import json
 import re
 import sys
-from html import escape
+from html import escape, unescape
 from pathlib import Path
 from typing import Any
 
@@ -79,6 +85,7 @@ UI = {
         "listen": "Listen on {show}",
         "download": "Download MP3",
         "transcript": "Transcript",
+        "speaker": "{name}:",
         "also_in": "Also in: ",
         "based_on": "Based on ",
         "by": " by ",
@@ -93,6 +100,7 @@ UI = {
         "listen": "Écouter sur {show}",
         "download": "Télécharger le MP3",
         "transcript": "Transcription",
+        "speaker": "{name}\u00a0:",
         "also_in": "Également disponible en\u00a0: ",
         "based_on": "D’après ",
         "by": ", de ",
@@ -108,6 +116,7 @@ UI = {
         "listen": "Nghe trên {show}",
         "download": "Tải MP3",
         "transcript": "Lời kể",
+        "speaker": "{name}:",
         "also_in": "Truyện này còn có bản: ",
         "based_on": "Dựa theo ",
         "by": " của ",
@@ -346,6 +355,92 @@ def versions_of(ep: dict[str, Any], episodes: list[dict[str, Any]]) -> list[dict
     return sorted(out, key=lambda o: list(LANG_NAMES).index(_lang(o)) if _lang(o) in LANG_NAMES else 9)
 
 
+TRANSCRIPT = "transcript.vtt"
+PARAGRAPH_CHARS = 600  # a speaker's run starts a new paragraph after this many characters
+_VOICE = re.compile(r"^<v(?:\.[^\s>]*)?\s+([^>]*)>(.*)$", re.DOTALL)
+_PREFIX = re.compile(r"^([A-Z\u00c0-\u1ef9][^:<>\n]{0,39}):\s+(.+)$", re.DOTALL)
+_TAG = re.compile(r"</?[^>]*>")
+
+
+def _cue_text(text: str) -> str:
+    """A cue's payload as plain text: tags dropped, WebVTT's entities read, spaces collapsed."""
+    return re.sub(r"\s+", " ", unescape(_TAG.sub("", text))).strip()
+
+
+def transcript_cues(vtt: str) -> list[tuple[str, str]]:
+    """``(speaker, text)`` per cue of a WebVTT file, in order, without timestamps.
+
+    The speaker is the cue's voice tag (``<v Bob>``, as DropCast writes them) or, in a file
+    with no voice tag at all, a short ``Name:`` prefix; else ``""``. Header, NOTE, STYLE and
+    REGION blocks and empty cues are skipped."""
+    blocks = re.split(r"\n[ \t]*\n", vtt.replace("\r\n", "\n").replace("\r", "\n").lstrip("\ufeff"))
+    payloads = []
+    for block in blocks:
+        lines = block.strip("\n").split("\n")
+        at = next((i for i, line in enumerate(lines) if "-->" in line), None)
+        if at is None:
+            continue  # WEBVTT header, NOTE, STYLE, REGION
+        payload = "\n".join(lines[at + 1 :]).strip()
+        if payload:
+            payloads.append(payload)
+    voiced = any(_VOICE.match(p) for p in payloads)
+    cues = []
+    for payload in payloads:
+        who, text = "", payload
+        voice = _VOICE.match(payload)
+        if voice:
+            who, text = _cue_text(voice.group(1)), voice.group(2)
+        else:
+            text = _cue_text(payload)
+            prefix = None if voiced else _PREFIX.match(text)
+            if prefix and len(prefix.group(1).split()) <= 3:
+                who, text = prefix.group(1).strip(), prefix.group(2)
+        if voice:
+            text = _cue_text(text)
+        if text:
+            cues.append((who, text))
+    return cues
+
+
+def transcript_paragraphs(vtt: str) -> list[tuple[str, str]]:
+    """The cues joined into paragraphs: consecutive cues of the same speaker (or of no
+    speaker) become one ``(speaker, text)``. A long run (a story's narrator) is cut at a cue
+    boundary once a paragraph reaches ``PARAGRAPH_CHARS``; the next paragraph keeps the
+    speaker, and the page names the speaker only when it changes."""
+    out: list[tuple[str, str]] = []
+    for who, text in transcript_cues(vtt):
+        if out and out[-1][0] == who and len(out[-1][1]) < PARAGRAPH_CHARS:
+            out[-1] = (who, out[-1][1] + " " + text)
+        else:
+            out.append((who, text))
+    return out
+
+
+def transcript_html(paragraphs: list[tuple[str, str]], ui: dict[str, str]) -> list[str]:
+    """The page's transcript block (podcast #51): a collapsed ``<details>`` whose text is in
+    the HTML (crawlers read it), every name and line escaped."""
+    if not paragraphs:
+        return []
+    e = lambda v: escape(str(v), quote=False)  # noqa: E731  (text only, never an attribute)
+    lines = ['  <details class="transcript" id="transcript">', f"    <summary>{e(ui['transcript'])}</summary>"]
+    last = None
+    for who, text in paragraphs:
+        name = f"<strong>{e(ui['speaker'].format(name=who))}</strong> " if who and who != last else ""
+        lines.append(f"    <p>{name}{e(text)}</p>")
+        last = who
+    lines.append("  </details>")
+    return lines
+
+
+def read_transcript(ep_id: str, site: Path = SITE) -> list[tuple[str, str]]:
+    """The paragraphs of ``docs/episodes/<id>/transcript.vtt``; ``[]`` when there is none."""
+    path = site / page_path(ep_id) / TRANSCRIPT
+    try:
+        return transcript_paragraphs(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError):
+        return []
+
+
 def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path = SITE) -> str:
     """The static page of one episode (``docs/episodes/<id>/index.html``)."""
     ep_id = str(ep["id"])
@@ -376,6 +471,7 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
     others = versions_of(ep, episodes)
     duration = _iso_duration(ep.get("duration_s"))
     minutes = _minutes(ep.get("duration_s"), ui["min"])
+    spoken = read_transcript(ep_id, site)
 
     ld: dict[str, Any] = {
         "@context": "https://schema.org",
@@ -466,6 +562,15 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
             if art
             else []
         ),
+        *(
+            [
+                "  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }",
+                "  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }",
+                "  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }",
+            ]
+            if spoken
+            else []
+        ),
         "</style>",
         "</head>",
     ]
@@ -511,6 +616,7 @@ def render_page(ep: dict[str, Any], episodes: list[dict[str, Any]], site: Path =
         body.append(
             f'  <p class="credit">{e(ui["based_on"])}<a href="{e(src_url)}" rel="noopener">{e(src.get("title") or src_url)}</a>{author}</p>'
         )
+    body += transcript_html(spoken, ui)
     body += [
         f"  <footer>{e(ui['footer'])}</footer>",
         "</main>",

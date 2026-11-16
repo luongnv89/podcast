@@ -314,7 +314,10 @@ MP3 is on the site; for audio on a media repo's site (another origin) the browse
 file's own name, `<id>.mp3` (see "Where the audio lives"). Each
 episode's details have a **Copy description** button: one click copies the description
 exactly as in `episodes.json` (Clipboard API, else a hidden text area and
-`execCommand("copy")`), shows "Copied" for a moment and sends `description_copy`. A story
+`execCommand("copy")`), shows "Copied" for a moment and sends `description_copy`. A
+**Copy title** button just before it (#50) copies the entry's `title` exactly, with the
+same feedback ("Copier le titre", "Sao chép tiêu đề" on the French and Vietnamese pages),
+and sends `title_copy`. A story
 in several languages copies the language on show. While a deep link (`#<id>`) is open,
 the page's `<meta name="description">` is that episode's hook.
 
@@ -390,6 +393,19 @@ its newest story's day as `lastmod`) and every episode page (`render_sitemap()`,
 `robots.txt` only at the domain root, which lives in the luongnv.com repository: add
 `Sitemap: https://luongnv.com/podcast/sitemap.xml` there (or submit the sitemap in Search
 Console); `docs/robots.txt` names it too.
+
+**Full transcript on the page (#51).** When `docs/episodes/<id>/transcript.vtt` exists, the
+page also carries the whole transcript as text, for search engines and AI answer engines:
+a collapsed `<details>` under the heading **Transcript** in the page's language
+(“Transcription”, “Lời kể”, the same word as the Transcript button), one paragraph per run
+of cues by the same speaker with the name in bold (a long run, such as a story's narrator, is
+cut into paragraphs of about 600 characters at cue boundaries, the name shown once; the
+cue's `<v Name>` voice tag gives the name, or a
+short `Name:` prefix in a file with no voice tags), no timestamps, every name and line
+escaped (`transcript_paragraphs()`, `transcript_html()` in `scripts/pages.py`). A page
+without the file is byte for byte what it was. The JSON-LD gets no `transcript`: schema.org
+defines it on `AudioObject`/`VideoObject`, and the page's `associatedMedia` is a
+`MediaObject`.
 
 **The page's language (#38).** A story's episode page is in the story's language: the
 language of the page that lists it (`story_lang()`), so French and Vietnamese stories get
@@ -635,6 +651,7 @@ a reload counts again.
 | `episode_download` | the "Download MP3" link (click or middle click) | |
 | `source_click` | an outbound source link: "Based on …", "Read the source" and the Sources list | |
 | `description_copy` | the "Copy description" button copied the description (not sent when copying failed) | |
+| `title_copy` | the "Copy title" button copied the title (not sent when copying failed, #50) | |
 | `autoplay_toggle` | the visitor turns the player's Autoplay switch on or off (#47); it carries no episode | `enabled` (`true` or `false`) |
 | `episode_share` | an action in the Share panel (#45), on a list page or an episode page: **Post on X** (`x`) or **Post on LinkedIn** (`linkedin`) clicked (or middle-clicked), a draft copied (`copy`), or **More…** shared the episode: the share sheet completed (`share_sheet`) or the link was copied (`copy`). Opening the panel sends nothing; neither does a cancelled sheet or a failed copy | `method` (`x`, `linkedin`, `copy` or `share_sheet`) |
 
