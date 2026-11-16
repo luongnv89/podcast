@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sun, 15 Nov 2026 21:47:08 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 16 Nov 2026 05:26:23 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,31 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-16_the-state-of-the-agent-sandbox</guid>
+    <title>Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox</title>
+    <link>https://luongnv.com/podcast/#2026-11-16_the-state-of-the-agent-sandbox</link>
+    <description>Josh Rosen maps the state of the agent sandbox: microVMs, gVisor and containers, lightweight interpreters like Monty, and snapshots that pause, resume and branch agent work.
+
+Isolation alone doesn't stop a leak: credentials kept outside the sandbox, network and authorization policies, observability and shared workspaces with locking matter too.
+
+Guests add Nicolas Lacasse on gVisor, Anthropic on filesystem and network isolation for coding agents, and Simon Willison's lethal trifecta warning on prompt injection.
+
+Sources:
+- The State of the Agent Sandbox, Josh Rosen (@JoshARosen) (https://x.com/JoshARosen/status/2121959963962609897)
+- Open-sourcing gVisor, a sandboxed container runtime | Google Cloud Blog, Nicolas Lacasse (https://cloud.google.com/blog/products/identity-security/open-sourcing-gvisor-a-sandboxed-container-runtime)
+- Making Claude Code safer with sandboxing, Anthropic (https://www.anthropic.com/engineering/claude-code-sandboxing)
+- The lethal trifecta for AI agents: private data, untrusted content, and external communication, Simon Willison (https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Josh Rosen maps the state of the agent sandbox: microVMs, gVisor and containers, lightweight interpreters like Monty, and snapshots that pause, resume and branch agent work.</p><p>Isolation alone doesn't stop a leak: credentials kept outside the sandbox, network and authorization policies, observability and shared workspaces with locking matter too.</p><p>Guests add Nicolas Lacasse on gVisor, Anthropic on filesystem and network isolation for coding agents, and Simon Willison's lethal trifecta warning on prompt injection.</p><p>Sources:</p><ul><li>The State of the Agent Sandbox, Josh Rosen (@JoshARosen): <a href="https://x.com/JoshARosen/status/2121959963962609897">https://x.com/JoshARosen/status/2121959963962609897</a></li><li>Open-sourcing gVisor, a sandboxed container runtime | Google Cloud Blog, Nicolas Lacasse: <a href="https://cloud.google.com/blog/products/identity-security/open-sourcing-gvisor-a-sandboxed-container-runtime">https://cloud.google.com/blog/products/identity-security/open-sourcing-gvisor-a-sandboxed-container-runtime</a></li><li>Making Claude Code safer with sandboxing, Anthropic: <a href="https://www.anthropic.com/engineering/claude-code-sandboxing">https://www.anthropic.com/engineering/claude-code-sandboxing</a></li><li>The lethal trifecta for AI agents: private data, untrusted content, and external communication, Simon Willison: <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 16 Nov 2026 05:23:12 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-16_the-state-of-the-agent-sandbox.mp3?v=beb74d8e" length="10963691" type="audio/mpeg"/>
+    <itunes:duration>685</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-16_the-state-of-the-agent-sandbox/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-15_all-code-is-slop-except-mine</guid>
     <title>All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents</title>

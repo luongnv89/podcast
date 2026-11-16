@@ -1,0 +1,349 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.071
+<v Alice>Does every AI agent really need its own computer?
+
+2
+00:00:04.371 --> 00:00:10.556
+<v Bob>One company's answer: run agent code in a lightweight interpreter, instead of another isolated computer.
+
+3
+00:00:10.856 --> 00:00:13.755
+<v Alice>So what does a sandbox really need to be?
+
+4
+00:00:18.055 --> 00:00:24.624
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice.
+
+5
+00:00:24.924 --> 00:00:31.847
+<v Bob>And I'm Bob! Today we unpack an X post by Josh Rosen called The State of the Agent Sandbox.
+
+6
+00:00:32.147 --> 00:00:36.417
+<v Alice>Sandboxes! Like at the playground? Little plastic shovels?
+
+7
+00:00:36.717 --> 00:00:52.392
+<v Bob>Close, actually! A sandbox lets an agent run code, install things and edit files, without unrestricted access to the machine underneath. And in the past year, they grew from simple places to run untrusted code into infrastructure for running entire agents.
+
+8
+00:00:52.692 --> 00:00:55.181
+<v Alice>And where's the race between providers?
+
+9
+00:00:55.481 --> 00:01:02.769
+<v Bob>Startup times, isolation, persistent filesystems, snapshots, and the ability to suspend and resume.
+
+10
+00:01:03.069 --> 00:01:06.833
+<v Alice>Let's start at the bottom. What's a sandbox's first job?
+
+11
+00:01:07.133 --> 00:01:24.213
+<v Bob>Isolation! Keep the agent's code away from the machine hosting it. Providers like E2B, Daytona, Modal, Vercel Sandbox and Cloudflare Sandboxes all offer similar tools: start an environment, run commands, swap files, and manage its lifecycle.
+
+12
+00:01:24.513 --> 00:01:27.489
+<v Alice>But the walls aren't all built the same, are they?
+
+13
+00:01:27.789 --> 00:01:42.188
+<v Bob>Not at all. Firecracker gives lightweight virtual machines, each with its own guest kernel, while gVisor is a user-space kernel that intercepts system calls. Plain containers share the host's kernel, which exposes a larger attack surface than a VM.
+
+14
+00:01:42.488 --> 00:01:48.116
+<v Alice>Kernel, system calls... you lost me. Can you picture it for a total beginner?
+
+15
+00:01:48.416 --> 00:02:06.007
+<v Bob>Picture an apartment building: containers are flats with separate doors, but they share the same plumbing, so one bad neighbour can mess with the pipes. A virtual machine is a detached house with its own plumbing. And gVisor is like a doorman who takes every request for you, so you never touch the building's pipes yourself.
+
+16
+00:02:06.307 --> 00:02:08.555
+<v Alice>A doorman. Fancy.
+
+17
+00:02:08.855 --> 00:02:17.885
+<v Bob>Very fancy. In computer terms, the plumbing is the kernel: programs make system calls to it, and it runs in a privileged mode that talks to the hardware.
+
+18
+00:02:18.185 --> 00:02:22.535
+<v Alice>Maya, our researcher, went back to how one of these walls was built.
+
+19
+00:02:22.835 --> 00:02:39.884
+<v Maya>Thanks, Alice. Nicolas Lacasse, a software engineer, introduced gVisor on the Google Cloud Blog. His headline: traditional Linux containers aren't sandboxes, because even with limits, the host kernel exposes a large surface that malicious apps can attack directly.
+
+20
+00:02:40.184 --> 00:02:43.989
+<v Alice>So why not give every container its own virtual machine?
+
+21
+00:02:44.289 --> 00:02:57.499
+<v Maya>Separate VMs give great isolation, the post says, but may need a larger resource footprint. gVisor aims for similar isolation while being lighter: its kernel runs as a normal, unprivileged process.
+
+22
+00:02:57.799 --> 00:03:00.489
+<v Alice>There's always a catch. What is it?
+
+23
+00:03:00.789 --> 00:03:07.576
+<v Maya>Higher overhead on every system call, and compatibility: not all applications will run inside gVisor.
+
+24
+00:03:07.876 --> 00:03:12.165
+<v Alice>Now, the teaser. A sandbox without a whole computer?
+
+25
+00:03:12.465 --> 00:03:26.236
+<v Bob>Right! Many agents only need short programs that chain tool calls. With Pydantic's Monty, the model writes Python that runs inside a restricted interpreter, and the app controls which functions that code can call, with resource limits.
+
+26
+00:03:26.536 --> 00:03:28.635
+<v Alice>Make it kitchen-simple for me.
+
+27
+00:03:28.935 --> 00:03:42.144
+<v Bob>Think of a set menu versus renting the whole kitchen. A full machine lets the cook use anything; the interpreter only cooks the dishes on the menu you printed. In software, that menu is the list of functions the app exposes.
+
+28
+00:03:42.444 --> 00:03:44.491
+<v Alice>So no surprise ingredients.
+
+29
+00:03:44.791 --> 00:03:54.633
+<v Bob>None! Monty can't install packages at will or run operating-system commands. Those limits are exactly why it needs far less infrastructure than a complete virtual machine.
+
+30
+00:03:54.933 --> 00:03:57.496
+<v Alice>Does it remember anything between runs?
+
+31
+00:03:57.796 --> 00:04:07.766
+<v Bob>It can. Sessions keep Python state across runs, and snapshots restore that state or fork it into independent sessions, without saving an entire operating system.
+
+32
+00:04:08.066 --> 00:04:11.058
+<v Alice>Snapshots. That's the next stop, right?
+
+33
+00:04:11.358 --> 00:04:19.587
+<v Bob>It is. Without persistence, every interruption means reinstalling dependencies, restoring files and restarting processes.
+
+34
+00:04:19.887 --> 00:04:21.829
+<v Alice>Who offers that today?
+
+35
+00:04:22.129 --> 00:04:34.015
+<v Bob>E2B supports pausing and resuming sandboxes, Daytona provides snapshots, and Modal offers persistent storage and filesystem snapshots. Memory snapshots can even keep running processes.
+
+36
+00:04:34.315 --> 00:04:36.464
+<v Alice>Okay, metaphor time!
+
+37
+00:04:36.764 --> 00:04:52.324
+<v Bob>It's like a save point in a video game: you reload right where you were, and branching copies that save into several slots to try a different path in each. For agents, several start from an identical environment, try different implementations, and each branch is validated before you keep one.
+
+38
+00:04:52.624 --> 00:04:55.872
+<v Alice>I'd have a save slot before every boss fight.
+
+39
+00:04:56.172 --> 00:05:05.724
+<v Bob>Me too. And startup speed matters: E2B and Daytona advertise startups in milliseconds or fractions of a second, under particular conditions.
+
+40
+00:05:06.024 --> 00:05:08.733
+<v Alice>Then why not keep them running all the time?
+
+41
+00:05:09.033 --> 00:05:20.601
+<v Bob>Cost. Agents spend a lot of time waiting, for the model, a human or other agents, not burning CPU. Keeping thousands of mostly idle sandboxes running can get expensive.
+
+42
+00:05:20.901 --> 00:05:22.471
+<v Alice>So what's the fix?
+
+43
+00:05:22.771 --> 00:05:37.936
+<v Bob>Think of closing your laptop lid instead of shutting it down: everything stays where you left it. Platforms such as Sprites from Fly dot io, and Blaxel, focus on environments that suspend when inactive and resume when needed, so you don't keep paying for active compute.
+
+44
+00:05:38.236 --> 00:05:43.574
+<v Alice>Security. If the agent's locked inside a microVM, we're safe. Right?
+
+45
+00:05:43.874 --> 00:05:56.108
+<v Bob>Not necessarily! An agent can run entirely inside a secure microVM and still access sensitive credentials, make unauthorized API requests, or leak information through an allowed network connection.
+
+46
+00:05:56.408 --> 00:05:59.226
+<v Alice>Wait. So the wall isn't enough?
+
+47
+00:05:59.526 --> 00:06:11.539
+<v Bob>No. Docker Sandboxes shows one fix, host-side credential injection: a proxy outside the agent's environment attaches the credential to approved requests, so the sandbox never reads the secret.
+
+48
+00:06:11.839 --> 00:06:13.219
+<v Alice>That one needs a picture.
+
+49
+00:06:13.519 --> 00:06:25.498
+<v Bob>Picture a hotel guest who wants dinner booked: the concierge calls the restaurant and pays with the card on file, and the guest never sees the card number. Here the concierge is the proxy, and the card number is the secret.
+
+50
+00:06:25.798 --> 00:06:28.749
+<v Alice>And who decides what the agent is allowed to do?
+
+51
+00:06:29.049 --> 00:06:38.370
+<v Bob>Network policies restrict which outside services it can reach, and authorization policies decide whether it can modify a repository or retrieve a customer record.
+
+52
+00:06:38.670 --> 00:06:42.685
+<v Alice>Lena, you looked at how a coding agent does this in practice?
+
+53
+00:06:42.985 --> 00:07:04.326
+<v Lena>I did. Anthropic's engineering post, Making Claude Code safer with sandboxing, says effective sandboxing needs both filesystem and network isolation. Without network isolation, a compromised agent could send out sensitive files like SSH keys; without filesystem isolation, it could escape the sandbox and gain network access.
+
+54
+00:07:04.626 --> 00:07:07.444
+<v Alice>So how does the network side actually work?
+
+55
+00:07:07.744 --> 00:07:16.636
+<v Lena>The agent reaches the internet only through a proxy server outside the sandbox, which limits the domains it can connect to and asks the user about new ones.
+
+56
+00:07:16.936 --> 00:07:18.904
+<v Alice>Same trick as our concierge!
+
+57
+00:07:19.204 --> 00:07:24.029
+<v Alice>Last big idea: sandboxes as workspaces. What does that mean?
+
+58
+00:07:24.329 --> 00:07:36.517
+<v Bob>A sandbox can outlive the agent session that created it, so several agents share it. One agent changes a repository, a validation agent inspects the results, and a supervisor decides whether more work is needed.
+
+59
+00:07:36.817 --> 00:07:39.224
+<v Alice>Sounds like a crowded kitchen.
+
+60
+00:07:39.524 --> 00:07:52.605
+<v Bob>Exactly the risk! It's like two cooks salting the same pot of soup without talking. Two agents editing the same files can interfere, so ownership, locking and branching rules live outside any single agent.
+
+61
+00:07:52.905 --> 00:07:55.898
+<v Alice>So a lock is calling dibs on the pot.
+
+62
+00:07:56.198 --> 00:08:04.777
+<v Bob>Pretty much: one agent holds the file until it's done. And the work's own state, which task, what's finished, is tracked separately from the files.
+
+63
+00:08:05.077 --> 00:08:08.150
+<v Alice>And can we actually see what the agents did?
+
+64
+00:08:08.450 --> 00:08:22.170
+<v Bob>That's observability, like a dashcam for your agent: process activity, file changes and network requests help rebuild what it actually did. Pydantic's sandboxes connect to Logfire traces, and Daytona uses OpenTelemetry.
+
+65
+00:08:22.470 --> 00:08:26.821
+<v Alice>Time for counterpoints. Sam, you brought the skeptic's view.
+
+66
+00:08:27.121 --> 00:08:45.960
+<v Sam>I did. Simon Willison's post, The lethal trifecta for AI agents, warns about combining three things: access to your private data, exposure to untrusted content, and the ability to communicate externally. Combine all three, and an attacker can easily trick the agent into sending your data away.
+
+67
+00:08:46.260 --> 00:08:47.879
+<v Alice>So where does it go wrong?
+
+68
+00:08:48.179 --> 00:09:00.877
+<v Sam>The core problem: LLMs follow instructions in content, whether or not they came from their operator. And any tool that can make an HTTP request, even to load an image, can pass stolen information back.
+
+69
+00:09:01.177 --> 00:09:04.929
+<v Alice>Can't a guardrail product just catch the bad prompts?
+
+70
+00:09:05.229 --> 00:09:18.613
+<v Sam>He's deeply suspicious of those. In web application security, he writes, 95 percent is very much a failing grade. For people mixing tools together, his advice is to avoid the trifecta combination entirely.
+
+71
+00:09:18.913 --> 00:09:20.923
+<v Alice>That's a tough grading curve.
+
+72
+00:09:21.223 --> 00:09:30.125
+<v Bob>And Josh himself expects most of these capabilities to commoditize into standard features: they're already available in various forms across multiple providers.
+
+73
+00:09:30.425 --> 00:09:35.669
+<v Alice>My take: if everyone builds the same walls, the walls stop being the selling point.
+
+74
+00:09:35.969 --> 00:09:40.285
+<v Alice>Builder's Corner! Bob, one thing listeners can try this week?
+
+75
+00:09:40.585 --> 00:09:54.995
+<v Bob>Run your agent's code in a sandbox with the network off by default, then allowlist only the services it truly needs. Josh's post says network policies restrict what an agent can reach, and Anthropic's post adds that filesystem isolation matters too.
+
+76
+00:09:55.295 --> 00:09:56.656
+<v Alice>And the secrets?
+
+77
+00:09:56.956 --> 00:10:07.866
+<v Bob>Keep them outside. Put a proxy in front that attaches the credential to approved requests, so the agent uses the service without reading the key. Then watch for network activity you didn't expect.
+
+78
+00:10:08.166 --> 00:10:12.691
+<v Alice>Network off, allowlist on, keys outside. Got it.
+
+79
+00:10:12.991 --> 00:10:14.778
+<v Alice>Bob, the takeaways?
+
+80
+00:10:15.078 --> 00:10:28.066
+<v Bob>First, the walls differ: containers share a kernel, microVMs and gVisor don't. Second, not every agent needs a computer. Third, snapshots and suspend-resume save setup time and idle compute.
+
+81
+00:10:28.366 --> 00:10:33.913
+<v Alice>And fourth: a locked box can still leak, so guard the network and the keys.
+
+82
+00:10:34.213 --> 00:10:35.794
+<v Alice>What's still open?
+
+83
+00:10:36.094 --> 00:10:47.307
+<v Bob>Josh's own question: will providers keep adding capabilities that change what agents can do, or will most of the innovation happen in the models, harnesses, tools and orchestration around them?
+
+84
+00:10:47.607 --> 00:10:53.281
+<v Alice>And Simon Willison's warning: we still don't know how to reliably prevent prompt injection.
+
+85
+00:10:53.581 --> 00:11:09.751
+<v Bob>That's our tour of the agent sandbox. Thanks to Josh Rosen for The State of the Agent Sandbox, and to Nicolas Lacasse on the Google Cloud Blog. Thanks also to Anthropic for Making Claude Code safer with sandboxing, and to Simon Willison for The lethal trifecta for AI agents.
+
+86
+00:11:10.051 --> 00:11:13.508
+<v Alice>Thanks, everyone! Keep your agents in the sandbox.
+
+87
+00:11:13.808 --> 00:11:18.542
+<v Bob>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.
