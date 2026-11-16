@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -97,6 +100,99 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/gregisenberg/status/2108188646973313195" rel="noopener">Marketing Engineers: 100x More Experiments with AI agents</a> by GREG ISENBERG (@gregisenberg)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> What if ONE person could run the experiments of a whole marketing department?</p>
+    <p><strong>Bob:</strong> That's the claim. One agent reads last week's sales calls in ten minutes. Another launches thirty ads and kills the losers while you sleep.</p>
+    <p><strong>Alice:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and today I'm the one asking the questions.</p>
+    <p><strong>Bob:</strong> And I'm Bob! Today's source is an X article by Greg Isenberg about the rise of the marketing engineer.</p>
+    <p><strong>Alice:</strong> Give me the big idea in one breath.</p>
+    <p><strong>Bob:</strong> Here's the key point. Greg says marketing engineers are the new ten-x employee, and most companies don't have one yet. Part marketer, part builder.</p>
+    <p><strong>Alice:</strong> Part marketer, part builder. Okay, I'm listening. Why now? Marketing has had tools forever.</p>
+    <p><strong>Bob:</strong> Because for 20 years, he says, marketing ideas were easy and shipping them was hard. Every idea had to survive a brief, a designer, a developer, an analyst and two meetings. Most died in a Slack thread.</p>
+    <p><strong>Alice:</strong> Died in a Slack thread. I've been to that funeral.</p>
+    <p><strong>Bob:</strong> Then he walks through history. AdWords arrives in 2000, Facebook ads in 2007, and every click can be counted. Digital marketers could run a few experiments a month.</p>
+    <p><strong>Alice:</strong> And then growth hackers?</p>
+    <p><strong>Bob:</strong> Greg credits Sean Ellis with coining the term in 2010. Growth hackers treated marketing like product, but every good idea needed an engineer, so a few experiments a week was a great week.</p>
+    <p><strong>Alice:</strong> Let's hear the original. Lena, our builder, you read that 2010 post.</p>
+    <p><strong>Lena:</strong> I did. In Find a Growth Hacker for Your Startup, Sean Ellis defines it simply: "A growth hacker is a person whose true north is growth." And here's the part that fits today. Ellis wrote that he'd met great growth hackers with engineering backgrounds and others with sales backgrounds. His process: prioritize ideas, test them, then keep or cut.</p>
+    <p><strong>Alice:</strong> Engineers and salespeople. Not just marketers.</p>
+    <p><strong>Lena:</strong> Exactly. And he says the faster that loop repeats, the more likely you find scalable, repeatable ways to grow.</p>
+    <p><strong>Bob:</strong> Which is Greg's whole thesis. Think of it like a kitchen where tasting a new recipe used to take a month, and now takes an afternoon. He says the cost of an experiment keeps collapsing, and whoever learns the fastest wins.</p>
+    <p><strong>Alice:</strong> And ChatGPT didn't already fix this?</p>
+    <p><strong>Bob:</strong> Not in his telling: with ChatGPT, copy came faster, but the org chart and the six week cycle stayed the same. Just better first drafts, and he says most marketing teams are still sitting right there.</p>
+    <p><strong>Alice:</strong> So what does a marketing engineer actually unlock?</p>
+    <p><strong>Bob:</strong> Knowledge the company already has. Sales hears the same five objections every week, and support knows which promises lead to refunds. But it reaches a campaign maybe once a quarter.</p>
+    <p><strong>Alice:</strong> Why so rarely?</p>
+    <p><strong>Bob:</strong> It's like owning a pantry full of great ingredients but only cooking on holidays. Small ideas, like a note to forty old prospects the day their feature ships, kept losing to the big launch. Now he says one person can do each in an afternoon.</p>
+    <p><strong>Alice:</strong> Okay, I'm sold. Where do I start? Ten agents?</p>
+    <p><strong>Bob:</strong> No! That's the mistake he sees over and over: ten agents, a mountain of generic slop, and then AI marketing is overhyped. His diagnosis: the agents were fine, the context was thin.</p>
+    <p><strong>Alice:</strong> Thin context. So what's thick context?</p>
+    <p><strong>Bob:</strong> He calls it the brain: a folder that explains your business like you'd explain it to a sharp new hire on their first day. Skipping it is like hiring a brilliant marketer and skipping onboarding.</p>
+    <p><strong>Alice:</strong> What goes in the folder?</p>
+    <p><strong>Bob:</strong> Six files do most of the heavy lifting. Who buys and stays, and what you may promise. Your brand voice, through examples you loved and rejected. Then founder opinions, which he calls your unfair advantage, since every competitor has the same models. And failed campaigns, so an agent doesn't repeat a 20,000 dollar mistake.</p>
+    <p><strong>Alice:</strong> Examples over adjectives. I like that.</p>
+    <p><strong>Bob:</strong> And one rule keeps it healthy: agents can add guesses to an evidence folder, but only a human moves something into company. Otherwise one agent's hunch quietly becomes company policy.</p>
+    <p><strong>Alice:</strong> A hunch becoming policy. That's scarier than it sounds. Then the agents can read my data?</p>
+    <p><strong>Bob:</strong> Read-only first. Reading your CRM is useful on day one; editing it is earned over time. Then the boring part: give every campaign an ID and carry it everywhere, from links and ad names to the deals in your CRM.</p>
+    <p><strong>Alice:</strong> That sounds dull.</p>
+    <p><strong>Bob:</strong> He calls it the most valuable thing in the whole setup! It's like a luggage tag: the bag can travel anywhere and you still know whose it is. Then agents can answer which marketing brought in customers who paid and stayed.</p>
+    <p><strong>Alice:</strong> And the very first agent?</p>
+    <p><strong>Bob:</strong> The customer language agent. Export your last 20 to 50 sales call transcripts and have it pull out the exact words customers use.</p>
+    <p><strong>Alice:</strong> Does it get it right first time?</p>
+    <p><strong>Bob:</strong> No, and he's honest about it: the first version will be about 70 percent right. After three or four rounds of fixes, it reads calls better than most of your team.</p>
+    <p><strong>Alice:</strong> What does it find?</p>
+    <p><strong>Bob:</strong> His example: scheduling software for plumbers, where owners keep saying, I'm tired of taking calls during dinner. That line is your ad, your headline, your sales opener. People buy the situation more than the feature.</p>
+    <p><strong>Alice:</strong> Calls during dinner. I'd buy that. Then you add more agents?</p>
+    <p><strong>Bob:</strong> One at a time. A buying trigger agent spots events like a second location or a funding round, then finishes one sentence: this event creates this problem, and our product solves it. If that sentence is mushy, the account waits.</p>
+    <p><strong>Alice:</strong> Like a bouncer with one question.</p>
+    <p><strong>Bob:</strong> Exactly like a bouncer. Then a search agent asks ChatGPT, Claude and Perplexity your buyers' questions every week, to see what the models trust. And a performance agent writes a Monday memo, each line ending in keep, kill, change or test.</p>
+    <p><strong>Alice:</strong> Which one pays the bills?</p>
+    <p><strong>Bob:</strong> The closed-lost agent, which he says pays for everything else. It rereads every lost deal and records the real reason plus a reopen condition, like needed SSO. The day SSO ships, each of those prospects gets a personal draft.</p>
+    <p><strong>Alice:</strong> Let's talk ads. What's changed there?</p>
+    <p><strong>Bob:</strong> His headline: creative is the new targeting. Greg says Meta's system, called Andromeda, reads the ad itself to figure out who should see it. And he says fifty look-alike versions of one headline get roughly the reach of a single ad.</p>
+    <p><strong>Alice:</strong> Theo, our analyst, you went to Meta's own write-up.</p>
+    <p><strong>Theo:</strong> In an Engineering at Meta post, Chonglin Sun and colleagues describe Andromeda as a retrieval engine. Retrieval is the first step: it narrows tens of millions of ad candidates to a few thousand relevant ones.</p>
+    <p><strong>Alice:</strong> Tens of millions down to thousands. Wow.</p>
+    <p><strong>Theo:</strong> And the scale is real: they wrote that more than a million advertisers used their generative AI tools to create more than 15 million ads in a month. One caution, though: the post doesn't describe grouping look-alike ads, so that part is Greg's claim. Meta does say the next version should deliver a more diverse set of ad candidates.</p>
+    <p><strong>Alice:</strong> So variety matters either way.</p>
+    <p><strong>Bob:</strong> Right. So Greg's engine: scripts for 8 to 12 distinct concepts, like a pain point, a customer story, a myth you're busting. Picture a band trying different songs, not the same song in ten keys.</p>
+    <p><strong>Alice:</strong> And who's on camera?</p>
+    <p><strong>Bob:</strong> His rule: use AI actors to test, then pay humans to win. AI actors let you test twenty scripts in a day for the price of one creator video. Once a script wins, a real person usually performs even better.</p>
+    <p><strong>Alice:</strong> Agents launching ads while I sleep. That makes me nervous.</p>
+    <p><strong>Bob:</strong> Good! His line: "Always ask me before sending" is a polite suggestion to a model. Real guardrails live in the tools.</p>
+    <p><strong>Alice:</strong> Meaning what, in practice?</p>
+    <p><strong>Bob:</strong> Outreach gets draft only access, and ads launch paused. Budgets stay with you.</p>
+    <p><strong>Alice:</strong> So lock the doors, don't just leave a note.</p>
+    <p><strong>Bob:</strong> Exactly. And then the job looks more like editing than making. It's like being an editor-in-chief: a review queue where every item takes under a minute to decide.</p>
+    <p><strong>Alice:</strong> Show me a full campaign.</p>
+    <p><strong>Bob:</strong> His example is a bookkeeping firm: eleven customers said they can't tell if they made money after returns, shipping and fees. That becomes a free profitability review, three ad angles, and notes to 60 old prospects, then a 2,000 dollar test.</p>
+    <p><strong>Alice:</strong> And the result?</p>
+    <p><strong>Bob:</strong> The calculator page converts best. But the performance agent also reminds you the sample is still small. And the customer's original words survived every step.</p>
+    <p><strong>Alice:</strong> Time to push back. This all sounds very tidy.</p>
+    <p><strong>Bob:</strong> Fair. The bookkeeping firm is a picture he paints, not a reported case, and the article gives no results data. His 2028 prediction, one or two marketing engineers outshipping departments ten times their size, is labeled as his guess.</p>
+    <p><strong>Alice:</strong> Anything else to flag?</p>
+    <p><strong>Bob:</strong> He's upfront that his partner just launched Boring Funnels, which he recommends in the piece. So read that tool list knowing it.</p>
+    <p><strong>Alice:</strong> And the AI actors? Sam, our skeptic, that's your corner.</p>
+    <p><strong>Sam:</strong> Shannon Bond at NPR reported that Meta will label images created with leading AI tools. Meta also said it will require users to disclose a photorealistic video or realistic-sounding audio that was digitally created or altered.</p>
+    <p><strong>Alice:</strong> And if you don't?</p>
+    <p><strong>Sam:</strong> Meta said it may penalize accounts that fail to do so. And NPR notes TikTok and YouTube also require disclosure of realistic AI content.</p>
+    <p><strong>Alice:</strong> Good. Labels, not loopholes. And Greg agrees: label AI generated people wherever the platform asks. Time for Builder's Corner! Bob, one thing to try this week?</p>
+    <p><strong>Bob:</strong> Greg's own starter: if you're a marketer, build the customer language agent and run it on your last 20 sales calls. If you're an engineer, sit in on five sales calls, then build a calculator for one customer segment.</p>
+    <p><strong>Alice:</strong> And keep it on a leash?</p>
+    <p><strong>Bob:</strong> Yes. Keep publishing, outreach and spending behind approval until each workflow earns your trust. A confused workflow running every morning just gives you a reliable supply of confusion.</p>
+    <p><strong>Alice:</strong> A reliable supply of confusion. I've worked there too. Quick recap. What should listeners keep?</p>
+    <p><strong>Bob:</strong> One: the cost of an experiment keeps collapsing, so learn faster. Two: build the brain before the agents. Thin context means generic slop. Three: guardrails live in the tools, not in prompts. And four: Meta's own post backs the scale, but the look-alike grouping is Greg's claim. Labels matter for AI actors.</p>
+    <p><strong>Alice:</strong> And who becomes one of these people?</p>
+    <p><strong>Bob:</strong> He says most of them sit in growth, content and ops roles right now, one weekend of building away. That's his encouragement, and honestly, mine too.</p>
+    <p><strong>Alice:</strong> What's still open for you, Bob?</p>
+    <p><strong>Bob:</strong> Two things the article can't settle. First, does Andromeda really treat look-alike ads as one, when Meta's post doesn't say so?</p>
+    <p><strong>Alice:</strong> And the second?</p>
+    <p><strong>Bob:</strong> How much of this works outside a startup. Greg gives a playbook, not measured results.</p>
+    <p><strong>Alice:</strong> Two good homework questions. This episode is based on Greg Isenberg's X article on marketing engineers and AI agents. Thanks to him for writing it.</p>
+    <p><strong>Bob:</strong> Our guests presented the Meta Andromeda post by Chonglin Sun and colleagues at Engineering at Meta. Then Find a Growth Hacker for Your Startup by Sean Ellis, and Shannon Bond's NPR report on Meta labeling AI images.</p>
+    <p><strong>Alice:</strong> That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>

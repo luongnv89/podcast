@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -98,6 +101,62 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
   </p>
   <p class="credit">Based on <a href="https://luongnv.com/news/reports/2026-11-16-morning.html" rel="noopener">The AI Gazette, morning edition, Monday 16 November 2026</a> by The AI Gazette</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> Alibaba has a new flagship model with a one-million-token context. And Cursor says its breach started with somebody else's key.</p>
+    <p><strong>Alice:</strong> Plus a ten-day deadline for Nvidia's board. Big Monday!</p>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and this is our daily edition: the AI news of the last day, in about eight minutes.</p>
+    <p><strong>Alice:</strong> And I'm Alice. Everything today comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories. Let's go.</p>
+    <p><strong>Bob:</strong> Six stories, eight minutes. Alice, no detours.</p>
+    <p><strong>Alice:</strong> No detours. Promise.</p>
+    <p><strong>Bob:</strong> Story one, for the model watchers. What did Alibaba ship?</p>
+    <p><strong>Alice:</strong> Qwen4-Max, the new flagship of its Qwen family. It reads text, images and video, and writes text. The context is one million tokens, with up to 393,000 tokens of output.</p>
+    <p><strong>Bob:</strong> Open weights?</p>
+    <p><strong>Alice:</strong> No. It's paid API only: 1.50 dollars per million input tokens, and 4.50 per million output. Qwen says smaller Qwen4 models will follow as open weights, but gives no sizes or dates.</p>
+    <p><strong>Bob:</strong> So what's the pitch?</p>
+    <p><strong>Alice:</strong> Cost per task. Think of it like a taxi driver who knows the shortcuts: same trip, smaller fare. That's the claim here. Qwen's own Work360 test puts the average task at 1.67 dollars, down from 4.43 for Qwen3.8-Max.</p>
+    <p><strong>Bob:</strong> A taxi with shortcuts. Says who, though?</p>
+    <p><strong>Alice:</strong> Says Alibaba. Those are its own claims, mostly on its in-house benchmark, and nobody has verified them independently yet.</p>
+    <p><strong>Bob:</strong> Story two is security. Cursor finally explained the tampered Claude Code extension?</p>
+    <p><strong>Alice:</strong> It did. Cursor says the attack started at Fireworks, an inference company. An attacker got an access key Cursor had issued to Fireworks, a key Cursor says Fireworks exposed, and used it to copy data from a storage bucket the two shared.</p>
+    <p><strong>Bob:</strong> What was in the bucket?</p>
+    <p><strong>Alice:</strong> Coding agent traces, mostly from 2025. And some of them held credentials nobody had redacted. It's like lending out a notebook with your spare house key taped inside. From there, on 29 October, a stolen credential let the attacker put malicious copies of the extension on Cursor's marketplace cache.</p>
+    <p><strong>Bob:</strong> Ouch. How many people got it?</p>
+    <p><strong>Alice:</strong> At most 5,000 users, Cursor says, and the build was up for about 11 hours. Cursor has moved all its inference traffic off Fireworks, rotated credentials, and believes the incident is contained.</p>
+    <p><strong>Bob:</strong> And if I installed it?</p>
+    <p><strong>Alice:</strong> Follow Cursor's October security notice. Uninstalling the extension alone may not be enough. And keep in mind, these figures come from Cursor's own investigation.</p>
+    <p><strong>Bob:</strong> Story three. The Nvidia saga has a new chapter.</p>
+    <p><strong>Alice:</strong> On Fox News on Sunday, Treasury Secretary Scott Bessent said Nvidia's board should go outside the company for its next chief executive. And he set a clock. Quote: I think we need answers in the next 10 days from the board.</p>
+    <p><strong>Bob:</strong> A cabinet member setting a deadline for a company's board?</p>
+    <p><strong>Alice:</strong> Yes. He also asked whether Nvidia had been pressing seemingly illicit sales to boost its revenue. Those are questions, not findings, and Nvidia didn't immediately comment.</p>
+    <p><strong>Bob:</strong> And Jensen Huang himself?</p>
+    <p><strong>Alice:</strong> The Financial Times reported that he has discussed a possible return as chief executive with confidants, according to Reuters and CNBC. It's like a club hiring a new coach while fans campaign for the old one. The petition to bring him back claims more than 160,000 signatures. And Nvidia reports results on Tuesday, the seventeenth.</p>
+    <p><strong>Bob:</strong> Unnamed sources on the comeback, I assume?</p>
+    <p><strong>Alice:</strong> Right. The comeback report rests on unnamed people cited by the Financial Times. And Nvidia says it's still selecting a search firm.</p>
+    <p><strong>Bob:</strong> Story four is science. OpenAI has a blog for that now?</p>
+    <p><strong>Alice:</strong> A science blog, launched on 15 November, for researchers to share what they're discovering with AI. The first guest post is by Nathaniel Craig, who leads the particle theory group at the University of California, Santa Barbara.</p>
+    <p><strong>Bob:</strong> And what did he work on?</p>
+    <p><strong>Alice:</strong> He worked with GPT-6 Astra on a candidate definition of the Standard Model on a lattice. Picture a chessboard: physicists put the theory onto a grid of points, and theories like the weak force are hard to fit on the squares. Craig writes that he had a strategy but couldn't prove it worked in all cases, and that Astra took the lead in developing the detailed proof.</p>
+    <p><strong>Bob:</strong> So the model did the homework!</p>
+    <p><strong>Alice:</strong> Part of it, by his account. But the preprint isn't peer reviewed, Craig himself says experts need to weigh in, and he's a visiting scientist at OpenAI.</p>
+    <p><strong>Bob:</strong> Story five. Washington and AI supply chains.</p>
+    <p><strong>Alice:</strong> On 15 November the United States and nine partners signed the San Francisco Declaration, a shared understanding of the technologies and infrastructure behind AI supply chains. Think of it as neighbours agreeing which bridges matter, before anyone decides who guards them. It proposes working groups, but lists no new export controls.</p>
+    <p><strong>Bob:</strong> And the national champions story?</p>
+    <p><strong>Alice:</strong> The Wall Street Journal reported that the administration plans to name more than two dozen AI national champions, including Nvidia, OpenAI and Anthropic. Reuters couldn't verify it, and no official announcement was found.</p>
+    <p><strong>Bob:</strong> So Nvidia: champion and under questioning, same week. Last story. Apple is studying health AI?</p>
+    <p><strong>Alice:</strong> The Apple Health AI Usage Study, built with the clinical AI company OpenEvidence. It's open to up to 200,000 people in the US, aged 21 and over. Participants ask everyday health questions and get answers with linked peer-reviewed citations.</p>
+    <p><strong>Bob:</strong> Will they train on my data?</p>
+    <p><strong>Alice:</strong> Apple says the study data won't be used to train AI models, and the app isn't meant to diagnose or treat anything. It's like a test kitchen: you watch how people react to a dish. Those safeguards are Apple's own description, though.</p>
+    <p><strong>Bob:</strong> Quick reality check. How much of today is confirmed?</p>
+    <p><strong>Alice:</strong> Less than it sounds. Qwen's numbers are Alibaba's. The breach figures are Cursor's. The Huang comeback rests on unnamed people. And the champions list is an unconfirmed report.</p>
+    <p><strong>Bob:</strong> And the physics result still needs the experts. Builder's Corner. One thing to do this week?</p>
+    <p><strong>Alice:</strong> Audit the keys your partners hold. Cursor's breach began with a key it had issued to a partner, and traces with credentials nobody had redacted. So list every key a vendor holds, scope it, rotate it. And scrub secrets from any agent logs you keep.</p>
+    <p><strong>Bob:</strong> So, today in three lines?</p>
+    <p><strong>Alice:</strong> One: Alibaba is selling its new flagship on cost per task. Two: your partners' keys are part of your attack surface. Three: Washington is pulling AI companies closer while questioning them.</p>
+    <p><strong>Bob:</strong> What I'll watch: Nvidia's results on Tuesday, and whether the board answers Bessent.</p>
+    <p><strong>Alice:</strong> And whether Germany, Sweden, the Netherlands and the European Commission sign the declaration next week, as expected. Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's edition. Thanks to them for the reporting.</p>
+    <p><strong>Bob:</strong> See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>

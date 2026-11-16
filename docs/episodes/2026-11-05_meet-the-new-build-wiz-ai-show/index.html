@@ -73,6 +73,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -95,6 +98,54 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
   </p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> What if a podcast checked every single claim before it said it out loud?</p>
+    <p><strong>Alice:</strong> That's the new us. Every factual line quotes its source word for word. If we can't check it, it doesn't go in.</p>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and today I'm the one asking the questions.</p>
+    <p><strong>Alice:</strong> And I'm Alice! Today's episode is about us: a fresh introduction to the show, our new team, and how we make each episode.</p>
+    <p><strong>Bob:</strong> So, for anyone new. What is this show?</p>
+    <p><strong>Alice:</strong> A non-commercial podcast by Luong Nguyen. Each episode takes one public source, like an article, a paper or an X post, and pulls out everything worth knowing for people who build things.</p>
+    <p><strong>Bob:</strong> And who's behind the mic, honestly?</p>
+    <p><strong>Alice:</strong> Honestly? The voices are AI voices, and an AI agent named Echo writes each script, which code checks before any audio is made. Version 0.2.0 of the pipeline, DropCast, brought a new format, a new team and new checks.</p>
+    <p><strong>Bob:</strong> New team. So it's not just us two anymore?</p>
+    <p><strong>Alice:</strong> We're still the hosts, and we take turns. In one episode I explain and you ask the listener's questions, and in the next we swap, like two friends trading the driver's seat. We each keep our own voice.</p>
+    <p><strong>Bob:</strong> And when an episode needs a second view?</p>
+    <p><strong>Alice:</strong> Four recurring guests join us. They're fictional characters, and each one brings in a real external source and always names its real author and outlet. Let's let them say hello.</p>
+    <p><strong>Maya:</strong> Hi, I'm Maya, the researcher. My pick is the Survey of Hallucination in Natural Language Generation, by Ziwei Ji and colleagues, on arXiv. It says deep learning based generation is prone to hallucinate unintended text. Think of a confident friend who sometimes fills gaps with stories.</p>
+    <p><strong>Alice:</strong> Which is exactly why every claim on this show gets fact-checked.</p>
+    <p><strong>Lena:</strong> And I'm Lena, the builder. Anthropic's post, Building effective AI agents, describes prompt chaining: a task split into steps, with programmatic checks on any intermediate steps to keep the process on track.</p>
+    <p><strong>Bob:</strong> Small steps, each one checked. Sounds familiar.</p>
+    <p><strong>Alice:</strong> It should! Our episodes are built in steps too.</p>
+    <p><strong>Theo:</strong> I'm Theo, the analyst. Elisa Shearer and colleagues at Pew Research Center found that about half of Americans have listened to a podcast in the past year. And among those who hear news on podcasts, the vast majority say they expect it to be mostly accurate. So accuracy isn't optional.</p>
+    <p><strong>Bob:</strong> Researcher, builder, analyst. Who's missing?</p>
+    <p><strong>Alice:</strong> Our skeptic, Sam. He's saving his hello for the counterpoints.</p>
+    <p><strong>Bob:</strong> Okay, the big question. Isn't this just an AI reading an article aloud?</p>
+    <p><strong>Alice:</strong> No! An episode isn't a reading of the source, and it's not a one-to-one summary. It's built in steps, like a chef tasting, prepping and plating, not just reheating.</p>
+    <p><strong>Bob:</strong> Walk me through the kitchen.</p>
+    <p><strong>Alice:</strong> First, the source is read in full. Then it's outlined against a fixed list: the core thesis, every major point with its evidence, examples and numbers, caveats and what the author doesn't claim. Plus the strongest counterpoints, takeaways you can act on, and open questions.</p>
+    <p><strong>Bob:</strong> Then?</p>
+    <p><strong>Alice:</strong> Then we look beyond the source. Usually up to three reputable external sources are found and fetched, studies, official reports, established outlets, so a claim can be confirmed, given context or challenged.</p>
+    <p><strong>Bob:</strong> And the fact-check you teased?</p>
+    <p><strong>Alice:</strong> Here's the key point. Each factual line must quote its source word for word, and every number said aloud must appear in the source it cites. A claim the source doesn't support is rewritten, cut, or said plainly as our own opinion.</p>
+    <p><strong>Bob:</strong> So no made-up numbers. Ever.</p>
+    <p><strong>Alice:</strong> Never, and we say what a source doesn't say. Then one show order: a teaser, the theme, the main points, counterpoints, Builder's Corner, takeaways and open questions. The outro credits every source, by author and title.</p>
+    <p><strong>Bob:</strong> And the sound?</p>
+    <p><strong>Alice:</strong> Mixed with our theme music and levelled to minus 16 LUFS, then a speech-to-text model listens to the finished episode and compares what it hears with the script. Like a proofreader, but with ears.</p>
+    <p><strong>Bob:</strong> Let me push back. AI voices, an AI writer. Why should anyone trust that?</p>
+    <p><strong>Alice:</strong> Fair question, and it's exactly what Sam is here for.</p>
+    <p><strong>Sam:</strong> Hi, I'm Sam, the skeptic. Shannon Bond at NPR reported that Meta will start labeling images created with leading AI tools. Meta will also require users to disclose a photorealistic video or realistic-sounding audio that was digitally created or altered. Platforms are asking for honesty about AI media. Like a nutrition label, but for pictures and sound.</p>
+    <p><strong>Alice:</strong> So we say it up front: the voices are AI voices. And checks don't make us perfect. If the pipeline can't check a claim, the claim doesn't go in. That's the rule.</p>
+    <p><strong>Bob:</strong> Fair enough. Rules over vibes. Time for Builder's Corner! Alice, one thing to try this week?</p>
+    <p><strong>Alice:</strong> Borrow our rule. Next time an AI tool gives you a summary, ask it to quote its source word for word for each claim, then check the quotes yourself. If it can't quote it, don't use it.</p>
+    <p><strong>Bob:</strong> Simple and a little ruthless. I like it. Quick recap for new listeners?</p>
+    <p><strong>Alice:</strong> Two hosts who swap roles, four guests who bring real sources, and every claim checked against its source. The goal is an episode worth your time: the best ideas, tested against other evidence, with their limits stated, and one thing to try.</p>
+    <p><strong>Bob:</strong> In English, French and Vietnamese, too.</p>
+    <p><strong>Alice:</strong> One open question for us: which sources should we cover next? That one's up to you.</p>
+    <p><strong>Bob:</strong> This episode is based on our own fact sheet, Meet the new Build Wiz AI Show. Our guests presented the hallucination survey by Ziwei Ji and colleagues, and Anthropic's Building effective AI agents.</p>
+    <p><strong>Alice:</strong> Plus Podcasts as a Source of News and Information by Elisa Shearer and colleagues at Pew Research Center, and Shannon Bond's NPR report on Meta labeling AI-generated images.</p>
+    <p><strong>Bob:</strong> That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>

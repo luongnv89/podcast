@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -97,6 +100,103 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/gregisenberg/status/2103927365977928019" rel="noopener">$5T opportunity: AI Roll Ups</a> by GREG ISENBERG (@gregisenberg)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> Could you buy a boring local business and triple its profit with AI agents?</p>
+    <p><strong>Bob:</strong> One accounting firm says its AI processed 7,000 tax returns this season. One job went from 180 hours a year down to 15.</p>
+    <p><strong>Alice:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and today I'm asking the questions.</p>
+    <p><strong>Bob:</strong> And I'm Bob! Today's source is Greg Isenberg's X article on AI roll-ups: why he thinks you should buy a business and run it with agents.</p>
+    <p><strong>Alice:</strong> Give me the big idea in one breath.</p>
+    <p><strong>Bob:</strong> Here's the key point. Buy a business that already has the customers, the licenses and the trust. Then change how the work gets done with AI agents.</p>
+    <p><strong>Alice:</strong> Keep the customers, change the work. Got it. Why does he call it a 5 trillion dollar opportunity?</p>
+    <p><strong>Bob:</strong> He cites McKinsey: about 5 trillion dollars worth of American businesses will change hands by 2035. Most belong to baby boomers heading into retirement, many with nobody lined up to buy.</p>
+    <p><strong>Alice:</strong> And that accounting firm from the teaser?</p>
+    <p><strong>Bob:</strong> Larson Gross, in Bellingham, Washington. Founded in 1949, five offices, about 200 employees, and Thrive Holdings recently bought a stake in it. This tax season, its AI processed 7,000 returns. Accountants saved 31 percent of their time on average.</p>
+    <p><strong>Alice:</strong> Thirty-one percent. That's real time back. Okay, what's a roll-up, exactly?</p>
+    <p><strong>Bob:</strong> A pretty old idea. You buy lots of small businesses in one industry and combine them, so the whole is worth more than the pieces. He says private equity has run this play on services for 40 years, mostly with financial engineering.</p>
+    <p><strong>Alice:</strong> So what does AI change?</p>
+    <p><strong>Bob:</strong> The middle step: you buy at a services price, then rebuild how the work gets delivered, with agents doing a large share. The customers and revenue stay, and the cost of each unit of work drops.</p>
+    <p><strong>Alice:</strong> And the profit?</p>
+    <p><strong>Bob:</strong> A traditional services firm runs around 5 to 10 percent EBITDA margins. The thesis is the same firm can run at 30 to 40. Picture the same restaurant, same menu, same regulars, but the kitchen suddenly costs a third as much.</p>
+    <p><strong>Alice:</strong> Same regulars, cheaper kitchen. I like it. Why is this happening now and not five years ago?</p>
+    <p><strong>Bob:</strong> He names three things. First, the models got good enough at the actual work: data entry, first drafts of tax returns, contract review, support tickets. His line: two years ago the output needed redoing. Now it needs checking.</p>
+    <p><strong>Alice:</strong> Redoing versus checking. Big difference.</p>
+    <p><strong>Bob:</strong> Second, the owners are retiring. Many are in their sixties and seventies with no succession plan. Their kids don't want the firm, and their employees can't afford it.</p>
+    <p><strong>Alice:</strong> And third?</p>
+    <p><strong>Bob:</strong> The arithmetic. Services firms sell for a low multiple because the market assumes their margins are stuck. Think of a house sold cheap because everyone assumes the plumbing is broken: fix it, and you bought at a discount.</p>
+    <p><strong>Alice:</strong> Theo, our analyst, you listened to one of the investors behind this.</p>
+    <p><strong>Theo:</strong> I did. On The Cognitive Revolution, Nathan Labenz interviewed Marc Bhargava of General Catalyst. Their team studied the tasks across 70 service categories and picked 10 verticals. In those, they believe anywhere from 30 to 70 percent of tasks are already automatable with AI today. And the margin story matches: from 5 to 10 percent EBITDA margins to 30 to 40 in certain cases. With one nuance. Bhargava says they focus on the complementary side. A human stays in the loop, and one human with a team of agents can take a lot more calls than one human alone.</p>
+    <p><strong>Alice:</strong> Who's actually doing this?</p>
+    <p><strong>Bob:</strong> Greg lists a few. Long Lake, in property management: 18 businesses acquired, 100 million dollars of EBITDA in under two years. Crescendo, in contact centers: 90 percent of frontline tickets resolved by AI. And Dwelly, in UK real estate: problem resolution down from 50 days to 20. Thrive Holdings has bought nearly 50 local accounting practices over two years, and just committed 1 billion dollars to buy more. General Catalyst set aside 1.5 billion and put more than 750 million into at least ten companies.</p>
+    <p><strong>Alice:</strong> Those numbers are huge. Are they solid?</p>
+    <p><strong>Bob:</strong> Greg's own caveat: they're self-reported, and none of these companies has been through a recession yet.</p>
+    <p><strong>Alice:</strong> Billion dollar funds. Doesn't that leave me out?</p>
+    <p><strong>Bob:</strong> He argues the opposite! A billion dollar vehicle can't spend its time on a bookkeeping firm doing 2 million a year, because the check is too small. It's like a whaling ship that can't stop for small fish.</p>
+    <p><strong>Alice:</strong> So the small firms get ignored.</p>
+    <p><strong>Bob:</strong> Exactly, and that's where the competition is thinnest. Second, the tools are the same ones you have. He says Larson Gross's tax agents run on OpenAI's Codex, and those models are available to anyone for a monthly subscription.</p>
+    <p><strong>Alice:</strong> What else?</p>
+    <p><strong>Bob:</strong> You can be the integration: the biggest risk in any roll-up is buying faster than you can integrate. One person who buys one firm knows every client by name and watches every agent draft.</p>
+    <p><strong>Alice:</strong> But if I can build an AI accounting product, why buy a firm?</p>
+    <p><strong>Bob:</strong> Because the hardest parts have nothing to do with software. The client list took 30 years and the trust is personal. The licenses took exams and time. It's like moving into a house with a garden that's already grown, instead of planting seeds. And the firm's history, every edge case and every caught mistake, is training material a startup doesn't have.</p>
+    <p><strong>Alice:</strong> So the startup earns the customer, then does the work.</p>
+    <p><strong>Bob:</strong> And the acquisition already has the customer. All you change is the work. That's his line.</p>
+    <p><strong>Alice:</strong> Say I'm in. Where do I start?</p>
+    <p><strong>Bob:</strong> Before you buy anything, set up the system. He says the folder structure is the operating model. Three little files do most of the work.</p>
+    <p><strong>Alice:</strong> Three files. Go.</p>
+    <p><strong>Bob:</strong> A target criteria file decides what you buy. A rules folder decides whether the agents can be trusted. And a corrections log is how the rules get better every week.</p>
+    <p><strong>Alice:</strong> And the agents themselves?</p>
+    <p><strong>Bob:</strong> Two sets: one helps you buy the right business, one runs it. And here's his most important design decision: the reviewer can block but never ship. The preparer can ship nothing on its own.</p>
+    <p><strong>Alice:</strong> Like two keys for one safe.</p>
+    <p><strong>Bob:</strong> Exactly like two keys. Keeping them apart stops most bad output before it reaches a client.</p>
+    <p><strong>Alice:</strong> Maya, our researcher, you brought a study about checking AI work.</p>
+    <p><strong>Maya:</strong> Yes. In Centaurs and Cyborgs on the Jagged Frontier, on One Useful Thing, Ethan Mollick describes an experiment with 758 consultants at Boston Consulting Group. On tasks the AI handled well, consultants using AI finished 12.2 percent more tasks, completed them 25.1 percent more quickly, and produced 40 percent higher quality results.</p>
+    <p><strong>Alice:</strong> That sounds like a yes for agents.</p>
+    <p><strong>Maya:</strong> Here's the catch. On a task outside what the AI could do, those using AI actually had less accurate answers than those who weren't allowed to use it. Mollick calls it falling asleep at the wheel.</p>
+    <p><strong>Alice:</strong> So the reviewer has to stay awake. Got it. Back to buying. How do I find a firm?</p>
+    <p><strong>Bob:</strong> Most small firms that would sell aren't listed anywhere. He suggests state licensing board lookups, business filings, association directories and local business journals. Then write to the owner yourself.</p>
+    <p><strong>Alice:</strong> What's a good score?</p>
+    <p><strong>Bob:</strong> Score every target the same way, so your excitement doesn't make the decision. Under 60 percent is usually a job, not an acquisition. Above 80 deserves a letter of intent.</p>
+    <p><strong>Alice:</strong> A job, not an acquisition. Ouch.</p>
+    <p><strong>Bob:</strong> Then diligence with work samples: ask for 20 to 50 real, anonymized completed jobs and build an automation map. Think of it as the home inspection before you buy the house.</p>
+    <p><strong>Alice:</strong> A home inspection for the work. Smart. And the math?</p>
+    <p><strong>Bob:</strong> His illustrative example: you buy for around 800,000 dollars. Move the margin from 10 to 30 percent and hold it, and the business is worth about three times what you paid, at the same multiple.</p>
+    <p><strong>Alice:</strong> That's the dream number.</p>
+    <p><strong>Bob:</strong> He's careful there: that's before tooling, before the months it takes, before anything goes wrong. The whole game is whether you can hold the margin.</p>
+    <p><strong>Alice:</strong> Okay, I own the firm. Now what?</p>
+    <p><strong>Bob:</strong> The rulebook, which he says is where the real asset gets built. Every firm runs on rules nobody wrote down, like the client who always sends documents late. In the first 60 days, you get them out of people's heads and into files. Then every week, compare agent drafts with what a person approved, and turn repeated corrections into rules.</p>
+    <p><strong>Alice:</strong> Why does that matter so much?</p>
+    <p><strong>Bob:</strong> Because anyone can use the same models. Nobody else has your list of every way they go wrong in this niche. It's like a family recipe book, with every burnt dish written in the margins.</p>
+    <p><strong>Alice:</strong> And the first months?</p>
+    <p><strong>Bob:</strong> Days 1 to 30: change nothing the clients can see. Meet every employee, announce the deal with the former owner present, and run agents in shadow mode next to people. Days 31 to 60: move the back office, starting with the highest-volume, lowest-risk task, every draft reviewed. Days 61 to 100: expand carefully, and track client and key-person retention alongside margin.</p>
+    <p><strong>Alice:</strong> So margin isn't the only scoreboard.</p>
+    <p><strong>Bob:</strong> His warning: if margin goes up while client retention goes down, you're selling the asset to pay for the renovation.</p>
+    <p><strong>Alice:</strong> Time to push back. What breaks?</p>
+    <p><strong>Bob:</strong> He lists it himself: buying faster than you can integrate, and key people leaving, like the accountant who quits six weeks after the sale. And clients leaving with the owner.</p>
+    <p><strong>Alice:</strong> Sam, our skeptic, you looked at the tools claim.</p>
+    <p><strong>Sam:</strong> I did. Nicole Kobie at IT Pro reported on OpenAI taking a stake in Thrive Holdings. A Thrive partner told Reuters they were struggling with off-the-shelf AI that couldn't manage the specific tasks required.</p>
+    <p><strong>Alice:</strong> Off-the-shelf wasn't enough? For Thrive?</p>
+    <p><strong>Sam:</strong> That's the report. So OpenAI's researchers will embed into Thrive Holdings' businesses. That's a lot more than a monthly subscription.</p>
+    <p><strong>Alice:</strong> Theo, does your investor say the same?</p>
+    <p><strong>Theo:</strong> Close. Bhargava says they still think you need a really amazing technical CEO or CTO or founding team at the core of these projects.</p>
+    <p><strong>Bob:</strong> That's a fair challenge to the solo founder story. My read: Greg's pitch works best for someone who can build, or who partners with someone who can.</p>
+    <p><strong>Alice:</strong> And the headline numbers?</p>
+    <p><strong>Bob:</strong> Greg says it plainly: most published results come from young companies raising money, untested by a downturn. Underwrite your deal on your own numbers.</p>
+    <p><strong>Alice:</strong> Time for Builder's Corner! Bob, one thing to try this week?</p>
+    <p><strong>Bob:</strong> Before buying anything, write the target criteria file. His sourcing filter is 5 to 50 employees, founded before 2005, owner-operated, no obvious succession.</p>
+    <p><strong>Alice:</strong> And keep a human reviewer.</p>
+    <p><strong>Bob:</strong> Always. Keep the checkpoints until the correction rate earns their removal.</p>
+    <p><strong>Alice:</strong> Quick recap. What should listeners keep?</p>
+    <p><strong>Bob:</strong> One: buy the customers and the trust, then change the work. Two: build the system first, with a reviewer that can block and a preparer that can't ship alone. Three: the rulebook is the moat. And four: the headline numbers are self-reported, and Sam's report shows even Thrive needed more than off-the-shelf AI.</p>
+    <p><strong>Alice:</strong> And Greg's last word?</p>
+    <p><strong>Bob:</strong> Take care of the clients, keep the good people, and let agents handle the back office. He thinks people who start with one boring business this year will be in a really good spot.</p>
+    <p><strong>Alice:</strong> What's still open for you, Bob?</p>
+    <p><strong>Bob:</strong> Whether these margins survive a recession. None of the companies he lists has been through one yet.</p>
+    <p><strong>Alice:</strong> And the second?</p>
+    <p><strong>Bob:</strong> Whether one person really can do it alone, or needs the technical team the investors say they need.</p>
+    <p><strong>Alice:</strong> Two good homework questions. This episode is based on Greg Isenberg's X article, AI Roll Ups. Thanks to him for writing it.</p>
+    <p><strong>Bob:</strong> Our guests presented Nathan Labenz's Cognitive Revolution interview with Marc Bhargava, and Nicole Kobie's IT Pro report on OpenAI and Thrive Holdings. Plus Centaurs and Cyborgs on the Jagged Frontier by Ethan Mollick.</p>
+    <p><strong>Alice:</strong> That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>

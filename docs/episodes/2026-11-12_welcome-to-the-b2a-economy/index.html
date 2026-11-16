@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -98,6 +101,64 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
   </p>
   <p class="credit">Based on <a href="https://www.a16z.news/p/welcome-to-the-b2a-economy" rel="noopener">Welcome to the B2A Economy</a> by Olivia Moore</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> What if your next customer isn't a person at all?</p>
+    <p><strong>Alice:</strong> That's the bet. For years companies built walls to keep bots out. Now, says a16z, they'll have to fight for the bots' business.</p>
+    <p><strong>Bob:</strong> So is it time to sell B2A, business to agent? Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and Alice is walking us through today's piece.</p>
+    <p><strong>Alice:</strong> Hi everyone. It's Welcome to the B2A Economy, by Olivia Moore at a16z. It's the first in a series on the agent economy.</p>
+    <p><strong>Bob:</strong> And our guests?</p>
+    <p><strong>Alice:</strong> Maya brings a report on bot traffic, Lena brings the protocol behind agent plug-ins, and Sam brings a court ruling on shopping agents.</p>
+    <p><strong>Bob:</strong> So what's the big claim?</p>
+    <p><strong>Alice:</strong> That the main users of the internet are no longer human, they're AI agents. The piece calls it the early stage of a platform shift: adoption you can measure, but business models you mostly can't see yet.</p>
+    <p><strong>Bob:</strong> Platform shift, like the web and mobile?</p>
+    <p><strong>Alice:</strong> Exactly. The web gave businesses a storefront anyone could visit, and mobile put it in everyone's pocket. AI already changed what people can do, but not yet how businesses reach them, like a great product still waiting for its delivery trucks.</p>
+    <p><strong>Bob:</strong> Is there real data, or just vibes?</p>
+    <p><strong>Alice:</strong> Real data. Shopify reported that AI-driven traffic to its stores grew eightfold year over year in the first quarter of 2026, and orders from AI-powered searches grew nearly thirteenfold.</p>
+    <p><strong>Bob:</strong> Thirteen times the orders. Okay, that's not vibes.</p>
+    <p><strong>Alice:</strong> And agentic browser traffic grew eight times between August and October, according to Human Security. That's the agent clicking around for you.</p>
+    <p><strong>Bob:</strong> Who's doing all that clicking?</p>
+    <p><strong>Alice:</strong> In that count, one agent drove the largest share, 60 percent of the activity, and OpenAI's products reached 30 percent combined. The piece also says agents now write more than half of new articles online, and most of the code pushed to production.</p>
+    <p><strong>Bob:</strong> Do those visitors actually buy?</p>
+    <p><strong>Alice:</strong> So far, yes: AI-referred traffic engages more, converts better to revenue and bounces less. Even before agents, an estimated 11 percent of US shopper journeys visited AI before a shopping site. It's like a friend who knows your size walking you into the store.</p>
+    <p><strong>Bob:</strong> Maya, the piece says agents are already the majority of web traffic. True?</p>
+    <p><strong>Maya:</strong> Thales Group announced it in AI-Driven Bots Surpass Human Traffic: its 2025 Imperva Bad Bot Report. Automated traffic passed human activity for the first time in a decade, at 51 percent of all web traffic in 2024. But read the fine print. Bad bots, the malicious ones, were 37 percent of all internet traffic, up from 32 percent. So not every bot is a shopper.</p>
+    <p><strong>Bob:</strong> Right, more scrapers than shoppers. How does an agent actually do the shopping?</p>
+    <p><strong>Alice:</strong> Mostly through browser use today. The agent takes over your browser, or spins up its own, and clicks around like a human would. But Olivia sees an App Store for agents emerging, on steroids: connectors, plug-ins and MCPs that reach tools directly.</p>
+    <p><strong>Bob:</strong> Lena, what's an MCP?</p>
+    <p><strong>Lena:</strong> In Introducing the Model Context Protocol, Anthropic calls it a universal, open standard for connecting AI systems with data sources, replacing fragmented integrations with a single protocol. Think of it as one plug shape for every socket. Developers either expose their data through MCP servers, or build AI apps, the clients, that connect to them.</p>
+    <p><strong>Alice:</strong> And the a16z team tried it. They asked ChatGPT to make and edit a video ad using three creative tools' plug-ins. It coordinated across them, and upsold them on a paid plan to finish the job.</p>
+    <p><strong>Bob:</strong> The agent did the upsell. That's a salesperson's dream. And paying? Do I hand my card to a bot?</p>
+    <p><strong>Alice:</strong> It gets easier as platforms let you lend your identity or tokens to other products, like Sign in with ChatGPT. Claude already lets enterprise admins connect plug-ins for a whole organization. And OpenAI launched Businesses in ChatGPT, where companies claim their business, add product feeds and see how users interact with them.</p>
+    <p><strong>Bob:</strong> So the agent eventually picks its own tools?</p>
+    <p><strong>Alice:</strong> That's where it's heading: agents selecting and installing the tools they need without a human stepping in.</p>
+    <p><strong>Bob:</strong> So who wins in this B2A economy?</p>
+    <p><strong>Alice:</strong> Olivia names four groups. First, agents and agentic models: she believes every product will soon work agentically, and ChatGPT, with 1.2 billion weekly active users, has a big opening. Second, products that only agents make possible, the way Amazon needed the internet and Uber needed the phone. Third, incumbents who optimize for agents. Fourth, agent infrastructure.</p>
+    <p><strong>Bob:</strong> Optimize for agents, like SEO for robots?</p>
+    <p><strong>Alice:</strong> That's GEO, generative engine optimization, and it mostly stops at discovery. Agents go further, into evaluating and actually buying or signing up. It's like going from being on the shelf to being in the cart.</p>
+    <p><strong>Bob:</strong> And infrastructure?</p>
+    <p><strong>Alice:</strong> Agents need their own tools to act for us. The piece says systems already strain at fairly low agent volume on payments, fraud and identity, and communication like messages, calls and email.</p>
+    <p><strong>Bob:</strong> Has any field already gone through this?</p>
+    <p><strong>Alice:</strong> Coding. As of September 2026, upwards of 40 percent of GitHub pull requests started with an agent's draft, against 17 percent six months before.</p>
+    <p><strong>Bob:</strong> And the tools around the agents?</p>
+    <p><strong>Alice:</strong> They grew too. Supabase said more than 60 percent of its new databases are launched by AI tools, and Neon said agents deploy 80 percent of its new databases. Stripe said agents were nearly 40 percent of its documentation traffic, and Vercel said agent-triggered deployments grew 28 times in a year. It's like the agent became the main reader of the manual.</p>
+    <p><strong>Bob:</strong> And developers are a tiny slice of workers.</p>
+    <p><strong>Alice:</strong> Fewer than 1 percent of the global workforce. Olivia's question: what happens when the other 99 percent start using agents?</p>
+    <p><strong>Bob:</strong> Okay, skeptic time. Will the big stores just let agents in?</p>
+    <p><strong>Alice:</strong> The piece admits most enterprises still block agent traffic, over fraud and chargebacks.</p>
+    <p><strong>Bob:</strong> Sam, you brought a court case.</p>
+    <p><strong>Sam:</strong> I did. PYMNTS reports that Amazon sued Perplexity over its Comet browser, and in March a district court blocked it, finding strong evidence its agent accessed Amazon's systems unlawfully. Then on August 4 the Ninth Circuit vacated that injunction. It found that it's the customer, not Perplexity, who accesses Amazon, with the agent as a tool.</p>
+    <p><strong>Bob:</strong> So agents won?</p>
+    <p><strong>Sam:</strong> Not so fast. The judges limited it to that law and that technology, and left open whether more autonomous agents could be treated differently. And the case goes back to the district court.</p>
+    <p><strong>Alice:</strong> And my take: much of the data comes from the companies selling to agents. The direction looks clear, but treat each number as that company's own count.</p>
+    <p><strong>Bob:</strong> Builder's Corner time. Alice, one thing to try this week?</p>
+    <p><strong>Alice:</strong> Treat agents as first-class customers. Try buying or signing up for your own product through an AI agent, and note every place it gets stuck: a login wall, a captcha, a form it can't read.</p>
+    <p><strong>Bob:</strong> And if it gets stuck, so does your next customer. Takeaways?</p>
+    <p><strong>Alice:</strong> One: agent traffic is growing fast and converts well. Two: plug-ins and protocols are becoming the app store for agents. Three: the winners make their products easy for agents to evaluate and buy.</p>
+    <p><strong>Bob:</strong> What's still open?</p>
+    <p><strong>Alice:</strong> Whether big platforms open their doors or keep fighting in court, and who handles payments, fraud and identity when the buyer is an agent. Olivia argues that calling it AI commerce undersells it, because agents will also route traffic, tokens and revenue to digital products. This episode is based on Welcome to the B2A Economy, by Olivia Moore at a16z. Thanks also to Thales Group for the Imperva Bad Bot Report, to Anthropic for Introducing the Model Context Protocol, and to PYMNTS for its report on the Ninth Circuit ruling.</p>
+    <p><strong>Bob:</strong> Thanks for listening, everyone. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>

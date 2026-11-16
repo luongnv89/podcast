@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -97,6 +100,105 @@ Những ý tưởng lớn về AI, giải thích dễ hiểu cho người làm s
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/addyosmani/status/2117512471930167377" rel="noopener">Critical thinking when agents do the work</a> by Addy Osmani (@addyosmani)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> Chào mừng các bạn đến với Build Wiz AI, nơi mỗi tập tụi mình lấy một nguồn và rút ra mọi thứ đáng biết. Mình là Bob, người chuyên đặt câu hỏi.</p>
+    <p><strong>Alice:</strong> Còn mình là Alice. Hôm nay là bài viết dài trên X của Addy Osmani, tựa đề Critical thinking when agents do the work. Tức là tư duy phản biện khi agent làm việc thay mình.</p>
+    <p><strong>Bob:</strong> Vậy ý chính là gì, nói gọn thôi?</p>
+    <p><strong>Alice:</strong> Khi càng nhiều việc chạy qua agent, chẳng có gì trong ngày buộc mình phải suy nghĩ phản biện nữa. Nên mình phải tự xây thói quen đó vào ngày làm việc, vì mặc định sẽ không có gì làm thay.</p>
+    <p><strong>Bob:</strong> Nghe như một bài kêu gọi bớt dùng AI nhỉ?</p>
+    <p><strong>Alice:</strong> Không hề. Addy nói thẳng ông rất mê những công cụ này, và không viết bài để khuyên bớt dùng agent. Mục tiêu là giữ tư duy phản biện khi cái gì cũng dễ đẩy sang agent.</p>
+    <p><strong>Bob:</strong> Vậy vấn đề nằm ở đâu?</p>
+    <p><strong>Alice:</strong> Addy nói trước đây phần lớn việc suy nghĩ và cảm nhận diễn ra trong khoảng giữa câu hỏi và câu trả lời. Giờ khoảng đó chỉ còn tính bằng giây.</p>
+    <p><strong>Bob:</strong> Mà model càng giỏi thì càng đỡ lo chứ?</p>
+    <p><strong>Alice:</strong> Đây là chỗ nghịch lý. Model càng tốt thì lỗi hiển nhiên càng ít, câu trả lời viết hay và gần như đúng, nên chẳng còn gì buộc mình nhìn lại lần hai. Dù chạy nhiều agent một lúc, bạn vẫn chỉ có một đôi mắt.</p>
+    <p><strong>Bob:</strong> Bài có một khung khái niệm, một cái thang ba nấc. Alice giải thích đi.</p>
+    <p><strong>Alice:</strong> Nấc trên cùng là cognitive offloading, tức là giao việc cho AI nhưng vẫn giữ quyền làm chủ kết quả. Addy nói ông làm vậy cả ngày, và bạn cũng nên thế.</p>
+    <p><strong>Bob:</strong> Nấc giữa?</p>
+    <p><strong>Alice:</strong> Nấc giữa là deferral, tạm gọi là phó thác. Đầu ra của công cụ trở thành đầu vào mới của bạn, nó không còn là một giả thuyết nữa.</p>
+    <p><strong>Bob:</strong> Còn đáy thang?</p>
+    <p><strong>Alice:</strong> Đáy là cognitive surrender, đầu hàng nhận thức: kết quả của AI lặng lẽ trở thành của bạn, và bạn không thấy cần kiểm tra. Thuật ngữ này do Steven Shaw và Gideon Nave ở Wharton đặt ra.</p>
+    <p><strong>Bob:</strong> Nhưng chẳng ai tự quyết định đầu hàng cả. Người ta trượt xuống thế nào?</p>
+    <p><strong>Alice:</strong> Từng bước nhỏ nghe rất hợp lý. Câu trả lời trước đọc kỹ, câu sau lướt qua, câu sau nữa chỉ nhìn khung sườn. Rồi ai đó hỏi về một dòng, và bạn không giải thích được, kể cả khi nhờ agent.</p>
+    <p><strong>Bob:</strong> Nghe quen một cách đáng sợ.</p>
+    <p><strong>Alice:</strong> Addy nói đó là cách món nợ nhận thức tích tụ, và lúc đầu nó hoàn toàn vô hình. Codebase trông sạch sẽ, test vẫn pass. Chỉ khi phải sửa hệ thống, bạn mới nhận ra không còn ai hiểu nó nữa.</p>
+    <p><strong>Bob:</strong> Chuyện này có tên riêng không?</p>
+    <p><strong>Alice:</strong> Với code, Addy gọi là comprehension debt, nợ hiểu biết, thuật ngữ của Jeremy Twei. Margaret-Anne Storey thì viết về việc nó hiện ra trong nhóm, khi hiểu biết chung về hệ thống bị bào mòn dần.</p>
+    <p><strong>Bob:</strong> Khoan, ai mà nhớ nổi toàn bộ một codebase lớn? Đòi hỏi vậy hơi phi thực tế.</p>
+    <p><strong>Alice:</strong> Addy đồng ý, ông nói điều đó là bất khả thi. Đội Claude Code nói công khai rằng họ xây lại hiểu biết khi cần: cần hiểu phần nào thì nhờ Claude giải thích phần đó.</p>
+    <p><strong>Bob:</strong> Vậy ranh giới nằm ở đâu?</p>
+    <p><strong>Alice:</strong> Khi bạn không giải thích được câu trả lời, kể cả nhờ agent, thì bạn đã nhường quyền làm chủ. Còn chỗ nào rủi ro thấp, cứ giao hẳn.</p>
+    <p><strong>Bob:</strong> Có ví dụ nào không?</p>
+    <p><strong>Alice:</strong> Rất đời thường. Addy cần chọn một trong ba khách sạn được đánh giá ngang nhau để quay khóa học. Không có thời gian đọc review, ông giao hẳn quyết định cho AI, và nó ổn.</p>
+    <p><strong>Bob:</strong> Nhưng chắc ông không làm vậy với mọi thứ.</p>
+    <p><strong>Alice:</strong> Đúng. Ông sẽ không làm vậy khi quyết định đầu tư tiền, khuyên con cái về sự nghiệp, hay ở công ty, như có an toàn để ship không. Giao việc khi sai thì rẻ, giữ phần suy luận khi người khác phải gánh hậu quả.</p>
+    <p><strong>Bob:</strong> Phần mình thích nhất: những câu Addy tự hỏi mình. Câu đầu tiên là gì?</p>
+    <p><strong>Alice:</strong> Mình đã có giả thuyết trước khi hỏi chưa? Trước khi giao agent việc gì không tầm thường, ông ghi lại, dù chỉ trong đầu, câu trả lời mình đoán. Đoán dở cũng không sao.</p>
+    <p><strong>Bob:</strong> Sao phải đoán trước? Đằng nào agent cũng trả lời.</p>
+    <p><strong>Alice:</strong> Vì đọc một câu trả lời viết hay rồi thì rất khó tưởng tượng khả năng nào khác. Nếu hoàn toàn mù mờ, hãy xin cái mà Thariq Shihipar gọi là blind spot pass. Đưa model những gì bạn biết, để nó tìm những điều bạn không biết là mình không biết.</p>
+    <p><strong>Bob:</strong> Câu thứ hai?</p>
+    <p><strong>Alice:</strong> Mình đang nhờ nó giúp mình nghĩ, hay nhờ nó nghĩ thay? Cả hai đều được, miễn là bạn biết mình đang làm cái nào.</p>
+    <p><strong>Bob:</strong> Câu tiếp theo nghe như của nhà khoa học.</p>
+    <p><strong>Alice:</strong> Điều gì phải đúng thì kết luận này mới sai? Rồi đi kiểm chứng. Model tự đánh giá độ tự tin thì kém giá trị hơn nhiều so với một phép thử thật, nên hãy đưa cho nó một phép thử.</p>
+    <p><strong>Bob:</strong> Và câu cuối?</p>
+    <p><strong>Alice:</strong> Mình có dám đặt cược vào cái này trước mặt người sẽ phải bảo trì nó không? Addy coi đó là thước đo trách nhiệm, cho code và cho mọi thứ bạn bàn giao.</p>
+    <p><strong>Bob:</strong> Sang chuyện kiểm chứng. Sao Addy viết về nó nhiều vậy?</p>
+    <p><strong>Alice:</strong> Vì ông tin nút thắt đã chuyển từ viết code sang việc chắc chắn mình đúng. Khi agent có cách tự kiểm tra, như test đầu cuối hay thao tác thật trên app, nó có thể sửa, chạy test, đọc kết quả và thử lại trước cả khi bạn nhìn vào.</p>
+    <p><strong>Bob:</strong> Hình như Boris Cherny có câu nói về chuyện này?</p>
+    <p><strong>Alice:</strong> Đúng, Boris Cherny gọi đó là cho Claude một cách để tự kiểm tra công việc của nó. Thay vì đọc từng dòng, bạn xây những vòng lặp đó và xem xét bằng chứng.</p>
+    <p><strong>Bob:</strong> Vậy test xanh là xong rồi nhỉ?</p>
+    <p><strong>Alice:</strong> Đây là cái bẫy: bạn cũng có thể đầu hàng cả việc kiểm chứng. Câu hỏi có bằng chứng ủng hộ kết luận không, biến thành check đã xanh chưa.</p>
+    <p><strong>Bob:</strong> Nhưng test pass thì có gì sai?</p>
+    <p><strong>Alice:</strong> Agent làm việc viết test rẻ tới mức bạn sẽ thấy rất nhiều màu xanh. Nếu test được viết với cùng lỗi như tính năng, nó vẫn pass. Và một dấu xanh chỉ cho biết đúng một thuộc tính.</p>
+    <p><strong>Bob:</strong> Vậy nên làm gì?</p>
+    <p><strong>Alice:</strong> Khi một check chuyển xanh, hỏi nó đã chứng minh điều gì, rồi hỏi nó chưa chứng minh điều gì. Và định nghĩa thế nào là đã kiểm chứng ngay từ đầu, vì để sau thì kết quả nào bạn cũng hợp lý hóa được.</p>
+    <p><strong>Bob:</strong> Vạch đích cụ thể trông ra sao?</p>
+    <p><strong>Alice:</strong> Một thứ hữu hình: test pass, ảnh chụp màn hình, log hay trace. Khi agent báo xong, trước khi đọc bản tóm tắt, hãy xem lệnh nó đã chạy và kết quả trả về.</p>
+    <p><strong>Bob:</strong> Nghe nói Addy còn một mẹo hơi ngớ ngẩn.</p>
+    <p><strong>Alice:</strong> Cuối việc, ông hỏi: mình có bỏ sót gì không? Rất thường xuyên, sau khi làm xong một tính năng phức tạp với model hàng đầu, câu hỏi đó lòi ra thêm hai, ba việc nữa. Claude Code cũng có thể tự phê bình qua một subagent ở ngữ cảnh mới.</p>
+    <p><strong>Bob:</strong> Còn ngoài code?</p>
+    <p><strong>Alice:</strong> Nếu agent tổng hợp 50 cuộc gọi khách hàng cho bạn, hãy mở vài tài liệu gốc xem bản tóm tắt có đúng không. Kiểm tra con số mà đề xuất của bạn dựa vào. Agent làm việc kiểm chứng rẻ đi, cái khó là biết kiểm chứng tốt trông thế nào.</p>
+    <p><strong>Bob:</strong> Giờ đến chuyện review. Addy có một kịch bản nghe rất thật.</p>
+    <p><strong>Alice:</strong> Agent đưa bạn một PR 600 dòng. Bạn nhìn sơ cấu trúc, tên biến ổn, test pass, thế là duyệt. Nhưng ở giữa có một thay đổi thứ tự tinh vi ở ranh giới transaction, hay một giá trị mặc định bị đảo ở một trường hợp biên.</p>
+    <p><strong>Bob:</strong> Ối. Mình nghĩ ai làm lâu cũng từng dính vụ này.</p>
+    <p><strong>Alice:</strong> Addy nói viết code và review code là hai kỹ năng khác nhau, và có lúc review biến thành đóng dấu cho qua. Nên hãy đọc diff như thể không phải AI viết, rồi nhìn xa hơn diff, vào những quyết định agent đã đưa ra.</p>
+    <p><strong>Bob:</strong> Quyết định gì cơ?</p>
+    <p><strong>Alice:</strong> Qua một phiên dài, nó quyết thay bạn nhiều điều nhỏ: giá trị mặc định, cái gì ngoài phạm vi, yêu cầu nào bị diễn giải lại khi hai yêu cầu mâu thuẫn. Bản tóm tắt nói mọi thứ đều ổn sẽ không cho bạn thấy.</p>
+    <p><strong>Bob:</strong> Vậy làm sao moi ra?</p>
+    <p><strong>Alice:</strong> Bảo nó liệt kê các quyết định và giả định đã đưa ra, rồi tự kiểm tra mình: chọn ngẫu nhiên vài dòng và hỏi dòng này thì sao. Với tài liệu, đóng lại và thử viết ra lập luận chính theo trí nhớ.</p>
+    <p><strong>Bob:</strong> Có cả mẹo làm bài kiểm tra nữa phải không?</p>
+    <p><strong>Alice:</strong> Đúng, một thói quen Addy thích: nhờ Claude viết báo cáo về thay đổi, kèm bài quiz ở cuối, với luật là chỉ merge khi làm đúng hết. Hiểu thứ mình ship đủ để bảo vệ nó, vì sẽ có lúc ai đó hỏi.</p>
+    <p><strong>Bob:</strong> Còn khi agent tạo ra quá nhiều thì sao?</p>
+    <p><strong>Alice:</strong> Addy gọi đó là orchestration tax, thuế điều phối: khoảng cách giữa những gì agent tạo ra và những gì bạn dám ký tên. Nếu việc xong chất đống nhanh hơn bạn kịp xem, mở thêm phiên chẳng giúp gì: hãy siết check lại, hoặc chậm lại. Câu chốt của ông: khi bạn tạo ra nhiều hơn mức mình dám đứng sau, bạn không còn review nữa. Bạn đang hy vọng.</p>
+    <p><strong>Bob:</strong> Phần tiếp theo nói về prompt. Sao prompt lại là tư duy phản biện?</p>
+    <p><strong>Alice:</strong> Theo Addy, tư duy của con người giờ không nằm ở giữa nữa mà ở đầu và cuối: mô tả việc và ngữ cảnh, rồi review đầu ra. Nên ông coi prompt tốt là một kỹ năng tư duy phản biện.</p>
+    <p><strong>Bob:</strong> Ngày xưa đưa yêu cầu mơ hồ là có người hỏi lại ngay.</p>
+    <p><strong>Alice:</strong> Và bạn nhận ra mình chưa nghĩ thông. Agent thì thường không chặn bạn lại, nó tự điền chỗ trống và trả về thứ trông như đã xong, dù ý tưởng phía sau vẫn mờ. Addy gọi đó là intent debt, nợ ý định.</p>
+    <p><strong>Bob:</strong> Nợ này ai trả?</p>
+    <p><strong>Alice:</strong> Chỉ bạn thôi, không ai sửa thay được, ý định phải đến từ chính bạn. Prompt phản chiếu mức bạn hiểu vấn đề, nói không rõ thì có khi trong đầu cũng chưa rõ.</p>
+    <p><strong>Bob:</strong> Có cách làm cụ thể không?</p>
+    <p><strong>Alice:</strong> Tự viết bản brief bằng lời của mình trước khi nhờ: người đọc là ai, cái gì ngoài phạm vi, thế nào là xong. Nếu sửa đến vòng thứ hai mà chưa tới, đừng chỉnh vụn nữa, hãy viết lại prompt.</p>
+    <p><strong>Bob:</strong> Còn tiêu chuẩn đầu ra?</p>
+    <p><strong>Alice:</strong> Giờ thứ gì cũng ra đẹp và tự tin, nên độ bóng bẩy không còn là tín hiệu hữu ích. Nếu không thoải mái ghi tên mình lên kết quả, Addy sẽ không đưa nó ra. Cái nào không đạt thì ghi lý do vào một hook hay một test để nó không lặp lại.</p>
+    <p><strong>Bob:</strong> Giờ mình phản biện nhé. Một hai năm nữa model sẽ phát hiện được mọi thứ mình phát hiện. Giữ kỹ năng này làm gì?</p>
+    <p><strong>Alice:</strong> Chính Addy nêu câu hỏi đó, và thừa nhận bạn có thể đúng ở nhiều phần phát hiện lỗi. Nhưng dù AI giúp bao nhiêu, một con người vẫn phải nhận trách nhiệm cho thứ được ship.</p>
+    <p><strong>Bob:</strong> Nhưng đó là chuyện trách nhiệm, đâu phải kỹ năng?</p>
+    <p><strong>Alice:</strong> Ông nói tin agent đến mức nào cho từng việc tự nó là một phán đoán. Muốn phán đoán đó chuẩn thì phải review công việc, vì những gì model làm sai luôn thay đổi.</p>
+    <p><strong>Bob:</strong> Có gì ngoài ý kiến của ông không?</p>
+    <p><strong>Alice:</strong> Ông dẫn nghiên cứu của chính Anthropic về kỹ sư và nhà nghiên cứu của họ. Họ gọi cái bẫy này là nghịch lý giám sát: giám sát Claude đòi hỏi chính những kỹ năng code có thể bị teo đi vì lạm dụng AI.</p>
+    <p><strong>Bob:</strong> Vậy phần nào model giỏi hơn cũng không gánh được?</p>
+    <p><strong>Alice:</strong> Bạn đang xây gì, vì sao đáng làm, ảnh hưởng tới ai, sẵn sàng hy sinh gì. Agent giúp bạn nghĩ được, nhưng những câu đó vẫn là của bạn. Bạn giao được việc và phần lớn khâu kiểm tra, nhưng không giao được trách nhiệm.</p>
+    <p><strong>Bob:</strong> Vậy người nghe nên làm gì ngay?</p>
+    <p><strong>Alice:</strong> Addy nói không cần làm hết, chọn cái hợp với mình. Mỗi tuần một lần, viết chút code không dùng agent, hoặc làm một việc thật mà quên cách làm thì rất tệ.</p>
+    <p><strong>Bob:</strong> Còn hàng tháng?</p>
+    <p><strong>Alice:</strong> Mỗi tháng, ghi ra những việc bạn đã thôi làm và quyết định cái nào chấp nhận bỏ. Và tự hỏi câu từ một bài blog cũ của ông: nếu AI không tồn tại, bạn sẽ lạc lối đến mức nào?</p>
+    <p><strong>Bob:</strong> Nếu chỉ thử đúng một việc tuần này?</p>
+    <p><strong>Alice:</strong> Trước khi hỏi, ghi ra bạn nghĩ chuyện gì sẽ xảy ra. Sau khi agent xong, ghi ra một điều nó đã không kiểm tra. Rồi xem cách bạn đọc kết quả có thay đổi không.</p>
+    <p><strong>Bob:</strong> Bài viết còn bỏ ngỏ điều gì?</p>
+    <p><strong>Alice:</strong> Theo mình, bài không nói người mới vào nghề xây phán đoán thế nào nếu ít khi tự tay làm từ đầu. Đó là câu hỏi của mình, không phải của bài viết. Và khi model đổi liên tục, bao lâu nên xét lại mức tin tưởng?</p>
+    <p><strong>Bob:</strong> Và với các nhóm, ai giữ hiểu biết chung về hệ thống khi ai cũng dựa vào agent? Mình nghĩ câu đó vẫn còn để ngỏ. Tập hôm nay của Build Wiz AI đến đây là hết. Cảm ơn các bạn đã lắng nghe.</p>
+    <p><strong>Alice:</strong> Tập này dựa trên bài viết Critical thinking when agents do the work của Addy Osmani, đăng trên X. Cảm ơn Addy vì bài viết rất đáng suy ngẫm, hẹn gặp lại các bạn.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>

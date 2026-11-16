@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -97,6 +100,60 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/BHolmesDev/status/2110793920930107817" rel="noopener">The road to self-improving software</a> by Ben Holmes (@BHolmesDev)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI, the show where we take one source and pull out everything worth knowing. I'm Bob, and as always I'm the one asking the questions.</p>
+    <p><strong>Alice:</strong> And I'm Alice. Today we're reading an X article by Ben Holmes called The road to self-improving software.</p>
+    <p><strong>Bob:</strong> Self-improving software. Okay, what's the big idea?</p>
+    <p><strong>Alice:</strong> His thesis: automating development isn't about pumping out pull requests faster. It's one large loop that starts with the task and ends with the shipped product, with agents deciding what to build next.</p>
+    <p><strong>Bob:</strong> And where are most teams today?</p>
+    <p><strong>Alice:</strong> Building small loops: computer use verification, auto-fixing CI failures, adversarial code review. He likes calling this building trust with agents.</p>
+    <p><strong>Bob:</strong> So what's the first use case?</p>
+    <p><strong>Alice:</strong> Proactive bug fixes. Not agents working through a backlog, but agents figuring out what should be in the backlog in the first place.</p>
+    <p><strong>Bob:</strong> How would an agent even know there's a bug?</p>
+    <p><strong>Alice:</strong> The lowest hanging fruit is server errors. Tools like Sentry and Grafana already raise alerts, so you have an alert tag in an agent to investigate.</p>
+    <p><strong>Bob:</strong> And then it posts its findings to Slack?</p>
+    <p><strong>Alice:</strong> That's the simple version. The better version gives the agent the tools to fix the issue and send the pull request, with those small verification and review loops built in.</p>
+    <p><strong>Bob:</strong> What does the plumbing look like?</p>
+    <p><strong>Alice:</strong> He says all it takes is a webhook that can trigger an agent on an always-on computer. At Warp, an automations file binds that webhook trigger to an agent prompt and a model.</p>
+    <p><strong>Bob:</strong> So no human at all?</p>
+    <p><strong>Alice:</strong> Humans still review the code before fixes are merged. But for the bugs you're alerted to, filing the fix no longer needs a person. As he puts it, "The agent should fix its own bugs."</p>
+    <p><strong>Bob:</strong> And the second idea?</p>
+    <p><strong>Alice:</strong> Proactive agent self-improvement. He calls the craft of tuning your skills, architecture and automations factory engineering, his personal favorite name for it.</p>
+    <p><strong>Bob:</strong> Is this the recursive self-improvement people get nervous about?</p>
+    <p><strong>Alice:</strong> No, he says it's a simpler idea: skill self-improvement. Agents review their own past conversations to find failure points.</p>
+    <p><strong>Bob:</strong> Walk me through how that works.</p>
+    <p><strong>Alice:</strong> Collect your team's past agent sessions: conversation traces, tool calls and artifacts. Then an agent scores each one against rubrics you define.</p>
+    <p><strong>Bob:</strong> Scored by what?</p>
+    <p><strong>Alice:</strong> His team uses a language model as a judge, though he says static analysis could be part of it too.</p>
+    <p><strong>Bob:</strong> And once everything has a score?</p>
+    <p><strong>Alice:</strong> An agent reviews the low-scoring conversations, looks for common causes behind those failures, and proposes changes to the codebase, the skills, or the agents file.</p>
+    <p><strong>Bob:</strong> Is there an example?</p>
+    <p><strong>Alice:</strong> An efficiency scorer, asking whether the agent reached a solution in the fewest steps. In it, the agent spins its wheels working around bugs in its test harness, and that gets flagged as worth fixing in the skill.</p>
+    <p><strong>Bob:</strong> So it improves the process, not the product.</p>
+    <p><strong>Alice:</strong> Exactly. The gains are indirect: speed, quality and cost. Cheaper changes mean addressing issues you would've buried in the backlog.</p>
+    <p><strong>Bob:</strong> And the third one is the big one. Deciding what to build.</p>
+    <p><strong>Alice:</strong> Agents informing the roadmap itself. He calls it the most sensitive area, and agrees a human will always be in the loop for product work.</p>
+    <p><strong>Bob:</strong> So what can agents actually do there?</p>
+    <p><strong>Alice:</strong> Customer data you likely collect already: which features are used or ignored, how marketing pages perform in search, and what customers say in interviews and online.</p>
+    <p><strong>Bob:</strong> Does his team really do this?</p>
+    <p><strong>Alice:</strong> They do. They record customer discovery calls with a service called Grain, and the transcripts land in a folder agents can reach through MCP, the Model Context Protocol.</p>
+    <p><strong>Bob:</strong> And what comes out of it?</p>
+    <p><strong>Alice:</strong> On a regular cadence, an agent looks for where customers get stuck. Those insights first went to Slack for sales; now they become Notion tasks for engineering, which humans still review and accept.</p>
+    <p><strong>Bob:</strong> Let me push back, though. Isn't this partly a sales pitch?</p>
+    <p><strong>Alice:</strong> Fair. It closes with a pitch for Warp Factories. I think the ideas stand on their own, but keep that in mind.</p>
+    <p><strong>Bob:</strong> And letting agents pick features sounds risky to me.</p>
+    <p><strong>Alice:</strong> He doesn't claim otherwise. Humans still review the code and accept the roadmap ideas, and the fully closed loop is something he says we're not at yet.</p>
+    <p><strong>Bob:</strong> So what could a listener try right away?</p>
+    <p><strong>Alice:</strong> The easy win: wire your error alerts to a webhook that wakes an agent, and have it propose a fix as a pull request, not just a chat message.</p>
+    <p><strong>Bob:</strong> And for the self-improvement loop?</p>
+    <p><strong>Alice:</strong> Pick one rubric, like efficiency, score a batch of past agent sessions, and read the low scorers.</p>
+    <p><strong>Bob:</strong> What's still open, in your view?</p>
+    <p><strong>Alice:</strong> My question is how far human review can shrink. He wants teams to hit merge with less line-by-line scrutiny, but he doesn't say how you'd know that trust is earned.</p>
+    <p><strong>Bob:</strong> And whether agents can ever have product taste, or just surface the data for the people who do. That's it for this episode of Build Wiz AI.</p>
+    <p><strong>Alice:</strong> Today's episode was based on The road to self-improving software, an X article by Ben Holmes.</p>
+    <p><strong>Bob:</strong> Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>

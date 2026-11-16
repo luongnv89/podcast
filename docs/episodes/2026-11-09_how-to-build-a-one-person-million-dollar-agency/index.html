@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -98,6 +101,104 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/boringmarketer/status/2119888053577646318" rel="noopener">How to Build a One-Person Million Dollar Agency with AI Agents</a> by The Boring Marketer (@boringmarketer)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> Could one person run a million dollar marketing agency with a team of AI agents?</p>
+    <p><strong>Bob:</strong> One marketer sketched it on paper: 20 clients, three tiers, and agents that ask before they act.</p>
+    <p><strong>Alice:</strong> Okay, can I see that math? Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and today Bob is walking us through an X article.</p>
+    <p><strong>Bob:</strong> Hi everyone. It's How to Build a One-Person Million Dollar Agency with AI Agents, by The Boring Marketer. He calls it a hypothetical, and says every number in it's a sketch you'd replace with your own.</p>
+    <p><strong>Alice:</strong> And who's joining us?</p>
+    <p><strong>Bob:</strong> Three guests. Theo on the market, Lena on building agents, and Sam, our skeptic, on the legal trap.</p>
+    <p><strong>Alice:</strong> So why an agency at all? Why not just sell software?</p>
+    <p><strong>Bob:</strong> Because Main Street owners don't want more software. Plumbers and HVAC shops have been sold website builders, review apps and ad dashboards, and running them is a job they don't have time for. What they'll pay for is more booked jobs.</p>
+    <p><strong>Alice:</strong> And the catch with agencies?</p>
+    <p><strong>Bob:</strong> People: an agency sells work done by hand, so revenue grows only as fast as you hire. A million dollar agency usually means about six people, and his bet is that agents can now do most of that work and bring you only the decisions.</p>
+    <p><strong>Alice:</strong> So you're the boss of a team that never sleeps. Okay, show me the math.</p>
+    <p><strong>Bob:</strong> A million a year is 83,333 dollars a month. He splits it into three tiers: 5 clients at 1,500 dollars a month, 10 at 4,000, and 5 at 7,500. That's 20 clients and 85,000 dollars a month.</p>
+    <p><strong>Alice:</strong> Only twenty clients? That sounds almost too easy.</p>
+    <p><strong>Bob:</strong> Clients leave, though: agencies on retainers lose about a quarter of their clients a year, and agencies with one to ten people lose 44.3 percent. So to end two years with 20, plan on signing about 28.</p>
+    <p><strong>Alice:</strong> And how many businesses do you pitch to sign 28?</p>
+    <p><strong>Bob:</strong> Work backwards. By his guesses, 1 in 20 businesses that get the full two-week sequence takes a call, and 1 in 4 calls signs up. So one client takes about 80 businesses, and 28 clients take about 2,240, like a funnel where the top has to be enormous.</p>
+    <p><strong>Alice:</strong> That's a lot of businesses.</p>
+    <p><strong>Bob:</strong> About 22 a week for two years, each one found, checked on a phone and followed up. That's why both teams in this piece are agents.</p>
+    <p><strong>Alice:</strong> Is the market even big enough?</p>
+    <p><strong>Bob:</strong> He only goes after plumbing and HVAC companies with ten or more people. Dallas-Fort Worth has 613 of them, and the four big Texas metros have 1,446. At 1 in 80, that's about 18 clients, so he stays in one trade and adds metros.</p>
+    <p><strong>Alice:</strong> Why stick to one trade?</p>
+    <p><strong>Bob:</strong> Because what carries over is the trade: the same menu, the same tested pages, the same prompts and the same proof. A new metro is just a new list.</p>
+    <p><strong>Alice:</strong> So what do the clients actually buy?</p>
+    <p><strong>Bob:</strong> One short menu, and nothing made to order. The site tier is 1,500 dollars a month after a 2,500 dollar setup, and it turns more of the traffic they already get into calls. Think their number on the first screen, a page for every service they run ads on, and a text back to every missed call.</p>
+    <p><strong>Alice:</strong> And the bigger tiers?</p>
+    <p><strong>Bob:</strong> The 4,000 dollar tier adds their Google ads and their Google Business Profile. The 7,500 dollar tier adds Meta ads, local search pages and a monthly call with you. It's the only tier with a standing call.</p>
+    <p><strong>Alice:</strong> Why start with the website, though?</p>
+    <p><strong>Bob:</strong> It's where the traffic they already pay for lands. Think of it like the shop's front door: fix the door, and the same visitors walk in more often. Then the upgrade sells on numbers, after 60 to 90 days of weekly reports.</p>
+    <p><strong>Alice:</strong> And if a client wants out?</p>
+    <p><strong>Bob:</strong> Keep the domain in their name, and hand the site back the same week. He even lists holding a site hostage as one of the things that breaks the business.</p>
+    <p><strong>Alice:</strong> Ha, so no hostage situations. Who does the selling?</p>
+    <p><strong>Bob:</strong> Six agent seats: a researcher, an auditor, a writer, a caller, a marketer and a follow-up rep, with a manager agent above them. And you're the closer.</p>
+    <p><strong>Alice:</strong> Six seats for one person. That's a busy org chart.</p>
+    <p><strong>Bob:</strong> And every seat works from proof. It takes about 19 cold dials to get one conversation, and owners can spot an AI-written personalized first line from the subject. What still gets a reply is the business's own website, measured on a phone, next to the best in their town.</p>
+    <p><strong>Alice:</strong> So what makes good proof?</p>
+    <p><strong>Bob:</strong> Four parts. The gap on their phone, why it costs them in their customer's words, the best in their town, and the fix in one sentence. It's like a doctor showing you the X-ray, not just the bill.</p>
+    <p><strong>Alice:</strong> Give me an example.</p>
+    <p><strong>Bob:</strong> His strongest proof is a test. Fill in their contact form after hours, the way a customer would, and time the reply. Then the first line writes itself: I filled in your form on Tuesday evening, and nobody had replied by Thursday.</p>
+    <p><strong>Alice:</strong> And the email itself?</p>
+    <p><strong>Bob:</strong> One gap, one ask, under 80 words, plain text with no link. And say what your AI did. I had my AI check your site on a phone is true, and he says it's a better hook than pretending you were browsing.</p>
+    <p><strong>Alice:</strong> And the follow-ups?</p>
+    <p><strong>Bob:</strong> Most deals come on the second, third or fourth touch, and his two-week rhythm runs from the first email on day 1 to a last one on day 12. The moment they reply, everything else stops. That rule lives in code, where the agent can't skip it.</p>
+    <p><strong>Alice:</strong> Theo, is this one marketer's dream, or a bigger trend?</p>
+    <p><strong>Theo:</strong> Bigger. Jeremy Kahn at Fortune wrote about Sequoia investor Julien Bek and his essay, Services: The New Software. Bek thinks the next 1 trillion dollar company will sell an outcome, not a product.</p>
+    <p><strong>Alice:</strong> Why would investors care about that?</p>
+    <p><strong>Theo:</strong> Size. Bek notes that for every dollar enterprises spend on software, they spend six on services. He calls these firms autopilots: like in aviation, a human still monitors the systems and handles the hardest tasks, but a lot of the process is automated.</p>
+    <p><strong>Bob:</strong> My take: that's the plumber agency in one picture. The owner approves, and the agents fly the plane.</p>
+    <p><strong>Theo:</strong> One warning from the same piece, though. Bek says go-to-market costs remain an unsolved challenge: you can't scale service sales the way you scale software sales.</p>
+    <p><strong>Alice:</strong> Which is exactly why his sales team is made of agents. Okay, they sign. Who runs twenty accounts?</p>
+    <p><strong>Bob:</strong> Four more seats. A site seat, an ads seat, a Maps seat for the Google Business Profile, and a reporter that writes a five-line weekly note. The rule: agents do the work, and anything a customer or the owner would notice comes to you as an approval first.</p>
+    <p><strong>Alice:</strong> Won't I drown in approvals?</p>
+    <p><strong>Bob:</strong> That's what approvals dot md is for: every client folder has one, with three lists.</p>
+    <p><strong>Alice:</strong> Which are?</p>
+    <p><strong>Bob:</strong> Runs on its own, like the weekly report and review requests. Asks you first, like any change a customer can see or any budget change. And never, like spending above the cap the owner signed.</p>
+    <p><strong>Alice:</strong> So it's like a babysitter's note on the fridge.</p>
+    <p><strong>Bob:</strong> Pretty much. The week runs on it: 20 minutes every morning on the approval queue, reports that go out on their own, and Friday for sales calls. On paper, that's 15 to 20 hours a week.</p>
+    <p><strong>Alice:</strong> On paper?</p>
+    <p><strong>Bob:</strong> His words. In practice something always breaks, and the slack in the week is for it. And no agent fixes the owner's side: if the shop doesn't answer the calls you send, the numbers look bad whatever you build.</p>
+    <p><strong>Alice:</strong> Lena, you build agents. Does this checkpoint setup match what works?</p>
+    <p><strong>Lena:</strong> Mostly, yes. Anthropic's guide, Building effective AI agents, says agents can pause for human feedback at checkpoints or when they hit blockers. And they should get ground truth from the environment at each step.</p>
+    <p><strong>Alice:</strong> Ground truth, like checking the site on a real phone?</p>
+    <p><strong>Lena:</strong> Right. The guide also warns that autonomy means higher costs and the potential for compounding errors, so it recommends testing in sandboxed environments with the appropriate guardrails.</p>
+    <p><strong>Bob:</strong> Which matches his advice to turn on one more seat a week, not ten at once. It's like hiring: you don't onboard a whole team on day one.</p>
+    <p><strong>Lena:</strong> And start simple. The guide recommends finding the simplest solution possible, and only increasing complexity when needed.</p>
+    <p><strong>Alice:</strong> Do the agents get better, or do they repeat the same mistakes?</p>
+    <p><strong>Bob:</strong> They repeat them, unless something writes down what they learned. So every seat gets a skill, a short file of instructions, and he runs three loops on top.</p>
+    <p><strong>Alice:</strong> Three loops?</p>
+    <p><strong>Bob:</strong> Every no becomes a rule. Every test feeds the next client. And every reply teaches the writer.</p>
+    <p><strong>Alice:</strong> Like a new hire's notebook.</p>
+    <p><strong>Bob:</strong> Like a notebook the whole team shares. A new HVAC client starts with the tests that won for the last five clients, and he calls that the real payoff of staying in one trade. Just keep every skill short enough to read in a minute.</p>
+    <p><strong>Alice:</strong> Short skills. Noted. Okay, time for the skeptics. What breaks?</p>
+    <p><strong>Bob:</strong> He lists it himself. Proof that's wrong: one wrong fact and the owner stops reading. And approval fatigue: if the queue asks about everything, you'll start approving without reading.</p>
+    <p><strong>Alice:</strong> Anything else on his list?</p>
+    <p><strong>Bob:</strong> Believing the headline numbers. Most stats in this space come from vendors, and he says he hasn't seen anyone prove a one-person agency this size with a team of agents yet.</p>
+    <p><strong>Alice:</strong> Respect for saying that out loud.</p>
+    <p><strong>Sam:</strong> And the phone is where it gets expensive. Ali Swenson at AP News reported that the FCC outlawed robocalls that contain AI-generated voices, under the Telephone Consumer Protection Act.</p>
+    <p><strong>Alice:</strong> What does that mean for a cold call?</p>
+    <p><strong>Sam:</strong> Under that law, telemarketers generally can't use artificial or prerecorded voice messages to call cellphones, and the ruling classifies AI voices as artificial. Call recipients can potentially recover up to 1,500 dollars in damages for each unwanted call.</p>
+    <p><strong>Bob:</strong> Which is his Seat 4. An AI voice can't cold call a cell phone, and each call can cost you 500 to 1,500 dollars. So he uses AI everywhere except the dialing.</p>
+    <p><strong>Alice:</strong> And texts?</p>
+    <p><strong>Bob:</strong> Skip cold texts and ringless voicemail too. He says the law counts both as calls.</p>
+    <p><strong>Sam:</strong> One more from the AP piece: the FCC can fine companies that use AI voices in their calls, with a maximum of more than 23,000 dollars per call.</p>
+    <p><strong>Alice:</strong> Okay. No robots dialing. Got it.</p>
+    <p><strong>Bob:</strong> My take: the model is plausible, but the million is a sketch. His own advice is to trust your first 100 businesses over any headline number.</p>
+    <p><strong>Alice:</strong> Time for Builder's Corner. Bob, what should a builder try this week?</p>
+    <p><strong>Bob:</strong> Take one agent you already run and write its approvals file with three lists: what runs on its own, what asks you first, and what it never does. Then put spending caps where a bad prompt can't reach them.</p>
+    <p><strong>Alice:</strong> And for the agency folks listening?</p>
+    <p><strong>Bob:</strong> Run his form test on five local businesses. Fill in the contact form after hours and time the reply. It's cheap, it's honest, and it tells you fast whether the gap is real.</p>
+    <p><strong>Alice:</strong> Let's wrap it up. Your three takeaways?</p>
+    <p><strong>Bob:</strong> One: a million a year is 20 clients on a short menu, if the math holds. Two: agents do the work, but anything a customer would notice asks you first. Three: AI everywhere, except the dialing.</p>
+    <p><strong>Alice:</strong> And mine: the website is the way in. What's still open?</p>
+    <p><strong>Bob:</strong> Whether those conversion guesses hold. He says they're guesses you'll replace after your first 100 businesses. And whether owners will trust a text thread that's mostly software.</p>
+    <p><strong>Alice:</strong> I'd love to see someone actually try it.</p>
+    <p><strong>Bob:</strong> This episode is based on How to Build a One-Person Million Dollar Agency with AI Agents, by The Boring Marketer, on X. Thanks also to Jeremy Kahn at Fortune, to Anthropic for Building effective AI agents, and to Ali Swenson at AP News.</p>
+    <p><strong>Alice:</strong> Thanks for joining us, everyone. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
