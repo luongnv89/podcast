@@ -271,15 +271,15 @@ class RoleNameTest(PageCase):
     NARRATED = "WEBVTT\n\n00:00.000 --> 00:01.000\n<v Narrator>Il était une fois.\n\n00:01.000 --> 00:02.000\n<v King Midas>Gold!\n"
 
     def test_generic_role_in_the_page_language(self) -> None:
-        self.assertEqual(pages.role_name("Narrator", "fr"), "Narrateur")
-        self.assertEqual(pages.role_name("narrator", "vi"), "Người kể")
+        self.assertEqual(pages.role_name("Narrator", "fr"), "Narratrice")
+        self.assertEqual(pages.role_name("narrator", "vi"), "Người kể chuyện")
         self.assertEqual(pages.role_name("Narrator", "en"), "Narrator")
         self.assertEqual(pages.role_name("King Midas", "fr"), "King Midas")
         self.assertEqual(pages.role_name("Narratrice", "fr"), "Narratrice")
         story = {"format": "bedtime-story", "show": "Once Upon a Time Show"}
         cases = {
-            "fr": (entry("2026-11-10_role-fr", language="fr", **story), "Narrateur\u00a0:", "King Midas\u00a0:"),
-            "vi": (entry("2026-11-10_role-vi", language="vi", **story), "Người kể:", "King Midas:"),
+            "fr": (entry("2026-11-10_role-fr", language="fr", **story), "Narratrice\u00a0:", "King Midas\u00a0:"),
+            "vi": (entry("2026-11-10_role-vi", language="vi", **story), "Người kể chuyện:", "King Midas:"),
             "en": (entry("2026-11-10_role-en", **story), "Narrator:", "King Midas:"),
             # A Build Wiz AI Show page is in English whatever its language.
             "build-fr": (entry("2026-11-10_role-build-fr", language="fr"), "Narrator:", "King Midas:"),

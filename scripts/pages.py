@@ -145,8 +145,8 @@ UI = {
 # A transcript's generic role names (a voice tag such as ``<v Narrator>``), in the words of the
 # page's language; a real name (Bob, Le roi Midas) is shown as it is (podcast #51 review).
 ROLE_NAMES = {
-    "fr": {"narrator": "Narrateur", "character": "Personnage"},
-    "vi": {"narrator": "Người kể", "character": "Nhân vật"},
+    "fr": {"narrator": "Narratrice", "character": "Personnage"},
+    "vi": {"narrator": "Người kể chuyện", "character": "Nhân vật"},
 }
 # The Share button (podcast #43, #45). A click opens the panel of X and LinkedIn drafts that
 # docs/share.js builds from the episode's own entry (``window.PodcastShare``, the same file
