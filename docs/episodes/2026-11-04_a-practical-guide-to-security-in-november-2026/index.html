@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -95,8 +98,97 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-04_a-practical-guide-to-security-in-november-2026.mp3" download="Build Wiz AI Show - Practical Security Guide for Developers, November 2026 (Jack Cable) (2026-11-09).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Practical Security Guide for Developers, November 2026 (Jack Cable)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Jack Cable&#x27;s A Practical Guide to Security in November 2026 says years-old security best practices still work, after a chaotic few weeks of hacks and critical bugs. Bob and Alice unpack his checklist.
+
+In this episode:
+- His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.
+- Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today.
+
+Sources: A Practical Guide to Security in November 2026 by Jack Cable (@jackhcable)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/jackhcable/status/2117731409246978489" rel="noopener">A Practical Guide to Security in November 2026</a> by Jack Cable (@jackhcable)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. Today we take one source and pull out everything worth knowing. I'm Bob, and I'll be asking the questions. Fair warning, today's topic made me want to change all my passwords.</p>
+    <p><strong>Alice:</strong> And I'm Alice. Today's source is an X article by Jack Cable called A Practical Guide to Security in November 2026, posted on November 3.</p>
+    <p><strong>Bob:</strong> So what's the big idea?</p>
+    <p><strong>Alice:</strong> Here it is plainly. The last few weeks were rough for security, but in his words, "the security best practices we've known about for years still work." What's changed is the urgency.</p>
+    <p><strong>Bob:</strong> So no need to throw all our computers into the sea.</p>
+    <p><strong>Alice:</strong> Not quite, as he puts it. AI makes attacks faster and cheaper, but it doesn't stop you from closing off basic attack paths. So the article recaps what happened, then gives a checklist of what to do now and what to do within 30 days.</p>
+    <p><strong>Bob:</strong> Okay, start with the scary part. What actually happened?</p>
+    <p><strong>Alice:</strong> Over a two-week period, he lists the largest theft in recorded history, and a PHP bug so critical that governments took their websites down. Plus a compromised Claude Code extension for Cursor that tried to backdoor developer machines.</p>
+    <p><strong>Bob:</strong> The largest theft in recorded history. How large are we talking?</p>
+    <p><strong>Alice:</strong> North Korean state-sponsored hackers siphoned 6.34 billion dollars from Binance.</p>
+    <p><strong>Bob:</strong> Wow. How did they even get in?</p>
+    <p><strong>Alice:</strong> Many details aren't known yet. But Binance reported that several engineers' laptops were compromised through a fake job interview and a tampered installer. A deployment token on one of those laptops let the attackers reach Binance's wallet signing service.</p>
+    <p><strong>Bob:</strong> So one developer laptop led all the way to the money.</p>
+    <p><strong>Alice:</strong> Exactly, and that's his lesson. In his words, "a compromised developer machine should never be enough to compromise production environments, let alone steal billions of dollars."</p>
+    <p><strong>Bob:</strong> And the Cursor extension?</p>
+    <p><strong>Alice:</strong> On October 29, Cursor disclosed that an attacker published a malicious version of the Claude Code Cursor extension, one of the most popular Cursor extensions. It tried to install a persistent backdoor, so the attacker could log in to the developer's machine over SSH.</p>
+    <p><strong>Bob:</strong> But people had to install it themselves, right?</p>
+    <p><strong>Alice:</strong> Not necessarily. Extensions auto-update, so users could have received it without doing anything. Cursor reported that fewer than 5,000 users installed it.</p>
+    <p><strong>Bob:</strong> Do we know how the bad version got published?</p>
+    <p><strong>Alice:</strong> Not fully. The malicious version differed from what was published on Open VSX, the open extension registry Cursor uses. So the article suggests the attacker compromised the publishing process downstream of that registry.</p>
+    <p><strong>Bob:</strong> And on top of the hacks, there was a pile of vulnerabilities?</p>
+    <p><strong>Alice:</strong> Yes. The headline one is PHP2Shell, a memory safety flaw in the PHP runtime. PHP runs roughly 70 percent of websites, and in some setups a single unauthenticated request could trigger the bug before any application code ran.</p>
+    <p><strong>Bob:</strong> Before the app even runs. That's rough. What else?</p>
+    <p><strong>Alice:</strong> An unauthenticated remote code execution bug in GitLab, which put many companies' most critical source code at risk. And another round of critical bugs in VPNs, firewalls and other internet-facing appliances, which he calls a go-to target for nation-state adversaries.</p>
+    <p><strong>Bob:</strong> You mentioned a private key set to the number 4. Please tell me that's a joke.</p>
+    <p><strong>Alice:</strong> It's not. The certificate authority eMudhra set its private key to the number 4, which means anyone could have issued certificates in its name.</p>
+    <p><strong>Bob:</strong> Incredible. Anything else on the list?</p>
+    <p><strong>Alice:</strong> A guest-to-host escape in KVM, found through Vercel's Sandbox bounty program, let code inside a virtual machine get root on the host. And a bug in the Linux TCP stack lets a remote attacker with no login get root on systems running a Multipath TCP listener. Recent versions of Go turn that on by default.</p>
+    <p><strong>Bob:</strong> Okay, let me recap. One record theft, one poisoned extension, and a stack of serious bugs.</p>
+    <p><strong>Alice:</strong> That's it. And his answer isn't panic. It's two sets of actions: what you should do immediately, and what you should do within 30 days.</p>
+    <p><strong>Bob:</strong> Let's get practical. Where do we start?</p>
+    <p><strong>Alice:</strong> With the corporate environment, which he calls some of the lowest-lift changes. The first move is phishing-resistant multi-factor sign-in. Use passkeys or hardware security keys, not SMS codes, and only allow sign-in from managed devices.</p>
+    <p><strong>Bob:</strong> Why is that the first move?</p>
+    <p><strong>Alice:</strong> Because even if an employee gets tricked by a phishing attack, their account doesn't get compromised. He says to start with high-risk accounts like Google Workspace, GitHub, your cloud provider and your identity provider.</p>
+    <p><strong>Bob:</strong> What else can I do today?</p>
+    <p><strong>Alice:</strong> Audit your public-facing attack surface. He suggests pointing a coding agent at your public domains, and assuming that any public system is already being targeted by attackers with frontier models.</p>
+    <p><strong>Bob:</strong> And for everyone else in the company?</p>
+    <p><strong>Alice:</strong> A password manager, because password reuse is still one of the most common attack vectors. It also only fills passwords on the correct domain, so it helps against phishing too.</p>
+    <p><strong>Bob:</strong> I saw ad blockers on the list. That surprised me.</p>
+    <p><strong>Alice:</strong> It surprised me too. Binance's attack chain started when an engineer searched for an AI coding tool and downloaded a tampered installer. Malicious search ads and lookalike download pages are a common way malware reaches developer laptops, and an ad blocker like uBlock Origin removes a large share of them.</p>
+    <p><strong>Bob:</strong> And within the month?</p>
+    <p><strong>Alice:</strong> Put every corporate device under device management and endpoint detection, so you control what gets installed and see when a laptop misbehaves. Keep an allowlist of approved Chrome and versus Code extensions, with an auto-update delay. And audit the whole attack surface, so one compromised device never opens a way into production.</p>
+    <p><strong>Bob:</strong> Developers seem to be the soft spot in all of this.</p>
+    <p><strong>Alice:</strong> That's his point. Developer laptops run a huge amount of third-party code: package installs, editor extensions, MCP servers, and now local AI agents that can execute commands on their own. If any one of them is compromised, the attacker inherits everything that developer can reach.</p>
+    <p><strong>Bob:</strong> So what do developers do today?</p>
+    <p><strong>Alice:</strong> Scan your machines for secrets with a tool like TruffleHog: cloud credentials, API keys, SSH keys and dot env files in home directories, shell history and repos. And take an inventory of extensions, plugins and MCP servers, especially anything with access to the filesystem, a shell or credentials.</p>
+    <p><strong>Bob:</strong> And the longer-term fix?</p>
+    <p><strong>Alice:</strong> Move secrets into a secrets manager and rotate anything the scan found. Then move to cloud coding agents and remote development environments. In his words, "the most reliable way to limit the damage from a compromised extension, package, or agent is to keep it off the laptop entirely."</p>
+    <p><strong>Bob:</strong> What about the code itself?</p>
+    <p><strong>Alice:</strong> Today, run a frontier model on your codebases and critical open source dependencies. Start with anything internet-facing or that handles authentication, payments or customer data. And scan code, images and build artifacts for secrets, since a key in a published Docker image is as exposed as one in a public repo.</p>
+    <p><strong>Bob:</strong> And within the month?</p>
+    <p><strong>Alice:</strong> Plan to refactor your critical code. PHP2Shell was a memory safety bug, and he writes, "we're running out of excuses for continuing to write code in memory-unsafe languages." He also says to give your scanner your threat model, because a generic prompt produces a lot of noise.</p>
+    <p><strong>Bob:</strong> Then there's the supply chain. Packages that turn evil overnight.</p>
+    <p><strong>Alice:</strong> Right, he mentions worm-style attacks like Shai-Hulud over the last year. His fix is to set a minimum package age of at least seven days for npm, PyPI and any other package manager. Malicious releases are usually caught and pulled within that window.</p>
+    <p><strong>Bob:</strong> Oh, that's clever. Just wait a week before trusting a new release.</p>
+    <p><strong>Alice:</strong> Exactly. Also pin versions, commit your lockfiles, and make your build install from the lockfile. And within the month, remove dependencies you don't use and look closely at unmaintained ones.</p>
+    <p><strong>Bob:</strong> Last piece is monitoring?</p>
+    <p><strong>Alice:</strong> Yes. Make sure the logs you'd need actually exist: identity provider sign-ins, cloud audit logs, source control and build activity, and access to production data. And keep them where an attacker with production access can't delete them.</p>
+    <p><strong>Bob:</strong> And what should set off an alarm?</p>
+    <p><strong>Alice:</strong> High-signal events: new admin accounts, changes to multi-factor settings, access from new devices or locations, large data exports, and secrets read from unusual places.</p>
+    <p><strong>Bob:</strong> Let me push back. Isn't this the same old checklist? Attackers have AI now. Shouldn't the defense be new too?</p>
+    <p><strong>Alice:</strong> He argues the opposite. An attacker doesn't need sophisticated AI to exploit an unpatched server or use a stolen credential. But note that the guide does use AI for defense: coding agents to audit your surface, and frontier models to scan your code.</p>
+    <p><strong>Bob:</strong> Another one. Moving every developer to remote environments sounds slow and expensive for a small team.</p>
+    <p><strong>Alice:</strong> Fair, and I think that's a real tradeoff. The article doesn't talk about cost. It puts that step in the 30-day list, and the quick wins, like scanning for secrets and auditing extensions, come first.</p>
+    <p><strong>Bob:</strong> And the Binance story isn't fully known yet, right?</p>
+    <p><strong>Alice:</strong> Right, he says many details aren't known yet. So treat the attack chain as what Binance has reported so far.</p>
+    <p><strong>Bob:</strong> Okay, the short version. What should a listener do this week?</p>
+    <p><strong>Alice:</strong> Use passkeys or hardware keys on your most important accounts. Set a minimum package age of seven days. And scan your laptop for secrets, then remove extensions nobody needs.</p>
+    <p><strong>Bob:</strong> And what do I take back to work?</p>
+    <p><strong>Alice:</strong> His closing advice: ask your security team which of these steps they're taking, and aim to knock out a few today.</p>
+    <p><strong>Bob:</strong> What's still open after reading this?</p>
+    <p><strong>Alice:</strong> How the extension's publishing process was actually compromised, since the article only points downstream of Open VSX. And the full Binance story. I'd also like to know how small teams should weigh remote development against cost.</p>
+    <p><strong>Bob:</strong> And whether this pace keeps up.</p>
+    <p><strong>Alice:</strong> He expects it to. New bugs will keep coming, and he says frontier models mean they'll be found and exploited faster than before.</p>
+    <p><strong>Bob:</strong> And that's our guide for today.</p>
+    <p><strong>Alice:</strong> This episode is based on A Practical Guide to Security in November 2026 by Jack Cable, posted on X. Thanks to Jack for a clear and practical guide.</p>
+    <p><strong>Bob:</strong> Now go turn on those passkeys, everyone. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
@@ -143,6 +235,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

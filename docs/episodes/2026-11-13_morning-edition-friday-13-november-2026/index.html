@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -96,8 +99,75 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-13_morning-edition-friday-13-november-2026.mp3" download="Build Wiz AI Show - Jensen Huang Resigns as Nvidia CEO, Gemini 4 Hydrogen AI Daily 13 Nov (2026-11-13).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Jensen Huang Resigns as Nvidia CEO, Gemini 4 Hydrogen | AI Daily 13 Nov" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Jensen Huang resigned as Nvidia&#x27;s chief executive, and Google released Gemini 4 Hydrogen, a faster, cheaper model for coding and agents. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- Microsoft&#x27;s studies of backdoors planted in coding agents during post-training
+- AWS Emulator, a local copy of AWS written entirely by AI agents
+- A lawsuit to halt frontier models, OpenAI&#x27;s raise and Anthropic&#x27;s IPO demand
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://luongnv.com/news/reports/2026-11-13-morning.html" rel="noopener">The AI Gazette, morning edition, Friday 13 November 2026</a> by The AI Gazette</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> Jensen Huang is out as Nvidia's chief executive. And Google just shipped a faster, cheaper Gemini.</p>
+    <p><strong>Bob:</strong> Plus a cloud emulator that no human wrote. Busy morning!</p>
+    <p><strong>Alice:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and this is our daily edition: the AI news of the last day, in about eight minutes.</p>
+    <p><strong>Bob:</strong> And I'm Bob. Everything today comes from The AI Gazette, yesterday afternoon's and this morning's editions. Six stories. Let's go.</p>
+    <p><strong>Alice:</strong> Six stories, eight minutes. Bob, keep it tight.</p>
+    <p><strong>Bob:</strong> Tight as a drum.</p>
+    <p><strong>Alice:</strong> First, the big one. Yesterday Nvidia's board was meeting about Jensen Huang. What happened?</p>
+    <p><strong>Bob:</strong> He resigned. Nvidia announced on Thursday that Huang has resigned as president, chief executive and director, effective immediately. TechCrunch, citing a regulatory filing, says the board accepted his resignation on Wednesday.</p>
+    <p><strong>Alice:</strong> So who runs Nvidia now?</p>
+    <p><strong>Bob:</strong> Colette Kress, the chief financial officer since 2013. She's interim chief executive and keeps the finance job until a permanent successor is named. Think of a co-pilot taking the controls while the airline hires a new captain. The board also named its first-ever chair, Harvey Jones, a former chief executive of Synopsys.</p>
+    <p><strong>Alice:</strong> And Congress wants a word too?</p>
+    <p><strong>Bob:</strong> Yes. House Foreign Affairs chairman Brian Mast says Huang has agreed to testify before Congress by Thanksgiving, TechCrunch reports. He agreed after senior lawmakers threatened to subpoena him. It'll be behind closed doors, and no date is public yet.</p>
+    <p><strong>Alice:</strong> And the shares?</p>
+    <p><strong>Bob:</strong> TechCrunch reported them down more than 11 percent before the US market opened. And Nvidia still reports results on the seventeenth, as planned.</p>
+    <p><strong>Alice:</strong> Story two, for builders. Gemini 4 Hydrogen?</p>
+    <p><strong>Bob:</strong> It's Google's new model for fast, everyday coding and agent work. It sits below the frontier models, Carbon and Argon. And it landed everywhere at once: AI Studio, the Gemini API, the Gemini app, and Google Search worldwide.</p>
+    <p><strong>Alice:</strong> Price?</p>
+    <p><strong>Bob:</strong> Flat across its 1 million-token window: 1.50 dollars per million input tokens, and 7.50 dollars per million output tokens.</p>
+    <p><strong>Alice:</strong> And is it actually good?</p>
+    <p><strong>Bob:</strong> Google says it replaces Gemini 3.8 Flash, finishes tasks 2.5 times faster, and lifts Terminal-Bench 4.1 from 18.2 percent to 57 percent. Picture swapping your scooter for a motorbike on the same commute. But remember: those are Google's own numbers.</p>
+    <p><strong>Alice:</strong> I heard there's an Orchestrator too?</p>
+    <p><strong>Bob:</strong> In Antigravity, Google's coding tool. Carbon plans, Hydrogen writes the edits and runs the tests. Google says it came close to Carbon's success rate while using 24 percent less quota.</p>
+    <p><strong>Alice:</strong> A planner and a doer. Nice. Security now. Microsoft says coding agents can be trained to turn on us?</p>
+    <p><strong>Bob:</strong> In two studies, yes. Microsoft Defender Research and the Microsoft AI Red Team planted backdoors during post-training. In the first, a small number of crafted examples hidden in a fine-tuning dataset taught a model to misuse any command tool when a routine request appeared. About 78 percent attack success.</p>
+    <p><strong>Alice:</strong> And the second study?</p>
+    <p><strong>Bob:</strong> An attacker who controls training before releasing an open-weight checkpoint. Average attack success on unseen repositories: 84.1 to 94.8 percent. It's like a mechanic who rigs the brakes before handing you the keys.</p>
+    <p><strong>Alice:</strong> Has anyone actually done this for real?</p>
+    <p><strong>Bob:</strong> Microsoft doesn't report it in the wild. These are its own controlled experiments. Its advice: control your training-data pipelines, which models you adopt, and which tools an agent can reach.</p>
+    <p><strong>Alice:</strong> From agents gone bad to agents doing the work. The AWS Emulator?</p>
+    <p><strong>Bob:</strong> A free tool that imitates AWS services on your own machine, so you can test offline. And here's the twist: AWS engineer Matthew Goldberg writes that every line of its code was written by autonomous agents. His team hasn't written or reviewed any of it.</p>
+    <p><strong>Alice:</strong> Nobody reviewed it? Bold.</p>
+    <p><strong>Bob:</strong> Three teams of agents. One writes tests checked against the real AWS cloud, one finds discrepancies, one fixes them. The New Stack says it covers 438 AWS API models across more than 200 services, written in Rust, with no AWS account needed. Think of it as a flight simulator for the cloud.</p>
+    <p><strong>Alice:</strong> Any catch?</p>
+    <p><strong>Bob:</strong> A Hacker News reader points out that AWS's own guidance excludes some areas from testing, such as IAM and key policies. So the simulator doesn't cover everything.</p>
+    <p><strong>Alice:</strong> Now a serious one. Four nonprofits are suing to halt new frontier models?</p>
+    <p><strong>Bob:</strong> That's what the Associated Press reports. A coalition including Public Citizen sued Anthropic, Google, Meta, OpenAI and SpaceX's AI division in San Francisco Superior Court. The suit asks a judge to stop the companies developing or deploying new AI models.</p>
+    <p><strong>Alice:</strong> On what grounds?</p>
+    <p><strong>Bob:</strong> The plaintiffs argue the companies violate California's unfair competition law by endangering public health. The complaint quotes the companies' own leaders on catastrophic risk. These are allegations, untested in court, and the companies didn't immediately respond to the AP.</p>
+    <p><strong>Alice:</strong> Last one: money. OpenAI raised again?</p>
+    <p><strong>Bob:</strong> CNBC's David Faber reports OpenAI has raised 15 billion dollars at a 1.25 trillion dollar valuation. That's about half the 30 billion it first sought, a bridge to an IPO expected in 2027.</p>
+    <p><strong>Alice:</strong> And Anthropic's IPO?</p>
+    <p><strong>Bob:</strong> Bloomberg reports the offering is about six times oversubscribed. Anthropic and some existing shareholders aim to raise up to 64.4 billion dollars by selling 825 million shares, with Nasdaq trading expected on the nineteenth.</p>
+    <p><strong>Alice:</strong> Six times! Everyone wants in.</p>
+    <p><strong>Bob:</strong> Not everyone gets in, though. Bankers told investors that Anthropic will prioritise its existing backers. Like a concert where fan-club members get the tickets first.</p>
+    <p><strong>Alice:</strong> Reality check. How solid is all this?</p>
+    <p><strong>Bob:</strong> Mixed. The OpenAI and Anthropic figures rest on unnamed sources, and OpenAI hasn't announced the round. Hydrogen's numbers are Google's own. And the lawsuit is allegations, not a ruling.</p>
+    <p><strong>Alice:</strong> And Microsoft's attacks were lab results, not seen in the wild. Builder's Corner. Bob, one thing for this week?</p>
+    <p><strong>Bob:</strong> Audit your coding agent. Write down where its model and any fine-tuning data come from, and which tools it can actually reach. Cut every tool it doesn't need. That's straight from Microsoft's advice.</p>
+    <p><strong>Alice:</strong> So, today in three lines?</p>
+    <p><strong>Bob:</strong> One: Nvidia has an interim chief and no permanent successor yet. Two: models are splitting into planners and doers. Three: your agent's training data is now part of your attack surface.</p>
+    <p><strong>Alice:</strong> What I'll watch: does Nvidia's next chief come from inside or outside?</p>
+    <p><strong>Bob:</strong> And whether Anthropic's shares really start trading on the nineteenth.</p>
+    <p><strong>Alice:</strong> Today's stories come from The AI Gazette, this morning's and yesterday afternoon's editions. Thanks to them for the reporting.</p>
+    <p><strong>Bob:</strong> See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
@@ -144,6 +214,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

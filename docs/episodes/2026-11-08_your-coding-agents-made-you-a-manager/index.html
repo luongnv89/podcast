@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -96,8 +99,124 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-08_your-coding-agents-made-you-a-manager.mp3" download="Build Wiz AI Show - Managing AI Coding Agents Like an Engineering Manager (Addy Osmani) (2026-11-09).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Managing AI Coding Agents Like an Engineering Manager (Addy Osmani)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Spend your day with a coding agent and you are already a manager. Bob and Alice unpack Addy Osmani&#x27;s guide to managing coding agents like a good engineering manager would.
+
+In this episode:
+- Give agents a check they can run, and ask for proof
+- Brief what the repo can&#x27;t show; restart after two failed fixes
+- Delegate the task, never the judgment
+
+Sources: Addy Osmani; Mike Pearl; METR
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/addyosmani/status/2119332146485891501" rel="noopener">Your coding agents made you a manager</a> by Addy Osmani (@addyosmani)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> If you spend all day with a coding agent, are you secretly a manager?</p>
+    <p><strong>Bob:</strong> One engineer says yes, and that every gripe you have about bad managers is a bug report for working with agents.</p>
+    <p><strong>Alice:</strong> Wait, really? Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and Bob is walking us through an X article today.</p>
+    <p><strong>Bob:</strong> Hi everyone. It's Your coding agents made you a manager, by Addy Osmani. He compares good engineering managers' habits with what he's learned from using and creating Claude Code.</p>
+    <p><strong>Alice:</strong> And we have guests?</p>
+    <p><strong>Bob:</strong> Two. Maya and Sam each bring research that tests his ideas.</p>
+    <p><strong>Alice:</strong> So what's the big claim?</p>
+    <p><strong>Bob:</strong> That the skills for managing agents are pretty much the skills for managing a team. If you're with a coding agent all day, you're selecting tasks, writing instructions, delegating, following up, judging results and deciding what ships.</p>
+    <p><strong>Alice:</strong> That sounds like a pitch to become a manager. Plenty of engineers would run.</p>
+    <p><strong>Bob:</strong> He knows. He means management in a narrow sense: producing good outcomes by enabling others' work. And he says agents are no substitute for managers or colleagues.</p>
+    <p><strong>Alice:</strong> And the good news for people who never managed anyone?</p>
+    <p><strong>Bob:</strong> You've been on the receiving end of handoffs for years, so you might know what a good one looks like. The sections are ordered by impact, so the most high-leverage habit comes first.</p>
+    <p><strong>Alice:</strong> Then what's habit number one?</p>
+    <p><strong>Bob:</strong> Give the agent a way to check its work, like a test suite, a build or a screenshot, and have it show you the results as proof. The anti-pattern is taking looks done as confirmation.</p>
+    <p><strong>Alice:</strong> Why is looks done so dangerous?</p>
+    <p><strong>Bob:</strong> Because agents stop when the work looks done. Without validation, that's the only check they have, and you become the agent's test suite. Think of a new manager who reads every line their team writes: within a quarter, they're the bottleneck.</p>
+    <p><strong>Alice:</strong> So what counts as a check?</p>
+    <p><strong>Bob:</strong> Almost anything with a definitive pass or fail: tests, build exit codes, linters, diff scripts, screenshots. He says the command that runs them is the single most useful line in your CLAUDE dot md, the file the agent reads at the start of each session.</p>
+    <p><strong>Alice:</strong> How do I wire that into my day?</p>
+    <p><strong>Bob:</strong> Four ways. Just ask, like run the auth tests and continue until they pass. Set a goal a separate model checks after every turn, or enforce it with a Stop hook that blocks the turn until the typecheck passes.</p>
+    <p><strong>Alice:</strong> That's three. The fourth?</p>
+    <p><strong>Bob:</strong> Have it reviewed. The code review command sends the diff to a fresh subagent that never saw your conversation, the way authors don't approve their own PRs.</p>
+    <p><strong>Alice:</strong> Nice touch.</p>
+    <p><strong>Bob:</strong> And scope the review. Ask it to find problems and it will always find something. Ask for correctness issues and to ignore style, and it does that, the way good managers learn to ask for feedback.</p>
+    <p><strong>Alice:</strong> Habit two is context. What does a good brief look like?</p>
+    <p><strong>Bob:</strong> It covers what the agent can't learn from the repo: the objective and why it matters, constraints, what's out of scope, and what success looks like. The military calls it commander's intent, and Netflix calls it context, not control.</p>
+    <p><strong>Alice:</strong> So I should write everything down?</p>
+    <p><strong>Bob:</strong> No, and that's the subtle part. The first thing an agent does is read your code, and current models pick up folder structure, conventions and test set-up fast. If it can read it in the code, don't say it.</p>
+    <p><strong>Alice:</strong> Then where do my words go?</p>
+    <p><strong>Bob:</strong> On what isn't in the repo: a meeting decision, someone's deploy process, why the task matters, what done means this time. It's like briefing a smart contractor: skip the tour, explain the client.</p>
+    <p><strong>Alice:</strong> Can you make that concrete?</p>
+    <p><strong>Bob:</strong> His example turns make the dashboard faster into a brief. It has a load-time target, why it matters, no schema changes, what's out of scope, and a script for before and after numbers.</p>
+    <p><strong>Alice:</strong> And if I'm not ready to write a brief?</p>
+    <p><strong>Bob:</strong> Have the agent interview you until it could write the spec, save it to a file, then build from it in a new session. Also treat the agent like a new hire: give it access to your issue tracker or team chat.</p>
+    <p><strong>Alice:</strong> Habit three: corrections that compound. What's that?</p>
+    <p><strong>Bob:</strong> When you correct the same thing more than once, put it in the team's CLAUDE dot md or turn it into a shared skill. The anti-pattern is fixing it by hand every session, or keeping knowledge only on your own machine.</p>
+    <p><strong>Alice:</strong> What belongs in that file?</p>
+    <p><strong>Bob:</strong> It's like a team handbook, kept concise: exact commands to verify things, misleading areas of the code, decisions that don't exist in the repo, and anything you've corrected twice. Written notes outlast people changing teams and models getting replaced.</p>
+    <p><strong>Alice:</strong> What about rules in all caps? I've seen those everywhere.</p>
+    <p><strong>Bob:</strong> He says let the agent decide by default, and enforce only what can't bend, with hooks or deny rules. Prompts, CLAUDE dot md and skills are requests the model can weigh; hooks, deny rules and managed settings are always enforced.</p>
+    <p><strong>Alice:</strong> So when do I upgrade a line to a hook?</p>
+    <p><strong>Bob:</strong> If you keep stressing a CLAUDE dot md line and the agent still misses it, make it a hook. If a hook only expresses a preference, remove it. He quotes Andy Grove's idea of task-relevant maturity: supervision should match someone's track record on that specific task.</p>
+    <p><strong>Alice:</strong> And old habits from older models?</p>
+    <p><strong>Bob:</strong> The guide lists habits to stop: all-caps directions, think harder, since effort is a setting now, and don't be lazy. His line: with agents, over-process is the new micromanagement.</p>
+    <p><strong>Alice:</strong> Ha, I love that. Habit four is about planning?</p>
+    <p><strong>Bob:</strong> Agree on a plan before the agent codes, read it for hidden assumptions, and split the work into non-overlapping pieces. For a big task, a second session can review the plan like a staff engineer. That design review is the cheapest place to catch a wrong turn.</p>
+    <p><strong>Alice:</strong> And when I run agents in parallel?</p>
+    <p><strong>Bob:</strong> The batch command splits a big mechanical change into 5 to 30 tasks in separate worktrees, with a PR for each. You just check the slices for overlap. Otherwise five agents on overlapping tasks give you one merge conflict with five authors.</p>
+    <p><strong>Alice:</strong> Ouch.</p>
+    <p><strong>Bob:</strong> Then steer early. Watch the first minute and correct as soon as it goes off course. If two corrections have already failed, start a fresh session with a better prompt.</p>
+    <p><strong>Alice:</strong> Why not just try a third time?</p>
+    <p><strong>Bob:</strong> Because a capable person missing repeatedly usually means the problem is upstream: instructions, context or scope. And a third correction is mostly more text the model keeps re-reading, failed attempts included. Picture a meeting where the whole failed history is read aloud again every time you speak.</p>
+    <p><strong>Alice:</strong> Does cheap undo change that?</p>
+    <p><strong>Bob:</strong> Yes. The rewind command rolls code and conversation back to an earlier point, so trying an ambitious approach first is low-risk. Good managers do the same: when a mistake is cheap to undo, let people be ambitious, then run the retro.</p>
+    <p><strong>Alice:</strong> Habit five sounds like the serious one.</p>
+    <p><strong>Bob:</strong> Delegate the task, never the judgment. The agent does the work, and you decide product calls, security boundaries and what ships. Treat every diff like you're going to get paged for it.</p>
+    <p><strong>Alice:</strong> And the anti-pattern?</p>
+    <p><strong>Bob:</strong> Approving big diffs because the tests are green and the names look reasonable. In his words, that's not code review, it's code ratification.</p>
+    <p><strong>Alice:</strong> Has he fallen into that?</p>
+    <p><strong>Bob:</strong> He says so. He had an agent research gaps with competitors and write local PRs to close them, skimmed the code, and almost pushed changes that added complexity for little gain. A 600-line diff, reasonable names, green tests: approve.</p>
+    <p><strong>Alice:</strong> So how should the work be split?</p>
+    <p><strong>Bob:</strong> Agents take style, linting, review follow-ups, typical bugs and unit tests. Humans keep security boundaries, compliance and product decisions. And keep changes small, because the unit of review is the unit of comprehension.</p>
+    <p><strong>Alice:</strong> What about agents that run while I sleep?</p>
+    <p><strong>Bob:</strong> Before an unattended run, answer five questions, like a manager handing a senior engineer a project before a vacation. Does it know what done looks like, can it verify itself, and what are its boundaries?</p>
+    <p><strong>Alice:</strong> And the last two?</p>
+    <p><strong>Bob:</strong> What are its guardrails, like a turn or spend limit, and who approves its output? He also suggests a pilot on three files before the full batch: think of it as a probation period.</p>
+    <p><strong>Alice:</strong> How many agents can one person handle?</p>
+    <p><strong>Bob:</strong> Managers learn their span of control: past a certain number of reports, quality drops, like a teacher with too big a class. He calls the agent version the orchestration tax. Past the first few agents, each new one needs more attention than the last.</p>
+    <p><strong>Alice:</strong> And how many does he run?</p>
+    <p><strong>Bob:</strong> Most days four or five background agents and a few local sessions, and some days that's too many. His rule: you can't scale agents by monitoring more, only by needing to monitor less.</p>
+    <p><strong>Alice:</strong> So how do I measure if it's working?</p>
+    <p><strong>Bob:</strong> Measure the system, not the activity: PR cycle time, ramp-up time for new hires, how often you revert or redo work. The share of AI-written code isn't a useful goal. And with Grove's countermeasure rule, if you count merged PRs, count reverts too.</p>
+    <p><strong>Alice:</strong> And when building is nearly free?</p>
+    <p><strong>Bob:</strong> Then the most important word is still no. Any plausible idea can be a PR by lunch, but the team must review, secure and maintain it, so the question isn't can we, but should we.</p>
+    <p><strong>Alice:</strong> Where does the manager analogy break?</p>
+    <p><strong>Bob:</strong> He lists it himself. Running five agents doesn't prepare you to manage five people, rework is almost free, and agents have no experience, just a notebook on one machine.</p>
+    <p><strong>Alice:</strong> He also says agents are eager and confident. Maya, that's your area.</p>
+    <p><strong>Maya:</strong> Mike Pearl reported in Gizmodo on Wharton research by Steven Shaw and Gideon Nave: 1,372 people took a reasoning test with a chatbot that was sometimes wrong. People accepted its right answers 93 percent of the time, and its wrong ones 80 percent of the time.</p>
+    <p><strong>Alice:</strong> Eighty percent? Wow.</p>
+    <p><strong>Maya:</strong> And those who used AI rated their confidence 11.7 percent higher. Pearl adds a fair caution: read up on the replication crisis before treating any one experiment as gospel.</p>
+    <p><strong>Bob:</strong> That matches Osmani's advice: counter the overconfidence by asking the agent to argue against its own answer.</p>
+    <p><strong>Alice:</strong> Sam, you're skeptical that agents speed us up at all.</p>
+    <p><strong>Sam:</strong> A bit. In a randomized trial by METR, 16 experienced open-source developers worked on 246 real issues. With AI tools allowed, they took 19 percent longer.</p>
+    <p><strong>Alice:</strong> But surely they felt faster?</p>
+    <p><strong>Sam:</strong> That's the twist. They expected a 24 percent speedup, and even after the slowdown, they believed AI had sped them up by 20 percent. METR notes these were frontier models at the time, and it doesn't claim AI fails to speed up most developers.</p>
+    <p><strong>Bob:</strong> Fair. And it's a good reason for his measure-the-system rule: track cycle time and reverts, not how fast it feels.</p>
+    <p><strong>Alice:</strong> Time for Builder's Corner. Bob, what do I do tomorrow morning?</p>
+    <p><strong>Bob:</strong> Find the one command that proves your work, tests or a build, and put it at the top of your CLAUDE dot md. Then ask the agent to show that proof before you read the diff.</p>
+    <p><strong>Alice:</strong> And for the next task?</p>
+    <p><strong>Bob:</strong> Write a short brief with only what the repo can't tell it: why, constraints, out of scope, and how done gets checked. Anything you correct twice goes into CLAUDE dot md.</p>
+    <p><strong>Alice:</strong> And when it goes sideways?</p>
+    <p><strong>Bob:</strong> Two failed corrections? Restart with a better prompt. And review the diff as if you'll get paged for it.</p>
+    <p><strong>Alice:</strong> Let's wrap it up.</p>
+    <p><strong>Bob:</strong> Every task needs a check it can run, and you ask for the proof. Tell the agent what it can't see, and leave out what it can.</p>
+    <p><strong>Alice:</strong> Plan before coding, steer early, and restart after two failed corrections.</p>
+    <p><strong>Bob:</strong> Keep the judgment: you own what ships. And scale by needing to watch less, not by watching more.</p>
+    <p><strong>Alice:</strong> What's still unsettled?</p>
+    <p><strong>Bob:</strong> How to train junior developers when agents take over the starter work. He says managers now have to create those reps on purpose, and how is still open.</p>
+    <p><strong>Alice:</strong> And whether agents actually make experienced developers faster today.</p>
+    <p><strong>Bob:</strong> Right. METR says progress is difficult to predict, and in February 2026 it published new data on late-2025 AI tools. The answer keeps moving.</p>
+    <p><strong>Alice:</strong> That's our episode. The main source was Addy Osmani's X article, Your coding agents made you a manager.</p>
+    <p><strong>Bob:</strong> Our guests brought Mike Pearl's Gizmodo piece on cognitive surrender, and METR's study on AI and experienced open-source developers.</p>
+    <p><strong>Alice:</strong> That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
@@ -144,6 +263,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

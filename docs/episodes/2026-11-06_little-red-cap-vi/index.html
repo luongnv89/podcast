@@ -81,6 +81,9 @@
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
   .hero { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 12px; margin: 16px 0 0; background: #111; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -105,9 +108,30 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
     <a class="btn" href="https://luongnv.com/once-upon-a-time-vi-media/2026-11-06_little-red-cap-vi.mp3" download="Once Upon a Time Show - Cô bé quàng khăn đỏ truyện kể trước giờ ngủ cho bé, bản kể lại (theo anh em Grimm) (2026-11-15).mp3">Tải MP3</a>
     <a class="btn" href="transcript.vtt">Lời kể</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Chia sẻ</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Cô bé quàng khăn đỏ: truyện kể trước giờ ngủ cho bé, bản kể lại (theo anh em Grimm)" data-done="Đã sao chép" hidden><span aria-live="polite">Sao chép tiêu đề</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Cô bé quàng khăn đỏ của anh em nhà Grimm, kể lại bằng lời của chúng tôi trước giờ ngủ. Một con sói ranh mãnh, bà ngoại khôn ngoan và cô bé học cách đi đúng lối mòn.
+
+Trong tập này:
+- Chiếc khăn nhung đỏ và đường vào rừng
+- Bà ơi, sao tai bà to thế
+- Con sói trên mái nhà rơi tõm xuống máng nước
+
+Nguồn: Little Red-Cap, anh em nhà Grimm, bản dịch của Margaret Hunt (Wikisource)
+Nhạc: Kevin MacLeod (incompetech.com), CC BY 4.0
+Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories" data-done="Đã sao chép" hidden><span aria-live="polite">Sao chép mô tả</span></button>
   </p>
   <p class="langs">Truyện này còn có bản: <a href="../2026-11-06_little-red-cap/" hreflang="en" lang="en">English</a>, <a href="../2026-11-06_little-red-cap-fr/" hreflang="fr" lang="fr">Français</a></p>
   <p class="credit">Dựa theo <a href="https://en.wikisource.org/wiki/Grimm%27s_Household_Tales,_Volume_1/Little_Red-Cap" rel="noopener">Little Red-Cap</a> của Jacob and Wilhelm Grimm, translated by Margaret Raine Hunt</p>
+  <details class="transcript" id="transcript">
+    <summary>Lời kể</summary>
+    <p><strong>Người kể chuyện:</strong> Chào mừng các bạn đến với Once Upon a Time Show. Đến giờ nghe chuyện trước khi ngủ rồi. Chào bé yêu. Bé kéo chăn lên cho ấm, rồi nằm thật thoải mái nhé. Tối nay là một câu chuyện rất xưa của anh em nhà Grimm. Chắc bé đã biết cô bé trong truyện rồi. Đó là Cô bé quàng khăn đỏ. Bé sẵn sàng chưa? Mình bắt đầu nhé. Ngày xửa ngày xưa, có một cô bé ai gặp cũng thương. Nhưng thương cô nhất là bà ngoại. Một hôm, bà tặng cô một chiếc khăn nhung màu đỏ. Cô bé thích chiếc khăn đến nỗi ngày nào cũng quàng. Thế là mọi người gọi cô là Cô bé quàng khăn đỏ. Một buổi sáng, mẹ đưa cô một miếng bánh và một chai nước nho nhỏ. Con mang sang cho bà nhé, mẹ dặn. Bà đang ốm, ăn uống chút này bà sẽ khỏe hơn.</p>
+    <p>Con đi sớm kẻo trời nắng. Nhớ đi đúng đường, kẻo vấp ngã làm vỡ chai. Vào nhà thì nhớ chào bà. Con sẽ cẩn thận ạ, Cô bé quàng khăn đỏ hứa với mẹ. Nhà bà ở tận trong rừng, dưới ba cây sồi to. Cô bé vừa bước vào rừng thì một con sói nhẹ nhàng đi tới. Cô không biết sói ranh mãnh, nên chẳng sợ chút nào. Chào cháu, sói nói. Sáng sớm thế này cháu đi đâu đấy? Cháu sang nhà bà ạ. Cháu có bánh trong túi tạp dề. Nhà bà ở dưới ba cây sồi to. Sói mỉm cười một mình. Nó đã nghĩ ra một mẹo ranh mãnh. Sói đi cạnh cô bé một lúc. Cháu nhìn những bông hoa xinh chưa kìa, nó nói. Cháu có nghe chim hót không? Sao cháu đi nghiêm trang như đang đến lớp thế.</p>
+    <p>Cô bé ngước nhìn lên. Nắng nhảy múa giữa những tán cây, hoa đung đưa khắp nơi. Chắc bà sẽ thích một bó hoa, cô nghĩ. Trời vẫn còn sớm mà. Thế là cô rời khỏi lối mòn. Cứ hái được một bông, cô lại thấy một bông đẹp hơn ở xa hơn một chút. Và cô cứ đi, đi mãi, vào sâu trong rừng. Trong lúc đó, sói chạy thẳng đến nhà bà và gõ cửa. Ai đấy? Dạ, Cô bé quàng khăn đỏ đây ạ, sói đáp, giọng ngọt như mật. Cháu cứ nhấc then cửa lên, bà gọi. Bà mệt quá, không dậy được. Cánh cửa mở toang. Bà tuy ốm nhưng rất khôn. Vừa thấy một cái mõm xám đầy lông, bà nhẹ nhàng chui vào chiếc tủ to, im thin thít như một chú chuột nhắt.</p>
+    <p>Sói thấy giường trống không. Thế là nó mặc áo ngủ của bà, đội chiếc mũ ren của bà, rồi leo lên giường và kéo rèm lại. Chẳng mấy chốc, nó đã ngáy o o thật to. Mãi rồi Cô bé quàng khăn đỏ hái được nhiều hoa đến nỗi ôm không xuể, cô vội vàng đến nhà bà. Cửa đang mở. Cháu chào bà ạ, cô gọi. Không ai trả lời. Cô kéo rèm giường ra. Bà đang nằm đó, mũ kéo sụp xuống thấp. Trông bà lạ quá. Bà ơi, sao tai bà to thế? Tai bà to để nghe cháu rõ hơn đấy. Bà ơi, sao mắt bà to thế? Mắt bà to để nhìn cháu rõ hơn. Sao tay bà to thế? Tay bà to để ôm cháu đấy. Ôi bà ơi, sao miệng bà to thế? Sói nhảy phắt ra khỏi giường, gầm gừ. Nhưng Cô bé quàng khăn đỏ nhảy lùi lại, nhẹ như một chú chim sẻ, rồi kêu lên nhờ giúp đỡ.</p>
+    <p>Vừa lúc ấy, một bác thợ săn đi ngang qua. Bác nghe tiếng ngáy to quá, bèn nghĩ: bà cụ ngáy to thế này, mình phải vào xem bà có cần gì không. Bác bước vào, vừa đúng lúc. À, mày đây rồi, đồ sói già lém lỉnh, bác nói. Thế rồi bà ngoại từ trong tủ bước ra. Ba chọi một. Sói vội chạy biến ra cửa, trốn vào rừng sâu. Chẳng ai bị đau chút nào. Cả ba người đều vui mừng lắm. Bà ăn bánh, uống nước nho, và chẳng mấy chốc đã khỏe lại. Còn Cô bé quàng khăn đỏ tự hứa sẽ không bao giờ rời lối mòn nữa. Ít lâu sau, Cô bé quàng khăn đỏ lại xách bánh đến thăm bà. Một con sói khác tìm cách dụ cô rời lối mòn. Nhưng lần này cô cứ đi thẳng, rồi kể cho bà nghe về đôi mắt ranh mãnh của nó.</p>
+    <p>Mình đóng chặt cửa lại nhé, bà nói. Chẳng bao lâu sau, sói gõ cửa. Bà ơi, cháu mang bánh sang đây, bà mở cửa đi. Nhưng hai bà cháu im lặng. Thế là sói trèo lên mái nhà, chờ trời tối. Nhưng bà đã đoán ra mẹo của nó. Hôm qua bà có luộc xúc xích, bà nói. Cháu mang nước luộc đổ vào cái máng đá trước nhà nhé. Cô bé xách nước, xách mãi, cho đến khi máng đầy. Chẳng mấy chốc, mùi xúc xích bay lên tận mái nhà. Sói hít hà. Nó ghé nhìn xuống. Nó vươn cổ ra, dài thêm, dài thêm nữa, rồi ối, trượt chân, và tõm, rơi thẳng xuống máng nước. Sói ướt sũng leo ra, rồi chạy biến vào rừng. Còn Cô bé quàng khăn đỏ vui vẻ đi về nhà.</p>
+    <p>Giờ thì căn nhà dưới ba cây sồi đã lặng yên. Bà ngoại đã đắp chăn nằm ngủ, và những bông hoa nghỉ ngơi trong chiếc cốc cạnh giường. Cô bé quàng khăn đỏ đã nằm trong chiếc giường nhỏ của mình. Chiếc khăn đỏ treo trên móc. Đôi mắt cô bé díu lại. Bé nhớ đi đúng đường, và ở gần những người thương mình nhé. Nhắm mắt lại nào, bé yêu. Once Upon a Time Show chúc bé ngủ ngon và có những giấc mơ thật đẹp.</p>
+  </details>
   <footer>Truyện này được làm bằng DropCast và kể bằng giọng đọc nhân tạo. Mỗi truyện đều ghi nguồn văn bản gốc.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
@@ -154,6 +178,21 @@ Những câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, 
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

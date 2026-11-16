@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -95,8 +98,113 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent.mp3" download="Build Wiz AI Show - How an App Hit $40K a Month with Zero Ad Spend Organic Video (2026-11-03).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="How an App Hit $40K a Month with Zero Ad Spend: Organic Video" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="App co-founder Nicholas explains how organic video grew an app to about 40 thousand dollars a month. Bob and Alice unpack his playbook and its risks.
+
+In this episode:
+- The method: a decent app built fast, heavy daily posting with trial reels, AI-assisted editing, and tested calls to action.
+- It is a sponsored, self-reported playbook; some tactics, like buying followers or planted comments, carry real risks.
+
+Sources: How we scaled our app to $40k/month with $0 spent (Full Guide) by Nicholas (@nicholascalez)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/nicholascalez/status/2117647942379057247" rel="noopener">How we scaled our app to $40k/month with $0 spent (Full Guide)</a> by Nicholas (@nicholascalez)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI, the show where we take one source and pull out everything worth knowing. I'm Bob, and today I'm mostly here to ask whether this stuff actually works.</p>
+    <p><strong>Alice:</strong> And I'm Alice. Today's source is an X article by Nicholas, an app co-founder, called How we scaled our app to 40 thousand dollars a month with zero dollars spent.</p>
+    <p><strong>Bob:</strong> No marketing spend at all? That's a bold title. What's the core claim?</p>
+    <p><strong>Alice:</strong> That organic video, posted every day and tested relentlessly, can grow an app with no money spent on marketing. His team went from 5 thousand dollars a month to 40 thousand plus in a month.</p>
+    <p><strong>Bob:</strong> Wait, back up. Was this their first success?</p>
+    <p><strong>Alice:</strong> No, and that's the interesting part. They'd hit 20 thousand a month before, with no structure, and lost it all when the off season hit. They fell to 5 thousand a month.</p>
+    <p><strong>Bob:</strong> So the lesson is structure, not luck.</p>
+    <p><strong>Alice:</strong> That's his framing. One disclosure up front: the article is sponsored by a clipping platform called Content Rewards, which comes back near the end.</p>
+    <p><strong>Bob:</strong> Okay, where does he start?</p>
+    <p><strong>Alice:</strong> With three skills. Problem solving, which he calls the most important one, then confidence, meaning you back yourself and keep testing fixes, then consistency.</p>
+    <p><strong>Bob:</strong> Consistency sounds like a poster on a gym wall.</p>
+    <p><strong>Alice:</strong> He makes it concrete. They only saw results once they posted several times a day, every single day. As he puts it, "Half assing things gets you nowhere fast."</p>
+    <p><strong>Bob:</strong> Step one, build the app. Presumably a really good one?</p>
+    <p><strong>Alice:</strong> The opposite. Build a decent app, not a great one, in one week max. He says most people stress about the perfect app and never reach their first dollar.</p>
+    <p><strong>Bob:</strong> What does decent mean here?</p>
+    <p><strong>Alice:</strong> One hero feature that's great for videos, one or two retention features, like workout plans that update daily, and the basics, like settings.</p>
+    <p><strong>Bob:</strong> And the paywall? That seems like where the money is.</p>
+    <p><strong>Alice:</strong> Borrow it. Take inspiration from competitors, or ask a model like Claude how to build a high converting onboarding. RevenueCat and Superwall have paywall templates.</p>
+    <p><strong>Bob:</strong> Build fast, optimize later. Got it.</p>
+    <p><strong>Alice:</strong> Step two is choosing who makes the videos. You either partner with an influencer for equity, or make the videos yourself. His team made their own, since his co-founders were already making content.</p>
+    <p><strong>Bob:</strong> How does the influencer route work?</p>
+    <p><strong>Alice:</strong> It's a numbers game. You message as many creators as you can on Instagram and TikTok with a copy and paste template, then get them on a call. Don't negotiate over text; he says it doesn't work.</p>
+    <p><strong>Bob:</strong> And how much of the company do you hand over?</p>
+    <p><strong>Alice:</strong> He suggests 25 to 50 percent. His logic: before your first dollar, half of an app making 10,000 dollars a month beats all of an app making 1,000.</p>
+    <p><strong>Bob:</strong> That's a big slice. What makes a creator worth it?</p>
+    <p><strong>Alice:</strong> Views over followers. Under 100,000 followers is ideal, and averaging below 30,000 views probably isn't worth it. He also wants real engagement, a tier one audience, and chemistry on a call.</p>
+    <p><strong>Bob:</strong> Step three, post a lot. Do I spin up a dozen accounts?</p>
+    <p><strong>Alice:</strong> No. One Instagram and one TikTok per person. More accounts mean more problems, like shadow bans, and every fresh account has to be built up.</p>
+    <p><strong>Bob:</strong> Then how do you test lots of content from one account?</p>
+    <p><strong>Alice:</strong> Trial reels, which he calls the key part of the whole strategy. They go to a separate algorithm from your main reels and always go to new people, so followers are out of the equation.</p>
+    <p><strong>Bob:</strong> And if you don't have access to trial reels?</p>
+    <p><strong>Alice:</strong> He thinks you need a certain number of followers, but isn't sure how many. He mentions buying a few followers to unlock them, while saying he's not recommending it, it breaks Instagram's rules, and it's at your own risk.</p>
+    <p><strong>Bob:</strong> We'll come back to that one.</p>
+    <p><strong>Alice:</strong> Next is finding your format. Mix what works consistently for competitors, formats from other niches you can convert, and your own ideas. And he's firm: no low quality, UGC style content.</p>
+    <p><strong>Bob:</strong> UGC meaning user-generated content, the shaky phone camera stuff?</p>
+    <p><strong>Alice:</strong> Right. For a workout app, the influencer already works out, so he films his workouts and edits them, copying the angles competitors use.</p>
+    <p><strong>Bob:</strong> But nobody can film enough to post that much.</p>
+    <p><strong>Alice:</strong> So you turn one video into many. Change the hook, the sound, the length, which parts you use, and the order of the clips. Test enough versions and you learn which hooks, sounds and lengths work best.</p>
+    <p><strong>Bob:</strong> How often are we talking?</p>
+    <p><strong>Alice:</strong> Their starting structure was 3 trial reels and 1 TikTok every day. Every second day, the trial reel with the most views gets uploaded as a new video on the main account.</p>
+    <p><strong>Bob:</strong> Three a day already sounds like a lot.</p>
+    <p><strong>Alice:</strong> He compares it to the gym. Three a day is what he recommends, but test more, even up to 12 a day, because Instagram tells you when you've gone too far: views drop.</p>
+    <p><strong>Bob:</strong> Step four is editing. Where does AI come in?</p>
+    <p><strong>Alice:</strong> They give Claude competitor videos and other formats as files, with enough context, and it does the editing. He says they edited 6 videos in the time it used to take to edit half of one.</p>
+    <p><strong>Bob:</strong> Wait, really? Six for a half?</p>
+    <p><strong>Alice:</strong> That's his claim. He admits some videos won't be easy for Claude, so they edit those themselves, and he doesn't go deep on how. He's just pointing you in that direction.</p>
+    <p><strong>Bob:</strong> Any tool tips?</p>
+    <p><strong>Alice:</strong> Post through Instagram's Edits app. When you post similar versions, you don't want any to flop because Instagram thinks it's the same video. In their experience, you get flagged less.</p>
+    <p><strong>Bob:</strong> And the style of the videos themselves?</p>
+    <p><strong>Alice:</strong> Entertain first, provide value second. Entertaining gets views, and value improves your retention chart. He wants great sound effects, good editing, and energy from whoever's in the video.</p>
+    <p><strong>Bob:</strong> Same video on both platforms?</p>
+    <p><strong>Alice:</strong> Same video, edited differently. TikTok gets shorter, lower effort cuts, and Instagram gets longer, higher quality, slower paced ones. When they started, they got a lot more views on TikTok.</p>
+    <p><strong>Bob:</strong> Step five. Turning views into downloads.</p>
+    <p><strong>Alice:</strong> That's the call to action, or CTA. Four things matter: timing, length, design, and how natural it feels. Only at the end probably converts poorly, and at the start it cooked their views.</p>
+    <p><strong>Bob:</strong> So what did they actually do?</p>
+    <p><strong>Alice:</strong> For each exercise, they show a screenshot from inside their app, with their logo on it. They never say go use our app, and they end on a screenshot of their App Store page.</p>
+    <p><strong>Bob:</strong> Subtle. How do you tune it?</p>
+    <p><strong>Alice:</strong> Watch your retention charts. If views drop at 8 seconds, right where your CTA is, move it, change the design, or change how long it's on screen.</p>
+    <p><strong>Bob:</strong> Any proof that tuning it matters?</p>
+    <p><strong>Alice:</strong> He cites a founder doing 50,000 a month with UGC creators. They moved the CTA into the first 10 seconds, cut it to 5 seconds, fired half their UGC team, and tripled revenue to over 100,000.</p>
+    <p><strong>Bob:</strong> That's secondhand, though. One founder's story.</p>
+    <p><strong>Alice:</strong> Fair. It's an anecdote from a founder he spoke to, not data he shows.</p>
+    <p><strong>Bob:</strong> You said the most important CTA isn't even in the video?</p>
+    <p><strong>Alice:</strong> He says it's in the comment section. On every video, get the comment, what app do you use, in as fast as possible, from an alt account or a friend, rotating accounts and wording.</p>
+    <p><strong>Bob:</strong> Hold on. So the question is planted?</p>
+    <p><strong>Alice:</strong> Yes. The poster then replies with the app's name, and once a video has enough views, other people start answering too. He thinks it may matter even more than the CTA in the video.</p>
+    <p><strong>Bob:</strong> Step six, scale it. What does a good result look like?</p>
+    <p><strong>Alice:</strong> For organic, he calls around 5 to 7 percent conversion from download to paid a good result. Every app is different, so treat it as a ballpark.</p>
+    <p><strong>Bob:</strong> And how do you judge a single video?</p>
+    <p><strong>Alice:</strong> By money, not just views. 200,000 views and 400 to 500 dollars is great. The same views and only 200 to 300 dollars probably converted low, though a viral video still helps your page grow.</p>
+    <p><strong>Bob:</strong> And where are they now?</p>
+    <p><strong>Alice:</strong> It took about a month of posting and testing to find what really worked. Now he says they're doing around 2,000 dollars a day, on track for 45 to 50 thousand this month.</p>
+    <p><strong>Bob:</strong> And once the money comes in?</p>
+    <p><strong>Alice:</strong> Get onto a provider that pays you out early so you can reinvest fast, and RevenueCat offers it. Then don't take too much out. If you really need to, cap it at 50 percent of profits and reinvest the other 50 percent.</p>
+    <p><strong>Bob:</strong> Reinvest into what?</p>
+    <p><strong>Alice:</strong> Meta and TikTok ads, UGC, and slideshow clipping, which he'd add third. In his opinion, clipping builds brand awareness and works best combined with ads.</p>
+    <p><strong>Bob:</strong> And clipping is what the sponsor sells.</p>
+    <p><strong>Alice:</strong> Exactly. He names that platform as one option, next to doing it yourself or using an agency.</p>
+    <p><strong>Bob:</strong> Okay, let me push back properly. A lot of this rests on numbers we can't check.</p>
+    <p><strong>Alice:</strong> True. The revenue figures are self-reported, and the charts he shows as proof weren't readable in our copy. The piece is also sponsored, and it ends steering toward the sponsor's kind of service.</p>
+    <p><strong>Bob:</strong> And the tactics. Buying followers, planting comments from alt accounts. That feels like gaming the platform.</p>
+    <p><strong>Alice:</strong> He flags the follower buying himself as against Instagram's rules. The planted comments he doesn't flag at all. My view is that viewers and platforms could see that as misleading, so weigh it before copying it.</p>
+    <p><strong>Bob:</strong> And there's survivorship bias. We're hearing from the app that made it.</p>
+    <p><strong>Alice:</strong> Right, and he admits a lot is app specific. Timing, conversion and formats all vary, and he keeps telling you to test rather than trust his numbers.</p>
+    <p><strong>Bob:</strong> So what could someone building an app try this week?</p>
+    <p><strong>Alice:</strong> His start today list: build the decent app this week without polishing it, pick your method, then post your first 3 trial reels and 1 TikTok. Then do it again tomorrow.</p>
+    <p><strong>Bob:</strong> And beyond the first week?</p>
+    <p><strong>Alice:</strong> Turn each video into several versions, watch retention charts to place your call to action, and judge every video by the money it brings in, not only its views.</p>
+    <p><strong>Bob:</strong> What's left open, for you?</p>
+    <p><strong>Alice:</strong> How well this travels beyond workout apps, which film naturally. And what happens when the platforms change trial reels, or start flagging repeated posts.</p>
+    <p><strong>Bob:</strong> And whether it holds up when their off season comes back around. That's it for this episode of Build Wiz AI.</p>
+    <p><strong>Alice:</strong> Today's episode was based on How we scaled our app to 40 thousand dollars a month with zero dollars spent, an X article by Nicholas.</p>
+    <p><strong>Bob:</strong> Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
@@ -143,6 +251,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

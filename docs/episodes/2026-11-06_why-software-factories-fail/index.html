@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -96,8 +99,92 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-06_why-software-factories-fail.mp3" download="Build Wiz AI Show - Why AI Software Factories Fail Coding Agents vs Maintainability (2026-11-09).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Why AI Software Factories Fail: Coding Agents vs Maintainability" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Can a lights-off software factory, where no human reads or writes the code, really work? Bob and Alice unpack Dex Horthy&#x27;s Why Software Factories Fail: why coding agents erode codebase maintainability, and why harness engineering can&#x27;t fix it.
+
+In this episode:
+- Why review became the bottleneck once agents write the code
+- Why models are rewarded for passing tests, not good design
+- What DORA and METR data say about stability and speed
+
+Sources: Dex Horthy; Carlos E. Jimenez et al.; Nathen Harvey and Derek DeBellis; METR
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/dexhorthy/status/2080697380379427275" rel="noopener">Why Software Factories Fail</a> by dex (@dexhorthy)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> Picture a software factory where no human reads the code, and no human writes it. Sounds like the dream, right?</p>
+    <p><strong>Alice:</strong> That's the lights-off factory. And today's author says it plainly: the lights off factory doesn't work.</p>
+    <p><strong>Bob:</strong> Okay, so why not? Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and I'm the one asking the questions today.</p>
+    <p><strong>Alice:</strong> And I'm Alice. Today we're unpacking Why Software Factories Fail, part one of a series by Dex Horthy, who posts as dexhorthy on X. His thesis: no amount of harness engineering can fix what is, at heart, a model-training issue. Models aren't rewarded for keeping a codebase healthy.</p>
+    <p><strong>Bob:</strong> So it's not a skill issue. Bold.</p>
+    <p><strong>Alice:</strong> That's literally one of his headings. And we've got three guests bringing outside research, so it's not just one person's take.</p>
+    <p><strong>Bob:</strong> Let's start with the hype. What's the story everyone's telling?</p>
+    <p><strong>Alice:</strong> He sums it up in four lines: you're the bottleneck, the models are good enough, code is free, just ship more stuff. He also names StrongDM, which wrote about a factory where no human reads code and no human writes code.</p>
+    <p><strong>Bob:</strong> And he's not just dunking on people, right?</p>
+    <p><strong>Alice:</strong> No. He says these people are all really smart and he has a ton of respect for them. His target is the advice, not the people.</p>
+    <p><strong>Bob:</strong> And what's the promise he's pushing back on?</p>
+    <p><strong>Alice:</strong> The just token harder promise: with enough harness engineering you get 10 to 100 times faster, high quality, and nobody ever has to do code review.</p>
+    <p><strong>Bob:</strong> Honestly, that last part sounds great.</p>
+    <p><strong>Alice:</strong> He's sarcastic about it. Configure more linters, sprinkle magic words like adversarial review onto PR bots, and the software will happily build itself.</p>
+    <p><strong>Bob:</strong> Fair. So where does vibe coding fit in?</p>
+    <p><strong>Alice:</strong> He's clear it's a different world. He quotes Addy Osmani: a weekend side project and a team keeping a ten-year-old enterprise system alive share almost no constraints worth naming. His audience is people solving hard problems in complex codebases. And he says an agent-built codebase starts to struggle after maybe three to six months.</p>
+    <p><strong>Bob:</strong> Three to six months. That's fast. Okay, what even is a software factory?</p>
+    <p><strong>Alice:</strong> Fun fact first: he traces the term back to a NATO conference in 1968, the same one that gave us software engineering. Then he grounds it in 2022, right before AI. People decide what to build, it goes into a tracker, and someone builds it. A human reviews the pull request, it ships, monitoring watches it, and users complain, which feeds the tracker again.</p>
+    <p><strong>Bob:</strong> Lots of loops already.</p>
+    <p><strong>Alice:</strong> Exactly. Think of a restaurant kitchen: orders come in, cooks cook, the head chef tastes every plate before it leaves the pass.</p>
+    <p><strong>Bob:</strong> And the head chef is code review.</p>
+    <p><strong>Alice:</strong> Right. Now swap the cooks for agents. He lists Ramp, Stripe, WorkOS and Brex as companies that built agent factories shipping on the order of 75 percent of their code. Building drops from hours or days to minutes or hours. But review still takes hours or days. So review becomes the bottleneck.</p>
+    <p><strong>Bob:</strong> So the chef is drowning in plates.</p>
+    <p><strong>Alice:</strong> So you speed review up too: agentic code review for style, bugs and security, and agentic regression testing that pokes the app from the outside.</p>
+    <p><strong>Bob:</strong> Does that fix it?</p>
+    <p><strong>Alice:</strong> Review is faster, he says, but it's also probably still the bottleneck. So you add more loops, routing incidents and user feedback into the factory. And the lights-off move is to fire the chef. You stop having a human read every change, and invest in tests, sandboxes, automated review, monitoring and user feedback instead.</p>
+    <p><strong>Bob:</strong> Did he actually try it?</p>
+    <p><strong>Alice:</strong> He did. In July 2025 his team went full lights-off. Eventually they hit an issue gnarly enough that the agent couldn't solve it. Then you dig into the codebase you stopped reading three months ago. Meanwhile, the site was down and the users were angry.</p>
+    <p><strong>Bob:</strong> Ouch. How did it end?</p>
+    <p><strong>Alice:</strong> By about the third time, in November, they decided it'd be easier to rewrite from scratch. His cofounder spent two whole weeks doing it by hand.</p>
+    <p><strong>Bob:</strong> Two weeks of cleanup. That's the hidden bill. So why does this keep happening? Aren't the models way better now?</p>
+    <p><strong>Alice:</strong> Better at some things, he says: one-off problems or a new marketing site, way better. But improving codebase quality over time? Not much better, as far as he can tell. And he admits he can't prove it. There are no good benchmarks for a model's ability to maintain codebase quality.</p>
+    <p><strong>Bob:</strong> What does he mean by maintainability, exactly?</p>
+    <p><strong>Alice:</strong> When it becomes really hard to change one part of the codebase without breaking another. Martin Fowler calls it shotgun surgery.</p>
+    <p><strong>Bob:</strong> Okay, so how are these coding models trained?</p>
+    <p><strong>Alice:</strong> Here's the key point. In his sketch, you generate coding agent traces, score them with a verifier, then update the weights so good traces get more likely. Millions of times. It's like grading an essay only on whether it reaches the right word count. You'll get the word count every time.</p>
+    <p><strong>Bob:</strong> Ha. And the word count here is passing tests.</p>
+    <p><strong>Maya:</strong> That's exactly how SWE-bench works. In their arXiv paper, SWE-bench: Can Language Models Resolve Real-World GitHub Issues, Carlos Jimenez and colleagues built tasks from real GitHub issues and the pull requests that fixed them. Given a codebase and an issue, the model edits the code to resolve it. The authors note it often needs coordinated changes across several functions, classes and files.</p>
+    <p><strong>Bob:</strong> So it's a tough test. Where's the catch?</p>
+    <p><strong>Alice:</strong> Dex walks through a benchmark in that family, SWE-bench Multilingual. The reward is one or zero: did you fix the thing, and did you avoid breaking anything else? How the model got there doesn't matter. In his words, there's no penalty for eroding codebase maintainability.</p>
+    <p><strong>Bob:</strong> Which is how you get try-catch blocks around everything.</p>
+    <p><strong>Alice:</strong> That's literally his example. Tests give a clean pass or fail in seconds, so training can loop millions of times. But the cost of bad architecture shows up in weeks, months, maybe years. Like when a one-line change turns into the same edit in eleven places.</p>
+    <p><strong>Bob:</strong> Eleven places. I've lived that. He also has a theory about why Claude Code won, right?</p>
+    <p><strong>Alice:</strong> Yes. The accepted explanation, he says, is that Anthropic trained the model inside the harness, against the exact tools it would ship with. So the model got really good at calling those tools. Think of a pilot trained in the exact cockpit they'll fly, not a generic simulator.</p>
+    <p><strong>Bob:</strong> Wasn't it just distribution, though?</p>
+    <p><strong>Alice:</strong> You can hand-wave it as distribution, he says. But aider, cline and codebuff all predated Claude Code with the same tools, and tool use would just fail sometimes. He also cites an OpenAI talk: if you build a harness but can't train the model inside it, you'll always be at a disadvantage to a team that owns both.</p>
+    <p><strong>Bob:</strong> And nobody trains that pilot to keep the plane tidy.</p>
+    <p><strong>Alice:</strong> Exactly. Though some new benchmarks are trying. SWE-Marathon from Abundant AI uses huge tasks with a compound reward instead of a single pass or fail. DeepSWE from Datacurve uses big tasks on open-source repos that were never actually built, so they can't already be in the training set. That fixes contamination, not quality. And Frontier Code from Cognition penalizes tests that don't fail on the pre-patch code, and runs a judge model over the diff for code-quality rules.</p>
+    <p><strong>Bob:</strong> So a model grades the code. Problem solved?</p>
+    <p><strong>Alice:</strong> He's skeptical. If a model could reliably tell good code from bad, it might have written the good version to begin with. His line: more review agents raise the floor, catching the dumb stuff. But they don't move the ceiling.</p>
+    <p><strong>Bob:</strong> Floor versus ceiling. I like that. Let's push back. Is there data beyond his own experience?</p>
+    <p><strong>Alice:</strong> He cites a Faros AI report on review quality, bugs and incidents, but he calls it more of a correlation signal than a smoking gun. Our guests bring more.</p>
+    <p><strong>Theo:</strong> Here's some. Nathen Harvey and Derek DeBellis announced the DORA report on the Google Cloud Blog. More than 75 percent of respondents rely on AI for at least one daily professional responsibility. But as AI adoption increased, the report estimates delivery throughput fell by 1.5 percent and delivery stability by 7.2 percent.</p>
+    <p><strong>Bob:</strong> So more AI, a bit less stable. That's correlation too, though.</p>
+    <p><strong>Theo:</strong> It's an estimate from survey data. Their conclusion: improving the development process doesn't automatically improve software delivery, not without the basics.</p>
+    <p><strong>Sam:</strong> And speed itself is shakier than people think. METR ran a study, Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity. They recruited 16 experienced developers and 246 real issues. With AI tools allowed, developers took 19 percent longer to finish.</p>
+    <p><strong>Bob:</strong> Longer? Wait, really?</p>
+    <p><strong>Sam:</strong> And they expected AI to speed them up by 24 percent. Even afterwards, they still believed it had sped them up by 20 percent. To be fair, METR says it doesn't claim AI fails to speed up most developers. It's one setting: experienced people in big, mature repos.</p>
+    <p><strong>Alice:</strong> Which is exactly Dex's brownfield world. But note the limits: neither study measures maintainability directly, and Dex himself says he can't prove his claim.</p>
+    <p><strong>Bob:</strong> And to be fair to the factory folks, he never says it can't be done.</p>
+    <p><strong>Alice:</strong> Right. His point isn't that it can't be done; it's that the hype is outrunning the discipline.</p>
+    <p><strong>Bob:</strong> Time for Builder's Corner. Alice, one thing to try this week?</p>
+    <p><strong>Alice:</strong> Don't turn the lights off on the parts that matter. Teams front-load planning and architecture together, so there's less rework and review goes fast. So align on the design before an agent writes code, and keep a human reading what lands in your core modules. Agent reviewers can raise the floor; you're still the ceiling.</p>
+    <p><strong>Bob:</strong> Plan first, read what matters. Got it. Quick takeaways?</p>
+    <p><strong>Alice:</strong> One: building got fast, review didn't, so review is the bottleneck. Two: training rewards passing tests, not good design. Three: more agents and tokens raise the floor, not the ceiling. And four: outside data on stability and speed is mixed at best.</p>
+    <p><strong>Bob:</strong> My take? The chef keeps their job. What's still open?</p>
+    <p><strong>Alice:</strong> Can anyone build a fast, reliable check for maintainability? He says training needs one, and we don't have it yet.</p>
+    <p><strong>Bob:</strong> And will StrongDM share real results? He says he couldn't find definitive data on how their dark factory went.</p>
+    <p><strong>Alice:</strong> Plus, this is only part one. He promises the how-to in the next part.</p>
+    <p><strong>Bob:</strong> Thanks to Dex Horthy for Why Software Factories Fail, and to Carlos Jimenez and colleagues for the SWE-bench paper on arXiv.</p>
+    <p><strong>Alice:</strong> Thanks also to Nathen Harvey and Derek DeBellis for the DORA report announcement, and to METR for its developer productivity study. The voices are AI, and every claim was checked against those sources. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
@@ -144,6 +231,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

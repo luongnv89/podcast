@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -96,8 +99,86 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-10_state-of-the-tech-job-market-late-2026.mp3" download="Build Wiz AI Show - Tech Job Market Late 2026 PM Openings Up 75%, Engineers Plateau (2026-11-10).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Tech Job Market Late 2026: PM Openings Up 75%, Engineers Plateau" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="The job AI was supposed to kill is growing fastest. Bob and Alice unpack Lenny Rachitsky&#x27;s report on the tech job market in late 2026.
+
+In this episode:
+- PM openings up 75% from their low, while engineering openings stall.
+- Record lows for design, user research and remote roles, and the pull of the Bay Area.
+- LLM and Claude top the job posts, forward deployed engineers boom, and why openings aren&#x27;t hires.
+
+Sources: Lenny Rachitsky; Guillermo Gallacher; Joe Schmidt; Jeff Cox
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://www.lennysnewsletter.com/p/state-of-the-tech-job-market-late" rel="noopener">State of the tech job market: late 2026</a> by Lenny Rachitsky</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> Would you guess the job AI was supposed to kill is the one that's growing fastest?</p>
+    <p><strong>Alice:</strong> Product managers. Open PM roles are up 75 percent from their 2023 low, while engineering openings grew just 2.5 percent this past year.</p>
+    <p><strong>Bob:</strong> So who's actually getting hired? Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and Alice is walking us through today's report.</p>
+    <p><strong>Alice:</strong> Hi everyone. It's State of the tech job market: late 2026, by Lenny Rachitsky, from Lenny's Newsletter. He calls it the most surprising of the five job market reports he's done.</p>
+    <p><strong>Bob:</strong> And our guests?</p>
+    <p><strong>Alice:</strong> Maya brings Indeed's data on software postings, Lena brings a piece on forward deployed engineers, and Sam brings a warning about ghost jobs.</p>
+    <p><strong>Bob:</strong> Where does Lenny's data come from?</p>
+    <p><strong>Alice:</strong> Two datasets. TrueUp tracks job openings at over 9,000 tech companies around the world. Live Data Technologies tracks job changes for 124 million professionals, and its hiring numbers are for the U.S.</p>
+    <p><strong>Bob:</strong> So openings on one side, actual hires on the other.</p>
+    <p><strong>Alice:</strong> Exactly, and the gap between them turns out to be the story. It's like comparing the menu with what people actually order.</p>
+    <p><strong>Bob:</strong> Start with the surprise. Weren't PMs supposed to be replaced by AI?</p>
+    <p><strong>Alice:</strong> That was the talk, but the data shows the opposite. PM openings have grown faster than any other core tech role since the start of 2023: up 56 percent, against 43 percent for engineering.</p>
+    <p><strong>Bob:</strong> And actual hiring?</p>
+    <p><strong>Alice:</strong> Flat or falling for every core product role. But PM hiring held up best by far. It's the only one of the five core roles whose share of hiring grew, from 16 percent in 2021 to 21 percent today.</p>
+    <p><strong>Bob:</strong> More openings, fewer hires. What does that mean?</p>
+    <p><strong>Alice:</strong> Lenny reads it as growing demand, but landing great PMs is getting harder. Think of a restaurant with more tables than chefs it can find.</p>
+    <p><strong>Bob:</strong> Okay, the engineers. How bad is it?</p>
+    <p><strong>Alice:</strong> For the first time in this report, openings have stalled. They grew 29 percent through 2024, 15 percent through 2025, and just 2.5 percent this past year.</p>
+    <p><strong>Bob:</strong> And hiring?</p>
+    <p><strong>Alice:</strong> U.S. companies hired about 113,000 software engineers over the past 12 months. That's less than half the 2022 peak of 239,000, and it has dropped every year since.</p>
+    <p><strong>Bob:</strong> Ouch.</p>
+    <p><strong>Alice:</strong> There are bright spots, though. Open recruiter roles are up nearly 300 percent since mid-2023, which may be a leading indicator that engineering hiring picks up again. And engineering is still the biggest category, with over 65,000 open jobs.</p>
+    <p><strong>Bob:</strong> And there's a new job title everyone's talking about.</p>
+    <p><strong>Alice:</strong> The forward deployed engineer, or FDE. There used to be only a few dozen open FDE roles, mostly at Palantir. Now openings are up 4.6 times in a year, to around 1,500.</p>
+    <p><strong>Bob:</strong> Lena, what does an FDE actually do?</p>
+    <p><strong>Lena:</strong> Joe Schmidt at Andreessen Horowitz explains it in Trading Margin for Moat. Enterprises buying AI are like your grandma getting an iPhone: they want to use it, but they need you to set it up.</p>
+    <p><strong>Bob:</strong> So the FDE is the grandkid with the charger.</p>
+    <p><strong>Lena:</strong> Pretty much. Forward deployed teams operationalize the model into a real-world solution. Even OpenAI and Anthropic hire them: when he wrote it, 22 of the 311 open roles on OpenAI's careers page were forward deployed or solutions engineers.</p>
+    <p><strong>Alice:</strong> Lenny adds a caveat: part of that growth is likely old titles, like sales engineer, being rebranded as FDE. Meanwhile demand for mobile and front-end engineers has nearly halved in the past year.</p>
+    <p><strong>Bob:</strong> Why those two?</p>
+    <p><strong>Alice:</strong> His theory: specialized engineering roles are collapsing, and smaller teams own more, thanks to AI. Security engineering, meanwhile, is one of the fastest-growing specialties.</p>
+    <p><strong>Bob:</strong> And designers?</p>
+    <p><strong>Alice:</strong> A record low: there are only about 1,900 open product design roles worldwide, down 28 percent from a year ago. U.S. companies hired about 12,600 designers in the past year, against 27,600 in 2022.</p>
+    <p><strong>Bob:</strong> So the ratio keeps tilting toward PMs.</p>
+    <p><strong>Alice:</strong> It does. There are now 3.8 open PM roles for every design role, up from 2.6 earlier this year and 1.9 in early 2023.</p>
+    <p><strong>Bob:</strong> And user research?</p>
+    <p><strong>Alice:</strong> Hit even harder: about 1,800 user researchers were hired in the U.S. last year, down 66 percent from 5,300 in 2022. There are only 108 open UX research jobs at tech companies worldwide.</p>
+    <p><strong>Bob:</strong> 108 jobs. For the whole world?</p>
+    <p><strong>Alice:</strong> For the whole world. Lenny thinks faster product cycles leave less time for research, so teams ship early and learn after launch. It's like skipping the map because you can just reroute on the way.</p>
+    <p><strong>Bob:</strong> What skills are the job ads asking for now?</p>
+    <p><strong>Alice:</strong> Two years ago, the top skills in PM job descriptions were SQL, Jira, AWS and Python. Today the most mentioned one is LLM, Claude is third, and evals are in the top 10.</p>
+    <p><strong>Bob:</strong> And for engineers?</p>
+    <p><strong>Alice:</strong> Python is still the top skill, and still growing. LLM just passed Java in engineering job posts, while Java has declined over the past year. For designers, Claude became the second most mentioned skill this spring, ahead of CSS.</p>
+    <p><strong>Bob:</strong> Claude, beating CSS. Somewhere a stylesheet is crying.</p>
+    <p><strong>Alice:</strong> And Figma demand has actually grown over three years. It's like a kitchen that keeps its favourite knife but buys a food processor too.</p>
+    <p><strong>Bob:</strong> Where are the jobs, physically?</p>
+    <p><strong>Alice:</strong> More and more in the Bay Area, like a magnet pulling the jobs back. It holds 15 percent of all open tech roles, a record, and open jobs there are up 43 percent in a year. One in four PM and design roles is now in the Bay Area.</p>
+    <p><strong>Bob:</strong> And remote?</p>
+    <p><strong>Alice:</strong> Just 14 percent of open tech roles offer a remote option, a record low, down from 21 percent in late 2022. Engineering is also at 14 percent, down from 25, and design at 19 percent, down from 34. Put together, there are now more open PM, engineering and design roles in the Bay Area than remote roles in the whole world. Four years ago, remote led almost 2 to 1.</p>
+    <p><strong>Bob:</strong> So the laptop on the beach is out.</p>
+    <p><strong>Alice:</strong> For now. And Lenny saves one more takeaway for last: the tech job market is growing fast, but mostly outside of software. The free part of the post gives only that headline.</p>
+    <p><strong>Bob:</strong> Let me push back. Do other datasets agree that engineering has stalled?</p>
+    <p><strong>Maya:</strong> Not quite. Guillermo Gallacher at Indeed Hiring Lab found US software development postings grew almost 15 percent since Claude Code launched in February 2025, while overall postings fell 7 percent.</p>
+    <p><strong>Bob:</strong> That's the opposite of a stall.</p>
+    <p><strong>Maya:</strong> Different data, and a low starting point: those postings are still about 27.5 percent below their pre-pandemic level. And 71 percent of the increase came from senior roles, with 37 percent from jobs that mention AI in their title. He's careful to say correlation doesn't imply causation. But it fits a picture where demand grows for experienced people who can work with AI, not for every software role.</p>
+    <p><strong>Bob:</strong> Sam, you're frowning at the word openings.</p>
+    <p><strong>Sam:</strong> I am. Jeff Cox at CNBC wrote about ghost jobs. Since the start of 2024, US job openings have outnumbered hires by more than 2.2 million a month, according to BLS data. And he warns it isn't that simple: openings are a stock and hires are a flow, and some companies post jobs just to keep a pool of candidates. So I'd treat openings as a signal, not a promise.</p>
+    <p><strong>Alice:</strong> Fair, and that's why Lenny pairs openings with hiring data. In his numbers, hiring is the weaker of the two.</p>
+    <p><strong>Bob:</strong> Builder's Corner time. Alice, one thing to do this week?</p>
+    <p><strong>Alice:</strong> Read 5 job posts for the role you want next and list the AI skills they name. LLM and Claude top the PM lists, and evals are in the top 10, so build one small eval for a feature you own.</p>
+    <p><strong>Bob:</strong> Takeaways?</p>
+    <p><strong>Alice:</strong> One: PM demand is up, but every core role is hard to get hired into. Two: engineering openings stalled, while generalists, FDEs and security grow. Three: AI skills are now on every job description.</p>
+    <p><strong>Bob:</strong> And four: if you want remote, you're competing for 14 percent of roles. What's still open?</p>
+    <p><strong>Alice:</strong> Whether the recruiter boom means engineering hiring comes back, and whether user research survives as its own job. Lenny himself wonders if it's going extinct. This episode is based on Lenny Rachitsky's job market report in Lenny's Newsletter. Thanks also to Guillermo Gallacher at Indeed Hiring Lab, Joe Schmidt at Andreessen Horowitz, and Jeff Cox at CNBC.</p>
+    <p><strong>Bob:</strong> Thanks for listening, everyone. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
@@ -144,6 +225,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

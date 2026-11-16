@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -96,8 +99,82 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-10_become-a-cracked-marketer.mp3" download="Build Wiz AI Show - The Marketing Engineer Method AI Ads as Code with Coding Agents (2026-11-10).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="The Marketing Engineer Method: AI Ads as Code with Coding Agents" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Can a coding agent be your best marketer? Bob and Alice unpack Become a Cracked Marketer from The Startup Ideas Podcast: Cody Schneider&#x27;s Marketing Engineer Method for ads made as code.
+
+In this episode:
+- The environment: one data warehouse, write-only ad access and the right tools.
+- One URL into five static ads, and a 30-second avatar video for about $5.
+- A vision-model quality gate, cohorts of 30, and the FTC&#x27;s rule on AI-generated reviews.
+
+Sources: The Startup Ideas Podcast; Nelson F. Liu et al.; Anthropic; Lauren Forristal
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/startupideaspod/status/2120222028108337379" rel="noopener">Become a Cracked Marketer</a> by The Startup Ideas Podcast (SIP) 🧃 (@startupideaspod)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> What if a finished ad came back while you were still talking about it?</p>
+    <p><strong>Bob:</strong> That's what one marketer showed on a podcast. His agent researched the customer, wrote the ads, made the video and uploaded it.</p>
+    <p><strong>Alice:</strong> So is marketing just code now? Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and Bob is explaining today's X article.</p>
+    <p><strong>Bob:</strong> Hi everyone. It's Become a Cracked Marketer, from The Startup Ideas Podcast. It writes up an episode where Greg talks with Cody Schneider, who has done marketing for 10 years, about what they call the Marketing Engineer Method.</p>
+    <p><strong>Alice:</strong> And our guests?</p>
+    <p><strong>Bob:</strong> Maya brings research on long contexts, Lena brings a guide to agent loops, and Sam brings the rules on fake reviews.</p>
+    <p><strong>Alice:</strong> So what's the big claim?</p>
+    <p><strong>Bob:</strong> That the work a team used to do now runs on tokens. A static ad used to take a graphic designer and a copywriter, and a video ad took a UGC creator, a video editor and a motion graphics designer. Cody's line is: all marketing is now just code.</p>
+    <p><strong>Alice:</strong> That's a bold line for a marketer to say out loud. Where does it start?</p>
+    <p><strong>Bob:</strong> With the environment. Give your agent three things: data, access and tools. Cody compares it to a petri dish: the agent thrives when it has your business data, write access to your ad platforms, and tools for the work.</p>
+    <p><strong>Alice:</strong> Start with the data. Why not just let the agent call the APIs?</p>
+    <p><strong>Bob:</strong> Because raw API pulls flood the agent's context, and Cody says it's very likely to hallucinate on that much data. So a pipeline pulls every source into one warehouse, and the agent reads from there. It's like giving a new hire one clean spreadsheet instead of twenty logins.</p>
+    <p><strong>Alice:</strong> Maya, does research back that up?</p>
+    <p><strong>Maya:</strong> It fits. In Lost in the Middle, a paper on arXiv, Nelson Liu and colleagues found that model performance can degrade significantly when the relevant information moves around in a long input.</p>
+    <p><strong>Alice:</strong> Degrade how?</p>
+    <p><strong>Maya:</strong> Performance is often highest when the key information is at the beginning or the end. It drops when the model has to find it in the middle of a long context, even for explicitly long-context models.</p>
+    <p><strong>Alice:</strong> So, less dumping, more querying.</p>
+    <p><strong>Bob:</strong> Exactly. And access is write only: the agent uploads creative and turns ads off with an API token, but every read comes from the warehouse. Agents fire a thousand requests at once, and Cody says that's how people get their Facebook ads accounts banned.</p>
+    <p><strong>Alice:</strong> Greg had a line for that, right?</p>
+    <p><strong>Bob:</strong> Assume your agents are like drunk patrons at a restaurant.</p>
+    <p><strong>Alice:</strong> Okay, the environment's ready. Then what?</p>
+    <p><strong>Bob:</strong> One skill: he types slash static ads, drops in a brand URL and hits enter. The skill pulls the brand's style guide, finds its Facebook ads library and researches pain points on Reddit and other social media. Then it proposes five ad concepts, generates them, and uploads them to a new ad set.</p>
+    <p><strong>Alice:</strong> Were the ads any good?</p>
+    <p><strong>Bob:</strong> One headline it wrote was: Stop guessing which idea to build. Greg's review was one word: fire.</p>
+    <p><strong>Alice:</strong> High praise.</p>
+    <p><strong>Bob:</strong> And you can run several sessions at once. Cody fired off four brands while he talked. A short markdown file with your fonts and colors steers the look, like a style sheet for the agent.</p>
+    <p><strong>Alice:</strong> And the video ads?</p>
+    <p><strong>Bob:</strong> Cody sees people spend 50 dollars in tokens on one UGC ad. His workflow made one for a projected 4.75 dollars, plus a few cents for motion graphics.</p>
+    <p><strong>Alice:</strong> How?</p>
+    <p><strong>Bob:</strong> Lock the script, the voice and the face first. A voice clone reads the script into an MP3, and the video model gets three inputs: the MP3, the exact script and a reference image. Cody calls it a walled garden, like a film set where the actor can only say the lines on the card.</p>
+    <p><strong>Alice:</strong> And the cost trick?</p>
+    <p><strong>Bob:</strong> Render at 480p, then upscale: he puts a 1080p render at about 14 dollars. And check every word: the agent transcribes the video and matches it to the script. When an avatar said Calendla, the agent found the timestamps and swapped in Calendly.</p>
+    <p><strong>Alice:</strong> Calendla sounds like a cough syrup.</p>
+    <p><strong>Bob:</strong> It does! And the math: 10 ads for 50 dollars, 100 ads for 500, against 500 dollars or more for one ad the old way. He even sometimes sees the AI avatar beat a human reading the same script.</p>
+    <p><strong>Alice:</strong> Who checks all this before it ships?</p>
+    <p><strong>Bob:</strong> A vision model. Greg wants a creative director agent that scores the first pass and only shows him an 8 or 9 out of 10. Cody's team already runs this loop on static ads for clients in regulated markets like finance: make the creative, check it against the rules, send changes back, repeat.</p>
+    <p><strong>Alice:</strong> Lena, is that a known pattern?</p>
+    <p><strong>Lena:</strong> It is. Anthropic's guide, Building effective AI agents, calls it the evaluator-optimizer workflow: one call generates a response while another gives evaluation and feedback in a loop.</p>
+    <p><strong>Alice:</strong> When does it work best?</p>
+    <p><strong>Lena:</strong> The guide says it's particularly effective when there are clear evaluation criteria, and when iterative refinement provides measurable value. Brand rules for a bank are a pretty clear rubric.</p>
+    <p><strong>Bob:</strong> And it isn't perfect. Most creative passes in two to three rounds, but Cody puts the failure rate at about 1 in 50 video generations. It's like a proofreader who still lets the odd typo through.</p>
+    <p><strong>Alice:</strong> Then you just launch everything?</p>
+    <p><strong>Bob:</strong> Pretty much. Cody says Facebook's ad system will show the right ad to the right person, so your job is supply. Go from 10 ads a month to 300, ship in cohorts of 30, and store the prompt for every ad next to its results.</p>
+    <p><strong>Alice:</strong> Why so many?</p>
+    <p><strong>Bob:</strong> Because winners burn out fast. One ad booked two demos at 50 dollars against a 150 dollar average, then Facebook stopped spending on it. It's like a hit song that the radio plays to death in a week.</p>
+    <p><strong>Alice:</strong> And search?</p>
+    <p><strong>Bob:</strong> Same scale. His Google Ads agent audits 5,000 search terms in 20 seconds and checks each one for buyer intent before the money goes out.</p>
+    <p><strong>Alice:</strong> Okay, skeptic time. What could go wrong?</p>
+    <p><strong>Bob:</strong> First, the costs are projections: 4.75 dollars was projected, and Cody only expects a new provider to bring it near 3. And these come from one live demo, not a test across many brands.</p>
+    <p><strong>Alice:</strong> Fair. Sam?</p>
+    <p><strong>Sam:</strong> My worry is the avatars. Lauren Forristal at TechCrunch reported that the FTC finalized a rule against fake reviews. It covers AI-generated reviews, and reviews from anyone who doesn't have experience with the actual product.</p>
+    <p><strong>Alice:</strong> And an avatar praising a product is...</p>
+    <p><strong>Sam:</strong> I think it's close to a review from someone who never used it, if it's presented as a real customer. And the stakes are real: the maximum civil penalty is 51,744 dollars per violation.</p>
+    <p><strong>Bob:</strong> My take: the article never says whether the avatar ads are labeled as AI. If you try this, make it clear, and never script an avatar as a happy customer.</p>
+    <p><strong>Alice:</strong> Agreed. Script the product, not a fake fan. Builder's Corner time. Bob, what's one thing to try this week?</p>
+    <p><strong>Bob:</strong> Make one write-only ad token, and point your agent at a single data store for reads. Then run one cohort of 30 ads and keep every prompt next to its results, so the agent can tell you what's working.</p>
+    <p><strong>Alice:</strong> Takeaways?</p>
+    <p><strong>Bob:</strong> One: the environment matters more than the prompt, so give it data, access and tools. Two: put a checker in the loop before a human looks. Three: volume feeds the algorithm, so keep the supply coming.</p>
+    <p><strong>Alice:</strong> And Cody's version: your job is to be a conductor. What's still open?</p>
+    <p><strong>Bob:</strong> Whether these numbers hold beyond one demo, and how platforms and buyers react when most ads come from avatars. Cody thinks every company will be here in five years. We'll see. This episode is based on Become a Cracked Marketer, from The Startup Ideas Podcast, with Cody Schneider and Greg. Thanks also to Nelson Liu and colleagues for Lost in the Middle, to Anthropic for Building effective AI agents, and to Lauren Forristal at TechCrunch.</p>
+    <p><strong>Alice:</strong> Thanks for listening, everyone. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
@@ -144,6 +221,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

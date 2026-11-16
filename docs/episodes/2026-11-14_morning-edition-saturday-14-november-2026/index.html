@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -96,8 +99,70 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-14_morning-edition-saturday-14-november-2026.mp3" download="Build Wiz AI Show - ChatGPT Wallet Lets AI Agents Pay, llama.cpp 1.0 AI Daily 14 Nov (2026-11-14).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="ChatGPT Wallet Lets AI Agents Pay, llama.cpp 1.0 | AI Daily 14 Nov" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="OpenAI&#x27;s ChatGPT Wallet lets AI agents pay for purchases, while Google keeps Gemini read-only on Google Wallet. And the local-inference library from ggml-org reaches version one. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- LangChain&#x27;s $300 million round for model-neutral agent tools
+- The FAA ground stop and questions over its AI planning tool
+- The Fed&#x27;s survey naming AI the top financial risk, and Nvidia&#x27;s search for a new chief
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://luongnv.com/news/reports/2026-11-14-morning.html" rel="noopener">The AI Gazette, morning edition, Saturday 14 November 2026</a> by The AI Gazette</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> ChatGPT can now pay for your shopping. Gemini can only look at the receipts.</p>
+    <p><strong>Alice:</strong> And llama.cpp finally hits version one. Busy morning!</p>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and this is our daily edition: the AI news of the last day, in about eight minutes.</p>
+    <p><strong>Alice:</strong> And I'm Alice. Everything today comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories, shopping agents first.</p>
+    <p><strong>Bob:</strong> Wallets out, then. Story one. ChatGPT has a wallet now?</p>
+    <p><strong>Alice:</strong> It does. OpenAI introduced ChatGPT Wallet on Friday afternoon, so its dots agents can complete purchases for you. It was built with American Express, Mastercard and Visa, and it starts with ChatGPT Pro subscribers in the US.</p>
+    <p><strong>Bob:</strong> Wait. So the agent holds my card?</p>
+    <p><strong>Alice:</strong> No, and that's the clever bit. You add a card once. Before each purchase you review the items and the total, then approve with Face ID or a fingerprint. The payment network then issues a token instead of the real card number. Think of a hotel key card: it opens one door, and it's not your house key.</p>
+    <p><strong>Bob:</strong> Will shops actually let the agent in?</p>
+    <p><strong>Alice:</strong> That's the open part. OpenAI published a playbook telling businesses how to let its agents through their firewalls. But TechCrunch notes that some large retailers, Amazon among them, block AI agents from their sites.</p>
+    <p><strong>Bob:</strong> And Google went the other way?</p>
+    <p><strong>Alice:</strong> Same afternoon, opposite bet. All US Gemini app users can now connect Google Wallet, to chart their spending or find subscriptions whose price went up. But it's read-only: Gemini can't move, manage or invest money. One assistant gets your card. The other just reads your receipts.</p>
+    <p><strong>Bob:</strong> Reads my receipts. Honestly, that's scary enough. Story two, for everyone running models on their own machine. llama.cpp?</p>
+    <p><strong>Alice:</strong> Version one point oh! The ggml-org project released llama.cpp and ggml version one on Friday. And the big promise is semantic versioning. Break the public C API, and the major version goes up.</p>
+    <p><strong>Bob:</strong> Why should I care about a version number?</p>
+    <p><strong>Alice:</strong> Because it's a promise. A breaking change now shows up in the number, like a road sign before the bridge is out. And this release removes 35 deprecated functions, so check your code before you upgrade.</p>
+    <p><strong>Bob:</strong> Anything new inside?</p>
+    <p><strong>Alice:</strong> Plenty. FP8 key-value caches, support for new models, an OpenAI-compatible speech endpoint. And llama-server is hardened against SSRF, CORS and DNS-rebinding attacks.</p>
+    <p><strong>Bob:</strong> Version one, with security fixes. All grown up. Story three: money for agent tools. LangChain?</p>
+    <p><strong>Alice:</strong> LangChain raised 300 million dollars at a 3 billion dollar valuation, TechCrunch reports. Alphabet's CapitalG led the round. That's more than double the 1.25 billion dollar valuation of its round about a year ago.</p>
+    <p><strong>Bob:</strong> Why so much, when the big labs ship their own agent platforms?</p>
+    <p><strong>Alice:</strong> The pitch is no lock-in. Its LangSmith platform builds and manages agents without tying you to one model or cloud. Like a universal remote for your models. It claims 7,000 LangSmith customers, including Nvidia, Toyota and Salesforce. That's the company's own claim, as TechCrunch reports it.</p>
+    <p><strong>Bob:</strong> So neutral sells. Noted. Now a serious one. Every flight in the US held on the ground?</p>
+    <p><strong>Alice:</strong> Yes. On Friday afternoon the FAA ordered a nationwide ground stop for all US airports, after communication problems hit several air route traffic control centres. It was lifted that evening. GeekWire notes it was only the second nationwide ground stop since the September 11 attacks.</p>
+    <p><strong>Bob:</strong> And where does AI come in?</p>
+    <p><strong>Alice:</strong> The timing. On Tuesday the FAA said it was expanding SMART, an AI-supported planning tool from Air Space Intelligence, to all 22 en route centres. Asked about a link, Homeland Security Secretary Markwayne Mullin said they're looking at it and nothing can be ruled out. He described the problem as a telecommunications outage of unknown cause.</p>
+    <p><strong>Bob:</strong> Did the tool cause it?</p>
+    <p><strong>Alice:</strong> There's no evidence it did, and no cause has been established. Air Space Intelligence says the ground stop wasn't caused by SMART. And SMART doesn't control aircraft. It works like a sat-nav suggesting a route: FAA specialists review its recommendations, and local facilities decide whether to use them.</p>
+    <p><strong>Bob:</strong> So an investigation, not a verdict. Staying serious. The Federal Reserve is worried about AI?</p>
+    <p><strong>Alice:</strong> Its market contacts are. The Fed's twice-yearly Financial Stability Report came out on Friday, and AI was the top-cited risk in its survey. 87 percent of contacts named it, up from 50 percent in the spring.</p>
+    <p><strong>Bob:</strong> 87 percent! Worried about what, exactly?</p>
+    <p><strong>Alice:</strong> Three things. High stock valuations that could fall if earnings disappoint. Cyberattacks, including ones caused by frontier AI models themselves. And complex AI-related financing. Debt to finance advanced computing rose to more than 680 billion dollars by October, about five times the level of 2023. Picture a building boom paid for on a credit card.</p>
+    <p><strong>Bob:</strong> Is that the Fed's own view?</p>
+    <p><strong>Alice:</strong> No, and the report says so itself. It's the views of 23 contacts, not the Fed's own assessment. And it's not a forecast.</p>
+    <p><strong>Bob:</strong> Last story, an update on Nvidia. Who comes after Jensen Huang?</p>
+    <p><strong>Alice:</strong> Here's the new development. The Financial Times reports that Nvidia's board approached Arm chief executive Rene Haas about the job, citing people familiar with the matter. Reuters couldn't verify it, and says he's one of several candidates.</p>
+    <p><strong>Bob:</strong> What does Nvidia say?</p>
+    <p><strong>Alice:</strong> The board says it's still selecting a search firm and hasn't formally engaged any candidates. It calls talk of candidates premature. Meanwhile chief financial officer Colette Kress remains interim chief executive. It's like picking a new captain in the middle of the match.</p>
+    <p><strong>Bob:</strong> Reality check. How much of today is someone's own claim?</p>
+    <p><strong>Alice:</strong> A fair amount. ChatGPT Wallet being the first of its kind is OpenAI's own statement. LangChain's customer count is its own. The Haas approach rests on anonymous sources. And with the FAA, nothing shows SMART played any part.</p>
+    <p><strong>Bob:</strong> And llama.cpp's speed gains?</p>
+    <p><strong>Alice:</strong> Those are the project's own description, not measured independently.</p>
+    <p><strong>Bob:</strong> Builder's Corner. One thing to try this week?</p>
+    <p><strong>Alice:</strong> Test your fallback. Claude went down twice in one day on Friday: first a login failure, then errors across Claude, its API and Claude Code. So in a test run, cut your app off from its model provider and watch. Does it retry, switch, or tell users clearly what's going on?</p>
+    <p><strong>Bob:</strong> Pull the plug on purpose, before it pulls itself. So, today in three lines?</p>
+    <p><strong>Alice:</strong> One: AI assistants are reaching for the wallet, OpenAI to pay, Google only to read. Two: local AI tools are growing up, with llama.cpp promising stable versions. Three: scrutiny is rising, from the Fed's risk survey to questions over the FAA's AI tool.</p>
+    <p><strong>Bob:</strong> What I'll watch: now that agents can pay, will big retailers stop blocking them?</p>
+    <p><strong>Alice:</strong> And who Nvidia picks to lead it, and how soon. Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's. Thanks to them for the reporting.</p>
+    <p><strong>Bob:</strong> See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
@@ -144,6 +209,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

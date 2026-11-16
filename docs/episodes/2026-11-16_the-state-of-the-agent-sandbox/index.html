@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -97,8 +100,104 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-16_the-state-of-the-agent-sandbox.mp3" download="Build Wiz AI Show - AI Agent Sandboxes Explained MicroVMs, gVisor and Containers (2026-11-16).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="AI Agent Sandboxes Explained: MicroVMs, gVisor and Containers" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Does every AI agent need its own computer? Bob and Alice unpack Josh Rosen&#x27;s post on the state of the agent sandbox.
+
+In this episode:
+- MicroVMs, gVisor and containers: how isolation differs.
+- A restricted interpreter instead of a whole machine.
+- Snapshots, suspend-resume and shared workspaces.
+- Credentials, network allowlists and the lethal trifecta.
+
+Sources: Josh Rosen; Nicolas Lacasse; Anthropic; Simon Willison
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://x.com/JoshARosen/status/2121959963962609897" rel="noopener">The State of the Agent Sandbox</a> by Josh Rosen (@JoshARosen)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> Does every AI agent really need its own computer?</p>
+    <p><strong>Bob:</strong> One company's answer: run agent code in a lightweight interpreter, instead of another isolated computer.</p>
+    <p><strong>Alice:</strong> So what does a sandbox really need to be? Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice.</p>
+    <p><strong>Bob:</strong> And I'm Bob! Today we unpack an X post by Josh Rosen called The State of the Agent Sandbox.</p>
+    <p><strong>Alice:</strong> Sandboxes! Like at the playground? Little plastic shovels?</p>
+    <p><strong>Bob:</strong> Close, actually! A sandbox lets an agent run code, install things and edit files, without unrestricted access to the machine underneath. And in the past year, they grew from simple places to run untrusted code into infrastructure for running entire agents.</p>
+    <p><strong>Alice:</strong> And where's the race between providers?</p>
+    <p><strong>Bob:</strong> Startup times, isolation, persistent filesystems, snapshots, and the ability to suspend and resume.</p>
+    <p><strong>Alice:</strong> Let's start at the bottom. What's a sandbox's first job?</p>
+    <p><strong>Bob:</strong> Isolation! Keep the agent's code away from the machine hosting it. Providers like E2B, Daytona, Modal, Vercel Sandbox and Cloudflare Sandboxes all offer similar tools: start an environment, run commands, swap files, and manage its lifecycle.</p>
+    <p><strong>Alice:</strong> But the walls aren't all built the same, are they?</p>
+    <p><strong>Bob:</strong> Not at all. Firecracker gives lightweight virtual machines, each with its own guest kernel, while gVisor is a user-space kernel that intercepts system calls. Plain containers share the host's kernel, which exposes a larger attack surface than a VM.</p>
+    <p><strong>Alice:</strong> Kernel, system calls... you lost me. Can you picture it for a total beginner?</p>
+    <p><strong>Bob:</strong> Picture an apartment building: containers are flats with separate doors, but they share the same plumbing, so one bad neighbour can mess with the pipes. A virtual machine is a detached house with its own plumbing. And gVisor is like a doorman who takes every request for you, so you never touch the building's pipes yourself.</p>
+    <p><strong>Alice:</strong> A doorman. Fancy.</p>
+    <p><strong>Bob:</strong> Very fancy. In computer terms, the plumbing is the kernel: programs make system calls to it, and it runs in a privileged mode that talks to the hardware.</p>
+    <p><strong>Alice:</strong> Maya, our researcher, went back to how one of these walls was built.</p>
+    <p><strong>Maya:</strong> Thanks, Alice. Nicolas Lacasse, a software engineer, introduced gVisor on the Google Cloud Blog. His headline: traditional Linux containers aren't sandboxes, because even with limits, the host kernel exposes a large surface that malicious apps can attack directly.</p>
+    <p><strong>Alice:</strong> So why not give every container its own virtual machine?</p>
+    <p><strong>Maya:</strong> Separate VMs give great isolation, the post says, but may need a larger resource footprint. gVisor aims for similar isolation while being lighter: its kernel runs as a normal, unprivileged process.</p>
+    <p><strong>Alice:</strong> There's always a catch. What is it?</p>
+    <p><strong>Maya:</strong> Higher overhead on every system call, and compatibility: not all applications will run inside gVisor.</p>
+    <p><strong>Alice:</strong> Now, the teaser. A sandbox without a whole computer?</p>
+    <p><strong>Bob:</strong> Right! Many agents only need short programs that chain tool calls. With Pydantic's Monty, the model writes Python that runs inside a restricted interpreter, and the app controls which functions that code can call, with resource limits.</p>
+    <p><strong>Alice:</strong> Make it kitchen-simple for me.</p>
+    <p><strong>Bob:</strong> Think of a set menu versus renting the whole kitchen. A full machine lets the cook use anything; the interpreter only cooks the dishes on the menu you printed. In software, that menu is the list of functions the app exposes.</p>
+    <p><strong>Alice:</strong> So no surprise ingredients.</p>
+    <p><strong>Bob:</strong> None! Monty can't install packages at will or run operating-system commands. Those limits are exactly why it needs far less infrastructure than a complete virtual machine.</p>
+    <p><strong>Alice:</strong> Does it remember anything between runs?</p>
+    <p><strong>Bob:</strong> It can. Sessions keep Python state across runs, and snapshots restore that state or fork it into independent sessions, without saving an entire operating system.</p>
+    <p><strong>Alice:</strong> Snapshots. That's the next stop, right?</p>
+    <p><strong>Bob:</strong> It is. Without persistence, every interruption means reinstalling dependencies, restoring files and restarting processes.</p>
+    <p><strong>Alice:</strong> Who offers that today?</p>
+    <p><strong>Bob:</strong> E2B supports pausing and resuming sandboxes, Daytona provides snapshots, and Modal offers persistent storage and filesystem snapshots. Memory snapshots can even keep running processes.</p>
+    <p><strong>Alice:</strong> Okay, metaphor time!</p>
+    <p><strong>Bob:</strong> It's like a save point in a video game: you reload right where you were, and branching copies that save into several slots to try a different path in each. For agents, several start from an identical environment, try different implementations, and each branch is validated before you keep one.</p>
+    <p><strong>Alice:</strong> I'd have a save slot before every boss fight.</p>
+    <p><strong>Bob:</strong> Me too. And startup speed matters: E2B and Daytona advertise startups in milliseconds or fractions of a second, under particular conditions.</p>
+    <p><strong>Alice:</strong> Then why not keep them running all the time?</p>
+    <p><strong>Bob:</strong> Cost. Agents spend a lot of time waiting, for the model, a human or other agents, not burning CPU. Keeping thousands of mostly idle sandboxes running can get expensive.</p>
+    <p><strong>Alice:</strong> So what's the fix?</p>
+    <p><strong>Bob:</strong> Think of closing your laptop lid instead of shutting it down: everything stays where you left it. Platforms such as Sprites from Fly dot io, and Blaxel, focus on environments that suspend when inactive and resume when needed, so you don't keep paying for active compute.</p>
+    <p><strong>Alice:</strong> Security. If the agent's locked inside a microVM, we're safe. Right?</p>
+    <p><strong>Bob:</strong> Not necessarily! An agent can run entirely inside a secure microVM and still access sensitive credentials, make unauthorized API requests, or leak information through an allowed network connection.</p>
+    <p><strong>Alice:</strong> Wait. So the wall isn't enough?</p>
+    <p><strong>Bob:</strong> No. Docker Sandboxes shows one fix, host-side credential injection: a proxy outside the agent's environment attaches the credential to approved requests, so the sandbox never reads the secret.</p>
+    <p><strong>Alice:</strong> That one needs a picture.</p>
+    <p><strong>Bob:</strong> Picture a hotel guest who wants dinner booked: the concierge calls the restaurant and pays with the card on file, and the guest never sees the card number. Here the concierge is the proxy, and the card number is the secret.</p>
+    <p><strong>Alice:</strong> And who decides what the agent is allowed to do?</p>
+    <p><strong>Bob:</strong> Network policies restrict which outside services it can reach, and authorization policies decide whether it can modify a repository or retrieve a customer record.</p>
+    <p><strong>Alice:</strong> Lena, you looked at how a coding agent does this in practice?</p>
+    <p><strong>Lena:</strong> I did. Anthropic's engineering post, Making Claude Code safer with sandboxing, says effective sandboxing needs both filesystem and network isolation. Without network isolation, a compromised agent could send out sensitive files like SSH keys; without filesystem isolation, it could escape the sandbox and gain network access.</p>
+    <p><strong>Alice:</strong> So how does the network side actually work?</p>
+    <p><strong>Lena:</strong> The agent reaches the internet only through a proxy server outside the sandbox, which limits the domains it can connect to and asks the user about new ones.</p>
+    <p><strong>Alice:</strong> Same trick as our concierge! Last big idea: sandboxes as workspaces. What does that mean?</p>
+    <p><strong>Bob:</strong> A sandbox can outlive the agent session that created it, so several agents share it. One agent changes a repository, a validation agent inspects the results, and a supervisor decides whether more work is needed.</p>
+    <p><strong>Alice:</strong> Sounds like a crowded kitchen.</p>
+    <p><strong>Bob:</strong> Exactly the risk! It's like two cooks salting the same pot of soup without talking. Two agents editing the same files can interfere, so ownership, locking and branching rules live outside any single agent.</p>
+    <p><strong>Alice:</strong> So a lock is calling dibs on the pot.</p>
+    <p><strong>Bob:</strong> Pretty much: one agent holds the file until it's done. And the work's own state, which task, what's finished, is tracked separately from the files.</p>
+    <p><strong>Alice:</strong> And can we actually see what the agents did?</p>
+    <p><strong>Bob:</strong> That's observability, like a dashcam for your agent: process activity, file changes and network requests help rebuild what it actually did. Pydantic's sandboxes connect to Logfire traces, and Daytona uses OpenTelemetry.</p>
+    <p><strong>Alice:</strong> Time for counterpoints. Sam, you brought the skeptic's view.</p>
+    <p><strong>Sam:</strong> I did. Simon Willison's post, The lethal trifecta for AI agents, warns about combining three things: access to your private data, exposure to untrusted content, and the ability to communicate externally. Combine all three, and an attacker can easily trick the agent into sending your data away.</p>
+    <p><strong>Alice:</strong> So where does it go wrong?</p>
+    <p><strong>Sam:</strong> The core problem: LLMs follow instructions in content, whether or not they came from their operator. And any tool that can make an HTTP request, even to load an image, can pass stolen information back.</p>
+    <p><strong>Alice:</strong> Can't a guardrail product just catch the bad prompts?</p>
+    <p><strong>Sam:</strong> He's deeply suspicious of those. In web application security, he writes, 95 percent is very much a failing grade. For people mixing tools together, his advice is to avoid the trifecta combination entirely.</p>
+    <p><strong>Alice:</strong> That's a tough grading curve.</p>
+    <p><strong>Bob:</strong> And Josh himself expects most of these capabilities to commoditize into standard features: they're already available in various forms across multiple providers.</p>
+    <p><strong>Alice:</strong> My take: if everyone builds the same walls, the walls stop being the selling point. Builder's Corner! Bob, one thing listeners can try this week?</p>
+    <p><strong>Bob:</strong> Run your agent's code in a sandbox with the network off by default, then allowlist only the services it truly needs. Josh's post says network policies restrict what an agent can reach, and Anthropic's post adds that filesystem isolation matters too.</p>
+    <p><strong>Alice:</strong> And the secrets?</p>
+    <p><strong>Bob:</strong> Keep them outside. Put a proxy in front that attaches the credential to approved requests, so the agent uses the service without reading the key. Then watch for network activity you didn't expect.</p>
+    <p><strong>Alice:</strong> Network off, allowlist on, keys outside. Got it. Bob, the takeaways?</p>
+    <p><strong>Bob:</strong> First, the walls differ: containers share a kernel, microVMs and gVisor don't. Second, not every agent needs a computer. Third, snapshots and suspend-resume save setup time and idle compute.</p>
+    <p><strong>Alice:</strong> And fourth: a locked box can still leak, so guard the network and the keys. What's still open?</p>
+    <p><strong>Bob:</strong> Josh's own question: will providers keep adding capabilities that change what agents can do, or will most of the innovation happen in the models, harnesses, tools and orchestration around them?</p>
+    <p><strong>Alice:</strong> And Simon Willison's warning: we still don't know how to reliably prevent prompt injection.</p>
+    <p><strong>Bob:</strong> That's our tour of the agent sandbox. Thanks to Josh Rosen for The State of the Agent Sandbox, and to Nicolas Lacasse on the Google Cloud Blog. Thanks also to Anthropic for Making Claude Code safer with sandboxing, and to Simon Willison for The lethal trifecta for AI agents.</p>
+    <p><strong>Alice:</strong> Thanks, everyone! Keep your agents in the sandbox.</p>
+    <p><strong>Bob:</strong> That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
@@ -145,6 +244,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

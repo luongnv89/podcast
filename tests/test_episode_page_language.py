@@ -72,17 +72,23 @@ SHARE_CSS = (
 # Podcast #45 loads share.js (the drafts panel) just before that script.
 SHARE_SCRIPT = re.compile(r'<script src="\.\./\.\./share\.js\?v=\d+"></script>\n'
                           r"<script>\n\(\(\) => \{\n  const S = \{.*?\n\}\)\(\);\n</script>\n(?=</body>\n</html>\n$)", re.S)
+# Podcast #50 adds Copy title and Copy description after Share (handled by that same script;
+# the description's data-text keeps its line breaks, and its "<" is escaped).
+COPY_BUTTONS = re.compile(r'    <button class="btn" type="button" data-copy="(title|description)" .*?</button>\n', re.S)
 
 
 def without_share(test: unittest.TestCase, html: str, label: str = "Share") -> str:
-    """The page without the Share button's style, button and script, each there exactly once."""
+    """The page without the Share button's style, button and script, each there exactly once,
+    and without the copy buttons (title once, description at most once)."""
     button = f'    <button class="btn" type="button" id="share" hidden><span aria-live="polite">{label}</span></button>\n'
     for part in (SHARE_CSS, button):
         test.assertEqual(html.count(part), 1)
         html = html.replace(part, "")
     html, n = SHARE_SCRIPT.subn("", html)
     test.assertEqual(n, 1)
-    return html
+    kinds = COPY_BUTTONS.findall(html)
+    test.assertIn(kinds, (["title"], ["title", "description"]))
+    return COPY_BUTTONS.sub("", html)
 
 
 def without_content(html: str, ep: dict) -> str:

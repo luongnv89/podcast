@@ -74,6 +74,9 @@
   .btn[hidden] { display: none; }
   .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
   footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
 </style>
 </head>
 <body>
@@ -97,8 +100,113 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
     <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-15_all-code-is-slop-except-mine.mp3" download="Build Wiz AI Show - Trusting AI Coding Agents Lint Rules, Tests and Proofs (Lauren Tan) (2026-11-15).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Trusting AI Coding Agents: Lint Rules, Tests and Proofs (Lauren Tan)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Can a team ship 11,000 pull requests a month without drowning in slop? Bob and Alice unpack Lauren Tan&#x27;s AI Engineer talk on trusting AI coding agents.
+
+In this episode:
+- The trust pyramid: code, lint rules and tests before prompts.
+- Banning what agents misuse; every correction becomes a lint rule.
+- Runtime and formal verification with TLA+ and Lean.
+- Guests on AI proofs, code-quality research and AI code security.
+
+Sources: Lauren Tan; Prediction: AI will make formal verification go mainstream; Bill Doerrfeld; Jens Wessling
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
   </p>
   <p class="credit">Based on <a href="https://www.youtube.com/watch?v=O_zcc6Xl12g" rel="noopener">All Code Is Slop (Except Mine)</a> by Lauren Tan</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> 11,000 pull requests in one month. Can that be anything but slop?</p>
+    <p><strong>Alice:</strong> One team says yes. And the share of those pull requests that get reverted? About half a percent.</p>
+    <p><strong>Bob:</strong> So what's the trick? Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob.</p>
+    <p><strong>Alice:</strong> And I'm Alice! Today's source is a talk called All Code Is Slop, Except Mine, by Lauren Tan, on the AI Engineer channel. She works on the Grok Bot team at SpaceXSI.</p>
+    <p><strong>Bob:</strong> I love that title. Everyone else's code is slop. Mine is art.</p>
+    <p><strong>Alice:</strong> Her thesis, plainly: the engineer's job now is to keep, or even improve, code quality while massively increasing productivity. The way there is trust. Not blind trust, but investing in your agents' environment so they do the right thing.</p>
+    <p><strong>Bob:</strong> Where does she start?</p>
+    <p><strong>Alice:</strong> Last month she shipped 3,000 pull requests to production, herself. Before agents, only outliers like Bret Taylor, who famously rewrote Google Maps in a weekend, worked at that pace. With agents, she says, anyone can be a coding machine.</p>
+    <p><strong>Bob:</strong> Okay. So where do you actually spend the effort?</p>
+    <p><strong>Alice:</strong> Picture an upside-down pyramid. The two biggest layers are deterministic: your code itself, then lint rules, type systems, compilers and tests. Next comes verification, to check that the agent understood your intent.</p>
+    <p><strong>Bob:</strong> And the smallest layer, at the tip?</p>
+    <p><strong>Alice:</strong> Prose. Rules, skills, your AGENTS.md file, the things that need judgment. Just a little of it, at the very end.</p>
+    <p><strong>Bob:</strong> Can you make that concrete for a total beginner?</p>
+    <p><strong>Alice:</strong> It's like a kitchen: a good layout and sharp knives do most of the work, tasting the dish is the check, and the recipe note on the fridge comes last. In software, the deterministic layers come first and written instructions last.</p>
+    <p><strong>Bob:</strong> Guilty. When my agent messes up, I just write a longer note for the fridge.</p>
+    <p><strong>Alice:</strong> And that's her key rule! Whenever you correct your agent, make it a deterministic check instead of another line in your rules. In code it's far more reproducible, so you can trust it more.</p>
+    <p><strong>Bob:</strong> Why does the codebase itself matter that much?</p>
+    <p><strong>Alice:</strong> Because agents copy it. Her image is a garden: code arrives like a continuous stream, and any workaround gets copied by the next agent because it looks like the established pattern. Weeds spread, and in code one bad pattern spreads everywhere.</p>
+    <p><strong>Bob:</strong> So keep the garden pristine, and agents copy the good stuff. Real examples, please. What did her team build?</p>
+    <p><strong>Alice:</strong> A client framework called Dune, a bit like Next.js for Electron apps. Its secret is the constraints and lint rules, which encode their lessons from building desktop apps.</p>
+    <p><strong>Bob:</strong> What kind of lesson?</p>
+    <p><strong>Alice:</strong> That anything needing nuance to use well often leads to slop. Her classic example is useEffect in React: it has its use cases, but it's often misused, and agents aren't good at it.</p>
+    <p><strong>Bob:</strong> The famous one. People joke you need a PhD to use it.</p>
+    <p><strong>Alice:</strong> So they banned it in product code, allowed only inside some of Dune's own APIs. The problem is categorically eliminated, and nobody has to catch it in code review again. It's like childproofing a kitchen: you don't explain the stove to a toddler, you put a lock on the knob. In code, you ban the risky tool in product code, so the agent can't misuse it.</p>
+    <p><strong>Bob:</strong> So the agent is the toddler. Rude, but fair. Then there's her take on comments. What's wrong with comments?</p>
+    <p><strong>Alice:</strong> Agents use comments to justify not doing the right thing. Her example, from Cursor: agents loved imperative timers, like setTimeout, as quick fixes, patching over a clash between Visual Studio Code's imperative style and React's declarative style.</p>
+    <p><strong>Bob:</strong> And timers are bad because?</p>
+    <p><strong>Alice:</strong> Tons of timers created and destroyed means major garbage collection, and lag. Worse, agents wrote comments justifying each quick fix, timers spread everywhere, and performance really suffered.</p>
+    <p><strong>Bob:</strong> So the comment was a permission slip.</p>
+    <p><strong>Alice:</strong> Exactly. So in Grok Bot they banned 99 percent of comments. They go stale, they hand the agent an escape hatch, and they aren't enforceable.</p>
+    <p><strong>Bob:</strong> 99 percent! So what replaces them?</p>
+    <p><strong>Alice:</strong> Lint rules with very helpful error messages, telling the agent to fix the root cause instead of patching around it. Think of traffic: a comment is a sign saying please slow down, easy to ignore, while a lint rule is a speed bump. Nobody gets past without slowing. In code, comments aren't enforceable, and the rule's error message says why.</p>
+    <p><strong>Bob:</strong> Speed bumps for robots. I like it.</p>
+    <p><strong>Alice:</strong> Do it for every correction, and you have less to look out for in review, until there's nothing left to review and agents merge most of their own pull requests.</p>
+    <p><strong>Bob:</strong> The verification layer, then. What does code review even look like now?</p>
+    <p><strong>Alice:</strong> It's shrunk into looking at verification artifacts: videos, screenshots, diagrams. The basic one is runtime verification, which means the agent runs the code itself, with real debugging tools like the Chrome DevTools Protocol. And a feature map guides it. Imagine a site map of every feature, from the user's point of view, so the agent doesn't have to guess what you mean by the thingy in the left sidebar.</p>
+    <p><strong>Bob:</strong> The thingy in the left sidebar. I say that every single day.</p>
+    <p><strong>Alice:</strong> Then formal verification. They use TLA plus to model-check major user flows, like notifications across devices, and Lean to prove algorithms, like checking their custom virtualization library doesn't flicker or jitter.</p>
+    <p><strong>Bob:</strong> Runtime, formal... what's the difference, in plain words?</p>
+    <p><strong>Alice:</strong> Runtime verification is a test drive around the block. Formal verification is the engineer's math showing the brakes work on any road. In software, the agent runs the code for itself, while a proof shows the code always satisfies its spec, even on edge cases you didn't test.</p>
+    <p><strong>Bob:</strong> And does the math find anything?</p>
+    <p><strong>Alice:</strong> Quite a few bugs already, she says, but it's not a silver bullet, just another layer. They also do property-based UI testing with a library called Bombadil, which has caught a few UI bugs too.</p>
+    <p><strong>Bob:</strong> Lena, this is right up your alley.</p>
+    <p><strong>Lena:</strong> It is! Martin Kleppmann's post, Prediction: AI will make formal verification go mainstream, explains why it stayed niche. The seL4 microkernel was 8,700 lines of C, and proving it took 20 person-years and 200,000 lines of Isabelle proof.</p>
+    <p><strong>Bob:</strong> 20 person-years. For one kernel!</p>
+    <p><strong>Lena:</strong> Kleppmann argues LLMs are getting good at writing proof scripts, and hallucinations matter less because the proof checker will reject any invalid proof. It's like a bouncer who checks every ID, so a fake never gets in.</p>
+    <p><strong>Bob:</strong> Love it. Any catch?</p>
+    <p><strong>Lena:</strong> He's careful: the hard part moves to the specification. How do you know the properties you proved are the ones you cared about? And he notes that Lean is where most of the action is.</p>
+    <p><strong>Bob:</strong> Isn't all this checking expensive?</p>
+    <p><strong>Alice:</strong> She quotes a developer who once couldn't trust her agents. Six months later, 70 percent of that developer's daily tokens go into verification, and Lauren says most of hers do too.</p>
+    <p><strong>Bob:</strong> 70 percent on checking, not writing. Huh.</p>
+    <p><strong>Alice:</strong> None of these techniques are new, they were just too expensive, and agents cut that cost. It's like a building inspection that suddenly costs almost nothing, so you inspect every floor: a golden age of testing and verification, she says.</p>
+    <p><strong>Bob:</strong> So, the payoff?</p>
+    <p><strong>Alice:</strong> Last month the Grok Bot team shipped 11,000 pull requests to production, and they now cut a new stable version about once a day.</p>
+    <p><strong>Bob:</strong> 11,000. Isn't that just chaos?</p>
+    <p><strong>Alice:</strong> That's the twist. In October about 227 people contributed at least one pull request, many of them drive-by contributors. Yet the share of PRs that get reverted went down, steady at about half a percent.</p>
+    <p><strong>Bob:</strong> Remind me what a revert actually is?</p>
+    <p><strong>Alice:</strong> Picture a busy restaurant where almost no plate gets sent back to the kitchen,. In code, a revert is a pull request that gets undone after it shipped.</p>
+    <p><strong>Bob:</strong> Maya, how does that square with the wider picture?</p>
+    <p><strong>Maya:</strong> It's a sharp contrast. Bill Doerrfeld at LeadDev reports on GitClear and GitKraken research into 623 million real-world code changes from 2023 to 2026. Duplication is up 81 percent.</p>
+    <p><strong>Bob:</strong> 81 percent more copy-paste. Ouch.</p>
+    <p><strong>Maya:</strong> Reuse is down 70 percent, and GitClear found 47 percent more error masking: code that silently catches errors without evaluating their cause.</p>
+    <p><strong>Bob:</strong> Wait. That's the timers story again. Patch it, don't fix it.</p>
+    <p><strong>Alice:</strong> Exactly what her lint rules go after: fix the root cause, the real problem. It's like pulling weeds out by the roots instead of mowing over them.</p>
+    <p><strong>Bob:</strong> So should we all build a software factory tomorrow?</p>
+    <p><strong>Alice:</strong> Not yet, she says. First a lint rule to stop new anti-patterns, clean up the old ones, then a strong verification story. If your inner loop produces slop, automating it just produces more slop. It's like a bakery oven that burns one side of every loaf. Run it faster and you just get more burnt bread. In software, automating a sloppy inner loop just produces more slop.</p>
+    <p><strong>Bob:</strong> Burnt bread at scale. Got it.</p>
+    <p><strong>Alice:</strong> Once the foundations hold, the outer loop gets easier. Her example: on every release, an agent run uses the app like a real user and finds bugs. It opens a fix PR for each one and auto-merges it, as crazy as that sounds, in her words.</p>
+    <p><strong>Bob:</strong> My turn to push back. These are one team's numbers, and they're self-reported, right?</p>
+    <p><strong>Alice:</strong> Yes. The 11,000 pull requests and the half-percent revert rate are her team's own figures, and my reading is that the talk shows no outside measurement. It's also one product, an Electron desktop app.</p>
+    <p><strong>Bob:</strong> Back to your restaurant: a plate only gets sent back if someone notices. My take: a revert rate only counts the bugs somebody caught.</p>
+    <p><strong>Alice:</strong> I think that's fair. The talk doesn't say how many bugs shipped without a revert, and fewer reverts isn't the same as fewer bugs.</p>
+    <p><strong>Bob:</strong> Sam, you're our resident skeptic. What worries you?</p>
+    <p><strong>Sam:</strong> Security. Jens Wessling at Veracode wrote up their test of over 100 large language models. 45 percent of code samples failed security tests and introduced OWASP Top 10 vulnerabilities.</p>
+    <p><strong>Bob:</strong> 45 percent? That's almost half.</p>
+    <p><strong>Sam:</strong> And newer models weren't better at it. They got better at code that works, not at secure code. Cross-site scripting defenses failed in 86 percent of relevant samples.</p>
+    <p><strong>Alice:</strong> And I'd say that's a gap in the talk. Its layers check behavior, and security scanning doesn't come up.</p>
+    <p><strong>Bob:</strong> What about auto-merging the fixes the bot found itself?</p>
+    <p><strong>Sam:</strong> I think that's the risky part. Wessling says to scan AI-generated code like any new app. A bot merging its own fixes skips the one person who might ask about security.</p>
+    <p><strong>Alice:</strong> Fair. Her answer is that the codebase is good enough that pull requests tend to be good by default. My take: that trust is only as good as the checks.</p>
+    <p><strong>Bob:</strong> Time for Builder's Corner. Alice, one thing to try this week?</p>
+    <p><strong>Alice:</strong> Take the next correction you give your agent and turn it into a lint rule. Write the error message so it names the root cause, the way Grok Bot's rules tell the agent to fix the real problem instead of patching around it.</p>
+    <p><strong>Bob:</strong> So the correction outlives the chat. A speed bump, not a sign.</p>
+    <p><strong>Alice:</strong> Right. Then clean up the old occurrences too, so the next agent copies the good pattern, not the weed.</p>
+    <p><strong>Bob:</strong> Takeaways. One: put the effort into code, not prose.</p>
+    <p><strong>Alice:</strong> Yes. Deterministic checks first, verification next, and rules as the thin top layer. Two: ban what agents get wrong instead of explaining it, like useEffect in product code.</p>
+    <p><strong>Bob:</strong> What's still open?</p>
+    <p><strong>Alice:</strong> Whether this holds beyond one team and one app. And Kleppmann's question: who checks that the spec says what you meant?</p>
+    <p><strong>Bob:</strong> And security. Would a lint-first codebase also cut that 45 percent failure rate?</p>
+    <p><strong>Alice:</strong> This episode is based on All Code Is Slop, Except Mine, a talk by Lauren Tan on the AI Engineer channel. Thanks also go to Martin Kleppmann for his post on formal verification. And to Bill Doerrfeld at LeadDev for the GitClear report, and to Jens Wessling at Veracode for the security results.</p>
+    <p><strong>Bob:</strong> Now go weed your garden. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
   <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
 </main>
 <script src="../../share.js?v=202611130200"></script>
@@ -145,6 +253,21 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
       b._busy = false;
     }
   };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
   btn.addEventListener("click", () => {
     const P = window.PodcastShare;
     if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });

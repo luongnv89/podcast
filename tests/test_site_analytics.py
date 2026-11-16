@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 EVENTS = ["episode_play", "episode_progress", "language_switch", "episode_download", "source_click",
-          "description_copy", "episode_share", "autoplay_toggle"]
+          "description_copy", "title_copy", "episode_share", "autoplay_toggle"]
 PARAMS = ["episode_id", "episode_title", "show", "episode_language", "story_group", "category",
           "percent", "from_language", "to_language", "method", "trigger", "enabled"]
 

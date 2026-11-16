@@ -39,7 +39,7 @@
       transcript: "Transcript", transcriptOf: (t) => `Transcript of ${t}`,
       loadingTranscript: "Loading transcript…", transcriptFailed: "The transcript could not be loaded. The audio still plays.",
       download: "Download MP3",
-      copyDesc: "Copy description", copied: "Copied", copyFailed: "Copy failed",
+      copyTitle: "Copy title", titleCopied: "Copied", copyDesc: "Copy description", copied: "Copied", copyFailed: "Copy failed",
       readSource: "Read the source",
       linkCopied: "Link copied",
       share: "Share",
@@ -72,7 +72,7 @@
       transcript: "Transcription", transcriptOf: (t) => `Transcription de ${t}`,
       loadingTranscript: "Chargement de la transcription…", transcriptFailed: "Impossible de charger la transcription. Vous pouvez quand même écouter l’histoire.",
       download: "Télécharger le MP3",
-      copyDesc: "Copier la description", copied: "Copiée", copyFailed: "Échec de la copie",
+      copyTitle: "Copier le titre", titleCopied: "Copié", copyDesc: "Copier la description", copied: "Copiée", copyFailed: "Échec de la copie",
       readSource: "Lire le texte original",
       linkCopied: "Lien copié",
       share: "Partager",
@@ -105,7 +105,7 @@
       transcript: "Lời kể", transcriptOf: (t) => `Lời kể của truyện ${t}`,
       loadingTranscript: "Đang tải lời kể…", transcriptFailed: "Không tải được lời kể. Bạn vẫn có thể nghe truyện bình thường.",
       download: "Tải MP3",
-      copyDesc: "Sao chép mô tả", copied: "Đã sao chép", copyFailed: "Không sao chép được",
+      copyTitle: "Sao chép tiêu đề", titleCopied: "Đã sao chép", copyDesc: "Sao chép mô tả", copied: "Đã sao chép", copyFailed: "Không sao chép được",
       readSource: "Đọc bản gốc",
       linkCopied: "Đã sao chép liên kết",
       share: "Chia sẻ",
@@ -746,6 +746,14 @@
     const shareBtn = el("button", { class: "btn", type: "button", "data-share": "episode", "aria-expanded": "false" }, [svg(["M12 15V4M7 9l5-5 5 5M5 13v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6"]), shareLabel]);
     shareBtn.addEventListener("click", () => openShare(ep, shareBtn, shareLabel, actions));
     actions.append(shareBtn);
+    // The copy-paste podcast title (podcast #50), exactly as in episodes.json, next to the
+    // description's button: the one title used everywhere (site, feeds, podcast apps).
+    if (typeof ep.title === "string" && ep.title.trim()) {
+      const titleLabel = el("span", { text: T.copyTitle, "aria-live": "polite" });
+      const titleBtn = el("button", { class: "btn", type: "button", "data-copy": "title" }, [svg(["M9 9h10v11H9zM5 15V4h10"]), titleLabel]);
+      titleBtn.addEventListener("click", () => copyTitle(ep, titleBtn, titleLabel));
+      actions.append(titleBtn);
+    }
     // The copy-paste podcast description (DropCast #163), exactly as in episodes.json.
     if (typeof ep.description === "string" && ep.description.trim()) {
       const descLabel = el("span", { text: T.copyDesc, "aria-live": "polite" });
@@ -814,6 +822,17 @@
     if (ok) track("description_copy", epParams(ep));
     clearTimeout(btn._t);
     btn._t = setTimeout(() => { label.textContent = T.copyDesc; btn.classList.remove("is-done"); }, 1800);
+  }
+
+  // Copy title (podcast #50): the same feedback as Copy description (its own word for French
+  // grammar: le titre is masculine, la description feminine).
+  async function copyTitle(ep, btn, label) {
+    const ok = await copyText(ep.title);
+    label.textContent = ok ? T.titleCopied : T.copyFailed;   // French: "Copié" (le titre)
+    btn.classList.toggle("is-done", ok);
+    if (ok) track("title_copy", epParams(ep));
+    clearTimeout(btn._t);
+    btn._t = setTimeout(() => { label.textContent = T.copyTitle; btn.classList.remove("is-done"); }, 1800);
   }
 
   // ---------- Share (podcast #43) ----------
