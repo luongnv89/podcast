@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Mon, 16 Nov 2026 05:26:23 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 16 Nov 2026 07:44:14 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-16_morning-edition-monday-16-november-2026</guid>
+    <title>AI Daily, 16 November 2026: Alibaba releases Qwen4-Max, Cursor traces its breach to a partner's key</title>
+    <link>https://luongnv.com/podcast/#2026-11-16_morning-edition-monday-16-november-2026</link>
+    <description>The AI Gazette's Monday morning edition, plus Sunday afternoon's, told as an 8-minute two-host news roundup.
+
+Alibaba launched Qwen4-Max, Cursor traced its extension breach to a key held by Fireworks, and Bessent pressed Nvidia's board.
+
+For builders: new model pricing, a supply-chain security lesson, and the policy moves around AI companies.
+
+Sources:
+- The AI Gazette, morning edition, Monday 16 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-16-morning.html)
+- The AI Gazette, afternoon edition, Sunday 15 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-15-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>The AI Gazette's Monday morning edition, plus Sunday afternoon's, told as an 8-minute two-host news roundup.</p><p>Alibaba launched Qwen4-Max, Cursor traced its extension breach to a key held by Fireworks, and Bessent pressed Nvidia's board.</p><p>For builders: new model pricing, a supply-chain security lesson, and the policy moves around AI companies.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Monday 16 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-16-morning.html">https://luongnv.com/news/reports/2026-11-16-morning.html</a></li><li>The AI Gazette, afternoon edition, Sunday 15 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-15-afternoon.html">https://luongnv.com/news/reports/2026-11-15-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 16 Nov 2026 07:41:03 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-16_morning-edition-monday-16-november-2026.mp3?v=7abe572f" length="7511792" type="audio/mpeg"/>
+    <itunes:duration>469</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-16_morning-edition-monday-16-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-16_the-state-of-the-agent-sandbox</guid>
     <title>Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox</title>

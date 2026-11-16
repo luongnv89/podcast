@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-16T05:26:23Z",
+  "updated": "2026-11-16T07:44:14Z",
   "episodes": [
+    {
+      "id": "2026-11-16_morning-edition-monday-16-november-2026",
+      "title": "AI Daily, 16 November 2026: Alibaba releases Qwen4-Max, Cursor traces its breach to a partner's key",
+      "summary": [
+        "The AI Gazette's Monday morning edition, plus Sunday afternoon's, told as an 8-minute two-host news roundup.",
+        "Alibaba launched Qwen4-Max, Cursor traced its extension breach to a key held by Fireworks, and Bessent pressed Nvidia's board.",
+        "For builders: new model pricing, a supply-chain security lesson, and the policy moves around AI companies."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-16T07:41:03Z",
+      "duration_s": 469.413,
+      "size_bytes": 7511792,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-16_morning-edition-monday-16-november-2026.mp3",
+      "audio_sha256": "7abe572f3dd696a94e9e6079adb62cec1af87bb0b4d1be137323aa536dfb94e7",
+      "transcript": "episodes/2026-11-16_morning-edition-monday-16-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Monday 16 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-16-morning.html",
+        "published": "2026-11-16",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Monday 16 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-16-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Sunday 15 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-15-afternoon.html"
+        }
+      ],
+      "description": "The AI news of the last day in 8 minutes. Alibaba released Qwen4-Max, its new paid flagship model, and Cursor traced the tampered Claude Code extension to an access key it had issued to Fireworks.\n\nIn this episode:\n- Bessent's deadline for Nvidia's board, and reports Jensen Huang weighs a return\n- OpenAI's science blog and a lattice proof built with GPT-6 Astra\n- The San Francisco Declaration on AI supply chains, and Apple's health AI study\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - AI Daily, 16 November 2026 Alibaba releases Qwen4-Max, Cursor traces its breach to a partner's key (2026-11-16).mp3"
+    },
     {
       "id": "2026-11-16_the-state-of-the-agent-sandbox",
       "title": "Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox",
