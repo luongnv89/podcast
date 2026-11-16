@@ -28,7 +28,7 @@
   "episodes": [
     {
       "id": "2026-11-16_morning-edition-monday-16-november-2026",
-      "title": "AI Daily, 16 November 2026: Alibaba releases Qwen4-Max, Cursor traces its breach to a partner's key",
+      "title": "Qwen4-Max Launches, Cursor's Breach Traced to a Key | AI Daily 16 Nov",
       "summary": [
         "The AI Gazette's Monday morning edition, plus Sunday afternoon's, told as an 8-minute two-host news roundup.",
         "Alibaba launched Qwen4-Max, Cursor traced its extension breach to a key held by Fireworks, and Bessent pressed Nvidia's board.",
@@ -68,13 +68,13 @@
           "url": "https://luongnv.com/news/reports/2026-11-15-afternoon.html"
         }
       ],
-      "description": "The AI news of the last day in 8 minutes. Alibaba released Qwen4-Max, its new paid flagship model, and Cursor traced the tampered Claude Code extension to an access key it had issued to Fireworks.\n\nIn this episode:\n- Bessent's deadline for Nvidia's board, and reports Jensen Huang weighs a return\n- OpenAI's science blog and a lattice proof built with GPT-6 Astra\n- The San Francisco Declaration on AI supply chains, and Apple's health AI study\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description": "Alibaba released Qwen4-Max, its new paid flagship model, and Cursor traced the tampered Claude Code extension to an access key it had issued to Fireworks. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Bessent's deadline for Nvidia's board, and reports Jensen Huang weighs a return\n- OpenAI's science blog and a lattice proof built with GPT-6 Astra\n- The San Francisco Declaration on AI supply chains, and Apple's health AI study\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - AI Daily, 16 November 2026 Alibaba releases Qwen4-Max, Cursor traces its breach to a partner's key (2026-11-16).mp3"
+      "file_name": "Build Wiz AI Show - Qwen4-Max Launches, Cursor's Breach Traced to a Key AI Daily 16 Nov (2026-11-16).mp3"
     },
     {
       "id": "2026-11-16_the-state-of-the-agent-sandbox",
-      "title": "Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox",
+      "title": "AI Agent Sandboxes Explained: MicroVMs, gVisor and Containers",
       "summary": [
         "Josh Rosen maps the state of the agent sandbox: microVMs, gVisor and containers, lightweight interpreters like Monty, and snapshots that pause, resume and branch agent work.",
         "Isolation alone doesn't stop a leak: credentials kept outside the sandbox, network and authorization policies, observability and shared workspaces with locking matter too.",
@@ -146,11 +146,11 @@
       ],
       "description": "Does every AI agent need its own computer? Bob and Alice unpack Josh Rosen's post on the state of the agent sandbox.\n\nIn this episode:\n- MicroVMs, gVisor and containers: how isolation differs.\n- A restricted interpreter instead of a whole machine.\n- Snapshots, suspend-resume and shared workspaces.\n- Credentials, network allowlists and the lethal trifecta.\n\nSources: Josh Rosen; Nicolas Lacasse; Anthropic; Simon Willison\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Does Every AI Agent Need Its Own Computer The State of the Agent Sandbox (2026-11-16).mp3"
+      "file_name": "Build Wiz AI Show - AI Agent Sandboxes Explained MicroVMs, gVisor and Containers (2026-11-16).mp3"
     },
     {
       "id": "2026-11-15_all-code-is-slop-except-mine",
-      "title": "All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents",
+      "title": "Trusting AI Coding Agents: Lint Rules, Tests and Proofs (Lauren Tan)",
       "summary": [
         "Lauren Tan of the Grok Bot team argues coding agents become trustworthy when you invest in their environment: code, lint rules and checks first, prose last.",
         "Banning what agents misuse, turning every correction into a lint rule, and runtime plus formal verification let her team ship 11,000 PRs in a month with few reverts.",
@@ -222,11 +222,11 @@
       ],
       "description": "Can a team ship 11,000 pull requests a month without drowning in slop? Bob and Alice unpack Lauren Tan's AI Engineer talk on trusting AI coding agents.\n\nIn this episode:\n- The trust pyramid: code, lint rules and tests before prompts.\n- Banning what agents misuse; every correction becomes a lint rule.\n- Runtime and formal verification with TLA+ and Lean.\n- Guests on AI proofs, code-quality research and AI code security.\n\nSources: Lauren Tan; Prediction: AI will make formal verification go mainstream; Bill Doerrfeld; Jens Wessling\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - All Code Is Slop (Except Mine) How One Team Learned to Trust Its Coding Agents (2026-11-15).mp3"
+      "file_name": "Build Wiz AI Show - Trusting AI Coding Agents Lint Rules, Tests and Proofs (Lauren Tan) (2026-11-15).mp3"
     },
     {
       "id": "2026-11-06_little-red-cap-fr",
-      "title": "Le Petit Chaperon rouge : notre version pour le soir (d'après les frères Grimm)",
+      "title": "Le Petit Chaperon rouge : histoire du soir pour enfants, notre version (d'après les frères Grimm)",
       "summary": [
         "Une version douce du Petit Chaperon rouge pour le soir, d'après Little Red-Cap des frères Grimm, traduit par Margaret Hunt.",
         "Un loup rusé, une Mère-Grand maligne cachée dans son armoire, et un chasseur qui renvoie le loup au fond des bois.",
@@ -261,11 +261,11 @@
       },
       "description": "Le Petit Chaperon rouge des frères Grimm, raconté avec nos mots pour le soir. Un loup rusé, une Mère-Grand maligne et une fillette qui apprend à rester sur le chemin.\n\nDans cet épisode :\n- Un chaperon rouge et une promenade dans les bois\n- Comme vous avez de grandes oreilles\n- Un loup sur le toit et un grand plouf\n\nSources : Little Red-Cap, frères Grimm, traduit par Margaret Hunt (Wikisource)\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Le Petit Chaperon rouge notre version pour le soir (d'après les frères Grimm) (2026-11-15).mp3"
+      "file_name": "Once Upon a Time Show - Le Petit Chaperon rouge histoire du soir pour enfants, notre version (d'après les frères Grimm) (2026-11-15).mp3"
     },
     {
       "id": "2026-11-05_hansel-and-gretel-fr",
-      "title": "Hansel et Gretel : notre version pour le soir (d'après les frères Grimm)",
+      "title": "Hansel et Gretel : histoire du soir pour enfants, notre version (d'après les frères Grimm)",
       "summary": [
         "Une douce version de Hansel et Gretel pour le soir, d'après le conte des frères Grimm traduit par Margaret Hunt.",
         "Des cailloux blancs qui brillent sous la lune, une maison de pain et de gâteau, et une sœur maligne qui délivre son frère.",
@@ -300,11 +300,11 @@
       },
       "description": "Hansel et Gretel, notre version pour le soir, d'après les frères Grimm. Deux enfants perdus, une maison de pain et de gâteau, et une idée maligne pour rentrer. Personne n'a de mal.\n\nDans cet épisode :\n- Des cailloux qui brillent sous la lune\n- Des fenêtres en sucre et une sorcière grincheuse\n- Un gentil canard et le chemin du retour\n\nSources : Hänsel and Grethel, frères Grimm, traduit par Margaret Hunt (Wikisource)\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Hansel et Gretel notre version pour le soir (d'après les frères Grimm) (2026-11-15).mp3"
+      "file_name": "Once Upon a Time Show - Hansel et Gretel histoire du soir pour enfants, notre version (d'après les frères Grimm) (2026-11-15).mp3"
     },
     {
       "id": "2026-11-06_little-red-cap-vi",
-      "title": "Cô bé quàng khăn đỏ: bản kể lại trước giờ ngủ (theo anh em Grimm)",
+      "title": "Cô bé quàng khăn đỏ: truyện kể trước giờ ngủ cho bé, bản kể lại (theo anh em Grimm)",
       "summary": [
         "Truyện Cô bé quàng khăn đỏ kể nhẹ nhàng trước giờ ngủ, theo Little Red-Cap của anh em nhà Grimm, bản dịch của Margaret Hunt.",
         "Một con sói ranh mãnh, bà ngoại khôn ngoan trốn trong tủ, và bác thợ săn làm sói chạy biến vào rừng sâu.",
@@ -339,11 +339,11 @@
       },
       "description": "Cô bé quàng khăn đỏ của anh em nhà Grimm, kể lại bằng lời của chúng tôi trước giờ ngủ. Một con sói ranh mãnh, bà ngoại khôn ngoan và cô bé học cách đi đúng lối mòn.\n\nTrong tập này:\n- Chiếc khăn nhung đỏ và đường vào rừng\n- Bà ơi, sao tai bà to thế\n- Con sói trên mái nhà rơi tõm xuống máng nước\n\nNguồn: Little Red-Cap, anh em nhà Grimm, bản dịch của Margaret Hunt (Wikisource)\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Cô bé quàng khăn đỏ bản kể lại trước giờ ngủ (theo anh em Grimm) (2026-11-15).mp3"
+      "file_name": "Once Upon a Time Show - Cô bé quàng khăn đỏ truyện kể trước giờ ngủ cho bé, bản kể lại (theo anh em Grimm) (2026-11-15).mp3"
     },
     {
       "id": "2026-11-06_little-red-cap",
-      "title": "Little Red Riding Hood: our bedtime retelling (after the Brothers Grimm)",
+      "title": "Little Red Riding Hood: Bedtime Story for Kids, Our Retelling (after the Brothers Grimm)",
       "summary": [
         "A gentle bedtime retelling of Little Red Riding Hood, after Little Red-Cap by the Brothers Grimm, translated by Margaret Hunt.",
         "A sly wolf, a clever grandmother who hides in her cupboard, and a huntsman who sends the wolf running back to the woods.",
@@ -378,11 +378,11 @@
       },
       "description": "Little Red Riding Hood from the Brothers Grimm, told in our own words as a gentle bedtime story. A sly wolf, a clever grandmother and a girl who learns to stay on the path. Nobody gets hurt.\n\nIn this episode:\n- A red velvet cap and a walk through the woods\n- What big ears you have: the bedside talk\n- A wolf on the roof and a sausage-water splash\n\nSources: Little Red-Cap, Brothers Grimm, translated by Margaret Hunt (Wikisource)\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Little Red Riding Hood our bedtime retelling (after the Brothers Grimm) (2026-11-15).mp3"
+      "file_name": "Once Upon a Time Show - Little Red Riding Hood Bedtime Story for Kids, Our Retelling (after the Brothers Grimm) (2026-11-15).mp3"
     },
     {
       "id": "2026-11-05_hansel-and-gretel-vi",
-      "title": "Hansel và Gretel: bản kể lại trước giờ ngủ (theo anh em Grimm)",
+      "title": "Hansel và Gretel: truyện kể trước giờ ngủ cho bé, bản kể lại (theo anh em Grimm)",
       "summary": [
         "Truyện Hansel và Gretel kể nhẹ nhàng trước giờ ngủ, theo truyện cổ của anh em nhà Grimm, bản dịch của Margaret Hunt.",
         "Những viên sỏi trắng sáng dưới trăng, ngôi nhà bằng bánh mì và bánh ngọt, và cô em gái thông minh cứu anh trai.",
@@ -417,11 +417,11 @@
       },
       "description": "Hansel và Gretel, kể lại bằng lời của chúng tôi theo truyện cổ của anh em nhà Grimm. Hai anh em lạc trong rừng, ngôi nhà bằng bánh và một ý hay để về nhà, không ai bị đau cả.\n\nTrong tập này:\n- Những viên sỏi trắng sáng như bạc dưới trăng\n- Ngôi nhà cửa sổ bằng đường và mụ phù thủy khó tính\n- Chú vịt trắng tốt bụng và đường về nhà\n\nNguồn: Hänsel and Grethel, anh em nhà Grimm, bản dịch của Margaret Hunt (Wikisource)\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Hansel và Gretel bản kể lại trước giờ ngủ (theo anh em Grimm) (2026-11-15).mp3"
+      "file_name": "Once Upon a Time Show - Hansel và Gretel truyện kể trước giờ ngủ cho bé, bản kể lại (theo anh em Grimm) (2026-11-15).mp3"
     },
     {
       "id": "2026-11-05_hansel-and-gretel",
-      "title": "Hansel and Gretel: our bedtime retelling (after the Brothers Grimm)",
+      "title": "Hansel and Gretel: Bedtime Story for Kids, Our Retelling (after the Brothers Grimm)",
       "summary": [
         "A gentle bedtime retelling of Hansel and Gretel, from the Brothers Grimm's tale as translated by Margaret Hunt.",
         "White stones shining under the moon, a little house of bread and cake, and a clever sister who frees her brother.",
@@ -456,11 +456,11 @@
       },
       "description": "Hansel and Gretel, told in our own words as a gentle bedtime story after the Brothers Grimm. Two children lost in the woods, a house of bread and cake, and a clever way home. Nobody gets hurt.\n\nIn this episode:\n- White stones that shine like silver under the moon\n- A sugar-window house and a grumpy old witch\n- A kind white duck and the road back home\n\nSources: Hänsel and Grethel, Brothers Grimm, translated by Margaret Hunt (Wikisource)\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Hansel and Gretel our bedtime retelling (after the Brothers Grimm) (2026-11-15).mp3"
+      "file_name": "Once Upon a Time Show - Hansel and Gretel Bedtime Story for Kids, Our Retelling (after the Brothers Grimm) (2026-11-15).mp3"
     },
     {
       "id": "2026-11-15_morning-edition-sunday-15-november-2026",
-      "title": "AI Daily, 15 November 2026: Test agents hit Epoch AI's live website, 1,000 servers tied to AI attacks",
+      "title": "Test Agents Try SQL Injection on Epoch AI's Site | AI Daily 15 Nov",
       "summary": [
         "The AI news of the last day from The AI Gazette, told by Bob and Alice in about eight minutes.",
         "Test agents tried an SQL injection on Epoch AI's live website, and a Japan-led probe found about 1,000 suspected AI attack servers.",
@@ -500,13 +500,13 @@
           "url": "https://luongnv.com/news/reports/2026-11-14-afternoon.html"
         }
       ],
-      "description": "The AI news of the last day in 8 minutes. Agents in an alignment test tried an SQL injection on Epoch AI's live website, and a Japan-led probe found about 1,000 servers likely used for AI-driven cyberattacks, most running the Artex agent framework.\n\nIn this episode:\n- Google's Gemini 4 agent teams and the MathArena maths leaderboard\n- DeepSeek opens its app's tools to developers, and Cohere buys cubic\n- Nvidia shareholders ask the board to keep Jensen Huang's return open\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description": "Agents in an alignment test tried an SQL injection on Epoch AI's live website, and a Japan-led probe found about 1,000 servers likely used for AI-driven cyberattacks, most running the Artex agent framework. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Google's Gemini 4 agent teams and the MathArena maths leaderboard\n- DeepSeek opens its app's tools to developers, and Cohere buys cubic\n- Nvidia shareholders ask the board to keep Jensen Huang's return open\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - AI Daily, 15 November 2026 Test agents hit Epoch AI's live website, 1,000 servers tied to AI attacks (2026-11-15).mp3"
+      "file_name": "Build Wiz AI Show - Test Agents Try SQL Injection on Epoch AI's Site AI Daily 15 Nov (2026-11-15).mp3"
     },
     {
       "id": "2026-11-14_morning-edition-saturday-14-november-2026",
-      "title": "AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0",
+      "title": "ChatGPT Wallet Lets AI Agents Pay, llama.cpp 1.0 | AI Daily 14 Nov",
       "summary": [
         "OpenAI's ChatGPT Wallet lets agents pay for purchases, while Google keeps Gemini read-only on Google Wallet.",
         "llama.cpp reaches version one with semantic versioning, and LangChain raises $300 million at a $3 billion valuation.",
@@ -546,13 +546,13 @@
           "url": "https://luongnv.com/news/reports/2026-11-13-afternoon.html"
         }
       ],
-      "description": "The AI news of the last day in 8 minutes. OpenAI's ChatGPT Wallet lets AI agents pay for purchases, while Google keeps Gemini read-only on Google Wallet. And the local-inference library from ggml-org reaches version one with semantic versioning.\n\nIn this episode:\n- LangChain's $300 million round for model-neutral agent tools\n- The FAA ground stop and questions over its AI planning tool\n- The Fed's survey naming AI the top financial risk, and Nvidia's search for a new chief\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description": "OpenAI's ChatGPT Wallet lets AI agents pay for purchases, while Google keeps Gemini read-only on Google Wallet. And the local-inference library from ggml-org reaches version one. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- LangChain's $300 million round for model-neutral agent tools\n- The FAA ground stop and questions over its AI planning tool\n- The Fed's survey naming AI the top financial risk, and Nvidia's search for a new chief\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - AI Daily, 14 November 2026 ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0 (2026-11-14).mp3"
+      "file_name": "Build Wiz AI Show - ChatGPT Wallet Lets AI Agents Pay, llama.cpp 1.0 AI Daily 14 Nov (2026-11-14).mp3"
     },
     {
       "id": "2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-fr",
-      "title": "Le Vilain Petit Canard : notre version pour le soir (d'après Andersen)",
+      "title": "Le Vilain Petit Canard : histoire du soir pour enfants, notre version (d'après Andersen)",
       "summary": [
         "Une douce version du Vilain Petit Canard de Hans Christian Andersen pour le soir, d'après la traduction de Mrs. H. B. Paull sur Wikisource.",
         "Un grand caneton gris, moqué dans la basse-cour, traverse un long hiver froid et trouve au printemps un accueil plein de tendresse.",
@@ -587,11 +587,11 @@
       },
       "description": "Le Vilain Petit Canard d'Andersen, raconté avec nos mots en douce histoire du soir. Un grand caneton gris découvre un matin de printemps qu'il a toujours été un cygne.\n\nDans cet épisode :\n- Un gros œuf qui ne veut pas éclore\n- Un chat et une poule qui croient tout savoir\n- Un long hiver, puis une belle surprise sur l'eau\n\nSources : The Ugly Duckling, Hans Christian Andersen, trad. H. B. Paull (Wikisource)\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Le Vilain Petit Canard notre version pour le soir (d'après Andersen) (2026-11-13).mp3"
+      "file_name": "Once Upon a Time Show - Le Vilain Petit Canard histoire du soir pour enfants, notre version (d'après Andersen) (2026-11-13).mp3"
     },
     {
       "id": "2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling-vi",
-      "title": "Vịt con xấu xí: bản kể lại trước giờ ngủ (theo Andersen)",
+      "title": "Vịt con xấu xí: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Andersen)",
       "summary": [
         "Truyện Vịt con xấu xí của Hans Christian Andersen, kể nhẹ nhàng trước giờ ngủ, theo bản dịch tiếng Anh của Mrs. H. B. Paull trên Wikisource.",
         "Chú vịt con xám to xác bị chọc ghẹo trong sân, đi qua một mùa đông lạnh giá, rồi được chào đón thật dịu dàng khi mùa xuân đến.",
@@ -626,11 +626,11 @@
       },
       "description": "Vịt con xấu xí của Andersen, kể lại bằng lời của chúng tôi trước giờ ngủ. Chú vịt con xám to xác, chẳng giống ai, một sáng mùa xuân mới biết mình vẫn luôn là thiên nga.\n\nTrong tập này:\n- Quả trứng to mãi không chịu nở\n- Chú mèo và cô gà mái tưởng mình biết hết mọi thứ\n- Mùa đông dài, rồi một bất ngờ đẹp trên mặt nước\n\nNguồn: The Ugly Duckling, Hans Christian Andersen, bản dịch của Mrs. H. B. Paull (Wikisource)\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Vịt con xấu xí bản kể lại trước giờ ngủ (theo Andersen) (2026-11-13).mp3"
+      "file_name": "Once Upon a Time Show - Vịt con xấu xí truyện kể trước giờ ngủ cho bé, bản kể lại (theo Andersen) (2026-11-13).mp3"
     },
     {
       "id": "2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling",
-      "title": "The Ugly Duckling: our bedtime retelling (after Andersen)",
+      "title": "The Ugly Duckling: Bedtime Story for Kids, Our Retelling (after Andersen)",
       "summary": [
         "A gentle bedtime retelling of The Ugly Duckling by Hans Christian Andersen, from Mrs. H. B. Paull's translation on Wikisource.",
         "A big grey duckling is teased in the farmyard, wanders through a cold winter, and finds a kind welcome in the spring.",
@@ -665,11 +665,11 @@
       },
       "description": "Hans Christian Andersen's The Ugly Duckling, retold in our own words for bedtime. A big grey duckling, unlike everyone else, finds out one spring morning that he was a swan all along.\n\nIn this episode:\n- A big egg that will not hatch\n- A cat and a hen who think they know everything\n- A long winter, then a lovely surprise on the water\n\nSources: The Ugly Duckling, Hans Christian Andersen, translated by Mrs. H. B. Paull (Wikisource)\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - The Ugly Duckling our bedtime retelling (after Andersen) (2026-11-13).mp3"
+      "file_name": "Once Upon a Time Show - The Ugly Duckling Bedtime Story for Kids, Our Retelling (after Andersen) (2026-11-13).mp3"
     },
     {
       "id": "2026-11-13_morning-edition-friday-13-november-2026",
-      "title": "AI Daily, 13 November 2026: Jensen Huang resigns as Nvidia CEO, Google ships Gemini 4 Hydrogen",
+      "title": "Jensen Huang Resigns as Nvidia CEO, Gemini 4 Hydrogen | AI Daily 13 Nov",
       "summary": [
         "Jensen Huang resigned as Nvidia's chief executive; CFO Colette Kress is interim CEO and Huang agreed to testify to Congress.",
         "Google released Gemini 4 Hydrogen for fast coding and agents; Microsoft showed poisoned post-training can backdoor coding agents.",
@@ -709,13 +709,13 @@
           "url": "https://luongnv.com/news/reports/2026-11-12-afternoon.html"
         }
       ],
-      "description": "The AI news of the last day in 8 minutes. Jensen Huang resigned as Nvidia's chief executive, and Google released Gemini 4 Hydrogen, a faster, cheaper model for coding and agents.\n\nIn this episode:\n- Microsoft's studies of backdoors planted in coding agents during post-training\n- AWS Emulator, a local copy of AWS written entirely by AI agents\n- A lawsuit to halt frontier models, OpenAI's raise and Anthropic's IPO demand\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description": "Jensen Huang resigned as Nvidia's chief executive, and Google released Gemini 4 Hydrogen, a faster, cheaper model for coding and agents. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Microsoft's studies of backdoors planted in coding agents during post-training\n- AWS Emulator, a local copy of AWS written entirely by AI agents\n- A lawsuit to halt frontier models, OpenAI's raise and Anthropic's IPO demand\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - AI Daily, 13 November 2026 Jensen Huang resigns as Nvidia CEO, Google ships Gemini 4 Hydrogen (2026-11-13).mp3"
+      "file_name": "Build Wiz AI Show - Jensen Huang Resigns as Nvidia CEO, Gemini 4 Hydrogen AI Daily 13 Nov (2026-11-13).mp3"
     },
     {
       "id": "2026-11-12_welcome-to-the-b2a-economy",
-      "title": "Welcome to the B2A Economy: When Your Customer Is an AI Agent",
+      "title": "B2A Economy: When Your Customer Is an AI Agent (a16z, Olivia Moore)",
       "summary": [
         "Olivia Moore at a16z argues AI agents are becoming the internet's main customers: welcome to the B2A, business-to-agent, economy.",
         "Agent traffic is surging and converts well, plug-ins and MCPs are becoming an app store for agents, and coding shows what comes next.",
@@ -787,11 +787,11 @@
       ],
       "description": "What if your next customer isn't a person? Bob and Alice unpack Welcome to the B2A Economy, Olivia Moore's a16z piece on AI agents as buyers.\n\nIn this episode:\n- AI-driven traffic and orders surging, and why agent visitors convert better.\n- Plug-ins and MCPs as an app store for agents, and who wins in B2A.\n- Coding agents as the preview, and the Amazon v. Perplexity ruling on shopping agents.\n\nSources: Olivia Moore; Thales Group; Anthropic; PYMNTS\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Welcome to the B2A Economy When Your Customer Is an AI Agent (2026-11-12).mp3"
+      "file_name": "Build Wiz AI Show - B2A Economy When Your Customer Is an AI Agent (a16z, Olivia Moore) (2026-11-12).mp3"
     },
     {
       "id": "2026-11-12_morning-edition-thursday-12-november-2026",
-      "title": "AI Daily, 12 November 2026: Nvidia's board weighs ousting Jensen Huang, United bans AI agents",
+      "title": "Nvidia Weighs Ousting Huang, United Bans AI Agents | AI Daily 12 Nov",
       "summary": [
         "Nvidia's board met to decide whether to remove Jensen Huang, and United Airlines barred unauthorised AI agents.",
         "Google's Gemini Decision 1 scores up to 1,000 questions per request; Microsoft's Lazarus hides a backdoor in under 10 neurons.",
@@ -836,13 +836,13 @@
           "url": "https://lastweekin.ai/p/last-week-month-in-ai-347-nvidias"
         }
       ],
-      "description": "The AI news of the last day in 8 minutes. Nvidia's board met to decide whether to remove Jensen Huang, and United Airlines barred unauthorised AI agents from booking its flights.\n\nIn this episode:\n- Google's Gemini Decision 1, a model that scores answers instead of writing them\n- Microsoft's Lazarus backdoor and 35,578 Grok Build apps open to anyone\n- Anthropic's IPO range and OpenAI's reported losses\n\nSources: The AI Gazette (morning and afternoon editions), Last Week in AI\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description": "Nvidia's board met to decide whether to remove Jensen Huang, and United Airlines barred unauthorised AI agents from booking its flights. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Google's Gemini Decision 1, a model that scores answers instead of writing them\n- Microsoft's Lazarus backdoor and 35,578 Grok Build apps open to anyone\n- Anthropic's IPO range and OpenAI's reported losses\n\nSources: The AI Gazette (morning and afternoon editions), Last Week in AI\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - AI Daily, 12 November 2026 Nvidia's board weighs ousting Jensen Huang, United bans AI agents (2026-11-12).mp3"
+      "file_name": "Build Wiz AI Show - Nvidia Weighs Ousting Huang, United Bans AI Agents AI Daily 12 Nov (2026-11-12).mp3"
     },
     {
       "id": "2026-11-10_state-of-the-tech-job-market-late-2026",
-      "title": "PMs Are Winning, Engineers Are Plateauing: The Tech Job Market in Late 2026",
+      "title": "Tech Job Market Late 2026: PM Openings Up 75%, Engineers Plateau",
       "summary": [
         "Lenny Rachitsky's late-2026 job market report: PM openings are up 75% from their low, while engineering openings have stalled.",
         "Design and user research hit record lows, remote falls to 14% of roles, and the Bay Area now beats remote worldwide.",
@@ -913,12 +913,12 @@
       ],
       "description": "The job AI was supposed to kill is growing fastest. Bob and Alice unpack Lenny Rachitsky's report on the tech job market in late 2026.\n\nIn this episode:\n- PM openings up 75% from their low, while engineering openings stall.\n- Record lows for design, user research and remote roles, and the pull of the Bay Area.\n- LLM and Claude top the job posts, forward deployed engineers boom, and why openings aren't hires.\n\nSources: Lenny Rachitsky; Guillermo Gallacher; Joe Schmidt; Jeff Cox\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - PMs Are Winning, Engineers Are Plateauing The Tech Job Market in Late 2026 (2026-11-10).mp3",
+      "file_name": "Build Wiz AI Show - Tech Job Market Late 2026 PM Openings Up 75%, Engineers Plateau (2026-11-10).mp3",
       "audio_sha256": "a18d4c8d3fe26a99991c476768b9291e19065363a517f60074d7fe2863f622b2"
     },
     {
       "id": "2026-11-10_become-a-cracked-marketer",
-      "title": "Become a Cracked Marketer: The Marketing Engineer Method",
+      "title": "The Marketing Engineer Method: AI Ads as Code with Coding Agents",
       "summary": [
         "The Startup Ideas Podcast writes up Cody Schneider's Marketing Engineer Method: a coding agent set up to make and ship ads.",
         "Give the agent data, write-only access and tools, then turn one URL into five static ads and a 30-second avatar video for about $5.",
@@ -989,12 +989,12 @@
       ],
       "description": "Can a coding agent be your best marketer? Bob and Alice unpack Become a Cracked Marketer from The Startup Ideas Podcast: Cody Schneider's Marketing Engineer Method for ads made as code.\n\nIn this episode:\n- The environment: one data warehouse, write-only ad access and the right tools.\n- One URL into five static ads, and a 30-second avatar video for about $5.\n- A vision-model quality gate, cohorts of 30, and the FTC's rule on AI-generated reviews.\n\nSources: The Startup Ideas Podcast; Nelson F. Liu et al.; Anthropic; Lauren Forristal\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Become a Cracked Marketer The Marketing Engineer Method (2026-11-10).mp3",
+      "file_name": "Build Wiz AI Show - The Marketing Engineer Method AI Ads as Code with Coding Agents (2026-11-10).mp3",
       "audio_sha256": "e2d2afd43329a51791debd00c0405b721f9d148cf17a8657e543ae7c316726ef"
     },
     {
       "id": "2026-11-10_three-little-pigs-fr",
-      "title": "Les Trois Petits Cochons : notre version pour le soir (d'après Joseph Jacobs)",
+      "title": "Les Trois Petits Cochons : histoire du soir pour enfants, notre version (d'après Joseph Jacobs)",
       "summary": [
         "Une version douce des Trois Petits Cochons pour le soir, d'après les contes anglais de Joseph Jacobs, sur la page Three Little Pigs de D. L. Ashliman.",
         "Une maison de paille, une maison de bois, une maison de briques, et un petit cochon malin qui déjoue le loup avec des navets, des pommes et une baratte.",
@@ -1028,12 +1028,12 @@
       },
       "description": "Les Trois Petits Cochons, notre version douce pour le soir, d'après les contes anglais de Joseph Jacobs. Trois maisons, un loup qui souffle fort et un petit cochon malin. Personne n'a de mal.\n\nDans cet épisode :\n- Des maisons de paille, de bois et de briques\n- Des navets, des pommes et une baratte qui roule\n- Un loup dans la cheminée et un grand plouf\n\nSources : Three Little Pigs, Joseph Jacobs, via D. L. Ashliman\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Les Trois Petits Cochons notre version pour le soir (d'après Joseph Jacobs) (2026-11-10).mp3",
+      "file_name": "Once Upon a Time Show - Les Trois Petits Cochons histoire du soir pour enfants, notre version (d'après Joseph Jacobs) (2026-11-10).mp3",
       "audio_sha256": "cb835e9a25fb6c697dfca46bc544b8a29582f598cb435b5ee7c45a3c99602c6e"
     },
     {
       "id": "2026-11-10_three-little-pigs-vi",
-      "title": "Ba chú heo con: bản kể lại trước giờ ngủ (theo Joseph Jacobs)",
+      "title": "Ba chú heo con: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Joseph Jacobs)",
       "summary": [
         "Truyện Ba chú heo con kể nhẹ nhàng trước giờ ngủ, theo truyện cổ nước Anh của Joseph Jacobs, trên trang Three Little Pigs của D. L. Ashliman.",
         "Một nhà rơm, một nhà gỗ, một nhà gạch, và chú heo con thông minh qua mặt con sói nhờ củ cải, quả táo và chiếc thùng đánh bơ.",
@@ -1067,12 +1067,12 @@
       },
       "description": "Ba chú heo con, kể lại bằng lời của chúng tôi, theo truyện cổ nước Anh của Joseph Jacobs. Ba ngôi nhà, một con sói thổi phù phù và một chú heo con thật thông minh, không ai bị đau cả.\n\nTrong tập này:\n- Nhà rơm, nhà gỗ và nhà gạch\n- Củ cải, quả táo và chiếc thùng đánh bơ lăn xuống dốc\n- Con sói chui ống khói và rơi tõm vào nồi nước lạnh\n\nNguồn: Three Little Pigs, Joseph Jacobs, D. L. Ashliman\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - Ba chú heo con bản kể lại trước giờ ngủ (theo Joseph Jacobs) (2026-11-10).mp3",
+      "file_name": "Once Upon a Time Show - Ba chú heo con truyện kể trước giờ ngủ cho bé, bản kể lại (theo Joseph Jacobs) (2026-11-10).mp3",
       "audio_sha256": "0ca3102bdd8ec25d052b73bb3eb73f839346e2b77eea84971a98ba2e11824162"
     },
     {
       "id": "2026-11-10_three-little-pigs",
-      "title": "The Three Little Pigs: our bedtime retelling (after Joseph Jacobs)",
+      "title": "The Three Little Pigs: Bedtime Story for Kids, Our Retelling (after Joseph Jacobs)",
       "summary": [
         "A gentle bedtime retelling of The Three Little Pigs, from Joseph Jacobs's English Fairy Tales, on D. L. Ashliman's Three Little Pigs page.",
         "A house of straw, a house of sticks, a house of bricks, and a clever little pig who outsmarts the wolf with turnips, apples and a butter churn.",
@@ -1106,12 +1106,12 @@
       },
       "description": "The Three Little Pigs in our own words, a gentle bedtime story after Joseph Jacobs's public-domain English Fairy Tales. Three houses, one huffing and puffing wolf, and a clever little pig. Nobody gets hurt.\n\nIn this episode:\n- Houses of straw, sticks and bricks\n- Turnips, apples and a butter churn rolling down the hill\n- A wolf down the chimney and a big cold splash\n\nSources: Three Little Pigs, Joseph Jacobs, via D. L. Ashliman\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
       "description_source": "description.txt",
-      "file_name": "Once Upon a Time Show - The Three Little Pigs our bedtime retelling (after Joseph Jacobs) (2026-11-10).mp3",
+      "file_name": "Once Upon a Time Show - The Three Little Pigs Bedtime Story for Kids, Our Retelling (after Joseph Jacobs) (2026-11-10).mp3",
       "audio_sha256": "c274be6650ef09c54aebd64a38c5680430ecf8f40d75d4e8ddd63843ff9ec55f"
     },
     {
       "id": "2026-11-10_the-secret-behind-viral-product-launches",
-      "title": "The Secret Behind Viral Product Launches",
+      "title": "How to Make a Product Launch Go Viral on X: Kyle Jeong's Playbook",
       "summary": [
         "Kyle Jeong of Browserbase, with Tereza of Factory, explains how viral product launches on X are planned.",
         "His playbook: a scroll-stopping video, sharp copy, a story with a villain, friends, paid reach, partners, press and IRL events.",
@@ -1182,12 +1182,12 @@
       ],
       "description": "How do startups get a million views on a product launch? Kyle Jeong, who launches products at Browserbase, says viral launches on X are engineered over weeks, not left to luck. Bob and Alice unpack his playbook.\n\nIn this episode:\n- A launch video, copy that earns every word, a story with a villain\n- Why replies and quotes beat likes on X\n- Friends, paid reach and the FTC's disclosure rules\n- A checklist for your next launch\n\nSources: Kyle Jeong; Twitter; Paul Graham; Federal Trade Commission\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - The Secret Behind Viral Product Launches (2026-11-10).mp3",
+      "file_name": "Build Wiz AI Show - How to Make a Product Launch Go Viral on X Kyle Jeong's Playbook (2026-11-10).mp3",
       "audio_sha256": "e2a59c4a5ed44b448ba70f8b697a3bbe5d1b9a5c2475db86ebed8c3b75b28d43"
     },
     {
       "id": "2026-11-09_how-to-build-a-one-person-million-dollar-agency",
-      "title": "How to Build a One-Person Million Dollar Agency with AI Agents",
+      "title": "How to Build a One-Person $1M Marketing Agency with AI Agents",
       "summary": [
         "The Boring Marketer sketches a one-person marketing agency for plumbing and HVAC shops, run by teams of AI agents.",
         "His math: 20 clients on three tiers for about $85,000 a month, with agents that bring you only the decisions.",
@@ -1258,12 +1258,12 @@
       ],
       "description": "Can one person run a million dollar marketing agency with AI agents? Bob and Alice unpack The Boring Marketer's plan for plumbing and HVAC shops: three tiers, sales agents, and delivery agents that ask first.\n\nIn this episode:\n- The math: 20 clients for about $85,000 a month, and why you plan on signing 28.\n- Approvals: runs on its own, asks you first, never.\n- What breaks: vendor numbers, approval fatigue, and AI voices on cold calls.\n\nSources: The Boring Marketer; Jeremy Kahn; Anthropic; Ali Swenson\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - How to Build a One-Person Million Dollar Agency with AI Agents (2026-11-10).mp3",
+      "file_name": "Build Wiz AI Show - How to Build a One-Person $1M Marketing Agency with AI Agents (2026-11-10).mp3",
       "audio_sha256": "e8831d820afef13aa613f19bd2076c9bf1c43961ffb9924b7e9b8ecb7f65076b"
     },
     {
       "id": "2026-11-04_a-practical-guide-to-security-in-november-2026",
-      "title": "A Practical Guide to Security in November 2026",
+      "title": "Practical Security Guide for Developers, November 2026 (Jack Cable)",
       "summary": [
         "Jack Cable's X article A Practical Guide to Security in November 2026, after a chaotic few weeks of hacks and critical bugs.",
         "His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.",
@@ -1290,14 +1290,14 @@
         "published": "2026-11-03T21:31:28Z",
         "kind": "x"
       },
-      "description": "Jack Cable's X article A Practical Guide to Security in November 2026, after a chaotic few weeks of hacks and critical bugs. Bob and Alice unpack it.\n\nIn this episode:\n- His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.\n- Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today.\n\nSources: A Practical Guide to Security in November 2026 by Jack Cable (@jackhcable)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description": "Jack Cable's A Practical Guide to Security in November 2026 says years-old security best practices still work, after a chaotic few weeks of hacks and critical bugs. Bob and Alice unpack his checklist.\n\nIn this episode:\n- His point: years-old best practices still work, from passkeys and secret scans to a 7-day minimum package age.\n- Binance lost 6.34 billion dollars via a compromised developer laptop; most of these steps can start today.\n\nSources: A Practical Guide to Security in November 2026 by Jack Cable (@jackhcable)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - A Practical Guide to Security in November 2026 (2026-11-09).mp3",
+      "file_name": "Build Wiz AI Show - Practical Security Guide for Developers, November 2026 (Jack Cable) (2026-11-09).mp3",
       "audio_sha256": "8af44fda89447d2655b9fa59d6311712a608bc9fab85e2ac08ba188e4edbc143"
     },
     {
       "id": "2026-11-05_marketing-engineers-100x-more-experiments-with",
-      "title": "Marketing Engineers: 100x More Experiments with AI agents",
+      "title": "Marketing Engineers: Run 100x More Experiments with AI Agents",
       "summary": [
         "Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents.",
         "His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.",
@@ -1366,14 +1366,14 @@
           ]
         }
       ],
-      "description": "Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents. Bob and Alice unpack it.\n\nIn this episode:\n- His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.\n- Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.\n\nSources: Greg Isenberg; Sean Ellis; Chonglin Sun et al.; Shannon Bond\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description": "What is a marketing engineer? Greg Isenberg describes a role that is part marketer, part builder, running AI agents. Bob and Alice unpack his playbook.\n\nIn this episode:\n- His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.\n- Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.\n\nSources: Greg Isenberg; Sean Ellis; Chonglin Sun et al.; Shannon Bond\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Marketing Engineers 100x More Experiments with AI agents (2026-11-09).mp3",
+      "file_name": "Build Wiz AI Show - Marketing Engineers Run 100x More Experiments with AI Agents (2026-11-09).mp3",
       "audio_sha256": "0beb44ebcab082aed63c73be238bf04e2e12e0af6ac7ea35f17f05e4d94bac02"
     },
     {
       "id": "2026-11-05_marketing-engineers-solo-explainer",
-      "title": "Marketing Engineers: 100x More Experiments with AI agents (solo explainer)",
+      "title": "Marketing Engineers and AI Agents: Solo Explainer (Greg Isenberg)",
       "summary": [
         "A solo explainer of Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents.",
         "His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.",
@@ -1400,14 +1400,14 @@
         "published": "2026-10-08T13:31:56Z",
         "kind": "x"
       },
-      "description": "A solo explainer of Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents. Alice unpacks it on her own.\n\nIn this episode:\n- His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.\n- Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.\n\nSources: Marketing Engineers: 100x More Experiments with AI agents by Greg Isenberg (@gregisenberg)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description": "What is a marketing engineer? Greg Isenberg describes a role that is part marketer, part builder, running AI agents. Alice explains his playbook on her own.\n\nIn this episode:\n- His playbook: write the business \"brain\" first, connect the data, then add agents one at a time with guardrails in the tools.\n- Why it matters: the cost of a marketing experiment keeps collapsing, and whoever learns fastest wins.\n\nSources: Marketing Engineers: 100x More Experiments with AI agents by Greg Isenberg (@gregisenberg)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Marketing Engineers 100x More Experiments with AI agents (solo explainer) (2026-11-09).mp3",
+      "file_name": "Build Wiz AI Show - Marketing Engineers and AI Agents Solo Explainer (Greg Isenberg) (2026-11-09).mp3",
       "audio_sha256": "1360307ac7dbd88bf690e08ce698533ebde05fde2a4b003c96bd6898daf956fd"
     },
     {
       "id": "2026-11-05_meet-the-new-build-wiz-ai-show",
-      "title": "Meet the new Build Wiz AI Show",
+      "title": "Meet Build Wiz AI Show: How Our AI Podcast Is Made and Fact-Checked",
       "summary": [
         "A fresh introduction to Build Wiz AI Show: hosts Bob and Alice, who swap roles, and four recurring guests.",
         "How an episode is made: read in full, outlined, tested against outside sources, every claim checked word for word.",
@@ -1487,14 +1487,14 @@
           ]
         }
       ],
-      "description": "A fresh introduction to Build Wiz AI Show: hosts Bob and Alice, who swap roles, and four recurring guests. Bob and Alice unpack it.\n\nIn this episode:\n- How an episode is made: read in full, outlined, tested against outside sources, every claim checked word for word.\n- Why it matters: each episode aims to give the best ideas, their limits, and one concrete thing to try.\n\nSources: Build Wiz AI Show; Ziwei Ji et al.; Anthropic; Elisa Shearer et al.; Shannon Bond\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description": "Build Wiz AI Show is a podcast where hosts Bob and Alice swap roles and four recurring guests bring outside sources. This introduction explains how each episode is made and checked.\n\nIn this episode:\n- How an episode is made: read in full, outlined, tested against outside sources, every claim checked word for word.\n- Why it matters: each episode aims to give the best ideas, their limits, and one concrete thing to try.\n\nSources: Build Wiz AI Show; Ziwei Ji et al.; Anthropic; Elisa Shearer et al.; Shannon Bond\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Meet the new Build Wiz AI Show (2026-11-09).mp3",
+      "file_name": "Build Wiz AI Show - Meet Build Wiz AI Show How Our AI Podcast Is Made and Fact-Checked (2026-11-09).mp3",
       "audio_sha256": "1d87c6a1d2263d7ca5537bfb45173b872b3555ebf0cb5ea5b5e4df26bab7235b"
     },
     {
       "id": "2026-11-06_5t-opportunity-ai-roll-ups",
-      "title": "AI Roll-Ups: Buy a Boring Business, Run It with Agents",
+      "title": "AI Roll-Ups: Buy a Boring Business and Run It with AI Agents",
       "summary": [
         "Greg Isenberg's X article makes the case for AI roll-ups: buy an established services business and run its back office with AI agents.",
         "His playbook: buy the customers and trust, build a rulebook and review checkpoints, and move margins from 5-10% toward 30-40%.",
@@ -1563,14 +1563,14 @@
           ]
         }
       ],
-      "description": "Greg Isenberg's X article makes the case for AI roll-ups: buy an established services business and run its back office with AI agents. Bob and Alice unpack it.\n\nIn this episode:\n- His playbook: buy the customers and trust, build a rulebook and review checkpoints, and move margins from 5-10% toward 30-40%.\n- Guests add balance: even Thrive needed more than off-the-shelf AI, and AI users get less accurate when they stop checking.\n\nSources: Greg Isenberg; Nathan Labenz; Nicole Kobie; Ethan Mollick\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description": "Greg Isenberg makes the case for AI roll-ups: buy an established services business and run its back office with AI agents. Bob and Alice unpack the opportunity and its limits.\n\nIn this episode:\n- His playbook: buy the customers and trust, build a rulebook and review checkpoints, and move margins from 5-10% toward 30-40%.\n- Guests add balance: even Thrive needed more than off-the-shelf AI, and AI users get less accurate when they stop checking.\n\nSources: Greg Isenberg; Nathan Labenz; Nicole Kobie; Ethan Mollick\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - AI Roll-Ups Buy a Boring Business, Run It with Agents (2026-11-09).mp3",
+      "file_name": "Build Wiz AI Show - AI Roll-Ups Buy a Boring Business and Run It with AI Agents (2026-11-09).mp3",
       "audio_sha256": "b2cf03c37c79067ab8a892fe0528c12c1443422fdeaf38f044b786e107968d2e"
     },
     {
       "id": "2026-11-06_why-software-factories-fail",
-      "title": "Why Software Factories Fail: The Harness Is Not Enough",
+      "title": "Why AI Software Factories Fail: Coding Agents vs Maintainability",
       "summary": [
         "Dex Horthy's X article, part one of Why Software Factories Fail, argues the lights-off software factory does not work.",
         "Coding models are trained to pass tests, and there is no penalty for eroding codebase maintainability.",
@@ -1641,12 +1641,12 @@
       ],
       "description": "Can a lights-off software factory, where no human reads or writes the code, really work? Bob and Alice unpack Dex Horthy's Why Software Factories Fail: why coding agents erode codebase maintainability, and why harness engineering can't fix it.\n\nIn this episode:\n- Why review became the bottleneck once agents write the code\n- Why models are rewarded for passing tests, not good design\n- What DORA and METR data say about stability and speed\n\nSources: Dex Horthy; Carlos E. Jimenez et al.; Nathen Harvey and Derek DeBellis; METR\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Why Software Factories Fail The Harness Is Not Enough (2026-11-09).mp3",
+      "file_name": "Build Wiz AI Show - Why AI Software Factories Fail Coding Agents vs Maintainability (2026-11-09).mp3",
       "audio_sha256": "07837a7b0750d1bd0c62ae1ed6318dc9dbb626c1ff512d98963577324cdf7087"
     },
     {
       "id": "2026-11-07_your-old-prompts-are-making-claude-worse",
-      "title": "Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude",
+      "title": "Your Old Prompts Make Claude Worse: Cheaper, Better Prompting",
       "summary": [
         "Lance Martin of Anthropic's AI Engineer talk Your Old Prompts Are Making Claude Worse, with three guests.",
         "Audit old prompt habits, use the prompt cache (up to 72% cheaper), build climbable evals and hill climb without overfitting.",
@@ -1717,12 +1717,12 @@
       ],
       "description": "Old prompt tricks like think step by step can now make Claude worse and pricier. Bob and Alice unpack Lance Martin's AI Engineer talk on getting more from frontier models.\n\nIn this episode:\n- Prompt audits and the prompt cache: up to 72% cheaper\n- Evals Claude can climb, and hill climbing without overfitting\n- Days-long agents with Claude Managed Agents\n\nSources: Lance Martin; Thomas Kwa et al.; Hamel Husain; Ethan Mollick\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Your Old Prompts Are Making Claude Worse Cheaper, Better Claude (2026-11-09).mp3",
+      "file_name": "Build Wiz AI Show - Your Old Prompts Make Claude Worse Cheaper, Better Prompting (2026-11-09).mp3",
       "audio_sha256": "b8c15cafa3b06e82ce5c391c6aed5c0fb9ad0ef42c815f1e833cd960f989e098"
     },
     {
       "id": "2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0",
-      "title": "How Two Founders Ran 60 UGC Creators With Zero Employees",
+      "title": "UGC Marketing: How Two Founders Ran 60 Creators with Zero Employees",
       "summary": [
         "Mau Baron's X article on how Prayer Lock grew from $25k to $150k a month with UGC, run by two founders and no employees.",
         "The playbook: an app worth filming, three creators first, base plus bonus pay, and reading every bad week as hook, retention or conversion.",
@@ -1782,12 +1782,12 @@
       ],
       "description": "How did two founders run 60 UGC creators with zero employees? Bob and Alice unpack Mau Baron's playbook for growing a mobile app from $25k to $150k a month.\n\nIn this episode:\n- An app worth filming and a funnel that converts\n- Hiring, paying and managing creators\n- Running every video as TikTok Spark Ads\n\nSources: Mau Baron; Andrew Chen; Thales Bertaglia et al.\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - How Two Founders Ran 60 UGC Creators With Zero Employees (2026-11-09).mp3",
+      "file_name": "Build Wiz AI Show - UGC Marketing How Two Founders Ran 60 Creators with Zero Employees (2026-11-09).mp3",
       "audio_sha256": "c60bd273bf487bd7b8e83c7d1d4be26809947c1197822b875c1aad5488c6fe3f"
     },
     {
       "id": "2026-11-08_your-coding-agents-made-you-a-manager",
-      "title": "Your Coding Agents Made You a Manager",
+      "title": "Managing AI Coding Agents Like an Engineering Manager (Addy Osmani)",
       "summary": [
         "Addy Osmani's X article Your coding agents made you a manager: the skills for managing agents are the skills for managing a team.",
         "Give agents a check they can run, brief only what the repo can't show, plan first, restart after two failed fixes, and keep the judgment.",
@@ -1847,12 +1847,12 @@
       ],
       "description": "Spend your day with a coding agent and you are already a manager. Bob and Alice unpack Addy Osmani's guide to managing coding agents like a good engineering manager would.\n\nIn this episode:\n- Give agents a check they can run, and ask for proof\n- Brief what the repo can't show; restart after two failed fixes\n- Delegate the task, never the judgment\n\nSources: Addy Osmani; Mike Pearl; METR\nBig AI ideas, made clear for builders. luongnv.com/podcast",
       "description_source": "description.txt",
-      "file_name": "Build Wiz AI Show - Your Coding Agents Made You a Manager (2026-11-09).mp3",
+      "file_name": "Build Wiz AI Show - Managing AI Coding Agents Like an Engineering Manager (Addy Osmani) (2026-11-09).mp3",
       "audio_sha256": "5344a928590cd15f67174acc0e95c608f2fbb9c1ea0293f363d254ae9cc90547"
     },
     {
       "id": "2026-11-04_the-golden-touch-fr",
-      "title": "Le roi Midas et le toucher d'or : notre version pour le soir (d'après Hawthorne)",
+      "title": "Le roi Midas et le toucher d'or : histoire du soir pour enfants, notre version (d'après Hawthorne)",
       "summary": [
         "Le roi Midas, raconté tout en douceur pour l'heure du coucher, d'après « Le toucher d'or » de Nathaniel Hawthorne.",
         "Un roi qui aimait l'or voit son vœu exaucé : tout ce qu'il touche devient or, même sa petite Marygold.",
@@ -1882,7 +1882,7 @@
       "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Dreamy Flashback\", \"Golly Gee\", \"Touching Moments Four - Melody\", \"Call to Adventure\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
       "story_group": "2026-11-04_the-golden-touch",
       "description": "Le roi Midas, notre version douce pour l'heure du coucher, d'après « Le toucher d'or » de Nathaniel Hawthorne. Une petite musique accompagne le passage d'une scène à l'autre.\n\nDans cet épisode :\n- Un roi qui aimait l'or voit son vœu exaucé : tout ce qu'il touche devient or, même sa petite Marygold.\n- L'eau de la rivière répare tout, et il comprend ce qui vaut plus que l'or.\n\nSources : The Golden Touch\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
-      "file_name": "Once Upon a Time Show - Le roi Midas et le toucher d'or notre version pour le soir (d'après Hawthorne) (2026-11-05).mp3",
+      "file_name": "Once Upon a Time Show - Le roi Midas et le toucher d'or histoire du soir pour enfants, notre version (d'après Hawthorne) (2026-11-05).mp3",
       "description_source": "generated",
       "image": {
         "square": "art/2026-11-04_the-golden-touch/square.jpg",
@@ -1894,7 +1894,7 @@
     },
     {
       "id": "2026-11-04_the-golden-touch-en",
-      "title": "King Midas and the Golden Touch: our bedtime retelling (after Hawthorne)",
+      "title": "King Midas and the Golden Touch: Bedtime Story for Kids, Our Retelling (after Hawthorne)",
       "summary": [
         "A gentle bedtime retelling of King Midas, from Nathaniel Hawthorne's \"The Golden Touch\".",
         "A king who loved gold gets his wish: everything he touches turns to gold, even his little daughter Marygold.",
@@ -1924,7 +1924,7 @@
       "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Dreamy Flashback\", \"Golly Gee\", \"Touching Moments Four - Melody\", \"Call to Adventure\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
       "story_group": "2026-11-04_the-golden-touch",
       "description": "Our own gentle bedtime retelling of King Midas, after Nathaniel Hawthorne's public-domain story \"The Golden Touch\". Soft music plays between the scenes.\n\nIn this episode:\n- A king who loved gold gets his wish: everything he touches turns to gold, even his little daughter Marygold.\n- River water makes all right again, and he learns what is worth more than gold.\n\nSources: The Golden Touch\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
-      "file_name": "Once Upon a Time Show - King Midas and the Golden Touch our bedtime retelling (after Hawthorne) (2026-11-05).mp3",
+      "file_name": "Once Upon a Time Show - King Midas and the Golden Touch Bedtime Story for Kids, Our Retelling (after Hawthorne) (2026-11-05).mp3",
       "description_source": "generated",
       "image": {
         "square": "art/2026-11-04_the-golden-touch/square.jpg",
@@ -1936,7 +1936,7 @@
     },
     {
       "id": "2026-11-04_the-golden-touch",
-      "title": "Vua Midas và Bàn Tay Vàng: bản kể lại trước giờ ngủ (theo Hawthorne)",
+      "title": "Vua Midas và Bàn Tay Vàng: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Hawthorne)",
       "summary": [
         "Vua Midas, kể thật nhẹ nhàng trước giờ đi ngủ, theo truyện \"Bàn tay vàng\" của Nathaniel Hawthorne.",
         "Ông vua mê vàng được toại nguyện: chạm vào gì cũng hóa vàng, kể cả cô con gái nhỏ Marygold.",
@@ -1966,7 +1966,7 @@
       "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Dreamy Flashback\", \"Golly Gee\", \"Touching Moments Four - Melody\", \"Call to Adventure\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
       "story_group": "2026-11-04_the-golden-touch",
       "description": "Vua Midas, kể lại bằng lời của chúng tôi trước giờ đi ngủ, theo truyện \"Bàn tay vàng\" của Nathaniel Hawthorne. Có nhạc nhẹ giữa các cảnh.\n\nTrong tập này:\n- Ông vua mê vàng được toại nguyện: chạm vào gì cũng hóa vàng, kể cả cô con gái nhỏ Marygold.\n- Nước sông làm mọi thứ trở lại như cũ, và vua hiểu ra điều quý hơn vàng.\n\nNguồn: The Golden Touch\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
-      "file_name": "Once Upon a Time Show - Vua Midas và Bàn Tay Vàng bản kể lại trước giờ ngủ (theo Hawthorne) (2026-11-05).mp3",
+      "file_name": "Once Upon a Time Show - Vua Midas và Bàn Tay Vàng truyện kể trước giờ ngủ cho bé, bản kể lại (theo Hawthorne) (2026-11-05).mp3",
       "description_source": "generated",
       "image": {
         "square": "art/2026-11-04_the-golden-touch/square.jpg",
@@ -1978,7 +1978,7 @@
     },
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper-vi",
-      "title": "Cô bé Lọ Lem: bản kể lại trước giờ ngủ (theo Perrault)",
+      "title": "Cô bé Lọ Lem: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Perrault)",
       "summary": [
         "Cô bé Lọ Lem, kể thật nhẹ nhàng trước giờ đi ngủ, theo truyện cổ của Charles Perrault.",
         "Một cô bé hiền lành, bà tiên đỡ đầu, cỗ xe bí ngô và chiếc giày thủy tinh vừa khít.",
@@ -2008,7 +2008,7 @@
       "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
       "story_group": "2026-11-05_cinderella-or-the-little-glass-slipper",
       "description": "Cô bé Lọ Lem, kể lại bằng lời của chúng tôi trước giờ đi ngủ, theo truyện cổ của Charles Perrault. Có nhạc nhẹ giữa các cảnh.\n\nTrong tập này:\n- Một cô bé hiền lành, bà tiên đỡ đầu, cỗ xe bí ngô và chiếc giày thủy tinh vừa khít.\n- Câu chuyện khép lại bằng sự tha thứ và lời chúc ngủ ngon: ở hiền thì gặp lành.\n\nNguồn: Cinderella; or, The Little Glass Slipper\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
-      "file_name": "Once Upon a Time Show - Cô bé Lọ Lem bản kể lại trước giờ ngủ (theo Perrault) (2026-11-05).mp3",
+      "file_name": "Once Upon a Time Show - Cô bé Lọ Lem truyện kể trước giờ ngủ cho bé, bản kể lại (theo Perrault) (2026-11-05).mp3",
       "description_source": "generated",
       "image": {
         "square": "art/2026-11-05_cinderella-or-the-little-glass-slipper/square.jpg",
@@ -2020,7 +2020,7 @@
     },
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper-fr",
-      "title": "Cendrillon : notre version pour le soir (d'après Perrault)",
+      "title": "Cendrillon : histoire du soir pour enfants, notre version (d'après Perrault)",
       "summary": [
         "Cendrillon, racontée tout en douceur pour l'heure du coucher, d'après le conte de Charles Perrault.",
         "Une jeune fille au grand cœur, une marraine fée, un carrosse-citrouille et une pantoufle de verre.",
@@ -2050,7 +2050,7 @@
       "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
       "story_group": "2026-11-05_cinderella-or-the-little-glass-slipper",
       "description": "Cendrillon, notre version douce pour le coucher, d'après le conte de Charles Perrault. Une petite musique relie les scènes.\n\nDans cet épisode :\n- Une jeune fille au grand cœur, une marraine fée, un carrosse-citrouille et une pantoufle de verre.\n- Une histoire qui finit par le pardon et un bonsoir tout calme : être gentil, c'est la plus belle des magies.\n\nSources : Cinderella; or, The Little Glass Slipper\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
-      "file_name": "Once Upon a Time Show - Cendrillon notre version pour le soir (d'après Perrault) (2026-11-05).mp3",
+      "file_name": "Once Upon a Time Show - Cendrillon histoire du soir pour enfants, notre version (d'après Perrault) (2026-11-05).mp3",
       "description_source": "generated",
       "image": {
         "square": "art/2026-11-05_cinderella-or-the-little-glass-slipper/square.jpg",
@@ -2062,7 +2062,7 @@
     },
     {
       "id": "2026-11-05_cinderella-or-the-little-glass-slipper",
-      "title": "Cinderella: our bedtime retelling (after Perrault)",
+      "title": "Cinderella: Bedtime Story for Kids, Our Retelling (after Perrault)",
       "summary": [
         "A gentle bedtime retelling of Cinderella, from Charles Perrault's tale as translated by Andrew Lang.",
         "A kind girl, a fairy godmother, a pumpkin coach and a glass slipper that fits just right.",
@@ -2092,7 +2092,7 @@
       "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Dreamy Flashback\", \"Marty Gots a Plan\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
       "story_group": "2026-11-05_cinderella-or-the-little-glass-slipper",
       "description": "Our own gentle bedtime retelling of Cinderella, after Charles Perrault's public-domain tale in Andrew Lang's translation. Soft music plays between the scenes.\n\nIn this episode:\n- A kind girl, a fairy godmother, a pumpkin coach and a glass slipper that fits just right.\n- It ends with forgiveness and a quiet goodnight: being kind is the best magic of all.\n\nSources: Cinderella; or, The Little Glass Slipper\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
-      "file_name": "Once Upon a Time Show - Cinderella our bedtime retelling (after Perrault) (2026-11-05).mp3",
+      "file_name": "Once Upon a Time Show - Cinderella Bedtime Story for Kids, Our Retelling (after Perrault) (2026-11-05).mp3",
       "description_source": "generated",
       "image": {
         "square": "art/2026-11-05_cinderella-or-the-little-glass-slipper/square.jpg",
@@ -2104,7 +2104,7 @@
     },
     {
       "id": "2026-11-04_critical-thinking-when-agents-do-the-work",
-      "title": "Tư duy phản biện khi agent làm việc thay mình",
+      "title": "Tư duy phản biện khi dùng AI agent: bài học từ Addy Osmani",
       "summary": [
         "Addy Osmani viết trên X về tư duy phản biện khi agent AI làm phần lớn công việc thay ta.",
         "Từ giao việc, phó thác đến đầu hàng nhận thức: hãy đặt giả thuyết trước, hỏi dấu xanh chứng minh gì và đọc bằng chứng.",
@@ -2131,14 +2131,14 @@
         "published": "2026-11-03T07:01:29Z",
         "kind": "x"
       },
-      "description": "Addy Osmani viết trên X về tư duy phản biện khi agent AI làm phần lớn công việc thay ta. Bob và Alice cùng phân tích trong 12 phút.\n\nTrong tập này:\n- Từ giao việc, phó thác đến đầu hàng nhận thức: hãy đặt giả thuyết trước, hỏi dấu xanh chứng minh gì và đọc bằng chứng.\n- Bạn giao được việc và phần lớn khâu kiểm tra, nhưng không giao được trách nhiệm cho thứ mình ship.\n\nNguồn: Critical thinking when agents do the work của Addy Osmani (@addyosmani)\nNhững ý tưởng lớn về AI, giải thích dễ hiểu cho người làm sản phẩm. luongnv.com/podcast",
-      "file_name": "Build Wiz AI Show - Tư duy phản biện khi agent làm việc thay mình (2026-11-04).mp3",
+      "description": "Addy Osmani viết trên X về tư duy phản biện khi agent AI làm phần lớn công việc thay ta. Bob và Alice cùng phân tích.\n\nTrong tập này:\n- Từ giao việc, phó thác đến đầu hàng nhận thức: hãy đặt giả thuyết trước, hỏi dấu xanh chứng minh gì và đọc bằng chứng.\n- Bạn giao được việc và phần lớn khâu kiểm tra, nhưng không giao được trách nhiệm cho thứ mình ship.\n\nNguồn: Critical thinking when agents do the work của Addy Osmani (@addyosmani)\nNhững ý tưởng lớn về AI, giải thích dễ hiểu cho người làm sản phẩm. luongnv.com/podcast",
+      "file_name": "Build Wiz AI Show - Tư duy phản biện khi dùng AI agent bài học từ Addy Osmani (2026-11-04).mp3",
       "description_source": "generated",
       "audio_sha256": "e070387922b9619378f1971d64c651f62192a8b71c8731158caa9147a149077c"
     },
     {
       "id": "2026-11-03_the-most-lucrative-ai-business-to-start-in-2027",
-      "title": "The most lucrative AI business to start in 2027",
+      "title": "The Most Lucrative AI Business to Start in 2027 (Dan Koe)",
       "summary": [
         "An X article by Dan Koe on the most lucrative AI business to start in 2027.",
         "His thesis: capturing attention is the top skill, and one person using AI well can be a full creative team for their own brand or for clients.",
@@ -2165,14 +2165,14 @@
         "published": "2026-11-03T17:06:26Z",
         "kind": "x"
       },
-      "description": "An X article by Dan Koe on the most lucrative AI business to start in 2027. Bob and Alice unpack it in 13 minutes.\n\nIn this episode:\n- His thesis: capturing attention is the top skill, and one person using AI well can be a full creative team for their own brand or for clients.\n- It lays out a step-by-step client process and a way to land the first client, with market data from Goldman Sachs and the IAB.\n\nSources: The most lucrative AI business to start in 2027 by Dan Koe (@thedankoe)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
-      "file_name": "Build Wiz AI Show - The most lucrative AI business to start in 2027 (2026-11-03).mp3",
+      "description": "Dan Koe argues that capturing attention is the top skill for the most lucrative AI business to start in 2027. Bob and Alice unpack his plan.\n\nIn this episode:\n- His thesis: capturing attention is the top skill, and one person using AI well can be a full creative team for their own brand or for clients.\n- It lays out a step-by-step client process and a way to land the first client, with market data from Goldman Sachs and the IAB.\n\nSources: The most lucrative AI business to start in 2027 by Dan Koe (@thedankoe)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "file_name": "Build Wiz AI Show - The Most Lucrative AI Business to Start in 2027 (Dan Koe) (2026-11-03).mp3",
       "description_source": "generated",
       "audio_sha256": "dcaa3c8e30aeef8a4c1466e5d0819c3ea0ed94842258a54af44fb3a8202cf929"
     },
     {
       "id": "2026-11-03_the-road-to-self-improving-software",
-      "title": "The road to self-improving software",
+      "title": "Self-Improving Software: A Closed-Loop Software Factory with Agents",
       "summary": [
         "An X article by Ben Holmes on building a closed-loop software factory with agents.",
         "Agents can proactively fix alerted bugs, score their own sessions to improve skills, and mine customer data for the roadmap.",
@@ -2199,14 +2199,14 @@
         "published": "2026-10-15T18:04:22Z",
         "kind": "x"
       },
-      "description": "An X article by Ben Holmes on building a closed-loop software factory with agents. Bob and Alice unpack it in 5 minutes.\n\nIn this episode:\n- Agents can proactively fix alerted bugs, score their own sessions to improve skills, and mine customer data for the roadmap.\n- It shifts the goal from faster pull requests to one loop from task to shipped product, with humans still reviewing.\n\nSources: The road to self-improving software by Ben Holmes (@BHolmesDev)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
-      "file_name": "Build Wiz AI Show - The road to self-improving software (2026-11-03).mp3",
+      "description": "Ben Holmes describes a closed-loop software factory where AI agents fix alerted bugs, score their own sessions and mine customer data. Bob and Alice unpack the road to self-improving software.\n\nIn this episode:\n- Agents can proactively fix alerted bugs, score their own sessions to improve skills, and mine customer data for the roadmap.\n- It shifts the goal from faster pull requests to one loop from task to shipped product, with humans still reviewing.\n\nSources: The road to self-improving software by Ben Holmes (@BHolmesDev)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "file_name": "Build Wiz AI Show - Self-Improving Software A Closed-Loop Software Factory with Agents (2026-11-03).mp3",
       "description_source": "generated",
       "audio_sha256": "91406205d251a5f37fbebcd49a163c5e6a04435bb58378f60ed6fe97f08ee905"
     },
     {
       "id": "2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent",
-      "title": "How we scaled our app to 40 thousand dollars a month with zero dollars spent",
+      "title": "How an App Hit $40K a Month with Zero Ad Spend: Organic Video",
       "summary": [
         "An X article by app co-founder Nicholas on growing an app to about 40 thousand dollars a month with organic video.",
         "The method: a decent app built fast, heavy daily posting with trial reels, AI-assisted editing, and tested calls to action.",
@@ -2233,8 +2233,8 @@
         "published": "2026-11-03T15:59:48Z",
         "kind": "x"
       },
-      "description": "An X article by app co-founder Nicholas on growing an app to about 40 thousand dollars a month with organic video. Bob and Alice unpack it in 11 minutes.\n\nIn this episode:\n- The method: a decent app built fast, heavy daily posting with trial reels, AI-assisted editing, and tested calls to action.\n- It is a sponsored, self-reported playbook; some tactics, like buying followers or planted comments, carry real risks.\n\nSources: How we scaled our app to $40k/month with $0 spent (Full Guide) by Nicholas (@nicholascalez)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
-      "file_name": "Build Wiz AI Show - How we scaled our app to 40 thousand dollars a month with zero dollars spent (2026-11-03).mp3",
+      "description": "App co-founder Nicholas explains how organic video grew an app to about 40 thousand dollars a month. Bob and Alice unpack his playbook and its risks.\n\nIn this episode:\n- The method: a decent app built fast, heavy daily posting with trial reels, AI-assisted editing, and tested calls to action.\n- It is a sponsored, self-reported playbook; some tactics, like buying followers or planted comments, carry real risks.\n\nSources: How we scaled our app to $40k/month with $0 spent (Full Guide) by Nicholas (@nicholascalez)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "file_name": "Build Wiz AI Show - How an App Hit $40K a Month with Zero Ad Spend Organic Video (2026-11-03).mp3",
       "description_source": "generated",
       "audio_sha256": "744491fa45a2dbd8302b3145927a8404feb86d941bbc271aab9d0dcaccfc11a9"
     }

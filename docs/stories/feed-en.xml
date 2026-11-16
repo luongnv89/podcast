@@ -7,7 +7,7 @@
   <description>Gentle bedtime stories for children, told slowly by a warm narrator. Each episode retells a classic, public-domain tale (Cinderella, Hansel and Gretel, King Midas and more) in simple words, with soft music between the scenes and a calm goodnight at the end. The tales are adapted for bedtime, so nothing is too scary. Scripts and voices are made with AI, and every episode credits its source and its music. Also in French and Vietnamese.</description>
   <itunes:summary>Gentle bedtime stories for children, told slowly by a warm narrator. Each episode retells a classic, public-domain tale (Cinderella, Hansel and Gretel, King Midas and more) in simple words, with soft music between the scenes and a calm goodnight at the end. The tales are adapted for bedtime, so nothing is too scary. Scripts and voices are made with AI, and every episode credits its source and its music. Also in French and Vietnamese.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sun, 15 Nov 2026 16:26:33 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 16 Nov 2026 19:55:00 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -26,7 +26,7 @@
   <itunes:type>episodic</itunes:type>
   <item>
     <guid isPermaLink="false">2026-11-06_little-red-cap</guid>
-    <title>Little Red Riding Hood: our bedtime retelling (after the Brothers Grimm)</title>
+    <title>Little Red Riding Hood: Bedtime Story for Kids, Our Retelling (after the Brothers Grimm)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-06_little-red-cap</link>
     <description>A gentle bedtime retelling of Little Red Riding Hood, after Little Red-Cap by the Brothers Grimm, translated by Margaret Hunt.
 
@@ -50,7 +50,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-05_hansel-and-gretel</guid>
-    <title>Hansel and Gretel: our bedtime retelling (after the Brothers Grimm)</title>
+    <title>Hansel and Gretel: Bedtime Story for Kids, Our Retelling (after the Brothers Grimm)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-05_hansel-and-gretel</link>
     <description>A gentle bedtime retelling of Hansel and Gretel, from the Brothers Grimm's tale as translated by Margaret Hunt.
 
@@ -74,7 +74,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling</guid>
-    <title>The Ugly Duckling: our bedtime retelling (after Andersen)</title>
+    <title>The Ugly Duckling: Bedtime Story for Kids, Our Retelling (after Andersen)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-13_hans-andersen-s-fairy-tales-the-ugly-duckling</link>
     <description>A gentle bedtime retelling of The Ugly Duckling by Hans Christian Andersen, from Mrs. H. B. Paull's translation on Wikisource.
 
@@ -98,7 +98,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-10_three-little-pigs</guid>
-    <title>The Three Little Pigs: our bedtime retelling (after Joseph Jacobs)</title>
+    <title>The Three Little Pigs: Bedtime Story for Kids, Our Retelling (after Joseph Jacobs)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-10_three-little-pigs</link>
     <description>A gentle bedtime retelling of The Three Little Pigs, from Joseph Jacobs's English Fairy Tales, on D. L. Ashliman's Three Little Pigs page.
 
@@ -122,7 +122,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-04_the-golden-touch-en</guid>
-    <title>King Midas and the Golden Touch: our bedtime retelling (after Hawthorne)</title>
+    <title>King Midas and the Golden Touch: Bedtime Story for Kids, Our Retelling (after Hawthorne)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-04_the-golden-touch-en</link>
     <description>A gentle bedtime retelling of King Midas, from Nathaniel Hawthorne's "The Golden Touch".
 
@@ -146,7 +146,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-05_cinderella-or-the-little-glass-slipper</guid>
-    <title>Cinderella: our bedtime retelling (after Perrault)</title>
+    <title>Cinderella: Bedtime Story for Kids, Our Retelling (after Perrault)</title>
     <link>https://luongnv.com/podcast/stories/#2026-11-05_cinderella-or-the-little-glass-slipper</link>
     <description>A gentle bedtime retelling of Cinderella, from Charles Perrault's tale as translated by Andrew Lang.
 

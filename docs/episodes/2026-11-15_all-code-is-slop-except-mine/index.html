@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents | Build Wiz AI Show</title>
+<title>Trusting AI Coding Agents: Lint Rules, Tests and Proofs (Lauren Tan) | Build Wiz AI Show</title>
 <meta name="description" content="Can a team ship 11,000 pull requests a month without drowning in slop? Bob and Alice unpack Lauren Tan&#x27;s AI Engineer talk on trusting AI coding agents.">
 <link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-15_all-code-is-slop-except-mine/">
 <link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-15_all-code-is-slop-except-mine/">
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Build Wiz AI Show">
-<meta property="og:title" content="All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents">
+<meta property="og:title" content="Trusting AI Coding Agents: Lint Rules, Tests and Proofs (Lauren Tan)">
 <meta property="og:description" content="Can a team ship 11,000 pull requests a month without drowning in slop? Bob and Alice unpack Lauren Tan&#x27;s AI Engineer talk on trusting AI coding agents.">
 <meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-15_all-code-is-slop-except-mine/">
 <meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
@@ -18,14 +18,14 @@
 <meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-15_all-code-is-slop-except-mine.mp3">
 <meta property="og:audio:type" content="audio/mpeg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents">
+<meta name="twitter:title" content="Trusting AI Coding Agents: Lint Rules, Tests and Proofs (Lauren Tan)">
 <meta name="twitter:description" content="Can a team ship 11,000 pull requests a month without drowning in slop? Bob and Alice unpack Lauren Tan&#x27;s AI Engineer talk on trusting AI coding agents.">
 <meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
  "@type": "PodcastEpisode",
- "name": "All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents",
+ "name": "Trusting AI Coding Agents: Lint Rules, Tests and Proofs (Lauren Tan)",
  "description": "Can a team ship 11,000 pull requests a month without drowning in slop? Bob and Alice unpack Lauren Tan's AI Engineer talk on trusting AI coding agents.\n\nIn this episode:\n- The trust pyramid: code, lint rules and tests before prompts.\n- Banning what agents misuse; every correction becomes a lint rule.\n- Runtime and formal verification with TLA+ and Lean.\n- Guests on AI proofs, code-quality research and AI code security.\n\nSources: Lauren Tan; Prediction: AI will make formal verification go mainstream; Bill Doerrfeld; Jens Wessling\nBig AI ideas, made clear for builders. luongnv.com/podcast",
  "url": "https://luongnv.com/podcast/episodes/2026-11-15_all-code-is-slop-except-mine/",
  "inLanguage": "en",
@@ -79,7 +79,7 @@
 <body>
 <main>
   <a class="show" href="../../">Build Wiz AI Show</a>
-  <h1 id="title">All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents</h1>
+  <h1 id="title">Trusting AI Coding Agents: Lint Rules, Tests and Proofs (Lauren Tan)</h1>
   <p class="meta"><span class="dur">13 min</span> · <time datetime="2026-11-15T21:43:57Z">2026-11-15</time> · English</p>
   <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-15_all-code-is-slop-except-mine.mp3" aria-labelledby="title"></audio>
   <p class="desc" id="description">Can a team ship 11,000 pull requests a month without drowning in slop? Bob and Alice unpack Lauren Tan&#x27;s AI Engineer talk on trusting AI coding agents.
@@ -94,7 +94,7 @@ Sources: Lauren Tan; Prediction: AI will make formal verification go mainstream;
 Big AI ideas, made clear for builders. luongnv.com/podcast</p>
   <p class="actions">
     <a class="btn" href="../../#2026-11-15_all-code-is-slop-except-mine">Listen on Build Wiz AI Show</a>
-    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-15_all-code-is-slop-except-mine.mp3" download="Build Wiz AI Show - All Code Is Slop (Except Mine) How One Team Learned to Trust Its Coding Agents (2026-11-15).mp3">Download MP3</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-15_all-code-is-slop-except-mine.mp3" download="Build Wiz AI Show - Trusting AI Coding Agents Lint Rules, Tests and Proofs (Lauren Tan) (2026-11-15).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
   </p>
@@ -104,7 +104,7 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
 <script src="../../share.js?v=202611130200"></script>
 <script>
 (() => {
-  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-15_all-code-is-slop-except-mine/", "title": "All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-15_all-code-is-slop-except-mine", "episode_title": "All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-15_all-code-is-slop-except-mine", "title": "All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents", "summary": ["Lauren Tan of the Grok Bot team argues coding agents become trustworthy when you invest in their environment: code, lint rules and checks first, prose last.", "Banning what agents misuse, turning every correction into a lint rule, and runtime plus formal verification let her team ship 11,000 PRs in a month with few reverts.", "Guests add Martin Kleppmann on AI and formal proofs, GitClear research on AI code quality, and Veracode's security test of AI-generated code."], "description": "Can a team ship 11,000 pull requests a month without drowning in slop? Bob and Alice unpack Lauren Tan's AI Engineer talk on trusting AI coding agents.\n\nIn this episode:\n- The trust pyramid: code, lint rules and tests before prompts.\n- Banning what agents misuse; every correction becomes a lint rule.\n- Runtime and formal verification with TLA+ and Lean.\n- Guests on AI proofs, code-quality research and AI code security.\n\nSources: Lauren Tan; Prediction: AI will make formal verification go mainstream; Bill Doerrfeld; Jens Wessling\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "All Code Is Slop (Except Mine)", "author": "Lauren Tan", "url": "https://www.youtube.com/watch?v=O_zcc6Xl12g", "kind": "text"}}};
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-15_all-code-is-slop-except-mine/", "title": "Trusting AI Coding Agents: Lint Rules, Tests and Proofs (Lauren Tan)", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-15_all-code-is-slop-except-mine", "episode_title": "Trusting AI Coding Agents: Lint Rules, Tests and Proofs (Lauren Tan)", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-15_all-code-is-slop-except-mine", "title": "Trusting AI Coding Agents: Lint Rules, Tests and Proofs (Lauren Tan)", "summary": ["Lauren Tan of the Grok Bot team argues coding agents become trustworthy when you invest in their environment: code, lint rules and checks first, prose last.", "Banning what agents misuse, turning every correction into a lint rule, and runtime plus formal verification let her team ship 11,000 PRs in a month with few reverts.", "Guests add Martin Kleppmann on AI and formal proofs, GitClear research on AI code quality, and Veracode's security test of AI-generated code."], "description": "Can a team ship 11,000 pull requests a month without drowning in slop? Bob and Alice unpack Lauren Tan's AI Engineer talk on trusting AI coding agents.\n\nIn this episode:\n- The trust pyramid: code, lint rules and tests before prompts.\n- Banning what agents misuse; every correction becomes a lint rule.\n- Runtime and formal verification with TLA+ and Lean.\n- Guests on AI proofs, code-quality research and AI code security.\n\nSources: Lauren Tan; Prediction: AI will make formal verification go mainstream; Bill Doerrfeld; Jens Wessling\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "All Code Is Slop (Except Mine)", "author": "Lauren Tan", "url": "https://www.youtube.com/watch?v=O_zcc6Xl12g", "kind": "text"}}};
   const btn = document.getElementById("share");
   const label = btn.querySelector("span");
   const track = (method) => {

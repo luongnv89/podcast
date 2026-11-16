@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Mon, 16 Nov 2026 07:44:14 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 16 Nov 2026 19:55:00 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,7 +24,7 @@
   <itunes:type>episodic</itunes:type>
   <item>
     <guid isPermaLink="false">2026-11-16_morning-edition-monday-16-november-2026</guid>
-    <title>AI Daily, 16 November 2026: Alibaba releases Qwen4-Max, Cursor traces its breach to a partner's key</title>
+    <title>Qwen4-Max Launches, Cursor's Breach Traced to a Key | AI Daily 16 Nov</title>
     <link>https://luongnv.com/podcast/#2026-11-16_morning-edition-monday-16-november-2026</link>
     <description>The AI Gazette's Monday morning edition, plus Sunday afternoon's, told as an 8-minute two-host news roundup.
 
@@ -47,7 +47,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-16_the-state-of-the-agent-sandbox</guid>
-    <title>Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox</title>
+    <title>AI Agent Sandboxes Explained: MicroVMs, gVisor and Containers</title>
     <link>https://luongnv.com/podcast/#2026-11-16_the-state-of-the-agent-sandbox</link>
     <description>Josh Rosen maps the state of the agent sandbox: microVMs, gVisor and containers, lightweight interpreters like Monty, and snapshots that pause, resume and branch agent work.
 
@@ -72,7 +72,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-15_all-code-is-slop-except-mine</guid>
-    <title>All Code Is Slop (Except Mine): How One Team Learned to Trust Its Coding Agents</title>
+    <title>Trusting AI Coding Agents: Lint Rules, Tests and Proofs (Lauren Tan)</title>
     <link>https://luongnv.com/podcast/#2026-11-15_all-code-is-slop-except-mine</link>
     <description>Lauren Tan of the Grok Bot team argues coding agents become trustworthy when you invest in their environment: code, lint rules and checks first, prose last.
 
@@ -97,7 +97,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-15_morning-edition-sunday-15-november-2026</guid>
-    <title>AI Daily, 15 November 2026: Test agents hit Epoch AI's live website, 1,000 servers tied to AI attacks</title>
+    <title>Test Agents Try SQL Injection on Epoch AI's Site | AI Daily 15 Nov</title>
     <link>https://luongnv.com/podcast/#2026-11-15_morning-edition-sunday-15-november-2026</link>
     <description>The AI news of the last day from The AI Gazette, told by Bob and Alice in about eight minutes.
 
@@ -120,7 +120,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-14_morning-edition-saturday-14-november-2026</guid>
-    <title>AI Daily, 14 November 2026: ChatGPT Wallet lets agents pay, llama.cpp reaches 1.0</title>
+    <title>ChatGPT Wallet Lets AI Agents Pay, llama.cpp 1.0 | AI Daily 14 Nov</title>
     <link>https://luongnv.com/podcast/#2026-11-14_morning-edition-saturday-14-november-2026</link>
     <description>OpenAI's ChatGPT Wallet lets agents pay for purchases, while Google keeps Gemini read-only on Google Wallet.
 
@@ -143,7 +143,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-13_morning-edition-friday-13-november-2026</guid>
-    <title>AI Daily, 13 November 2026: Jensen Huang resigns as Nvidia CEO, Google ships Gemini 4 Hydrogen</title>
+    <title>Jensen Huang Resigns as Nvidia CEO, Gemini 4 Hydrogen | AI Daily 13 Nov</title>
     <link>https://luongnv.com/podcast/#2026-11-13_morning-edition-friday-13-november-2026</link>
     <description>Jensen Huang resigned as Nvidia's chief executive; CFO Colette Kress is interim CEO and Huang agreed to testify to Congress.
 
@@ -166,7 +166,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-12_welcome-to-the-b2a-economy</guid>
-    <title>Welcome to the B2A Economy: When Your Customer Is an AI Agent</title>
+    <title>B2A Economy: When Your Customer Is an AI Agent (a16z, Olivia Moore)</title>
     <link>https://luongnv.com/podcast/#2026-11-12_welcome-to-the-b2a-economy</link>
     <description>Olivia Moore at a16z argues AI agents are becoming the internet's main customers: welcome to the B2A, business-to-agent, economy.
 
@@ -191,7 +191,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-12_morning-edition-thursday-12-november-2026</guid>
-    <title>AI Daily, 12 November 2026: Nvidia's board weighs ousting Jensen Huang, United bans AI agents</title>
+    <title>Nvidia Weighs Ousting Huang, United Bans AI Agents | AI Daily 12 Nov</title>
     <link>https://luongnv.com/podcast/#2026-11-12_morning-edition-thursday-12-november-2026</link>
     <description>Nvidia's board met to decide whether to remove Jensen Huang, and United Airlines barred unauthorised AI agents.
 
@@ -215,7 +215,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-10_state-of-the-tech-job-market-late-2026</guid>
-    <title>PMs Are Winning, Engineers Are Plateauing: The Tech Job Market in Late 2026</title>
+    <title>Tech Job Market Late 2026: PM Openings Up 75%, Engineers Plateau</title>
     <link>https://luongnv.com/podcast/#2026-11-10_state-of-the-tech-job-market-late-2026</link>
     <description>Lenny Rachitsky's late-2026 job market report: PM openings are up 75% from their low, while engineering openings have stalled.
 
@@ -240,7 +240,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-10_become-a-cracked-marketer</guid>
-    <title>Become a Cracked Marketer: The Marketing Engineer Method</title>
+    <title>The Marketing Engineer Method: AI Ads as Code with Coding Agents</title>
     <link>https://luongnv.com/podcast/#2026-11-10_become-a-cracked-marketer</link>
     <description>The Startup Ideas Podcast writes up Cody Schneider's Marketing Engineer Method: a coding agent set up to make and ship ads.
 
@@ -265,7 +265,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-10_the-secret-behind-viral-product-launches</guid>
-    <title>The Secret Behind Viral Product Launches</title>
+    <title>How to Make a Product Launch Go Viral on X: Kyle Jeong's Playbook</title>
     <link>https://luongnv.com/podcast/#2026-11-10_the-secret-behind-viral-product-launches</link>
     <description>Kyle Jeong of Browserbase, with Tereza of Factory, explains how viral product launches on X are planned.
 
@@ -290,7 +290,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-09_how-to-build-a-one-person-million-dollar-agency</guid>
-    <title>How to Build a One-Person Million Dollar Agency with AI Agents</title>
+    <title>How to Build a One-Person $1M Marketing Agency with AI Agents</title>
     <link>https://luongnv.com/podcast/#2026-11-09_how-to-build-a-one-person-million-dollar-agency</link>
     <description>The Boring Marketer sketches a one-person marketing agency for plumbing and HVAC shops, run by teams of AI agents.
 
@@ -315,7 +315,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-04_a-practical-guide-to-security-in-november-2026</guid>
-    <title>A Practical Guide to Security in November 2026</title>
+    <title>Practical Security Guide for Developers, November 2026 (Jack Cable)</title>
     <link>https://luongnv.com/podcast/#2026-11-04_a-practical-guide-to-security-in-november-2026</link>
     <description>Jack Cable's X article A Practical Guide to Security in November 2026, after a chaotic few weeks of hacks and critical bugs.
 
@@ -336,7 +336,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-05_marketing-engineers-100x-more-experiments-with</guid>
-    <title>Marketing Engineers: 100x More Experiments with AI agents</title>
+    <title>Marketing Engineers: Run 100x More Experiments with AI Agents</title>
     <link>https://luongnv.com/podcast/#2026-11-05_marketing-engineers-100x-more-experiments-with</link>
     <description>Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents.
 
@@ -361,7 +361,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-05_marketing-engineers-solo-explainer</guid>
-    <title>Marketing Engineers: 100x More Experiments with AI agents (solo explainer)</title>
+    <title>Marketing Engineers and AI Agents: Solo Explainer (Greg Isenberg)</title>
     <link>https://luongnv.com/podcast/#2026-11-05_marketing-engineers-solo-explainer</link>
     <description>A solo explainer of Greg Isenberg's X article on the marketing engineer: part marketer, part builder, running AI agents.
 
@@ -382,7 +382,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-05_meet-the-new-build-wiz-ai-show</guid>
-    <title>Meet the new Build Wiz AI Show</title>
+    <title>Meet Build Wiz AI Show: How Our AI Podcast Is Made and Fact-Checked</title>
     <link>https://luongnv.com/podcast/#2026-11-05_meet-the-new-build-wiz-ai-show</link>
     <description>A fresh introduction to Build Wiz AI Show: hosts Bob and Alice, who swap roles, and four recurring guests.
 
@@ -408,7 +408,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-06_5t-opportunity-ai-roll-ups</guid>
-    <title>AI Roll-Ups: Buy a Boring Business, Run It with Agents</title>
+    <title>AI Roll-Ups: Buy a Boring Business and Run It with AI Agents</title>
     <link>https://luongnv.com/podcast/#2026-11-06_5t-opportunity-ai-roll-ups</link>
     <description>Greg Isenberg's X article makes the case for AI roll-ups: buy an established services business and run its back office with AI agents.
 
@@ -433,7 +433,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-06_why-software-factories-fail</guid>
-    <title>Why Software Factories Fail: The Harness Is Not Enough</title>
+    <title>Why AI Software Factories Fail: Coding Agents vs Maintainability</title>
     <link>https://luongnv.com/podcast/#2026-11-06_why-software-factories-fail</link>
     <description>Dex Horthy's X article, part one of Why Software Factories Fail, argues the lights-off software factory does not work.
 
@@ -458,7 +458,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-07_your-old-prompts-are-making-claude-worse</guid>
-    <title>Your Old Prompts Are Making Claude Worse: Cheaper, Better Claude</title>
+    <title>Your Old Prompts Make Claude Worse: Cheaper, Better Prompting</title>
     <link>https://luongnv.com/podcast/#2026-11-07_your-old-prompts-are-making-claude-worse</link>
     <description>Lance Martin of Anthropic's AI Engineer talk Your Old Prompts Are Making Claude Worse, with three guests.
 
@@ -483,7 +483,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0</guid>
-    <title>How Two Founders Ran 60 UGC Creators With Zero Employees</title>
+    <title>UGC Marketing: How Two Founders Ran 60 Creators with Zero Employees</title>
     <link>https://luongnv.com/podcast/#2026-11-07_how-we-ran-a-ugc-army-to-150k-month-with-0</link>
     <description>Mau Baron's X article on how Prayer Lock grew from $25k to $150k a month with UGC, run by two founders and no employees.
 
@@ -507,7 +507,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-08_your-coding-agents-made-you-a-manager</guid>
-    <title>Your Coding Agents Made You a Manager</title>
+    <title>Managing AI Coding Agents Like an Engineering Manager (Addy Osmani)</title>
     <link>https://luongnv.com/podcast/#2026-11-08_your-coding-agents-made-you-a-manager</link>
     <description>Addy Osmani's X article Your coding agents made you a manager: the skills for managing agents are the skills for managing a team.
 
@@ -531,7 +531,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-03_the-most-lucrative-ai-business-to-start-in-2027</guid>
-    <title>The most lucrative AI business to start in 2027</title>
+    <title>The Most Lucrative AI Business to Start in 2027 (Dan Koe)</title>
     <link>https://luongnv.com/podcast/#2026-11-03_the-most-lucrative-ai-business-to-start-in-2027</link>
     <description>An X article by Dan Koe on the most lucrative AI business to start in 2027.
 
@@ -552,7 +552,7 @@ Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</de
   </item>
   <item>
     <guid isPermaLink="false">2026-11-03_the-road-to-self-improving-software</guid>
-    <title>The road to self-improving software</title>
+    <title>Self-Improving Software: A Closed-Loop Software Factory with Agents</title>
     <link>https://luongnv.com/podcast/#2026-11-03_the-road-to-self-improving-software</link>
     <description>An X article by Ben Holmes on building a closed-loop software factory with agents.
 
@@ -573,7 +573,7 @@ Written and voiced with AI (VoiceCast · chatterbox-turbo).</description>
   </item>
   <item>
     <guid isPermaLink="false">2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent</guid>
-    <title>How we scaled our app to 40 thousand dollars a month with zero dollars spent</title>
+    <title>How an App Hit $40K a Month with Zero Ad Spend: Organic Video</title>
     <link>https://luongnv.com/podcast/#2026-11-03_how-we-scaled-our-app-to-40k-month-with-0-spent</link>
     <description>An X article by app co-founder Nicholas on growing an app to about 40 thousand dollars a month with organic video.
 

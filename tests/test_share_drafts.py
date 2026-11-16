@@ -286,16 +286,16 @@ class LiveEpisodesTest(unittest.TestCase):
                         self.assertTrue(name and name in before.lower(), line)
                     before += line + "\n"
 
-    # The five live drafts whose first point opened on "His …" with the person named only in the credit.
+    # Live drafts whose first point opened on "His …" with the person named only in the credit.
+    # (The security guide and Dan Koe episodes now name the author in their title, #52, so their
+    # drafts may keep "His …"; the pronoun check above still covers them.)
     PRONOUN_FIXES = {
-        "2026-11-04_a-practical-guide-to-security-in-november-2026": "Years-old best practices still work, from passkeys",
         "2026-11-05_marketing-engineers-100x-more-experiments-with": "Write the business \"brain\" first, connect the data",
         "2026-11-05_marketing-engineers-solo-explainer": "Write the business \"brain\" first, connect the data",
         "2026-11-06_5t-opportunity-ai-roll-ups": "Buy the customers and trust, build a rulebook",
-        "2026-11-03_the-most-lucrative-ai-business-to-start-in-2027": "Capturing attention is the top skill",
     }
 
-    def test_the_five_his_openers_are_dropped(self) -> None:
+    def test_his_openers_are_dropped(self) -> None:
         for id_, start in self.PRONOUN_FIXES.items():
             with self.subTest(id=id_):
                 d = self.drafts[id_]

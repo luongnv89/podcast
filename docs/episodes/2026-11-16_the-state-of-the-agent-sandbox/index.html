@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox | Build Wiz AI Show</title>
+<title>AI Agent Sandboxes Explained: MicroVMs, gVisor and Containers | Build Wiz AI Show</title>
 <meta name="description" content="Does every AI agent need its own computer? Bob and Alice unpack Josh Rosen&#x27;s post on the state of the agent sandbox.">
 <link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-16_the-state-of-the-agent-sandbox/">
 <link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-16_the-state-of-the-agent-sandbox/">
 <meta name="theme-color" content="#000000">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Build Wiz AI Show">
-<meta property="og:title" content="Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox">
+<meta property="og:title" content="AI Agent Sandboxes Explained: MicroVMs, gVisor and Containers">
 <meta property="og:description" content="Does every AI agent need its own computer? Bob and Alice unpack Josh Rosen&#x27;s post on the state of the agent sandbox.">
 <meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-16_the-state-of-the-agent-sandbox/">
 <meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
@@ -18,14 +18,14 @@
 <meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-16_the-state-of-the-agent-sandbox.mp3">
 <meta property="og:audio:type" content="audio/mpeg">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox">
+<meta name="twitter:title" content="AI Agent Sandboxes Explained: MicroVMs, gVisor and Containers">
 <meta name="twitter:description" content="Does every AI agent need its own computer? Bob and Alice unpack Josh Rosen&#x27;s post on the state of the agent sandbox.">
 <meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
  "@type": "PodcastEpisode",
- "name": "Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox",
+ "name": "AI Agent Sandboxes Explained: MicroVMs, gVisor and Containers",
  "description": "Does every AI agent need its own computer? Bob and Alice unpack Josh Rosen's post on the state of the agent sandbox.\n\nIn this episode:\n- MicroVMs, gVisor and containers: how isolation differs.\n- A restricted interpreter instead of a whole machine.\n- Snapshots, suspend-resume and shared workspaces.\n- Credentials, network allowlists and the lethal trifecta.\n\nSources: Josh Rosen; Nicolas Lacasse; Anthropic; Simon Willison\nBig AI ideas, made clear for builders. luongnv.com/podcast",
  "url": "https://luongnv.com/podcast/episodes/2026-11-16_the-state-of-the-agent-sandbox/",
  "inLanguage": "en",
@@ -79,7 +79,7 @@
 <body>
 <main>
   <a class="show" href="../../">Build Wiz AI Show</a>
-  <h1 id="title">Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox</h1>
+  <h1 id="title">AI Agent Sandboxes Explained: MicroVMs, gVisor and Containers</h1>
   <p class="meta"><span class="dur">11 min</span> · <time datetime="2026-11-16T05:23:12Z">2026-11-16</time> · English</p>
   <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-16_the-state-of-the-agent-sandbox.mp3" aria-labelledby="title"></audio>
   <p class="desc" id="description">Does every AI agent need its own computer? Bob and Alice unpack Josh Rosen&#x27;s post on the state of the agent sandbox.
@@ -94,7 +94,7 @@ Sources: Josh Rosen; Nicolas Lacasse; Anthropic; Simon Willison
 Big AI ideas, made clear for builders. luongnv.com/podcast</p>
   <p class="actions">
     <a class="btn" href="../../#2026-11-16_the-state-of-the-agent-sandbox">Listen on Build Wiz AI Show</a>
-    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-16_the-state-of-the-agent-sandbox.mp3" download="Build Wiz AI Show - Does Every AI Agent Need Its Own Computer The State of the Agent Sandbox (2026-11-16).mp3">Download MP3</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-16_the-state-of-the-agent-sandbox.mp3" download="Build Wiz AI Show - AI Agent Sandboxes Explained MicroVMs, gVisor and Containers (2026-11-16).mp3">Download MP3</a>
     <a class="btn" href="transcript.vtt">Transcript</a>
     <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
   </p>
@@ -104,7 +104,7 @@ Big AI ideas, made clear for builders. luongnv.com/podcast</p>
 <script src="../../share.js?v=202611130200"></script>
 <script>
 (() => {
-  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-16_the-state-of-the-agent-sandbox/", "title": "Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-16_the-state-of-the-agent-sandbox", "episode_title": "Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-16_the-state-of-the-agent-sandbox", "title": "Does Every AI Agent Need Its Own Computer? The State of the Agent Sandbox", "summary": ["Josh Rosen maps the state of the agent sandbox: microVMs, gVisor and containers, lightweight interpreters like Monty, and snapshots that pause, resume and branch agent work.", "Isolation alone doesn't stop a leak: credentials kept outside the sandbox, network and authorization policies, observability and shared workspaces with locking matter too.", "Guests add Nicolas Lacasse on gVisor, Anthropic on filesystem and network isolation for coding agents, and Simon Willison's lethal trifecta warning on prompt injection."], "description": "Does every AI agent need its own computer? Bob and Alice unpack Josh Rosen's post on the state of the agent sandbox.\n\nIn this episode:\n- MicroVMs, gVisor and containers: how isolation differs.\n- A restricted interpreter instead of a whole machine.\n- Snapshots, suspend-resume and shared workspaces.\n- Credentials, network allowlists and the lethal trifecta.\n\nSources: Josh Rosen; Nicolas Lacasse; Anthropic; Simon Willison\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "The State of the Agent Sandbox", "author": "Josh Rosen (@JoshARosen)", "url": "https://x.com/JoshARosen/status/2121959963962609897", "kind": "x"}}};
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-16_the-state-of-the-agent-sandbox/", "title": "AI Agent Sandboxes Explained: MicroVMs, gVisor and Containers", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-16_the-state-of-the-agent-sandbox", "episode_title": "AI Agent Sandboxes Explained: MicroVMs, gVisor and Containers", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-16_the-state-of-the-agent-sandbox", "title": "AI Agent Sandboxes Explained: MicroVMs, gVisor and Containers", "summary": ["Josh Rosen maps the state of the agent sandbox: microVMs, gVisor and containers, lightweight interpreters like Monty, and snapshots that pause, resume and branch agent work.", "Isolation alone doesn't stop a leak: credentials kept outside the sandbox, network and authorization policies, observability and shared workspaces with locking matter too.", "Guests add Nicolas Lacasse on gVisor, Anthropic on filesystem and network isolation for coding agents, and Simon Willison's lethal trifecta warning on prompt injection."], "description": "Does every AI agent need its own computer? Bob and Alice unpack Josh Rosen's post on the state of the agent sandbox.\n\nIn this episode:\n- MicroVMs, gVisor and containers: how isolation differs.\n- A restricted interpreter instead of a whole machine.\n- Snapshots, suspend-resume and shared workspaces.\n- Credentials, network allowlists and the lethal trifecta.\n\nSources: Josh Rosen; Nicolas Lacasse; Anthropic; Simon Willison\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "The State of the Agent Sandbox", "author": "Josh Rosen (@JoshARosen)", "url": "https://x.com/JoshARosen/status/2121959963962609897", "kind": "x"}}};
   const btn = document.getElementById("share");
   const label = btn.querySelector("span");
   const track = (method) => {
