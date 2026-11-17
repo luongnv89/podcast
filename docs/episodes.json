@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-17T18:54:39Z",
+  "updated": "2026-11-17T18:57:53Z",
   "episodes": [
+    {
+      "id": "2026-11-17_the-hare-the-tortoise-vi",
+      "title": "Rùa và Thỏ: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop)",
+      "summary": [
+        "Rùa và Thỏ, một truyện ngụ ngôn của Aesop, kể lại nhẹ nhàng trước giờ ngủ, theo sách The Aesop for Children của Thư viện Quốc hội Mỹ.",
+        "Chú thỏ chạy nhanh chê bạn rùa đi chậm, thế là hai bạn thi chạy băng qua đồng cỏ, có bác Cáo làm trọng tài.",
+        "Thỏ ngủ quên, Rùa cứ từng bước, từng bước và về đích trước: chậm mà chắc, rồi một lời chúc ngủ ngon thật êm."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "vi",
+      "format": "bedtime-story",
+      "published": "2026-11-17T18:48:10Z",
+      "duration_s": 218.745,
+      "size_bytes": 3501721,
+      "audio": "https://luongnv.com/once-upon-a-time-vi-media/2026-11-17_the-hare-the-tortoise-vi.mp3",
+      "audio_sha256": "08e50d834b8d96def35b6bcf4e095c67fb6587d56c8cbe39c5c81019baac01ae",
+      "transcript": "episodes/2026-11-17_the-hare-the-tortoise-vi/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The Hare & the Tortoise",
+        "author": "Aesop",
+        "url": "https://read.gov/aesop/025.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Golly Gee\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-17_the-hare-the-tortoise",
+      "image": {
+        "square": "art/2026-11-17_the-hare-the-tortoise/square.jpg",
+        "wide": "art/2026-11-17_the-hare-the-tortoise/wide.jpg",
+        "thumb": "art/2026-11-17_the-hare-the-tortoise/thumb.jpg",
+        "alt": "Pencil drawing of a smiling green tortoise and a friendly brown hare side by side in a sunny meadow, with a little blue pond and a tree on each side."
+      },
+      "description": "Rùa và Thỏ, truyện ngụ ngôn của Aesop, kể lại bằng lời của chúng tôi cho giờ đi ngủ. Thỏ chạy nhanh chê Rùa đi chậm, và cuộc thi chạy kết thúc thật bất ngờ.\n\nTrong tập này:\n- Thỏ cười chê Rùa\n- Cuộc thi chạy và giấc ngủ quên\n- Chậm mà chắc, tới đích\n\nNguồn: The Hare & the Tortoise, Aesop, The Aesop for Children\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Rùa và Thỏ truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop) (2026-11-17).mp3"
+    },
     {
       "id": "2026-11-17_the-hare-the-tortoise",
       "title": "The Tortoise and the Hare: Bedtime Story for Kids, Our Retelling (after Aesop)",

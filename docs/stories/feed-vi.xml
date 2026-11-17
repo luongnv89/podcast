@@ -7,7 +7,7 @@
   <description>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</description>
   <itunes:summary>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</itunes:summary>
   <language>vi</language>
-  <lastBuildDate>Mon, 16 Nov 2026 19:55:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 18:57:53 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-17_the-hare-the-tortoise-vi</guid>
+    <title>Rùa và Thỏ: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop)</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-17_the-hare-the-tortoise-vi</link>
+    <description>Rùa và Thỏ, một truyện ngụ ngôn của Aesop, kể lại nhẹ nhàng trước giờ ngủ, theo sách The Aesop for Children của Thư viện Quốc hội Mỹ.
+
+Chú thỏ chạy nhanh chê bạn rùa đi chậm, thế là hai bạn thi chạy băng qua đồng cỏ, có bác Cáo làm trọng tài.
+
+Thỏ ngủ quên, Rùa cứ từng bước, từng bước và về đích trước: chậm mà chắc, rồi một lời chúc ngủ ngon thật êm.
+
+Nguồn: The Hare &amp; the Tortoise, Aesop (https://read.gov/aesop/025.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Golly Gee", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Rùa và Thỏ, một truyện ngụ ngôn của Aesop, kể lại nhẹ nhàng trước giờ ngủ, theo sách The Aesop for Children của Thư viện Quốc hội Mỹ.</p><p>Chú thỏ chạy nhanh chê bạn rùa đi chậm, thế là hai bạn thi chạy băng qua đồng cỏ, có bác Cáo làm trọng tài.</p><p>Thỏ ngủ quên, Rùa cứ từng bước, từng bước và về đích trước: chậm mà chắc, rồi một lời chúc ngủ ngon thật êm.</p><p>Nguồn: The Hare &amp; the Tortoise, Aesop: <a href="https://read.gov/aesop/025.html">https://read.gov/aesop/025.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Call to Adventure", "Golly Gee", "Winner Winner!", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 17 Nov 2026 18:48:10 +0000</pubDate>
+    <enclosure url="https://luongnv.com/once-upon-a-time-vi-media/2026-11-17_the-hare-the-tortoise-vi.mp3?v=08e50d83" length="3501721" type="audio/mpeg"/>
+    <itunes:duration>219</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-17_the-hare-the-tortoise/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-17_the-hare-the-tortoise-vi/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-06_little-red-cap-vi</guid>
     <title>Cô bé quàng khăn đỏ: truyện kể trước giờ ngủ cho bé, bản kể lại (theo anh em Grimm)</title>
