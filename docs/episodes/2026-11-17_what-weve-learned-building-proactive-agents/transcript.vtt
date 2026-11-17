@@ -1,0 +1,277 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.815
+<v Alice>What if your AI agent stopped waiting for a prompt, and just got to work in the background?
+
+2
+00:00:05.115 --> 00:00:09.002
+<v Bob>And what if the slowest part of that whole system turned out to be you?
+
+3
+00:00:13.302 --> 00:00:19.870
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice.
+
+4
+00:00:20.170 --> 00:00:34.865
+<v Bob>And I'm Bob! Today it's Sydney Runkle's X article, What We've Learned Building Proactive Agents. Her examples are two agents LangChain runs internally: GTM Agent for sales, and Robin, formerly Open SWE, for engineering.
+
+5
+00:00:35.165 --> 00:00:39.226
+<v Alice>Start me at the beginning. What makes an agent proactive?
+
+6
+00:00:39.526 --> 00:00:52.387
+<v Bob>She starts with a new hire. In their first week, you give them small, well-scoped tasks, like triaging a bug report or updating a doc. Eventually you hand them a lofty goal and let them figure out how to tackle it.
+
+7
+00:00:52.687 --> 00:00:56.445
+<v Alice>So what's the real difference between a task and a goal?
+
+8
+00:00:56.745 --> 00:01:11.128
+<v Bob>Picture a taxi versus a family driver: the taxi takes one address and it's done, the family driver plans the whole week around your big trip. That's the shift: goals let agents take on harder problems that play out over days or weeks.
+
+9
+00:01:11.428 --> 00:01:14.850
+<v Alice>Days or weeks. Not just one chat, then!
+
+10
+00:01:15.150 --> 00:01:26.908
+<v Bob>Not at all. Hone, another example, describes its Engines as AI assigned goals rather than tasks. And the agent still checks in when it's unsure what you want, or needs your sign-off before something goes out.
+
+11
+00:01:27.208 --> 00:01:30.132
+<v Alice>If nobody prompts it, what wakes it up?
+
+12
+00:01:30.432 --> 00:01:46.503
+<v Bob>Events, from three places. Think of your morning: the doorbell rings, the alarm clock someone else set goes off, and there's the sticky note you wrote yourself. For an agent, that's real-world events like a new email, schedules set by the developer, and schedules set by the agent.
+
+13
+00:01:46.803 --> 00:01:50.515
+<v Alice>An agent writing its own sticky notes. I love that.
+
+14
+00:01:50.815 --> 00:02:01.214
+<v Bob>And her two agents use all three. Robin's reviews start from a newly opened pull request, and GTM Agent's daily brief runs on a schedule it created itself, after a user asked for one.
+
+15
+00:02:01.514 --> 00:02:06.422
+<v Alice>But an agent that comes to me on its own... couldn't that get annoying fast?
+
+16
+00:02:06.722 --> 00:02:18.190
+<v Bob>That's her big point. When your direct reports get really good at their jobs, you might become the bottleneck, and the same is true for agents. As they take on more goals, your attention becomes the scarce resource.
+
+17
+00:02:18.490 --> 00:02:20.776
+<v Alice>Wait. I'm the bottleneck?
+
+18
+00:02:21.076 --> 00:02:34.627
+<v Bob>Imagine a shop with one cashier: hire more people to stock the shelves, and the queue still has to pass through that one till. Your attention is the till. Each check-in costs you some, so the agent has to be proactive without being annoying.
+
+19
+00:02:34.927 --> 00:02:37.664
+<v Alice>So how does it know what's worth my time?
+
+20
+00:02:37.964 --> 00:02:50.673
+<v Bob>Her example: an executive assistant agent watching your inbox should flag the message from your boss about tomorrow's launch, without flagging every newsletter. It can only tell them apart if it knows what matters to you, and that comes from memory.
+
+21
+00:02:50.973 --> 00:02:54.522
+<v Alice>Does research back up proactive help at all? Lena?
+
+22
+00:02:54.822 --> 00:03:11.196
+<v Lena>Valerie Chen and colleagues, on arXiv, in Need Help? Designing Proactive AI Assistants for Programming, note that chat assistants mostly respond only when prompted. So they built a programming assistant that automatically provides suggestions, right in the code.
+
+23
+00:03:11.496 --> 00:03:13.039
+<v Alice>And did it actually help?
+
+24
+00:03:13.339 --> 00:03:24.048
+<v Lena>In a randomized experiment, they found significant benefits to putting proactive chat assistants into coding environments. They also found important nuances that shape how they get used.
+
+25
+00:03:24.348 --> 00:03:28.780
+<v Alice>So, memory. What is it, exactly, for an agent?
+
+26
+00:03:29.080 --> 00:03:38.713
+<v Bob>Memory is the information an agent learns over time. When it wakes up from a schedule or an event, there's no prompt saying what you want, so your preferences have to come from memory.
+
+27
+00:03:39.013 --> 00:03:40.577
+<v Alice>And where does it learn from?
+
+28
+00:03:40.877 --> 00:03:54.509
+<v Bob>Three kinds of signal. Seed is the past, say your sent folder, so the assistant starts out knowing how you write. Feedback is the present, when you rewrite or reject a draft; outcomes are the future, like a drafted email that gets a reply.
+
+29
+00:03:54.809 --> 00:03:59.497
+<v Alice>Past, present, future. Very Christmas ghost story.
+
+30
+00:03:59.797 --> 00:04:14.973
+<v Bob>Ha, kind of! Think of cooking for a new partner: their family's recipe notes are the seed, too salty is the feedback, and the empty plates are the outcome. For the agent, that's precedent, your response to what it proposes, and what happens after it acts.
+
+31
+00:04:15.273 --> 00:04:18.858
+<v Alice>Storing all that sounds easy enough. Just keep a file?
+
+32
+00:04:19.158 --> 00:04:28.710
+<v Bob>She agrees storing is the easy part, since memory is often as simple as a file. Keeping it useful as it grows is harder, because an agent acts on whatever it remembers.
+
+33
+00:04:29.010 --> 00:04:30.529
+<v Alice>Give me the novice picture.
+
+34
+00:04:30.829 --> 00:04:49.267
+<v Bob>Picture your fridge. Some food is worth the shelf space, the milk has quietly gone off, and somehow there are two open jars of the same jam. That's her three problems: salience, what's worth saving; expiry, information gone stale; and duplication, a second copy that contradicts the first.
+
+35
+00:04:49.567 --> 00:04:51.492
+<v Alice>And who cleans out the fridge?
+
+36
+00:04:51.792 --> 00:05:00.914
+<v Bob>Many proactive agents use what she calls dreaming: a scheduled background job that reads through the agent's recent traces and updates its memory before the next run.
+
+37
+00:05:01.214 --> 00:05:08.011
+<v Alice>My agent dreams about my inbox. Sweet! Maya, have researchers built memory like this?
+
+38
+00:05:08.311 --> 00:05:27.359
+<v Maya>Joon Sung Park and colleagues, on arXiv, in Generative Agents: Interactive Simulacra of Human Behavior, describe agents that store a complete record of their experiences in natural language. Those memories are synthesized over time into higher-level reflections, and retrieved dynamically to plan behavior.
+
+39
+00:05:27.659 --> 00:05:30.623
+<v Alice>And why does all this memory matter in the end?
+
+40
+00:05:30.923 --> 00:05:42.096
+<v Bob>Trust. The best new hires are coachable, so they quickly stop repeating mistakes you've already corrected. A mentor once told her you can judge an employee by how much important work you can trust them to take off your plate.
+
+41
+00:05:42.396 --> 00:05:44.704
+<v Alice>And an agent earns that the same way?
+
+42
+00:05:45.004 --> 00:05:59.039
+<v Bob>Imagine teaching a teenager to drive. At first your foot hovers over a brake that isn't there; after enough smooth trips, you let them drive to the shops alone. For the agent, that might mean booking meetings on its own once you've stopped changing the times it proposes.
+
+43
+00:05:59.339 --> 00:06:05.989
+<v Alice>The invisible brake. Every parent knows it! Now the UX side: what makes a check-in good?
+
+44
+00:06:06.289 --> 00:06:19.242
+<v Bob>How an agent reaches out decides whether you engage with it or mute it. Rule one, high signal: GTM Agent's review UI sorts conversations into waiting on you, needs a draft reply, or needs no reply at all.
+
+45
+00:06:19.542 --> 00:06:22.157
+<v Alice>And in Slack, where everyone's chatting?
+
+46
+00:06:22.457 --> 00:06:35.880
+<v Bob>Think of a good waiter: they don't barge in mid-story, and they don't vanish either. That's the job of Jev, the decision model they use for when Robin should join a conversation. Robin joins when it has something to add, not only when someone remembers to tag it.
+
+47
+00:06:36.180 --> 00:06:37.479
+<v Alice>What's rule two?
+
+48
+00:06:37.779 --> 00:06:49.200
+<v Bob>Built for review. Every check-in should be fast to review, because review is how your feedback gets back into memory. She quotes the advice to align an agent's goals to what is easiest for humans to review.
+
+49
+00:06:49.500 --> 00:06:50.708
+<v Alice>And rule three?
+
+50
+00:06:51.008 --> 00:07:05.917
+<v Bob>Show up where people already work. Their agents live in Slack, so GTM Agent's daily brief arrives as a Slack message, not in a separate dashboard you'd have to remember to check. Robin leads with a one- or two-sentence headline, with the detail in a thread.
+
+51
+00:07:06.217 --> 00:07:13.343
+<v Alice>So I can tell at a glance if it needs me. And her big closing idea? Context engineering, for humans.
+
+52
+00:07:13.643 --> 00:07:28.169
+<v Bob>For the last three years, she says, building agents meant context engineering: the right context for the model, at the right time. The new challenge is the same discipline for humans: the right context, in the right format, at the right time.
+
+53
+00:07:28.469 --> 00:07:30.414
+<v Alice>Why do people need that?
+
+54
+00:07:30.714 --> 00:07:44.869
+<v Bob>Because people have a finite context window too, with only so much time and attention to give. It's like a pilot's announcement: nobody reads you the flight manual, just what you need before landing. The agent should hand you the summary that matters, when you can act on it.
+
+55
+00:07:45.169 --> 00:07:49.357
+<v Alice>Okay, time to push back. Sam, what worries you here?
+
+56
+00:07:49.657 --> 00:08:08.565
+<v Sam>Margaret Mitchell and colleagues, on arXiv, argue in "Fully Autonomous AI Agents Should Not be Developed" that risks to people increase with the autonomy of a system. The more control a user cedes to an AI agent, the more risks arise. Safety risks worry them most, because they affect human life.
+
+57
+00:08:08.865 --> 00:08:11.045
+<v Alice>And the evidence behind the article?
+
+58
+00:08:11.345 --> 00:08:23.660
+<v Bob>I think the evidence is thin: her examples are LangChain's own internal agents, with no figures on how often their check-ins get acted on. And Lena's study found benefits with nuances, in coding, not inboxes.
+
+59
+00:08:23.960 --> 00:08:28.183
+<v Alice>Time for Builder's Corner! Bob, what can I try this week?
+
+60
+00:08:28.483 --> 00:08:39.649
+<v Bob>Take one agent and give it two things from the article. A schedule it sets itself, like a daily brief you ask for; and a memory file, with a nightly job that reads the day's traces and updates it.
+
+61
+00:08:39.949 --> 00:08:42.020
+<v Alice>And how do I know it's working?
+
+62
+00:08:42.320 --> 00:08:53.486
+<v Bob>Measure it. Count how often it checks in, and what share of those check-ins you actually act on. If memory and UX are working, those check-ins should get sharper and less frequent over time.
+
+63
+00:08:53.786 --> 00:08:57.417
+<v Alice>A scoreboard for my own interruptions. Love it.
+
+64
+00:08:57.717 --> 00:09:11.309
+<v Bob>Quick takeaways: give agents goals, not just tasks, and let events and schedules wake them up. Your attention is the scarce resource, so every check-in has to earn it. And memory and UX are the two essentials.
+
+65
+00:09:11.609 --> 00:09:13.191
+<v Alice>What's still open?
+
+66
+00:09:13.491 --> 00:09:23.809
+<v Bob>Judging whether memory is helping, for one: she calls it another hard part. And I think Mitchell's team would draw the line between a helpful nudge and acting alone much earlier than most builders.
+
+67
+00:09:24.109 --> 00:09:31.014
+<v Alice>That's our tour of proactive agents. Thanks to Sydney Runkle for What We've Learned Building Proactive Agents.
+
+68
+00:09:31.314 --> 00:09:39.333
+<v Bob>And thanks to Valerie Chen, Joon Sung Park, Margaret Mitchell and their colleagues for the research we brought in. Now go give your agent a sticky note!
+
+69
+00:09:39.633 --> 00:09:45.099
+<v Alice>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

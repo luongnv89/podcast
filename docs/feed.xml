@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Tue, 17 Nov 2026 15:43:20 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 20:41:11 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,31 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-17_what-weve-learned-building-proactive-agents</guid>
+    <title>Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)</title>
+    <link>https://luongnv.com/podcast/#2026-11-17_what-weve-learned-building-proactive-agents</link>
+    <description>Sydney Runkle of LangChain shares what her team learned building proactive agents that work toward goals, wake on events and schedules, and check in only when needed.
+
+Bob and Alice unpack the three triggers, why your attention is the bottleneck, and why memory and UX are the two essentials, with doorbells, fridges and driving lessons.
+
+Guests bring Valerie Chen's study of proactive coding assistants, Joon Sung Park's generative agents and their memory, and Margaret Mitchell's case against fully autonomous agents.
+
+Sources:
+- What We’ve Learned Building Proactive Agents, Sydney Runkle (@sydneyrunkle) (https://x.com/sydneyrunkle/status/2122734341516345836)
+- Need Help? Designing Proactive AI Assistants for Programming, Valerie Chen et al. (https://arxiv.org/abs/2410.04596)
+- Generative Agents: Interactive Simulacra of Human Behavior, Joon Sung Park et al. (https://arxiv.org/abs/2304.03442)
+- Fully Autonomous AI Agents Should Not be Developed, Margaret Mitchell et al. (https://arxiv.org/abs/2502.02649)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Sydney Runkle of LangChain shares what her team learned building proactive agents that work toward goals, wake on events and schedules, and check in only when needed.</p><p>Bob and Alice unpack the three triggers, why your attention is the bottleneck, and why memory and UX are the two essentials, with doorbells, fridges and driving lessons.</p><p>Guests bring Valerie Chen's study of proactive coding assistants, Joon Sung Park's generative agents and their memory, and Margaret Mitchell's case against fully autonomous agents.</p><p>Sources:</p><ul><li>What We’ve Learned Building Proactive Agents, Sydney Runkle (@sydneyrunkle): <a href="https://x.com/sydneyrunkle/status/2122734341516345836">https://x.com/sydneyrunkle/status/2122734341516345836</a></li><li>Need Help? Designing Proactive AI Assistants for Programming, Valerie Chen et al.: <a href="https://arxiv.org/abs/2410.04596">https://arxiv.org/abs/2410.04596</a></li><li>Generative Agents: Interactive Simulacra of Human Behavior, Joon Sung Park et al.: <a href="https://arxiv.org/abs/2304.03442">https://arxiv.org/abs/2304.03442</a></li><li>Fully Autonomous AI Agents Should Not be Developed, Margaret Mitchell et al.: <a href="https://arxiv.org/abs/2502.02649">https://arxiv.org/abs/2502.02649</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 17 Nov 2026 20:38:00 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-17_what-weve-learned-building-proactive-agents.mp3?v=44e9dc55" length="9468228" type="audio/mpeg"/>
+    <itunes:duration>592</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-17_what-weve-learned-building-proactive-agents/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-17_how-to-become-a-gtm-engineer-the-complete-guide</guid>
     <title>How to Become a GTM Engineer: From Selling Merch to Outbound Systems</title>

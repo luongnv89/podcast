@@ -24,8 +24,84 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-17T19:01:06Z",
+  "updated": "2026-11-17T20:41:11Z",
   "episodes": [
+    {
+      "id": "2026-11-17_what-weve-learned-building-proactive-agents",
+      "title": "Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)",
+      "summary": [
+        "Sydney Runkle of LangChain shares what her team learned building proactive agents that work toward goals, wake on events and schedules, and check in only when needed.",
+        "Bob and Alice unpack the three triggers, why your attention is the bottleneck, and why memory and UX are the two essentials, with doorbells, fridges and driving lessons.",
+        "Guests bring Valerie Chen's study of proactive coding assistants, Joon Sung Park's generative agents and their memory, and Margaret Mitchell's case against fully autonomous agents."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-17T20:38:00Z",
+      "duration_s": 591.699,
+      "size_bytes": 9468228,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-17_what-weve-learned-building-proactive-agents.mp3",
+      "audio_sha256": "44e9dc55f1b5ee30fe6f731e7f0bd43e50ebff9e4dc484ef05698726991faa1d",
+      "transcript": "episodes/2026-11-17_what-weve-learned-building-proactive-agents/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "What We’ve Learned Building Proactive Agents",
+        "author": "Sydney Runkle (@sydneyrunkle)",
+        "url": "https://x.com/sydneyrunkle/status/2122734341516345836",
+        "published": "2026-11-17T16:51:20Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "What We’ve Learned Building Proactive Agents",
+          "author": "Sydney Runkle (@sydneyrunkle)",
+          "url": "https://x.com/sydneyrunkle/status/2122734341516345836"
+        },
+        {
+          "title": "Need Help? Designing Proactive AI Assistants for Programming",
+          "author": "Valerie Chen et al.",
+          "url": "https://arxiv.org/abs/2410.04596"
+        },
+        {
+          "title": "Generative Agents: Interactive Simulacra of Human Behavior",
+          "author": "Joon Sung Park et al.",
+          "url": "https://arxiv.org/abs/2304.03442"
+        },
+        {
+          "title": "Fully Autonomous AI Agents Should Not be Developed",
+          "author": "Margaret Mitchell et al.",
+          "url": "https://arxiv.org/abs/2502.02649"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Lena",
+          "presents": [
+            "Need Help? Designing Proactive AI Assistants for Programming"
+          ]
+        },
+        {
+          "name": "Maya",
+          "presents": [
+            "Generative Agents: Interactive Simulacra of Human Behavior"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Fully Autonomous AI Agents Should Not be Developed"
+          ]
+        }
+      ],
+      "description": "Sydney Runkle of LangChain shares what her team learned building proactive AI agents, GTM Agent and Robin, that work toward goals instead of waiting for a prompt. Bob and Alice explain why memory and UX decide whether you trust them or mute them.\n\nIn this episode:\n- Three triggers: real-world events, developer schedules, agent schedules\n- Your attention as the bottleneck\n- Memory, dreaming and check-ins worth answering\n\nSources: Sydney Runkle (@sydneyrunkle); Valerie Chen et al.; Joon Sung Park et al.; Margaret Mitchell et al.\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Proactive AI Agents Memory, UX and the Human Bottleneck (LangChain) (2026-11-17).mp3"
+    },
     {
       "id": "2026-11-17_the-hare-the-tortoise-fr",
       "title": "Le Lièvre et la Tortue : histoire du soir pour enfants, notre version (d'après Ésope)",

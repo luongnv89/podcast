@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain) | Build Wiz AI Show</title>
+<meta name="description" content="Sydney Runkle of LangChain shares what her team learned building proactive AI agents, GTM Agent and Robin, that work toward goals instead of waiting for a prompt. Bob and Alice explain why memory and UX decide whether you trust them or mute them.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-17_what-weve-learned-building-proactive-agents/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-17_what-weve-learned-building-proactive-agents/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)">
+<meta property="og:description" content="Sydney Runkle of LangChain shares what her team learned building proactive AI agents, GTM Agent and Robin, that work toward goals instead of waiting for a prompt. Bob and Alice explain why memory and UX decide whether you trust them or mute them.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-17_what-weve-learned-building-proactive-agents/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-17_what-weve-learned-building-proactive-agents.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)">
+<meta name="twitter:description" content="Sydney Runkle of LangChain shares what her team learned building proactive AI agents, GTM Agent and Robin, that work toward goals instead of waiting for a prompt. Bob and Alice explain why memory and UX decide whether you trust them or mute them.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)",
+ "description": "Sydney Runkle of LangChain shares what her team learned building proactive AI agents, GTM Agent and Robin, that work toward goals instead of waiting for a prompt. Bob and Alice explain why memory and UX decide whether you trust them or mute them.\n\nIn this episode:\n- Three triggers: real-world events, developer schedules, agent schedules\n- Your attention as the bottleneck\n- Memory, dreaming and check-ins worth answering\n\nSources: Sydney Runkle (@sydneyrunkle); Valerie Chen et al.; Joon Sung Park et al.; Margaret Mitchell et al.\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-17_what-weve-learned-building-proactive-agents/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-17_what-weve-learned-building-proactive-agents.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT9M52S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-17T20:38:00Z",
+ "timeRequired": "PT9M52S",
+ "isBasedOn": "https://x.com/sydneyrunkle/status/2122734341516345836"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)</h1>
+  <p class="meta"><span class="dur">10 min</span> · <time datetime="2026-11-17T20:38:00Z">2026-11-17</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-17_what-weve-learned-building-proactive-agents.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">Sydney Runkle of LangChain shares what her team learned building proactive AI agents, GTM Agent and Robin, that work toward goals instead of waiting for a prompt. Bob and Alice explain why memory and UX decide whether you trust them or mute them.
+
+In this episode:
+- Three triggers: real-world events, developer schedules, agent schedules
+- Your attention as the bottleneck
+- Memory, dreaming and check-ins worth answering
+
+Sources: Sydney Runkle (@sydneyrunkle); Valerie Chen et al.; Joon Sung Park et al.; Margaret Mitchell et al.
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-17_what-weve-learned-building-proactive-agents">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-17_what-weve-learned-building-proactive-agents.mp3" download="Build Wiz AI Show - Proactive AI Agents Memory, UX and the Human Bottleneck (LangChain) (2026-11-17).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Sydney Runkle of LangChain shares what her team learned building proactive AI agents, GTM Agent and Robin, that work toward goals instead of waiting for a prompt. Bob and Alice explain why memory and UX decide whether you trust them or mute them.
+
+In this episode:
+- Three triggers: real-world events, developer schedules, agent schedules
+- Your attention as the bottleneck
+- Memory, dreaming and check-ins worth answering
+
+Sources: Sydney Runkle (@sydneyrunkle); Valerie Chen et al.; Joon Sung Park et al.; Margaret Mitchell et al.
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://x.com/sydneyrunkle/status/2122734341516345836" rel="noopener">What We’ve Learned Building Proactive Agents</a> by Sydney Runkle (@sydneyrunkle)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> What if your AI agent stopped waiting for a prompt, and just got to work in the background?</p>
+    <p><strong>Bob:</strong> And what if the slowest part of that whole system turned out to be you?</p>
+    <p><strong>Alice:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice.</p>
+    <p><strong>Bob:</strong> And I'm Bob! Today it's Sydney Runkle's X article, What We've Learned Building Proactive Agents. Her examples are two agents LangChain runs internally: GTM Agent for sales, and Robin, formerly Open SWE, for engineering.</p>
+    <p><strong>Alice:</strong> Start me at the beginning. What makes an agent proactive?</p>
+    <p><strong>Bob:</strong> She starts with a new hire. In their first week, you give them small, well-scoped tasks, like triaging a bug report or updating a doc. Eventually you hand them a lofty goal and let them figure out how to tackle it.</p>
+    <p><strong>Alice:</strong> So what's the real difference between a task and a goal?</p>
+    <p><strong>Bob:</strong> Picture a taxi versus a family driver: the taxi takes one address and it's done, the family driver plans the whole week around your big trip. That's the shift: goals let agents take on harder problems that play out over days or weeks.</p>
+    <p><strong>Alice:</strong> Days or weeks. Not just one chat, then!</p>
+    <p><strong>Bob:</strong> Not at all. Hone, another example, describes its Engines as AI assigned goals rather than tasks. And the agent still checks in when it's unsure what you want, or needs your sign-off before something goes out.</p>
+    <p><strong>Alice:</strong> If nobody prompts it, what wakes it up?</p>
+    <p><strong>Bob:</strong> Events, from three places. Think of your morning: the doorbell rings, the alarm clock someone else set goes off, and there's the sticky note you wrote yourself. For an agent, that's real-world events like a new email, schedules set by the developer, and schedules set by the agent.</p>
+    <p><strong>Alice:</strong> An agent writing its own sticky notes. I love that.</p>
+    <p><strong>Bob:</strong> And her two agents use all three. Robin's reviews start from a newly opened pull request, and GTM Agent's daily brief runs on a schedule it created itself, after a user asked for one.</p>
+    <p><strong>Alice:</strong> But an agent that comes to me on its own... couldn't that get annoying fast?</p>
+    <p><strong>Bob:</strong> That's her big point. When your direct reports get really good at their jobs, you might become the bottleneck, and the same is true for agents. As they take on more goals, your attention becomes the scarce resource.</p>
+    <p><strong>Alice:</strong> Wait. I'm the bottleneck?</p>
+    <p><strong>Bob:</strong> Imagine a shop with one cashier: hire more people to stock the shelves, and the queue still has to pass through that one till. Your attention is the till. Each check-in costs you some, so the agent has to be proactive without being annoying.</p>
+    <p><strong>Alice:</strong> So how does it know what's worth my time?</p>
+    <p><strong>Bob:</strong> Her example: an executive assistant agent watching your inbox should flag the message from your boss about tomorrow's launch, without flagging every newsletter. It can only tell them apart if it knows what matters to you, and that comes from memory.</p>
+    <p><strong>Alice:</strong> Does research back up proactive help at all? Lena?</p>
+    <p><strong>Lena:</strong> Valerie Chen and colleagues, on arXiv, in Need Help? Designing Proactive AI Assistants for Programming, note that chat assistants mostly respond only when prompted. So they built a programming assistant that automatically provides suggestions, right in the code.</p>
+    <p><strong>Alice:</strong> And did it actually help?</p>
+    <p><strong>Lena:</strong> In a randomized experiment, they found significant benefits to putting proactive chat assistants into coding environments. They also found important nuances that shape how they get used.</p>
+    <p><strong>Alice:</strong> So, memory. What is it, exactly, for an agent?</p>
+    <p><strong>Bob:</strong> Memory is the information an agent learns over time. When it wakes up from a schedule or an event, there's no prompt saying what you want, so your preferences have to come from memory.</p>
+    <p><strong>Alice:</strong> And where does it learn from?</p>
+    <p><strong>Bob:</strong> Three kinds of signal. Seed is the past, say your sent folder, so the assistant starts out knowing how you write. Feedback is the present, when you rewrite or reject a draft; outcomes are the future, like a drafted email that gets a reply.</p>
+    <p><strong>Alice:</strong> Past, present, future. Very Christmas ghost story.</p>
+    <p><strong>Bob:</strong> Ha, kind of! Think of cooking for a new partner: their family's recipe notes are the seed, too salty is the feedback, and the empty plates are the outcome. For the agent, that's precedent, your response to what it proposes, and what happens after it acts.</p>
+    <p><strong>Alice:</strong> Storing all that sounds easy enough. Just keep a file?</p>
+    <p><strong>Bob:</strong> She agrees storing is the easy part, since memory is often as simple as a file. Keeping it useful as it grows is harder, because an agent acts on whatever it remembers.</p>
+    <p><strong>Alice:</strong> Give me the novice picture.</p>
+    <p><strong>Bob:</strong> Picture your fridge. Some food is worth the shelf space, the milk has quietly gone off, and somehow there are two open jars of the same jam. That's her three problems: salience, what's worth saving; expiry, information gone stale; and duplication, a second copy that contradicts the first.</p>
+    <p><strong>Alice:</strong> And who cleans out the fridge?</p>
+    <p><strong>Bob:</strong> Many proactive agents use what she calls dreaming: a scheduled background job that reads through the agent's recent traces and updates its memory before the next run.</p>
+    <p><strong>Alice:</strong> My agent dreams about my inbox. Sweet! Maya, have researchers built memory like this?</p>
+    <p><strong>Maya:</strong> Joon Sung Park and colleagues, on arXiv, in Generative Agents: Interactive Simulacra of Human Behavior, describe agents that store a complete record of their experiences in natural language. Those memories are synthesized over time into higher-level reflections, and retrieved dynamically to plan behavior.</p>
+    <p><strong>Alice:</strong> And why does all this memory matter in the end?</p>
+    <p><strong>Bob:</strong> Trust. The best new hires are coachable, so they quickly stop repeating mistakes you've already corrected. A mentor once told her you can judge an employee by how much important work you can trust them to take off your plate.</p>
+    <p><strong>Alice:</strong> And an agent earns that the same way?</p>
+    <p><strong>Bob:</strong> Imagine teaching a teenager to drive. At first your foot hovers over a brake that isn't there; after enough smooth trips, you let them drive to the shops alone. For the agent, that might mean booking meetings on its own once you've stopped changing the times it proposes.</p>
+    <p><strong>Alice:</strong> The invisible brake. Every parent knows it! Now the UX side: what makes a check-in good?</p>
+    <p><strong>Bob:</strong> How an agent reaches out decides whether you engage with it or mute it. Rule one, high signal: GTM Agent's review UI sorts conversations into waiting on you, needs a draft reply, or needs no reply at all.</p>
+    <p><strong>Alice:</strong> And in Slack, where everyone's chatting?</p>
+    <p><strong>Bob:</strong> Think of a good waiter: they don't barge in mid-story, and they don't vanish either. That's the job of Jev, the decision model they use for when Robin should join a conversation. Robin joins when it has something to add, not only when someone remembers to tag it.</p>
+    <p><strong>Alice:</strong> What's rule two?</p>
+    <p><strong>Bob:</strong> Built for review. Every check-in should be fast to review, because review is how your feedback gets back into memory. She quotes the advice to align an agent's goals to what is easiest for humans to review.</p>
+    <p><strong>Alice:</strong> And rule three?</p>
+    <p><strong>Bob:</strong> Show up where people already work. Their agents live in Slack, so GTM Agent's daily brief arrives as a Slack message, not in a separate dashboard you'd have to remember to check. Robin leads with a one- or two-sentence headline, with the detail in a thread.</p>
+    <p><strong>Alice:</strong> So I can tell at a glance if it needs me. And her big closing idea? Context engineering, for humans.</p>
+    <p><strong>Bob:</strong> For the last three years, she says, building agents meant context engineering: the right context for the model, at the right time. The new challenge is the same discipline for humans: the right context, in the right format, at the right time.</p>
+    <p><strong>Alice:</strong> Why do people need that?</p>
+    <p><strong>Bob:</strong> Because people have a finite context window too, with only so much time and attention to give. It's like a pilot's announcement: nobody reads you the flight manual, just what you need before landing. The agent should hand you the summary that matters, when you can act on it.</p>
+    <p><strong>Alice:</strong> Okay, time to push back. Sam, what worries you here?</p>
+    <p><strong>Sam:</strong> Margaret Mitchell and colleagues, on arXiv, argue in "Fully Autonomous AI Agents Should Not be Developed" that risks to people increase with the autonomy of a system. The more control a user cedes to an AI agent, the more risks arise. Safety risks worry them most, because they affect human life.</p>
+    <p><strong>Alice:</strong> And the evidence behind the article?</p>
+    <p><strong>Bob:</strong> I think the evidence is thin: her examples are LangChain's own internal agents, with no figures on how often their check-ins get acted on. And Lena's study found benefits with nuances, in coding, not inboxes.</p>
+    <p><strong>Alice:</strong> Time for Builder's Corner! Bob, what can I try this week?</p>
+    <p><strong>Bob:</strong> Take one agent and give it two things from the article. A schedule it sets itself, like a daily brief you ask for; and a memory file, with a nightly job that reads the day's traces and updates it.</p>
+    <p><strong>Alice:</strong> And how do I know it's working?</p>
+    <p><strong>Bob:</strong> Measure it. Count how often it checks in, and what share of those check-ins you actually act on. If memory and UX are working, those check-ins should get sharper and less frequent over time.</p>
+    <p><strong>Alice:</strong> A scoreboard for my own interruptions. Love it.</p>
+    <p><strong>Bob:</strong> Quick takeaways: give agents goals, not just tasks, and let events and schedules wake them up. Your attention is the scarce resource, so every check-in has to earn it. And memory and UX are the two essentials.</p>
+    <p><strong>Alice:</strong> What's still open?</p>
+    <p><strong>Bob:</strong> Judging whether memory is helping, for one: she calls it another hard part. And I think Mitchell's team would draw the line between a helpful nudge and acting alone much earlier than most builders.</p>
+    <p><strong>Alice:</strong> That's our tour of proactive agents. Thanks to Sydney Runkle for What We've Learned Building Proactive Agents.</p>
+    <p><strong>Bob:</strong> And thanks to Valerie Chen, Joon Sung Park, Margaret Mitchell and their colleagues for the research we brought in. Now go give your agent a sticky note!</p>
+    <p><strong>Alice:</strong> That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-17_what-weve-learned-building-proactive-agents/", "title": "Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-17_what-weve-learned-building-proactive-agents", "episode_title": "Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-17_what-weve-learned-building-proactive-agents", "title": "Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)", "summary": ["Sydney Runkle of LangChain shares what her team learned building proactive agents that work toward goals, wake on events and schedules, and check in only when needed.", "Bob and Alice unpack the three triggers, why your attention is the bottleneck, and why memory and UX are the two essentials, with doorbells, fridges and driving lessons.", "Guests bring Valerie Chen's study of proactive coding assistants, Joon Sung Park's generative agents and their memory, and Margaret Mitchell's case against fully autonomous agents."], "description": "Sydney Runkle of LangChain shares what her team learned building proactive AI agents, GTM Agent and Robin, that work toward goals instead of waiting for a prompt. Bob and Alice explain why memory and UX decide whether you trust them or mute them.\n\nIn this episode:\n- Three triggers: real-world events, developer schedules, agent schedules\n- Your attention as the bottleneck\n- Memory, dreaming and check-ins worth answering\n\nSources: Sydney Runkle (@sydneyrunkle); Valerie Chen et al.; Joon Sung Park et al.; Margaret Mitchell et al.\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "What We’ve Learned Building Proactive Agents", "author": "Sydney Runkle (@sydneyrunkle)", "url": "https://x.com/sydneyrunkle/status/2122734341516345836", "kind": "x"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>
