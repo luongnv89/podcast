@@ -1,0 +1,425 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.687
+<v Alice>What if the ads that run longest on Facebook and Instagram are the boring ones?
+
+2
+00:00:04.987 --> 00:00:13.571
+<v Bob>That's what the pull found! Of the 34 ads running longest, 24 were stills: the product, an offer, a line of text.
+
+3
+00:00:13.871 --> 00:00:16.847
+<v Alice>So is everyone wrong about UGC?
+
+4
+00:00:21.147 --> 00:00:27.716
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice.
+
+5
+00:00:28.016 --> 00:00:43.355
+<v Bob>And I'm Bob! Today it's The Boring Marketer's X article, the AI Ad Creative Masterclass. They pulled 336 live Meta ads from 48 direct-to-consumer brands and looked at every single one, the videos frame by frame.
+
+6
+00:00:43.655 --> 00:00:46.984
+<v Alice>Every single one? So what's the big finding?
+
+7
+00:00:47.284 --> 00:00:59.599
+<v Bob>It's blunt: the best brands run a dozen formats at once, and the ads that last longest are the boring ones. The full article walks through all twenty-one formats; we'll pick the most useful ones and how to make them with AI.
+
+8
+00:00:59.899 --> 00:01:03.832
+<v Alice>First question. How do you even see another brand's ads?
+
+9
+00:01:04.132 --> 00:01:13.974
+<v Bob>Meta's Ad Library shows every ad running on Facebook and Instagram. For US ads, you can sort a brand's ads by impressions, and they did that for all 48 brands.
+
+10
+00:01:14.274 --> 00:01:18.839
+<v Alice>But Meta doesn't publish results. So how do they know which ads are winning?
+
+11
+00:01:19.139 --> 00:01:29.237
+<v Bob>They don't, not for sure. The best public signal is age: brands switch off ads that lose money, so an ad still live after 200 days is probably paying for itself.
+
+12
+00:01:29.537 --> 00:01:31.883
+<v Alice>Probably. I heard that word.
+
+13
+00:01:32.183 --> 00:01:43.988
+<v Bob>Picture a restaurant menu. A dish that's still on it after a long time probably sells, because the chef cuts what nobody orders. Ad age works the same way: it suggests an ad pays, but it doesn't prove it.
+
+14
+00:01:44.288 --> 00:01:48.174
+<v Alice>So what did 336 ads actually teach them?
+
+15
+00:01:48.474 --> 00:01:59.512
+<v Bob>The ads that last are mostly stills! The plain product photo, big on a plain background, leads the pull with 84 ads. It also leads the long runners, with 30 past 60 days.
+
+16
+00:01:59.812 --> 00:02:03.032
+<v Alice>Why would something that plain last so long?
+
+17
+00:02:03.332 --> 00:02:16.142
+<v Bob>Think of the plain white T-shirt in your wardrobe. The party shirt gets worn once; the white tee goes with everything, so you keep reaching for it. The product photo is the white tee of ads: the plain still that brands keep running.
+
+18
+00:02:16.442 --> 00:02:22.290
+<v Alice>Okay, the spicy part. Everyone says just run UGC. What did the pull say?
+
+19
+00:02:22.590 --> 00:02:32.607
+<v Bob>Creator video gets tested hard and dropped fast. There were 50 creator ads, more than any other video format, and their median age was 38.5 days.
+
+20
+00:02:32.907 --> 00:02:35.551
+<v Alice>How many made it to two months?
+
+21
+00:02:35.851 --> 00:02:43.267
+<v Bob>Only 13 of the 50 made it to 60 days. That's 26 percent, against 41 percent for the whole pull.
+
+22
+00:02:43.567 --> 00:02:46.024
+<v Alice>Ouch. So UGC flops?
+
+23
+00:02:46.324 --> 00:02:59.870
+<v Bob>Not quite. Imagine a band trying out new songs at every gig: most get dropped from the setlist, and that's how it finds the few it keeps. Creator videos are those new songs, the most tested video format and the fastest to rotate.
+
+24
+00:03:00.170 --> 00:03:04.184
+<v Alice>So UGC is the rehearsal, not the greatest hits.
+
+25
+00:03:04.484 --> 00:03:13.990
+<v Bob>Exactly. And customer-style videos, a regular person on their own phone talking about their own use, held up better: 8 of 18 made it past 60 days.
+
+26
+00:03:14.290 --> 00:03:16.203
+<v Alice>And the oldest ad of all?
+
+27
+00:03:16.503 --> 00:03:26.728
+<v Bob>One of those! Atlas Coffee Club, at 572 days. It opens on a woman holding up her Keurig, with the caption: I was about to throw my Keurig away.
+
+28
+00:03:27.028 --> 00:03:31.936
+<v Alice>Let's get practical. Which formats should a small brand steal first?
+
+29
+00:03:32.236 --> 00:03:41.415
+<v Bob>Start with the offer card: the offer in the biggest type, then what you get, then the terms. Hungryroot's Get 40 percent off card had run 326 days.
+
+30
+00:03:41.715 --> 00:03:44.708
+<v Alice>Big discount, big type. What else?
+
+31
+00:03:45.008 --> 00:03:56.348
+<v Bob>The review or quote. Huel ran one reviewer's line, Lost 80 pounds so far, in three designs, two at 247 days and one at 162.
+
+32
+00:03:56.648 --> 00:03:58.845
+<v Alice>Same words, three outfits?
+
+33
+00:03:59.145 --> 00:04:08.869
+<v Bob>It's like a hit song getting a fresh music video: the song stays, only the pictures change. In ads, that's the loop: keep the words that work and change the picture.
+
+34
+00:04:09.169 --> 00:04:12.800
+<v Alice>Love it. Any format with a surprising record?
+
+35
+00:04:13.100 --> 00:04:24.777
+<v Bob>Before and after. Only 4 ads, but all 4 had run past 60 days, with a median of about 145 days, the highest of any format with four or more ads.
+
+36
+00:04:25.077 --> 00:04:26.608
+<v Alice>And on the video side?
+
+37
+00:04:26.908 --> 00:04:36.367
+<v Bob>The hands demo: hands using the product, close, often with no face at all. Cometeer drops a frozen coffee puck into a glass and pours hot water over it.
+
+38
+00:04:36.667 --> 00:04:40.762
+<v Alice>You keep saying the opening matters. What counts as the hook?
+
+39
+00:04:41.062 --> 00:04:53.377
+<v Bob>The format is the container. The hook is what someone sees and reads in the first second, with the sound off. For a still, it's where the eye lands; for a video, it's the first frame plus the first caption.
+
+40
+00:04:53.677 --> 00:04:55.996
+<v Alice>One second. That's brutal.
+
+41
+00:04:56.296 --> 00:05:06.359
+<v Bob>Picture a shop window on a busy street. People give it a glance, and either something grabs them or they keep walking. Your first second is that window, which is why the product shows up right away.
+
+42
+00:05:06.659 --> 00:05:09.013
+<v Alice>Give me a couple of openings that work.
+
+43
+00:05:09.313 --> 00:05:19.712
+<v Bob>The confession, like the Keurig line. And the callout: name the situation, never a personal trait. Meta rejects Are you overweight, and accepts Waking up drenched.
+
+44
+00:05:20.012 --> 00:05:23.388
+<v Alice>Waking up drenched. Very specific.
+
+45
+00:05:23.688 --> 00:05:34.726
+<v Bob>To test them: for a video, film three different openings over the same body, so you're testing the hook and nothing else. For a still, change the line or the picture, never both at once.
+
+46
+00:05:35.026 --> 00:05:36.525
+<v Alice>Why never both?
+
+47
+00:05:36.825 --> 00:05:48.199
+<v Bob>Think of fixing a soup. Add salt and lemon at the same time, and if it tastes better, you can't tell which one did it. Ads are the same: change one thing at a time, and the result tells you what worked.
+
+48
+00:05:48.499 --> 00:05:51.538
+<v Alice>Why run so many formats at once, anyway?
+
+49
+00:05:51.838 --> 00:06:01.518
+<v Bob>Meta's ad system now scores every eligible ad for each person before the auction even starts. Most media buyers read that as the creative doing a lot of the targeting.
+
+50
+00:06:01.818 --> 00:06:04.985
+<v Alice>We have a guest on exactly that. Lena?
+
+51
+00:06:05.285 --> 00:06:22.913
+<v Lena>Thanks! Akvile DeFazio, writing in Search Engine Land, says many advertisers think creative diversity means having more ads. It really means giving Meta fundamentally different ways to say the same message: a new hook, creator, angle, offer or format.
+
+52
+00:06:23.213 --> 00:06:26.032
+<v Alice>So twenty ads isn't diversity?
+
+53
+00:06:26.332 --> 00:06:40.690
+<v Lena>Not if they share the same product image, opening shot, headline and spokesperson. It's like a playlist that's one song in a pile of remixes. To Meta's algorithm, those ads are simply slight edits of the same creative.
+
+54
+00:06:40.990 --> 00:06:45.213
+<v Alice>Now the AI part. How do you make a batch without a studio?
+
+55
+00:06:45.513 --> 00:06:59.663
+<v Bob>Make each piece the first way the business can: real, model, or code. Real means the owner, staff, a customer or a creator on a phone, the only way to make anything that claims a customer's experience.
+
+56
+00:06:59.963 --> 00:07:01.755
+<v Alice>And model, and code?
+
+57
+00:07:02.055 --> 00:07:12.280
+<v Bob>Model means image and video models for stills and short clips. Code means the words are set in HTML over the picture, so a misspelled word from the model never ships.
+
+58
+00:07:12.580 --> 00:07:15.224
+<v Alice>Why not just let the AI write the words?
+
+59
+00:07:15.524 --> 00:07:27.503
+<v Bob>Imagine a bakery. The oven bakes the cake, but a person pipes the writing on top, because you don't want the oven guessing the spelling. Same here: the model makes the picture, and the exact words go on in HTML.
+
+60
+00:07:27.803 --> 00:07:29.471
+<v Alice>And the video clips?
+
+61
+00:07:29.771 --> 00:07:40.554
+<v Bob>Start from a sharp first frame, with small motion. When the bag turned mid-clip, the video model garbled the date sticker, and asking for small natural handheld motion only fixed it.
+
+62
+00:07:40.854 --> 00:07:45.170
+<v Alice>A garbled date sticker. The AI version of a typo tattoo.
+
+63
+00:07:45.470 --> 00:07:57.119
+<v Bob>And it gets worse! They tested one still-ad tool, and 3 of its 4 ads invented something they'd told it not to: a name on a real review, a website, claims about competitors.
+
+64
+00:07:57.419 --> 00:07:58.800
+<v Alice>So check everything.
+
+65
+00:07:59.100 --> 00:08:02.987
+<v Bob>Every line, against what's true, before anything ships.
+
+66
+00:08:03.287 --> 00:08:06.918
+<v Alice>What about AI people in ads? That feels risky.
+
+67
+00:08:07.218 --> 00:08:17.234
+<v Bob>The rule is firm. An AI presenter can demonstrate the product, but it never says it has used it and never gives a testimonial. Customer videos use real customers only.
+
+68
+00:08:17.534 --> 00:08:21.804
+<v Alice>And does Meta tell viewers when an ad is AI-made? Theo?
+
+69
+00:08:22.104 --> 00:08:37.570
+<v Theo>It does, in part. Andrew Hutchinson reported in Social Media Today that Meta automatically labels ads made with some of its own generative tools, like Background Generation or Image Generation. The label sits in the About this ad screen, behind the three-dot menu.
+
+70
+00:08:37.870 --> 00:08:40.816
+<v Alice>And ads made with outside AI tools?
+
+71
+00:08:41.116 --> 00:08:53.977
+<v Theo>Those too, when Meta detects them, with industry-standard methods like C2PA. It's like the ingredients list on a snack: it bans nothing, it tells you what's inside. Here, the label tells viewers that AI helped make the ad.
+
+72
+00:08:54.277 --> 00:08:57.049
+<v Alice>What else breaks when people copy these ads?
+
+73
+00:08:57.349 --> 00:09:07.976
+<v Bob>Copying the look instead of the reason. The Keurig ad works because it opens on something viewers own and are fed up with. A copy that keeps the trash can and loses that reason won't work.
+
+74
+00:09:08.276 --> 00:09:10.588
+<v Alice>Steal the why, not the props.
+
+75
+00:09:10.888 --> 00:09:20.097
+<v Bob>It's like copying a comedian's jacket and expecting the laughs: the joke was never the jacket. In an ad, the reason to watch does the work, not the look.
+
+76
+00:09:20.397 --> 00:09:22.204
+<v Alice>And when do you call a winner?
+
+77
+00:09:22.504 --> 00:09:34.563
+<v Bob>Not too early. Give each piece about 1,000 impressions before you judge it. It's like tasting a stew a minute after it goes on the stove: the impressions are the simmering time, so wait until there's enough to taste.
+
+78
+00:09:34.863 --> 00:09:39.052
+<v Alice>Let me push back. Is ad age really a profit signal?
+
+79
+00:09:39.352 --> 00:09:49.449
+<v Bob>The article admits it's only a signal. Some heavy spenders refresh everything: they found no Gymshark ad older than 14 days, and no Oura ad older than 11.
+
+80
+00:09:49.749 --> 00:09:52.312
+<v Alice>And an old ad might just be forgotten?
+
+81
+00:09:52.612 --> 00:10:02.118
+<v Bob>Their own example! Ryze's Black Friday card from last year was still live at 368 days, which tells you it works, or that nobody switched it off.
+
+82
+00:10:02.418 --> 00:10:05.155
+<v Alice>The ad nobody remembered to turn off.
+
+83
+00:10:05.455 --> 00:10:11.083
+<v Bob>And timing matters: they pulled two weeks before Black Friday, so there are more offer cards than usual.
+
+84
+00:10:11.383 --> 00:10:17.057
+<v Alice>Sam, you're our skeptic. What about judging after 1,000 impressions?
+
+85
+00:10:17.357 --> 00:10:30.473
+<v Sam>Jon Loomer, on Jon Loomer Digital, tested Meta's creative testing tool, and he'd start from an old rule of thumb: 50 optimized events in a week. Without that, he says, your results are less meaningful.
+
+86
+00:10:30.773 --> 00:10:33.418
+<v Alice>So a much higher bar than impressions.
+
+87
+00:10:33.718 --> 00:10:47.229
+<v Sam>It can be. And he warns that ads with only subtle differences are more likely to give you randomness. It's like judging a basketball player on one lucky shot: you want more shots, and clearer differences, before you trust the score.
+
+88
+00:10:47.529 --> 00:10:51.050
+<v Alice>Doesn't that clash with changing one thing at a time?
+
+89
+00:10:51.350 --> 00:11:05.152
+<v Bob>Partly. The article's batch tests different formats and angles, not ten versions of one idea, and saves the one-change rule for tweaking a piece, like its hook. My take: go big across the batch, go small inside a winner.
+
+90
+00:11:05.452 --> 00:11:13.936
+<v Sam>Fair. Loomer also says resist the urge to overreact, especially to a small sample: one test isn't a promise about the future.
+
+91
+00:11:14.236 --> 00:11:18.714
+<v Alice>Time for Builder's Corner! Bob, one thing to try this week?
+
+92
+00:11:19.014 --> 00:11:28.573
+<v Bob>Pick four formats and three angles, and make a small batch. An angle is the reason to buy: freshness, taste, price, convenience.
+
+93
+00:11:28.873 --> 00:11:30.540
+<v Alice>And on a tiny budget?
+
+94
+00:11:30.840 --> 00:11:40.647
+<v Bob>Under about 50 dollars a day, start with one format and test the angles in it. Judge nothing before about 1,000 impressions, and change one thing at a time.
+
+95
+00:11:40.947 --> 00:11:45.263
+<v Alice>Four formats, three angles, and patience. Done.
+
+96
+00:11:45.563 --> 00:11:47.053
+<v Alice>Quick takeaways, Bob?
+
+97
+00:11:47.353 --> 00:12:00.307
+<v Bob>One: a good batch has stills that can run for months and new videos every few weeks. Two: winners get cloned, 120 of the 336 ads, so put more money behind the exact same file.
+
+98
+00:12:00.607 --> 00:12:01.652
+<v Alice>And three?
+
+99
+00:12:01.952 --> 00:12:12.096
+<v Bob>Let AI make the pictures, never the people who vouch for you: real reviews quoted exactly, real customers, real experts. And check every line before it ships.
+
+100
+00:12:12.396 --> 00:12:13.978
+<v Alice>What's still open?
+
+101
+00:12:14.278 --> 00:12:20.417
+<v Bob>Sound, for one: they studied the videos but heard none of them. So nobody knows what the audio added.
+
+102
+00:12:20.717 --> 00:12:24.132
+<v Alice>And whether any of this works beyond online brands?
+
+103
+00:12:24.432 --> 00:12:32.579
+<v Bob>That's the big one. The pull is all DTC, and a plumber or a software company will see different winners. So test on your own numbers.
+
+104
+00:12:32.879 --> 00:12:48.829
+<v Bob>That's our tour of the boring ads that win. Thanks to The Boring Marketer for the AI Ad Creative Masterclass, and to Akvile DeFazio in Search Engine Land. Thanks also to Jon Loomer for his post on Meta's creative testing tool, and to Andrew Hutchinson in Social Media Today.
+
+105
+00:12:49.129 --> 00:12:52.377
+<v Alice>Thanks, everyone! Now go make something boring.
+
+106
+00:12:52.677 --> 00:12:57.411
+<v Bob>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

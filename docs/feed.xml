@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Tue, 17 Nov 2026 07:43:55 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 14:17:13 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,31 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-17_the-ai-ad-creative-masterclass-skills-tools-and</guid>
+    <title>AI Ad Creative Masterclass: Why Boring Stills Outlast UGC on Meta</title>
+    <link>https://luongnv.com/podcast/#2026-11-17_the-ai-ad-creative-masterclass-skills-tools-and</link>
+    <description>The Boring Marketer pulled 336 live Meta ads from 48 DTC brands: the longest runners are mostly plain stills, and creator videos get switched off fast.
+
+Bob and Alice pick the most useful formats, from offer cards to hands demos, and how to make them with AI without letting it invent reviews or customers.
+
+Guests bring Akvile DeFazio on creative diversity, Andrew Hutchinson on Meta's AI labels and Jon Loomer's case for bigger tests.
+
+Sources:
+- The AI Ad Creative Masterclass: Skills, Tools, and the 21 Formats Top Brands Run, The Boring Marketer (@boringmarketer) (https://x.com/boringmarketer/status/2122676452957049003)
+- Meta Ads: Why creative diversity matters more than volume, Akvile DeFazio (https://searchengineland.com/meta-ads-creative-diversity-485751)
+- Meta adds updated disclosure tags for AI-generated ads, Andrew Hutchinson (https://www.socialmediatoday.com/news/meta-adds-updated-disclosure-tags-for-ai-generated-ads/824658)
+- Meta’s Creative Testing Tool: Setup, Strategy, and Results, Jon Loomer (https://www.jonloomer.com/meta-creative-testing)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>The Boring Marketer pulled 336 live Meta ads from 48 DTC brands: the longest runners are mostly plain stills, and creator videos get switched off fast.</p><p>Bob and Alice pick the most useful formats, from offer cards to hands demos, and how to make them with AI without letting it invent reviews or customers.</p><p>Guests bring Akvile DeFazio on creative diversity, Andrew Hutchinson on Meta's AI labels and Jon Loomer's case for bigger tests.</p><p>Sources:</p><ul><li>The AI Ad Creative Masterclass: Skills, Tools, and the 21 Formats Top Brands Run, The Boring Marketer (@boringmarketer): <a href="https://x.com/boringmarketer/status/2122676452957049003">https://x.com/boringmarketer/status/2122676452957049003</a></li><li>Meta Ads: Why creative diversity matters more than volume, Akvile DeFazio: <a href="https://searchengineland.com/meta-ads-creative-diversity-485751">https://searchengineland.com/meta-ads-creative-diversity-485751</a></li><li>Meta adds updated disclosure tags for AI-generated ads, Andrew Hutchinson: <a href="https://www.socialmediatoday.com/news/meta-adds-updated-disclosure-tags-for-ai-generated-ads/824658">https://www.socialmediatoday.com/news/meta-adds-updated-disclosure-tags-for-ai-generated-ads/824658</a></li><li>Meta’s Creative Testing Tool: Setup, Strategy, and Results, Jon Loomer: <a href="https://www.jonloomer.com/meta-creative-testing">https://www.jonloomer.com/meta-creative-testing</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 17 Nov 2026 14:14:00 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-17_the-ai-ad-creative-masterclass-skills-tools-and.mp3?v=47554835" length="12545240" type="audio/mpeg"/>
+    <itunes:duration>784</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-17_the-ai-ad-creative-masterclass-skills-tools-and/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-17_morning-edition-tuesday-17-november-2026</guid>
     <title>California Sues OpenAI, Apple Limits Mac Agents | AI Daily 17 Nov</title>

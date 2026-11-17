@@ -24,8 +24,84 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-17T07:43:55Z",
+  "updated": "2026-11-17T14:17:13Z",
   "episodes": [
+    {
+      "id": "2026-11-17_the-ai-ad-creative-masterclass-skills-tools-and",
+      "title": "AI Ad Creative Masterclass: Why Boring Stills Outlast UGC on Meta",
+      "summary": [
+        "The Boring Marketer pulled 336 live Meta ads from 48 DTC brands: the longest runners are mostly plain stills, and creator videos get switched off fast.",
+        "Bob and Alice pick the most useful formats, from offer cards to hands demos, and how to make them with AI without letting it invent reviews or customers.",
+        "Guests bring Akvile DeFazio on creative diversity, Andrew Hutchinson on Meta's AI labels and Jon Loomer's case for bigger tests."
+      ],
+      "category": "marketing",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-17T14:14:00Z",
+      "duration_s": 784.011,
+      "size_bytes": 12545240,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-17_the-ai-ad-creative-masterclass-skills-tools-and.mp3",
+      "audio_sha256": "475548359b24ea2e1f38b98636865338db23ff7d5cd324835ab625c3c9867ea8",
+      "transcript": "episodes/2026-11-17_the-ai-ad-creative-masterclass-skills-tools-and/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Ad Creative Masterclass: Skills, Tools, and the 21 Formats Top Brands Run",
+        "author": "The Boring Marketer (@boringmarketer)",
+        "url": "https://x.com/boringmarketer/status/2122676452957049003",
+        "published": "2026-11-17T13:01:18Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "The AI Ad Creative Masterclass: Skills, Tools, and the 21 Formats Top Brands Run",
+          "author": "The Boring Marketer (@boringmarketer)",
+          "url": "https://x.com/boringmarketer/status/2122676452957049003"
+        },
+        {
+          "title": "Meta Ads: Why creative diversity matters more than volume",
+          "author": "Akvile DeFazio",
+          "url": "https://searchengineland.com/meta-ads-creative-diversity-485751"
+        },
+        {
+          "title": "Meta adds updated disclosure tags for AI-generated ads",
+          "author": "Andrew Hutchinson",
+          "url": "https://www.socialmediatoday.com/news/meta-adds-updated-disclosure-tags-for-ai-generated-ads/824658"
+        },
+        {
+          "title": "Meta’s Creative Testing Tool: Setup, Strategy, and Results",
+          "author": "Jon Loomer",
+          "url": "https://www.jonloomer.com/meta-creative-testing"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Lena",
+          "presents": [
+            "Meta Ads: Why creative diversity matters more than volume"
+          ]
+        },
+        {
+          "name": "Theo",
+          "presents": [
+            "Meta adds updated disclosure tags for AI-generated ads"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Meta’s Creative Testing Tool: Setup, Strategy, and Results"
+          ]
+        }
+      ],
+      "description": "The Boring Marketer pulled 336 live Meta ads from 48 DTC brands. The ads that last longest are mostly boring stills, while creator videos get switched off fast. Bob and Alice unpack it with everyday metaphors.\n\nIn this episode:\n- Why plain product photos outlast UGC\n- The formats worth stealing, and the first second that hooks\n- Making ads with AI without fake reviews or fake customers\n\nSources: The Boring Marketer (@boringmarketer); Akvile DeFazio; Andrew Hutchinson; Jon Loomer\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - AI Ad Creative Masterclass Why Boring Stills Outlast UGC on Meta (2026-11-17).mp3"
+    },
     {
       "id": "2026-11-17_morning-edition-tuesday-17-november-2026",
       "title": "California Sues OpenAI, Apple Limits Mac Agents | AI Daily 17 Nov",
