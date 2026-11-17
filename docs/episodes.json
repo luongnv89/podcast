@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-17T15:43:20Z",
+  "updated": "2026-11-17T18:54:39Z",
   "episodes": [
+    {
+      "id": "2026-11-17_the-hare-the-tortoise",
+      "title": "The Tortoise and the Hare: Bedtime Story for Kids, Our Retelling (after Aesop)",
+      "summary": [
+        "A gentle bedtime retelling of The Tortoise and the Hare, one of Aesop's fables, from The Aesop for Children at the Library of Congress.",
+        "A fast hare laughs at a slow tortoise, so they run a race across the meadow, with Fox as the judge.",
+        "The hare naps, the tortoise keeps going step by step and wins: slow and steady, ending with a soft goodnight."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "en",
+      "format": "bedtime-story",
+      "published": "2026-11-17T18:43:12Z",
+      "duration_s": 227.73,
+      "size_bytes": 3645488,
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-17_the-hare-the-tortoise.mp3",
+      "audio_sha256": "eef4abd6a4015a0de168bb939abf3eaea711d3e8d2b1de3f7a1a313b829e2a58",
+      "transcript": "episodes/2026-11-17_the-hare-the-tortoise/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The Hare & the Tortoise",
+        "author": "Aesop",
+        "url": "https://read.gov/aesop/025.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Golly Gee\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-17_the-hare-the-tortoise",
+      "image": {
+        "square": "art/2026-11-17_the-hare-the-tortoise/square.jpg",
+        "wide": "art/2026-11-17_the-hare-the-tortoise/wide.jpg",
+        "thumb": "art/2026-11-17_the-hare-the-tortoise/thumb.jpg",
+        "alt": "Pencil drawing of a smiling green tortoise and a friendly brown hare side by side in a sunny meadow, with a little blue pond and a tree on each side."
+      },
+      "description": "The Tortoise and the Hare, Aesop's fable, retold in our own words as a gentle bedtime story. A fast hare laughs at a slow tortoise, and their race ends with a surprise.\n\nIn this episode:\n- A hare who laughs at a slow tortoise\n- A race, and a nap in the grass\n- Slow and steady to the finish line\n\nSources: The Hare & the Tortoise, Aesop, The Aesop for Children (Library of Congress)\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - The Tortoise and the Hare Bedtime Story for Kids, Our Retelling (after Aesop) (2026-11-17).mp3"
+    },
     {
       "id": "2026-11-17_how-to-become-a-gtm-engineer-the-complete-guide",
       "title": "How to Become a GTM Engineer: From Selling Merch to Outbound Systems",
