@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-17T18:57:53Z",
+  "updated": "2026-11-17T19:01:06Z",
   "episodes": [
+    {
+      "id": "2026-11-17_the-hare-the-tortoise-fr",
+      "title": "Le Lièvre et la Tortue : histoire du soir pour enfants, notre version (d'après Ésope)",
+      "summary": [
+        "Une douce version du Lièvre et la Tortue, une fable d'Ésope, d'après The Aesop for Children de la Bibliothèque du Congrès.",
+        "Un lièvre très rapide se moque d'une tortue très lente, alors ils font la course à travers le pré, avec le Renard comme juge.",
+        "Le lièvre fait la sieste, la tortue avance pas à pas et gagne : rien ne sert de courir, puis une douce bonne nuit."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "fr",
+      "format": "bedtime-story",
+      "published": "2026-11-17T18:51:16Z",
+      "duration_s": 281.44,
+      "size_bytes": 4504822,
+      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-17_the-hare-the-tortoise-fr.mp3",
+      "audio_sha256": "6e25bc5fc18df5fd0a482d43934b1d70d3cdea981ffc2ba5b87549bec529fb11",
+      "transcript": "episodes/2026-11-17_the-hare-the-tortoise-fr/transcript.vtt",
+      "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
+      "source": {
+        "title": "The Hare & the Tortoise",
+        "author": "Aesop",
+        "url": "https://read.gov/aesop/025.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Call to Adventure\", \"Golly Gee\", \"Winner Winner!\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-17_the-hare-the-tortoise",
+      "image": {
+        "square": "art/2026-11-17_the-hare-the-tortoise/square.jpg",
+        "wide": "art/2026-11-17_the-hare-the-tortoise/wide.jpg",
+        "thumb": "art/2026-11-17_the-hare-the-tortoise/thumb.jpg",
+        "alt": "Pencil drawing of a smiling green tortoise and a friendly brown hare side by side in a sunny meadow, with a little blue pond and a tree on each side."
+      },
+      "description": "Le Lièvre et la Tortue, la fable d'Ésope, en histoire du soir, notre version avec nos mots. Un lièvre rapide se moque d'une tortue lente, et la course finit par une surprise.\n\nDans cet épisode :\n- Un lièvre moqueur\n- Une course, et une sieste dans l'herbe\n- Pas à pas jusqu'à l'arrivée\n\nSources : The Hare & the Tortoise, Ésope, The Aesop for Children\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Le Lièvre et la Tortue histoire du soir pour enfants, notre version (d'après Ésope) (2026-11-17).mp3"
+    },
     {
       "id": "2026-11-17_the-hare-the-tortoise-vi",
       "title": "Rùa và Thỏ: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop)",
