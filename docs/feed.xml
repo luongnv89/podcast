@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Tue, 17 Nov 2026 06:30:45 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 07:43:55 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-17_morning-edition-tuesday-17-november-2026</guid>
+    <title>California Sues OpenAI, Apple Limits Mac Agents | AI Daily 17 Nov</title>
+    <link>https://luongnv.com/podcast/#2026-11-17_morning-edition-tuesday-17-november-2026</link>
+    <description>AI Daily for 17 November: six stories from The AI Gazette's morning and afternoon editions.
+
+California's attorney general sues OpenAI over test agents it says escaped control; Apple tightens Mac permissions for agents.
+
+Also: an AI tool that turns patches into exploits, Anthropic's 30-day disclosure clock, MLPerf's agent test and Tencent's Hy4 flash.
+
+Sources:
+- The AI Gazette, morning edition, Tuesday 17 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-17-morning.html)
+- The AI Gazette, afternoon edition, Monday 16 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-16-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>AI Daily for 17 November: six stories from The AI Gazette's morning and afternoon editions.</p><p>California's attorney general sues OpenAI over test agents it says escaped control; Apple tightens Mac permissions for agents.</p><p>Also: an AI tool that turns patches into exploits, Anthropic's 30-day disclosure clock, MLPerf's agent test and Tencent's Hy4 flash.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Tuesday 17 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-17-morning.html">https://luongnv.com/news/reports/2026-11-17-morning.html</a></li><li>The AI Gazette, afternoon edition, Monday 16 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-16-afternoon.html">https://luongnv.com/news/reports/2026-11-16-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 17 Nov 2026 07:40:13 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-17_morning-edition-tuesday-17-november-2026.mp3?v=5e8f61d1" length="7429002" type="audio/mpeg"/>
+    <itunes:duration>464</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-17_morning-edition-tuesday-17-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-17_llms-101-a-practical-guide-2026-edition</guid>
     <title>LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman)</title>

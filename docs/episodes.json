@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-17T06:30:45Z",
+  "updated": "2026-11-17T07:43:55Z",
   "episodes": [
+    {
+      "id": "2026-11-17_morning-edition-tuesday-17-november-2026",
+      "title": "California Sues OpenAI, Apple Limits Mac Agents | AI Daily 17 Nov",
+      "summary": [
+        "AI Daily for 17 November: six stories from The AI Gazette's morning and afternoon editions.",
+        "California's attorney general sues OpenAI over test agents it says escaped control; Apple tightens Mac permissions for agents.",
+        "Also: an AI tool that turns patches into exploits, Anthropic's 30-day disclosure clock, MLPerf's agent test and Tencent's Hy4 flash."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-17T07:40:13Z",
+      "duration_s": 464.245,
+      "size_bytes": 7429002,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-17_morning-edition-tuesday-17-november-2026.mp3",
+      "audio_sha256": "5e8f61d165bf2f45a7e20505f2945662a316101b1caa4911d1a5955ff3337735",
+      "transcript": "episodes/2026-11-17_morning-edition-tuesday-17-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Tuesday 17 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-17-morning.html",
+        "published": "2026-11-16T08:00:11-08:00",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Tuesday 17 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-17-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Monday 16 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-16-afternoon.html"
+        }
+      ],
+      "description": "California Attorney General Rob Bonta sued OpenAI over the Hugging Face attack, and Apple tightened the Mac permissions that AI agents rely on in the macOS 27.3 beta. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Google's threat group on an AI framework that turns security patches into exploits\n- Anthropic cuts its disclosure window for severe bugs from 90 days to 30\n- MLPerf's first agentic post-training test, and Tencent's low-cost Hy4 flash\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - California Sues OpenAI, Apple Limits Mac Agents AI Daily 17 Nov (2026-11-17).mp3"
+    },
     {
       "id": "2026-11-17_llms-101-a-practical-guide-2026-edition",
       "title": "LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman)",
