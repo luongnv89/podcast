@@ -24,8 +24,84 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-17T14:17:13Z",
+  "updated": "2026-11-17T15:43:20Z",
   "episodes": [
+    {
+      "id": "2026-11-17_how-to-become-a-gtm-engineer-the-complete-guide",
+      "title": "How to Become a GTM Engineer: From Selling Merch to Outbound Systems",
+      "summary": [
+        "Kenny Damian went from selling merch to GTM engineer to co-founder with no tech experience, and his guide maps the path into the role.",
+        "Bob and Alice unpack what the job is, the skills job posts ask for, signals and triggers, prompts tested on labeled examples, and the five outbound systems.",
+        "Guests bring David Arnoux on pay data, Neil Kumaran on Gmail's bulk sender rules and Marina Temkin on why investors doubt AI sales reps."
+      ],
+      "category": "marketing",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-17T15:40:07Z",
+      "duration_s": 825.093,
+      "size_bytes": 13202693,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-17_how-to-become-a-gtm-engineer-the-complete-guide.mp3",
+      "audio_sha256": "0595656f7ee283d43dbec8ebe7b1ff12daa9914c152faf6c4d2f5eecf8d6df23",
+      "transcript": "episodes/2026-11-17_how-to-become-a-gtm-engineer-the-complete-guide/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "How to Become a GTM Engineer: The Complete Guide",
+        "author": "Kenny Damian (@Kenny_GTM)",
+        "url": "https://x.com/Kenny_GTM/status/2122396018008609118",
+        "published": "2026-11-16T18:26:57Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "How to Become a GTM Engineer: The Complete Guide",
+          "author": "Kenny Damian (@Kenny_GTM)",
+          "url": "https://x.com/Kenny_GTM/status/2122396018008609118"
+        },
+        {
+          "title": "What Is a GTM Engineer? Role, Skills, Salary and Org Design",
+          "author": "David Arnoux",
+          "url": "https://www.heyarnoux.com/marketing-becoming-engineering-function"
+        },
+        {
+          "title": "New Gmail protections for a safer, less spammy inbox",
+          "author": "Neil Kumaran",
+          "url": "https://blog.google/products-and-platforms/products/gmail/gmail-security-authentication-spam-protection"
+        },
+        {
+          "title": "AI sales rep startups are booming. So why are VCs wary? | TechCrunch",
+          "author": "Marina Temkin",
+          "url": "https://techcrunch.com/2024/12/26/ai-sdr-startups-are-booming-so-why-are-vcs-wary"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Theo",
+          "presents": [
+            "What Is a GTM Engineer? Role, Skills, Salary and Org Design"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "New Gmail protections for a safer, less spammy inbox"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "AI sales rep startups are booming. So why are VCs wary? | TechCrunch"
+          ]
+        }
+      ],
+      "description": "Kenny Damian was selling merch with no tech experience; then he became a GTM engineer, then a co-founder. His guide maps the path, and Bob and Alice break it down with everyday metaphors.\n\nIn this episode:\n- What a GTM engineer is, versus an SDR or RevOps\n- Signals, triggers and prompts tested on labeled examples\n- The five systems, a first public build and the hiring test\n\nSources: Kenny Damian (@Kenny_GTM); David Arnoux; Neil Kumaran; Marina Temkin\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - How to Become a GTM Engineer From Selling Merch to Outbound Systems (2026-11-17).mp3"
+    },
     {
       "id": "2026-11-17_the-ai-ad-creative-masterclass-skills-tools-and",
       "title": "AI Ad Creative Masterclass: Why Boring Stills Outlast UGC on Meta",

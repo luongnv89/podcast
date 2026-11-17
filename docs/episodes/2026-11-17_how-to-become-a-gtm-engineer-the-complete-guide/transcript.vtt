@@ -1,0 +1,373 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.232
+<v Bob>Two years ago, this guy was selling merch to companies. Today he's a co-founder of a GTM agency?
+
+2
+00:00:06.532 --> 00:00:13.738
+<v Alice>Hired with no tech experience, Head of GTM within a year! So what is this job everyone suddenly wants?
+
+3
+00:00:18.038 --> 00:00:23.922
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob.
+
+4
+00:00:24.222 --> 00:00:32.114
+<v Alice>And I'm Alice! Today it's Kenny Damian's X article, How to Become a GTM Engineer: The Complete Guide.
+
+5
+00:00:32.414 --> 00:00:34.789
+<v Bob>First, decode GTM for me?
+
+6
+00:00:35.089 --> 00:00:46.638
+<v Alice>Go-to-market: how a company finds its buyers and wins them. We'll walk the core path of Kenny's guide, from what the job is to getting hired, and the full guide has all nine steps.
+
+7
+00:00:46.938 --> 00:00:51.335
+<v Bob>So what IS a GTM engineer? A salesperson with a laptop?
+
+8
+00:00:51.635 --> 00:01:03.997
+<v Alice>Not quite! He separates four roles that get mixed up. An SDR, a sales development rep, books meetings from a list someone else built, and RevOps keeps the existing revenue machine running.
+
+9
+00:01:04.297 --> 00:01:05.832
+<v Bob>And the GTM engineer?
+
+10
+00:01:06.132 --> 00:01:18.911
+<v Alice>Builds the systems behind outbound: AI account research, a map of the whole market, verified contact data and automated outreach. SDRs and account executives work from what they build.
+
+11
+00:01:19.211 --> 00:01:20.851
+<v Bob>Okay, I need a picture.
+
+12
+00:01:21.151 --> 00:01:37.257
+<v Alice>Picture a restaurant. The waiter serves the tables he's given, the manager keeps the kitchen running, and someone has to build the kitchen itself. That's the split: SDRs work the list, RevOps runs the machine, and GTM engineering builds new capability.
+
+13
+00:01:37.557 --> 00:01:41.489
+<v Bob>Say I'm sold. What do the job posts actually ask for?
+
+14
+00:01:41.789 --> 00:01:53.849
+<v Alice>He read six live postings, from companies like Perplexity, Vercel and Ramp. Python or SQL shows up in five of the six, Salesforce in four, and Clay in three.
+
+15
+00:01:54.149 --> 00:01:55.563
+<v Bob>Wait, what's Clay?
+
+16
+00:01:55.863 --> 00:02:08.151
+<v Alice>Think of a phone book that fills itself in. You type a company name, and the row goes off and finds the details for you. Clay is that: a spreadsheet that enriches every row with data and AI.
+
+17
+00:02:08.451 --> 00:02:11.315
+<v Bob>And experience? Can a beginner get in?
+
+18
+00:02:11.615 --> 00:02:23.977
+<v Alice>Here's the catch. The lowest stated bar is two years, and none of the six is a junior role. And he cites Bloomberry's analysis putting the average ask at 4.11 years of experience.
+
+19
+00:02:24.277 --> 00:02:27.734
+<v Bob>4.11 years. Very precise!
+
+20
+00:02:28.034 --> 00:02:43.735
+<v Alice>And the pay, as he states it: these jobs pay 130 thousand dollars to 295 thousand dollars right now. The US median he cites is 159 thousand dollars across 509 postings, per Cargo.
+
+21
+00:02:44.035 --> 00:02:46.645
+<v Bob>Let's check the pay with a guest. Theo?
+
+22
+00:02:46.945 --> 00:03:14.554
+<v Theo>David Arnoux, on his site Hey Arnoux, finds two medians quoted for the role: 127,500 dollars from Bloomberry, and 150,000 dollars from Steven Moody's benchmark of 235 priced US roles. And roles whose postings mention Clay averaged 148,174 dollars, against 165,000 dollars for roles that don't. Naming the tool, he says, tends to describe an operator who runs it.
+
+23
+00:03:14.854 --> 00:03:17.006
+<v Bob>So where do you start learning?
+
+24
+00:03:17.306 --> 00:03:32.988
+<v Alice>His order: Claude Code, APIs, SQL, Clay, then n8n. Use Claude Code as your builder and your tutor: have it write a script, then explain every line back to you. That's how you pick up enough Python to read what it writes.
+
+25
+00:03:33.288 --> 00:03:35.259
+<v Bob>What should I learn inside it?
+
+26
+00:03:35.559 --> 00:03:54.775
+<v Alice>Skills, saved instructions that each teach it one job, and MCP servers, the connections to your tools. Think of a new hire's notebook and keys: the notebook says how to do the job, the keys open the doors to do it. In his words: skills handle knowledge, MCP handles actions.
+
+27
+00:03:55.075 --> 00:03:58.532
+<v Bob>Okay, I can build. But who do I email?
+
+28
+00:03:58.832 --> 00:04:10.973
+<v Alice>He starts from ICP math, your ideal customer profile. One ICP, three segments, two personas and three copy variations each. That's six lists and 18 tests.
+
+29
+00:04:11.273 --> 00:04:13.136
+<v Bob>And then you just start sending?
+
+30
+00:04:13.436 --> 00:04:31.227
+<v Alice>No! Filter on signals before you write a word. He filtered one list on growing sales teams, recent funding, and Salesforce or HubSpot, and it went from 10,000 contacts at 4.2 percent replies to 3,200 at 6.8 percent.
+
+31
+00:04:31.527 --> 00:04:35.367
+<v Bob>Fewer people, more replies! So what counts as a signal?
+
+32
+00:04:35.667 --> 00:04:51.087
+<v Alice>A trigger is a recent change that gives you a reason to email: a funding round, a leadership move, a job post, a site visit. And every trigger gets an age limit, so a funding round from four months ago doesn't still push an account up the list.
+
+33
+00:04:51.387 --> 00:04:52.777
+<v Bob>Why an age limit?
+
+34
+00:04:53.077 --> 00:05:07.308
+<v Alice>Think of fresh bread. Today it's the best thing in the bakery; in a week, nobody wants it. A signal is the same: it's a reason to email only while it's recent, so his window for new leaders is under 90 days in the seat.
+
+35
+00:05:07.608 --> 00:05:10.747
+<v Bob>Does the email even reach the inbox? Lena?
+
+36
+00:05:11.047 --> 00:05:30.043
+<v Lena>Neil Kumaran, of Gmail Security and Trust, wrote on Google's blog about new rules for bulk senders: those who send more than 5,000 messages to Gmail addresses in one day. They must authenticate their email, offer one-click unsubscribe, and process those requests within two days.
+
+37
+00:05:30.343 --> 00:05:34.020
+<v Bob>Next step: prompts. Why do they matter so much?
+
+38
+00:05:34.320 --> 00:05:50.472
+<v Alice>Because every system runs on prompts. Write the disqualifiers first, since a roofer search also finds roofing suppliers. Ask for a one-line reason next to every verdict, and make not found an allowed answer, so the model leaves a blank where it has no data.
+
+39
+00:05:50.772 --> 00:05:56.082
+<v Bob>Roofing suppliers. Not quite the dream customer! And this hit rate he keeps mentioning?
+
+40
+00:05:56.382 --> 00:06:09.161
+<v Alice>Picture a teacher writing the answer key before grading a test. You label 100 examples by hand, that's your answer key, and you grade the model against it. The hit rate is the model's score on your own examples.
+
+41
+00:06:09.461 --> 00:06:12.582
+<v Bob>Now the five systems. Where does it start?
+
+42
+00:06:12.882 --> 00:06:27.240
+<v Alice>Scoring. A raw company list goes in, and tier one, two, three or disqualified comes out. Every account gets two scores: fit, how close it is to your past buyers, and intent, what changed recently.
+
+43
+00:06:27.540 --> 00:06:29.026
+<v Bob>Give me the novice version.
+
+44
+00:06:29.326 --> 00:06:44.885
+<v Alice>Think of a hospital triage nurse: not everyone in the waiting room sees the doctor first, the urgent cases do. Scoring does that for accounts. Tier one gets a person doing real research, and tier three goes into the sequencer and nothing else.
+
+45
+00:06:45.185 --> 00:06:46.304
+<v Bob>And enrichment?
+
+46
+00:06:46.604 --> 00:07:04.230
+<v Alice>Tier one and two companies go in, verified contacts come out, often through a waterfall of email finders. It's like calling friends one by one to find someone's number: if the first doesn't know, you ask the next. The waterfall runs several finders in a row until one finds the address.
+
+47
+00:07:04.530 --> 00:07:07.006
+<v Bob>Systems three, four and five?
+
+48
+00:07:07.306 --> 00:07:18.773
+<v Alice>Signals: your account list goes in, and dated signals come out, each saved with a date, a source link and a weight. Scores decay daily, and the list is re-ranked every morning.
+
+49
+00:07:19.073 --> 00:07:21.006
+<v Bob>Ah, the fresh bread again.
+
+50
+00:07:21.306 --> 00:07:36.988
+<v Alice>Exactly! Then reply routing: replies go in, and the positive ones reach a person with the account context attached. Think of a mailroom sorter dropping each reply into a tray: positive, not now, wrong person, unsubscribe.
+
+51
+00:07:37.288 --> 00:07:39.568
+<v Bob>Does the robot answer them itself?
+
+52
+00:07:39.868 --> 00:07:50.314
+<v Alice>No! He puts an approval gate in front of every send, so a person signs off before anything goes out. His prompt even says it: send nothing yourself.
+
+53
+00:07:50.614 --> 00:07:51.552
+<v Bob>And reporting?
+
+54
+00:07:51.852 --> 00:08:04.458
+<v Alice>One snapshot per campaign, every day. It's like the warning lights on a car's dashboard: they come on before the engine stalls. So watch spam and bounce rates first, because they move before replies do.
+
+55
+00:08:04.758 --> 00:08:07.925
+<v Bob>Say I've built all this. How do I prove it?
+
+56
+00:08:08.225 --> 00:08:21.991
+<v Alice>Publish it. Clay's certification has been closed to new submissions since March 2026, so a public build is your proof now. Build three projects and publish each one with its output and what it cost.
+
+57
+00:08:22.291 --> 00:08:24.774
+<v Bob>Like a portfolio for designers?
+
+58
+00:08:25.074 --> 00:08:36.020
+<v Alice>Like a chef's tasting plate. Nobody hires a cook off a certificate; they taste the food. Your published build is the plate: the output and the cost, out where anyone can see it.
+
+59
+00:08:36.320 --> 00:08:38.674
+<v Bob>And then wait for the offers to roll in?
+
+60
+00:08:38.974 --> 00:08:52.264
+<v Alice>No, send it! Find a company hiring a GTM engineer, build a sample of the list that role would own, and send it to the person hiring. With zero years, start with agencies: one hired him.
+
+61
+00:08:52.564 --> 00:08:54.178
+<v Bob>And the interview itself?
+
+62
+00:08:54.478 --> 00:09:12.627
+<v Alice>His co-founder Alex opens with a 30-second test: he hands you an ICP and listens to your first question. If it's what list should I build, he sees an SDR with a Clay license. He wants: what signal tells us this account is ready to buy, and how do we automate around it?
+
+63
+00:09:12.927 --> 00:09:15.443
+<v Bob>Last step. How do you grow from there?
+
+64
+00:09:15.743 --> 00:09:31.506
+<v Alice>By running more accounts. By March 2026, each GTM engineer at ColdIQ managed ten clients, against three in 2023. He runs outbound for 15 of their 70-plus clients himself, from one terminal.
+
+65
+00:09:31.806 --> 00:09:35.073
+<v Bob>Fifteen clients, one terminal? How?
+
+66
+00:09:35.373 --> 00:09:52.089
+<v Alice>Every client is a folder with one context file, and every repeatable job is a skill. It's like a franchise starter kit: a new shop copies the kit and changes one page. So when a new client signs, he copies the folder and rewrites that one file.
+
+67
+00:09:52.389 --> 00:09:53.821
+<v Bob>And the pay at the end of it?
+
+68
+00:09:54.121 --> 00:10:14.223
+<v Alice>His figures again: Cargo's middle half runs from 135 thousand dollars to 190 thousand dollars, and Bloomberry's median is 127,500 dollars. His co-founder Alex says engineers who build go for 40 thousand dollars to 60 thousand dollars more than a comparable RevOps hire.
+
+69
+00:10:14.523 --> 00:10:18.490
+<v Bob>Okay, skeptic hat on. This is one person's path, right?
+
+70
+00:10:18.790 --> 00:10:30.003
+<v Alice>It is, and that's my first caution. My take: we hear from the people it worked for, not the ones whose builds got no likes. And his results and pay ranges are his own figures.
+
+71
+00:10:30.303 --> 00:10:33.295
+<v Bob>Theo, does your source agree on the entry bar?
+
+72
+00:10:33.595 --> 00:10:44.899
+<v Theo>Arnoux read live postings that all name RevOps as a qualifying background, and nobody in his sample is hiring at zero years. His line: the ceiling isn't gated by tenure, but the floor still is.
+
+73
+00:10:45.199 --> 00:10:48.655
+<v Bob>Sam, what breaks when everyone automates outbound?
+
+74
+00:10:48.955 --> 00:11:04.928
+<v Sam>Marina Temkin reported in TechCrunch on the boom in AI SDRs, tools that write personalized outreach emails. One founder, Arjun Pillai, told her that over the last two years, the reply rate on cold emails fell at least 50 percent.
+
+75
+00:11:05.228 --> 00:11:07.238
+<v Bob>Half the replies gone. Ouch.
+
+76
+00:11:07.538 --> 00:11:26.377
+<v Sam>And a chief revenue officer told investor Tomasz Tunguz that an AI SDR generated plenty of leads over nine months, but no actual sales. It's like a fishing boat hauling in a full net of the wrong fish: busy, but no dinner. Investors, she writes, doubt that adoption is sticky.
+
+77
+00:11:26.677 --> 00:11:28.405
+<v Bob>Does Kenny see that risk?
+
+78
+00:11:28.705 --> 00:11:40.946
+<v Alice>He does! He writes that an agent builds a clean list of the wrong people faster than you ever could. That's why a person signs off before anything goes out, and why spam and bounces get watched first.
+
+79
+00:11:41.246 --> 00:11:44.796
+<v Bob>Time for Builder's Corner! Alice, what's the first build?
+
+80
+00:11:45.096 --> 00:11:57.794
+<v Alice>His own first one. A week into the job, he built a workflow that pulled businesses from Google Maps, scraped their sites for emails and sent a clean list to a Google Sheet. Then he gave it away publicly on LinkedIn.
+
+81
+00:11:58.094 --> 00:11:59.486
+<v Bob>And how did that go?
+
+82
+00:11:59.786 --> 00:12:08.525
+<v Alice>The post had one like after 45 minutes, and he almost deleted it. By the next day it had found an audience, so he kept posting builds.
+
+83
+00:12:08.825 --> 00:12:10.713
+<v Bob>One like. Brutal!
+
+84
+00:12:11.013 --> 00:12:25.714
+<v Alice>So here's the recipe. Pick one niche in one city, scrape the list from a maps search, dedupe it and load it into a sheet. He puts the cost at about 7 dollars per 1,000 businesses, and then you publish it with its output and its cost.
+
+85
+00:12:26.014 --> 00:12:29.854
+<v Bob>One niche, one city, one sheet. This week.
+
+86
+00:12:30.154 --> 00:12:45.708
+<v Alice>Quick takeaways. One, a GTM engineer builds the systems sales reps work from; two, filter on fresh signals before you write a word. Three: test your prompts on examples you labeled yourself, and keep a person approving every send.
+
+87
+00:12:46.008 --> 00:12:47.198
+<v Bob>What's still open?
+
+88
+00:12:47.498 --> 00:13:00.406
+<v Alice>The tools, for one: he's replaced every tool in his stack in the last year, and expects to do it again. And the title isn't standardised: two companies hiring a GTM engineer may want different jobs.
+
+89
+00:13:00.706 --> 00:13:03.194
+<v Bob>And whether inboxes keep answering?
+
+90
+00:13:03.494 --> 00:13:15.763
+<v Alice>That's the big one. My take: the more outreach gets automated, the better your reason to email has to be. His answer: someone still has to decide who's worth reaching and check what it sends.
+
+91
+00:13:16.063 --> 00:13:26.126
+<v Bob>That's our walk down the GTM engineer path. Thanks to Kenny Damian for How to Become a GTM Engineer: The Complete Guide, and to David Arnoux for What Is a GTM Engineer?
+
+92
+00:13:26.426 --> 00:13:33.459
+<v Alice>Thanks also to Neil Kumaran on Google's blog, and Marina Temkin in TechCrunch. Now go build your first list!
+
+93
+00:13:33.759 --> 00:13:38.493
+<v Bob>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.
