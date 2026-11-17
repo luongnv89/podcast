@@ -1,0 +1,437 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.313
+<v Alice>Why does a local AI model pause before its first word, then type its answer like it's in no hurry?
+
+2
+00:00:06.613 --> 00:00:13.262
+<v Bob>Two different jobs! First it processes your whole prompt, then it writes the answer one token at a time.
+
+3
+00:00:13.562 --> 00:00:16.427
+<v Alice>So what's really going on inside that loop?
+
+4
+00:00:20.727 --> 00:00:27.295
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice.
+
+5
+00:00:27.595 --> 00:00:35.569
+<v Bob>And I'm Bob! Today we unpack Ahmad Osman's X article, his practical guide to LLMs, the 2026 edition.
+
+6
+00:00:35.869 --> 00:00:39.070
+<v Alice>A practical guide. So beginners are welcome?
+
+7
+00:00:39.370 --> 00:01:00.395
+<v Bob>Very welcome! It starts with the mechanics, like tokens, attention and the KV cache, then moves to the local side: quantization, VRAM math and hardware. We'll follow the core story, the loop and its memory, and what it means for running models yourself; the full guide goes much further, into RAG, agents, fine-tuning and licenses.
+
+8
+00:01:00.695 --> 00:01:05.777
+<v Alice>Okay, start at the very beginning. What does an LLM actually do?
+
+9
+00:01:06.077 --> 00:01:16.221
+<v Bob>It runs one loop, over and over. Turn your text into tokens, score every possible next token, choose one, append it, and repeat until it stops.
+
+10
+00:01:16.521 --> 00:01:19.282
+<v Alice>Wait, tokens? Not words?
+
+11
+00:01:19.582 --> 00:01:29.982
+<v Bob>Not words! Tokens are small chunks of text, stored as integer IDs: a whole word like hello, a fragment like inter or national, even a punctuation mark.
+
+12
+00:01:30.282 --> 00:01:31.715
+<v Alice>Give me the picture.
+
+13
+00:01:32.015 --> 00:01:47.018
+<v Bob>Think of a one-word story game around a campfire: each person adds a single word, and everything said so far shapes the next one. That's the model: it never writes the whole answer in one shot, and every new token joins the sequence that steers the next.
+
+14
+00:01:47.318 --> 00:01:50.438
+<v Alice>A campfire that never runs out of words!
+
+15
+00:01:50.738 --> 00:01:59.605
+<v Bob>Until a stop token or a limit! And tokens are the unit of work: they decide how much text fits in the context window and how big the cache gets.
+
+16
+00:01:59.905 --> 00:02:03.071
+<v Alice>Next stop: attention. What is it?
+
+17
+00:02:03.371 --> 00:02:17.816
+<v Bob>Attention is how a token decides which earlier tokens matter for the next prediction. Picture a noisy party: through all the chatter, your ear snaps to the one voice saying your name. In the model, attention picks out the earlier tokens that matter right now.
+
+18
+00:02:18.116 --> 00:02:21.583
+<v Alice>Maya, you dug into a classic explainer on this?
+
+19
+00:02:21.883 --> 00:02:34.245
+<v Maya>Jay Alammar's The Illustrated Transformer uses one sentence: The animal didn't cross the street because it was too tired. Does it mean the street or the animal? That's simple for a human, not as simple for an algorithm.
+
+20
+00:02:34.545 --> 00:02:36.536
+<v Alice>And the model gets it right?
+
+21
+00:02:36.836 --> 00:02:49.938
+<v Maya>It does. When the model processes the word it, self-attention lets it associate that word with animal. Alammar calls self-attention the way the Transformer bakes the understanding of other relevant words into the current one.
+
+22
+00:02:50.238 --> 00:02:52.626
+<v Alice>Baking. Of course there's baking.
+
+23
+00:02:52.926 --> 00:03:09.259
+<v Bob>And attention is one reason local models are so hungry for memory, Ahmad says. Classic multi-head attention keeps separate key and value state for many heads, which makes the KV cache large, while newer designs like GQA share key and value heads across groups.
+
+24
+00:03:09.559 --> 00:03:13.337
+<v Alice>So two models of the same size can behave differently?
+
+25
+00:03:13.637 --> 00:03:28.175
+<v Bob>Very differently! A 7B model with classic attention at 128K context can exhaust a GPU with 24 gigabytes, while a 7B GQA model may fit with room to spare. Parameter count isn't the whole story.
+
+26
+00:03:28.475 --> 00:03:32.361
+<v Alice>You keep saying KV cache. What is it, really?
+
+27
+00:03:32.661 --> 00:03:42.724
+<v Bob>It's the model's working memory during generation. It stores the key and value states of earlier tokens, so the model doesn't recompute the whole history for every new token.
+
+28
+00:03:43.024 --> 00:03:46.608
+<v Alice>Metaphor, please. I'm the beginner today.
+
+29
+00:03:46.908 --> 00:04:02.085
+<v Bob>Imagine a waiter at a big table: without a notepad, he'd make everyone repeat the whole order each time he added one dish. The KV cache is that notepad: earlier tokens are already written down, so without it, generation would be brutally inefficient.
+
+30
+00:04:02.385 --> 00:04:04.144
+<v Alice>But notepads fill up.
+
+31
+00:04:04.444 --> 00:04:20.769
+<v Bob>Exactly, and that's the bill. For older Llama-like 7B models, his rule of thumb is about half a megabyte per token, so 4K tokens can cost around 2 gigabytes just for the cache. At 32K tokens, you may be looking at 16 gigabytes of cache alone.
+
+32
+00:04:21.069 --> 00:04:24.526
+<v Alice>Sixteen just to remember the chat? Ouch!
+
+33
+00:04:24.826 --> 00:04:33.519
+<v Bob>Ouch indeed. That's why a model can fit with an empty prompt but crash when you load a long document. The weights fit, the working memory did not.
+
+34
+00:04:33.819 --> 00:04:38.042
+<v Alice>Back to our teaser. Why the pause, then the slow typing?
+
+35
+00:04:38.342 --> 00:04:52.532
+<v Bob>Two phases! Prefill processes your prompt: paste a 20,000-token document, and the model must process all of it before the first answer token. Then decode generates new tokens one at a time, and that's the streaming typing effect.
+
+36
+00:04:52.832 --> 00:04:55.039
+<v Alice>Okay, make it kitchen-simple.
+
+37
+00:04:55.339 --> 00:05:09.013
+<v Bob>Think of an exam: you take in the whole question first, then you write your answer in pen, word by word, each word depending on the one before. Reading is prefill, which runs in parallel; writing is decode, which is sequential.
+
+38
+00:05:09.313 --> 00:05:11.105
+<v Alice>So which one hurts more?
+
+39
+00:05:11.405 --> 00:05:20.051
+<v Bob>Long prompts punish prefill, long answers punish decode, and long conversations punish both, because the KV cache grows.
+
+40
+00:05:20.351 --> 00:05:23.216
+<v Alice>That's why endless chats get sluggish?
+
+41
+00:05:23.516 --> 00:05:34.991
+<v Bob>Right. Let a chat run to 16K tokens, and you pay the memory cost for all of them on every new token. That's why chat apps that keep infinite history eventually slow down or crash.
+
+42
+00:05:35.291 --> 00:05:39.068
+<v Alice>And how does it pick each token? Highest score every time?
+
+43
+00:05:39.368 --> 00:05:54.110
+<v Bob>That's one option. The model only scores every possible next token; decoding turns those scores into one actual token. It can take the top one, sample from a narrowed set of likely ones, penalize repetition, or stop at a delimiter.
+
+44
+00:05:54.410 --> 00:05:57.026
+<v Alice>And temperature is the famous knob?
+
+45
+00:05:57.326 --> 00:06:12.201
+<v Bob>It is. Imagine ordering dinner: low temperature means always ordering your usual, high temperature means letting the chef surprise you. For precise work, start low with short limits and stop sequences; for creative work, give the sampler more room.
+
+46
+00:06:12.501 --> 00:06:15.575
+<v Alice>So always ordering the usual is the safe bet?
+
+47
+00:06:15.875 --> 00:06:30.187
+<v Bob>Not always! Greedy decoding is often brittle: it can get stuck in loops or give generic answers, because it never explores alternatives. His advice: deterministic settings for evals, and for ideation, let the model breathe.
+
+48
+00:06:30.487 --> 00:06:34.373
+<v Alice>He also warns about chat templates. What goes wrong there?
+
+49
+00:06:34.673 --> 00:06:51.510
+<v Bob>A chat model was trained on one exact conversation format, with markers for system, user and assistant. Use the wrong one and you get gibberish, ignored system prompts or broken tool calls. Then people decide the model is dumb, when the template is the actual bug.
+
+50
+00:06:51.810 --> 00:06:53.153
+<v Alice>Picture it for me.
+
+51
+00:06:53.453 --> 00:07:06.365
+<v Bob>It's like a tax form where you write your name in the amount box: the clerk isn't stupid, the form is filled in wrong. Ahmad says to treat the template like an API contract: get it wrong, and you're not testing the model you think you are.
+
+52
+00:07:06.665 --> 00:07:10.250
+<v Alice>My name in the amount box. Rich at last!
+
+53
+00:07:10.550 --> 00:07:14.390
+<v Alice>Now the context window. Bigger is better, right?
+
+54
+00:07:14.690 --> 00:07:34.517
+<v Bob>Bigger costs more! The context window is the most tokens a model can attend to at once, and in 2026 local models range from 8K and 32K up to 128K and beyond. But supported isn't cheap: a model that technically handles 128K may slow to a crawl at 64K.
+
+55
+00:07:34.817 --> 00:07:36.339
+<v Alice>So what's the image here?
+
+56
+00:07:36.639 --> 00:07:48.315
+<v Bob>Think of a desk: a bigger desk holds more papers, but you can still lose the one buried at the bottom of the pile. Likewise, a model may handle the end of a long document well while missing details near the beginning.
+
+57
+00:07:48.615 --> 00:07:51.259
+<v Alice>So just paste everything and hope?
+
+58
+00:07:51.559 --> 00:08:06.917
+<v Bob>No! That's where RAG comes in, retrieval-augmented generation: you retrieve the relevant chunks from a knowledge base and give only those to the model. It's like a librarian who brings you the right few pages instead of dumping the whole library on your desk.
+
+59
+00:08:07.217 --> 00:08:09.989
+<v Alice>And if the librarian grabs the wrong book?
+
+60
+00:08:10.289 --> 00:08:22.430
+<v Bob>Then the answer suffers. Most bad RAG systems aren't bad because of the model, but because of chunking, retrieval and reranking. A good model can't reliably answer from evidence it never received.
+
+61
+00:08:22.730 --> 00:08:28.368
+<v Alice>Switching gears: running models on my own machine. What does local really mean?
+
+62
+00:08:28.668 --> 00:08:39.021
+<v Bob>A local LLM is one whose weights and runtime are under your control. That freedom comes with work: you're now the ops team, and when something breaks, there's no support ticket to file.
+
+63
+00:08:39.321 --> 00:08:41.628
+<v Alice>So what's the everyday version?
+
+64
+00:08:41.928 --> 00:08:54.627
+<v Bob>It's like owning a car instead of taking taxis: you go wherever you want, but the oil changes are yours. And local doesn't automatically mean offline, private, safe or cheap: a local app can still phone home.
+
+65
+00:08:54.927 --> 00:09:03.364
+<v Bob>And it's not always worth it. If you need the absolute best quality and don't have the hardware to match, he says a hosted API is the right tool.
+
+66
+00:09:03.664 --> 00:09:07.342
+<v Alice>Okay, quantization. It sounds scary.
+
+67
+00:09:07.642 --> 00:09:24.869
+<v Bob>It's simple at heart: store the weights in lower precision to save memory. His 2026 rule of thumb, as of the article's date: Q4 is the default consumer sweet spot, and Q8 is near-lossless for many tasks. Q3 or Q2 only when you must fit a bigger model.
+
+68
+00:09:25.169 --> 00:09:28.208
+<v Alice>Lena, you brought a visual guide on this?
+
+69
+00:09:28.508 --> 00:09:43.805
+<v Lena>I did. Maarten Grootendorst's A Visual Guide to Quantization does the math: a model with 70 billion parameters in full 32-bit precision would need 280 gigabytes just to load. That's why squeezing the bits is so tempting.
+
+70
+00:09:44.105 --> 00:09:45.892
+<v Alice>My laptop just fainted.
+
+71
+00:09:46.192 --> 00:09:59.866
+<v Lena>The catch is precision. His picture: it's like redrawing a photo with only 8 colors, and the zoomed-in part turns grainy. Quantization cuts the bits, the colors, while keeping as much precision as it can.
+
+72
+00:10:00.166 --> 00:10:01.547
+<v Alice>How low can you go?
+
+73
+00:10:01.847 --> 00:10:12.885
+<v Lena>Below 8 bits gets hard, because the error grows with each bit you lose. Smart methods reach 4 bits and even 2, but going lower than 4 bits is typically not advised.
+
+74
+00:10:13.185 --> 00:10:26.301
+<v Bob>Ahmad agrees: math, code, structured output and tool use degrade first. And a 7B model at Q6 can beat a 13B model at Q2 on reasoning tasks, using less memory. Don't worship parameter count!
+
+75
+00:10:26.601 --> 00:10:29.768
+<v Alice>So how do I know if a model fits on my GPU?
+
+76
+00:10:30.068 --> 00:10:44.345
+<v Bob>Three memory eaters: weights, KV cache and runtime overhead. Weights are roughly parameters times bytes per parameter: about 2 bytes in FP16, 1 in Q8, and half a byte in Q4, plus format overhead.
+
+77
+00:10:44.645 --> 00:10:46.723
+<v Alice>Give me the everyday version.
+
+78
+00:10:47.023 --> 00:11:03.523
+<v Bob>Picture packing a suitcase: the clothes are the weights, and the souvenirs you pick up on the trip are the KV cache. Pack it full on day one and the souvenirs won't fit: a 13B model in Q4 may fit at 8K context, then fail at 32K, because the cache quadrupled.
+
+79
+00:11:03.823 --> 00:11:06.002
+<v Alice>So leave room in the suitcase.
+
+80
+00:11:06.302 --> 00:11:16.865
+<v Bob>Ten to twenty percent headroom, he says. And the most painful setup is the one that almost fits and spills layers to the CPU: it may technically run, but token speed can collapse.
+
+81
+00:11:17.165 --> 00:11:21.051
+<v Alice>Why are two cards with the same memory different speeds?
+
+82
+00:11:21.351 --> 00:11:33.975
+<v Bob>Bandwidth! Decode is often memory-bandwidth-bound: the GPU streams the weights over and over. It's like drinking a milkshake through a straw: the width of the straw, not the size of the cup, sets the pace.
+
+83
+00:11:34.275 --> 00:11:38.417
+<v Alice>Milkshake engineering. Finally, my expertise!
+
+84
+00:11:38.717 --> 00:11:43.068
+<v Alice>Time for counterpoints. Sam, you brought the skeptic's view.
+
+85
+00:11:43.368 --> 00:12:00.622
+<v Sam>I did. Simon Willison, on Simon Willison's Weblog, ran Meta's Llama 3.3 70B on his MacBook with 64 gigabytes of memory, in December 2024. His first try consumed every remaining bit of available memory and hard-crashed his Mac.
+
+86
+00:12:00.922 --> 00:12:04.124
+<v Alice>Ouch. The suitcase warning, live.
+
+87
+00:12:04.424 --> 00:12:18.586
+<v Sam>It worked only after he closed Firefox and his code editor. Then the benchmark catch: the published scores ran on the full-sized release, while his laptop version was quantized, so not exactly the same model, likely with lower scores.
+
+88
+00:12:18.886 --> 00:12:20.456
+<v Alice>And how fast was it?
+
+89
+00:12:20.756 --> 00:12:29.925
+<v Sam>His own log shows the prompt being processed several times faster than the answer was generated. It runs, but you wait for every generated token.
+
+90
+00:12:30.225 --> 00:12:38.872
+<v Bob>That matches Ahmad's own caution: a BF16 leaderboard score isn't your Q4 local reality. Benchmark the stack you'll actually run.
+
+91
+00:12:39.172 --> 00:12:45.148
+<v Alice>My take: local is a real tool, not just a hobby, but test it before you trust it.
+
+92
+00:12:45.448 --> 00:12:49.764
+<v Alice>Builder's Corner! Bob, one thing listeners can try this week?
+
+93
+00:12:50.064 --> 00:13:03.273
+<v Bob>Run a small model on your own machine. Ahmad's beginner setup: a recent 4B to 9B instruct model, Q4 quantization, 8K to 32K context, and a built-in chat window in a desktop app.
+
+94
+00:13:03.573 --> 00:13:05.155
+<v Alice>And then what do I watch?
+
+95
+00:13:05.455 --> 00:13:18.443
+<v Bob>Paste a long document and time the pause before the first word: that's prefill. Then watch the answer stream in: that's decode. Measure both, time to first token and decode tokens per second, just like his benchmark list.
+
+96
+00:13:18.743 --> 00:13:20.221
+<v Alice>Any bonus round?
+
+97
+00:13:20.521 --> 00:13:28.238
+<v Bob>Download two or three models in the same size class and compare them on the same prompts. Your workload is the benchmark that matters.
+
+98
+00:13:28.538 --> 00:13:32.808
+<v Alice>Long prompt, short prompt, stopwatch. Got it.
+
+99
+00:13:33.108 --> 00:13:34.894
+<v Alice>Bob, the takeaways?
+
+100
+00:13:35.194 --> 00:13:47.846
+<v Bob>One: the model predicts one token at a time, and tokens aren't words. Two: the KV cache is the hidden memory bill. Three: quantization is a tradeoff, and long context isn't free.
+
+101
+00:13:48.146 --> 00:13:49.799
+<v Alice>And his one-line summary?
+
+102
+00:13:50.099 --> 00:13:58.920
+<v Bob>Local LLMs are mostly memory math plus formatting plus evaluation. Get those right, and the rest of the stack becomes much easier to reason about.
+
+103
+00:13:59.220 --> 00:14:00.802
+<v Alice>What's still open?
+
+104
+00:14:01.102 --> 00:14:10.561
+<v Bob>Squeezing the cache below 8 bits, for one. He calls it research-heavy and workload-sensitive, to use only after measuring quality on your own prompts.
+
+105
+00:14:10.861 --> 00:14:15.769
+<v Alice>And the model scene changes fast, he says. Which picks will still hold next year?
+
+106
+00:14:16.069 --> 00:14:21.279
+<v Bob>Nobody knows yet! That's why he says not to let a leaderboard choose your local stack for you.
+
+107
+00:14:21.579 --> 00:14:37.730
+<v Bob>That's our tour of the token loop. Thanks to Ahmad Osman for his practical guide to LLMs, and to Jay Alammar for The Illustrated Transformer. Thanks also to Maarten Grootendorst for A Visual Guide to Quantization, and to Simon Willison for his post on running a big model on his laptop.
+
+108
+00:14:38.030 --> 00:14:41.708
+<v Alice>Thanks, everyone! May your KV cache always fit.
+
+109
+00:14:42.008 --> 00:14:46.742
+<v Bob>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Mon, 16 Nov 2026 19:55:00 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 17 Nov 2026 06:30:45 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,31 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-17_llms-101-a-practical-guide-2026-edition</guid>
+    <title>LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman)</title>
+    <link>https://luongnv.com/podcast/#2026-11-17_llms-101-a-practical-guide-2026-edition</link>
+    <description>Ahmad Osman's LLMs 101 guide, unpacked: models write one token at a time, and the KV cache is the memory that keeps that loop fast.
+
+Attention, prefill vs decode and temperature get everyday metaphors, with guests on Jay Alammar's Illustrated Transformer and Maarten Grootendorst's quantization guide.
+
+Then running models locally: quantization, VRAM math, Simon Willison's laptop test, and a prefill-vs-decode experiment to try yourself.
+
+Sources:
+- LLMs 101: A Practical Guide (2026 Edition), Ahmad (@TheAhmadOsman) (https://x.com/TheAhmadOsman/status/2057590224729911346)
+- The Illustrated Transformer, Jay Alammar (https://jalammar.github.io/illustrated-transformer/)
+- A Visual Guide to Quantization, Maarten Grootendorst (https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization)
+- I can now run a GPT-4 class model on my laptop, Simon Willison (https://simonwillison.net/2024/Dec/9/llama-33-70b/)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Ahmad Osman's LLMs 101 guide, unpacked: models write one token at a time, and the KV cache is the memory that keeps that loop fast.</p><p>Attention, prefill vs decode and temperature get everyday metaphors, with guests on Jay Alammar's Illustrated Transformer and Maarten Grootendorst's quantization guide.</p><p>Then running models locally: quantization, VRAM math, Simon Willison's laptop test, and a prefill-vs-decode experiment to try yourself.</p><p>Sources:</p><ul><li>LLMs 101: A Practical Guide (2026 Edition), Ahmad (@TheAhmadOsman): <a href="https://x.com/TheAhmadOsman/status/2057590224729911346">https://x.com/TheAhmadOsman/status/2057590224729911346</a></li><li>The Illustrated Transformer, Jay Alammar: <a href="https://jalammar.github.io/illustrated-transformer/">https://jalammar.github.io/illustrated-transformer/</a></li><li>A Visual Guide to Quantization, Maarten Grootendorst: <a href="https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization">https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization</a></li><li>I can now run a GPT-4 class model on my laptop, Simon Willison: <a href="https://simonwillison.net/2024/Dec/9/llama-33-70b/">https://simonwillison.net/2024/Dec/9/llama-33-70b/</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 17 Nov 2026 06:27:34 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-17_llms-101-a-practical-guide-2026-edition.mp3?v=f95d5a49" length="14294820" type="audio/mpeg"/>
+    <itunes:duration>893</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-17_llms-101-a-practical-guide-2026-edition/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-16_morning-edition-monday-16-november-2026</guid>
     <title>Qwen4-Max Launches, Cursor's Breach Traced to a Key | AI Daily 16 Nov</title>

@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman) | Build Wiz AI Show</title>
+<meta name="description" content="Ahmad Osman&#x27;s LLMs 101 guide explains how large language models write one token at a time, and why the KV cache, quantization and VRAM decide what runs on your own machine. Bob and Alice unpack it with everyday metaphors and a test to try at home.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-17_llms-101-a-practical-guide-2026-edition/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-17_llms-101-a-practical-guide-2026-edition/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman)">
+<meta property="og:description" content="Ahmad Osman&#x27;s LLMs 101 guide explains how large language models write one token at a time, and why the KV cache, quantization and VRAM decide what runs on your own machine. Bob and Alice unpack it with everyday metaphors and a test to try at home.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-17_llms-101-a-practical-guide-2026-edition/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-17_llms-101-a-practical-guide-2026-edition.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman)">
+<meta name="twitter:description" content="Ahmad Osman&#x27;s LLMs 101 guide explains how large language models write one token at a time, and why the KV cache, quantization and VRAM decide what runs on your own machine. Bob and Alice unpack it with everyday metaphors and a test to try at home.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman)",
+ "description": "Ahmad Osman's LLMs 101 guide explains how large language models write one token at a time, and why the KV cache, quantization and VRAM decide what runs on your own machine. Bob and Alice unpack it with everyday metaphors and a test to try at home.\n\nIn this episode:\n- Tokens, attention and the KV cache, the model's working memory\n- Prefill vs decode: the pause before the first word, then the stream\n- Quantization and VRAM math for local LLMs\n\nSources: Ahmad Osman (@TheAhmadOsman); Jay Alammar; Maarten Grootendorst; Simon Willison\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-17_llms-101-a-practical-guide-2026-edition/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-17_llms-101-a-practical-guide-2026-edition.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT14M53S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-17T06:27:34Z",
+ "timeRequired": "PT14M53S",
+ "isBasedOn": "https://x.com/TheAhmadOsman/status/2057590224729911346"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman)</h1>
+  <p class="meta"><span class="dur">15 min</span> · <time datetime="2026-11-17T06:27:34Z">2026-11-17</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-17_llms-101-a-practical-guide-2026-edition.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">Ahmad Osman&#x27;s LLMs 101 guide explains how large language models write one token at a time, and why the KV cache, quantization and VRAM decide what runs on your own machine. Bob and Alice unpack it with everyday metaphors and a test to try at home.
+
+In this episode:
+- Tokens, attention and the KV cache, the model&#x27;s working memory
+- Prefill vs decode: the pause before the first word, then the stream
+- Quantization and VRAM math for local LLMs
+
+Sources: Ahmad Osman (@TheAhmadOsman); Jay Alammar; Maarten Grootendorst; Simon Willison
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-17_llms-101-a-practical-guide-2026-edition">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-17_llms-101-a-practical-guide-2026-edition.mp3" download="Build Wiz AI Show - LLMs 101 Tokens, KV Cache and Running Models Locally (Ahmad Osman) (2026-11-17).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Ahmad Osman&#x27;s LLMs 101 guide explains how large language models write one token at a time, and why the KV cache, quantization and VRAM decide what runs on your own machine. Bob and Alice unpack it with everyday metaphors and a test to try at home.
+
+In this episode:
+- Tokens, attention and the KV cache, the model&#x27;s working memory
+- Prefill vs decode: the pause before the first word, then the stream
+- Quantization and VRAM math for local LLMs
+
+Sources: Ahmad Osman (@TheAhmadOsman); Jay Alammar; Maarten Grootendorst; Simon Willison
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://x.com/TheAhmadOsman/status/2057590224729911346" rel="noopener">LLMs 101: A Practical Guide (2026 Edition)</a> by Ahmad (@TheAhmadOsman)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> Why does a local AI model pause before its first word, then type its answer like it's in no hurry?</p>
+    <p><strong>Bob:</strong> Two different jobs! First it processes your whole prompt, then it writes the answer one token at a time.</p>
+    <p><strong>Alice:</strong> So what's really going on inside that loop? Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice.</p>
+    <p><strong>Bob:</strong> And I'm Bob! Today we unpack Ahmad Osman's X article, his practical guide to LLMs, the 2026 edition.</p>
+    <p><strong>Alice:</strong> A practical guide. So beginners are welcome?</p>
+    <p><strong>Bob:</strong> Very welcome! It starts with the mechanics, like tokens, attention and the KV cache, then moves to the local side: quantization, VRAM math and hardware. We'll follow the core story, the loop and its memory, and what it means for running models yourself; the full guide goes much further, into RAG, agents, fine-tuning and licenses.</p>
+    <p><strong>Alice:</strong> Okay, start at the very beginning. What does an LLM actually do?</p>
+    <p><strong>Bob:</strong> It runs one loop, over and over. Turn your text into tokens, score every possible next token, choose one, append it, and repeat until it stops.</p>
+    <p><strong>Alice:</strong> Wait, tokens? Not words?</p>
+    <p><strong>Bob:</strong> Not words! Tokens are small chunks of text, stored as integer IDs: a whole word like hello, a fragment like inter or national, even a punctuation mark.</p>
+    <p><strong>Alice:</strong> Give me the picture.</p>
+    <p><strong>Bob:</strong> Think of a one-word story game around a campfire: each person adds a single word, and everything said so far shapes the next one. That's the model: it never writes the whole answer in one shot, and every new token joins the sequence that steers the next.</p>
+    <p><strong>Alice:</strong> A campfire that never runs out of words!</p>
+    <p><strong>Bob:</strong> Until a stop token or a limit! And tokens are the unit of work: they decide how much text fits in the context window and how big the cache gets.</p>
+    <p><strong>Alice:</strong> Next stop: attention. What is it?</p>
+    <p><strong>Bob:</strong> Attention is how a token decides which earlier tokens matter for the next prediction. Picture a noisy party: through all the chatter, your ear snaps to the one voice saying your name. In the model, attention picks out the earlier tokens that matter right now.</p>
+    <p><strong>Alice:</strong> Maya, you dug into a classic explainer on this?</p>
+    <p><strong>Maya:</strong> Jay Alammar's The Illustrated Transformer uses one sentence: The animal didn't cross the street because it was too tired. Does it mean the street or the animal? That's simple for a human, not as simple for an algorithm.</p>
+    <p><strong>Alice:</strong> And the model gets it right?</p>
+    <p><strong>Maya:</strong> It does. When the model processes the word it, self-attention lets it associate that word with animal. Alammar calls self-attention the way the Transformer bakes the understanding of other relevant words into the current one.</p>
+    <p><strong>Alice:</strong> Baking. Of course there's baking.</p>
+    <p><strong>Bob:</strong> And attention is one reason local models are so hungry for memory, Ahmad says. Classic multi-head attention keeps separate key and value state for many heads, which makes the KV cache large, while newer designs like GQA share key and value heads across groups.</p>
+    <p><strong>Alice:</strong> So two models of the same size can behave differently?</p>
+    <p><strong>Bob:</strong> Very differently! A 7B model with classic attention at 128K context can exhaust a GPU with 24 gigabytes, while a 7B GQA model may fit with room to spare. Parameter count isn't the whole story.</p>
+    <p><strong>Alice:</strong> You keep saying KV cache. What is it, really?</p>
+    <p><strong>Bob:</strong> It's the model's working memory during generation. It stores the key and value states of earlier tokens, so the model doesn't recompute the whole history for every new token.</p>
+    <p><strong>Alice:</strong> Metaphor, please. I'm the beginner today.</p>
+    <p><strong>Bob:</strong> Imagine a waiter at a big table: without a notepad, he'd make everyone repeat the whole order each time he added one dish. The KV cache is that notepad: earlier tokens are already written down, so without it, generation would be brutally inefficient.</p>
+    <p><strong>Alice:</strong> But notepads fill up.</p>
+    <p><strong>Bob:</strong> Exactly, and that's the bill. For older Llama-like 7B models, his rule of thumb is about half a megabyte per token, so 4K tokens can cost around 2 gigabytes just for the cache. At 32K tokens, you may be looking at 16 gigabytes of cache alone.</p>
+    <p><strong>Alice:</strong> Sixteen just to remember the chat? Ouch!</p>
+    <p><strong>Bob:</strong> Ouch indeed. That's why a model can fit with an empty prompt but crash when you load a long document. The weights fit, the working memory did not.</p>
+    <p><strong>Alice:</strong> Back to our teaser. Why the pause, then the slow typing?</p>
+    <p><strong>Bob:</strong> Two phases! Prefill processes your prompt: paste a 20,000-token document, and the model must process all of it before the first answer token. Then decode generates new tokens one at a time, and that's the streaming typing effect.</p>
+    <p><strong>Alice:</strong> Okay, make it kitchen-simple.</p>
+    <p><strong>Bob:</strong> Think of an exam: you take in the whole question first, then you write your answer in pen, word by word, each word depending on the one before. Reading is prefill, which runs in parallel; writing is decode, which is sequential.</p>
+    <p><strong>Alice:</strong> So which one hurts more?</p>
+    <p><strong>Bob:</strong> Long prompts punish prefill, long answers punish decode, and long conversations punish both, because the KV cache grows.</p>
+    <p><strong>Alice:</strong> That's why endless chats get sluggish?</p>
+    <p><strong>Bob:</strong> Right. Let a chat run to 16K tokens, and you pay the memory cost for all of them on every new token. That's why chat apps that keep infinite history eventually slow down or crash.</p>
+    <p><strong>Alice:</strong> And how does it pick each token? Highest score every time?</p>
+    <p><strong>Bob:</strong> That's one option. The model only scores every possible next token; decoding turns those scores into one actual token. It can take the top one, sample from a narrowed set of likely ones, penalize repetition, or stop at a delimiter.</p>
+    <p><strong>Alice:</strong> And temperature is the famous knob?</p>
+    <p><strong>Bob:</strong> It is. Imagine ordering dinner: low temperature means always ordering your usual, high temperature means letting the chef surprise you. For precise work, start low with short limits and stop sequences; for creative work, give the sampler more room.</p>
+    <p><strong>Alice:</strong> So always ordering the usual is the safe bet?</p>
+    <p><strong>Bob:</strong> Not always! Greedy decoding is often brittle: it can get stuck in loops or give generic answers, because it never explores alternatives. His advice: deterministic settings for evals, and for ideation, let the model breathe.</p>
+    <p><strong>Alice:</strong> He also warns about chat templates. What goes wrong there?</p>
+    <p><strong>Bob:</strong> A chat model was trained on one exact conversation format, with markers for system, user and assistant. Use the wrong one and you get gibberish, ignored system prompts or broken tool calls. Then people decide the model is dumb, when the template is the actual bug.</p>
+    <p><strong>Alice:</strong> Picture it for me.</p>
+    <p><strong>Bob:</strong> It's like a tax form where you write your name in the amount box: the clerk isn't stupid, the form is filled in wrong. Ahmad says to treat the template like an API contract: get it wrong, and you're not testing the model you think you are.</p>
+    <p><strong>Alice:</strong> My name in the amount box. Rich at last! Now the context window. Bigger is better, right?</p>
+    <p><strong>Bob:</strong> Bigger costs more! The context window is the most tokens a model can attend to at once, and in 2026 local models range from 8K and 32K up to 128K and beyond. But supported isn't cheap: a model that technically handles 128K may slow to a crawl at 64K.</p>
+    <p><strong>Alice:</strong> So what's the image here?</p>
+    <p><strong>Bob:</strong> Think of a desk: a bigger desk holds more papers, but you can still lose the one buried at the bottom of the pile. Likewise, a model may handle the end of a long document well while missing details near the beginning.</p>
+    <p><strong>Alice:</strong> So just paste everything and hope?</p>
+    <p><strong>Bob:</strong> No! That's where RAG comes in, retrieval-augmented generation: you retrieve the relevant chunks from a knowledge base and give only those to the model. It's like a librarian who brings you the right few pages instead of dumping the whole library on your desk.</p>
+    <p><strong>Alice:</strong> And if the librarian grabs the wrong book?</p>
+    <p><strong>Bob:</strong> Then the answer suffers. Most bad RAG systems aren't bad because of the model, but because of chunking, retrieval and reranking. A good model can't reliably answer from evidence it never received.</p>
+    <p><strong>Alice:</strong> Switching gears: running models on my own machine. What does local really mean?</p>
+    <p><strong>Bob:</strong> A local LLM is one whose weights and runtime are under your control. That freedom comes with work: you're now the ops team, and when something breaks, there's no support ticket to file.</p>
+    <p><strong>Alice:</strong> So what's the everyday version?</p>
+    <p><strong>Bob:</strong> It's like owning a car instead of taking taxis: you go wherever you want, but the oil changes are yours. And local doesn't automatically mean offline, private, safe or cheap: a local app can still phone home. And it's not always worth it. If you need the absolute best quality and don't have the hardware to match, he says a hosted API is the right tool.</p>
+    <p><strong>Alice:</strong> Okay, quantization. It sounds scary.</p>
+    <p><strong>Bob:</strong> It's simple at heart: store the weights in lower precision to save memory. His 2026 rule of thumb, as of the article's date: Q4 is the default consumer sweet spot, and Q8 is near-lossless for many tasks. Q3 or Q2 only when you must fit a bigger model.</p>
+    <p><strong>Alice:</strong> Lena, you brought a visual guide on this?</p>
+    <p><strong>Lena:</strong> I did. Maarten Grootendorst's A Visual Guide to Quantization does the math: a model with 70 billion parameters in full 32-bit precision would need 280 gigabytes just to load. That's why squeezing the bits is so tempting.</p>
+    <p><strong>Alice:</strong> My laptop just fainted.</p>
+    <p><strong>Lena:</strong> The catch is precision. His picture: it's like redrawing a photo with only 8 colors, and the zoomed-in part turns grainy. Quantization cuts the bits, the colors, while keeping as much precision as it can.</p>
+    <p><strong>Alice:</strong> How low can you go?</p>
+    <p><strong>Lena:</strong> Below 8 bits gets hard, because the error grows with each bit you lose. Smart methods reach 4 bits and even 2, but going lower than 4 bits is typically not advised.</p>
+    <p><strong>Bob:</strong> Ahmad agrees: math, code, structured output and tool use degrade first. And a 7B model at Q6 can beat a 13B model at Q2 on reasoning tasks, using less memory. Don't worship parameter count!</p>
+    <p><strong>Alice:</strong> So how do I know if a model fits on my GPU?</p>
+    <p><strong>Bob:</strong> Three memory eaters: weights, KV cache and runtime overhead. Weights are roughly parameters times bytes per parameter: about 2 bytes in FP16, 1 in Q8, and half a byte in Q4, plus format overhead.</p>
+    <p><strong>Alice:</strong> Give me the everyday version.</p>
+    <p><strong>Bob:</strong> Picture packing a suitcase: the clothes are the weights, and the souvenirs you pick up on the trip are the KV cache. Pack it full on day one and the souvenirs won't fit: a 13B model in Q4 may fit at 8K context, then fail at 32K, because the cache quadrupled.</p>
+    <p><strong>Alice:</strong> So leave room in the suitcase.</p>
+    <p><strong>Bob:</strong> Ten to twenty percent headroom, he says. And the most painful setup is the one that almost fits and spills layers to the CPU: it may technically run, but token speed can collapse.</p>
+    <p><strong>Alice:</strong> Why are two cards with the same memory different speeds?</p>
+    <p><strong>Bob:</strong> Bandwidth! Decode is often memory-bandwidth-bound: the GPU streams the weights over and over. It's like drinking a milkshake through a straw: the width of the straw, not the size of the cup, sets the pace.</p>
+    <p><strong>Alice:</strong> Milkshake engineering. Finally, my expertise! Time for counterpoints. Sam, you brought the skeptic's view.</p>
+    <p><strong>Sam:</strong> I did. Simon Willison, on Simon Willison's Weblog, ran Meta's Llama 3.3 70B on his MacBook with 64 gigabytes of memory, in December 2024. His first try consumed every remaining bit of available memory and hard-crashed his Mac.</p>
+    <p><strong>Alice:</strong> Ouch. The suitcase warning, live.</p>
+    <p><strong>Sam:</strong> It worked only after he closed Firefox and his code editor. Then the benchmark catch: the published scores ran on the full-sized release, while his laptop version was quantized, so not exactly the same model, likely with lower scores.</p>
+    <p><strong>Alice:</strong> And how fast was it?</p>
+    <p><strong>Sam:</strong> His own log shows the prompt being processed several times faster than the answer was generated. It runs, but you wait for every generated token.</p>
+    <p><strong>Bob:</strong> That matches Ahmad's own caution: a BF16 leaderboard score isn't your Q4 local reality. Benchmark the stack you'll actually run.</p>
+    <p><strong>Alice:</strong> My take: local is a real tool, not just a hobby, but test it before you trust it. Builder's Corner! Bob, one thing listeners can try this week?</p>
+    <p><strong>Bob:</strong> Run a small model on your own machine. Ahmad's beginner setup: a recent 4B to 9B instruct model, Q4 quantization, 8K to 32K context, and a built-in chat window in a desktop app.</p>
+    <p><strong>Alice:</strong> And then what do I watch?</p>
+    <p><strong>Bob:</strong> Paste a long document and time the pause before the first word: that's prefill. Then watch the answer stream in: that's decode. Measure both, time to first token and decode tokens per second, just like his benchmark list.</p>
+    <p><strong>Alice:</strong> Any bonus round?</p>
+    <p><strong>Bob:</strong> Download two or three models in the same size class and compare them on the same prompts. Your workload is the benchmark that matters.</p>
+    <p><strong>Alice:</strong> Long prompt, short prompt, stopwatch. Got it. Bob, the takeaways?</p>
+    <p><strong>Bob:</strong> One: the model predicts one token at a time, and tokens aren't words. Two: the KV cache is the hidden memory bill. Three: quantization is a tradeoff, and long context isn't free.</p>
+    <p><strong>Alice:</strong> And his one-line summary?</p>
+    <p><strong>Bob:</strong> Local LLMs are mostly memory math plus formatting plus evaluation. Get those right, and the rest of the stack becomes much easier to reason about.</p>
+    <p><strong>Alice:</strong> What's still open?</p>
+    <p><strong>Bob:</strong> Squeezing the cache below 8 bits, for one. He calls it research-heavy and workload-sensitive, to use only after measuring quality on your own prompts.</p>
+    <p><strong>Alice:</strong> And the model scene changes fast, he says. Which picks will still hold next year?</p>
+    <p><strong>Bob:</strong> Nobody knows yet! That's why he says not to let a leaderboard choose your local stack for you. That's our tour of the token loop. Thanks to Ahmad Osman for his practical guide to LLMs, and to Jay Alammar for The Illustrated Transformer. Thanks also to Maarten Grootendorst for A Visual Guide to Quantization, and to Simon Willison for his post on running a big model on his laptop.</p>
+    <p><strong>Alice:</strong> Thanks, everyone! May your KV cache always fit.</p>
+    <p><strong>Bob:</strong> That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-17_llms-101-a-practical-guide-2026-edition/", "title": "LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman)", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-17_llms-101-a-practical-guide-2026-edition", "episode_title": "LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman)", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-17_llms-101-a-practical-guide-2026-edition", "title": "LLMs 101: Tokens, KV Cache and Running Models Locally (Ahmad Osman)", "summary": ["Ahmad Osman's LLMs 101 guide, unpacked: models write one token at a time, and the KV cache is the memory that keeps that loop fast.", "Attention, prefill vs decode and temperature get everyday metaphors, with guests on Jay Alammar's Illustrated Transformer and Maarten Grootendorst's quantization guide.", "Then running models locally: quantization, VRAM math, Simon Willison's laptop test, and a prefill-vs-decode experiment to try yourself."], "description": "Ahmad Osman's LLMs 101 guide explains how large language models write one token at a time, and why the KV cache, quantization and VRAM decide what runs on your own machine. Bob and Alice unpack it with everyday metaphors and a test to try at home.\n\nIn this episode:\n- Tokens, attention and the KV cache, the model's working memory\n- Prefill vs decode: the pause before the first word, then the stream\n- Quantization and VRAM math for local LLMs\n\nSources: Ahmad Osman (@TheAhmadOsman); Jay Alammar; Maarten Grootendorst; Simon Willison\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "LLMs 101: A Practical Guide (2026 Edition)", "author": "Ahmad (@TheAhmadOsman)", "url": "https://x.com/TheAhmadOsman/status/2057590224729911346", "kind": "x"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>
