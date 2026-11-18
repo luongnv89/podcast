@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Self-Improvement Memory: How Agent Harnesses Keep Improving (Google) | Build Wiz AI Show</title>
+<meta name="description" content="Xin Yu and colleagues at Google introduce Self-Improvement Memory (SIM), which helps an AI agent&#x27;s harness optimizer remember why each edit was made. Bob and Alice unpack what happens when the benchmark or model changes.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-18_self-improvement-memory-enables-continual/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-18_self-improvement-memory-enables-continual/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)">
+<meta property="og:description" content="Xin Yu and colleagues at Google introduce Self-Improvement Memory (SIM), which helps an AI agent&#x27;s harness optimizer remember why each edit was made. Bob and Alice unpack what happens when the benchmark or model changes.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-18_self-improvement-memory-enables-continual/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-18_self-improvement-memory-enables-continual.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)">
+<meta name="twitter:description" content="Xin Yu and colleagues at Google introduce Self-Improvement Memory (SIM), which helps an AI agent&#x27;s harness optimizer remember why each edit was made. Bob and Alice unpack what happens when the benchmark or model changes.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)",
+ "description": "Xin Yu and colleagues at Google introduce Self-Improvement Memory (SIM), which helps an AI agent's harness optimizer remember why each edit was made. Bob and Alice unpack what happens when the benchmark or model changes.\n\nIn this episode:\n- Policy model vs harness, and why an evolved harness forgets the why\n- Edits grouped by recurring problem, with predicted and observed outcomes\n- Paired coding runs, the limitations and an overfitting counterpoint\n\nSources: Xin Yu et al.; Yoonho Lee et al.; Birgitta Böckeler; Peng Xia et al.\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-18_self-improvement-memory-enables-continual/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-18_self-improvement-memory-enables-continual.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT15M2S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-18T20:19:08Z",
+ "timeRequired": "PT15M2S",
+ "isBasedOn": "https://arxiv.org/html/2611.18856v1"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)</h1>
+  <p class="meta"><span class="dur">15 min</span> · <time datetime="2026-11-18T20:19:08Z">2026-11-18</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-18_self-improvement-memory-enables-continual.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">Xin Yu and colleagues at Google introduce Self-Improvement Memory (SIM), which helps an AI agent&#x27;s harness optimizer remember why each edit was made. Bob and Alice unpack what happens when the benchmark or model changes.
+
+In this episode:
+- Policy model vs harness, and why an evolved harness forgets the why
+- Edits grouped by recurring problem, with predicted and observed outcomes
+- Paired coding runs, the limitations and an overfitting counterpoint
+
+Sources: Xin Yu et al.; Yoonho Lee et al.; Birgitta Böckeler; Peng Xia et al.
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-18_self-improvement-memory-enables-continual">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-18_self-improvement-memory-enables-continual.mp3" download="Build Wiz AI Show - Self-Improvement Memory How Agent Harnesses Keep Improving (Google) (2026-11-18).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Xin Yu and colleagues at Google introduce Self-Improvement Memory (SIM), which helps an AI agent&#x27;s harness optimizer remember why each edit was made. Bob and Alice unpack what happens when the benchmark or model changes.
+
+In this episode:
+- Policy model vs harness, and why an evolved harness forgets the why
+- Edits grouped by recurring problem, with predicted and observed outcomes
+- Paired coding runs, the limitations and an overfitting counterpoint
+
+Sources: Xin Yu et al.; Yoonho Lee et al.; Birgitta Böckeler; Peng Xia et al.
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://arxiv.org/html/2611.18856v1" rel="noopener">Self-Improvement Memory Enables Continual Recursive Self-Improvement</a> by Xin Yu et al.</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> What if an AI agent could keep rewriting its own toolkit, and actually remember why it made each change?</p>
+    <p><strong>Bob:</strong> And what happens to all those fixes the day you swap in a brand-new model?</p>
+    <p><strong>Alice:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice.</p>
+    <p><strong>Bob:</strong> And I'm Bob! Today it's an arXiv paper, "Self-Improvement Memory Enables Continual Recursive Self-Improvement", by Xin Yu and colleagues at Google Cloud AI, Google DeepMind and Penn State. The work was done while Xin Yu was an intern at Google.</p>
+    <p><strong>Alice:</strong> Big title. Lots of self-improvement in one sentence! Let's start simple: what's an agent made of, in this paper?</p>
+    <p><strong>Bob:</strong> Two parts. An LLM agent depends on its policy model, and on the harness that manages context, tools, and execution. Improving the harness can raise performance without touching the model's weights.</p>
+    <p><strong>Alice:</strong> Give me the picture a total beginner would get.</p>
+    <p><strong>Bob:</strong> Picture a talented chef dropped into a restaurant kitchen. The chef is the skill; the kitchen is everything around it: which recipe cards are pinned up, which knives are in reach, the timers, the order tickets. That's the split here: the chef is the policy model, the kitchen is the harness deciding the model's context, tools and execution flow.</p>
+    <p><strong>Alice:</strong> So you can make the food better without retraining the chef.</p>
+    <p><strong>Maya:</strong> That's the bet behind an earlier paper. Yoonho Lee and colleagues, on arXiv, in Meta-Harness: End-to-End Optimization of Model Harnesses, say performance depends on model weights and on the harness. That's the code that determines what information to store, retrieve, and present to the model.</p>
+    <p><strong>Alice:</strong> And people tune that code by hand?</p>
+    <p><strong>Maya:</strong> Mostly, they say: harnesses are still designed largely by hand. Meta-Harness automates the search with an agentic proposer that reads the source code, scores and execution traces of all prior candidates. On online text classification, they report 7.7 points over a state-of-the-art context management system.</p>
+    <p><strong>Alice:</strong> Okay, so where does recursive self-improvement come in? That sounds like science fiction.</p>
+    <p><strong>Bob:</strong> Much tamer than it sounds! Here it means automating harness edits: use execution feedback to repeatedly propose, evaluate, and select changes. The proposer and selector are themselves LLM-based harness engineers, and the policy model just runs the tasks.</p>
+    <p><strong>Alice:</strong> So it's one AI tinkering with another AI's workshop.</p>
+    <p><strong>Bob:</strong> Think of a sports coach after every match. Watch the tape, suggest a new drill, try it in practice, keep it only if the team actually plays better. Mapped back: the evaluator runs the harness and returns scores, traces and errors, the proposer drafts candidate harnesses, the selector picks which one stays.</p>
+    <p><strong>Alice:</strong> And how do they stop it from just memorizing the test?</p>
+    <p><strong>Bob:</strong> Two pools of tasks. Like a practice exam and a final exam: you study with the practice one, and the final stays sealed. Each setting has disjoint evolve and held-out sets, and only evolve-set feedback is used for proposing, selecting, or updating memory.</p>
+    <p><strong>Alice:</strong> So what's the problem this paper is solving?</p>
+    <p><strong>Bob:</strong> Optimization usually happens in one fixed setting. But models get updated and agents meet new tasks, so harness optimization needs to keep going. And the evolved harness alone doesn't say why an edit was proposed, what it was expected to fix, or what happened when it was tested.</p>
+    <p><strong>Alice:</strong> Hm. The code is there, but the reasons aren't.</p>
+    <p><strong>Bob:</strong> Imagine buying a house where the last owner added a strange handrail in the hallway and a second lock on the back door, with no notes. Is the handrail there because someone fell, or was it a whim? The evolved harness is that house: you see the edits, not the reasons.</p>
+    <p><strong>Alice:</strong> And if you rip out the wrong handrail?</p>
+    <p><strong>Bob:</strong> That's their worry. Without this history, the next round may repeat earlier attempts or change inherited parts without knowing their purpose. And inherited fixes can hurt: in their workspace test, an Opus-evolved harness starts at 68.41 on Gemini, below the seed harness's 73.89.</p>
+    <p><strong>Alice:</strong> Lena, builders hit this by hand too, right?</p>
+    <p><strong>Lena:</strong> They do. Birgitta Böckeler, in Harness engineering for coding agent users, on Martin Fowler's site, writes that a coding agent has no organisational memory. It doesn't know which convention is load-bearing and which is just habit.</p>
+    <p><strong>Alice:</strong> So what's their fix? Self-Improvement Memory?</p>
+    <p><strong>Bob:</strong> SIM for short. It groups edits by the recurring harness problem they address, say premature completion. Under each problem, every attempt stores the change, its rationale, the predicted and observed outcomes, and provenance: domain, benchmark, policy, and round.</p>
+    <p><strong>Alice:</strong> Make that concrete for me.</p>
+    <p><strong>Bob:</strong> Think of a doctor's chart sorted by condition, not by date. Under back pain: every treatment tried, why, what the doctor expected, what actually happened, and which clinic. Same here: one entry per harness problem, with every edit, its reasons, its results, and the setting it ran in.</p>
+    <p><strong>Alice:</strong> And this memory belongs to the agent doing the tasks?</p>
+    <p><strong>Bob:</strong> No, and that's the key twist. SIM is for the harness optimizer, not the task-solving policy. Like a coach's notebook rather than a player's: the proposer gets the complete SIM in its system prompt, and the selector reads the same record, with no retrieval or truncation.</p>
+    <p><strong>Alice:</strong> Does it only keep the wins?</p>
+    <p><strong>Bob:</strong> No, that's the honest part. After selection, the chosen edit is recorded with its measured outcomes even when it regresses or fails to fix a predicted task. Each proposal cites an existing root cause or names a new one.</p>
+    <p><strong>Alice:</strong> Lena, does that match how practitioners work?</p>
+    <p><strong>Lena:</strong> Pretty closely. Böckeler says the human's job is to steer the agent by iterating on the harness. Whenever an issue happens multiple times, the controls should be improved so it gets less likely, and building that harness is an ongoing engineering practice, not a one-time configuration.</p>
+    <p><strong>Alice:</strong> You said predicted outcomes. Predicted by whom?</p>
+    <p><strong>Bob:</strong> By the proposer, before the test. Predictions of which tasks an edit will fix are recorded before evaluation and checked afterward. It's like a weather forecaster writing tomorrow's forecast down before looking out the window, then checking it.</p>
+    <p><strong>Alice:</strong> No quietly changing the forecast afterwards!</p>
+    <p><strong>Bob:</strong> Take one entry they call P3: deliverables that look correct inside but break the verifier's external contract. The source edit fixed one of four predicted tasks. Two later target attempts fixed zero of two, then one of two, all kept under the same diagnosis.</p>
+    <p><strong>Alice:</strong> So the misses are part of the lesson. Now the continual part: what exactly changes?</p>
+    <p><strong>Bob:</strong> They call it Continual RSI. Cross-dataset means the benchmark changes while the policy stays fixed; cross-model means the policy changes on the same benchmark and split. Both need a shared executable harness interface.</p>
+    <p><strong>Alice:</strong> Analogy, please.</p>
+    <p><strong>Bob:</strong> Picture a delivery van fitted out with custom mirrors and shelves. Cross-dataset is the same driver taking that van to a new city; cross-model is the same city, but a new driver gets the van. The van is the harness, the driver the policy model, the city the benchmark.</p>
+    <p><strong>Alice:</strong> Where did they test it?</p>
+    <p><strong>Bob:</strong> Four domains: coding moves from Terminal-Bench 2.1 to Terminal-Bench 4, plus text classification, an agentic workspace setting, and engineering design. Cross-dataset uses Gemini 3.8 Flash as the policy; cross-model starts from Claude Opus 5.5, then Gemini continues.</p>
+    <p><strong>Alice:</strong> And did memory win?</p>
+    <p><strong>Bob:</strong> Across six dataset transitions, Full SIM finishes highest every time, beating harness-only continuation by 2.43 to 4.35 points. Keeping root causes alone was mixed, from 1.82 points below harness-only to 2.40 above. So the evidence and edit history matter, not just the diagnosis label.</p>
+    <p><strong>Alice:</strong> And the new-driver case?</p>
+    <p><strong>Bob:</strong> The Opus-evolved harness, first run with Gemini, scores below Gemini's own seed harness in every domain. Full SIM still finishes highest in all four. Workspace is the big one: both start at 68.41, Full SIM reaches 84.75, harness-only 73.42.</p>
+    <p><strong>Alice:</strong> Wait, the hand-me-down van starts worse?</p>
+    <p><strong>Bob:</strong> It does, which is why the memory matters. They also chained it across Gemini generations on Terminal-Bench 2.1. Continuing beat fresh optimization by 3.5 points on Gemini 3.5 Flash and 1.6 on Gemini 3.8 Flash, but finished 0.8 points lower on Gemini 4 Argon.</p>
+    <p><strong>Alice:</strong> So not a clean sweep. Good to know. But one run per setting sounds thin. Did they repeat anything?</p>
+    <p><strong>Bob:</strong> In coding, yes. They ran source optimization ten times from the Terminus-2 harness on Terminal-Bench 2.1, then started two ten-round Terminal-Bench 4 runs from each result. Within each pair, everything matched: starting harness, policy, benchmark and budgets; only one run had SIM.</p>
+    <p><strong>Alice:</strong> Why pair them up like that?</p>
+    <p><strong>Bob:</strong> Imagine testing a plant food with twin seedlings: same seed, same pot, same window, only one gets the food. Any difference points to the food, not the luck of the seed. Here the seedling is the evolved harness, and the plant food is SIM.</p>
+    <p><strong>Alice:</strong> And the scoreboard?</p>
+    <p><strong>Bob:</strong> SIM finishes higher in 9 of 10 pairs; one pair favored no SIM by 0.61 points. From a shared mean start of 18.36, the mean final score is 21.70 with SIM and 19.33 without. The mean paired advantage is 2.36 points.</p>
+    <p><strong>Alice:</strong> Points out of what, though? Help me feel that number.</p>
+    <p><strong>Bob:</strong> Scores run from 0 to 100, and for coding it's pass at one: did the agent solve the held-out task on its first try. My take: a couple of extra points on a hard benchmark, real but modest, not a leap.</p>
+    <p><strong>Alice:</strong> Modest, but the twins mostly agree. Is there a story that shows it working?</p>
+    <p><strong>Bob:</strong> A good one. On Terminal-Bench 2.1, a failing agent was asked to set up a git server, never created the user account, tested with another account, and declared the task complete. The seed harness's check only asked the model to repeat its claim.</p>
+    <p><strong>Alice:</strong> Oh no. Full confidence, no git server.</p>
+    <p><strong>Bob:</strong> It's like a kid saying I cleaned my room, and the parent only asking, are you sure? Source optimization built a completion gate that opens the closet: it refuses completion when no command actually executed. Ending the episode, they note, was an agent privilege requiring no execution evidence.</p>
+    <p><strong>Alice:</strong> And on Terminal-Bench 4?</p>
+    <p><strong>Bob:</strong> Both runs inherit that gate. With SIM, the proposer reads the gate's rationale, keeps completion checks, and adds target checks, like feasibility versus optimality. Without SIM, the run tightens the gate, twice repairs completion deadlocks, and misattributes the inherited gate to its own first round.</p>
+    <p><strong>Alice:</strong> It took credit for its parents' handrail!</p>
+    <p><strong>Bob:</strong> Ha, pretty much. Their lesson: the requirement carries over, but its implementation needs revision.</p>
+    <p><strong>Alice:</strong> Okay, skeptic time. Sam, what worries you about self-improving harnesses?</p>
+    <p><strong>Sam:</strong> Overfitting. Peng Xia and colleagues, on arXiv, in RRSI: Regularized Recursive Self-Improvement of Agent Harnesses, warn that recursive evolution may overfit by memorizing the training tasks. They describe large in-distribution gains that shrink or even vanish on out-of-distribution benchmarks.</p>
+    <p><strong>Alice:</strong> So how do they push back on that?</p>
+    <p><strong>Sam:</strong> With regularization. A critic screens benchmark-specific proposals, and a pruner removes changes that are too small, too expensive, or no longer useful. Together, they write, these favor reusable agent mechanisms over benchmark-specific ones.</p>
+    <p><strong>Alice:</strong> I think any loop scored by a benchmark can learn the benchmark instead of the skill. Does the SIM paper admit that?</p>
+    <p><strong>Bob:</strong> It does, in its Ethics statement: a self-modifying harness could satisfy an evaluator without solving the intended task. They keep held-out feedback away from the optimization agents, and note workspace scores may reflect biases of the LLM judge.</p>
+    <p><strong>Alice:</strong> And their own limitations?</p>
+    <p><strong>Bob:</strong> Three. Repeated independent runs only cover coding; other domains had one run per condition. They only study compatible harness interfaces, with the optimizer's planning and search fixed, and they test SIM as one complete procedure: inherited memory plus updates together.</p>
+    <p><strong>Alice:</strong> And it isn't cheap to run, I assume?</p>
+    <p><strong>Bob:</strong> No. A coding round takes about 4 hours, and token use and runtime can differ between methods even with matched rounds. My take: call this better bookkeeping for an optimizer, not an AI that improves itself without limits.</p>
+    <p><strong>Alice:</strong> Time for Builder's Corner! Bob, what can I try this week with my own agent?</p>
+    <p><strong>Bob:</strong> Keep a change log for your agent's prompts and tools, grouped by the recurring problem each edit targets, the way SIM groups them. For every edit, write the problem, why you made it, and which tasks you predict it will fix, before you test it.</p>
+    <p><strong>Alice:</strong> And after the test?</p>
+    <p><strong>Bob:</strong> Record what actually got fixed and what was missed, plus the model and benchmark, and keep the failures too. Then read the log before the next round: check the setting behind each entry, and revisit a tested direction only when new evidence justifies it.</p>
+    <p><strong>Alice:</strong> A diary for my prompts. My agent finally gets a backstory.</p>
+    <p><strong>Bob:</strong> Quick takeaways: an agent is a model plus a harness, and the harness can be improved automatically. An evolved harness alone forgets why its edits exist. And a memory of problems, predictions and outcomes helped continuation, with modest, setting-specific gains.</p>
+    <p><strong>Alice:</strong> What's still open?</p>
+    <p><strong>Bob:</strong> The authors want more repeated runs, longer chains of transitions, and adapting planning, token allocation and tool interfaces too. And my guess at another: whether the memory itself gets too big to read in one prompt.</p>
+    <p><strong>Alice:</strong> And the Gemini 4 Argon dip?</p>
+    <p><strong>Bob:</strong> Right, inheriting fell short there. My guess is that knowing when to throw the old notebook away is its own skill.</p>
+    <p><strong>Alice:</strong> That's our look at self-improvement memory. Thanks to Xin Yu and colleagues for "Self-Improvement Memory Enables Continual Recursive Self-Improvement".</p>
+    <p><strong>Bob:</strong> And thanks to Yoonho Lee and colleagues for Meta-Harness, Birgitta Böckeler for Harness engineering for coding agent users, and Peng Xia and colleagues for RRSI. Now go start that change log!</p>
+    <p><strong>Alice:</strong> That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-18_self-improvement-memory-enables-continual/", "title": "Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-18_self-improvement-memory-enables-continual", "episode_title": "Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-18_self-improvement-memory-enables-continual", "title": "Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)", "summary": ["Xin Yu and colleagues at Google propose Self-Improvement Memory, a log that helps an agent's harness optimizer keep improving after the benchmark or model changes.", "Bob and Alice unpack model plus harness, recursive self-improvement, edits grouped by recurring problem, and predicted versus observed outcomes, with kitchens, houses and twin seedlings.", "Guests bring Meta-Harness by Yoonho Lee's team, Birgitta Böckeler on harness engineering, and Peng Xia's RRSI warning about benchmark overfitting."], "description": "Xin Yu and colleagues at Google introduce Self-Improvement Memory (SIM), which helps an AI agent's harness optimizer remember why each edit was made. Bob and Alice unpack what happens when the benchmark or model changes.\n\nIn this episode:\n- Policy model vs harness, and why an evolved harness forgets the why\n- Edits grouped by recurring problem, with predicted and observed outcomes\n- Paired coding runs, the limitations and an overfitting counterpoint\n\nSources: Xin Yu et al.; Yoonho Lee et al.; Birgitta Böckeler; Peng Xia et al.\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "Self-Improvement Memory Enables Continual Recursive Self-Improvement", "author": "Xin Yu et al.", "url": "https://arxiv.org/html/2611.18856v1", "kind": "article"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>

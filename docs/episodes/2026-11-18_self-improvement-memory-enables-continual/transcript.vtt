@@ -1,0 +1,365 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.313
+<v Alice>What if an AI agent could keep rewriting its own toolkit, and actually remember why it made each change?
+
+2
+00:00:06.613 --> 00:00:10.499
+<v Bob>And what happens to all those fixes the day you swap in a brand-new model?
+
+3
+00:00:14.799 --> 00:00:21.368
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice.
+
+4
+00:00:21.668 --> 00:00:37.181
+<v Bob>And I'm Bob! Today it's an arXiv paper, "Self-Improvement Memory Enables Continual Recursive Self-Improvement", by Xin Yu and colleagues at Google Cloud AI, Google DeepMind and Penn State. The work was done while Xin Yu was an intern at Google.
+
+5
+00:00:37.481 --> 00:00:45.500
+<v Alice>Big title. Lots of self-improvement in one sentence! Let's start simple: what's an agent made of, in this paper?
+
+6
+00:00:45.800 --> 00:00:57.558
+<v Bob>Two parts. An LLM agent depends on its policy model, and on the harness that manages context, tools, and execution. Improving the harness can raise performance without touching the model's weights.
+
+7
+00:00:57.858 --> 00:01:00.897
+<v Alice>Give me the picture a total beginner would get.
+
+8
+00:01:01.197 --> 00:01:21.281
+<v Bob>Picture a talented chef dropped into a restaurant kitchen. The chef is the skill; the kitchen is everything around it: which recipe cards are pinned up, which knives are in reach, the timers, the order tickets. That's the split here: the chef is the policy model, the kitchen is the harness deciding the model's context, tools and execution flow.
+
+9
+00:01:21.581 --> 00:01:24.829
+<v Alice>So you can make the food better without retraining the chef.
+
+10
+00:01:25.129 --> 00:01:42.813
+<v Maya>That's the bet behind an earlier paper. Yoonho Lee and colleagues, on arXiv, in Meta-Harness: End-to-End Optimization of Model Harnesses, say performance depends on model weights and on the harness. That's the code that determines what information to store, retrieve, and present to the model.
+
+11
+00:01:43.113 --> 00:01:45.727
+<v Alice>And people tune that code by hand?
+
+12
+00:01:46.027 --> 00:02:06.347
+<v Maya>Mostly, they say: harnesses are still designed largely by hand. Meta-Harness automates the search with an agentic proposer that reads the source code, scores and execution traces of all prior candidates. On online text classification, they report 7.7 points over a state-of-the-art context management system.
+
+13
+00:02:06.647 --> 00:02:11.811
+<v Alice>Okay, so where does recursive self-improvement come in? That sounds like science fiction.
+
+14
+00:02:12.111 --> 00:02:28.873
+<v Bob>Much tamer than it sounds! Here it means automating harness edits: use execution feedback to repeatedly propose, evaluate, and select changes. The proposer and selector are themselves LLM-based harness engineers, and the policy model just runs the tasks.
+
+15
+00:02:29.173 --> 00:02:33.106
+<v Alice>So it's one AI tinkering with another AI's workshop.
+
+16
+00:02:33.406 --> 00:02:51.845
+<v Bob>Think of a sports coach after every match. Watch the tape, suggest a new drill, try it in practice, keep it only if the team actually plays better. Mapped back: the evaluator runs the harness and returns scores, traces and errors, the proposer drafts candidate harnesses, the selector picks which one stays.
+
+17
+00:02:52.145 --> 00:02:55.393
+<v Alice>And how do they stop it from just memorizing the test?
+
+18
+00:02:55.693 --> 00:03:11.435
+<v Bob>Two pools of tasks. Like a practice exam and a final exam: you study with the practice one, and the final stays sealed. Each setting has disjoint evolve and held-out sets, and only evolve-set feedback is used for proposing, selecting, or updating memory.
+
+19
+00:03:11.735 --> 00:03:14.216
+<v Alice>So what's the problem this paper is solving?
+
+20
+00:03:14.516 --> 00:03:31.132
+<v Bob>Optimization usually happens in one fixed setting. But models get updated and agents meet new tasks, so harness optimization needs to keep going. And the evolved harness alone doesn't say why an edit was proposed, what it was expected to fix, or what happened when it was tested.
+
+21
+00:03:31.432 --> 00:03:34.889
+<v Alice>Hm. The code is there, but the reasons aren't.
+
+22
+00:03:35.189 --> 00:03:50.865
+<v Bob>Imagine buying a house where the last owner added a strange handrail in the hallway and a second lock on the back door, with no notes. Is the handrail there because someone fell, or was it a whim? The evolved harness is that house: you see the edits, not the reasons.
+
+23
+00:03:51.165 --> 00:03:53.391
+<v Alice>And if you rip out the wrong handrail?
+
+24
+00:03:53.691 --> 00:04:11.340
+<v Bob>That's their worry. Without this history, the next round may repeat earlier attempts or change inherited parts without knowing their purpose. And inherited fixes can hurt: in their workspace test, an Opus-evolved harness starts at 68.41 on Gemini, below the seed harness's 73.89.
+
+25
+00:04:11.640 --> 00:04:15.062
+<v Alice>Lena, builders hit this by hand too, right?
+
+26
+00:04:15.362 --> 00:04:29.001
+<v Lena>They do. Birgitta Böckeler, in Harness engineering for coding agent users, on Martin Fowler's site, writes that a coding agent has no organisational memory. It doesn't know which convention is load-bearing and which is just habit.
+
+27
+00:04:29.301 --> 00:04:32.549
+<v Alice>So what's their fix? Self-Improvement Memory?
+
+28
+00:04:32.849 --> 00:04:49.976
+<v Bob>SIM for short. It groups edits by the recurring harness problem they address, say premature completion. Under each problem, every attempt stores the change, its rationale, the predicted and observed outcomes, and provenance: domain, benchmark, policy, and round.
+
+29
+00:04:50.276 --> 00:04:51.898
+<v Alice>Make that concrete for me.
+
+30
+00:04:52.198 --> 00:05:09.789
+<v Bob>Think of a doctor's chart sorted by condition, not by date. Under back pain: every treatment tried, why, what the doctor expected, what actually happened, and which clinic. Same here: one entry per harness problem, with every edit, its reasons, its results, and the setting it ran in.
+
+31
+00:05:10.089 --> 00:05:13.511
+<v Alice>And this memory belongs to the agent doing the tasks?
+
+32
+00:05:13.811 --> 00:05:29.579
+<v Bob>No, and that's the key twist. SIM is for the harness optimizer, not the task-solving policy. Like a coach's notebook rather than a player's: the proposer gets the complete SIM in its system prompt, and the selector reads the same record, with no retrieval or truncation.
+
+33
+00:05:29.879 --> 00:05:32.030
+<v Alice>Does it only keep the wins?
+
+34
+00:05:32.330 --> 00:05:45.206
+<v Bob>No, that's the honest part. After selection, the chosen edit is recorded with its measured outcomes even when it regresses or fails to fix a predicted task. Each proposal cites an existing root cause or names a new one.
+
+35
+00:05:45.506 --> 00:05:48.673
+<v Alice>Lena, does that match how practitioners work?
+
+36
+00:05:48.973 --> 00:06:05.763
+<v Lena>Pretty closely. Böckeler says the human's job is to steer the agent by iterating on the harness. Whenever an issue happens multiple times, the controls should be improved so it gets less likely, and building that harness is an ongoing engineering practice, not a one-time configuration.
+
+37
+00:06:06.063 --> 00:06:09.996
+<v Alice>You said predicted outcomes. Predicted by whom?
+
+38
+00:06:10.296 --> 00:06:23.724
+<v Bob>By the proposer, before the test. Predictions of which tasks an edit will fix are recorded before evaluation and checked afterward. It's like a weather forecaster writing tomorrow's forecast down before looking out the window, then checking it.
+
+39
+00:06:24.024 --> 00:06:27.291
+<v Alice>No quietly changing the forecast afterwards!
+
+40
+00:06:27.591 --> 00:06:44.880
+<v Bob>Take one entry they call P3: deliverables that look correct inside but break the verifier's external contract. The source edit fixed one of four predicted tasks. Two later target attempts fixed zero of two, then one of two, all kept under the same diagnosis.
+
+41
+00:06:45.180 --> 00:06:51.191
+<v Alice>So the misses are part of the lesson. Now the continual part: what exactly changes?
+
+42
+00:06:51.491 --> 00:07:04.700
+<v Bob>They call it Continual RSI. Cross-dataset means the benchmark changes while the policy stays fixed; cross-model means the policy changes on the same benchmark and split. Both need a shared executable harness interface.
+
+43
+00:07:05.000 --> 00:07:06.802
+<v Alice>Analogy, please.
+
+44
+00:07:07.102 --> 00:07:23.254
+<v Bob>Picture a delivery van fitted out with custom mirrors and shelves. Cross-dataset is the same driver taking that van to a new city; cross-model is the same city, but a new driver gets the van. The van is the harness, the driver the policy model, the city the benchmark.
+
+45
+00:07:23.554 --> 00:07:25.045
+<v Alice>Where did they test it?
+
+46
+00:07:25.345 --> 00:07:43.646
+<v Bob>Four domains: coding moves from Terminal-Bench 2.1 to Terminal-Bench 4, plus text classification, an agentic workspace setting, and engineering design. Cross-dataset uses Gemini 3.8 Flash as the policy; cross-model starts from Claude Opus 5.5, then Gemini continues.
+
+47
+00:07:43.946 --> 00:07:45.653
+<v Alice>And did memory win?
+
+48
+00:07:45.953 --> 00:08:06.830
+<v Bob>Across six dataset transitions, Full SIM finishes highest every time, beating harness-only continuation by 2.43 to 4.35 points. Keeping root causes alone was mixed, from 1.82 points below harness-only to 2.40 above. So the evidence and edit history matter, not just the diagnosis label.
+
+49
+00:08:07.130 --> 00:08:08.833
+<v Alice>And the new-driver case?
+
+50
+00:08:09.133 --> 00:08:28.384
+<v Bob>The Opus-evolved harness, first run with Gemini, scores below Gemini's own seed harness in every domain. Full SIM still finishes highest in all four. Workspace is the big one: both start at 68.41, Full SIM reaches 84.75, harness-only 73.42.
+
+51
+00:08:28.684 --> 00:08:32.234
+<v Alice>Wait, the hand-me-down van starts worse?
+
+52
+00:08:32.534 --> 00:08:50.717
+<v Bob>It does, which is why the memory matters. They also chained it across Gemini generations on Terminal-Bench 2.1. Continuing beat fresh optimization by 3.5 points on Gemini 3.5 Flash and 1.6 on Gemini 3.8 Flash, but finished 0.8 points lower on Gemini 4 Argon.
+
+53
+00:08:51.017 --> 00:08:57.922
+<v Alice>So not a clean sweep. Good to know. But one run per setting sounds thin. Did they repeat anything?
+
+54
+00:08:58.222 --> 00:09:17.613
+<v Bob>In coding, yes. They ran source optimization ten times from the Terminus-2 harness on Terminal-Bench 2.1, then started two ten-round Terminal-Bench 4 runs from each result. Within each pair, everything matched: starting harness, policy, benchmark and budgets; only one run had SIM.
+
+55
+00:09:17.913 --> 00:09:19.700
+<v Alice>Why pair them up like that?
+
+56
+00:09:20.000 --> 00:09:35.176
+<v Bob>Imagine testing a plant food with twin seedlings: same seed, same pot, same window, only one gets the food. Any difference points to the food, not the luck of the seed. Here the seedling is the evolved harness, and the plant food is SIM.
+
+57
+00:09:35.476 --> 00:09:36.832
+<v Alice>And the scoreboard?
+
+58
+00:09:37.132 --> 00:09:55.072
+<v Bob>SIM finishes higher in 9 of 10 pairs; one pair favored no SIM by 0.61 points. From a shared mean start of 18.36, the mean final score is 21.70 with SIM and 19.33 without. The mean paired advantage is 2.36 points.
+
+59
+00:09:55.372 --> 00:09:58.875
+<v Alice>Points out of what, though? Help me feel that number.
+
+60
+00:09:59.175 --> 00:10:11.780
+<v Bob>Scores run from 0 to 100, and for coding it's pass at one: did the agent solve the held-out task on its first try. My take: a couple of extra points on a hard benchmark, real but modest, not a leap.
+
+61
+00:10:12.080 --> 00:10:17.023
+<v Alice>Modest, but the twins mostly agree. Is there a story that shows it working?
+
+62
+00:10:17.323 --> 00:10:31.803
+<v Bob>A good one. On Terminal-Bench 2.1, a failing agent was asked to set up a git server, never created the user account, tested with another account, and declared the task complete. The seed harness's check only asked the model to repeat its claim.
+
+63
+00:10:32.103 --> 00:10:35.815
+<v Alice>Oh no. Full confidence, no git server.
+
+64
+00:10:36.115 --> 00:10:54.055
+<v Bob>It's like a kid saying I cleaned my room, and the parent only asking, are you sure? Source optimization built a completion gate that opens the closet: it refuses completion when no command actually executed. Ending the episode, they note, was an agent privilege requiring no execution evidence.
+
+65
+00:10:54.355 --> 00:10:56.193
+<v Alice>And on Terminal-Bench 4?
+
+66
+00:10:56.493 --> 00:11:15.443
+<v Bob>Both runs inherit that gate. With SIM, the proposer reads the gate's rationale, keeps completion checks, and adds target checks, like feasibility versus optimality. Without SIM, the run tightens the gate, twice repairs completion deadlocks, and misattributes the inherited gate to its own first round.
+
+67
+00:11:15.743 --> 00:11:18.443
+<v Alice>It took credit for its parents' handrail!
+
+68
+00:11:18.743 --> 00:11:24.801
+<v Bob>Ha, pretty much. Their lesson: the requirement carries over, but its implementation needs revision.
+
+69
+00:11:25.101 --> 00:11:30.903
+<v Alice>Okay, skeptic time. Sam, what worries you about self-improving harnesses?
+
+70
+00:11:31.203 --> 00:11:50.247
+<v Sam>Overfitting. Peng Xia and colleagues, on arXiv, in RRSI: Regularized Recursive Self-Improvement of Agent Harnesses, warn that recursive evolution may overfit by memorizing the training tasks. They describe large in-distribution gains that shrink or even vanish on out-of-distribution benchmarks.
+
+71
+00:11:50.547 --> 00:11:52.565
+<v Alice>So how do they push back on that?
+
+72
+00:11:52.865 --> 00:12:09.174
+<v Sam>With regularization. A critic screens benchmark-specific proposals, and a pruner removes changes that are too small, too expensive, or no longer useful. Together, they write, these favor reusable agent mechanisms over benchmark-specific ones.
+
+73
+00:12:09.474 --> 00:12:16.205
+<v Alice>I think any loop scored by a benchmark can learn the benchmark instead of the skill. Does the SIM paper admit that?
+
+74
+00:12:16.505 --> 00:12:30.832
+<v Bob>It does, in its Ethics statement: a self-modifying harness could satisfy an evaluator without solving the intended task. They keep held-out feedback away from the optimization agents, and note workspace scores may reflect biases of the LLM judge.
+
+75
+00:12:31.132 --> 00:12:33.003
+<v Alice>And their own limitations?
+
+76
+00:12:33.303 --> 00:12:49.710
+<v Bob>Three. Repeated independent runs only cover coding; other domains had one run per condition. They only study compatible harness interfaces, with the optimizer's planning and search fixed, and they test SIM as one complete procedure: inherited memory plus updates together.
+
+77
+00:12:50.010 --> 00:12:52.724
+<v Alice>And it isn't cheap to run, I assume?
+
+78
+00:12:53.024 --> 00:13:06.106
+<v Bob>No. A coding round takes about 4 hours, and token use and runtime can differ between methods even with matched rounds. My take: call this better bookkeeping for an optimizer, not an AI that improves itself without limits.
+
+79
+00:13:06.406 --> 00:13:11.650
+<v Alice>Time for Builder's Corner! Bob, what can I try this week with my own agent?
+
+80
+00:13:11.950 --> 00:13:26.268
+<v Bob>Keep a change log for your agent's prompts and tools, grouped by the recurring problem each edit targets, the way SIM groups them. For every edit, write the problem, why you made it, and which tasks you predict it will fix, before you test it.
+
+81
+00:13:26.568 --> 00:13:27.938
+<v Alice>And after the test?
+
+82
+00:13:28.238 --> 00:13:42.648
+<v Bob>Record what actually got fixed and what was missed, plus the model and benchmark, and keep the failures too. Then read the log before the next round: check the setting behind each entry, and revisit a tested direction only when new evidence justifies it.
+
+83
+00:13:42.948 --> 00:13:47.569
+<v Alice>A diary for my prompts. My agent finally gets a backstory.
+
+84
+00:13:47.869 --> 00:14:04.056
+<v Bob>Quick takeaways: an agent is a model plus a harness, and the harness can be improved automatically. An evolved harness alone forgets why its edits exist. And a memory of problems, predictions and outcomes helped continuation, with modest, setting-specific gains.
+
+85
+00:14:04.356 --> 00:14:05.937
+<v Alice>What's still open?
+
+86
+00:14:06.237 --> 00:14:19.574
+<v Bob>The authors want more repeated runs, longer chains of transitions, and adapting planning, token allocation and tool interfaces too. And my guess at another: whether the memory itself gets too big to read in one prompt.
+
+87
+00:14:19.874 --> 00:14:22.395
+<v Alice>And the Gemini 4 Argon dip?
+
+88
+00:14:22.695 --> 00:14:29.171
+<v Bob>Right, inheriting fell short there. My guess is that knowing when to throw the old notebook away is its own skill.
+
+89
+00:14:29.471 --> 00:14:39.104
+<v Alice>That's our look at self-improvement memory. Thanks to Xin Yu and colleagues for "Self-Improvement Memory Enables Continual Recursive Self-Improvement".
+
+90
+00:14:39.404 --> 00:14:49.804
+<v Bob>And thanks to Yoonho Lee and colleagues for Meta-Harness, Birgitta Böckeler for Harness engineering for coding agent users, and Peng Xia and colleagues for RRSI. Now go start that change log!
+
+91
+00:14:50.104 --> 00:14:55.569
+<v Alice>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

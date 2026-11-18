@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Wed, 18 Nov 2026 07:43:58 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 18 Nov 2026 20:22:19 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,31 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-18_self-improvement-memory-enables-continual</guid>
+    <title>Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)</title>
+    <link>https://luongnv.com/podcast/#2026-11-18_self-improvement-memory-enables-continual</link>
+    <description>Xin Yu and colleagues at Google propose Self-Improvement Memory, a log that helps an agent's harness optimizer keep improving after the benchmark or model changes.
+
+Bob and Alice unpack model plus harness, recursive self-improvement, edits grouped by recurring problem, and predicted versus observed outcomes, with kitchens, houses and twin seedlings.
+
+Guests bring Meta-Harness by Yoonho Lee's team, Birgitta Böckeler on harness engineering, and Peng Xia's RRSI warning about benchmark overfitting.
+
+Sources:
+- Self-Improvement Memory Enables Continual Recursive Self-Improvement, Xin Yu et al. (https://arxiv.org/html/2611.18856v1)
+- Meta-Harness: End-to-End Optimization of Model Harnesses, Yoonho Lee et al. (https://arxiv.org/abs/2603.28052)
+- Harness engineering for coding agent users, Birgitta Böckeler (https://martinfowler.com/articles/harness-engineering.html)
+- RRSI: Regularized Recursive Self-Improvement of Agent Harnesses, Peng Xia et al. (https://arxiv.org/abs/2609.24972)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Xin Yu and colleagues at Google propose Self-Improvement Memory, a log that helps an agent's harness optimizer keep improving after the benchmark or model changes.</p><p>Bob and Alice unpack model plus harness, recursive self-improvement, edits grouped by recurring problem, and predicted versus observed outcomes, with kitchens, houses and twin seedlings.</p><p>Guests bring Meta-Harness by Yoonho Lee's team, Birgitta Böckeler on harness engineering, and Peng Xia's RRSI warning about benchmark overfitting.</p><p>Sources:</p><ul><li>Self-Improvement Memory Enables Continual Recursive Self-Improvement, Xin Yu et al.: <a href="https://arxiv.org/html/2611.18856v1">https://arxiv.org/html/2611.18856v1</a></li><li>Meta-Harness: End-to-End Optimization of Model Harnesses, Yoonho Lee et al.: <a href="https://arxiv.org/abs/2603.28052">https://arxiv.org/abs/2603.28052</a></li><li>Harness engineering for coding agent users, Birgitta Böckeler: <a href="https://martinfowler.com/articles/harness-engineering.html">https://martinfowler.com/articles/harness-engineering.html</a></li><li>RRSI: Regularized Recursive Self-Improvement of Agent Harnesses, Peng Xia et al.: <a href="https://arxiv.org/abs/2609.24972">https://arxiv.org/abs/2609.24972</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Wed, 18 Nov 2026 20:19:08 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-18_self-improvement-memory-enables-continual.mp3?v=431c74b9" length="14436091" type="audio/mpeg"/>
+    <itunes:duration>902</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-18_self-improvement-memory-enables-continual/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-18_morning-edition-wednesday-18-november-2026</guid>
     <title>OpenAI's GPT-6.2 Astra, Microsoft's Seven MAI Models | AI Daily 18 Nov</title>

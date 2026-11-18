@@ -24,8 +24,84 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-18T07:43:58Z",
+  "updated": "2026-11-18T20:22:19Z",
   "episodes": [
+    {
+      "id": "2026-11-18_self-improvement-memory-enables-continual",
+      "title": "Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)",
+      "summary": [
+        "Xin Yu and colleagues at Google propose Self-Improvement Memory, a log that helps an agent's harness optimizer keep improving after the benchmark or model changes.",
+        "Bob and Alice unpack model plus harness, recursive self-improvement, edits grouped by recurring problem, and predicted versus observed outcomes, with kitchens, houses and twin seedlings.",
+        "Guests bring Meta-Harness by Yoonho Lee's team, Birgitta Böckeler on harness engineering, and Peng Xia's RRSI warning about benchmark overfitting."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-18T20:19:08Z",
+      "duration_s": 902.169,
+      "size_bytes": 14436091,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-18_self-improvement-memory-enables-continual.mp3",
+      "audio_sha256": "431c74b90d8d3e5467ab108e87821807b52ceed6a37ee3e343e214f198b89c01",
+      "transcript": "episodes/2026-11-18_self-improvement-memory-enables-continual/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Self-Improvement Memory Enables Continual Recursive Self-Improvement",
+        "author": "Xin Yu et al.",
+        "url": "https://arxiv.org/html/2611.18856v1",
+        "published": null,
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "Self-Improvement Memory Enables Continual Recursive Self-Improvement",
+          "author": "Xin Yu et al.",
+          "url": "https://arxiv.org/html/2611.18856v1"
+        },
+        {
+          "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+          "author": "Yoonho Lee et al.",
+          "url": "https://arxiv.org/abs/2603.28052"
+        },
+        {
+          "title": "Harness engineering for coding agent users",
+          "author": "Birgitta Böckeler",
+          "url": "https://martinfowler.com/articles/harness-engineering.html"
+        },
+        {
+          "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
+          "author": "Peng Xia et al.",
+          "url": "https://arxiv.org/abs/2609.24972"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "Meta-Harness: End-to-End Optimization of Model Harnesses"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Harness engineering for coding agent users"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses"
+          ]
+        }
+      ],
+      "description": "Xin Yu and colleagues at Google introduce Self-Improvement Memory (SIM), which helps an AI agent's harness optimizer remember why each edit was made. Bob and Alice unpack what happens when the benchmark or model changes.\n\nIn this episode:\n- Policy model vs harness, and why an evolved harness forgets the why\n- Edits grouped by recurring problem, with predicted and observed outcomes\n- Paired coding runs, the limitations and an overfitting counterpoint\n\nSources: Xin Yu et al.; Yoonho Lee et al.; Birgitta Böckeler; Peng Xia et al.\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Self-Improvement Memory How Agent Harnesses Keep Improving (Google) (2026-11-18).mp3"
+    },
     {
       "id": "2026-11-18_morning-edition-wednesday-18-november-2026",
       "title": "OpenAI's GPT-6.2 Astra, Microsoft's Seven MAI Models | AI Daily 18 Nov",
