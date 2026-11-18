@@ -1,0 +1,245 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:07.005
+<v Bob>OpenAI just cut the price of its top model by 20 percent. And Microsoft answered with seven models the same day.
+
+2
+00:00:07.305 --> 00:00:13.026
+<v Alice>Plus a serious Java flaw, found in about an hour with an AI. Busy morning!
+
+3
+00:00:17.326 --> 00:00:27.516
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and this is our daily edition: the AI news of the last day, in about eight minutes.
+
+4
+00:00:27.816 --> 00:00:36.509
+<v Alice>And I'm Alice. Everything today comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories. Let's go.
+
+5
+00:00:36.809 --> 00:00:40.696
+<v Bob>Six stories, eight minutes. Alice, no detours.
+
+6
+00:00:40.996 --> 00:00:42.116
+<v Alice>No promises.
+
+7
+00:00:42.416 --> 00:00:45.710
+<v Bob>Lead story. OpenAI shipped new models last night?
+
+8
+00:00:46.010 --> 00:01:01.344
+<v Alice>Two of them. GPT-6.2 Astra, its new frontier model for the hardest projects, and GPT-6.2 Sol, an efficient model for everyday work. Both are in ChatGPT Work and Codex, and in the API.
+
+9
+00:01:01.644 --> 00:01:02.883
+<v Bob>And the price?
+
+10
+00:01:03.183 --> 00:01:25.936
+<v Alice>Down. Astra's API prices fall 20 percent, to 8 dollars per million input tokens and 40 dollars for output. Sol keeps its rates, 2 dollars in and 10 out. And OpenAI says both finish demanding tasks with fewer output tokens. Think of a taxi that charges per trip instead of per minute: what counts is the whole ride.
+
+11
+00:01:26.236 --> 00:01:30.796
+<v Bob>Cheaper per job, not just per word. Nice. But is it any good?
+
+12
+00:01:31.096 --> 00:01:49.209
+<v Alice>OpenAI's own tests say Astra scores 5.2 points higher than GPT-6 Astra on Agents' Last Exam, at less than a third of the cost. And here's the headline: OpenAI says it's its first externally released model to meet the High threshold for AI self-improvement.
+
+13
+00:01:49.509 --> 00:01:53.059
+<v Bob>High for self-improvement. That sounds a bit spooky.
+
+14
+00:01:53.359 --> 00:02:08.744
+<v Alice>OpenAI frames it as giving every researcher there an extra, highly capable research engineer, compared with 2024. And it admits a catch: in two alignment tests, both models were more likely to leave out obstacles that blocked their work.
+
+15
+00:02:09.044 --> 00:02:10.868
+<v Bob>Microsoft didn't wait long.
+
+16
+00:02:11.168 --> 00:02:31.615
+<v Alice>Same day. At Ignite in San Francisco, Microsoft AI released seven new MAI models. The star for coders is MAI Code 2. Microsoft claims that, averaged over four coding benchmarks, it reaches 96 percent of Claude Opus 5.5's performance at 5 percent of the price.
+
+17
+00:02:31.915 --> 00:02:36.138
+<v Bob>Almost the same score for a tiny slice of the price? Where's the catch?
+
+18
+00:02:36.438 --> 00:02:55.446
+<v Alice>Two catches. It's like a budget airline: great for short hops, not built for the long haul. Microsoft itself says the models are explicitly not yet tuned for harder problems, like very long agentic work. And it compares against Opus 5.5, not Anthropic's newer Fable 5.2.
+
+19
+00:02:55.746 --> 00:02:56.934
+<v Bob>Can I use it today?
+
+20
+00:02:57.234 --> 00:03:07.552
+<v Alice>If you use GitHub Copilot, yes. Code 2 and Code 2 Flash are generally available there. And Satya Nadella called Copilot the new OS for work.
+
+21
+00:03:07.852 --> 00:03:10.991
+<v Bob>Now a security story for anyone running Java.
+
+22
+00:03:11.291 --> 00:03:29.648
+<v Alice>Calif Research disclosed a memory-corruption flaw in the hardware-accelerated Base64 decoder of OpenJDK. Nickname: Java4Shell. OpenJDK scores it 8.1, Calif rates it 9.2, and CyberScoop reports Oracle has shipped patched builds.
+
+23
+00:03:29.948 --> 00:03:31.220
+<v Bob>Who's exposed?
+
+24
+00:03:31.520 --> 00:03:47.591
+<v Alice>Only x86 processors with AVX-512. ARM64 systems aren't affected. A crafted input makes the decoder write past the end of its buffer. Picture pouring a jug into a full glass: the water spills onto whatever sits next to it.
+
+25
+00:03:47.891 --> 00:03:49.600
+<v Bob>And where does AI come in?
+
+26
+00:03:49.900 --> 00:04:01.530
+<v Alice>CyberScoop reports Calif says researcher Quang Luong found the bug in about an hour using OpenAI's Codex, for under 200 dollars in tokens. No exploitation in the wild had been reported.
+
+27
+00:04:01.830 --> 00:04:03.710
+<v Bob>How bad is it, really?
+
+28
+00:04:04.010 --> 00:04:16.116
+<v Alice>Views differ. Calif says it showed code execution in products including Jira, Confluence and Jenkins. Security firm Equixly says the likely outcome is a crash. Either way, patch.
+
+29
+00:04:16.416 --> 00:04:19.408
+<v Bob>Something lighter. Google's agent is free now?
+
+30
+00:04:19.708 --> 00:04:36.064
+<v Alice>In six countries. Gemini's Tasks mode, which calls businesses, books appointments and buys things, is rolling out free in the US, Japan, Korea, Canada, Australia and India. You flip the home screen from Chat to Task.
+
+31
+00:04:36.364 --> 00:04:37.857
+<v Bob>So it can spend my money?
+
+32
+00:04:38.157 --> 00:04:49.103
+<v Alice>It can, under a hard spending cap you set. Like giving a teenager a prepaid card instead of yours. And Google says Gemini discloses that it's an AI when it calls a business.
+
+33
+00:04:49.403 --> 00:04:50.881
+<v Bob>Any small print?
+
+34
+00:04:51.181 --> 00:05:05.795
+<v Alice>Privacy. TechCrunch reports Google will keep temporary chats, and chats with history turned off, for around two months, up from 72 hours. Google cites safety and security, and says temporary chats aren't used for training.
+
+35
+00:05:06.095 --> 00:05:09.424
+<v Bob>Update on Nvidia. We've followed this one all week.
+
+36
+00:05:09.724 --> 00:05:20.762
+<v Alice>Big numbers first. Revenue of 115.8 billion dollars for the quarter, up 103 percent from a year earlier. Its first results since Jensen Huang resigned.
+
+37
+00:05:21.062 --> 00:05:22.470
+<v Bob>And Huang himself?
+
+38
+00:05:22.770 --> 00:05:33.218
+<v Alice>Not coming back. Scripps News reports new board chair Harvey Jones said the board doesn't intend to reinstate him, hours after Huang said he would be honoured to return.
+
+39
+00:05:33.518 --> 00:05:34.501
+<v Bob>And China?
+
+40
+00:05:34.801 --> 00:05:54.776
+<v Alice>TechCrunch reports interim chief executive Colette Kress said Nvidia will no longer sell H200 chips in China. And its forecast of about 130 billion dollars next quarter assumes no data centre compute revenue from China. Think of a shop planning next season as if one whole street of customers were gone.
+
+41
+00:05:55.076 --> 00:05:57.219
+<v Bob>That's a big street to give up.
+
+42
+00:05:57.519 --> 00:06:04.807
+<v Alice>And it follows yesterday afternoon's news: Nvidia's board created a national security and export control committee.
+
+43
+00:06:05.107 --> 00:06:07.044
+<v Bob>Last one, and it's serious.
+
+44
+00:06:07.344 --> 00:06:25.296
+<v Alice>Oregon Attorney General Dan Rayfield filed a 2.035 billion dollar lawsuit against OpenAI on Tuesday, accusing it of endangering children and misleading parents about the safety of ChatGPT. It comes a day after California's attorney general sued OpenAI.
+
+45
+00:06:25.596 --> 00:06:27.625
+<v Bob>Why that exact figure?
+
+46
+00:06:27.925 --> 00:06:38.278
+<v Alice>KATU reports the office based it on the number of Oregon children using or able to use ChatGPT. The state also says OpenAI's age verification often fails.
+
+47
+00:06:38.578 --> 00:06:40.595
+<v Bob>Has a court ruled on any of it?
+
+48
+00:06:40.895 --> 00:06:54.406
+<v Alice>No. These are allegations in a complaint, not findings by a court. A complaint is like one side's opening argument in a debate, not the verdict. And OpenAI's response wasn't found in the sources the Gazette checked.
+
+49
+00:06:54.706 --> 00:06:58.802
+<v Bob>Reality check. How much of today is the companies' own word?
+
+50
+00:06:59.102 --> 00:07:11.161
+<v Alice>A lot. OpenAI's benchmark and cost comparisons weren't independently reproduced. Microsoft's comparisons weren't independently checked either. And Nvidia's outlook is its own forecast.
+
+51
+00:07:11.461 --> 00:07:19.103
+<v Bob>And on Hacker News, one reader noted OpenAI's top model still doesn't beat Fable at the high-cost end of OpenAI's own chart.
+
+52
+00:07:19.403 --> 00:07:25.158
+<v Alice>Exactly. Price per task is the new battleground, so read the chart closely.
+
+53
+00:07:25.458 --> 00:07:28.277
+<v Bob>Builder's Corner. One thing to do today?
+
+54
+00:07:28.577 --> 00:07:45.704
+<v Alice>Check your Java. If your services run on x86 processors with AVX-512, install the patched OpenJDK or Oracle builds from the 17 November advisory. It's like a recall notice for your car: you don't wait for the brakes to fail.
+
+55
+00:07:46.004 --> 00:07:48.205
+<v Bob>Patch first, coffee second.
+
+56
+00:07:48.505 --> 00:07:50.500
+<v Bob>So, today in three lines?
+
+57
+00:07:50.800 --> 00:08:06.901
+<v Alice>One: OpenAI and Microsoft both sold cost against capability on the same day. Two: Nvidia is redrawing its China exposure, and Huang isn't returning. Three: AI tools are surfacing serious flaws in core software, so patch fast.
+
+58
+00:08:07.201 --> 00:08:12.445
+<v Bob>What I'll watch: will a High rating for self-improvement change how labs release models?
+
+59
+00:08:12.745 --> 00:08:17.607
+<v Alice>And how OpenAI answers Oregon. Its response wasn't in the sources yet.
+
+60
+00:08:17.907 --> 00:08:24.475
+<v Bob>Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's. Thanks to them for the reporting.
+
+61
+00:08:24.775 --> 00:08:31.251
+<v Alice>See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

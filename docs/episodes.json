@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-17T20:41:11Z",
+  "updated": "2026-11-18T07:43:58Z",
   "episodes": [
+    {
+      "id": "2026-11-18_morning-edition-wednesday-18-november-2026",
+      "title": "OpenAI's GPT-6.2 Astra, Microsoft's Seven MAI Models | AI Daily 18 Nov",
+      "summary": [
+        "AI Daily for 18 November: six stories from The AI Gazette's morning and afternoon editions.",
+        "OpenAI releases GPT-6.2 Astra and Sol with lower Astra prices; Microsoft answers with seven MAI models at Ignite.",
+        "Also: the Java4Shell flaw found with Codex, Gemini's free task agent, Nvidia's results and Oregon's suit against OpenAI."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-18T07:40:01Z",
+      "duration_s": 517.851,
+      "size_bytes": 8286659,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-18_morning-edition-wednesday-18-november-2026.mp3",
+      "audio_sha256": "07cd3881cc668fef55d4b413b3d3b672f0084ad22107450e3513360328a98466",
+      "transcript": "episodes/2026-11-18_morning-edition-wednesday-18-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Wednesday 18 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-18-morning.html",
+        "published": "2026-11-17T18:45:00+01:00",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Wednesday 18 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-18-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Tuesday 17 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-17-afternoon.html"
+        }
+      ],
+      "description": "OpenAI released GPT-6.2 Astra and GPT-6.2 Sol and cut Astra's API prices by 20 percent, while Microsoft released seven MAI models at Ignite, led by MAI Code 2. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Java4Shell, a serious OpenJDK flaw found with OpenAI's Codex\n- Gemini's Tasks agent goes free in six countries\n- Nvidia's results, Jensen Huang's return ruled out, and Oregon's lawsuit against OpenAI\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - OpenAI's GPT-6.2 Astra, Microsoft's Seven MAI Models AI Daily 18 Nov (2026-11-18).mp3"
+    },
     {
       "id": "2026-11-17_what-weve-learned-building-proactive-agents",
       "title": "Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)",

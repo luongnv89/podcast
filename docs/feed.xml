@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Tue, 17 Nov 2026 20:41:11 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 18 Nov 2026 07:43:58 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-18_morning-edition-wednesday-18-november-2026</guid>
+    <title>OpenAI's GPT-6.2 Astra, Microsoft's Seven MAI Models | AI Daily 18 Nov</title>
+    <link>https://luongnv.com/podcast/#2026-11-18_morning-edition-wednesday-18-november-2026</link>
+    <description>AI Daily for 18 November: six stories from The AI Gazette's morning and afternoon editions.
+
+OpenAI releases GPT-6.2 Astra and Sol with lower Astra prices; Microsoft answers with seven MAI models at Ignite.
+
+Also: the Java4Shell flaw found with Codex, Gemini's free task agent, Nvidia's results and Oregon's suit against OpenAI.
+
+Sources:
+- The AI Gazette, morning edition, Wednesday 18 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-18-morning.html)
+- The AI Gazette, afternoon edition, Tuesday 17 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-17-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>AI Daily for 18 November: six stories from The AI Gazette's morning and afternoon editions.</p><p>OpenAI releases GPT-6.2 Astra and Sol with lower Astra prices; Microsoft answers with seven MAI models at Ignite.</p><p>Also: the Java4Shell flaw found with Codex, Gemini's free task agent, Nvidia's results and Oregon's suit against OpenAI.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Wednesday 18 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-18-morning.html">https://luongnv.com/news/reports/2026-11-18-morning.html</a></li><li>The AI Gazette, afternoon edition, Tuesday 17 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-17-afternoon.html">https://luongnv.com/news/reports/2026-11-17-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Wed, 18 Nov 2026 07:40:01 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-18_morning-edition-wednesday-18-november-2026.mp3?v=07cd3881" length="8286659" type="audio/mpeg"/>
+    <itunes:duration>518</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-18_morning-edition-wednesday-18-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-17_what-weve-learned-building-proactive-agents</guid>
     <title>Proactive AI Agents: Memory, UX and the Human Bottleneck (LangChain)</title>
