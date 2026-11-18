@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Wed, 18 Nov 2026 20:22:19 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 18 Nov 2026 21:51:04 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,31 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-18_automate-anything-with-grok-bot</guid>
+    <title>AI Automation for Everyone: Goal, Process, Triggers (Lauren Tan)</title>
+    <link>https://luongnv.com/podcast/#2026-11-18_automate-anything-with-grok-bot</link>
+    <description>Lauren Tan explains how anyone can automate everyday work with an AI assistant: a clear goal, a process in plain English, and no code.
+
+Bob and Alice unpack starting with the goal, teaching a bot how you think, letting it gather feedback, and moving work onto triggers or schedules.
+
+Guests bring Ethan Mollick on delegation as management, David Lyell on automation bias, and Matthew Gardiner on prompt injection in email.
+
+Sources:
+- Automate Anything with Grok Bot, Lauren Tan (@poteto) (https://x.com/poteto/status/2123159537016533493)
+- Management as AI superpower, Ethan Mollick (https://oneusefulthing.org/p/management-as-ai-superpower)
+- Automation can leave us complacent, and that can have dangerous consequences, David Lyell (https://theconversation.com/automation-can-leave-us-complacent-and-that-can-have-dangerous-consequences-62429)
+- When AI Agents Read Your Email, Every Message Is a Potential Prompt Injection, Matthew Gardiner (https://www.kuppingercole.com/blog/gardiner/when-ai-agents-read-your-email)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Lauren Tan explains how anyone can automate everyday work with an AI assistant: a clear goal, a process in plain English, and no code.</p><p>Bob and Alice unpack starting with the goal, teaching a bot how you think, letting it gather feedback, and moving work onto triggers or schedules.</p><p>Guests bring Ethan Mollick on delegation as management, David Lyell on automation bias, and Matthew Gardiner on prompt injection in email.</p><p>Sources:</p><ul><li>Automate Anything with Grok Bot, Lauren Tan (@poteto): <a href="https://x.com/poteto/status/2123159537016533493">https://x.com/poteto/status/2123159537016533493</a></li><li>Management as AI superpower, Ethan Mollick: <a href="https://oneusefulthing.org/p/management-as-ai-superpower">https://oneusefulthing.org/p/management-as-ai-superpower</a></li><li>Automation can leave us complacent, and that can have dangerous consequences, David Lyell: <a href="https://theconversation.com/automation-can-leave-us-complacent-and-that-can-have-dangerous-consequences-62429">https://theconversation.com/automation-can-leave-us-complacent-and-that-can-have-dangerous-consequences-62429</a></li><li>When AI Agents Read Your Email, Every Message Is a Potential Prompt Injection, Matthew Gardiner: <a href="https://www.kuppingercole.com/blog/gardiner/when-ai-agents-read-your-email">https://www.kuppingercole.com/blog/gardiner/when-ai-agents-read-your-email</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Wed, 18 Nov 2026 21:47:53 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-18_automate-anything-with-grok-bot.mp3?v=3d781976" length="10229328" type="audio/mpeg"/>
+    <itunes:duration>639</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-18_automate-anything-with-grok-bot/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-18_self-improvement-memory-enables-continual</guid>
     <title>Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)</title>

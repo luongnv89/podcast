@@ -24,8 +24,84 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-18T20:22:19Z",
+  "updated": "2026-11-18T21:51:04Z",
   "episodes": [
+    {
+      "id": "2026-11-18_automate-anything-with-grok-bot",
+      "title": "AI Automation for Everyone: Goal, Process, Triggers (Lauren Tan)",
+      "summary": [
+        "Lauren Tan explains how anyone can automate everyday work with an AI assistant: a clear goal, a process in plain English, and no code.",
+        "Bob and Alice unpack starting with the goal, teaching a bot how you think, letting it gather feedback, and moving work onto triggers or schedules.",
+        "Guests bring Ethan Mollick on delegation as management, David Lyell on automation bias, and Matthew Gardiner on prompt injection in email."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-18T21:47:53Z",
+      "duration_s": 639.264,
+      "size_bytes": 10229328,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-18_automate-anything-with-grok-bot.mp3",
+      "audio_sha256": "3d7819769dc45a34b0b2c76f3a0b7d14c1dc146bffcf40fa877fe07f10074b21",
+      "transcript": "episodes/2026-11-18_automate-anything-with-grok-bot/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Automate Anything with Grok Bot",
+        "author": "Lauren Tan (@poteto)",
+        "url": "https://x.com/poteto/status/2123159537016533493",
+        "published": "2026-11-18T21:00:54Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "Automate Anything with Grok Bot",
+          "author": "Lauren Tan (@poteto)",
+          "url": "https://x.com/poteto/status/2123159537016533493"
+        },
+        {
+          "title": "Management as AI superpower",
+          "author": "Ethan Mollick",
+          "url": "https://oneusefulthing.org/p/management-as-ai-superpower"
+        },
+        {
+          "title": "Automation can leave us complacent, and that can have dangerous consequences",
+          "author": "David Lyell",
+          "url": "https://theconversation.com/automation-can-leave-us-complacent-and-that-can-have-dangerous-consequences-62429"
+        },
+        {
+          "title": "When AI Agents Read Your Email, Every Message Is a Potential Prompt Injection",
+          "author": "Matthew Gardiner",
+          "url": "https://www.kuppingercole.com/blog/gardiner/when-ai-agents-read-your-email"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Theo",
+          "presents": [
+            "Management as AI superpower"
+          ]
+        },
+        {
+          "name": "Maya",
+          "presents": [
+            "Automation can leave us complacent, and that can have dangerous consequences"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "When AI Agents Read Your Email, Every Message Is a Potential Prompt Injection"
+          ]
+        }
+      ],
+      "description": "Lauren Tan (poteto) shows how anyone can automate everyday work with an AI assistant: name the goal, describe the process in plain English, and teach the bot how you think. Bob and Alice unpack it with taxis, coat checks and sprinklers.\n\nIn this episode:\n- Goal versus process, and why the goal comes first\n- Teaching a bot your judgment and letting it gather feedback\n- Triggers and schedules, automation bias and email prompt injection\n\nSources: Lauren Tan; Ethan Mollick; David Lyell; Matthew Gardiner\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - AI Automation for Everyone Goal, Process, Triggers (Lauren Tan) (2026-11-18).mp3"
+    },
     {
       "id": "2026-11-18_self-improvement-memory-enables-continual",
       "title": "Self-Improvement Memory: How Agent Harnesses Keep Improving (Google)",
