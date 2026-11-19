@@ -388,7 +388,11 @@ the show's cover (`docs/cover.jpg`, or the story cover of the episode's language
 name), the transcript, a **Share** button (see "Share (#43)" and "Share drafts (#45)" above) and a link back to `#<id>` on the page that lists it (a story's
 language page, `stories/<lang>/`: `show_page()`, `scripts/pages.py:132`); a story's versions
 link each other (`hreflang`). The list pages link each title to its page (a plain click still
-opens the details; a middle or Ctrl/Cmd click opens the page). `docs/sitemap.xml` lists
+opens the details; a middle or Ctrl/Cmd click opens the page), and each opened card has an
+**Episode page** link (#55) after **Download MP3** and **Share**, with the same look as those
+buttons: a plain same-tab link to that page (`pageOf()` in `docs/site.js`, the URL the title
+uses), labelled in the page's language (“Page de l’épisode”, “Trang tập”; `episodePage` in
+`TEXT`), so a phone, where a tap on the title only opens the card, can reach it too. `docs/sitemap.xml` lists
 Build Wiz AI Show's page, the stories' chooser, the three story language pages (each with
 its newest story's day as `lastmod`) and every episode page (`render_sitemap()`,
 `scripts/pages.py:406`). Pages and sitemap are rebuilt from
@@ -658,6 +662,7 @@ a reload counts again.
 | `description_copy` | the "Copy description" button copied the description (not sent when copying failed) | |
 | `title_copy` | the "Copy title" button copied the title (not sent when copying failed, #50) | |
 | `autoplay_toggle` | the visitor turns the player's Autoplay switch on or off (#47); it carries no episode | `enabled` (`true` or `false`) |
+| `episode_page_open` | the opened card's "Episode page" link (click or middle click, #55); the title link sends nothing | |
 | `episode_share` | an action in the Share panel (#45), on a list page or an episode page: **Post on X** (`x`) or **Post on LinkedIn** (`linkedin`) clicked (or middle-clicked), a draft copied (`copy`), or **More…** shared the episode: the share sheet completed (`share_sheet`) or the link was copied (`copy`). Opening the panel sends nothing; neither does a cancelled sheet or a failed copy | `method` (`x`, `linkedin`, `copy` or `share_sheet`) |
 
 Every event but `autoplay_toggle` carries the episode it is about: `episode_id` (the job id), `episode_title`

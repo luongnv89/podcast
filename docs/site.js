@@ -43,6 +43,7 @@
       readSource: "Read the source",
       linkCopied: "Link copied",
       share: "Share",
+      episodePage: "Episode page",
       langSwitch: "Language",
       play: "Play", pause: "Pause", playEp: (t) => `Play ${t}`, pauseEp: (t) => `Pause ${t}`,
       audioFailed: (t) => `Could not load audio: ${t}`,
@@ -76,6 +77,7 @@
       readSource: "Lire le texte original",
       linkCopied: "Lien copié",
       share: "Partager",
+      episodePage: "Page de l’épisode",
       langSwitch: "Langue",
       play: "Lecture", pause: "Pause", playEp: (t) => `Écouter ${t}`, pauseEp: (t) => `Mettre en pause ${t}`,
       audioFailed: (t) => `Impossible de charger l’audio : ${t}`,
@@ -109,6 +111,7 @@
       readSource: "Đọc bản gốc",
       linkCopied: "Đã sao chép liên kết",
       share: "Chia sẻ",
+      episodePage: "Trang tập",
       langSwitch: "Ngôn ngữ",
       play: "Phát", pause: "Tạm dừng", playEp: (t) => `Phát truyện ${t}`, pauseEp: (t) => `Tạm dừng truyện ${t}`,
       audioFailed: (t) => `Không tải được âm thanh: ${t}`,
@@ -746,6 +749,9 @@
     const shareBtn = el("button", { class: "btn", type: "button", "data-share": "episode", "aria-expanded": "false" }, [svg(["M12 15V4M7 9l5-5 5 5M5 13v6a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6"]), shareLabel]);
     shareBtn.addEventListener("click", () => openShare(ep, shareBtn, shareLabel, actions));
     actions.append(shareBtn);
+    // The episode's own page (podcast #55): a plain same-tab link to the page the title and
+    // Share point to, so a tap on a phone (where the title only expands the card) reaches it.
+    actions.append(trackLink(el("a", { class: "btn", href: pageOf(ep), "data-page": "episode" }, [svg(["M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8zM14 3v5h5M9 13h6M9 17h4"]), T.episodePage]), "episode_page_open", ep));
     // The copy-paste podcast title (podcast #50), exactly as in episodes.json, next to the
     // description's button: the one title used everywhere (site, feeds, podcast apps).
     if (typeof ep.title === "string" && ep.title.trim()) {
