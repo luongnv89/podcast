@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-18T21:51:04Z",
+  "updated": "2026-11-19T06:33:17Z",
   "episodes": [
+    {
+      "id": "2026-11-19_how-the-claude-code-team-thinks-about",
+      "title": "Claude Code Verification: Graders, Tests and Checks (Addy Osmani)",
+      "summary": [
+        "Addy Osmani's post on how the Claude Code team thinks about verification: why checks, not more reviewers, let you run many coding agents at once.",
+        "Bob and Alice unpack graders with rubrics, end-to-end, property and differential tests, and keeping checks out of reach of the changes they judge.",
+        "Guests Maya, Sam and Lena bring research on AI judges, METR's findings on reward hacking and Kent Beck's notes on coding with an AI."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-19T06:29:21Z",
+      "duration_s": 822.723,
+      "size_bytes": 13164656,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-19_how-the-claude-code-team-thinks-about.mp3",
+      "audio_sha256": "3258c5cab292c5dca28b5169a09d7b7e5d6608ad07642075bbb604686581d19a",
+      "transcript": "episodes/2026-11-19_how-the-claude-code-team-thinks-about/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "How the Claude Code team thinks about verification",
+        "author": "Addy Osmani (@addyosmani)",
+        "url": "https://x.com/addyosmani/status/2122590683055993308",
+        "published": "2026-11-17T07:20:29Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "How the Claude Code team thinks about verification",
+          "author": "Addy Osmani (@addyosmani)",
+          "url": "https://x.com/addyosmani/status/2122590683055993308"
+        },
+        {
+          "title": "Using LLM-as-a-Judge For Evaluation: A Complete Guide – Hamel’s Blog",
+          "author": "Hamel Husain",
+          "url": "https://hamel.dev/blog/posts/llm-judge/index.html"
+        },
+        {
+          "title": "bliki: Test Pyramid",
+          "author": "Martin Fowler",
+          "url": "https://martinfowler.com/bliki/TestPyramid.html"
+        },
+        {
+          "title": "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+          "author": "Lianmin Zheng et al.",
+          "url": "https://arxiv.org/abs/2306.05685"
+        },
+        {
+          "title": "Recent Frontier Models Are Reward Hacking",
+          "author": "METR",
+          "url": "https://metr.org/blog/2025-06-05-recent-reward-hacking/"
+        },
+        {
+          "title": "Augmented Coding: Beyond the Vibes",
+          "author": "Kent Beck",
+          "url": "https://newsletter.kentbeck.com/p/augmented-coding-beyond-the-vibes"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Recent Frontier Models Are Reward Hacking"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Augmented Coding: Beyond the Vibes"
+          ]
+        }
+      ],
+      "description": "Addy Osmani's post explains how the Claude Code team verifies AI-written code with graders, tests and checks the agents cannot edit. We pair it with research on AI judges and reward hacking to see what holds up.\n\nIn this episode:\n- How a separate grader with a pass or fail rubric works\n- End-to-end, property and differential tests for coding agents\n- Keeping checks out of reach, and models that game their tests\n\nSources: Addy Osmani; Hamel Husain; Martin Fowler; Lianmin Zheng et al.; METR; Kent Beck\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Claude Code Verification Graders, Tests and Checks (Addy Osmani) (2026-11-19).mp3"
+    },
     {
       "id": "2026-11-18_automate-anything-with-grok-bot",
       "title": "AI Automation for Everyone: Goal, Process, Triggers (Lauren Tan)",

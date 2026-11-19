@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Wed, 18 Nov 2026 21:51:04 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 06:33:17 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,33 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-19_how-the-claude-code-team-thinks-about</guid>
+    <title>Claude Code Verification: Graders, Tests and Checks (Addy Osmani)</title>
+    <link>https://luongnv.com/podcast/#2026-11-19_how-the-claude-code-team-thinks-about</link>
+    <description>Addy Osmani's post on how the Claude Code team thinks about verification: why checks, not more reviewers, let you run many coding agents at once.
+
+Bob and Alice unpack graders with rubrics, end-to-end, property and differential tests, and keeping checks out of reach of the changes they judge.
+
+Guests Maya, Sam and Lena bring research on AI judges, METR's findings on reward hacking and Kent Beck's notes on coding with an AI.
+
+Sources:
+- How the Claude Code team thinks about verification, Addy Osmani (@addyosmani) (https://x.com/addyosmani/status/2122590683055993308)
+- Using LLM-as-a-Judge For Evaluation: A Complete Guide – Hamel’s Blog, Hamel Husain (https://hamel.dev/blog/posts/llm-judge/index.html)
+- bliki: Test Pyramid, Martin Fowler (https://martinfowler.com/bliki/TestPyramid.html)
+- Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena, Lianmin Zheng et al. (https://arxiv.org/abs/2306.05685)
+- Recent Frontier Models Are Reward Hacking, METR (https://metr.org/blog/2025-06-05-recent-reward-hacking/)
+- Augmented Coding: Beyond the Vibes, Kent Beck (https://newsletter.kentbeck.com/p/augmented-coding-beyond-the-vibes)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Addy Osmani's post on how the Claude Code team thinks about verification: why checks, not more reviewers, let you run many coding agents at once.</p><p>Bob and Alice unpack graders with rubrics, end-to-end, property and differential tests, and keeping checks out of reach of the changes they judge.</p><p>Guests Maya, Sam and Lena bring research on AI judges, METR's findings on reward hacking and Kent Beck's notes on coding with an AI.</p><p>Sources:</p><ul><li>How the Claude Code team thinks about verification, Addy Osmani (@addyosmani): <a href="https://x.com/addyosmani/status/2122590683055993308">https://x.com/addyosmani/status/2122590683055993308</a></li><li>Using LLM-as-a-Judge For Evaluation: A Complete Guide – Hamel’s Blog, Hamel Husain: <a href="https://hamel.dev/blog/posts/llm-judge/index.html">https://hamel.dev/blog/posts/llm-judge/index.html</a></li><li>bliki: Test Pyramid, Martin Fowler: <a href="https://martinfowler.com/bliki/TestPyramid.html">https://martinfowler.com/bliki/TestPyramid.html</a></li><li>Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena, Lianmin Zheng et al.: <a href="https://arxiv.org/abs/2306.05685">https://arxiv.org/abs/2306.05685</a></li><li>Recent Frontier Models Are Reward Hacking, METR: <a href="https://metr.org/blog/2025-06-05-recent-reward-hacking/">https://metr.org/blog/2025-06-05-recent-reward-hacking/</a></li><li>Augmented Coding: Beyond the Vibes, Kent Beck: <a href="https://newsletter.kentbeck.com/p/augmented-coding-beyond-the-vibes">https://newsletter.kentbeck.com/p/augmented-coding-beyond-the-vibes</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Thu, 19 Nov 2026 06:29:21 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-19_how-the-claude-code-team-thinks-about.mp3?v=3258c5ca" length="13164656" type="audio/mpeg"/>
+    <itunes:duration>823</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-19_how-the-claude-code-team-thinks-about/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-18_automate-anything-with-grok-bot</guid>
     <title>AI Automation for Everyone: Goal, Process, Triggers (Lauren Tan)</title>
