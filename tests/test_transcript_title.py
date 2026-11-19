@@ -401,8 +401,8 @@ class CopyTitleTest(unittest.TestCase):
         for page in ("index.html", "stories/index.html", "stories/en/index.html", "stories/fr/index.html", "stories/vi/index.html"):
             with self.subTest(page=page):
                 html = (DOCS / page).read_text(encoding="utf-8")
-                self.assertIn("site.js?v=202611171200", html)
-                self.assertIn("site.css?v=202611171200", html)
+                self.assertIn("site.js?v=202611191200", html)
+                self.assertIn("site.css?v=202611191200", html)
 
 
 if __name__ == "__main__":
