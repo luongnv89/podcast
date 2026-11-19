@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Thu, 19 Nov 2026 16:38:45 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 20:54:20 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,33 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-19_becoming-a-factory-engineer</guid>
+    <title>Factory Engineering: Build the System That Writes Code (Ben Holmes)</title>
+    <link>https://luongnv.com/podcast/#2026-11-19_becoming-a-factory-engineer</link>
+    <description>Ben Holmes argues software engineering is becoming factory engineering: building the system of agents that builds the product.
+
+A software factory is an automation loop with human gates at the spec and the pull request, plus metrics such as cost-per-PR.
+
+Guests weigh DORA's AI report, METR's trial where developers felt faster but were slower, and Jeff Atwood's craft view.
+
+Sources:
+- Becoming a factory engineer, Ben Holmes (@BHolmesDev) (https://x.com/BHolmesDev/status/2123495357036605797)
+- Harness engineering for coding agent users, Birgitta Böckeler (https://martinfowler.com/articles/harness-engineering.html)
+- DORA | DORA’s software delivery performance metrics, Nathen Harvey (https://dora.dev/guides/dora-metrics-four-keys/)
+- Announcing the 2025 DORA Report | Google Cloud Blog, Nathen Harvey and Derek DeBellis (https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report)
+- Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity, METR (https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
+- Is Software Development Like Manufacturing?, Jeff Atwood (https://blog.codinghorror.com/is-software-development-like-manufacturing/)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Ben Holmes argues software engineering is becoming factory engineering: building the system of agents that builds the product.</p><p>A software factory is an automation loop with human gates at the spec and the pull request, plus metrics such as cost-per-PR.</p><p>Guests weigh DORA's AI report, METR's trial where developers felt faster but were slower, and Jeff Atwood's craft view.</p><p>Sources:</p><ul><li>Becoming a factory engineer, Ben Holmes (@BHolmesDev): <a href="https://x.com/BHolmesDev/status/2123495357036605797">https://x.com/BHolmesDev/status/2123495357036605797</a></li><li>Harness engineering for coding agent users, Birgitta Böckeler: <a href="https://martinfowler.com/articles/harness-engineering.html">https://martinfowler.com/articles/harness-engineering.html</a></li><li>DORA | DORA’s software delivery performance metrics, Nathen Harvey: <a href="https://dora.dev/guides/dora-metrics-four-keys/">https://dora.dev/guides/dora-metrics-four-keys/</a></li><li>Announcing the 2025 DORA Report | Google Cloud Blog, Nathen Harvey and Derek DeBellis: <a href="https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report">https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report</a></li><li>Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity, METR: <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/</a></li><li>Is Software Development Like Manufacturing?, Jeff Atwood: <a href="https://blog.codinghorror.com/is-software-development-like-manufacturing/">https://blog.codinghorror.com/is-software-development-like-manufacturing/</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Thu, 19 Nov 2026 20:51:09 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-19_becoming-a-factory-engineer.mp3?v=f50cc683" length="13593066" type="audio/mpeg"/>
+    <itunes:duration>849</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-19_becoming-a-factory-engineer/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-19_we-went-from-0-to-100k-instagram-followers-in-6</guid>
     <title>Instagram Growth Without Ads: 0 to 100K in 6 Months (Samuel Beek)</title>

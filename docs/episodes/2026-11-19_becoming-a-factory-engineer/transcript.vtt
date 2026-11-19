@@ -1,0 +1,377 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.163
+<v Bob>What if your job stopped being writing code, and became building the factory that writes it?
+
+2
+00:00:05.463 --> 00:00:14.075
+<v Alice>That's today's claim: software engineering is becoming factory engineering. So who designs the factory, and who checks its work?
+
+3
+00:00:18.375 --> 00:00:27.242
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and today I'm the one asking the questions.
+
+4
+00:00:27.542 --> 00:00:41.344
+<v Alice>And I'm Alice! We're unpacking Ben Holmes's X article, "Becoming a factory engineer". His big idea: we went from writing code, to writing prompts, to engineering the system of agents that runs those prompts.
+
+5
+00:00:41.644 --> 00:00:45.328
+<v Bob>So, a factory. No forklifts, I'm guessing?
+
+6
+00:00:45.628 --> 00:00:57.451
+<v Alice>No forklifts. He calls it a systems design challenge, one that seems to have breathed new life into software development. Three guests and a few outside sources will help us test it.
+
+7
+00:00:57.751 --> 00:01:01.080
+<v Bob>Start me at zero. What changed in the day job?
+
+8
+00:01:01.380 --> 00:01:15.275
+<v Alice>Ben splits engineering into three steps: planning, implementation, and code review. Before agents, implementation was the bulk of the deep work. The time left over went to architecture discussions and code review.
+
+9
+00:01:15.575 --> 00:01:18.393
+<v Bob>And now the agents do the implementing.
+
+10
+00:01:18.693 --> 00:01:29.699
+<v Alice>Exactly, so the balance has flipped. And his blunt line: if you stop there, it feels like engineering was replaced with 20 percent meetings and 80 percent drudgery.
+
+11
+00:01:29.999 --> 00:01:33.421
+<v Bob>Twenty percent meetings? That's my calendar on a good week.
+
+12
+00:01:33.721 --> 00:01:45.445
+<v Alice>Picture a chef who used to cook every plate, and now only writes menus and checks orders all day. That's the trap he describes: the cooking moved to the agents, so the fun part looks gone.
+
+13
+00:01:45.745 --> 00:01:48.071
+<v Bob>But he doesn't stop there, right?
+
+14
+00:01:48.371 --> 00:02:00.860
+<v Alice>No. He says there are interesting engineering challenges worth solving at each step. Planning: when should the agent involve a human to draft a plan, and what goes into a good product or technical spec?
+
+15
+00:02:01.160 --> 00:02:02.573
+<v Bob>And the other two steps?
+
+16
+00:02:02.873 --> 00:02:19.918
+<v Alice>Implementation: how do we optimize the cost and quality of agent code, and what access do agents get across secrets, MCPs and skills? Review: how do agents verify their own work end to end, and assess the risk of a pull request to save humans time?
+
+17
+00:02:20.218 --> 00:02:22.828
+<v Bob>So the hard problems just moved up a floor.
+
+18
+00:02:23.128 --> 00:02:42.379
+<v Alice>That's his point: these are the systems questions engineers used to answer in syntax and abstractions, just at a higher level. Birgitta Böckeler, writing on Martin Fowler's site, frames the same challenge: to let coding agents work with less supervision, we need ways to increase our confidence in their result.
+
+19
+00:02:42.679 --> 00:02:45.856
+<v Bob>He turns that into two job titles. What are they?
+
+20
+00:02:46.156 --> 00:03:01.156
+<v Alice>Product engineering is building the product itself: deciding what needs to exist and how it should be architected. Factory engineering is building the system of agents that builds the product. It optimizes the implementation and review pieces through automation.
+
+21
+00:03:01.456 --> 00:03:05.134
+<v Bob>Wait. So factory engineers automate everything?
+
+22
+00:03:05.434 --> 00:03:24.941
+<v Alice>No, and he's firm on that. It means automating low-risk work, and only requiring human attention when absolutely necessary. Böckeler explains why people stay in the loop: human developers bring their skills and experience as an implicit harness to every codebase, and an agent has no organisational memory.
+
+23
+00:03:25.241 --> 00:03:26.352
+<v Bob>Give me a picture.
+
+24
+00:03:26.652 --> 00:03:42.502
+<v Alice>Think of a restaurant kitchen. The head chef decides the menu, and someone else designs the stations, the order tickets and the tasting checks, so most plates go out without the chef touching them. The menu is product engineering; that kitchen designer is the factory engineer.
+
+25
+00:03:42.802 --> 00:03:46.103
+<v Bob>What does a factory engineer actually get asked?
+
+26
+00:03:46.403 --> 00:04:01.099
+<v Alice>He gives three sample requests. One: "Our agent keeps adding test cases and code comments that it really shouldn't." Two: someone on call keeps copy-pasting error monitor reports into an agent and asks, could we automate this?
+
+27
+00:04:01.399 --> 00:04:02.629
+<v Bob>And number three?
+
+28
+00:04:02.929 --> 00:04:18.233
+<v Alice>The API bill skyrocketed after the latest model release: could some workflows move to cheaper models without sacrificing code quality? And his rule: the larger your product and the more agents you deploy, the more valuable factory engineering becomes.
+
+29
+00:04:18.533 --> 00:04:25.694
+<v Bob>Ah, the surprise invoice, everyone's favorite email. Okay, so what is a software factory, concretely?
+
+30
+00:04:25.994 --> 00:04:45.358
+<v Alice>Ben's definition: an automation loop around agents, designed to build better and better software over time. Ideally you set the product requirements and it runs without human interaction, but agents aren't at that level yet. So factory engineers build a factory around today's agents that automates as much as possible.
+
+31
+00:04:45.658 --> 00:04:48.221
+<v Bob>Where does this factory actually live?
+
+32
+00:04:48.521 --> 00:05:05.566
+<v Alice>In a shared setup that both the agents and the team can reach: usually a centralized system in the cloud or on your own compute, instead of local setups. Humans and agents can configure it: the environment, the agent's access levels, and the pipeline of steps it follows.
+
+33
+00:05:05.866 --> 00:05:07.918
+<v Bob>And where do the humans step in?
+
+34
+00:05:08.218 --> 00:05:20.998
+<v Alice>Picture a car assembly line that runs by itself, except at two stations where a person must sign off before anything moves on. In Ben's example pipeline, those two stations are the spec and the pull request.
+
+35
+00:05:21.298 --> 00:05:25.138
+<v Bob>Isn't "factory" just a new word for what people call a harness?
+
+36
+00:05:25.438 --> 00:05:38.694
+<v Alice>Close cousins. Böckeler defines a harness as everything in an agent except the model. She splits it into guides, which steer the agent before it acts, and sensors, which observe afterwards and help it self-correct.
+
+37
+00:05:38.994 --> 00:05:41.948
+<v Bob>And how does that fit Ben's two human gates?
+
+38
+00:05:42.248 --> 00:05:52.392
+<v Alice>Neatly. She writes that "a good harness should not necessarily aim to fully eliminate human input, but to direct it to where our input is most important."
+
+39
+00:05:52.692 --> 00:05:56.342
+<v Bob>Lena, you've been reading about the ground under all of this.
+
+40
+00:05:56.642 --> 00:06:10.536
+<v Lena>Right. Nathen Harvey and Derek DeBellis, on the Google Cloud Blog, announced the DORA report on AI-assisted software development. Its key insight: "AI doesn't fix a team; it amplifies what's already there."
+
+41
+00:06:10.836 --> 00:06:13.290
+<v Bob>So a shaky setup just gets louder?
+
+42
+00:06:13.590 --> 00:06:29.788
+<v Lena>They call platform engineering the foundation: 90 percent of organizations have adopted at least one platform. And a high quality internal platform correlates with being able to unlock the value of AI. Think of it as the concrete floor the whole line is bolted to.
+
+43
+00:06:30.088 --> 00:06:33.417
+<v Bob>Once the factory runs, how do you know it's any good?
+
+44
+00:06:33.717 --> 00:06:48.493
+<v Alice>Ben's first tool is spending metrics: track what agents cost you in token usage and on-device compute. Then translate raw numbers into real value, like cost-per-PR and cycle time, which he defines as initial prompt to release.
+
+45
+00:06:48.793 --> 00:06:52.571
+<v Bob>Cycle time. Isn't that a DORA thing?
+
+46
+00:06:52.871 --> 00:07:07.590
+<v Alice>A close relative. Nathen Harvey's guide on DORA's delivery metrics defines change lead time as the time for a change to go from committed to version control to deployed in production. Ben's cycle time starts earlier, at the first prompt.
+
+47
+00:07:07.890 --> 00:07:11.312
+<v Bob>And code quality? You can't put taste in a spreadsheet.
+
+48
+00:07:11.612 --> 00:07:27.788
+<v Alice>That's his second tool: LLM-as-a-judge scoring, for quality you can't check statically. Architecture quality, redundant or tautological tests, how efficient the agent's tool calls are. Another agent reviews past agent conversations to score them.
+
+49
+00:07:28.088 --> 00:07:30.268
+<v Bob>So how should I picture all that?
+
+50
+00:07:30.568 --> 00:07:46.673
+<v Alice>It's like a fitness tracker plus a coach. The tracker counts steps, cheap and constant; the coach watches the replay and tells you your form is off. In Böckeler's terms, the cheap counters are computational sensors, and the LLM judge is an inferential one.
+
+51
+00:07:46.973 --> 00:07:49.618
+<v Bob>But can a judge be trusted every time?
+
+52
+00:07:49.918 --> 00:08:06.459
+<v Alice>Böckeler is careful here. LLMs can partially address problems like redundant tests, but expensively and probabilistically, not on every commit. Cheap, deterministic checks like tests and linters are fast enough to run on every change.
+
+53
+00:08:06.759 --> 00:08:09.113
+<v Bob>Any warning label on all these metrics?
+
+54
+00:08:09.413 --> 00:08:21.171
+<v Alice>Two, from that DORA guide. Don't set a metric as the goal, because teams will try to game it. And don't pick one metric to rule them all: choose several, with a healthy amount of tension between them.
+
+55
+00:08:21.471 --> 00:08:24.724
+<v Bob>Last piece. Can the factory fix itself?
+
+56
+00:08:25.024 --> 00:08:44.450
+<v Alice>That's his third tool, self-improvement: once you track these metrics, make them agent accessible. His example is hypothetical: a redundant-tests scorer that does poorly on 60 percent of conversations. A self-improvement agent notices the trend and suggests changes to your skills and code architecture.
+
+57
+00:08:44.750 --> 00:08:49.228
+<v Bob>Sixty percent pointless tests. The robots are padding their homework!
+
+58
+00:08:49.528 --> 00:09:04.756
+<v Alice>In his made-up example, yes. Böckeler describes the same loop done by people: whenever an issue happens multiple times, improve the guides and sensors so it becomes less likely. And she adds that agents can help build those controls too.
+
+59
+00:09:05.056 --> 00:09:06.269
+<v Bob>And the fourth tool?
+
+60
+00:09:06.569 --> 00:09:22.674
+<v Alice>Benchmarking: test theories on how factory configurations change cost and quality. The biggest lever is model selection, but you might also cut stages or add and remove subagents. Treat each as a hypothesis, and change one variable at a time.
+
+61
+00:09:22.974 --> 00:09:24.535
+<v Bob>Why only one at a time?
+
+62
+00:09:24.835 --> 00:09:40.812
+<v Alice>Imagine baking bread and changing the flour, the oven and the timer all at once. If the loaf gets better, you can't say why. Change one variable in the factory and watch the metrics, after setting a baseline for current performance, which is step one in the DORA guide.
+
+63
+00:09:41.112 --> 00:09:47.843
+<v Bob>Time for pushback. Maya, you looked at what happens when experienced developers actually use these tools.
+
+64
+00:09:48.143 --> 00:10:04.813
+<v Maya>I did. METR, a nonprofit research group, ran a randomized trial with sixteen experienced open-source developers on 246 real issues from repositories they know well. Each issue was randomly assigned to allow or disallow AI.
+
+65
+00:10:05.113 --> 00:10:06.114
+<v Bob>And what happened?
+
+66
+00:10:06.414 --> 00:10:18.090
+<v Maya>With AI allowed, they took 19 percent longer. And the perception gap is striking: they expected a 24 percent speedup, and even afterwards believed AI had sped them up by 20 percent.
+
+67
+00:10:18.390 --> 00:10:21.657
+<v Bob>Slower, and they felt faster. Ouch.
+
+68
+00:10:21.957 --> 00:10:32.529
+<v Maya>To be fair, METR says it doesn't claim this holds for most developers; its setting is experienced people on projects they know well. But it does show that self-reports may be overoptimistic.
+
+69
+00:10:32.829 --> 00:10:40.210
+<v Alice>Which is exactly why Ben wants measured numbers, like cycle time from prompt to release, rather than a feeling of speed.
+
+70
+00:10:40.510 --> 00:10:43.711
+<v Bob>Sam, you think the whole factory image is off.
+
+71
+00:10:44.011 --> 00:10:59.090
+<v Sam>I do. Jeff Atwood, on his blog Coding Horror, asked "Is Software Development Like Manufacturing?" and he wasn't convinced. His line: "Variability is the enemy in manufacturing; in software, it's the reason we get up in the morning."
+
+72
+00:10:59.390 --> 00:11:01.662
+<v Bob>So every project is a one-off?
+
+73
+00:11:01.962 --> 00:11:15.636
+<v Sam>He says "Every worthwhile software development project is a custom one-off job for a unique problem." And he quotes Mary and Tom Poppendieck: "generating good software is not a production process; it is a development process."
+
+74
+00:11:15.936 --> 00:11:24.548
+<v Alice>Fair hit. Ben's answer is partly built in: he automates the low-risk work and keeps human gates at the spec and the pull request.
+
+75
+00:11:24.848 --> 00:11:28.688
+<v Bob>Lena, does more output from the factory mean more breakage?
+
+76
+00:11:28.988 --> 00:11:44.305
+<v Lena>It can. The DORA team found AI adoption still has a negative relationship with software delivery stability. Without robust control systems, like strong automated testing and fast feedback loops, more change volume leads to instability.
+
+77
+00:11:44.605 --> 00:12:02.463
+<v Alice>And one limit no factory removes. Böckeler notes that misdiagnosis, overengineering and misunderstood instructions aren't caught reliably. In her words, "Correctness is outside any sensor's remit if the human didn't clearly specify what they wanted in the first place."
+
+78
+00:12:02.763 --> 00:12:06.348
+<v Bob>Time for Builder's Corner. Alice, one thing to try this week?
+
+79
+00:12:06.648 --> 00:12:18.023
+<v Alice>Pull last week's agent pull requests and log two numbers for each: what it cost, and its cycle time from first prompt to release. That's Ben's cost-per-PR and cycle time.
+
+80
+00:12:18.323 --> 00:12:19.475
+<v Bob>Just two numbers?
+
+81
+00:12:19.775 --> 00:12:33.832
+<v Alice>Plus one judge score. Pick the behavior that bugs you most, say redundant or tautological tests, and have another agent score those past conversations. Keep a healthy tension between the numbers, as the DORA guide advises.
+
+82
+00:12:34.132 --> 00:12:34.991
+<v Bob>And then?
+
+83
+00:12:35.291 --> 00:12:42.498
+<v Alice>Change one thing, say a cheaper model on one workflow, and compare next week. One variable at a time.
+
+84
+00:12:42.798 --> 00:12:49.064
+<v Bob>Quick takeaways. Mine: the work moved up a level, from writing code to designing the system that writes it.
+
+85
+00:12:49.364 --> 00:12:57.036
+<v Alice>Mine: automate the low-risk work, and send human attention where it matters most, at the spec and the pull request.
+
+86
+00:12:57.336 --> 00:13:02.418
+<v Bob>And measure it: cost, cycle time and a judge score, not a gut feeling.
+
+87
+00:13:02.718 --> 00:13:08.346
+<v Alice>Because, as METR found, developers can feel faster while being slower.
+
+88
+00:13:08.646 --> 00:13:09.815
+<v Bob>What's still open?
+
+89
+00:13:10.115 --> 00:13:18.982
+<v Alice>Ben's own first question: when should an agent involve a human to draft a plan, instead of just building? The post asks it and leaves it open.
+
+90
+00:13:19.282 --> 00:13:20.710
+<v Bob>And on the measuring side?
+
+91
+00:13:21.010 --> 00:13:32.170
+<v Alice>Böckeler asks a good one: if sensors never fire, is that a sign of high quality or inadequate detection mechanisms? A quiet factory might be a great one, or a blind one.
+
+92
+00:13:32.470 --> 00:13:35.764
+<v Bob>A blind factory. Now that's a scary thought.
+
+93
+00:13:36.064 --> 00:13:52.944
+<v Alice>Thanks to Ben Holmes for his X article, "Becoming a factory engineer". And to Birgitta Böckeler on Martin Fowler's site, Nathen Harvey's DORA guide, and METR. Plus Nathen Harvey and Derek DeBellis on the Google Cloud Blog, and Jeff Atwood at Coding Horror.
+
+94
+00:13:53.244 --> 00:14:02.877
+<v Bob>That was factory engineering, from writing code to building the system that writes it. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

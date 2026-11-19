@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Factory Engineering: Build the System That Writes Code (Ben Holmes) | Build Wiz AI Show</title>
+<meta name="description" content="Ben Holmes argues that software engineering is becoming factory engineering: building the system of AI agents that builds the product. We unpack what that loop needs and how to measure it.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-19_becoming-a-factory-engineer/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-19_becoming-a-factory-engineer/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="Factory Engineering: Build the System That Writes Code (Ben Holmes)">
+<meta property="og:description" content="Ben Holmes argues that software engineering is becoming factory engineering: building the system of AI agents that builds the product. We unpack what that loop needs and how to measure it.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-19_becoming-a-factory-engineer/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-19_becoming-a-factory-engineer.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Factory Engineering: Build the System That Writes Code (Ben Holmes)">
+<meta name="twitter:description" content="Ben Holmes argues that software engineering is becoming factory engineering: building the system of AI agents that builds the product. We unpack what that loop needs and how to measure it.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "Factory Engineering: Build the System That Writes Code (Ben Holmes)",
+ "description": "Ben Holmes argues that software engineering is becoming factory engineering: building the system of AI agents that builds the product. We unpack what that loop needs and how to measure it.\n\nIn this episode:\n- Product vs factory engineering, with human gates at spec and pull request\n- Cost-per-PR, cycle time and LLM-as-a-judge scores\n- A trial where developers felt faster but were slower\n\nSources: Ben Holmes (@BHolmesDev); Birgitta Böckeler; Nathen Harvey; METR; Nathen Harvey and Derek DeBellis; Jeff Atwood\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-19_becoming-a-factory-engineer/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-19_becoming-a-factory-engineer.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT14M9S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-19T20:51:09Z",
+ "timeRequired": "PT14M9S",
+ "isBasedOn": "https://x.com/BHolmesDev/status/2123495357036605797"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">Factory Engineering: Build the System That Writes Code (Ben Holmes)</h1>
+  <p class="meta"><span class="dur">14 min</span> · <time datetime="2026-11-19T20:51:09Z">2026-11-19</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-19_becoming-a-factory-engineer.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">Ben Holmes argues that software engineering is becoming factory engineering: building the system of AI agents that builds the product. We unpack what that loop needs and how to measure it.
+
+In this episode:
+- Product vs factory engineering, with human gates at spec and pull request
+- Cost-per-PR, cycle time and LLM-as-a-judge scores
+- A trial where developers felt faster but were slower
+
+Sources: Ben Holmes (@BHolmesDev); Birgitta Böckeler; Nathen Harvey; METR; Nathen Harvey and Derek DeBellis; Jeff Atwood
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-19_becoming-a-factory-engineer">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-19_becoming-a-factory-engineer.mp3" download="Build Wiz AI Show - Factory Engineering Build the System That Writes Code (Ben Holmes) (2026-11-19).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Factory Engineering: Build the System That Writes Code (Ben Holmes)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Ben Holmes argues that software engineering is becoming factory engineering: building the system of AI agents that builds the product. We unpack what that loop needs and how to measure it.
+
+In this episode:
+- Product vs factory engineering, with human gates at spec and pull request
+- Cost-per-PR, cycle time and LLM-as-a-judge scores
+- A trial where developers felt faster but were slower
+
+Sources: Ben Holmes (@BHolmesDev); Birgitta Böckeler; Nathen Harvey; METR; Nathen Harvey and Derek DeBellis; Jeff Atwood
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://x.com/BHolmesDev/status/2123495357036605797" rel="noopener">Becoming a factory engineer</a> by Ben Holmes (@BHolmesDev)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> What if your job stopped being writing code, and became building the factory that writes it?</p>
+    <p><strong>Alice:</strong> That's today's claim: software engineering is becoming factory engineering. So who designs the factory, and who checks its work?</p>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and today I'm the one asking the questions.</p>
+    <p><strong>Alice:</strong> And I'm Alice! We're unpacking Ben Holmes's X article, "Becoming a factory engineer". His big idea: we went from writing code, to writing prompts, to engineering the system of agents that runs those prompts.</p>
+    <p><strong>Bob:</strong> So, a factory. No forklifts, I'm guessing?</p>
+    <p><strong>Alice:</strong> No forklifts. He calls it a systems design challenge, one that seems to have breathed new life into software development. Three guests and a few outside sources will help us test it.</p>
+    <p><strong>Bob:</strong> Start me at zero. What changed in the day job?</p>
+    <p><strong>Alice:</strong> Ben splits engineering into three steps: planning, implementation, and code review. Before agents, implementation was the bulk of the deep work. The time left over went to architecture discussions and code review.</p>
+    <p><strong>Bob:</strong> And now the agents do the implementing.</p>
+    <p><strong>Alice:</strong> Exactly, so the balance has flipped. And his blunt line: if you stop there, it feels like engineering was replaced with 20 percent meetings and 80 percent drudgery.</p>
+    <p><strong>Bob:</strong> Twenty percent meetings? That's my calendar on a good week.</p>
+    <p><strong>Alice:</strong> Picture a chef who used to cook every plate, and now only writes menus and checks orders all day. That's the trap he describes: the cooking moved to the agents, so the fun part looks gone.</p>
+    <p><strong>Bob:</strong> But he doesn't stop there, right?</p>
+    <p><strong>Alice:</strong> No. He says there are interesting engineering challenges worth solving at each step. Planning: when should the agent involve a human to draft a plan, and what goes into a good product or technical spec?</p>
+    <p><strong>Bob:</strong> And the other two steps?</p>
+    <p><strong>Alice:</strong> Implementation: how do we optimize the cost and quality of agent code, and what access do agents get across secrets, MCPs and skills? Review: how do agents verify their own work end to end, and assess the risk of a pull request to save humans time?</p>
+    <p><strong>Bob:</strong> So the hard problems just moved up a floor.</p>
+    <p><strong>Alice:</strong> That's his point: these are the systems questions engineers used to answer in syntax and abstractions, just at a higher level. Birgitta Böckeler, writing on Martin Fowler's site, frames the same challenge: to let coding agents work with less supervision, we need ways to increase our confidence in their result.</p>
+    <p><strong>Bob:</strong> He turns that into two job titles. What are they?</p>
+    <p><strong>Alice:</strong> Product engineering is building the product itself: deciding what needs to exist and how it should be architected. Factory engineering is building the system of agents that builds the product. It optimizes the implementation and review pieces through automation.</p>
+    <p><strong>Bob:</strong> Wait. So factory engineers automate everything?</p>
+    <p><strong>Alice:</strong> No, and he's firm on that. It means automating low-risk work, and only requiring human attention when absolutely necessary. Böckeler explains why people stay in the loop: human developers bring their skills and experience as an implicit harness to every codebase, and an agent has no organisational memory.</p>
+    <p><strong>Bob:</strong> Give me a picture.</p>
+    <p><strong>Alice:</strong> Think of a restaurant kitchen. The head chef decides the menu, and someone else designs the stations, the order tickets and the tasting checks, so most plates go out without the chef touching them. The menu is product engineering; that kitchen designer is the factory engineer.</p>
+    <p><strong>Bob:</strong> What does a factory engineer actually get asked?</p>
+    <p><strong>Alice:</strong> He gives three sample requests. One: "Our agent keeps adding test cases and code comments that it really shouldn't." Two: someone on call keeps copy-pasting error monitor reports into an agent and asks, could we automate this?</p>
+    <p><strong>Bob:</strong> And number three?</p>
+    <p><strong>Alice:</strong> The API bill skyrocketed after the latest model release: could some workflows move to cheaper models without sacrificing code quality? And his rule: the larger your product and the more agents you deploy, the more valuable factory engineering becomes.</p>
+    <p><strong>Bob:</strong> Ah, the surprise invoice, everyone's favorite email. Okay, so what is a software factory, concretely?</p>
+    <p><strong>Alice:</strong> Ben's definition: an automation loop around agents, designed to build better and better software over time. Ideally you set the product requirements and it runs without human interaction, but agents aren't at that level yet. So factory engineers build a factory around today's agents that automates as much as possible.</p>
+    <p><strong>Bob:</strong> Where does this factory actually live?</p>
+    <p><strong>Alice:</strong> In a shared setup that both the agents and the team can reach: usually a centralized system in the cloud or on your own compute, instead of local setups. Humans and agents can configure it: the environment, the agent's access levels, and the pipeline of steps it follows.</p>
+    <p><strong>Bob:</strong> And where do the humans step in?</p>
+    <p><strong>Alice:</strong> Picture a car assembly line that runs by itself, except at two stations where a person must sign off before anything moves on. In Ben's example pipeline, those two stations are the spec and the pull request.</p>
+    <p><strong>Bob:</strong> Isn't "factory" just a new word for what people call a harness?</p>
+    <p><strong>Alice:</strong> Close cousins. Böckeler defines a harness as everything in an agent except the model. She splits it into guides, which steer the agent before it acts, and sensors, which observe afterwards and help it self-correct.</p>
+    <p><strong>Bob:</strong> And how does that fit Ben's two human gates?</p>
+    <p><strong>Alice:</strong> Neatly. She writes that "a good harness should not necessarily aim to fully eliminate human input, but to direct it to where our input is most important."</p>
+    <p><strong>Bob:</strong> Lena, you've been reading about the ground under all of this.</p>
+    <p><strong>Lena:</strong> Right. Nathen Harvey and Derek DeBellis, on the Google Cloud Blog, announced the DORA report on AI-assisted software development. Its key insight: "AI doesn't fix a team; it amplifies what's already there."</p>
+    <p><strong>Bob:</strong> So a shaky setup just gets louder?</p>
+    <p><strong>Lena:</strong> They call platform engineering the foundation: 90 percent of organizations have adopted at least one platform. And a high quality internal platform correlates with being able to unlock the value of AI. Think of it as the concrete floor the whole line is bolted to.</p>
+    <p><strong>Bob:</strong> Once the factory runs, how do you know it's any good?</p>
+    <p><strong>Alice:</strong> Ben's first tool is spending metrics: track what agents cost you in token usage and on-device compute. Then translate raw numbers into real value, like cost-per-PR and cycle time, which he defines as initial prompt to release.</p>
+    <p><strong>Bob:</strong> Cycle time. Isn't that a DORA thing?</p>
+    <p><strong>Alice:</strong> A close relative. Nathen Harvey's guide on DORA's delivery metrics defines change lead time as the time for a change to go from committed to version control to deployed in production. Ben's cycle time starts earlier, at the first prompt.</p>
+    <p><strong>Bob:</strong> And code quality? You can't put taste in a spreadsheet.</p>
+    <p><strong>Alice:</strong> That's his second tool: LLM-as-a-judge scoring, for quality you can't check statically. Architecture quality, redundant or tautological tests, how efficient the agent's tool calls are. Another agent reviews past agent conversations to score them.</p>
+    <p><strong>Bob:</strong> So how should I picture all that?</p>
+    <p><strong>Alice:</strong> It's like a fitness tracker plus a coach. The tracker counts steps, cheap and constant; the coach watches the replay and tells you your form is off. In Böckeler's terms, the cheap counters are computational sensors, and the LLM judge is an inferential one.</p>
+    <p><strong>Bob:</strong> But can a judge be trusted every time?</p>
+    <p><strong>Alice:</strong> Böckeler is careful here. LLMs can partially address problems like redundant tests, but expensively and probabilistically, not on every commit. Cheap, deterministic checks like tests and linters are fast enough to run on every change.</p>
+    <p><strong>Bob:</strong> Any warning label on all these metrics?</p>
+    <p><strong>Alice:</strong> Two, from that DORA guide. Don't set a metric as the goal, because teams will try to game it. And don't pick one metric to rule them all: choose several, with a healthy amount of tension between them.</p>
+    <p><strong>Bob:</strong> Last piece. Can the factory fix itself?</p>
+    <p><strong>Alice:</strong> That's his third tool, self-improvement: once you track these metrics, make them agent accessible. His example is hypothetical: a redundant-tests scorer that does poorly on 60 percent of conversations. A self-improvement agent notices the trend and suggests changes to your skills and code architecture.</p>
+    <p><strong>Bob:</strong> Sixty percent pointless tests. The robots are padding their homework!</p>
+    <p><strong>Alice:</strong> In his made-up example, yes. Böckeler describes the same loop done by people: whenever an issue happens multiple times, improve the guides and sensors so it becomes less likely. And she adds that agents can help build those controls too.</p>
+    <p><strong>Bob:</strong> And the fourth tool?</p>
+    <p><strong>Alice:</strong> Benchmarking: test theories on how factory configurations change cost and quality. The biggest lever is model selection, but you might also cut stages or add and remove subagents. Treat each as a hypothesis, and change one variable at a time.</p>
+    <p><strong>Bob:</strong> Why only one at a time?</p>
+    <p><strong>Alice:</strong> Imagine baking bread and changing the flour, the oven and the timer all at once. If the loaf gets better, you can't say why. Change one variable in the factory and watch the metrics, after setting a baseline for current performance, which is step one in the DORA guide.</p>
+    <p><strong>Bob:</strong> Time for pushback. Maya, you looked at what happens when experienced developers actually use these tools.</p>
+    <p><strong>Maya:</strong> I did. METR, a nonprofit research group, ran a randomized trial with sixteen experienced open-source developers on 246 real issues from repositories they know well. Each issue was randomly assigned to allow or disallow AI.</p>
+    <p><strong>Bob:</strong> And what happened?</p>
+    <p><strong>Maya:</strong> With AI allowed, they took 19 percent longer. And the perception gap is striking: they expected a 24 percent speedup, and even afterwards believed AI had sped them up by 20 percent.</p>
+    <p><strong>Bob:</strong> Slower, and they felt faster. Ouch.</p>
+    <p><strong>Maya:</strong> To be fair, METR says it doesn't claim this holds for most developers; its setting is experienced people on projects they know well. But it does show that self-reports may be overoptimistic.</p>
+    <p><strong>Alice:</strong> Which is exactly why Ben wants measured numbers, like cycle time from prompt to release, rather than a feeling of speed.</p>
+    <p><strong>Bob:</strong> Sam, you think the whole factory image is off.</p>
+    <p><strong>Sam:</strong> I do. Jeff Atwood, on his blog Coding Horror, asked "Is Software Development Like Manufacturing?" and he wasn't convinced. His line: "Variability is the enemy in manufacturing; in software, it's the reason we get up in the morning."</p>
+    <p><strong>Bob:</strong> So every project is a one-off?</p>
+    <p><strong>Sam:</strong> He says "Every worthwhile software development project is a custom one-off job for a unique problem." And he quotes Mary and Tom Poppendieck: "generating good software is not a production process; it is a development process."</p>
+    <p><strong>Alice:</strong> Fair hit. Ben's answer is partly built in: he automates the low-risk work and keeps human gates at the spec and the pull request.</p>
+    <p><strong>Bob:</strong> Lena, does more output from the factory mean more breakage?</p>
+    <p><strong>Lena:</strong> It can. The DORA team found AI adoption still has a negative relationship with software delivery stability. Without robust control systems, like strong automated testing and fast feedback loops, more change volume leads to instability.</p>
+    <p><strong>Alice:</strong> And one limit no factory removes. Böckeler notes that misdiagnosis, overengineering and misunderstood instructions aren't caught reliably. In her words, "Correctness is outside any sensor's remit if the human didn't clearly specify what they wanted in the first place."</p>
+    <p><strong>Bob:</strong> Time for Builder's Corner. Alice, one thing to try this week?</p>
+    <p><strong>Alice:</strong> Pull last week's agent pull requests and log two numbers for each: what it cost, and its cycle time from first prompt to release. That's Ben's cost-per-PR and cycle time.</p>
+    <p><strong>Bob:</strong> Just two numbers?</p>
+    <p><strong>Alice:</strong> Plus one judge score. Pick the behavior that bugs you most, say redundant or tautological tests, and have another agent score those past conversations. Keep a healthy tension between the numbers, as the DORA guide advises.</p>
+    <p><strong>Bob:</strong> And then?</p>
+    <p><strong>Alice:</strong> Change one thing, say a cheaper model on one workflow, and compare next week. One variable at a time.</p>
+    <p><strong>Bob:</strong> Quick takeaways. Mine: the work moved up a level, from writing code to designing the system that writes it.</p>
+    <p><strong>Alice:</strong> Mine: automate the low-risk work, and send human attention where it matters most, at the spec and the pull request.</p>
+    <p><strong>Bob:</strong> And measure it: cost, cycle time and a judge score, not a gut feeling.</p>
+    <p><strong>Alice:</strong> Because, as METR found, developers can feel faster while being slower.</p>
+    <p><strong>Bob:</strong> What's still open?</p>
+    <p><strong>Alice:</strong> Ben's own first question: when should an agent involve a human to draft a plan, instead of just building? The post asks it and leaves it open.</p>
+    <p><strong>Bob:</strong> And on the measuring side?</p>
+    <p><strong>Alice:</strong> Böckeler asks a good one: if sensors never fire, is that a sign of high quality or inadequate detection mechanisms? A quiet factory might be a great one, or a blind one.</p>
+    <p><strong>Bob:</strong> A blind factory. Now that's a scary thought.</p>
+    <p><strong>Alice:</strong> Thanks to Ben Holmes for his X article, "Becoming a factory engineer". And to Birgitta Böckeler on Martin Fowler's site, Nathen Harvey's DORA guide, and METR. Plus Nathen Harvey and Derek DeBellis on the Google Cloud Blog, and Jeff Atwood at Coding Horror.</p>
+    <p><strong>Bob:</strong> That was factory engineering, from writing code to building the system that writes it. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-19_becoming-a-factory-engineer/", "title": "Factory Engineering: Build the System That Writes Code (Ben Holmes)", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-19_becoming-a-factory-engineer", "episode_title": "Factory Engineering: Build the System That Writes Code (Ben Holmes)", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-19_becoming-a-factory-engineer", "title": "Factory Engineering: Build the System That Writes Code (Ben Holmes)", "summary": ["Ben Holmes argues software engineering is becoming factory engineering: building the system of agents that builds the product.", "A software factory is an automation loop with human gates at the spec and the pull request, plus metrics such as cost-per-PR.", "Guests weigh DORA's AI report, METR's trial where developers felt faster but were slower, and Jeff Atwood's craft view."], "description": "Ben Holmes argues that software engineering is becoming factory engineering: building the system of AI agents that builds the product. We unpack what that loop needs and how to measure it.\n\nIn this episode:\n- Product vs factory engineering, with human gates at spec and pull request\n- Cost-per-PR, cycle time and LLM-as-a-judge scores\n- A trial where developers felt faster but were slower\n\nSources: Ben Holmes (@BHolmesDev); Birgitta Böckeler; Nathen Harvey; METR; Nathen Harvey and Derek DeBellis; Jeff Atwood\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "Becoming a factory engineer", "author": "Ben Holmes (@BHolmesDev)", "url": "https://x.com/BHolmesDev/status/2123495357036605797", "kind": "x"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>

@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-19T16:38:45Z",
+  "updated": "2026-11-19T20:54:20Z",
   "episodes": [
+    {
+      "id": "2026-11-19_becoming-a-factory-engineer",
+      "title": "Factory Engineering: Build the System That Writes Code (Ben Holmes)",
+      "summary": [
+        "Ben Holmes argues software engineering is becoming factory engineering: building the system of agents that builds the product.",
+        "A software factory is an automation loop with human gates at the spec and the pull request, plus metrics such as cost-per-PR.",
+        "Guests weigh DORA's AI report, METR's trial where developers felt faster but were slower, and Jeff Atwood's craft view."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-19T20:51:09Z",
+      "duration_s": 849.477,
+      "size_bytes": 13593066,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-19_becoming-a-factory-engineer.mp3",
+      "audio_sha256": "f50cc683d9e83141c5bd5d9887096a2ef3a3c3b2ef543b4954ca7a87ad173bac",
+      "transcript": "episodes/2026-11-19_becoming-a-factory-engineer/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Becoming a factory engineer",
+        "author": "Ben Holmes (@BHolmesDev)",
+        "url": "https://x.com/BHolmesDev/status/2123495357036605797",
+        "published": "2026-11-19T19:15:20Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "Becoming a factory engineer",
+          "author": "Ben Holmes (@BHolmesDev)",
+          "url": "https://x.com/BHolmesDev/status/2123495357036605797"
+        },
+        {
+          "title": "Harness engineering for coding agent users",
+          "author": "Birgitta Böckeler",
+          "url": "https://martinfowler.com/articles/harness-engineering.html"
+        },
+        {
+          "title": "DORA | DORA’s software delivery performance metrics",
+          "author": "Nathen Harvey",
+          "url": "https://dora.dev/guides/dora-metrics-four-keys/"
+        },
+        {
+          "title": "Announcing the 2025 DORA Report | Google Cloud Blog",
+          "author": "Nathen Harvey and Derek DeBellis",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-the-2025-dora-report"
+        },
+        {
+          "title": "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity",
+          "author": "METR",
+          "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/"
+        },
+        {
+          "title": "Is Software Development Like Manufacturing?",
+          "author": "Jeff Atwood",
+          "url": "https://blog.codinghorror.com/is-software-development-like-manufacturing/"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Lena",
+          "presents": [
+            "Announcing the 2025 DORA Report | Google Cloud Blog"
+          ]
+        },
+        {
+          "name": "Maya",
+          "presents": [
+            "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Is Software Development Like Manufacturing?"
+          ]
+        }
+      ],
+      "description": "Ben Holmes argues that software engineering is becoming factory engineering: building the system of AI agents that builds the product. We unpack what that loop needs and how to measure it.\n\nIn this episode:\n- Product vs factory engineering, with human gates at spec and pull request\n- Cost-per-PR, cycle time and LLM-as-a-judge scores\n- A trial where developers felt faster but were slower\n\nSources: Ben Holmes (@BHolmesDev); Birgitta Böckeler; Nathen Harvey; METR; Nathen Harvey and Derek DeBellis; Jeff Atwood\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Factory Engineering Build the System That Writes Code (Ben Holmes) (2026-11-19).mp3"
+    },
     {
       "id": "2026-11-19_we-went-from-0-to-100k-instagram-followers-in-6",
       "title": "Instagram Growth Without Ads: 0 to 100K in 6 Months (Samuel Beek)",
