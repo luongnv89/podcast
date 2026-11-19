@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Thu, 19 Nov 2026 07:47:12 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 16:38:45 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,33 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-19_we-went-from-0-to-100k-instagram-followers-in-6</guid>
+    <title>Instagram Growth Without Ads: 0 to 100K in 6 Months (Samuel Beek)</title>
+    <link>https://luongnv.com/podcast/#2026-11-19_we-went-from-0-to-100k-instagram-followers-in-6</link>
+    <description>Samuel Beek shares how his hardware startup grew to 100K Instagram followers in six months without ads.
+
+His five steps: watch what your audience watches, make lots of videos, post daily, obsess over watch time, experiment.
+
+Guests and Instagram's own ranking explainer test the playbook, and a skeptic asks what virality is for.
+
+Sources:
+- We went from 0 to 100K Instagram followers in 6 months, and here's how you can do it too, sam (@SamuelBeek) (https://x.com/SamuelBeek/status/2116507743003562130)
+- Instagram Ranking Explained | How Our Algorithm Works | About Instagram, Instagram (https://about.instagram.com/blog/announcements/instagram-ranking-explained)
+- Instagram Shares Algorithm Insights To Inform Strategy, Andrew Hutchinson (https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/)
+- In Consumer AI, Momentum Is the Moat | Andreessen Horowitz, Bryan Kim, a16z (https://a16z.com/momentum-as-ai-moat)
+- 80+ Social media video statistics marketers need to know in 2026, Mary Keutelian (https://sproutsocial.com/insights/social-media-video-statistics/)
+- The cockroach brief: Why virality is not a marketing strategy, Shubho Sengupta (https://www.thehindubusinessline.com/catalyst/the-cockroach-brief-why-virality-is-not-a-marketing-strategy/article71101563.ece)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Samuel Beek shares how his hardware startup grew to 100K Instagram followers in six months without ads.</p><p>His five steps: watch what your audience watches, make lots of videos, post daily, obsess over watch time, experiment.</p><p>Guests and Instagram's own ranking explainer test the playbook, and a skeptic asks what virality is for.</p><p>Sources:</p><ul><li>We went from 0 to 100K Instagram followers in 6 months, and here's how you can do it too, sam (@SamuelBeek): <a href="https://x.com/SamuelBeek/status/2116507743003562130">https://x.com/SamuelBeek/status/2116507743003562130</a></li><li>Instagram Ranking Explained | How Our Algorithm Works | About Instagram, Instagram: <a href="https://about.instagram.com/blog/announcements/instagram-ranking-explained">https://about.instagram.com/blog/announcements/instagram-ranking-explained</a></li><li>Instagram Shares Algorithm Insights To Inform Strategy, Andrew Hutchinson: <a href="https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/">https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/</a></li><li>In Consumer AI, Momentum Is the Moat | Andreessen Horowitz, Bryan Kim, a16z: <a href="https://a16z.com/momentum-as-ai-moat">https://a16z.com/momentum-as-ai-moat</a></li><li>80+ Social media video statistics marketers need to know in 2026, Mary Keutelian: <a href="https://sproutsocial.com/insights/social-media-video-statistics/">https://sproutsocial.com/insights/social-media-video-statistics/</a></li><li>The cockroach brief: Why virality is not a marketing strategy, Shubho Sengupta: <a href="https://www.thehindubusinessline.com/catalyst/the-cockroach-brief-why-virality-is-not-a-marketing-strategy/article71101563.ece">https://www.thehindubusinessline.com/catalyst/the-cockroach-brief-why-virality-is-not-a-marketing-strategy/article71101563.ece</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Thu, 19 Nov 2026 16:36:45 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-19_we-went-from-0-to-100k-instagram-followers-in-6.mp3?v=49e87bd8" length="12362174" type="audio/mpeg"/>
+    <itunes:duration>773</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-19_we-went-from-0-to-100k-instagram-followers-in-6/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-19_morning-edition-thursday-19-november-2026</guid>
     <title>Anthropic's $83 IPO, Google's Gemini 4 Neon | AI Daily 19 Nov</title>

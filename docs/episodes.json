@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-19T07:47:12Z",
+  "updated": "2026-11-19T16:38:45Z",
   "episodes": [
+    {
+      "id": "2026-11-19_we-went-from-0-to-100k-instagram-followers-in-6",
+      "title": "Instagram Growth Without Ads: 0 to 100K in 6 Months (Samuel Beek)",
+      "summary": [
+        "Samuel Beek shares how his hardware startup grew to 100K Instagram followers in six months without ads.",
+        "His five steps: watch what your audience watches, make lots of videos, post daily, obsess over watch time, experiment.",
+        "Guests and Instagram's own ranking explainer test the playbook, and a skeptic asks what virality is for."
+      ],
+      "category": "marketing",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-19T16:36:45Z",
+      "duration_s": 772.548,
+      "size_bytes": 12362174,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-19_we-went-from-0-to-100k-instagram-followers-in-6.mp3",
+      "audio_sha256": "49e87bd8c5dc33f282e026d4ae00fc708190bca2a240240d7c4ac741329d0a55",
+      "transcript": "episodes/2026-11-19_we-went-from-0-to-100k-instagram-followers-in-6/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "We went from 0 to 100K Instagram followers in 6 months, and here's how you can do it too",
+        "author": "sam (@SamuelBeek)",
+        "url": "https://x.com/SamuelBeek/status/2116507743003562130",
+        "published": "2026-10-31T12:29:03Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "We went from 0 to 100K Instagram followers in 6 months, and here's how you can do it too",
+          "author": "sam (@SamuelBeek)",
+          "url": "https://x.com/SamuelBeek/status/2116507743003562130"
+        },
+        {
+          "title": "Instagram Ranking Explained | How Our Algorithm Works | About Instagram",
+          "author": "Instagram",
+          "url": "https://about.instagram.com/blog/announcements/instagram-ranking-explained"
+        },
+        {
+          "title": "Instagram Shares Algorithm Insights To Inform Strategy",
+          "author": "Andrew Hutchinson",
+          "url": "https://www.socialmediatoday.com/news/instagram-shares-algorithm-insights-2025/738034/"
+        },
+        {
+          "title": "In Consumer AI, Momentum Is the Moat | Andreessen Horowitz",
+          "author": "Bryan Kim, a16z",
+          "url": "https://a16z.com/momentum-as-ai-moat"
+        },
+        {
+          "title": "80+ Social media video statistics marketers need to know in 2026",
+          "author": "Mary Keutelian",
+          "url": "https://sproutsocial.com/insights/social-media-video-statistics/"
+        },
+        {
+          "title": "The cockroach brief: Why virality is not a marketing strategy",
+          "author": "Shubho Sengupta",
+          "url": "https://www.thehindubusinessline.com/catalyst/the-cockroach-brief-why-virality-is-not-a-marketing-strategy/article71101563.ece"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Lena",
+          "presents": [
+            "In Consumer AI, Momentum Is the Moat | Andreessen Horowitz"
+          ]
+        },
+        {
+          "name": "Maya",
+          "presents": [
+            "80+ Social media video statistics marketers need to know in 2026"
+          ]
+        },
+        {
+          "name": "Theo",
+          "presents": [
+            "The cockroach brief: Why virality is not a marketing strategy"
+          ]
+        }
+      ],
+      "description": "Samuel Beek explains how his hardware startup grew from 0 to 100K Instagram followers in 6 months, spending $0 on ads. Bob and Alice unpack why distribution matters more as AI makes building easier, and test his playbook against Instagram's own ranking explainer.\n\nIn this episode:\n- Why he calls \"going viral is not a strategy\" the biggest lie\n- Watch time, likes and sends: what Instagram ranks on\n- A skeptic: virality needs a goal\n\nSources: sam (@SamuelBeek); Instagram; Andrew Hutchinson; Bryan Kim; Mary Keutelian; Shubho Sengupta\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Instagram Growth Without Ads 0 to 100K in 6 Months (Samuel Beek) (2026-11-19).mp3"
+    },
     {
       "id": "2026-11-19_morning-edition-thursday-19-november-2026",
       "title": "Anthropic's $83 IPO, Google's Gemini 4 Neon | AI Daily 19 Nov",
