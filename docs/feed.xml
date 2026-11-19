@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Thu, 19 Nov 2026 06:33:17 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 19 Nov 2026 07:47:12 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-19_morning-edition-thursday-19-november-2026</guid>
+    <title>Anthropic's $83 IPO, Google's Gemini 4 Neon | AI Daily 19 Nov</title>
+    <link>https://luongnv.com/podcast/#2026-11-19_morning-edition-thursday-19-november-2026</link>
+    <description>AI Daily for 19 November: six stories from The AI Gazette's morning and afternoon editions.
+
+Anthropic priced its IPO at 83 dollars a share, and Google released its cheaper Gemini 4 Neon model.
+
+Also: a hijacked agent package on PyPI, a 4.5 billion dollar security deal, and new state moves on AI agents.
+
+Sources:
+- The AI Gazette, morning edition, Thursday 19 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-19-morning.html)
+- The AI Gazette, afternoon edition, Wednesday 18 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-18-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>AI Daily for 19 November: six stories from The AI Gazette's morning and afternoon editions.</p><p>Anthropic priced its IPO at 83 dollars a share, and Google released its cheaper Gemini 4 Neon model.</p><p>Also: a hijacked agent package on PyPI, a 4.5 billion dollar security deal, and new state moves on AI agents.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Thursday 19 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-19-morning.html">https://luongnv.com/news/reports/2026-11-19-morning.html</a></li><li>The AI Gazette, afternoon edition, Wednesday 18 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-18-afternoon.html">https://luongnv.com/news/reports/2026-11-18-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Thu, 19 Nov 2026 07:43:59 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-19_morning-edition-thursday-19-november-2026.mp3?v=eb7939c0" length="7467868" type="audio/mpeg"/>
+    <itunes:duration>467</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-19_morning-edition-thursday-19-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-19_how-the-claude-code-team-thinks-about</guid>
     <title>Claude Code Verification: Graders, Tests and Checks (Addy Osmani)</title>

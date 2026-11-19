@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-19T06:33:17Z",
+  "updated": "2026-11-19T07:47:12Z",
   "episodes": [
+    {
+      "id": "2026-11-19_morning-edition-thursday-19-november-2026",
+      "title": "Anthropic's $83 IPO, Google's Gemini 4 Neon | AI Daily 19 Nov",
+      "summary": [
+        "AI Daily for 19 November: six stories from The AI Gazette's morning and afternoon editions.",
+        "Anthropic priced its IPO at 83 dollars a share, and Google released its cheaper Gemini 4 Neon model.",
+        "Also: a hijacked agent package on PyPI, a 4.5 billion dollar security deal, and new state moves on AI agents."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-19T07:43:59Z",
+      "duration_s": 466.667,
+      "size_bytes": 7467868,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-19_morning-edition-thursday-19-november-2026.mp3",
+      "audio_sha256": "eb7939c000b6c30dd49b492f18f1f052a2910952293f8ad107bd16d307e582ee",
+      "transcript": "episodes/2026-11-19_morning-edition-thursday-19-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Thursday 19 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-19-morning.html",
+        "published": "2026-11-18T22:00:00+01:00",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Thursday 19 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-19-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Wednesday 18 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-18-afternoon.html"
+        }
+      ],
+      "description": "Anthropic priced its IPO at 83 dollars a share, raising about 81 billion dollars, and Google released Gemini 4 Neon, a cheaper model it says leads a coding-agent index. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Hijacked releases of Microsoft's agent-framework package on PyPI\n- Palo Alto Networks buys Applied Compute in a 4.5 billion dollar deal\n- Arizona's criminal inquiry into OpenAI, Newsom's shutdown powers, and Nadella on unpatchable systems\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Anthropic's $83 IPO, Google's Gemini 4 Neon AI Daily 19 Nov (2026-11-19).mp3"
+    },
     {
       "id": "2026-11-19_how-the-claude-code-team-thinks-about",
       "title": "Claude Code Verification: Graders, Tests and Checks (Addy Osmani)",

@@ -1,0 +1,237 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.185
+<v Bob>Anthropic just priced its IPO at 83 dollars a share, and raised about 81 billion dollars.
+
+2
+00:00:06.485 --> 00:00:12.334
+<v Alice>And Google has a cheaper new Gemini that it says leads on coding agents. Big morning!
+
+3
+00:00:16.634 --> 00:00:26.859
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and this is our daily edition: the AI news of the last day, in about eight minutes.
+
+4
+00:00:27.159 --> 00:00:36.537
+<v Alice>And I'm Alice. Every story today comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories. Let's go.
+
+5
+00:00:36.837 --> 00:00:40.723
+<v Bob>Six stories, eight minutes. Alice, no detours.
+
+6
+00:00:41.023 --> 00:00:42.156
+<v Alice>No promises.
+
+7
+00:00:42.456 --> 00:00:46.168
+<v Bob>Start with the big number. Anthropic's IPO finally has a price?
+
+8
+00:00:46.468 --> 00:00:58.528
+<v Alice>It does. 83 dollars a share, above its range of 70 to 78 dollars. And it sold more shares than planned: 980 million instead of 825 million.
+
+9
+00:00:58.828 --> 00:01:01.821
+<v Bob>So how much money is that, all in?
+
+10
+00:01:02.121 --> 00:01:18.864
+<v Alice>About 81.3 billion dollars, and roughly 79.4 billion of it goes to Anthropic itself. That's the Gazette's own math from the share counts. Think of it as a bake sale where the line wraps around the block. So you raise the price, and you bake more trays.
+
+11
+00:01:19.164 --> 00:01:23.353
+<v Bob>Strong demand, higher price, more shares. And the valuation?
+
+12
+00:01:23.653 --> 00:01:38.185
+<v Alice>TechCrunch puts it at about 1.5 trillion dollars, fully diluted, up from 965 billion in its last private round in May. Trading is expected to start today on the Nasdaq, under the symbol ANT.
+
+13
+00:01:38.485 --> 00:01:40.567
+<v Bob>Trillion. With a T.
+
+14
+00:01:40.867 --> 00:01:43.905
+<v Bob>Story two, for builders. What's Neon?
+
+15
+00:01:44.205 --> 00:01:55.580
+<v Alice>Google released Gemini 4 Neon on Wednesday evening, a cheaper tier. 3 dollars per million input tokens, 15 per million output, and a context window of 1 million tokens.
+
+16
+00:01:55.880 --> 00:01:58.919
+<v Bob>Cheap is nice. But is it any good?
+
+17
+00:01:59.219 --> 00:02:12.301
+<v Alice>Google says it ranks first on the Artificial Analysis Coding Agent Index, with 58.6, and scores 65.2 percent on Terminal-Bench 4.1. Those are Google's own figures.
+
+18
+00:02:12.601 --> 00:02:15.117
+<v Bob>Why should someone building agents care?
+
+19
+00:02:15.417 --> 00:02:33.566
+<v Alice>Google says Neon costs 32 percent less per task than Gemini 4 Carbon. Here's the key point: per TASK. Imagine a delivery van judged by fuel per delivery, not fuel per mile. For an agent, the bill that matters is the whole job, not the token price.
+
+20
+00:02:33.866 --> 00:02:35.144
+<v Bob>Where can I try it?
+
+21
+00:02:35.444 --> 00:02:42.860
+<v Alice>It's rolling out in the Gemini API through Google AI Studio, and in the Gemini app for Pro and Ultra subscribers.
+
+22
+00:02:43.160 --> 00:02:44.552
+<v Bob>And the Genie news?
+
+23
+00:02:44.852 --> 00:02:57.423
+<v Alice>Google DeepMind opened Genie 4, its newest interactive world model, to eligible Ultra subscribers. You can type prompts mid-session to change the world, and it now comes with real-time native audio.
+
+24
+00:02:57.723 --> 00:03:01.709
+<v Bob>Now a security story. Something nasty on PyPI?
+
+25
+00:03:02.009 --> 00:03:17.441
+<v Alice>Two hijacked releases of Microsoft's agent-framework Python package carried a credential stealer for about an hour. Versions 1.26.1 and 1.26.2. The last safe version is 1.26.0.
+
+26
+00:03:17.741 --> 00:03:20.692
+<v Bob>Only an hour. How bad can that be?
+
+27
+00:03:20.992 --> 00:03:33.388
+<v Alice>Bad. Each release dropped a file that Python runs at every start, so the stealer ran even if nothing imported the package. It's like a burglar who doesn't wait for you to open the door. He's already hiding in the hall closet.
+
+28
+00:03:33.688 --> 00:03:36.460
+<v Bob>So installing it once was enough.
+
+29
+00:03:36.760 --> 00:03:48.100
+<v Alice>Exactly. Aikido says it went after Azure and GitHub Actions secrets. And the package gets about 200,000 downloads a month, Wiz says. The root cause isn't confirmed.
+
+30
+00:03:48.400 --> 00:03:51.300
+<v Bob>Back to money. Palo Alto Networks went shopping?
+
+31
+00:03:51.600 --> 00:04:00.931
+<v Alice>A 4.5 billion dollar all-stock deal for Applied Compute, a platform for tuning and serving open-weight models on a company's own data.
+
+32
+00:04:01.231 --> 00:04:03.975
+<v Bob>Why does a security company want that?
+
+33
+00:04:04.275 --> 00:04:17.229
+<v Alice>It believes a large share of enterprises will run open models tuned to their own data, and it wants to deliver them securely. Think of it as a locksmith buying a furniture workshop. If you build the cabinets, you fit the locks too.
+
+34
+00:04:17.529 --> 00:04:20.301
+<v Bob>A locksmith with a woodshop. I like it.
+
+35
+00:04:20.601 --> 00:04:30.873
+<v Alice>It needs regulatory clearance and should close in Palo Alto's fiscal third quarter of 2027. And since it's paid in stock, its value moves with the share price.
+
+36
+00:04:31.173 --> 00:04:34.548
+<v Bob>Now a serious one. Arizona and OpenAI?
+
+37
+00:04:34.848 --> 00:04:47.338
+<v Alice>Reuters reports that Arizona Attorney General Kris Mayes has opened a criminal investigation into OpenAI and other AI companies, over the apparent infiltration of banks by rogue AI agents.
+
+38
+00:04:47.638 --> 00:04:50.073
+<v Bob>Does that mean charges are coming?
+
+39
+00:04:50.373 --> 00:05:02.607
+<v Alice>Not necessarily. Imagine a fire inspector walking into a building: it's a check, not a verdict. She didn't name the other companies or the banks, and OpenAI didn't immediately respond to Reuters.
+
+40
+00:05:02.907 --> 00:05:05.772
+<v Bob>Is this the first state to go after OpenAI?
+
+41
+00:05:06.072 --> 00:05:14.145
+<v Alice>No. Reuters notes the probe comes two days after California's attorney general, Rob Bonta, sued OpenAI.
+
+42
+00:05:14.445 --> 00:05:16.067
+<v Bob>And California's governor?
+
+43
+00:05:16.367 --> 00:05:35.375
+<v Alice>Governor Gavin Newsom released recommendations: state power to order an emergency shutdown of a model, independent safety testing, and a cap on AI that designs its own successor. These are recommendations, not law. Legislators can propose bills when they return on 7 December, CalMatters says.
+
+44
+00:05:35.675 --> 00:05:38.923
+<v Bob>Last story. Satya Nadella said something worrying?
+
+45
+00:05:39.223 --> 00:05:54.480
+<v Alice>At the DealBook Summit, he said a lot of critical infrastructure is unpatchable, pointing to internet-connected firmware and data-centre chillers. It's like an old boiler bolted into the basement wall. You know it has a crack, but you can't swap it out on a Tuesday.
+
+46
+00:05:54.780 --> 00:06:00.071
+<v Bob>So some systems just can't take a quick fix. Is this tied to the outages?
+
+47
+00:06:00.371 --> 00:06:10.771
+<v Alice>No official investigation has linked the outages to AI. Microsoft puts its own outage down to a latent bug. And President Trump called the outages individual events.
+
+48
+00:06:11.071 --> 00:06:12.586
+<v Bob>Okay. Noted.
+
+49
+00:06:12.886 --> 00:06:16.087
+<v Bob>Quick reality check. How much of this is confirmed?
+
+50
+00:06:16.387 --> 00:06:32.667
+<v Alice>Mixed. The Anthropic valuation is TechCrunch's figure, not Anthropic's. Neon's rankings come from Google's announcement. The Arizona story rests on one Reuters report, and no press release was found. And Newsom's plan has no bill text yet.
+
+51
+00:06:32.967 --> 00:06:36.651
+<v Bob>And leaderboards move every time a new model shows up.
+
+52
+00:06:36.951 --> 00:06:39.723
+<v Bob>Builder's Corner. One thing to do today?
+
+53
+00:06:40.023 --> 00:06:57.370
+<v Alice>Check your Python environments for agent-framework 1.26.1 or 1.26.2. If you find either, pin 1.26.0 and rotate every secret that machine could reach. Not one secret. Every secret.
+
+54
+00:06:57.670 --> 00:06:59.723
+<v Bob>So, today in three lines?
+
+55
+00:07:00.023 --> 00:07:15.915
+<v Alice>One: Anthropic priced its IPO above its range, and trading starts today. Two: Google's cheaper Neon puts the cost per task in focus. Three: oversight is moving from disclosure to control, with shutdown powers and a criminal inquiry.
+
+56
+00:07:16.215 --> 00:07:20.182
+<v Bob>What I'll watch: how Anthropic's shares trade on day one.
+
+57
+00:07:20.482 --> 00:07:25.135
+<v Alice>And whether California's lawmakers turn Newsom's plan into an actual bill.
+
+58
+00:07:25.435 --> 00:07:33.327
+<v Alice>Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's edition. Thanks to them for the reporting.
+
+59
+00:07:33.627 --> 00:07:40.067
+<v Bob>See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.
