@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-20T09:31:21Z",
+  "updated": "2026-11-20T16:50:32Z",
   "episodes": [
+    {
+      "id": "2026-11-20_the-shepherd-boy-the-wolf",
+      "title": "The Boy Who Cried Wolf: Bedtime Story for Kids, Our Retelling (after Aesop)",
+      "summary": [
+        "A gentle bedtime retelling of The Boy Who Cried Wolf, Aesop's fable, from The Aesop for Children at the Library of Congress.",
+        "A bored shepherd boy shouts Wolf! for fun, twice, until one evening a real wolf comes and nobody believes him.",
+        "The sheep hide safely, the boy says sorry and learns to tell the truth, ending with a soft goodnight."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "en",
+      "format": "bedtime-story",
+      "published": "2026-11-20T16:39:55Z",
+      "duration_s": 219.908,
+      "size_bytes": 3520503,
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-20_the-shepherd-boy-the-wolf.mp3",
+      "audio_sha256": "08f9cf59199f29841ab667e3859fee16f6d1879057730ff911b152bc1ed71daa",
+      "transcript": "episodes/2026-11-20_the-shepherd-boy-the-wolf/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The Shepherd Boy & the Wolf",
+        "author": "Aesop",
+        "url": "https://read.gov/aesop/043.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Golly Gee\", \"Marty Gots a Plan\", \"Carefree\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-20_the-shepherd-boy-the-wolf",
+      "image": {
+        "square": "art/2026-11-20_the-shepherd-boy-the-wolf/square.jpg",
+        "wide": "art/2026-11-20_the-shepherd-boy-the-wolf/wide.jpg",
+        "thumb": "art/2026-11-20_the-shepherd-boy-the-wolf/thumb.jpg",
+        "alt": "Pencil drawing of a shepherd boy playing a wooden pipe on a green hill, with his little dog and three woolly sheep around him and a small village in the distance."
+      },
+      "description": "The Boy Who Cried Wolf, Aesop's fable, retold in our own words as a gentle bedtime story, from The Aesop for Children. A bored shepherd boy cries wolf for fun, until a real wolf comes and nobody believes him.\n\nIn this episode:\n- A bored shepherd boy and a silly trick\n- A real wolf, and nobody comes\n- Saying sorry, and finding every sheep\n\nSources: The Shepherd Boy & the Wolf, Aesop, The Aesop for Children (Library of Congress)\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - The Boy Who Cried Wolf Bedtime Story for Kids, Our Retelling (after Aesop) (2026-11-20).mp3"
+    },
     {
       "id": "2026-11-20_the-sweet-side-of-the-bitter-lesson",
       "title": "Bitter Lesson's Sweet Side: Keep Control of AI Code (Thariq Shihipar)",
