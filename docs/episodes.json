@@ -24,8 +24,99 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-20T07:43:04Z",
+  "updated": "2026-11-20T09:31:21Z",
   "episodes": [
+    {
+      "id": "2026-11-20_the-sweet-side-of-the-bitter-lesson",
+      "title": "Bitter Lesson's Sweet Side: Keep Control of AI Code (Thariq Shihipar)",
+      "summary": [
+        "Thariq Shihipar revisits the Bitter Lesson: models can now work the way we want, so AI can bring a software renaissance.",
+        "Vibe coding a fighting game left him unsure what his characters did, so he keeps a readable spec folder next to the engine.",
+        "Guests weigh Stack Overflow's survey on falling trust, Rodney Brooks's reply to Sutton and Birgitta Böckeler on specs."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-20T09:27:23Z",
+      "duration_s": 939.335,
+      "size_bytes": 15030430,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-20_the-sweet-side-of-the-bitter-lesson.mp3",
+      "audio_sha256": "9ef4be2ac1439159ac78a76745fc51652b61b9acb456f36a380095c16537ff2e",
+      "transcript": "episodes/2026-11-20_the-sweet-side-of-the-bitter-lesson/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The Sweet Side of the Bitter Lesson",
+        "author": "Thariq Shihipar",
+        "url": "https://www.youtube.com/watch?v=xRJMiaUoD_8",
+        "published": null,
+        "kind": "text"
+      },
+      "sources": [
+        {
+          "title": "The Sweet Side of the Bitter Lesson",
+          "author": "Thariq Shihipar",
+          "url": "https://www.youtube.com/watch?v=xRJMiaUoD_8"
+        },
+        {
+          "title": "The Bitter Lesson",
+          "author": "Rich Sutton",
+          "url": "http://www.incompleteideas.net/IncIdeas/BitterLesson.html"
+        },
+        {
+          "title": "Centaurs and Cyborgs on the Jagged Frontier",
+          "author": "Ethan Mollick",
+          "url": "https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged"
+        },
+        {
+          "title": "Not all AI-assisted programming is vibe coding (but vibe coding rocks)",
+          "author": "Simon Willison",
+          "url": "https://simonwillison.net/2025/Mar/19/vibe-coding/"
+        },
+        {
+          "title": "Developers remain willing but reluctant to use AI: The 2025 Developer Survey results are here",
+          "author": "Erin Yepis",
+          "url": "https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here"
+        },
+        {
+          "title": "Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl",
+          "author": "Birgitta Böckeler",
+          "url": "https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html"
+        },
+        {
+          "title": "A Better Lesson",
+          "author": "Rodney Brooks",
+          "url": "https://rodneybrooks.com/a-better-lesson/"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "Developers remain willing but reluctant to use AI: The 2025 Developer Survey results are here"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "A Better Lesson"
+          ]
+        }
+      ],
+      "description": "Thariq Shihipar revisits Rich Sutton's Bitter Lesson and argues coding agents can keep developers in creative control. Vibe coding a fighting game left him lost, and a readable spec folder gave him back control.\n\nIn this episode:\n- The jagged frontier and the smooth interior\n- Vibe coding versus code you can explain\n- Readable specs next to the engine code\n\nSources: Thariq Shihipar; Rich Sutton; Ethan Mollick; Simon Willison; Erin Yepis; Birgitta Böckeler; Rodney Brooks\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Bitter Lesson's Sweet Side Keep Control of AI Code (Thariq Shihipar) (2026-11-20).mp3"
+    },
     {
       "id": "2026-11-20_morning-edition-friday-20-november-2026",
       "title": "Anthropic Closes 17% Up, Gemini Runs Mac Apps | AI Daily 20 Nov",

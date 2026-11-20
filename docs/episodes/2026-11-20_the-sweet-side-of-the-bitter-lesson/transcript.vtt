@@ -1,0 +1,437 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.986
+<v Alice>What happens when a developer vibe codes his own fighting game, and ends up with no idea what his characters actually do?
+
+2
+00:00:07.286 --> 00:00:14.319
+<v Bob>He found a fix that keeps the AI and gives him back control. And it starts with an old essay, "The Bitter Lesson".
+
+3
+00:00:18.619 --> 00:00:27.567
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and today I'm the one asking the questions.
+
+4
+00:00:27.867 --> 00:00:38.011
+<v Bob>And I'm Bob! Today we're unpacking Thariq Shihipar's talk, "The Sweet Side of the Bitter Lesson", on the AI Engineer channel, from CODE Summit 2026.
+
+5
+00:00:38.311 --> 00:00:42.198
+<v Alice>Bitter and sweet. It already sounds like dessert.
+
+6
+00:00:42.498 --> 00:00:53.025
+<v Bob>A little! He opens with what he's been thinking about since he left Anthropic: what he got right this year, and the ways he's been wrong. Six outside sources and three guests will help us test it.
+
+7
+00:00:53.325 --> 00:00:56.910
+<v Alice>Start with the title. What is the Bitter Lesson?
+
+8
+00:00:57.210 --> 00:01:09.316
+<v Bob>It's a short essay by Rich Sutton. His claim: the biggest lesson from 70 years of AI research is that general methods that leverage computation are ultimately the most effective, and by a large margin.
+
+9
+00:01:09.616 --> 00:01:12.817
+<v Alice>Computation meaning, just more computer?
+
+10
+00:01:13.117 --> 00:01:24.364
+<v Bob>Pretty much. In chess, the methods that beat world champion Kasparov in 1997 were based on massive, deep search. Go, speech recognition and computer vision went the same way.
+
+11
+00:01:24.664 --> 00:01:26.121
+<v Alice>So why is it bitter?
+
+12
+00:01:26.421 --> 00:01:37.795
+<v Bob>Because researchers kept building in how they think the mind works. Sutton says that always helps in the short term, but in the long run it plateaus, and the breakthrough comes from scaling search and learning instead.
+
+13
+00:01:38.095 --> 00:01:39.662
+<v Alice>Give me a picture.
+
+14
+00:01:39.962 --> 00:01:54.489
+<v Bob>Picture two cooking students. One memorizes grandma's recipe cards, the other just cooks and tastes, over and over. The first looks great early; the second wins in the end, and the recipe cards are the human knowledge researchers build in.
+
+15
+00:01:54.789 --> 00:01:57.781
+<v Alice>Okay. So where does Thariq come in?
+
+16
+00:01:58.081 --> 00:02:12.103
+<v Bob>He lists fears he had. First, Bash is all you need: agents were great at the shell, and Claude Code was built around the Bash tool. Now he prefers MCP, and calls Bash a weird remnant of how the models were trained at the start.
+
+17
+00:02:12.403 --> 00:02:14.748
+<v Alice>Let me guess. React was next.
+
+18
+00:02:15.048 --> 00:02:28.559
+<v Bob>React is all you need! Models looked great at React, so he feared we'd be writing React forever. Now they write HTML, React, Swift, even Figma's own JSON format, and it all looks roughly the same.
+
+19
+00:02:28.859 --> 00:02:33.082
+<v Alice>React forever. That's a horror movie for some developers.
+
+20
+00:02:33.382 --> 00:02:45.442
+<v Bob>And the third fear: diffusion models would eat art, and we'd have no control over them. Instead, he says, models now make art through code, and by driving tools like Blender, Photoshop or Figma.
+
+21
+00:02:45.742 --> 00:02:47.309
+<v Alice>So what's the sweet side?
+
+22
+00:02:47.609 --> 00:03:02.136
+<v Bob>We don't have to submit to a foreign intelligence. Think of a session musician who plays any style you hire them for, instead of a jukebox stuck on one song: you still pick the song. His question becomes how to be AGI-pilled and human-centered at once.
+
+23
+00:03:02.436 --> 00:03:06.153
+<v Alice>He says this matters beyond software. Why?
+
+24
+00:03:06.453 --> 00:03:17.955
+<v Bob>He calls software engineers the leading edge of AI adoption: whatever happens to software will happen to knowledge work and other parts of the economy. So how we work with AI is how others will, too.
+
+25
+00:03:18.255 --> 00:03:19.885
+<v Alice>No pressure, then.
+
+26
+00:03:20.185 --> 00:03:35.698
+<v Bob>Here's his big frame: AI is an industrial revolution and a renaissance at the same time. This year was the industrial revolution: software factories, turning an unreliable craft that was hard to execute on into something that's not the limiting factor.
+
+27
+00:03:35.998 --> 00:03:37.583
+<v Alice>And the renaissance part?
+
+28
+00:03:37.883 --> 00:03:59.914
+<v Bob>People want higher and higher quality software, and every bit of creativity, spirit and soul you put in is economically valuable. Imagine a bakery: the factory line turns out identical loaves, while the master baker makes the loaf people cross town for. And Ethan Mollick's study found AI outputs a bit homogenous and same-y, so the human touch is the scarce part.
+
+29
+00:04:00.214 --> 00:04:05.633
+<v Alice>Now, the jagged frontier. I've heard the phrase, but never really got it.
+
+30
+00:04:05.933 --> 00:04:21.191
+<v Bob>It comes from Ethan Mollick's post "Centaurs and Cyborgs on the Jagged Frontier", on One Useful Thing. On some tasks AI is immensely powerful, on others it fails completely or subtly, and unless you use AI a lot, you won't know which is which.
+
+31
+00:04:21.491 --> 00:04:22.512
+<v Alice>Example?
+
+32
+00:04:22.812 --> 00:04:40.474
+<v Bob>A sonnet is easy for AI, but a poem of exactly 50 words is hard. In his study with Boston Consulting Group, consultants using AI on tasks inside the frontier finished 12.2 percent more tasks, 25.1 percent faster, with 40 percent higher quality.
+
+33
+00:04:40.774 --> 00:04:42.528
+<v Alice>And outside the frontier?
+
+34
+00:04:42.828 --> 00:04:55.352
+<v Bob>On a task built so the AI gives a wrong but convincing answer, consultants got it right 84 percent of the time without AI. With it, only 60 to 70 percent. Mollick says they fell asleep at the wheel.
+
+35
+00:04:55.652 --> 00:04:59.457
+<v Alice>Ouch. So where does Thariq's smooth interior fit?
+
+36
+00:04:59.757 --> 00:05:20.158
+<v Bob>Mollick watches the edge, but below the frontier, Thariq says, it's not jagged: if a model can write React, it can write Figma, it can write JSON. Picture a coastline: the edge is all cliffs and inlets, but the bay inside is calm. That calm bay is the breadth of tasks models are really, really good at.
+
+37
+00:05:20.458 --> 00:05:23.357
+<v Alice>Why care more about the bay than the cliffs?
+
+38
+00:05:23.657 --> 00:05:32.141
+<v Bob>He doesn't really care that they can build Mario Kart from scratch anymore. He cares whether the software we build is high quality, worthy of a renaissance.
+
+39
+00:05:32.441 --> 00:05:37.129
+<v Alice>Mario Kart from scratch is the boring part now. What a time.
+
+40
+00:05:37.429 --> 00:05:53.662
+<v Bob>He goes further: the perfect model won't need to verify its work or scan for security vulnerabilities. To show what models know, he asks one whether points on Earth are land or water, and plots the map. An older Opus model draws it blurry; a newer one, almost perfect.
+
+41
+00:05:53.962 --> 00:05:56.954
+<v Alice>So, back to the fighting game from the start.
+
+42
+00:05:57.254 --> 00:06:14.381
+<v Bob>He's building a 2D isometric fighting game, inspired by Avatar and Smash Brothers, trying to be a great vibe coder. He'll say: I want this character to throw a rock. Then come the questions: does the rock go through the wall the character can summon, and what about size and charge?
+
+43
+00:06:14.681 --> 00:06:17.580
+<v Alice>And the model just answers all of that for him?
+
+44
+00:06:17.880 --> 00:06:29.476
+<v Bob>Exactly. It makes a bunch of choices, he tries it out, and thinks: I have no idea what this character actually does. He sends off a prompt, does something else, and honestly makes less progress.
+
+45
+00:06:29.776 --> 00:06:33.744
+<v Alice>That sounds familiar. But isn't that just what vibe coding is?
+
+46
+00:06:34.044 --> 00:06:49.266
+<v Bob>Pretty much by definition. Simon Willison, on his weblog, defines vibe coding as building software with an LLM without reviewing the code it writes. The term was coined by Andrej Karpathy, for coding where you forget that the code even exists.
+
+47
+00:06:49.566 --> 00:06:51.396
+<v Alice>Is Willison against it?
+
+48
+00:06:51.696 --> 00:07:08.567
+<v Bob>No, for low stakes projects and prototypes he says, why not let it rip? But for production, he won't commit code he couldn't explain to somebody else. It's like hiring a builder to redo your house while you're away: you come back to rooms you never chose, and no idea which walls hold up the roof.
+
+49
+00:07:08.867 --> 00:07:12.962
+<v Alice>So he lost the plot of his own game. Did he just accept that?
+
+50
+00:07:13.262 --> 00:07:28.857
+<v Bob>For a while, he thought that's just how you work with AI. Then he decided it's not acceptable: to make something great, you have to really know your stuff. Willison says the same about the job itself: code that demonstrably works and can be understood by other humans.
+
+51
+00:07:29.157 --> 00:07:33.090
+<v Alice>Do other developers feel this? Maya, you went through the numbers.
+
+52
+00:07:33.390 --> 00:07:49.105
+<v Maya>Erin Yepis wrote up Stack Overflow's Developer Survey on the Stack Overflow blog, with more than 49,000 developers. 80 percent now use AI tools in their workflows, but trust in the accuracy of AI fell from 40 percent to just 29 percent.
+
+53
+00:07:49.405 --> 00:07:52.862
+<v Alice>Just 29 percent! So what's bugging them?
+
+54
+00:07:53.162 --> 00:08:10.606
+<v Maya>The top frustration, cited by 45 percent, is AI solutions that are "almost right, but not quite". And 66 percent say they spend more time fixing almost-right AI code. Also, nearly 72 percent said vibe coding isn't part of their professional work.
+
+55
+00:08:10.906 --> 00:08:12.934
+<v Alice>So how is Thariq fixing it?
+
+56
+00:08:13.234 --> 00:08:25.248
+<v Bob>He's careful to say he's still early and hasn't figured it all out. But he split his codebase in two: an engine part, and a folder he calls spec, or maybe just human. That folder is the code he reads.
+
+57
+00:08:25.548 --> 00:08:27.458
+<v Alice>What makes it readable?
+
+58
+00:08:27.758 --> 00:08:44.165
+<v Bob>It's linted, there are rules for Claude about how that code looks, and it's supposed to feel like English. Think of a board game: the rulebook is what players read and change, and the factory that prints the pieces stays out of sight. The spec folder is the rulebook; the engine is the factory.
+
+59
+00:08:44.465 --> 00:08:45.869
+<v Alice>Walk me through the demo.
+
+60
+00:08:46.169 --> 00:09:00.593
+<v Bob>There's agent code he doesn't understand, cameras and so on. But in the spec code he sees all his characters and their abilities, like the rock move: well commented, using meters. He can see there are three ways for that character to throw a rock.
+
+61
+00:09:00.893 --> 00:09:03.282
+<v Alice>So he basically wrote his own language?
+
+62
+00:09:03.582 --> 00:09:16.025
+<v Bob>In his words, almost a custom scripting language for his game. He wants a bigger rock, so he types 1.5 in a real code editor, plays, and the rock charges, gets really big, and flies.
+
+63
+00:09:16.325 --> 00:09:21.012
+<v Alice>Change one number, and a giant rock flies. That's the dream.
+
+64
+00:09:21.312 --> 00:09:34.445
+<v Bob>And he's using Cursor's tab completion more: he writes, if you summon a wall in the middle, queue it up as an action, and the editor completes it. He calls it kind of like spec-driven development, where the spec is the scripting language.
+
+65
+00:09:34.745 --> 00:09:39.479
+<v Alice>Spec-driven development is a buzzword now. Lena, you dug into it.
+
+66
+00:09:39.779 --> 00:09:52.895
+<v Lena>Birgitta Böckeler, writing on Martin Fowler's site, says the definition is still in flux. Her best reading: you write a spec before writing code with AI, and the spec becomes the source of truth for the human and the AI.
+
+67
+00:09:53.195 --> 00:09:55.484
+<v Alice>One kind of spec, or several?
+
+68
+00:09:55.784 --> 00:10:09.295
+<v Lena>She sees three levels: spec-first, where you write it and use it for the task; spec-anchored, where you keep it to evolve the feature later. And spec-as-source, where only the spec is edited by the human, who never touches the code.
+
+69
+00:10:09.595 --> 00:10:12.925
+<v Alice>And Thariq still asks Claude for the hard parts?
+
+70
+00:10:13.225 --> 00:10:23.415
+<v Bob>Yes. For something complicated he still asks Claude to make the primitives, but it's easy to understand what's happening. He feels much more in control, and he can review while Claude works.
+
+71
+00:10:23.715 --> 00:10:25.767
+<v Alice>So what's his big takeaway?
+
+72
+00:10:26.067 --> 00:10:37.105
+<v Bob>He now thinks about the best way to deliver high quality software, not about what the model likes to write code in. Internalize that, he says, and next year will be about a renaissance of software.
+
+73
+00:10:37.405 --> 00:10:39.677
+<v Alice>What does that renaissance need?
+
+74
+00:10:39.977 --> 00:10:57.344
+<v Bob>His list: new languages, efficient like Rust, but also modular, hot-reloadable and readable. New primitives, maybe new databases, servers and operating system interactions. New interaction paradigms, where old HCI research is worth revisiting, and new aesthetics.
+
+75
+00:10:57.644 --> 00:10:59.189
+<v Alice>And how does he close?
+
+76
+00:10:59.489 --> 00:11:15.896
+<v Bob>We need to decide what the future of work looks like, because the models aren't an alien intelligence forcing one way of working. It's like a new paint set with every color: the paint never chooses the painting. Mollick ends his post on the same note: we get to make choices about how we want to use AI.
+
+77
+00:11:16.196 --> 00:11:17.821
+<v Alice>So the job is ours.
+
+78
+00:11:18.121 --> 00:11:22.901
+<v Bob>His last words, basically: our job is to bring about the renaissance.
+
+79
+00:11:23.201 --> 00:11:27.996
+<v Alice>Time for Counterpoints. Sam, you brought a critic of Sutton himself.
+
+80
+00:11:28.296 --> 00:11:41.970
+<v Sam>Rodney Brooks answered Sutton on his own site, in "A Better Lesson". He points to the networks that label images, CNNs: their front end is designed by humans to handle the idea that objects can appear anywhere in the frame.
+
+81
+00:11:42.270 --> 00:11:44.786
+<v Alice>So the human knowledge never really left?
+
+82
+00:11:45.086 --> 00:12:01.319
+<v Sam>That's his argument. He calls it sleight of hand: humans still pour their intelligence into the algorithms, just in a different place and form. His better lesson is to count the total cost of any solution, and so far they have all required substantial amounts of human ingenuity.
+
+83
+00:12:01.619 --> 00:12:06.864
+<v Alice>Which sounds close to Thariq, honestly. The human part moves, it doesn't vanish.
+
+84
+00:12:07.164 --> 00:12:18.794
+<v Bob>That's my take too, but Brooks wrote it as a direct critique: he thinks Sutton is wrong. And Sutton's essay holds the opposite view: building in our discoveries only makes it harder to see how discovering can be done.
+
+85
+00:12:19.094 --> 00:12:22.981
+<v Alice>Lena, does writing specs really keep you in control?
+
+86
+00:12:23.281 --> 00:12:37.436
+<v Lena>Böckeler has doubts. When she asked one tool to fix a small bug, it turned it into 4 user stories with 16 acceptance criteria, like using a sledgehammer to crack a nut. And she'd rather review code than all those markdown files.
+
+87
+00:12:37.736 --> 00:12:41.286
+<v Alice>So a spec can turn into a mountain of paperwork.
+
+88
+00:12:41.586 --> 00:12:55.474
+<v Lena>And a false sense of control: she frequently saw the agent not follow all the instructions anyway. She also recalls model-driven development, which never took off for business applications, and asks if we're making something worse while trying to make it better.
+
+89
+00:12:55.774 --> 00:13:00.983
+<v Alice>Maya, what about the smooth interior? A model so good we stop checking?
+
+90
+00:13:01.283 --> 00:13:12.960
+<v Maya>The survey points the other way, for now. When the code gets complicated and the stakes are high, developers turn to people: 75 percent said they'd still ask another person for help when they don't trust AI's answers.
+
+91
+00:13:13.260 --> 00:13:15.823
+<v Alice>And that's before the model is perfect.
+
+92
+00:13:16.123 --> 00:13:28.534
+<v Bob>Right. Mollick warns that people really can go on autopilot with AI and fail to notice its mistakes. And Thariq's fix is one game, one demo, still early, so it's a direction, not a proven method.
+
+93
+00:13:28.834 --> 00:13:32.384
+<v Alice>Builder's Corner! What can listeners try this week?
+
+94
+00:13:32.684 --> 00:13:47.466
+<v Bob>Pick one feature, say one character or one settings screen, and keep a readable spec file for it next to the engine code. Write it the way Thariq does, in plain words and real units like meters, so when you read it, you know what's happening and can tweak it.
+
+95
+00:13:47.766 --> 00:13:49.946
+<v Alice>And where does the agent come in?
+
+96
+00:13:50.246 --> 00:14:03.234
+<v Bob>Ask the agent to edit the spec first, and only then the engine. Give it rules for how that file should look, like Thariq's rules for Claude, and use Willison's test: if you couldn't explain a change to somebody else, don't commit it.
+
+97
+00:14:03.534 --> 00:14:04.731
+<v Alice>Keep it small?
+
+98
+00:14:05.031 --> 00:14:12.285
+<v Bob>Very small. One feature, not a giant document, so you can tell after a week whether you really feel more in control.
+
+99
+00:14:12.585 --> 00:14:20.558
+<v Alice>Takeaways. Mine: compute wins, as Sutton says, but the sweet side is that models can work the way we want.
+
+100
+00:14:20.858 --> 00:14:26.741
+<v Bob>Mine: the jagged frontier gets the headlines, but the smooth interior is where your daily work lives.
+
+101
+00:14:27.041 --> 00:14:33.273
+<v Alice>Vibe coding is fine for low stakes projects. But if you can't explain it, don't ship it.
+
+102
+00:14:33.573 --> 00:14:38.655
+<v Bob>And split what you read from what the agent runs: a readable spec, next to the engine.
+
+103
+00:14:38.955 --> 00:14:40.325
+<v Alice>What's still open?
+
+104
+00:14:40.625 --> 00:14:52.946
+<v Bob>Whether the perfect model that needs no checking ever arrives, while trust in AI's accuracy is falling. And whether readable specs scale beyond one person's game: Thariq himself isn't sure it's the final way he'll write it.
+
+105
+00:14:53.246 --> 00:14:57.132
+<v Alice>And who leads that renaissance: builders, or the models?
+
+106
+00:14:57.432 --> 00:15:01.829
+<v Bob>Thariq's answer is us. Whether we take the job is the open part.
+
+107
+00:15:02.129 --> 00:15:04.098
+<v Alice>Big job. Count me in.
+
+108
+00:15:04.398 --> 00:15:24.973
+<v Bob>Thanks to Thariq Shihipar for his talk, "The Sweet Side of the Bitter Lesson", on the AI Engineer channel. Thanks also to Rich Sutton's "The Bitter Lesson", Ethan Mollick on One Useful Thing and Simon Willison's weblog. And to Erin Yepis on the Stack Overflow blog, Rodney Brooks's "A Better Lesson", and Birgitta Böckeler on Martin Fowler's site.
+
+109
+00:15:25.273 --> 00:15:32.735
+<v Alice>That was the sweet side of the Bitter Lesson. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

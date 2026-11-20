@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Fri, 20 Nov 2026 07:43:04 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 20 Nov 2026 09:31:21 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,34 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-20_the-sweet-side-of-the-bitter-lesson</guid>
+    <title>Bitter Lesson's Sweet Side: Keep Control of AI Code (Thariq Shihipar)</title>
+    <link>https://luongnv.com/podcast/#2026-11-20_the-sweet-side-of-the-bitter-lesson</link>
+    <description>Thariq Shihipar revisits the Bitter Lesson: models can now work the way we want, so AI can bring a software renaissance.
+
+Vibe coding a fighting game left him unsure what his characters did, so he keeps a readable spec folder next to the engine.
+
+Guests weigh Stack Overflow's survey on falling trust, Rodney Brooks's reply to Sutton and Birgitta Böckeler on specs.
+
+Sources:
+- The Sweet Side of the Bitter Lesson, Thariq Shihipar (https://www.youtube.com/watch?v=xRJMiaUoD_8)
+- The Bitter Lesson, Rich Sutton (http://www.incompleteideas.net/IncIdeas/BitterLesson.html)
+- Centaurs and Cyborgs on the Jagged Frontier, Ethan Mollick (https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged)
+- Not all AI-assisted programming is vibe coding (but vibe coding rocks), Simon Willison (https://simonwillison.net/2025/Mar/19/vibe-coding/)
+- Developers remain willing but reluctant to use AI: The 2025 Developer Survey results are here, Erin Yepis (https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here)
+- Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl, Birgitta Böckeler (https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html)
+- A Better Lesson, Rodney Brooks (https://rodneybrooks.com/a-better-lesson/)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Thariq Shihipar revisits the Bitter Lesson: models can now work the way we want, so AI can bring a software renaissance.</p><p>Vibe coding a fighting game left him unsure what his characters did, so he keeps a readable spec folder next to the engine.</p><p>Guests weigh Stack Overflow's survey on falling trust, Rodney Brooks's reply to Sutton and Birgitta Böckeler on specs.</p><p>Sources:</p><ul><li>The Sweet Side of the Bitter Lesson, Thariq Shihipar: <a href="https://www.youtube.com/watch?v=xRJMiaUoD_8">https://www.youtube.com/watch?v=xRJMiaUoD_8</a></li><li>The Bitter Lesson, Rich Sutton: <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">http://www.incompleteideas.net/IncIdeas/BitterLesson.html</a></li><li>Centaurs and Cyborgs on the Jagged Frontier, Ethan Mollick: <a href="https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged">https://www.oneusefulthing.org/p/centaurs-and-cyborgs-on-the-jagged</a></li><li>Not all AI-assisted programming is vibe coding (but vibe coding rocks), Simon Willison: <a href="https://simonwillison.net/2025/Mar/19/vibe-coding/">https://simonwillison.net/2025/Mar/19/vibe-coding/</a></li><li>Developers remain willing but reluctant to use AI: The 2025 Developer Survey results are here, Erin Yepis: <a href="https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here">https://stackoverflow.blog/2025/12/29/developers-remain-willing-but-reluctant-to-use-ai-the-2025-developer-survey-results-are-here</a></li><li>Understanding Spec-Driven-Development: Kiro, spec-kit, and Tessl, Birgitta Böckeler: <a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html">https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html</a></li><li>A Better Lesson, Rodney Brooks: <a href="https://rodneybrooks.com/a-better-lesson/">https://rodneybrooks.com/a-better-lesson/</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Fri, 20 Nov 2026 09:27:23 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-20_the-sweet-side-of-the-bitter-lesson.mp3?v=9ef4be2a" length="15030430" type="audio/mpeg"/>
+    <itunes:duration>939</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-20_the-sweet-side-of-the-bitter-lesson/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-20_morning-edition-friday-20-november-2026</guid>
     <title>Anthropic Closes 17% Up, Gemini Runs Mac Apps | AI Daily 20 Nov</title>

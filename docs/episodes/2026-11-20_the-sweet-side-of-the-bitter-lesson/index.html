@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bitter Lesson&#x27;s Sweet Side: Keep Control of AI Code (Thariq Shihipar) | Build Wiz AI Show</title>
+<meta name="description" content="Thariq Shihipar revisits Rich Sutton&#x27;s Bitter Lesson and argues coding agents can keep developers in creative control. Vibe coding a fighting game left him lost, and a readable spec folder gave him back control.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-20_the-sweet-side-of-the-bitter-lesson/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-20_the-sweet-side-of-the-bitter-lesson/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="Bitter Lesson&#x27;s Sweet Side: Keep Control of AI Code (Thariq Shihipar)">
+<meta property="og:description" content="Thariq Shihipar revisits Rich Sutton&#x27;s Bitter Lesson and argues coding agents can keep developers in creative control. Vibe coding a fighting game left him lost, and a readable spec folder gave him back control.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-20_the-sweet-side-of-the-bitter-lesson/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-20_the-sweet-side-of-the-bitter-lesson.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bitter Lesson&#x27;s Sweet Side: Keep Control of AI Code (Thariq Shihipar)">
+<meta name="twitter:description" content="Thariq Shihipar revisits Rich Sutton&#x27;s Bitter Lesson and argues coding agents can keep developers in creative control. Vibe coding a fighting game left him lost, and a readable spec folder gave him back control.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "Bitter Lesson's Sweet Side: Keep Control of AI Code (Thariq Shihipar)",
+ "description": "Thariq Shihipar revisits Rich Sutton's Bitter Lesson and argues coding agents can keep developers in creative control. Vibe coding a fighting game left him lost, and a readable spec folder gave him back control.\n\nIn this episode:\n- The jagged frontier and the smooth interior\n- Vibe coding versus code you can explain\n- Readable specs next to the engine code\n\nSources: Thariq Shihipar; Rich Sutton; Ethan Mollick; Simon Willison; Erin Yepis; Birgitta Böckeler; Rodney Brooks\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-20_the-sweet-side-of-the-bitter-lesson/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-20_the-sweet-side-of-the-bitter-lesson.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT15M39S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-20T09:27:23Z",
+ "timeRequired": "PT15M39S",
+ "isBasedOn": "https://www.youtube.com/watch?v=xRJMiaUoD_8"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">Bitter Lesson&#x27;s Sweet Side: Keep Control of AI Code (Thariq Shihipar)</h1>
+  <p class="meta"><span class="dur">16 min</span> · <time datetime="2026-11-20T09:27:23Z">2026-11-20</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-20_the-sweet-side-of-the-bitter-lesson.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">Thariq Shihipar revisits Rich Sutton&#x27;s Bitter Lesson and argues coding agents can keep developers in creative control. Vibe coding a fighting game left him lost, and a readable spec folder gave him back control.
+
+In this episode:
+- The jagged frontier and the smooth interior
+- Vibe coding versus code you can explain
+- Readable specs next to the engine code
+
+Sources: Thariq Shihipar; Rich Sutton; Ethan Mollick; Simon Willison; Erin Yepis; Birgitta Böckeler; Rodney Brooks
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-20_the-sweet-side-of-the-bitter-lesson">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-20_the-sweet-side-of-the-bitter-lesson.mp3" download="Build Wiz AI Show - Bitter Lesson&#x27;s Sweet Side Keep Control of AI Code (Thariq Shihipar) (2026-11-20).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Bitter Lesson&#x27;s Sweet Side: Keep Control of AI Code (Thariq Shihipar)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Thariq Shihipar revisits Rich Sutton&#x27;s Bitter Lesson and argues coding agents can keep developers in creative control. Vibe coding a fighting game left him lost, and a readable spec folder gave him back control.
+
+In this episode:
+- The jagged frontier and the smooth interior
+- Vibe coding versus code you can explain
+- Readable specs next to the engine code
+
+Sources: Thariq Shihipar; Rich Sutton; Ethan Mollick; Simon Willison; Erin Yepis; Birgitta Böckeler; Rodney Brooks
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://www.youtube.com/watch?v=xRJMiaUoD_8" rel="noopener">The Sweet Side of the Bitter Lesson</a> by Thariq Shihipar</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> What happens when a developer vibe codes his own fighting game, and ends up with no idea what his characters actually do?</p>
+    <p><strong>Bob:</strong> He found a fix that keeps the AI and gives him back control. And it starts with an old essay, "The Bitter Lesson".</p>
+    <p><strong>Alice:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and today I'm the one asking the questions.</p>
+    <p><strong>Bob:</strong> And I'm Bob! Today we're unpacking Thariq Shihipar's talk, "The Sweet Side of the Bitter Lesson", on the AI Engineer channel, from CODE Summit 2026.</p>
+    <p><strong>Alice:</strong> Bitter and sweet. It already sounds like dessert.</p>
+    <p><strong>Bob:</strong> A little! He opens with what he's been thinking about since he left Anthropic: what he got right this year, and the ways he's been wrong. Six outside sources and three guests will help us test it.</p>
+    <p><strong>Alice:</strong> Start with the title. What is the Bitter Lesson?</p>
+    <p><strong>Bob:</strong> It's a short essay by Rich Sutton. His claim: the biggest lesson from 70 years of AI research is that general methods that leverage computation are ultimately the most effective, and by a large margin.</p>
+    <p><strong>Alice:</strong> Computation meaning, just more computer?</p>
+    <p><strong>Bob:</strong> Pretty much. In chess, the methods that beat world champion Kasparov in 1997 were based on massive, deep search. Go, speech recognition and computer vision went the same way.</p>
+    <p><strong>Alice:</strong> So why is it bitter?</p>
+    <p><strong>Bob:</strong> Because researchers kept building in how they think the mind works. Sutton says that always helps in the short term, but in the long run it plateaus, and the breakthrough comes from scaling search and learning instead.</p>
+    <p><strong>Alice:</strong> Give me a picture.</p>
+    <p><strong>Bob:</strong> Picture two cooking students. One memorizes grandma's recipe cards, the other just cooks and tastes, over and over. The first looks great early; the second wins in the end, and the recipe cards are the human knowledge researchers build in.</p>
+    <p><strong>Alice:</strong> Okay. So where does Thariq come in?</p>
+    <p><strong>Bob:</strong> He lists fears he had. First, Bash is all you need: agents were great at the shell, and Claude Code was built around the Bash tool. Now he prefers MCP, and calls Bash a weird remnant of how the models were trained at the start.</p>
+    <p><strong>Alice:</strong> Let me guess. React was next.</p>
+    <p><strong>Bob:</strong> React is all you need! Models looked great at React, so he feared we'd be writing React forever. Now they write HTML, React, Swift, even Figma's own JSON format, and it all looks roughly the same.</p>
+    <p><strong>Alice:</strong> React forever. That's a horror movie for some developers.</p>
+    <p><strong>Bob:</strong> And the third fear: diffusion models would eat art, and we'd have no control over them. Instead, he says, models now make art through code, and by driving tools like Blender, Photoshop or Figma.</p>
+    <p><strong>Alice:</strong> So what's the sweet side?</p>
+    <p><strong>Bob:</strong> We don't have to submit to a foreign intelligence. Think of a session musician who plays any style you hire them for, instead of a jukebox stuck on one song: you still pick the song. His question becomes how to be AGI-pilled and human-centered at once.</p>
+    <p><strong>Alice:</strong> He says this matters beyond software. Why?</p>
+    <p><strong>Bob:</strong> He calls software engineers the leading edge of AI adoption: whatever happens to software will happen to knowledge work and other parts of the economy. So how we work with AI is how others will, too.</p>
+    <p><strong>Alice:</strong> No pressure, then.</p>
+    <p><strong>Bob:</strong> Here's his big frame: AI is an industrial revolution and a renaissance at the same time. This year was the industrial revolution: software factories, turning an unreliable craft that was hard to execute on into something that's not the limiting factor.</p>
+    <p><strong>Alice:</strong> And the renaissance part?</p>
+    <p><strong>Bob:</strong> People want higher and higher quality software, and every bit of creativity, spirit and soul you put in is economically valuable. Imagine a bakery: the factory line turns out identical loaves, while the master baker makes the loaf people cross town for. And Ethan Mollick's study found AI outputs a bit homogenous and same-y, so the human touch is the scarce part.</p>
+    <p><strong>Alice:</strong> Now, the jagged frontier. I've heard the phrase, but never really got it.</p>
+    <p><strong>Bob:</strong> It comes from Ethan Mollick's post "Centaurs and Cyborgs on the Jagged Frontier", on One Useful Thing. On some tasks AI is immensely powerful, on others it fails completely or subtly, and unless you use AI a lot, you won't know which is which.</p>
+    <p><strong>Alice:</strong> Example?</p>
+    <p><strong>Bob:</strong> A sonnet is easy for AI, but a poem of exactly 50 words is hard. In his study with Boston Consulting Group, consultants using AI on tasks inside the frontier finished 12.2 percent more tasks, 25.1 percent faster, with 40 percent higher quality.</p>
+    <p><strong>Alice:</strong> And outside the frontier?</p>
+    <p><strong>Bob:</strong> On a task built so the AI gives a wrong but convincing answer, consultants got it right 84 percent of the time without AI. With it, only 60 to 70 percent. Mollick says they fell asleep at the wheel.</p>
+    <p><strong>Alice:</strong> Ouch. So where does Thariq's smooth interior fit?</p>
+    <p><strong>Bob:</strong> Mollick watches the edge, but below the frontier, Thariq says, it's not jagged: if a model can write React, it can write Figma, it can write JSON. Picture a coastline: the edge is all cliffs and inlets, but the bay inside is calm. That calm bay is the breadth of tasks models are really, really good at.</p>
+    <p><strong>Alice:</strong> Why care more about the bay than the cliffs?</p>
+    <p><strong>Bob:</strong> He doesn't really care that they can build Mario Kart from scratch anymore. He cares whether the software we build is high quality, worthy of a renaissance.</p>
+    <p><strong>Alice:</strong> Mario Kart from scratch is the boring part now. What a time.</p>
+    <p><strong>Bob:</strong> He goes further: the perfect model won't need to verify its work or scan for security vulnerabilities. To show what models know, he asks one whether points on Earth are land or water, and plots the map. An older Opus model draws it blurry; a newer one, almost perfect.</p>
+    <p><strong>Alice:</strong> So, back to the fighting game from the start.</p>
+    <p><strong>Bob:</strong> He's building a 2D isometric fighting game, inspired by Avatar and Smash Brothers, trying to be a great vibe coder. He'll say: I want this character to throw a rock. Then come the questions: does the rock go through the wall the character can summon, and what about size and charge?</p>
+    <p><strong>Alice:</strong> And the model just answers all of that for him?</p>
+    <p><strong>Bob:</strong> Exactly. It makes a bunch of choices, he tries it out, and thinks: I have no idea what this character actually does. He sends off a prompt, does something else, and honestly makes less progress.</p>
+    <p><strong>Alice:</strong> That sounds familiar. But isn't that just what vibe coding is?</p>
+    <p><strong>Bob:</strong> Pretty much by definition. Simon Willison, on his weblog, defines vibe coding as building software with an LLM without reviewing the code it writes. The term was coined by Andrej Karpathy, for coding where you forget that the code even exists.</p>
+    <p><strong>Alice:</strong> Is Willison against it?</p>
+    <p><strong>Bob:</strong> No, for low stakes projects and prototypes he says, why not let it rip? But for production, he won't commit code he couldn't explain to somebody else. It's like hiring a builder to redo your house while you're away: you come back to rooms you never chose, and no idea which walls hold up the roof.</p>
+    <p><strong>Alice:</strong> So he lost the plot of his own game. Did he just accept that?</p>
+    <p><strong>Bob:</strong> For a while, he thought that's just how you work with AI. Then he decided it's not acceptable: to make something great, you have to really know your stuff. Willison says the same about the job itself: code that demonstrably works and can be understood by other humans.</p>
+    <p><strong>Alice:</strong> Do other developers feel this? Maya, you went through the numbers.</p>
+    <p><strong>Maya:</strong> Erin Yepis wrote up Stack Overflow's Developer Survey on the Stack Overflow blog, with more than 49,000 developers. 80 percent now use AI tools in their workflows, but trust in the accuracy of AI fell from 40 percent to just 29 percent.</p>
+    <p><strong>Alice:</strong> Just 29 percent! So what's bugging them?</p>
+    <p><strong>Maya:</strong> The top frustration, cited by 45 percent, is AI solutions that are "almost right, but not quite". And 66 percent say they spend more time fixing almost-right AI code. Also, nearly 72 percent said vibe coding isn't part of their professional work.</p>
+    <p><strong>Alice:</strong> So how is Thariq fixing it?</p>
+    <p><strong>Bob:</strong> He's careful to say he's still early and hasn't figured it all out. But he split his codebase in two: an engine part, and a folder he calls spec, or maybe just human. That folder is the code he reads.</p>
+    <p><strong>Alice:</strong> What makes it readable?</p>
+    <p><strong>Bob:</strong> It's linted, there are rules for Claude about how that code looks, and it's supposed to feel like English. Think of a board game: the rulebook is what players read and change, and the factory that prints the pieces stays out of sight. The spec folder is the rulebook; the engine is the factory.</p>
+    <p><strong>Alice:</strong> Walk me through the demo.</p>
+    <p><strong>Bob:</strong> There's agent code he doesn't understand, cameras and so on. But in the spec code he sees all his characters and their abilities, like the rock move: well commented, using meters. He can see there are three ways for that character to throw a rock.</p>
+    <p><strong>Alice:</strong> So he basically wrote his own language?</p>
+    <p><strong>Bob:</strong> In his words, almost a custom scripting language for his game. He wants a bigger rock, so he types 1.5 in a real code editor, plays, and the rock charges, gets really big, and flies.</p>
+    <p><strong>Alice:</strong> Change one number, and a giant rock flies. That's the dream.</p>
+    <p><strong>Bob:</strong> And he's using Cursor's tab completion more: he writes, if you summon a wall in the middle, queue it up as an action, and the editor completes it. He calls it kind of like spec-driven development, where the spec is the scripting language.</p>
+    <p><strong>Alice:</strong> Spec-driven development is a buzzword now. Lena, you dug into it.</p>
+    <p><strong>Lena:</strong> Birgitta Böckeler, writing on Martin Fowler's site, says the definition is still in flux. Her best reading: you write a spec before writing code with AI, and the spec becomes the source of truth for the human and the AI.</p>
+    <p><strong>Alice:</strong> One kind of spec, or several?</p>
+    <p><strong>Lena:</strong> She sees three levels: spec-first, where you write it and use it for the task; spec-anchored, where you keep it to evolve the feature later. And spec-as-source, where only the spec is edited by the human, who never touches the code.</p>
+    <p><strong>Alice:</strong> And Thariq still asks Claude for the hard parts?</p>
+    <p><strong>Bob:</strong> Yes. For something complicated he still asks Claude to make the primitives, but it's easy to understand what's happening. He feels much more in control, and he can review while Claude works.</p>
+    <p><strong>Alice:</strong> So what's his big takeaway?</p>
+    <p><strong>Bob:</strong> He now thinks about the best way to deliver high quality software, not about what the model likes to write code in. Internalize that, he says, and next year will be about a renaissance of software.</p>
+    <p><strong>Alice:</strong> What does that renaissance need?</p>
+    <p><strong>Bob:</strong> His list: new languages, efficient like Rust, but also modular, hot-reloadable and readable. New primitives, maybe new databases, servers and operating system interactions. New interaction paradigms, where old HCI research is worth revisiting, and new aesthetics.</p>
+    <p><strong>Alice:</strong> And how does he close?</p>
+    <p><strong>Bob:</strong> We need to decide what the future of work looks like, because the models aren't an alien intelligence forcing one way of working. It's like a new paint set with every color: the paint never chooses the painting. Mollick ends his post on the same note: we get to make choices about how we want to use AI.</p>
+    <p><strong>Alice:</strong> So the job is ours.</p>
+    <p><strong>Bob:</strong> His last words, basically: our job is to bring about the renaissance.</p>
+    <p><strong>Alice:</strong> Time for Counterpoints. Sam, you brought a critic of Sutton himself.</p>
+    <p><strong>Sam:</strong> Rodney Brooks answered Sutton on his own site, in "A Better Lesson". He points to the networks that label images, CNNs: their front end is designed by humans to handle the idea that objects can appear anywhere in the frame.</p>
+    <p><strong>Alice:</strong> So the human knowledge never really left?</p>
+    <p><strong>Sam:</strong> That's his argument. He calls it sleight of hand: humans still pour their intelligence into the algorithms, just in a different place and form. His better lesson is to count the total cost of any solution, and so far they have all required substantial amounts of human ingenuity.</p>
+    <p><strong>Alice:</strong> Which sounds close to Thariq, honestly. The human part moves, it doesn't vanish.</p>
+    <p><strong>Bob:</strong> That's my take too, but Brooks wrote it as a direct critique: he thinks Sutton is wrong. And Sutton's essay holds the opposite view: building in our discoveries only makes it harder to see how discovering can be done.</p>
+    <p><strong>Alice:</strong> Lena, does writing specs really keep you in control?</p>
+    <p><strong>Lena:</strong> Böckeler has doubts. When she asked one tool to fix a small bug, it turned it into 4 user stories with 16 acceptance criteria, like using a sledgehammer to crack a nut. And she'd rather review code than all those markdown files.</p>
+    <p><strong>Alice:</strong> So a spec can turn into a mountain of paperwork.</p>
+    <p><strong>Lena:</strong> And a false sense of control: she frequently saw the agent not follow all the instructions anyway. She also recalls model-driven development, which never took off for business applications, and asks if we're making something worse while trying to make it better.</p>
+    <p><strong>Alice:</strong> Maya, what about the smooth interior? A model so good we stop checking?</p>
+    <p><strong>Maya:</strong> The survey points the other way, for now. When the code gets complicated and the stakes are high, developers turn to people: 75 percent said they'd still ask another person for help when they don't trust AI's answers.</p>
+    <p><strong>Alice:</strong> And that's before the model is perfect.</p>
+    <p><strong>Bob:</strong> Right. Mollick warns that people really can go on autopilot with AI and fail to notice its mistakes. And Thariq's fix is one game, one demo, still early, so it's a direction, not a proven method.</p>
+    <p><strong>Alice:</strong> Builder's Corner! What can listeners try this week?</p>
+    <p><strong>Bob:</strong> Pick one feature, say one character or one settings screen, and keep a readable spec file for it next to the engine code. Write it the way Thariq does, in plain words and real units like meters, so when you read it, you know what's happening and can tweak it.</p>
+    <p><strong>Alice:</strong> And where does the agent come in?</p>
+    <p><strong>Bob:</strong> Ask the agent to edit the spec first, and only then the engine. Give it rules for how that file should look, like Thariq's rules for Claude, and use Willison's test: if you couldn't explain a change to somebody else, don't commit it.</p>
+    <p><strong>Alice:</strong> Keep it small?</p>
+    <p><strong>Bob:</strong> Very small. One feature, not a giant document, so you can tell after a week whether you really feel more in control.</p>
+    <p><strong>Alice:</strong> Takeaways. Mine: compute wins, as Sutton says, but the sweet side is that models can work the way we want.</p>
+    <p><strong>Bob:</strong> Mine: the jagged frontier gets the headlines, but the smooth interior is where your daily work lives.</p>
+    <p><strong>Alice:</strong> Vibe coding is fine for low stakes projects. But if you can't explain it, don't ship it.</p>
+    <p><strong>Bob:</strong> And split what you read from what the agent runs: a readable spec, next to the engine.</p>
+    <p><strong>Alice:</strong> What's still open?</p>
+    <p><strong>Bob:</strong> Whether the perfect model that needs no checking ever arrives, while trust in AI's accuracy is falling. And whether readable specs scale beyond one person's game: Thariq himself isn't sure it's the final way he'll write it.</p>
+    <p><strong>Alice:</strong> And who leads that renaissance: builders, or the models?</p>
+    <p><strong>Bob:</strong> Thariq's answer is us. Whether we take the job is the open part.</p>
+    <p><strong>Alice:</strong> Big job. Count me in.</p>
+    <p><strong>Bob:</strong> Thanks to Thariq Shihipar for his talk, "The Sweet Side of the Bitter Lesson", on the AI Engineer channel. Thanks also to Rich Sutton's "The Bitter Lesson", Ethan Mollick on One Useful Thing and Simon Willison's weblog. And to Erin Yepis on the Stack Overflow blog, Rodney Brooks's "A Better Lesson", and Birgitta Böckeler on Martin Fowler's site.</p>
+    <p><strong>Alice:</strong> That was the sweet side of the Bitter Lesson. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-20_the-sweet-side-of-the-bitter-lesson/", "title": "Bitter Lesson's Sweet Side: Keep Control of AI Code (Thariq Shihipar)", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-20_the-sweet-side-of-the-bitter-lesson", "episode_title": "Bitter Lesson's Sweet Side: Keep Control of AI Code (Thariq Shihipar)", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-20_the-sweet-side-of-the-bitter-lesson", "title": "Bitter Lesson's Sweet Side: Keep Control of AI Code (Thariq Shihipar)", "summary": ["Thariq Shihipar revisits the Bitter Lesson: models can now work the way we want, so AI can bring a software renaissance.", "Vibe coding a fighting game left him unsure what his characters did, so he keeps a readable spec folder next to the engine.", "Guests weigh Stack Overflow's survey on falling trust, Rodney Brooks's reply to Sutton and Birgitta Böckeler on specs."], "description": "Thariq Shihipar revisits Rich Sutton's Bitter Lesson and argues coding agents can keep developers in creative control. Vibe coding a fighting game left him lost, and a readable spec folder gave him back control.\n\nIn this episode:\n- The jagged frontier and the smooth interior\n- Vibe coding versus code you can explain\n- Readable specs next to the engine code\n\nSources: Thariq Shihipar; Rich Sutton; Ethan Mollick; Simon Willison; Erin Yepis; Birgitta Böckeler; Rodney Brooks\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "The Sweet Side of the Bitter Lesson", "author": "Thariq Shihipar", "url": "https://www.youtube.com/watch?v=xRJMiaUoD_8", "kind": "text"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>
