@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-20T16:53:46Z",
+  "updated": "2026-11-20T16:54:40Z",
   "episodes": [
+    {
+      "id": "2026-11-20_the-shepherd-boy-the-wolf-fr",
+      "title": "Le Garçon qui criait au loup : histoire du soir pour enfants, notre version (d'après Ésope)",
+      "summary": [
+        "Une douce version du Garçon qui criait au loup, une fable d'Ésope, d'après The Aesop for Children de la Bibliothèque du Congrès.",
+        "Un petit berger qui s'ennuie crie au loup pour rire, deux fois, jusqu'au soir où un vrai loup arrive et où personne ne le croit.",
+        "Les moutons se cachent, le berger demande pardon et apprend à dire la vérité, puis une douce bonne nuit."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "fr",
+      "format": "bedtime-story",
+      "published": "2026-11-20T16:50:01Z",
+      "duration_s": 262.624,
+      "size_bytes": 4203885,
+      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-20_the-shepherd-boy-the-wolf-fr.mp3",
+      "audio_sha256": "212f57fd128f23ba59ccdd76aaa5e77f55a7d02f9302367b82600e2ded35aaa9",
+      "transcript": "episodes/2026-11-20_the-shepherd-boy-the-wolf-fr/transcript.vtt",
+      "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
+      "source": {
+        "title": "The Shepherd Boy & the Wolf",
+        "author": "Aesop",
+        "url": "https://read.gov/aesop/043.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Golly Gee\", \"Marty Gots a Plan\", \"Carefree\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-20_the-shepherd-boy-the-wolf",
+      "image": {
+        "square": "art/2026-11-20_the-shepherd-boy-the-wolf/square.jpg",
+        "wide": "art/2026-11-20_the-shepherd-boy-the-wolf/wide.jpg",
+        "thumb": "art/2026-11-20_the-shepherd-boy-the-wolf/thumb.jpg",
+        "alt": "Pencil drawing of a shepherd boy playing a wooden pipe on a green hill, with his little dog and three woolly sheep around him and a small village in the distance."
+      },
+      "description": "Le Garçon qui criait au loup, la fable d'Ésope, en histoire du soir, notre version avec nos mots, d'après The Aesop for Children. Un petit berger crie au loup pour rire, jusqu'au soir où un vrai loup arrive.\n\nDans cet épisode :\n- Un berger qui s'ennuie et une farce\n- Un vrai loup, et personne ne vient\n- Pardon, et les moutons retrouvés\n\nSources : The Shepherd Boy & the Wolf, Ésope, The Aesop for Children\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Le Garçon qui criait au loup histoire du soir pour enfants, notre version (d'après Ésope) (2026-11-20).mp3"
+    },
     {
       "id": "2026-11-20_the-shepherd-boy-the-wolf-vi",
       "title": "Cậu bé chăn cừu: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop)",
