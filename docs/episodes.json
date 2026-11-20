@@ -24,8 +24,99 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-20T16:54:40Z",
+  "updated": "2026-11-20T23:06:35Z",
   "episodes": [
+    {
+      "id": "2026-11-20_6-trillion-in-45-days-is-this-a-bubble-or-an",
+      "title": "AI Bubble or Correction? The $6 Trillion Selloff (Kobeissi Letter)",
+      "summary": [
+        "The Kobeissi Letter's case that the $6 trillion selloff is a correction, not a popped AI bubble.",
+        "Capex vs free cash flow, the end of the 'Trump Put', Fed hikes, Nvidia and a liquidity squeeze.",
+        "Tested against dot-com history and AI skeptics; explained, not investment advice."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-20T23:02:32Z",
+      "duration_s": 1465.044,
+      "size_bytes": 23441855,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-20_6-trillion-in-45-days-is-this-a-bubble-or-an.mp3",
+      "audio_sha256": "23e27f99b1c5a6ab15938300c173afbc057a0c8cbd80b5128735df16dec53f09",
+      "transcript": "episodes/2026-11-20_6-trillion-in-45-days-is-this-a-bubble-or-an/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "-$6 Trillion In 45 Days: Is This A \"Bubble\" Or An Opportunity?",
+        "author": "The Kobeissi Letter (@KobeissiLetter)",
+        "url": "https://x.com/KobeissiLetter/status/2123789428862660980",
+        "published": "2026-11-20T14:43:52Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "-$6 Trillion In 45 Days: Is This A \"Bubble\" Or An Opportunity?",
+          "author": "The Kobeissi Letter (@KobeissiLetter)",
+          "url": "https://x.com/KobeissiLetter/status/2123789428862660980"
+        },
+        {
+          "title": "Free Cash Flow (FCF): How to Calculate and Interpret It",
+          "author": "Jason Fernando",
+          "url": "https://www.investopedia.com/terms/f/freecashflow.asp"
+        },
+        {
+          "title": "Greenspan Put: A Look at Market Influence and Examples",
+          "author": "James Chen",
+          "url": "https://www.investopedia.com/terms/g/greenspanput.asp"
+        },
+        {
+          "title": "How Do Interest Rates Affect the Stock Market?",
+          "author": "Mary Hall",
+          "url": "https://www.investopedia.com/investing/how-interest-rates-affect-stock-market/"
+        },
+        {
+          "title": "AI’s $600B Question",
+          "author": "David Cahn",
+          "url": "https://www.sequoiacap.com/article/ais-600b-question/"
+        },
+        {
+          "title": "Everyone's wondering if, and when, the AI bubble will pop. Here's what went down 25 years ago that ultimately burst the dot-com boom",
+          "author": "Dave Smith",
+          "url": "https://fortune.com/2025/09/28/ai-dot-com-bubble-parallels-history-explained-companies-revenue-infrastructure/"
+        },
+        {
+          "title": "What do we know about the economics of AI?",
+          "author": "Peter Dizikes",
+          "url": "https://news.mit.edu/2024/what-do-we-know-about-economics-ai-1206"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Theo",
+          "presents": [
+            "AI’s $600B Question"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Everyone's wondering if, and when, the AI bubble will pop. Here's what went down 25 years ago that ultimately burst the dot-com boom"
+          ]
+        },
+        {
+          "name": "Maya",
+          "presents": [
+            "What do we know about the economics of AI?"
+          ]
+        }
+      ],
+      "description": "The Kobeissi Letter argues that the $6 trillion US stock selloff since the S&P 500's October 6th record is a normal correction, not a popped AI bubble. Bob and Alice unpack its case and test it against the skeptics. Not investment advice.\n\nIn this episode:\n- Big Tech AI capex versus free cash flow\n- The midterms, the Fed and Nvidia\n- Dot-com lessons and the skeptics' case\n\nSources: The Kobeissi Letter (@KobeissiLetter); Jason Fernando; James Chen; Mary Hall; David Cahn; Dave Smith; Peter Dizikes\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - AI Bubble or Correction The $6 Trillion Selloff (Kobeissi Letter) (2026-11-21).mp3"
+    },
     {
       "id": "2026-11-20_the-shepherd-boy-the-wolf-fr",
       "title": "Le Garçon qui criait au loup : histoire du soir pour enfants, notre version (d'après Ésope)",

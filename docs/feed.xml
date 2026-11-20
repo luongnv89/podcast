@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Fri, 20 Nov 2026 09:31:21 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 20 Nov 2026 23:06:35 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,34 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-20_6-trillion-in-45-days-is-this-a-bubble-or-an</guid>
+    <title>AI Bubble or Correction? The $6 Trillion Selloff (Kobeissi Letter)</title>
+    <link>https://luongnv.com/podcast/#2026-11-20_6-trillion-in-45-days-is-this-a-bubble-or-an</link>
+    <description>The Kobeissi Letter's case that the $6 trillion selloff is a correction, not a popped AI bubble.
+
+Capex vs free cash flow, the end of the 'Trump Put', Fed hikes, Nvidia and a liquidity squeeze.
+
+Tested against dot-com history and AI skeptics; explained, not investment advice.
+
+Sources:
+- -$6 Trillion In 45 Days: Is This A "Bubble" Or An Opportunity?, The Kobeissi Letter (@KobeissiLetter) (https://x.com/KobeissiLetter/status/2123789428862660980)
+- Free Cash Flow (FCF): How to Calculate and Interpret It, Jason Fernando (https://www.investopedia.com/terms/f/freecashflow.asp)
+- Greenspan Put: A Look at Market Influence and Examples, James Chen (https://www.investopedia.com/terms/g/greenspanput.asp)
+- How Do Interest Rates Affect the Stock Market?, Mary Hall (https://www.investopedia.com/investing/how-interest-rates-affect-stock-market/)
+- AI’s $600B Question, David Cahn (https://www.sequoiacap.com/article/ais-600b-question/)
+- Everyone's wondering if, and when, the AI bubble will pop. Here's what went down 25 years ago that ultimately burst the dot-com boom, Dave Smith (https://fortune.com/2025/09/28/ai-dot-com-bubble-parallels-history-explained-companies-revenue-infrastructure/)
+- What do we know about the economics of AI?, Peter Dizikes (https://news.mit.edu/2024/what-do-we-know-about-economics-ai-1206)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>The Kobeissi Letter's case that the $6 trillion selloff is a correction, not a popped AI bubble.</p><p>Capex vs free cash flow, the end of the 'Trump Put', Fed hikes, Nvidia and a liquidity squeeze.</p><p>Tested against dot-com history and AI skeptics; explained, not investment advice.</p><p>Sources:</p><ul><li>-$6 Trillion In 45 Days: Is This A "Bubble" Or An Opportunity?, The Kobeissi Letter (@KobeissiLetter): <a href="https://x.com/KobeissiLetter/status/2123789428862660980">https://x.com/KobeissiLetter/status/2123789428862660980</a></li><li>Free Cash Flow (FCF): How to Calculate and Interpret It, Jason Fernando: <a href="https://www.investopedia.com/terms/f/freecashflow.asp">https://www.investopedia.com/terms/f/freecashflow.asp</a></li><li>Greenspan Put: A Look at Market Influence and Examples, James Chen: <a href="https://www.investopedia.com/terms/g/greenspanput.asp">https://www.investopedia.com/terms/g/greenspanput.asp</a></li><li>How Do Interest Rates Affect the Stock Market?, Mary Hall: <a href="https://www.investopedia.com/investing/how-interest-rates-affect-stock-market/">https://www.investopedia.com/investing/how-interest-rates-affect-stock-market/</a></li><li>AI’s $600B Question, David Cahn: <a href="https://www.sequoiacap.com/article/ais-600b-question/">https://www.sequoiacap.com/article/ais-600b-question/</a></li><li>Everyone's wondering if, and when, the AI bubble will pop. Here's what went down 25 years ago that ultimately burst the dot-com boom, Dave Smith: <a href="https://fortune.com/2025/09/28/ai-dot-com-bubble-parallels-history-explained-companies-revenue-infrastructure/">https://fortune.com/2025/09/28/ai-dot-com-bubble-parallels-history-explained-companies-revenue-infrastructure/</a></li><li>What do we know about the economics of AI?, Peter Dizikes: <a href="https://news.mit.edu/2024/what-do-we-know-about-economics-ai-1206">https://news.mit.edu/2024/what-do-we-know-about-economics-ai-1206</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Fri, 20 Nov 2026 23:02:32 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-20_6-trillion-in-45-days-is-this-a-bubble-or-an.mp3?v=23e27f99" length="23441855" type="audio/mpeg"/>
+    <itunes:duration>1465</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-20_6-trillion-in-45-days-is-this-a-bubble-or-an/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-20_the-sweet-side-of-the-bitter-lesson</guid>
     <title>Bitter Lesson's Sweet Side: Keep Control of AI Code (Thariq Shihipar)</title>
