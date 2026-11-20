@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-20T06:59:37Z",
+  "updated": "2026-11-20T07:43:04Z",
   "episodes": [
+    {
+      "id": "2026-11-20_morning-edition-friday-20-november-2026",
+      "title": "Anthropic Closes 17% Up, Gemini Runs Mac Apps | AI Daily 20 Nov",
+      "summary": [
+        "AI Daily for 20 November: six stories from The AI Gazette's morning and afternoon editions.",
+        "Anthropic's shares closed 17 percent above the offer price on day one, and Gemini can now operate Mac apps.",
+        "Also: an AI-assisted attack on the European Commission, Nvidia's China chip approvals, and who pays for AI's power."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-20T07:39:52Z",
+      "duration_s": 470.592,
+      "size_bytes": 7530564,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-20_morning-edition-friday-20-november-2026.mp3",
+      "audio_sha256": "cd22319b32e529fe7bf91cfd2bc3925d3ac1c8c036d28ab39b91055dfcebd9b6",
+      "transcript": "episodes/2026-11-20_morning-edition-friday-20-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Friday 20 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-20-morning.html",
+        "published": "2026-11-19T18:00:00+01:00",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Friday 20 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-20-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Thursday 19 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-19-afternoon.html"
+        }
+      ],
+      "description": "Anthropic's shares closed 17 percent above their 83 dollar offer price on their first day on Nasdaq, and Google's Gemini app can now operate Mac apps and websites in a background window. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- An AI-assisted cyberattack on the European Commission\n- 879,000 approved Nvidia and AMD chips for China, and a California subpoena\n- Nvidia's talks to buy Inception, and who pays for AI's power\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Anthropic Closes 17% Up, Gemini Runs Mac Apps AI Daily 20 Nov (2026-11-20).mp3"
+    },
     {
       "id": "2026-11-20_how-i-write-ads-that-make-strangers-buy",
       "title": "Ad Copywriting: The 4 Sales Every Ad Must Make (Derick Carneiro)",

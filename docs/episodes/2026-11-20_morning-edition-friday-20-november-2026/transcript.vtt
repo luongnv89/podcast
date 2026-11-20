@@ -1,0 +1,237 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.210
+<v Bob>Anthropic's stock closed 17 percent above its offer price on day one.
+
+2
+00:00:05.510 --> 00:00:09.222
+<v Alice>And Gemini can now drive the apps on your Mac. Ready?
+
+3
+00:00:13.522 --> 00:00:23.840
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and this is our daily edition: the AI news of the last day, in about eight minutes.
+
+4
+00:00:24.140 --> 00:00:33.217
+<v Alice>And I'm Alice. Everything today comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories. Let's go!
+
+5
+00:00:33.517 --> 00:00:37.403
+<v Bob>Alice, Anthropic finally trades. How did day one go?
+
+6
+00:00:37.703 --> 00:00:50.912
+<v Alice>Big. The stock started trading on Nasdaq on Thursday under the ticker ANT. It opened 34 percent above the 83 dollar offer price, and closed 17 percent above it, at about 97 dollars.
+
+7
+00:00:51.212 --> 00:00:53.710
+<v Bob>So, a pop, then a slide.
+
+8
+00:00:54.010 --> 00:01:09.558
+<v Alice>Right. At the close the company was worth about 1.75 trillion dollars, fully diluted. With a private placement, the total raised was 107.3 billion dollars, the largest initial public offering on record.
+
+9
+00:01:09.858 --> 00:01:12.347
+<v Bob>And the rest of AI stocks cheered along?
+
+10
+00:01:12.647 --> 00:01:25.810
+<v Alice>Nope! Major US indexes fell on Thursday. It's like a new restaurant with a queue around the block on opening night, while the rest of the street sits half empty. One hot launch doesn't mean the whole market is hungry.
+
+11
+00:01:26.110 --> 00:01:29.148
+<v Bob>Hungry for ANT. I see what you did there.
+
+12
+00:01:29.448 --> 00:01:32.998
+<v Bob>Story two is for builders. Gemini on the Mac?
+
+13
+00:01:33.298 --> 00:01:50.707
+<v Alice>Google says computer use in the Gemini app for Mac can now carry out multi-step tasks across local files, desktop apps and the web. Clicks, typing, menus, forms. And it works in an isolated background window, so your own screen and cursor stay free.
+
+14
+00:01:51.007 --> 00:01:53.651
+<v Bob>Wait, it doesn't hijack my mouse?
+
+15
+00:01:53.951 --> 00:02:08.136
+<v Alice>No. Think of it as a helper at a second desk next to yours, with a window you can glance at. In real terms: a hidden window, a live preview in the chat, and you choose which apps it can reach and approve key actions.
+
+16
+00:02:08.436 --> 00:02:09.469
+<v Bob>Who gets it?
+
+17
+00:02:09.769 --> 00:02:17.062
+<v Alice>It's rolling out in English in the US. TechCrunch says you need a Google AI Plus, Pro or Ultra subscription.
+
+18
+00:02:17.362 --> 00:02:18.201
+<v Bob>And Apple?
+
+19
+00:02:18.501 --> 00:02:36.778
+<v Alice>Bloomberg reports, from new job listings, that Apple is building its own autonomous agent. One listing, quoted by The Verge, describes agents that plan and carry out multi-step tasks across apps, browsers, command lines, code and APIs. But a job ad isn't a product.
+
+20
+00:02:37.078 --> 00:02:39.942
+<v Bob>So my Mac gets an intern before I do.
+
+21
+00:02:40.242 --> 00:02:44.895
+<v Bob>Now a serious one, from yesterday afternoon. The European Commission was attacked?
+
+22
+00:02:45.195 --> 00:02:57.766
+<v Alice>Yes. The Commission confirmed that a cyberattack using AI-powered software targeted its systems in October. The Gazette says it's the first time the EU has reported a cyberattack using an AI tool.
+
+23
+00:02:58.066 --> 00:02:59.102
+<v Bob>What was hit?
+
+24
+00:02:59.402 --> 00:03:16.273
+<v Alice>According to the Associated Press, it was first detected on 22 October. Several applications were taken down as a precaution, and most have since been restored. So far, the spokesperson said, there's no evidence of a data breach affecting Commission staff as a whole.
+
+25
+00:03:16.573 --> 00:03:17.875
+<v Bob>And the AI part?
+
+26
+00:03:18.175 --> 00:03:35.429
+<v Alice>Politico reports that the hackers used ARTEX, a publicly available AI-powered tool built to find weaknesses in IT systems. Imagine a burglar who brings a machine that tries every door and window of a building in minutes. That's the shift: finding weak spots gets faster and cheaper.
+
+27
+00:03:35.729 --> 00:03:37.002
+<v Bob>Do we know who did it?
+
+28
+00:03:37.302 --> 00:03:45.948
+<v Alice>No. The Commission hasn't said who was behind it, and the tool's name comes from anonymous officials quoted by Politico, not an official statement.
+
+29
+00:03:46.248 --> 00:03:49.496
+<v Bob>Next, Washington and Nvidia's chips for China.
+
+30
+00:03:49.796 --> 00:04:01.984
+<v Alice>A House committee published export-licence data. It says companies asked to sell 3.4 million AI chips to Chinese buyers, and the Commerce Department approved more than 879,000 of them.
+
+31
+00:04:02.284 --> 00:04:04.164
+<v Bob>Approved. But shipped?
+
+32
+00:04:04.464 --> 00:04:16.698
+<v Alice>Good catch. It wasn't clear how many approvals led to actual shipments. It's like a guest list at a party: being on the list doesn't mean you walked in. A licence is permission, not a delivery.
+
+33
+00:04:16.998 --> 00:04:18.479
+<v Bob>What does Nvidia say?
+
+34
+00:04:18.779 --> 00:04:33.346
+<v Alice>That the approvals were subject to strict conditions and limited volumes, and that it has since stopped shipping H200s to China. Nvidia's shares fell 3.3 percent and AMD's 7.7 percent on Thursday.
+
+35
+00:04:33.646 --> 00:04:34.788
+<v Bob>And California?
+
+36
+00:04:35.088 --> 00:04:50.682
+<v Alice>California's Attorney General Rob Bonta served Nvidia an investigative subpoena, asking whether its chips or confidential information went to China, and whether it misled investors. To be clear: that's an investigative step, not an accusation of wrongdoing.
+
+37
+00:04:50.982 --> 00:04:54.358
+<v Bob>Still Nvidia, but lighter. A shopping trip?
+
+38
+00:04:54.658 --> 00:05:06.079
+<v Alice>The Information reports Nvidia is in advanced talks to buy Inception, a two-year-old startup building diffusion language models, for more than 500 million dollars plus earnouts for its staff.
+
+39
+00:05:06.379 --> 00:05:09.378
+<v Bob>Diffusion. Like image generators?
+
+40
+00:05:09.678 --> 00:05:25.110
+<v Alice>Same family. Most chatbots write one token at a time. A diffusion model refines the whole response in parallel. Think of it as a photo coming into focus, instead of a typewriter going letter by letter. Inception says that makes them faster.
+
+41
+00:05:25.410 --> 00:05:28.275
+<v Bob>Typewriter versus Polaroid. Love it.
+
+42
+00:05:28.575 --> 00:05:36.211
+<v Alice>One caveat: it's unconfirmed, from anonymous sources, and The Gazette only read summaries of the paywalled article.
+
+43
+00:05:36.511 --> 00:05:39.678
+<v Bob>Last story: electricity. Who pays?
+
+44
+00:05:39.978 --> 00:05:59.506
+<v Alice>The US Senate passed a permitting overhaul, 62 to 33. CNBC reports it includes a provision forcing hyperscalers to pay for grid upgrades. It's like a neighbour who opens a bakery with ovens running all night. Someone has to pay for the thicker cable to the street. This bill says the data centre does.
+
+45
+00:05:59.806 --> 00:06:01.829
+<v Bob>Is it law?
+
+46
+00:06:02.129 --> 00:06:15.083
+<v Alice>Not yet. It still needs the House and a signature. Meanwhile, Meta says it's re-evaluating its 2030 net-zero goal after its emissions rose 45 percent last year as it built AI data centres.
+
+47
+00:06:15.383 --> 00:06:16.596
+<v Bob>And the bigger picture?
+
+48
+00:06:16.896 --> 00:06:28.399
+<v Alice>The IEA expects data centres to use twice as much electricity by 2030, with AI behind three-quarters of that growth, the Guardian reported. Remember, that's a projection.
+
+49
+00:06:28.699 --> 00:06:31.772
+<v Bob>Reality check. What should we hold loosely?
+
+50
+00:06:32.072 --> 00:06:44.898
+<v Alice>First-day prices of a new listing are volatile and say little about long-term value. Google's safety controls for Gemini are its own claim; the Gazette didn't test the feature. And Apple hasn't announced an agent.
+
+51
+00:06:45.198 --> 00:06:47.294
+<v Bob>Fair. Hype check passed.
+
+52
+00:06:47.594 --> 00:06:50.029
+<v Bob>Builder's Corner. One thing to try?
+
+53
+00:06:50.329 --> 00:07:05.152
+<v Alice>If you're building a computer-use agent, copy Google's control list. Let users choose which apps the agent can reach, watch each step, pause at any time, and approve key actions before they happen. Permission first. Then autonomy.
+
+54
+00:07:05.452 --> 00:07:06.969
+<v Bob>Today in three lines?
+
+55
+00:07:07.269 --> 00:07:21.581
+<v Alice>One: Anthropic's debut was strong, but the wider AI trade fell. Two: agents are moving onto the desktop. Three: scrutiny of Nvidia's China sales is widening, while the power bill for AI reaches lawmakers.
+
+56
+00:07:21.881 --> 00:07:25.640
+<v Bob>What I'm watching: does the House pass that bill before January?
+
+57
+00:07:25.940 --> 00:07:29.617
+<v Alice>And whether Nvidia or Inception confirms the deal.
+
+58
+00:07:29.917 --> 00:07:37.681
+<v Alice>Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's. Thanks to them for the reporting.
+
+59
+00:07:37.981 --> 00:07:43.992
+<v Bob>See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.
