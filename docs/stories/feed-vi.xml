@@ -7,7 +7,7 @@
   <description>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</description>
   <itunes:summary>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</itunes:summary>
   <language>vi</language>
-  <lastBuildDate>Tue, 17 Nov 2026 18:57:53 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 20 Nov 2026 16:53:46 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-20_the-shepherd-boy-the-wolf-vi</guid>
+    <title>Cậu bé chăn cừu: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop)</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-20_the-shepherd-boy-the-wolf-vi</link>
+    <description>Truyện Cậu bé chăn cừu, ngụ ngôn của Aesop, kể lại nhẹ nhàng cho giờ đi ngủ, theo The Aesop for Children của Thư viện Quốc hội Mỹ.
+
+Cậu bé chăn cừu buồn chán, hai lần hét có sói để đùa, cho tới một buổi chiều sói đến thật mà chẳng ai tin cậu.
+
+Đàn cừu trốn an toàn, cậu bé xin lỗi và học được bài học luôn nói thật, rồi chúc bé ngủ ngon.
+
+Nguồn: The Shepherd Boy &amp; the Wolf, Aesop (https://read.gov/aesop/043.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Golly Gee", "Marty Gots a Plan", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Truyện Cậu bé chăn cừu, ngụ ngôn của Aesop, kể lại nhẹ nhàng cho giờ đi ngủ, theo The Aesop for Children của Thư viện Quốc hội Mỹ.</p><p>Cậu bé chăn cừu buồn chán, hai lần hét có sói để đùa, cho tới một buổi chiều sói đến thật mà chẳng ai tin cậu.</p><p>Đàn cừu trốn an toàn, cậu bé xin lỗi và học được bài học luôn nói thật, rồi chúc bé ngủ ngon.</p><p>Nguồn: The Shepherd Boy &amp; the Wolf, Aesop: <a href="https://read.gov/aesop/043.html">https://read.gov/aesop/043.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Golly Gee", "Marty Gots a Plan", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Fri, 20 Nov 2026 16:45:00 +0000</pubDate>
+    <enclosure url="https://luongnv.com/once-upon-a-time-vi-media/2026-11-20_the-shepherd-boy-the-wolf-vi.mp3?v=8ea053d9" length="3551035" type="audio/mpeg"/>
+    <itunes:duration>222</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-20_the-shepherd-boy-the-wolf/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-20_the-shepherd-boy-the-wolf-vi/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-17_the-hare-the-tortoise-vi</guid>
     <title>Rùa và Thỏ: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop)</title>
