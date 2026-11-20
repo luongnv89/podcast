@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Thu, 19 Nov 2026 20:54:20 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 20 Nov 2026 06:59:37 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,33 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-20_how-i-write-ads-that-make-strangers-buy</guid>
+    <title>Ad Copywriting: The 4 Sales Every Ad Must Make (Derick Carneiro)</title>
+    <link>https://luongnv.com/podcast/#2026-11-20_how-i-write-ads-that-make-strangers-buy</link>
+    <description>Derick Carneiro's method for cold-traffic ads: four sales (content, hope, value, impulse) before the product.
+
+His 17-element Ad Psychology and brief, checked against Schwartz's awareness levels and review mining.
+
+Guests weigh attention data and FTC rules on health claims and fake urgency; no product endorsed.
+
+Sources:
+- how I write ads that make strangers buy, Derick Carneiro (@DerickCarneiro_) (https://x.com/DerickCarneiro_/status/2123414633935520052)
+- The 5 Levels of Customer Awareness in Marketing, Katie Doll (https://www.shortform.com/blog/customer-awareness/)
+- How to Find Your Message Using Review Mining, Joanna Wiebe (https://copyhackers.com/2014/10/amazon-review-mining)
+- How Long Do Users Stay on Web Pages?, Jakob Nielsen (https://www.nngroup.com/articles/how-long-do-users-stay-on-web-pages/)
+- Health Products Compliance Guidance, Federal Trade Commission (https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance)
+- FTC Report Shows Rise in Sophisticated Dark Patterns Designed to Trick and Trap Consumers, Federal Trade Commission (https://www.ftc.gov/news-events/news/press-releases/2022/09/ftc-report-shows-rise-sophisticated-dark-patterns-designed-trick-trap-consumers)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Derick Carneiro's method for cold-traffic ads: four sales (content, hope, value, impulse) before the product.</p><p>His 17-element Ad Psychology and brief, checked against Schwartz's awareness levels and review mining.</p><p>Guests weigh attention data and FTC rules on health claims and fake urgency; no product endorsed.</p><p>Sources:</p><ul><li>how I write ads that make strangers buy, Derick Carneiro (@DerickCarneiro_): <a href="https://x.com/DerickCarneiro_/status/2123414633935520052">https://x.com/DerickCarneiro_/status/2123414633935520052</a></li><li>The 5 Levels of Customer Awareness in Marketing, Katie Doll: <a href="https://www.shortform.com/blog/customer-awareness/">https://www.shortform.com/blog/customer-awareness/</a></li><li>How to Find Your Message Using Review Mining, Joanna Wiebe: <a href="https://copyhackers.com/2014/10/amazon-review-mining">https://copyhackers.com/2014/10/amazon-review-mining</a></li><li>How Long Do Users Stay on Web Pages?, Jakob Nielsen: <a href="https://www.nngroup.com/articles/how-long-do-users-stay-on-web-pages/">https://www.nngroup.com/articles/how-long-do-users-stay-on-web-pages/</a></li><li>Health Products Compliance Guidance, Federal Trade Commission: <a href="https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance">https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance</a></li><li>FTC Report Shows Rise in Sophisticated Dark Patterns Designed to Trick and Trap Consumers, Federal Trade Commission: <a href="https://www.ftc.gov/news-events/news/press-releases/2022/09/ftc-report-shows-rise-sophisticated-dark-patterns-designed-trick-trap-consumers">https://www.ftc.gov/news-events/news/press-releases/2022/09/ftc-report-shows-rise-sophisticated-dark-patterns-designed-trick-trap-consumers</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Fri, 20 Nov 2026 06:56:25 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-20_how-i-write-ads-that-make-strangers-buy.mp3?v=322e5445" length="14425638" type="audio/mpeg"/>
+    <itunes:duration>902</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-20_how-i-write-ads-that-make-strangers-buy/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-19_becoming-a-factory-engineer</guid>
     <title>Factory Engineering: Build the System That Writes Code (Ben Holmes)</title>

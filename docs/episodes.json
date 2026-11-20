@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-19T20:54:20Z",
+  "updated": "2026-11-20T06:59:37Z",
   "episodes": [
+    {
+      "id": "2026-11-20_how-i-write-ads-that-make-strangers-buy",
+      "title": "Ad Copywriting: The 4 Sales Every Ad Must Make (Derick Carneiro)",
+      "summary": [
+        "Derick Carneiro's method for cold-traffic ads: four sales (content, hope, value, impulse) before the product.",
+        "His 17-element Ad Psychology and brief, checked against Schwartz's awareness levels and review mining.",
+        "Guests weigh attention data and FTC rules on health claims and fake urgency; no product endorsed."
+      ],
+      "category": "marketing",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-20T06:56:25Z",
+      "duration_s": 901.532,
+      "size_bytes": 14425638,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-20_how-i-write-ads-that-make-strangers-buy.mp3",
+      "audio_sha256": "322e544570ad3c388fc613d9594d657306cf7d275e72a78842ce9ac6a2d7de04",
+      "transcript": "episodes/2026-11-20_how-i-write-ads-that-make-strangers-buy/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "how I write ads that make strangers buy",
+        "author": "Derick Carneiro (@DerickCarneiro_)",
+        "url": "https://x.com/DerickCarneiro_/status/2123414633935520052",
+        "published": "2026-11-19T13:54:34Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "how I write ads that make strangers buy",
+          "author": "Derick Carneiro (@DerickCarneiro_)",
+          "url": "https://x.com/DerickCarneiro_/status/2123414633935520052"
+        },
+        {
+          "title": "The 5 Levels of Customer Awareness in Marketing",
+          "author": "Katie Doll",
+          "url": "https://www.shortform.com/blog/customer-awareness/"
+        },
+        {
+          "title": "How to Find Your Message Using Review Mining",
+          "author": "Joanna Wiebe",
+          "url": "https://copyhackers.com/2014/10/amazon-review-mining"
+        },
+        {
+          "title": "How Long Do Users Stay on Web Pages?",
+          "author": "Jakob Nielsen",
+          "url": "https://www.nngroup.com/articles/how-long-do-users-stay-on-web-pages/"
+        },
+        {
+          "title": "Health Products Compliance Guidance",
+          "author": "Federal Trade Commission",
+          "url": "https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance"
+        },
+        {
+          "title": "FTC Report Shows Rise in Sophisticated Dark Patterns Designed to Trick and Trap Consumers",
+          "author": "Federal Trade Commission",
+          "url": "https://www.ftc.gov/news-events/news/press-releases/2022/09/ftc-report-shows-rise-sophisticated-dark-patterns-designed-trick-trap-consumers"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "How Long Do Users Stay on Web Pages?"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Health Products Compliance Guidance"
+          ]
+        },
+        {
+          "name": "Theo",
+          "presents": [
+            "FTC Report Shows Rise in Sophisticated Dark Patterns Designed to Trick and Trap Consumers"
+          ]
+        }
+      ],
+      "description": "Derick Carneiro explains how he writes direct-response ads for cold traffic: four sales every ad must make before the product, from 17 elements he calls Ad Psychology. Bob and Alice test his method against copywriting research, attention data and FTC rules.\n\nIn this episode:\n- The four sales: content, hope, value, impulse\n- Finding what customers want to hear\n- Where urgency and health claims turn deceptive\n\nSources: Derick Carneiro (@DerickCarneiro_); Katie Doll; Joanna Wiebe; Jakob Nielsen; Federal Trade Commission\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Ad Copywriting The 4 Sales Every Ad Must Make (Derick Carneiro) (2026-11-20).mp3"
+    },
     {
       "id": "2026-11-19_becoming-a-factory-engineer",
       "title": "Factory Engineering: Build the System That Writes Code (Ben Holmes)",
