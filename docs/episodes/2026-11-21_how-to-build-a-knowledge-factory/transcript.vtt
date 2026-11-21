@@ -1,0 +1,393 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.142
+<v Bob>What if the thing holding back AI at your company isn't the model at all?
+
+2
+00:00:04.442 --> 00:00:11.428
+<v Alice>Harrison Chase says the missing bit is better knowledge. The kind your best people carry around in their heads.
+
+3
+00:00:15.728 --> 00:00:27.532
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, here with Alice. Today: how to get what your best people know into your agents. Alice, what are we reading?
+
+4
+00:00:27.832 --> 00:00:43.437
+<v Alice>An X article by Harrison Chase, "How to build a knowledge factory". He writes that all the agents at LangChain, including their internal go-to-market and content agents, share a learning loop with similar pieces. Then he lays out those pieces.
+
+5
+00:00:43.737 --> 00:00:48.343
+<v Bob>Big claim first. Models keep improving. Why isn't that enough?
+
+6
+00:00:48.643 --> 00:00:59.862
+<v Alice>Because the model doesn't know your company. Chase says the missing piece is knowledge of how your company works, what standards you operate by, where data is stored and how it's accessed.
+
+7
+00:01:00.162 --> 00:01:03.081
+<v Bob>And that knowledge lives... where?
+
+8
+00:01:03.381 --> 00:01:14.721
+<v Alice>In your best people's heads. They know who to talk to, where to go to answer questions, why you do things a particular way. He calls that knowledge tacit, implicit and scattered.
+
+9
+00:01:15.021 --> 00:01:17.920
+<v Bob>Tacit. Give me the novice version.
+
+10
+00:01:18.220 --> 00:01:31.731
+<v Alice>Picture a family recipe nobody ever wrote down: grandma just knows when the sauce is ready. Map that back, and tacit knowledge is what a company runs on that sits only in someone's head, or scattered across documents.
+
+11
+00:01:32.031 --> 00:01:34.339
+<v Bob>Does memory research have a name for that?
+
+12
+00:01:34.639 --> 00:01:49.253
+<v Alice>Close to it. Lilian Weng, in her Lil'Log post "LLM Powered Autonomous Agents", describes implicit or procedural memory as unconscious skills and routines. Her example: "like riding a bike or typing on a keyboard".
+
+13
+00:01:49.553 --> 00:01:52.801
+<v Bob>So you can ride the bike, but you can't write the manual.
+
+14
+00:01:53.101 --> 00:02:11.296
+<v Alice>Exactly! So Chase's fix is to collect, curate and maintain a representation of that knowledge to pass to agents. He calls the system that does this a knowledge factory, and Anthropic's skills post voices a similar hope: helping organizations share their context and workflows.
+
+15
+00:02:11.596 --> 00:02:16.283
+<v Bob>Wait, though. Isn't that just context? Stuff the agent gets in its prompt?
+
+16
+00:02:16.583 --> 00:02:31.789
+<v Alice>He splits the two. Context is what an agent has available when doing a task. Knowledge is the reusable understanding that lets it do the task correctly: what a metric means, which source to trust, how a situation is handled.
+
+17
+00:02:32.089 --> 00:02:33.710
+<v Bob>Still a bit abstract for me.
+
+18
+00:02:34.010 --> 00:02:49.523
+<v Alice>Think of a delivery driver: today's route sheet is the context, and knowing which back gate is locked after dark is the knowledge. The factory turns scattered documents and experience into that second kind, which then becomes context for future work.
+
+19
+00:02:49.823 --> 00:02:52.943
+<v Bob>So knowledge is just one part of the context?
+
+20
+00:02:53.243 --> 00:03:10.126
+<v Alice>Right: data you already store reliably can just be handed over directly. Weng's post draws a similar line: short-term memory is in-context learning, limited by the context window. Long-term memory is an external store the agent retrieves from at query time.
+
+21
+00:03:10.426 --> 00:03:13.291
+<v Bob>Where does the word factory come from?
+
+22
+00:03:13.591 --> 00:03:26.846
+<v Alice>From software. Chase notes that the idea of software factories has risen sharply over the past year and a half. Your best engineers build the systems that help everyone build software, and agents do the actual building.
+
+23
+00:03:27.146 --> 00:03:29.043
+<v Bob>And the rest of knowledge work?
+
+24
+00:03:29.343 --> 00:03:46.561
+<v Alice>He says it's following a similar path, and agents now need all that tacit, scattered knowledge. It's like a head chef who stops cooking every plate and designs the kitchen, so the whole crew cooks better. The kitchen is the factory that collects, curates and maintains knowledge.
+
+25
+00:03:46.861 --> 00:03:51.514
+<v Bob>Love it, the chef becomes the architect. So what goes into this factory?
+
+26
+00:03:51.814 --> 00:04:02.596
+<v Alice>He names three kinds: skills, which is how to do the work; domain knowledge, how the business works; and data access guidance, where to get current information.
+
+27
+00:04:02.896 --> 00:04:05.633
+<v Bob>Skills first. What's a skill here?
+
+28
+00:04:05.933 --> 00:04:21.627
+<v Alice>Instructions and scripts for doing tasks the particular way your company requires. Chase says these were often never written down, just passed from coworker to coworker. Anthropic's skills post calls this capturing and sharing procedural knowledge.
+
+29
+00:04:21.927 --> 00:04:23.580
+<v Bob>Is there a standard format?
+
+30
+00:04:23.880 --> 00:04:41.732
+<v Alice>Anthropic's engineering post "Equipping agents with Agent Skills" describes skills as folders of instructions, scripts and resources that agents can discover and load. The agent sees only each skill's name and description at first, and reads the full file when the skill fits the task.
+
+31
+00:04:42.032 --> 00:04:43.401
+<v Bob>And the other two kinds?
+
+32
+00:04:43.701 --> 00:05:06.319
+<v Alice>Imagine a new hire's first-week binder with three tabs: how we do things, what we sell and to whom, and where the files live. Anthropic reaches for the same picture: a skill is like an onboarding guide for a new hire. Domain knowledge is the middle tab: core facts about people, products and competitors, usually incomplete or incorrect somewhere.
+
+33
+00:05:06.619 --> 00:05:09.565
+<v Bob>And the third tab, where the files live?
+
+34
+00:05:09.865 --> 00:05:23.248
+<v Alice>That's data access guidance. If your source of truth, in Snowflake or Databricks say, is complete and up to date, don't copy it. Maintain clear instructions on what data lives where and how to query it.
+
+35
+00:05:23.548 --> 00:05:27.261
+<v Bob>Okay, so who writes all of this? Please don't say me.
+
+36
+00:05:27.561 --> 00:05:37.751
+<v Alice>Not you, and not by hand: Chase calls manual upkeep a herculean effort. The first piece of the factory is a way for agents to flag missing knowledge as they work.
+
+37
+00:05:38.051 --> 00:05:39.966
+<v Bob>Flag it how, exactly?
+
+38
+00:05:40.266 --> 00:05:52.918
+<v Alice>Picture the sticky notes on a family fridge: whoever finds the milk gone writes it down, so nobody has to audit the fridge. Here, the agent gets a tool to report what's wrong, and optionally suggest the correct update.
+
+39
+00:05:53.218 --> 00:05:56.721
+<v Bob>Isn't some information better than none? Maya?
+
+40
+00:05:57.021 --> 00:06:10.236
+<v Maya>Not always. In a paper on arXiv, Linda Zeng and colleagues built a benchmark called RAGuard from real Reddit discussions. It sorts retrieved evidence into three types: supporting, misleading and unrelated.
+
+41
+00:06:10.536 --> 00:06:11.730
+<v Bob>And what happened?
+
+42
+00:06:12.030 --> 00:06:24.299
+<v Maya>When exposed to potentially misleading retrievals, every LLM-powered RAG system they tested did worse than its zero-shot baseline, meaning no retrieval at all. Human annotators consistently did better.
+
+43
+00:06:24.599 --> 00:06:30.192
+<v Bob>Wow. Bad knowledge can be worse than no knowledge. Why real Reddit posts, though?
+
+44
+00:06:30.492 --> 00:06:43.318
+<v Maya>Because mainstream benchmarks test clean retrieval or synthetic noise. The authors say those assumptions fail to reflect real-world conditions, often leading to an overestimation of how well RAG systems perform.
+
+45
+00:06:43.618 --> 00:06:46.785
+<v Bob>So, Alice, the flag really matters.
+
+46
+00:06:47.085 --> 00:06:56.289
+<v Alice>It does. Anthropic's skills post gives similar advice: find the gaps by running agents on representative tasks and observing where they struggle.
+
+47
+00:06:56.589 --> 00:06:59.790
+<v Bob>So the agents leave notes. Who reads the notes?
+
+48
+00:07:00.090 --> 00:07:11.263
+<v Alice>The curator agent. Chase says the agents using the knowledge are great at flagging, but fixing it requires deep understanding of the underlying knowledge and other sources of data.
+
+49
+00:07:11.563 --> 00:07:14.555
+<v Bob>Why not let every agent fix things as it goes?
+
+50
+00:07:14.855 --> 00:07:24.333
+<v Alice>Because those agents are mainly trying to accomplish their own goals. He warns that asking them to maintain the knowledge will make it unruly and full of contradictions.
+
+51
+00:07:24.633 --> 00:07:26.778
+<v Bob>Too many cooks in the kitchen again.
+
+52
+00:07:27.078 --> 00:07:43.149
+<v Lena>And that worry has a name. Drew Breunig, in his post "How Long Contexts Fail", calls it context clash: new information in the context that conflicts with other information already there. He says it creates internal contradictions that derail reasoning.
+
+53
+00:07:43.449 --> 00:07:45.902
+<v Bob>So who keeps the knowledge clean?
+
+54
+00:07:46.202 --> 00:08:02.963
+<v Alice>Picture a night librarian who reshelves the books and fixes the catalogue after everyone goes home. That's the curator: an agent running in the background on some cadence, with access to raw sources like Notion and Slack, to agent traces, and to everything the agents flagged.
+
+55
+00:08:03.263 --> 00:08:04.407
+<v Bob>Why the traces?
+
+56
+00:08:04.707 --> 00:08:16.054
+<v Alice>So it can see how people are trying to use the agents, and codify that into skills. Anthropic's post hopes agents will one day create, edit and evaluate skills on their own.
+
+57
+00:08:16.354 --> 00:08:19.305
+<v Bob>And where does all this knowledge actually live?
+
+58
+00:08:19.605 --> 00:08:30.822
+<v Alice>In some ways, he says, the least important part: skills in GitHub, a single file in Notion, a knowledge graph in Neo4j, and the curator agent should handle them all.
+
+59
+00:08:31.122 --> 00:08:33.012
+<v Bob>Least important. But?
+
+60
+00:08:33.312 --> 00:08:52.784
+<v Alice>But also the least explored. It's like arguing over a recipe box or a binder: the container matters less than whether the recipes are right, yet nobody agrees on the container. As an industry, he says, we've converged on skills for procedural memory, and Anthropic has published Agent Skills as an open standard.
+
+61
+00:08:53.084 --> 00:08:58.248
+<v Bob>Procedural memory again. Callback to the bike! Sam, how would you fence memory in?
+
+62
+00:08:58.548 --> 00:09:11.803
+<v Sam>Simon Willison, on Simon Willison's Weblog, wrote about chat memory. What he wants is "memory within projects": memory from previous chats, scoped to a project, so it doesn't leak into everything else.
+
+63
+00:09:12.103 --> 00:09:15.660
+<v Bob>Scoped knowledge. Noted. And the facts side?
+
+64
+00:09:15.960 --> 00:09:33.540
+<v Alice>Weng's post names the other kind: explicit memory of facts and events, which includes semantic memory, facts and concepts. For that, Chase expects a different standard to emerge, maybe one called OKF, and advises not being too prescriptive yet.
+
+65
+00:09:33.840 --> 00:09:36.584
+<v Bob>Make it concrete. His example?
+
+66
+00:09:36.884 --> 00:09:52.090
+<v Alice>An agent prepares a revenue report. The base context is the raw revenue numbers in BigQuery and Salesforce. The knowledge: a report-style skill, how the company calculates ARR from its wiki, and skills for querying that data.
+
+67
+00:09:52.390 --> 00:09:53.954
+<v Bob>And then something breaks.
+
+68
+00:09:54.254 --> 00:10:05.552
+<v Alice>Of course. Maybe a column was renamed in BigQuery, and the agent figures out the correct one on the fly. Then it uses its tool to flag the issue and suggest the proper column name.
+
+69
+00:10:05.852 --> 00:10:06.974
+<v Bob>And the humans?
+
+70
+00:10:07.274 --> 00:10:21.979
+<v Alice>Their finance lead works with the agent to fix some formatting, including a new header now needed on all their documents. That night, the curator sees the flag, inspects the traces of that back and forth, and updates the relevant skills.
+
+71
+00:10:22.279 --> 00:10:25.016
+<v Bob>So tomorrow's report gets it right the first time.
+
+72
+00:10:25.316 --> 00:10:44.010
+<v Alice>Think of it as a shift handover: the day crew leaves notes, the night crew fixes the manual, and the next crew starts ahead. Chase wants a system where doing the work reveals what knowledge is missing. It echoes Anthropic's tip: have the agent capture its successful approaches and common mistakes in a skill.
+
+73
+00:10:44.310 --> 00:10:48.406
+<v Bob>Time for some pushback. Sam, you've been itching to jump in.
+
+74
+00:10:48.706 --> 00:11:02.635
+<v Sam>A little. Simon Willison's bigger worry, in "I really don't like ChatGPT's new memory dossier", is control. About that newer memory, he wrote: "The new memory feature removes that control completely."
+
+75
+00:11:02.935 --> 00:11:05.370
+<v Bob>Why does control matter so much?
+
+76
+00:11:05.670 --> 00:11:17.219
+<v Sam>He says the entire game in prompting is to carefully control the context. In his case, remembered chats put a Half Moon Bay sign into a dog's pelican costume picture he never asked for.
+
+77
+00:11:17.519 --> 00:11:21.452
+<v Bob>A pelican costume. Okay, that's a vivid failure.
+
+78
+00:11:21.752 --> 00:11:33.765
+<v Sam>Vivid, but the lesson is serious. With the older feature, he could browse the notes at any time and delete the ones that weren't helpful. A curator that rewrites skills every night should leave people that same control.
+
+79
+00:11:34.065 --> 00:11:42.549
+<v Alice>Fair. My take: that's a strong argument for formats people can open and read, like skill files in GitHub that a teammate can review.
+
+80
+00:11:42.849 --> 00:11:45.458
+<v Bob>Lena, you've got a different worry.
+
+81
+00:11:45.758 --> 00:12:04.464
+<v Lena>Breunig's post "How Long Contexts Fail" also warns that longer contexts don't generate better responses. He describes context poisoning: when a hallucination or other error makes it into the context, where it is repeatedly referenced. One wrong fact in shared knowledge could spread that way.
+
+82
+00:12:04.764 --> 00:12:19.123
+<v Alice>Which is why one careful curator matters, not every agent writing. And Anthropic's skills post points to one guard: agents with a filesystem don't need to read a whole skill into their context window, only what the task needs.
+
+83
+00:12:19.423 --> 00:12:24.129
+<v Bob>One more from me: this is LangChain describing its own setup. Any numbers?
+
+84
+00:12:24.429 --> 00:12:33.935
+<v Alice>None in the post: it shares their learnings, not measurements. So my take is to treat it as a design to test on your own work, not a proven result.
+
+85
+00:12:34.235 --> 00:12:38.713
+<v Bob>Builder's Corner. Alice, one thing listeners can try this week.
+
+86
+00:12:39.013 --> 00:12:48.821
+<v Alice>Start with one recurring workflow, like a weekly report. Give that agent a simple tool to report what is wrong or missing, and optionally suggest the correct update.
+
+87
+00:12:49.121 --> 00:12:51.602
+<v Bob>And then I just read the flags?
+
+88
+00:12:51.902 --> 00:13:03.788
+<v Alice>Every week, yes. Play the curator by hand at first and fix the skill or document behind each flag. That's Chase's closing advice: inspect where agents struggle, and close that loop.
+
+89
+00:13:04.088 --> 00:13:07.034
+<v Bob>Small loop, real knowledge. I like it.
+
+90
+00:13:07.334 --> 00:13:15.307
+<v Alice>Takeaways, then. Mine: better models alone won't fix it. What's missing is better knowledge about your company.
+
+91
+00:13:15.607 --> 00:13:24.091
+<v Bob>Mine: three kinds of knowledge, skills, domain facts and data access guidance. And don't copy data that already has a reliable home.
+
+92
+00:13:24.391 --> 00:13:37.124
+<v Alice>And the loop: agents flag, a curator fixes, and wrong knowledge gets caught, which matters because Zeng's team found misleading retrievals made every system they tested worse than no retrieval.
+
+93
+00:13:37.424 --> 00:13:38.826
+<v Bob>And what's still open?
+
+94
+00:13:39.126 --> 00:13:45.775
+<v Alice>The format, for one. Chase says it's early and no standard has yet emerged for this kind of memory.
+
+95
+00:13:46.075 --> 00:13:51.576
+<v Bob>And who checks the curator? A night librarian nobody supervises makes me a bit nervous.
+
+96
+00:13:51.876 --> 00:14:00.394
+<v Alice>Same here. My guess: some human review of the curator's changes will matter, at least at first, and the post leaves that question open.
+
+97
+00:14:00.694 --> 00:14:13.219
+<v Bob>Thanks to Harrison Chase for his X article "How to build a knowledge factory". And to Lilian Weng on Lil'Log, Anthropic's Agent Skills post, Linda Zeng's team on arXiv, Simon Willison and Drew Breunig.
+
+98
+00:14:13.519 --> 00:14:22.002
+<v Alice>Go give one agent a way to flag what it doesn't know. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase) | Build Wiz AI Show</title>
+<meta name="description" content="Harrison Chase explains why company AI agents need better knowledge, not better models, and how a knowledge factory collects, curates and maintains it. Bob and Alice unpack skills, curator agents and agent memory, then test the idea against research.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-21_how-to-build-a-knowledge-factory/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-21_how-to-build-a-knowledge-factory/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)">
+<meta property="og:description" content="Harrison Chase explains why company AI agents need better knowledge, not better models, and how a knowledge factory collects, curates and maintains it. Bob and Alice unpack skills, curator agents and agent memory, then test the idea against research.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-21_how-to-build-a-knowledge-factory/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-21_how-to-build-a-knowledge-factory.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)">
+<meta name="twitter:description" content="Harrison Chase explains why company AI agents need better knowledge, not better models, and how a knowledge factory collects, curates and maintains it. Bob and Alice unpack skills, curator agents and agent memory, then test the idea against research.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)",
+ "description": "Harrison Chase explains why company AI agents need better knowledge, not better models, and how a knowledge factory collects, curates and maintains it. Bob and Alice unpack skills, curator agents and agent memory, then test the idea against research.\n\nIn this episode:\n- Context versus knowledge, and tacit know-how\n- Agents that flag gaps, and a curator agent that fixes them\n- Risks: misleading retrievals, context poisoning\n\nSources: Harrison Chase; Lilian Weng; Anthropic; Linda Zeng et al.; Simon Willison; Drew Breunig\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-21_how-to-build-a-knowledge-factory/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-21_how-to-build-a-knowledge-factory.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT14M29S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-21T23:44:54Z",
+ "timeRequired": "PT14M29S",
+ "isBasedOn": "https://x.com/hwchase17/status/2124181216719151585"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)</h1>
+  <p class="meta"><span class="dur">14 min</span> · <time datetime="2026-11-21T23:44:54Z">2026-11-21</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-21_how-to-build-a-knowledge-factory.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">Harrison Chase explains why company AI agents need better knowledge, not better models, and how a knowledge factory collects, curates and maintains it. Bob and Alice unpack skills, curator agents and agent memory, then test the idea against research.
+
+In this episode:
+- Context versus knowledge, and tacit know-how
+- Agents that flag gaps, and a curator agent that fixes them
+- Risks: misleading retrievals, context poisoning
+
+Sources: Harrison Chase; Lilian Weng; Anthropic; Linda Zeng et al.; Simon Willison; Drew Breunig
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-21_how-to-build-a-knowledge-factory">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-21_how-to-build-a-knowledge-factory.mp3" download="Build Wiz AI Show - Knowledge Factory How AI Agents Learn Your Company (Harrison Chase) (2026-11-22).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Harrison Chase explains why company AI agents need better knowledge, not better models, and how a knowledge factory collects, curates and maintains it. Bob and Alice unpack skills, curator agents and agent memory, then test the idea against research.
+
+In this episode:
+- Context versus knowledge, and tacit know-how
+- Agents that flag gaps, and a curator agent that fixes them
+- Risks: misleading retrievals, context poisoning
+
+Sources: Harrison Chase; Lilian Weng; Anthropic; Linda Zeng et al.; Simon Willison; Drew Breunig
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://x.com/hwchase17/status/2124181216719151585" rel="noopener">How to build a knowledge factory</a> by Harrison Chase (@hwchase17)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> What if the thing holding back AI at your company isn't the model at all?</p>
+    <p><strong>Alice:</strong> Harrison Chase says the missing bit is better knowledge. The kind your best people carry around in their heads.</p>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, here with Alice. Today: how to get what your best people know into your agents. Alice, what are we reading?</p>
+    <p><strong>Alice:</strong> An X article by Harrison Chase, "How to build a knowledge factory". He writes that all the agents at LangChain, including their internal go-to-market and content agents, share a learning loop with similar pieces. Then he lays out those pieces.</p>
+    <p><strong>Bob:</strong> Big claim first. Models keep improving. Why isn't that enough?</p>
+    <p><strong>Alice:</strong> Because the model doesn't know your company. Chase says the missing piece is knowledge of how your company works, what standards you operate by, where data is stored and how it's accessed.</p>
+    <p><strong>Bob:</strong> And that knowledge lives... where?</p>
+    <p><strong>Alice:</strong> In your best people's heads. They know who to talk to, where to go to answer questions, why you do things a particular way. He calls that knowledge tacit, implicit and scattered.</p>
+    <p><strong>Bob:</strong> Tacit. Give me the novice version.</p>
+    <p><strong>Alice:</strong> Picture a family recipe nobody ever wrote down: grandma just knows when the sauce is ready. Map that back, and tacit knowledge is what a company runs on that sits only in someone's head, or scattered across documents.</p>
+    <p><strong>Bob:</strong> Does memory research have a name for that?</p>
+    <p><strong>Alice:</strong> Close to it. Lilian Weng, in her Lil'Log post "LLM Powered Autonomous Agents", describes implicit or procedural memory as unconscious skills and routines. Her example: "like riding a bike or typing on a keyboard".</p>
+    <p><strong>Bob:</strong> So you can ride the bike, but you can't write the manual.</p>
+    <p><strong>Alice:</strong> Exactly! So Chase's fix is to collect, curate and maintain a representation of that knowledge to pass to agents. He calls the system that does this a knowledge factory, and Anthropic's skills post voices a similar hope: helping organizations share their context and workflows.</p>
+    <p><strong>Bob:</strong> Wait, though. Isn't that just context? Stuff the agent gets in its prompt?</p>
+    <p><strong>Alice:</strong> He splits the two. Context is what an agent has available when doing a task. Knowledge is the reusable understanding that lets it do the task correctly: what a metric means, which source to trust, how a situation is handled.</p>
+    <p><strong>Bob:</strong> Still a bit abstract for me.</p>
+    <p><strong>Alice:</strong> Think of a delivery driver: today's route sheet is the context, and knowing which back gate is locked after dark is the knowledge. The factory turns scattered documents and experience into that second kind, which then becomes context for future work.</p>
+    <p><strong>Bob:</strong> So knowledge is just one part of the context?</p>
+    <p><strong>Alice:</strong> Right: data you already store reliably can just be handed over directly. Weng's post draws a similar line: short-term memory is in-context learning, limited by the context window. Long-term memory is an external store the agent retrieves from at query time.</p>
+    <p><strong>Bob:</strong> Where does the word factory come from?</p>
+    <p><strong>Alice:</strong> From software. Chase notes that the idea of software factories has risen sharply over the past year and a half. Your best engineers build the systems that help everyone build software, and agents do the actual building.</p>
+    <p><strong>Bob:</strong> And the rest of knowledge work?</p>
+    <p><strong>Alice:</strong> He says it's following a similar path, and agents now need all that tacit, scattered knowledge. It's like a head chef who stops cooking every plate and designs the kitchen, so the whole crew cooks better. The kitchen is the factory that collects, curates and maintains knowledge.</p>
+    <p><strong>Bob:</strong> Love it, the chef becomes the architect. So what goes into this factory?</p>
+    <p><strong>Alice:</strong> He names three kinds: skills, which is how to do the work; domain knowledge, how the business works; and data access guidance, where to get current information.</p>
+    <p><strong>Bob:</strong> Skills first. What's a skill here?</p>
+    <p><strong>Alice:</strong> Instructions and scripts for doing tasks the particular way your company requires. Chase says these were often never written down, just passed from coworker to coworker. Anthropic's skills post calls this capturing and sharing procedural knowledge.</p>
+    <p><strong>Bob:</strong> Is there a standard format?</p>
+    <p><strong>Alice:</strong> Anthropic's engineering post "Equipping agents with Agent Skills" describes skills as folders of instructions, scripts and resources that agents can discover and load. The agent sees only each skill's name and description at first, and reads the full file when the skill fits the task.</p>
+    <p><strong>Bob:</strong> And the other two kinds?</p>
+    <p><strong>Alice:</strong> Imagine a new hire's first-week binder with three tabs: how we do things, what we sell and to whom, and where the files live. Anthropic reaches for the same picture: a skill is like an onboarding guide for a new hire. Domain knowledge is the middle tab: core facts about people, products and competitors, usually incomplete or incorrect somewhere.</p>
+    <p><strong>Bob:</strong> And the third tab, where the files live?</p>
+    <p><strong>Alice:</strong> That's data access guidance. If your source of truth, in Snowflake or Databricks say, is complete and up to date, don't copy it. Maintain clear instructions on what data lives where and how to query it.</p>
+    <p><strong>Bob:</strong> Okay, so who writes all of this? Please don't say me.</p>
+    <p><strong>Alice:</strong> Not you, and not by hand: Chase calls manual upkeep a herculean effort. The first piece of the factory is a way for agents to flag missing knowledge as they work.</p>
+    <p><strong>Bob:</strong> Flag it how, exactly?</p>
+    <p><strong>Alice:</strong> Picture the sticky notes on a family fridge: whoever finds the milk gone writes it down, so nobody has to audit the fridge. Here, the agent gets a tool to report what's wrong, and optionally suggest the correct update.</p>
+    <p><strong>Bob:</strong> Isn't some information better than none? Maya?</p>
+    <p><strong>Maya:</strong> Not always. In a paper on arXiv, Linda Zeng and colleagues built a benchmark called RAGuard from real Reddit discussions. It sorts retrieved evidence into three types: supporting, misleading and unrelated.</p>
+    <p><strong>Bob:</strong> And what happened?</p>
+    <p><strong>Maya:</strong> When exposed to potentially misleading retrievals, every LLM-powered RAG system they tested did worse than its zero-shot baseline, meaning no retrieval at all. Human annotators consistently did better.</p>
+    <p><strong>Bob:</strong> Wow. Bad knowledge can be worse than no knowledge. Why real Reddit posts, though?</p>
+    <p><strong>Maya:</strong> Because mainstream benchmarks test clean retrieval or synthetic noise. The authors say those assumptions fail to reflect real-world conditions, often leading to an overestimation of how well RAG systems perform.</p>
+    <p><strong>Bob:</strong> So, Alice, the flag really matters.</p>
+    <p><strong>Alice:</strong> It does. Anthropic's skills post gives similar advice: find the gaps by running agents on representative tasks and observing where they struggle.</p>
+    <p><strong>Bob:</strong> So the agents leave notes. Who reads the notes?</p>
+    <p><strong>Alice:</strong> The curator agent. Chase says the agents using the knowledge are great at flagging, but fixing it requires deep understanding of the underlying knowledge and other sources of data.</p>
+    <p><strong>Bob:</strong> Why not let every agent fix things as it goes?</p>
+    <p><strong>Alice:</strong> Because those agents are mainly trying to accomplish their own goals. He warns that asking them to maintain the knowledge will make it unruly and full of contradictions.</p>
+    <p><strong>Bob:</strong> Too many cooks in the kitchen again.</p>
+    <p><strong>Lena:</strong> And that worry has a name. Drew Breunig, in his post "How Long Contexts Fail", calls it context clash: new information in the context that conflicts with other information already there. He says it creates internal contradictions that derail reasoning.</p>
+    <p><strong>Bob:</strong> So who keeps the knowledge clean?</p>
+    <p><strong>Alice:</strong> Picture a night librarian who reshelves the books and fixes the catalogue after everyone goes home. That's the curator: an agent running in the background on some cadence, with access to raw sources like Notion and Slack, to agent traces, and to everything the agents flagged.</p>
+    <p><strong>Bob:</strong> Why the traces?</p>
+    <p><strong>Alice:</strong> So it can see how people are trying to use the agents, and codify that into skills. Anthropic's post hopes agents will one day create, edit and evaluate skills on their own.</p>
+    <p><strong>Bob:</strong> And where does all this knowledge actually live?</p>
+    <p><strong>Alice:</strong> In some ways, he says, the least important part: skills in GitHub, a single file in Notion, a knowledge graph in Neo4j, and the curator agent should handle them all.</p>
+    <p><strong>Bob:</strong> Least important. But?</p>
+    <p><strong>Alice:</strong> But also the least explored. It's like arguing over a recipe box or a binder: the container matters less than whether the recipes are right, yet nobody agrees on the container. As an industry, he says, we've converged on skills for procedural memory, and Anthropic has published Agent Skills as an open standard.</p>
+    <p><strong>Bob:</strong> Procedural memory again. Callback to the bike! Sam, how would you fence memory in?</p>
+    <p><strong>Sam:</strong> Simon Willison, on Simon Willison's Weblog, wrote about chat memory. What he wants is "memory within projects": memory from previous chats, scoped to a project, so it doesn't leak into everything else.</p>
+    <p><strong>Bob:</strong> Scoped knowledge. Noted. And the facts side?</p>
+    <p><strong>Alice:</strong> Weng's post names the other kind: explicit memory of facts and events, which includes semantic memory, facts and concepts. For that, Chase expects a different standard to emerge, maybe one called OKF, and advises not being too prescriptive yet.</p>
+    <p><strong>Bob:</strong> Make it concrete. His example?</p>
+    <p><strong>Alice:</strong> An agent prepares a revenue report. The base context is the raw revenue numbers in BigQuery and Salesforce. The knowledge: a report-style skill, how the company calculates ARR from its wiki, and skills for querying that data.</p>
+    <p><strong>Bob:</strong> And then something breaks.</p>
+    <p><strong>Alice:</strong> Of course. Maybe a column was renamed in BigQuery, and the agent figures out the correct one on the fly. Then it uses its tool to flag the issue and suggest the proper column name.</p>
+    <p><strong>Bob:</strong> And the humans?</p>
+    <p><strong>Alice:</strong> Their finance lead works with the agent to fix some formatting, including a new header now needed on all their documents. That night, the curator sees the flag, inspects the traces of that back and forth, and updates the relevant skills.</p>
+    <p><strong>Bob:</strong> So tomorrow's report gets it right the first time.</p>
+    <p><strong>Alice:</strong> Think of it as a shift handover: the day crew leaves notes, the night crew fixes the manual, and the next crew starts ahead. Chase wants a system where doing the work reveals what knowledge is missing. It echoes Anthropic's tip: have the agent capture its successful approaches and common mistakes in a skill.</p>
+    <p><strong>Bob:</strong> Time for some pushback. Sam, you've been itching to jump in.</p>
+    <p><strong>Sam:</strong> A little. Simon Willison's bigger worry, in "I really don't like ChatGPT's new memory dossier", is control. About that newer memory, he wrote: "The new memory feature removes that control completely."</p>
+    <p><strong>Bob:</strong> Why does control matter so much?</p>
+    <p><strong>Sam:</strong> He says the entire game in prompting is to carefully control the context. In his case, remembered chats put a Half Moon Bay sign into a dog's pelican costume picture he never asked for.</p>
+    <p><strong>Bob:</strong> A pelican costume. Okay, that's a vivid failure.</p>
+    <p><strong>Sam:</strong> Vivid, but the lesson is serious. With the older feature, he could browse the notes at any time and delete the ones that weren't helpful. A curator that rewrites skills every night should leave people that same control.</p>
+    <p><strong>Alice:</strong> Fair. My take: that's a strong argument for formats people can open and read, like skill files in GitHub that a teammate can review.</p>
+    <p><strong>Bob:</strong> Lena, you've got a different worry.</p>
+    <p><strong>Lena:</strong> Breunig's post "How Long Contexts Fail" also warns that longer contexts don't generate better responses. He describes context poisoning: when a hallucination or other error makes it into the context, where it is repeatedly referenced. One wrong fact in shared knowledge could spread that way.</p>
+    <p><strong>Alice:</strong> Which is why one careful curator matters, not every agent writing. And Anthropic's skills post points to one guard: agents with a filesystem don't need to read a whole skill into their context window, only what the task needs.</p>
+    <p><strong>Bob:</strong> One more from me: this is LangChain describing its own setup. Any numbers?</p>
+    <p><strong>Alice:</strong> None in the post: it shares their learnings, not measurements. So my take is to treat it as a design to test on your own work, not a proven result.</p>
+    <p><strong>Bob:</strong> Builder's Corner. Alice, one thing listeners can try this week.</p>
+    <p><strong>Alice:</strong> Start with one recurring workflow, like a weekly report. Give that agent a simple tool to report what is wrong or missing, and optionally suggest the correct update.</p>
+    <p><strong>Bob:</strong> And then I just read the flags?</p>
+    <p><strong>Alice:</strong> Every week, yes. Play the curator by hand at first and fix the skill or document behind each flag. That's Chase's closing advice: inspect where agents struggle, and close that loop.</p>
+    <p><strong>Bob:</strong> Small loop, real knowledge. I like it.</p>
+    <p><strong>Alice:</strong> Takeaways, then. Mine: better models alone won't fix it. What's missing is better knowledge about your company.</p>
+    <p><strong>Bob:</strong> Mine: three kinds of knowledge, skills, domain facts and data access guidance. And don't copy data that already has a reliable home.</p>
+    <p><strong>Alice:</strong> And the loop: agents flag, a curator fixes, and wrong knowledge gets caught, which matters because Zeng's team found misleading retrievals made every system they tested worse than no retrieval.</p>
+    <p><strong>Bob:</strong> And what's still open?</p>
+    <p><strong>Alice:</strong> The format, for one. Chase says it's early and no standard has yet emerged for this kind of memory.</p>
+    <p><strong>Bob:</strong> And who checks the curator? A night librarian nobody supervises makes me a bit nervous.</p>
+    <p><strong>Alice:</strong> Same here. My guess: some human review of the curator's changes will matter, at least at first, and the post leaves that question open.</p>
+    <p><strong>Bob:</strong> Thanks to Harrison Chase for his X article "How to build a knowledge factory". And to Lilian Weng on Lil'Log, Anthropic's Agent Skills post, Linda Zeng's team on arXiv, Simon Willison and Drew Breunig.</p>
+    <p><strong>Alice:</strong> Go give one agent a way to flag what it doesn't know. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-21_how-to-build-a-knowledge-factory/", "title": "Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-21_how-to-build-a-knowledge-factory", "episode_title": "Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-21_how-to-build-a-knowledge-factory", "title": "Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)", "summary": ["Harrison Chase argues company AI is missing better knowledge, not better models, and lays out a knowledge factory to build it.", "Skills, domain knowledge and data access guidance, kept fresh by agents that flag gaps and a background curator agent.", "Research on misleading retrievals, memory control and context poisoning tests where the loop can go wrong."], "description": "Harrison Chase explains why company AI agents need better knowledge, not better models, and how a knowledge factory collects, curates and maintains it. Bob and Alice unpack skills, curator agents and agent memory, then test the idea against research.\n\nIn this episode:\n- Context versus knowledge, and tacit know-how\n- Agents that flag gaps, and a curator agent that fixes them\n- Risks: misleading retrievals, context poisoning\n\nSources: Harrison Chase; Lilian Weng; Anthropic; Linda Zeng et al.; Simon Willison; Drew Breunig\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "How to build a knowledge factory", "author": "Harrison Chase (@hwchase17)", "url": "https://x.com/hwchase17/status/2124181216719151585", "kind": "x"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>

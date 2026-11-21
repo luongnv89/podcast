@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sat, 21 Nov 2026 07:41:09 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 21 Nov 2026 23:48:05 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,33 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-21_how-to-build-a-knowledge-factory</guid>
+    <title>Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)</title>
+    <link>https://luongnv.com/podcast/#2026-11-21_how-to-build-a-knowledge-factory</link>
+    <description>Harrison Chase argues company AI is missing better knowledge, not better models, and lays out a knowledge factory to build it.
+
+Skills, domain knowledge and data access guidance, kept fresh by agents that flag gaps and a background curator agent.
+
+Research on misleading retrievals, memory control and context poisoning tests where the loop can go wrong.
+
+Sources:
+- How to build a knowledge factory, Harrison Chase (@hwchase17) (https://x.com/hwchase17/status/2124181216719151585)
+- LLM Powered Autonomous Agents, Lilian Weng (https://lilianweng.github.io/posts/2023-06-23-agent/)
+- Equipping agents with Agent Skills, Anthropic (https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
+- Worse than Zero-shot? A Fact-Checking Dataset for Evaluating the Robustness of RAG Against Misleading Retrievals, Linda Zeng et al. (https://arxiv.org/abs/2502.16101)
+- I really don’t like ChatGPT’s new memory dossier, Simon Willison (https://simonwillison.net/2025/May/21/chatgpt-new-memory/)
+- How Long Contexts Fail, Drew Breunig (https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Harrison Chase argues company AI is missing better knowledge, not better models, and lays out a knowledge factory to build it.</p><p>Skills, domain knowledge and data access guidance, kept fresh by agents that flag gaps and a background curator agent.</p><p>Research on misleading retrievals, memory control and context poisoning tests where the loop can go wrong.</p><p>Sources:</p><ul><li>How to build a knowledge factory, Harrison Chase (@hwchase17): <a href="https://x.com/hwchase17/status/2124181216719151585">https://x.com/hwchase17/status/2124181216719151585</a></li><li>LLM Powered Autonomous Agents, Lilian Weng: <a href="https://lilianweng.github.io/posts/2023-06-23-agent/">https://lilianweng.github.io/posts/2023-06-23-agent/</a></li><li>Equipping agents with Agent Skills, Anthropic: <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills</a></li><li>Worse than Zero-shot? A Fact-Checking Dataset for Evaluating the Robustness of RAG Against Misleading Retrievals, Linda Zeng et al.: <a href="https://arxiv.org/abs/2502.16101">https://arxiv.org/abs/2502.16101</a></li><li>I really don’t like ChatGPT’s new memory dossier, Simon Willison: <a href="https://simonwillison.net/2025/May/21/chatgpt-new-memory/">https://simonwillison.net/2025/May/21/chatgpt-new-memory/</a></li><li>How Long Contexts Fail, Drew Breunig: <a href="https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html">https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Sat, 21 Nov 2026 23:44:54 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-21_how-to-build-a-knowledge-factory.mp3?v=7d7bcffa" length="13899013" type="audio/mpeg"/>
+    <itunes:duration>869</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-21_how-to-build-a-knowledge-factory/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-21_morning-edition-saturday-21-november-2026</guid>
     <title>Amazon: AI Agents Found a Zero-Day, Nvidia Drops 14% | AI Daily 21 Nov</title>

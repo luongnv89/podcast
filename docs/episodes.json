@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-21T07:41:09Z",
+  "updated": "2026-11-21T23:48:05Z",
   "episodes": [
+    {
+      "id": "2026-11-21_how-to-build-a-knowledge-factory",
+      "title": "Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)",
+      "summary": [
+        "Harrison Chase argues company AI is missing better knowledge, not better models, and lays out a knowledge factory to build it.",
+        "Skills, domain knowledge and data access guidance, kept fresh by agents that flag gaps and a background curator agent.",
+        "Research on misleading retrievals, memory control and context poisoning tests where the loop can go wrong."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-21T23:44:54Z",
+      "duration_s": 868.602,
+      "size_bytes": 13899013,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-21_how-to-build-a-knowledge-factory.mp3",
+      "audio_sha256": "7d7bcffa278d882fc69491aa604bea4faa62e6bdae9f5bef4a43ba377de1a3a2",
+      "transcript": "episodes/2026-11-21_how-to-build-a-knowledge-factory/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "How to build a knowledge factory",
+        "author": "Harrison Chase (@hwchase17)",
+        "url": "https://x.com/hwchase17/status/2124181216719151585",
+        "published": "2026-11-21T16:40:42Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "How to build a knowledge factory",
+          "author": "Harrison Chase (@hwchase17)",
+          "url": "https://x.com/hwchase17/status/2124181216719151585"
+        },
+        {
+          "title": "LLM Powered Autonomous Agents",
+          "author": "Lilian Weng",
+          "url": "https://lilianweng.github.io/posts/2023-06-23-agent/"
+        },
+        {
+          "title": "Equipping agents with Agent Skills",
+          "author": "Anthropic",
+          "url": "https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills"
+        },
+        {
+          "title": "Worse than Zero-shot? A Fact-Checking Dataset for Evaluating the Robustness of RAG Against Misleading Retrievals",
+          "author": "Linda Zeng et al.",
+          "url": "https://arxiv.org/abs/2502.16101"
+        },
+        {
+          "title": "I really don’t like ChatGPT’s new memory dossier",
+          "author": "Simon Willison",
+          "url": "https://simonwillison.net/2025/May/21/chatgpt-new-memory/"
+        },
+        {
+          "title": "How Long Contexts Fail",
+          "author": "Drew Breunig",
+          "url": "https://www.dbreunig.com/2025/06/22/how-contexts-fail-and-how-to-fix-them.html"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "Worse than Zero-shot? A Fact-Checking Dataset for Evaluating the Robustness of RAG Against Misleading Retrievals"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "I really don’t like ChatGPT’s new memory dossier"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "How Long Contexts Fail"
+          ]
+        }
+      ],
+      "description": "Harrison Chase explains why company AI agents need better knowledge, not better models, and how a knowledge factory collects, curates and maintains it. Bob and Alice unpack skills, curator agents and agent memory, then test the idea against research.\n\nIn this episode:\n- Context versus knowledge, and tacit know-how\n- Agents that flag gaps, and a curator agent that fixes them\n- Risks: misleading retrievals, context poisoning\n\nSources: Harrison Chase; Lilian Weng; Anthropic; Linda Zeng et al.; Simon Willison; Drew Breunig\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Knowledge Factory How AI Agents Learn Your Company (Harrison Chase) (2026-11-22).mp3"
+    },
     {
       "id": "2026-11-21_morning-edition-saturday-21-november-2026",
       "title": "Amazon: AI Agents Found a Zero-Day, Nvidia Drops 14% | AI Daily 21 Nov",
