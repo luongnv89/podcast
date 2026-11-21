@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-20T23:06:35Z",
+  "updated": "2026-11-21T07:41:09Z",
   "episodes": [
+    {
+      "id": "2026-11-21_morning-edition-saturday-21-november-2026",
+      "title": "Amazon: AI Agents Found a Zero-Day, Nvidia Drops 14% | AI Daily 21 Nov",
+      "summary": [
+        "AI Daily for 21 November: six stories from The AI Gazette's morning and afternoon editions.",
+        "Amazon says attackers' AI agents found and used an unknown flaw on their own, and Nvidia fell 14 percent on Friday.",
+        "Also: Signal blocks AI assistants, Cognition's reported valuation, the Riemann proof checks, and a threatened data centre tax."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-21T07:37:59Z",
+      "duration_s": 465.659,
+      "size_bytes": 7451995,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-21_morning-edition-saturday-21-november-2026.mp3",
+      "audio_sha256": "6223b8ac7ced6cfd77582ab6e7f5522205038f926f971aa0daeada038069f23a",
+      "transcript": "episodes/2026-11-21_morning-edition-saturday-21-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Saturday 21 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-21-morning.html",
+        "published": "2026-11-20T18:30:13+01:00",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Saturday 21 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-21-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Friday 20 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-20-afternoon.html"
+        }
+      ],
+      "description": "Amazon says a Chinese-linked group's AI agents, run with the open-source Cairn framework, found a zero-day on their own and took over a university server, while Nvidia fell 14 percent on a reported SEC probe. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Signal blocks screenshots to keep AI assistants out of its chats\n- Cognition's reported 75 billion dollar valuation\n- Checks of the Riemann proof, and a threatened tax on data centres abroad\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Amazon AI Agents Found a Zero-Day, Nvidia Drops 14% AI Daily 21 Nov (2026-11-21).mp3"
+    },
     {
       "id": "2026-11-20_6-trillion-in-45-days-is-this-a-bubble-or-an",
       "title": "AI Bubble or Correction? The $6 Trillion Selloff (Kobeissi Letter)",
