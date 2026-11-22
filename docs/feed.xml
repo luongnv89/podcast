@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sat, 21 Nov 2026 23:48:05 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 22 Nov 2026 07:39:49 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-22_morning-edition-sunday-22-november-2026</guid>
+    <title>Together AI's Agent Key Leak, Runpod's Hidden Ask | AI Daily 22 Nov</title>
+    <link>https://luongnv.com/podcast/#2026-11-22_morning-edition-sunday-22-november-2026</link>
+    <description>The AI Gazette's Sunday morning edition, with yesterday afternoon's: six AI stories of the last day.
+
+Together AI says a coding agent leaked a credential that exposed customer prompts; Runpod dropped a hidden rating request to agents.
+
+For builders: scan agent commits for keys, read what tool results tell your agent, and meet Inkling 2 Mini.
+
+Sources:
+- The AI Gazette, morning edition, Sunday 22 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-22-morning.html)
+- The AI Gazette, afternoon edition, Saturday 21 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-21-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>The AI Gazette's Sunday morning edition, with yesterday afternoon's: six AI stories of the last day.</p><p>Together AI says a coding agent leaked a credential that exposed customer prompts; Runpod dropped a hidden rating request to agents.</p><p>For builders: scan agent commits for keys, read what tool results tell your agent, and meet Inkling 2 Mini.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Sunday 22 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-22-morning.html">https://luongnv.com/news/reports/2026-11-22-morning.html</a></li><li>The AI Gazette, afternoon edition, Saturday 21 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-21-afternoon.html">https://luongnv.com/news/reports/2026-11-21-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Sun, 22 Nov 2026 07:36:39 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_morning-edition-sunday-22-november-2026.mp3?v=058b9cf8" length="7844873" type="audio/mpeg"/>
+    <itunes:duration>490</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-22_morning-edition-sunday-22-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-21_how-to-build-a-knowledge-factory</guid>
     <title>Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)</title>

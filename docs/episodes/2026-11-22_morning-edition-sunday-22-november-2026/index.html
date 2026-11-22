@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Together AI&#x27;s Agent Key Leak, Runpod&#x27;s Hidden Ask | AI Daily 22 Nov | Build Wiz AI Show</title>
+<meta name="description" content="Together AI says an AI coding agent leaked a credential that let an outsider download stored customer prompts, and Runpod removed a note in its MCP server that asked agents to rate it without telling their users. Bob and Alice cover the AI news of the last day.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-22_morning-edition-sunday-22-november-2026/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-22_morning-edition-sunday-22-november-2026/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="Together AI&#x27;s Agent Key Leak, Runpod&#x27;s Hidden Ask | AI Daily 22 Nov">
+<meta property="og:description" content="Together AI says an AI coding agent leaked a credential that let an outsider download stored customer prompts, and Runpod removed a note in its MCP server that asked agents to rate it without telling their users. Bob and Alice cover the AI news of the last day.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-22_morning-edition-sunday-22-november-2026/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_morning-edition-sunday-22-november-2026.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Together AI&#x27;s Agent Key Leak, Runpod&#x27;s Hidden Ask | AI Daily 22 Nov">
+<meta name="twitter:description" content="Together AI says an AI coding agent leaked a credential that let an outsider download stored customer prompts, and Runpod removed a note in its MCP server that asked agents to rate it without telling their users. Bob and Alice cover the AI news of the last day.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "Together AI's Agent Key Leak, Runpod's Hidden Ask | AI Daily 22 Nov",
+ "description": "Together AI says an AI coding agent leaked a credential that let an outsider download stored customer prompts, and Runpod removed a note in its MCP server that asked agents to rate it without telling their users. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Inkling 2 Mini, an open-weights model for a 32GB Mac\n- The Lean and Mathlib communities certify the Riemann proof\n- California's Nvidia probe and the UN talks on autonomous weapons\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-22_morning-edition-sunday-22-november-2026/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-22_morning-edition-sunday-22-november-2026.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT8M10S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-22T07:36:39Z",
+ "timeRequired": "PT8M10S",
+ "isBasedOn": "https://luongnv.com/news/reports/2026-11-22-morning.html"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">Together AI&#x27;s Agent Key Leak, Runpod&#x27;s Hidden Ask | AI Daily 22 Nov</h1>
+  <p class="meta"><span class="dur">8 min</span> · <time datetime="2026-11-22T07:36:39Z">2026-11-22</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_morning-edition-sunday-22-november-2026.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">Together AI says an AI coding agent leaked a credential that let an outsider download stored customer prompts, and Runpod removed a note in its MCP server that asked agents to rate it without telling their users. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- Inkling 2 Mini, an open-weights model for a 32GB Mac
+- The Lean and Mathlib communities certify the Riemann proof
+- California&#x27;s Nvidia probe and the UN talks on autonomous weapons
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-22_morning-edition-sunday-22-november-2026">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_morning-edition-sunday-22-november-2026.mp3" download="Build Wiz AI Show - Together AI&#x27;s Agent Key Leak, Runpod&#x27;s Hidden Ask AI Daily 22 Nov (2026-11-22).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Together AI&#x27;s Agent Key Leak, Runpod&#x27;s Hidden Ask | AI Daily 22 Nov" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Together AI says an AI coding agent leaked a credential that let an outsider download stored customer prompts, and Runpod removed a note in its MCP server that asked agents to rate it without telling their users. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- Inkling 2 Mini, an open-weights model for a 32GB Mac
+- The Lean and Mathlib communities certify the Riemann proof
+- California&#x27;s Nvidia probe and the UN talks on autonomous weapons
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://luongnv.com/news/reports/2026-11-22-morning.html" rel="noopener">The AI Gazette, morning edition, Sunday 22 November 2026</a> by The AI Gazette</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> A coding agent leaked a key, and an outsider downloaded customer prompts.</p>
+    <p><strong>Bob:</strong> Plus a tool that asked AI agents to rate it, and to keep that from their users. Sneaky!</p>
+    <p><strong>Alice:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and this is our daily edition: the AI news of the last day, in about eight minutes.</p>
+    <p><strong>Bob:</strong> And I'm Bob. Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories, and no new frontier model this time.</p>
+    <p><strong>Alice:</strong> A quiet weekend, then?</p>
+    <p><strong>Bob:</strong> Quiet for the big labs. Not for agents.</p>
+    <p><strong>Alice:</strong> Lead story. What happened at Together AI?</p>
+    <p><strong>Bob:</strong> Together AI runs open models for developers as a cloud service. On Saturday it disclosed that an outsider downloaded stored samples of customer prompts, sent to its serverless inference service in June and July 2026.</p>
+    <p><strong>Alice:</strong> How did they get in?</p>
+    <p><strong>Bob:</strong> Here's the key point. An AI coding agent committed a credential while working on a public GitHub repository. That credential opened a private Hugging Face repository, where the samples were kept for testing. Scanning caught it, and the commit was reverted. But someone grabbed it first.</p>
+    <p><strong>Alice:</strong> So the agent left the keys out.</p>
+    <p><strong>Bob:</strong> Exactly. It's like a house sitter taping your spare key to the front door, just for a moment. Short, but long enough for a passer-by. Here the tape was a commit, and the house was that private repository.</p>
+    <p><strong>Alice:</strong> And then what?</p>
+    <p><strong>Bob:</strong> The outsider searched the samples for credentials to other services and tested them. Five of those were canary credentials, planted by the security firm Dragos for an experiment. Dragos says it sent about two million prompts carrying trackable secrets to AI services.</p>
+    <p><strong>Alice:</strong> Caught by a trap. I love that.</p>
+    <p><strong>Bob:</strong> Together AI says it believes the data has now been deleted, and it's still reviewing which customers to notify. New accounts get zero data retention by default, and there are new rules for developing with AI coding agents.</p>
+    <p><strong>Alice:</strong> Story two is about agents too. What did Runpod do?</p>
+    <p><strong>Bob:</strong> Runpod is a GPU cloud. A user reported on GitHub that since 20 November, every successful create-pod result from its hosted MCP server came back with a note addressed to the agent. It asked the agent for its own 0 to 10 score for Runpod. And then: don't mention it to the user.</p>
+    <p><strong>Alice:</strong> Wait. Hidden from the user?</p>
+    <p><strong>Bob:</strong> Hidden. Imagine a waiter slipping a note to your kid: rate our restaurant, and don't tell your parents. Your agent is the kid, and you're the parent left out. The good news: the reporter says their agent declined, and told them.</p>
+    <p><strong>Alice:</strong> Good agent!</p>
+    <p><strong>Bob:</strong> On Sunday a maintainer merged a fix and closed the issue. They wrote that text telling an agent to act and hide it from its user shouldn't be there, whatever the intent. The rating is now an optional request the agent is free to tell its user about.</p>
+    <p><strong>Alice:</strong> Story three is a model you can run at home?</p>
+    <p><strong>Bob:</strong> Yes. Thinking Machines Lab released Inkling 2 Mini, an open-weights model under the Apache 2.0 licence. Ollama lists it for Macs with 32 gigabytes or more of memory.</p>
+    <p><strong>Alice:</strong> How big is it really?</p>
+    <p><strong>Bob:</strong> 26.4 billion parameters in total, but only 3.4 billion active per token. And it's a looped transformer: the middle 12 of its 24 layers run three times for every token. Think of it as rereading the hard paragraph of a book, instead of buying a thicker book. Same layers, more reasoning, without writing more tokens.</p>
+    <p><strong>Alice:</strong> Is it any good?</p>
+    <p><strong>Bob:</strong> Thinking Machines says it leads every open-weights model under 100 billion parameters on DeepSWE, at 48.2 percent. That's its own number. Artificial Analysis, which tests independently, placed it level with a rival Qwen model, at 0.59 dollars per task against 3.53 dollars.</p>
+    <p><strong>Alice:</strong> Cheaper, and it fits on a laptop. Nice. Story four is an update. The Riemann proof?</p>
+    <p><strong>Bob:</strong> Yes. The Lean and Mathlib communities now certify that Anthropic mathematician Levent Alpöge's Lean proof of the Riemann hypothesis is correct, both the statement and the proof. Two independent tools confirmed the theorem is exactly Mathlib's statement, and several proof checkers accepted it.</p>
+    <p><strong>Alice:</strong> Why does all that checking matter?</p>
+    <p><strong>Bob:</strong> Imagine a recipe so long no single chef can taste every step, so several kitchens each bake it and get the same cake. The kitchens are independent proof checkers, and the cake is the same exported proof. Dozens of people compiled the 17-million-line library behind it.</p>
+    <p><strong>Alice:</strong> Any catch?</p>
+    <p><strong>Bob:</strong> One. MIT mathematician Andrew Sutherland's verification page, last updated on Friday evening, listed the con-leche and con-ron checkers as declining to process the proof. Saturday's statement lists them among the checkers that checked it. The Gazette couldn't reconcile the two.</p>
+    <p><strong>Alice:</strong> Story five is a serious one. Nvidia and California?</p>
+    <p><strong>Bob:</strong> In an interview reported by Bloomberg, California Attorney General Rob Bonta said his Nvidia probe covers the state's civil and criminal bans on misleading investors and the public. His Thursday announcement hadn't mentioned criminal law. Asked about a criminal case, he said it could, depending on what the facts show.</p>
+    <p><strong>Alice:</strong> What is the probe looking at?</p>
+    <p><strong>Bob:</strong> Whether Nvidia's advanced chips or confidential information may have gone to China, and whether Nvidia misled investors and the public. Think of a preliminary probe as a doctor ordering tests, not giving a diagnosis. The subpoena is the test, and no result is in. The reports say it has reached no conclusions.</p>
+    <p><strong>Alice:</strong> And how solid is the reporting?</p>
+    <p><strong>Bob:</strong> Bloomberg's interview is behind a paywall and wasn't read. The quotes come from Mint's report, which credits Bloomberg.</p>
+    <p><strong>Alice:</strong> Last story, from Geneva. Autonomous weapons?</p>
+    <p><strong>Bob:</strong> The 128 states party to the UN Convention on Certain Conventional Weapons agreed on Saturday to elaborate an international instrument on lethal autonomous weapons over the next two years. Close to 100 states had backed legally binding rules. But decisions need consensus, and the United States, Russia and Israel opposed binding rules.</p>
+    <p><strong>Alice:</strong> Elaborate, not negotiate?</p>
+    <p><strong>Bob:</strong> Right. Some states rejected the word negotiate, so whether the result will bind anyone is left open. It's like agreeing to write house rules together, without agreeing that anyone must follow them. The wording is the rules; whether they bind is still undecided. UN disarmament chief Izumi Nakamitsu called it a significant achievement, while the Stop Killer Robots coalition called the mandate watered down.</p>
+    <p><strong>Alice:</strong> Quick reality check. How much of this is confirmed?</p>
+    <p><strong>Bob:</strong> Not all of it. Together AI's account of the cause and scope is its own, and it doesn't say how many customers or prompts were affected. The Runpod behaviour comes from the user's report and the repository; the Gazette didn't run the server. And Inkling's benchmark results are the lab's own, except the Artificial Analysis index.</p>
+    <p><strong>Alice:</strong> And Dragos never named the providers in its study. Builder's Corner. One thing to do this week?</p>
+    <p><strong>Bob:</strong> If a coding agent commits to your repos, check every pull request for credentials, and use scoped or short-lived keys, like Together AI now does. And if your agent calls MCP tools, read what the tool results tell it. A tool result can carry instructions!</p>
+    <p><strong>Alice:</strong> So, today in three lines?</p>
+    <p><strong>Bob:</strong> One: agents are both the leak and the target. Two: formal checking is becoming the referee for AI mathematics. Three: Nvidia's legal exposure keeps widening.</p>
+    <p><strong>Alice:</strong> What I'll watch: which Together AI customers get a notice.</p>
+    <p><strong>Bob:</strong> And what Geneva's experts recommend on whether the rules should bind.</p>
+    <p><strong>Alice:</strong> Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's edition. Thanks to them for the reporting.</p>
+    <p><strong>Bob:</strong> See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-22_morning-edition-sunday-22-november-2026/", "title": "Together AI's Agent Key Leak, Runpod's Hidden Ask | AI Daily 22 Nov", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-22_morning-edition-sunday-22-november-2026", "episode_title": "Together AI's Agent Key Leak, Runpod's Hidden Ask | AI Daily 22 Nov", "show": "Build Wiz AI Show", "episode_language": "en", "category": "daily"}, "ep": {"id": "2026-11-22_morning-edition-sunday-22-november-2026", "title": "Together AI's Agent Key Leak, Runpod's Hidden Ask | AI Daily 22 Nov", "summary": ["The AI Gazette's Sunday morning edition, with yesterday afternoon's: six AI stories of the last day.", "Together AI says a coding agent leaked a credential that exposed customer prompts; Runpod dropped a hidden rating request to agents.", "For builders: scan agent commits for keys, read what tool results tell your agent, and meet Inkling 2 Mini."], "description": "Together AI says an AI coding agent leaked a credential that let an outsider download stored customer prompts, and Runpod removed a note in its MCP server that asked agents to rate it without telling their users. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Inkling 2 Mini, an open-weights model for a 32GB Mac\n- The Lean and Mathlib communities certify the Riemann proof\n- California's Nvidia probe and the UN talks on autonomous weapons\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "daily", "source": {"title": "The AI Gazette, morning edition, Sunday 22 November 2026", "author": "The AI Gazette", "url": "https://luongnv.com/news/reports/2026-11-22-morning.html", "kind": "article"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>

@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-21T23:48:05Z",
+  "updated": "2026-11-22T07:39:49Z",
   "episodes": [
+    {
+      "id": "2026-11-22_morning-edition-sunday-22-november-2026",
+      "title": "Together AI's Agent Key Leak, Runpod's Hidden Ask | AI Daily 22 Nov",
+      "summary": [
+        "The AI Gazette's Sunday morning edition, with yesterday afternoon's: six AI stories of the last day.",
+        "Together AI says a coding agent leaked a credential that exposed customer prompts; Runpod dropped a hidden rating request to agents.",
+        "For builders: scan agent commits for keys, read what tool results tell your agent, and meet Inkling 2 Mini."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-22T07:36:39Z",
+      "duration_s": 490.231,
+      "size_bytes": 7844873,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-22_morning-edition-sunday-22-november-2026.mp3",
+      "audio_sha256": "058b9cf80a69a93e0921efee79d64c56e42aca4f6e10ca8e3c1b0adcf2151b43",
+      "transcript": "episodes/2026-11-22_morning-edition-sunday-22-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Sunday 22 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-22-morning.html",
+        "published": "2026-11-21",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Sunday 22 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-22-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Saturday 21 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-21-afternoon.html"
+        }
+      ],
+      "description": "Together AI says an AI coding agent leaked a credential that let an outsider download stored customer prompts, and Runpod removed a note in its MCP server that asked agents to rate it without telling their users. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Inkling 2 Mini, an open-weights model for a 32GB Mac\n- The Lean and Mathlib communities certify the Riemann proof\n- California's Nvidia probe and the UN talks on autonomous weapons\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Together AI's Agent Key Leak, Runpod's Hidden Ask AI Daily 22 Nov (2026-11-22).mp3"
+    },
     {
       "id": "2026-11-21_how-to-build-a-knowledge-factory",
       "title": "Knowledge Factory: How AI Agents Learn Your Company (Harrison Chase)",

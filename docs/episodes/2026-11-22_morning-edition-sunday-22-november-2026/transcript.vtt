@@ -1,0 +1,225 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.117
+<v Alice>A coding agent leaked a key, and an outsider downloaded customer prompts.
+
+2
+00:00:05.417 --> 00:00:11.045
+<v Bob>Plus a tool that asked AI agents to rate it, and to keep that from their users. Sneaky!
+
+3
+00:00:15.345 --> 00:00:27.103
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and this is our daily edition: the AI news of the last day, in about eight minutes.
+
+4
+00:00:27.403 --> 00:00:37.292
+<v Bob>And I'm Bob. Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories, and no new frontier model this time.
+
+5
+00:00:37.592 --> 00:00:39.445
+<v Alice>A quiet weekend, then?
+
+6
+00:00:39.745 --> 00:00:42.946
+<v Bob>Quiet for the big labs. Not for agents.
+
+7
+00:00:43.246 --> 00:00:46.801
+<v Alice>Lead story. What happened at Together AI?
+
+8
+00:00:47.101 --> 00:01:01.002
+<v Bob>Together AI runs open models for developers as a cloud service. On Saturday it disclosed that an outsider downloaded stored samples of customer prompts, sent to its serverless inference service in June and July 2026.
+
+9
+00:01:01.302 --> 00:01:02.592
+<v Alice>How did they get in?
+
+10
+00:01:02.892 --> 00:01:18.317
+<v Bob>Here's the key point. An AI coding agent committed a credential while working on a public GitHub repository. That credential opened a private Hugging Face repository, where the samples were kept for testing. Scanning caught it, and the commit was reverted. But someone grabbed it first.
+
+11
+00:01:18.617 --> 00:01:20.843
+<v Alice>So the agent left the keys out.
+
+12
+00:01:21.143 --> 00:01:32.873
+<v Bob>Exactly. It's like a house sitter taping your spare key to the front door, just for a moment. Short, but long enough for a passer-by. Here the tape was a commit, and the house was that private repository.
+
+13
+00:01:33.173 --> 00:01:34.415
+<v Alice>And then what?
+
+14
+00:01:34.715 --> 00:01:50.019
+<v Bob>The outsider searched the samples for credentials to other services and tested them. Five of those were canary credentials, planted by the security firm Dragos for an experiment. Dragos says it sent about two million prompts carrying trackable secrets to AI services.
+
+15
+00:01:50.319 --> 00:01:53.265
+<v Alice>Caught by a trap. I love that.
+
+16
+00:01:53.565 --> 00:02:05.578
+<v Bob>Together AI says it believes the data has now been deleted, and it's still reviewing which customers to notify. New accounts get zero data retention by default, and there are new rules for developing with AI coding agents.
+
+17
+00:02:05.878 --> 00:02:10.066
+<v Alice>Story two is about agents too. What did Runpod do?
+
+18
+00:02:10.366 --> 00:02:29.079
+<v Bob>Runpod is a GPU cloud. A user reported on GitHub that since 20 November, every successful create-pod result from its hosted MCP server came back with a note addressed to the agent. It asked the agent for its own 0 to 10 score for Runpod. And then: don't mention it to the user.
+
+19
+00:02:29.379 --> 00:02:31.443
+<v Alice>Wait. Hidden from the user?
+
+20
+00:02:31.743 --> 00:02:43.849
+<v Bob>Hidden. Imagine a waiter slipping a note to your kid: rate our restaurant, and don't tell your parents. Your agent is the kid, and you're the parent left out. The good news: the reporter says their agent declined, and told them.
+
+21
+00:02:44.149 --> 00:02:45.295
+<v Alice>Good agent!
+
+22
+00:02:45.595 --> 00:02:58.991
+<v Bob>On Sunday a maintainer merged a fix and closed the issue. They wrote that text telling an agent to act and hide it from its user shouldn't be there, whatever the intent. The rating is now an optional request the agent is free to tell its user about.
+
+23
+00:02:59.291 --> 00:03:02.492
+<v Alice>Story three is a model you can run at home?
+
+24
+00:03:02.792 --> 00:03:13.710
+<v Bob>Yes. Thinking Machines Lab released Inkling 2 Mini, an open-weights model under the Apache 2.0 licence. Ollama lists it for Macs with 32 gigabytes or more of memory.
+
+25
+00:03:14.010 --> 00:03:15.590
+<v Alice>How big is it really?
+
+26
+00:03:15.890 --> 00:03:36.593
+<v Bob>26.4 billion parameters in total, but only 3.4 billion active per token. And it's a looped transformer: the middle 12 of its 24 layers run three times for every token. Think of it as rereading the hard paragraph of a book, instead of buying a thicker book. Same layers, more reasoning, without writing more tokens.
+
+27
+00:03:36.893 --> 00:03:38.227
+<v Alice>Is it any good?
+
+28
+00:03:38.527 --> 00:03:57.540
+<v Bob>Thinking Machines says it leads every open-weights model under 100 billion parameters on DeepSWE, at 48.2 percent. That's its own number. Artificial Analysis, which tests independently, placed it level with a rival Qwen model, at 0.59 dollars per task against 3.53 dollars.
+
+29
+00:03:57.840 --> 00:04:00.913
+<v Alice>Cheaper, and it fits on a laptop. Nice.
+
+30
+00:04:01.213 --> 00:04:04.763
+<v Alice>Story four is an update. The Riemann proof?
+
+31
+00:04:05.063 --> 00:04:22.225
+<v Bob>Yes. The Lean and Mathlib communities now certify that Anthropic mathematician Levent Alpöge's Lean proof of the Riemann hypothesis is correct, both the statement and the proof. Two independent tools confirmed the theorem is exactly Mathlib's statement, and several proof checkers accepted it.
+
+32
+00:04:22.525 --> 00:04:24.798
+<v Alice>Why does all that checking matter?
+
+33
+00:04:25.098 --> 00:04:41.377
+<v Bob>Imagine a recipe so long no single chef can taste every step, so several kitchens each bake it and get the same cake. The kitchens are independent proof checkers, and the cake is the same exported proof. Dozens of people compiled the 17-million-line library behind it.
+
+34
+00:04:41.677 --> 00:04:42.890
+<v Alice>Any catch?
+
+35
+00:04:43.190 --> 00:04:59.047
+<v Bob>One. MIT mathematician Andrew Sutherland's verification page, last updated on Friday evening, listed the con-leche and con-ron checkers as declining to process the proof. Saturday's statement lists them among the checkers that checked it. The Gazette couldn't reconcile the two.
+
+36
+00:04:59.347 --> 00:05:03.280
+<v Alice>Story five is a serious one. Nvidia and California?
+
+37
+00:05:03.580 --> 00:05:21.473
+<v Bob>In an interview reported by Bloomberg, California Attorney General Rob Bonta said his Nvidia probe covers the state's civil and criminal bans on misleading investors and the public. His Thursday announcement hadn't mentioned criminal law. Asked about a criminal case, he said it could, depending on what the facts show.
+
+38
+00:05:21.773 --> 00:05:23.615
+<v Alice>What is the probe looking at?
+
+39
+00:05:23.915 --> 00:05:42.226
+<v Bob>Whether Nvidia's advanced chips or confidential information may have gone to China, and whether Nvidia misled investors and the public. Think of a preliminary probe as a doctor ordering tests, not giving a diagnosis. The subpoena is the test, and no result is in. The reports say it has reached no conclusions.
+
+40
+00:05:42.526 --> 00:05:44.834
+<v Alice>And how solid is the reporting?
+
+41
+00:05:45.134 --> 00:05:51.574
+<v Bob>Bloomberg's interview is behind a paywall and wasn't read. The quotes come from Mint's report, which credits Bloomberg.
+
+42
+00:05:51.874 --> 00:05:55.774
+<v Alice>Last story, from Geneva. Autonomous weapons?
+
+43
+00:05:56.074 --> 00:06:16.347
+<v Bob>The 128 states party to the UN Convention on Certain Conventional Weapons agreed on Saturday to elaborate an international instrument on lethal autonomous weapons over the next two years. Close to 100 states had backed legally binding rules. But decisions need consensus, and the United States, Russia and Israel opposed binding rules.
+
+44
+00:06:16.647 --> 00:06:18.771
+<v Alice>Elaborate, not negotiate?
+
+45
+00:06:19.071 --> 00:06:41.945
+<v Bob>Right. Some states rejected the word negotiate, so whether the result will bind anyone is left open. It's like agreeing to write house rules together, without agreeing that anyone must follow them. The wording is the rules; whether they bind is still undecided. UN disarmament chief Izumi Nakamitsu called it a significant achievement, while the Stop Killer Robots coalition called the mandate watered down.
+
+46
+00:06:42.245 --> 00:06:45.922
+<v Alice>Quick reality check. How much of this is confirmed?
+
+47
+00:06:46.222 --> 00:07:03.953
+<v Bob>Not all of it. Together AI's account of the cause and scope is its own, and it doesn't say how many customers or prompts were affected. The Runpod behaviour comes from the user's report and the repository; the Gazette didn't run the server. And Inkling's benchmark results are the lab's own, except the Artificial Analysis index.
+
+48
+00:07:04.253 --> 00:07:07.884
+<v Alice>And Dragos never named the providers in its study.
+
+49
+00:07:08.184 --> 00:07:11.304
+<v Alice>Builder's Corner. One thing to do this week?
+
+50
+00:07:11.604 --> 00:07:26.886
+<v Bob>If a coding agent commits to your repos, check every pull request for credentials, and use scoped or short-lived keys, like Together AI now does. And if your agent calls MCP tools, read what the tool results tell it. A tool result can carry instructions!
+
+51
+00:07:27.186 --> 00:07:29.236
+<v Alice>So, today in three lines?
+
+52
+00:07:29.536 --> 00:07:40.319
+<v Bob>One: agents are both the leak and the target. Two: formal checking is becoming the referee for AI mathematics. Three: Nvidia's legal exposure keeps widening.
+
+53
+00:07:40.619 --> 00:07:44.761
+<v Alice>What I'll watch: which Together AI customers get a notice.
+
+54
+00:07:45.061 --> 00:07:49.156
+<v Bob>And what Geneva's experts recommend on whether the rules should bind.
+
+55
+00:07:49.456 --> 00:07:57.274
+<v Alice>Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's edition. Thanks to them for the reporting.
+
+56
+00:07:57.574 --> 00:08:03.631
+<v Bob>See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.
