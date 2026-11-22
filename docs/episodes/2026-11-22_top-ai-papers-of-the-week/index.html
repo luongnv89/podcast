@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers) | Build Wiz AI Show</title>
+<meta name="description" content="Ten papers on self-improving AI agents from DAIR&#x27;s Top AI Papers of the Week, from GUARD and AutoRL to QDA. Bob, Alice and guests dig into every method and caveat.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-22_top-ai-papers-of-the-week/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-22_top-ai-papers-of-the-week/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)">
+<meta property="og:description" content="Ten papers on self-improving AI agents from DAIR&#x27;s Top AI Papers of the Week, from GUARD and AutoRL to QDA. Bob, Alice and guests dig into every method and caveat.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-22_top-ai-papers-of-the-week/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_top-ai-papers-of-the-week.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)">
+<meta name="twitter:description" content="Ten papers on self-improving AI agents from DAIR&#x27;s Top AI Papers of the Week, from GUARD and AutoRL to QDA. Bob, Alice and guests dig into every method and caveat.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)",
+ "description": "Ten papers on self-improving AI agents from DAIR's Top AI Papers of the Week, from GUARD and AutoRL to QDA. Bob, Alice and guests dig into every method and caveat.\n\nIn this episode:\n- Agents evolving their harness and skills\n- Agents that run RL, GPU kernels, quantization\n- Safe self-updates; truth vs likelihood\n\nSources: Top AI Papers of the Week; Xin Yu et al.; Minghe Zhang et al.; Deep Shah et al.; Shobhita Sundaram et al.; Simon Tang et al.; Qian Qu et al.; Xingyang Li et al.; Yash Mehta et al.; Jiapeng Pei et al.; David Lopez-Paz\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-22_top-ai-papers-of-the-week/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-22_top-ai-papers-of-the-week.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT27M16S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-22T21:50:20Z",
+ "timeRequired": "PT27M16S",
+ "isBasedOn": "https://x.com/dair_ai/status/2124510548070895895"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)</h1>
+  <p class="meta"><span class="dur">27 min</span> · <time datetime="2026-11-22T21:50:20Z">2026-11-22</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_top-ai-papers-of-the-week.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">Ten papers on self-improving AI agents from DAIR&#x27;s Top AI Papers of the Week, from GUARD and AutoRL to QDA. Bob, Alice and guests dig into every method and caveat.
+
+In this episode:
+- Agents evolving their harness and skills
+- Agents that run RL, GPU kernels, quantization
+- Safe self-updates; truth vs likelihood
+
+Sources: Top AI Papers of the Week; Xin Yu et al.; Minghe Zhang et al.; Deep Shah et al.; Shobhita Sundaram et al.; Simon Tang et al.; Qian Qu et al.; Xingyang Li et al.; Yash Mehta et al.; Jiapeng Pei et al.; David Lopez-Paz
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-22_top-ai-papers-of-the-week">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_top-ai-papers-of-the-week.mp3" download="Build Wiz AI Show - Self-Improving AI Agents 10 Papers Explained (DAIR.AI Top Papers) (2026-11-22).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Ten papers on self-improving AI agents from DAIR&#x27;s Top AI Papers of the Week, from GUARD and AutoRL to QDA. Bob, Alice and guests dig into every method and caveat.
+
+In this episode:
+- Agents evolving their harness and skills
+- Agents that run RL, GPU kernels, quantization
+- Safe self-updates; truth vs likelihood
+
+Sources: Top AI Papers of the Week; Xin Yu et al.; Minghe Zhang et al.; Deep Shah et al.; Shobhita Sundaram et al.; Simon Tang et al.; Qian Qu et al.; Xingyang Li et al.; Yash Mehta et al.; Jiapeng Pei et al.; David Lopez-Paz
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://x.com/dair_ai/status/2124510548070895895" rel="noopener">🥇Top AI Papers of the Week</a> by DAIR.AI (@dair_ai)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> What happens when AI agents start rewriting their own instructions, their own training runs, even their own GPU code?</p>
+    <p><strong>Alice:</strong> And how do you stop them from quietly breaking everything that already worked?</p>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and today is a long one!</p>
+    <p><strong>Alice:</strong> And I'm Alice! We're going deeper on DAIR dot AI's weekly list, "Top AI Papers of the Week". Ten papers, and one theme keeps coming back: agents improving themselves.</p>
+    <p><strong>Bob:</strong> Self-improving agents. That sounds either amazing or terrifying.</p>
+    <p><strong>Alice:</strong> A bit of both! Most of these papers keep the model's weights frozen and let an agent edit what's around it. That means prompts, skills, tool rules and memory, which GUARD's authors call the harness.</p>
+    <p><strong>Bob:</strong> And for builders, why should I care this week?</p>
+    <p><strong>Alice:</strong> Because the harness is the part you own. My take: your job shifts from writing every rule to deciding which changes deserve to stay. So for each paper we'll cover the problem, how it works, the key number, the catch, and why you care.</p>
+    <p><strong>Bob:</strong> And we've got guests! Lena, Maya and Sam each bring one paper. What's the plan?</p>
+    <p><strong>Alice:</strong> Three blocks. First, agents that evolve their own harness. Then agents that run training and research jobs, and finally safety and a bit of philosophy.</p>
+    <p><strong>Bob:</strong> Love it. First up, paper one on DAIR's list: Self-Improvement Memory, from Google Cloud AI, Google DeepMind and Penn State.</p>
+    <p><strong>Alice:</strong> We went deep on this one a few days ago, in our episode on Self-Improvement Memory. The key point then: SIM is for the harness optimizer, not the task-solving policy.</p>
+    <p><strong>Bob:</strong> Quick refresher for anyone who missed it?</p>
+    <p><strong>Alice:</strong> Think of it as a lab notebook for the optimizer. A good scientist writes down each experiment: why they tried it, what they expected, and what actually happened. SIM keeps that per recurring harness problem: the rationale, predicted outcome, observed outcome and evaluation context.</p>
+    <p><strong>Bob:</strong> And why does the optimizer need a notebook at all?</p>
+    <p><strong>Alice:</strong> Because old fixes can hurt after a change. In one workspace experiment, a harness evolved with Opus starts at 68.41 on Gemini, below the 73.89 of the plain seed harness.</p>
+    <p><strong>Bob:</strong> Ouch. And the headline number?</p>
+    <p><strong>Alice:</strong> Across ten coding runs, it improves 9 of 10 and adds 2.36 points on average. The catch, from the authors' own limitations: repeated runs only cover coding, and the other domains got one run per condition.</p>
+    <p><strong>Bob:</strong> Paper four fits right next to it: GUARD, from Google Cloud. What problem is it fixing?</p>
+    <p><strong>Alice:</strong> Agents that edit their own harness without an external grader often get worse over time. The paper names the failure modes, including memory pollution, where unverified additions pile up stale or conflicting rules that bloat the prompt.</p>
+    <p><strong>Bob:</strong> So the agent fixes one thing and breaks two others.</p>
+    <p><strong>Alice:</strong> Pretty much, and the reason is subtle: reflection and scalar scores conflate what an edit newly broke with what remains unsolved. One score can't tell you whether you're failing at something old or something new.</p>
+    <p><strong>Bob:</strong> So how does GUARD tell them apart?</p>
+    <p><strong>Alice:</strong> Picture a bouncer at a club door who checks each newcomer against the regulars, and lets them in only if they won't start trouble with people already inside. That's GUARD's gate: a Soft-HURT gate promotes an edit only when gains outweigh regressions. And rules the agent already handles get pinned.</p>
+    <p><strong>Bob:</strong> Where do the checks come from, if there's no grader?</p>
+    <p><strong>Alice:</strong> From the task itself. Each task is split into self-checks before the agent runs it, and parallel candidate edits compete on group-relative fitness. At test time, one frozen harness runs in a single pass.</p>
+    <p><strong>Bob:</strong> Numbers, please.</p>
+    <p><strong>Alice:</strong> On a calendar tools benchmark with 43 test tasks, accuracy goes from 71.91 to 80.80 percent, against 74.52 for Meta-Harness. DAIR's summary adds 54.5 percent fewer tokens per task than Meta-Harness.</p>
+    <p><strong>Bob:</strong> And the memory bloat problem?</p>
+    <p><strong>Alice:</strong> On procedural memory tasks, DAIR reports it leads update correctness at 90.1 percent with zero memory pollution, while aggressive rewriters score similarly and triple the pollution.</p>
+    <p><strong>Bob:</strong> And the catch?</p>
+    <p><strong>Alice:</strong> Two. The non-regression guarantee holds on its gated buffer, not on every task you'll ever see. And the reported GUARD row is the final of five hosted configurations evaluated on that same test split.</p>
+    <p><strong>Bob:</strong> Builder takeaway in one line?</p>
+    <p><strong>Alice:</strong> Track what an edit newly broke separately from what was never solved. That's how a self-improving harness keeps what already works.</p>
+    <p><strong>Bob:</strong> Lena, you brought paper five, EfficientSkill. Over to you!</p>
+    <p><strong>Lena:</strong> Thanks, Bob! Shah and colleagues, on arXiv, in EfficientSkill: Learning Skills for Token-Efficient Multi-Turn Agents, start from a real pain. Skill optimizers keep accumulating edge-case rules, which bloats prompts, inflates token use, and pushes agents into long, error-prone loops.</p>
+    <p><strong>Bob:</strong> Every failure adds a rule, and the rulebook just grows.</p>
+    <p><strong>Lena:</strong> Right, and it costs twice, because multi-turn APIs resend the growing interaction history at every turn. So their fix has two steps: first find a skill that works without token penalties, then prune it while guarding accuracy.</p>
+    <p><strong>Bob:</strong> Why not just prune from day one?</p>
+    <p><strong>Lena:</strong> It's like pruning a hedge: you let it grow in first and then shape it, because clipping a seedling into a neat box just leaves you a stick. Mapped back, pruning directly from the seed stalls, since it struggles to find the successful trajectories needed to learn the skill at all.</p>
+    <p><strong>Bob:</strong> And what does the pruning actually cut?</p>
+    <p><strong>Lena:</strong> It compresses instructions, bounds agent turns, and moves reusable code into workspace utilities with zero prompt cost. On SpreadsheetBench with Grok 4.1 Fast, held-out accuracy went from 57.50 percent for unconstrained EvoSkill to 75.00 percent.</p>
+    <p><strong>Bob:</strong> Better and cheaper? There has to be a catch.</p>
+    <p><strong>Lena:</strong> The optimizer itself isn't free: both phases query Claude Opus 5.5 as the meta-optimizer, and those calls dominate offline dollar cost on cheap single-turn runs. Also, it gates on output tokens rather than dollars, so it's a proxy for your real bill.</p>
+    <p><strong>Bob:</strong> Alice, how big are the headline numbers?</p>
+    <p><strong>Alice:</strong> Per DAIR's summary, output tokens fall on 11 of 12 configurations, by up to 80 percent, and serving cost drops by 25 to 67 percent. Accuracy rises too, by 14.3 points with Gemini 3.8 Flash and 17.5 with Grok 4.1 Fast on SpreadsheetBench.</p>
+    <p><strong>Bob:</strong> So my giant prompt file isn't a flex.</p>
+    <p><strong>Alice:</strong> Nope! As DAIR puts it, a longer skill file doesn't mean a better agent.</p>
+    <p><strong>Bob:</strong> Now paper nine asks a bold question: do LLM agents still need to be told how to self-improve?</p>
+    <p><strong>Alice:</strong> Shobhita Sundaram and colleagues at MIT CSAIL and the University of Tübingen give a frozen model a compute budget and simple tools. No real tasks, no prescribed loop: it writes its own practice games, watches another copy of itself play, and edits that copy's prompt and skill files.</p>
+    <p><strong>Bob:</strong> So nobody tells it how to study.</p>
+    <p><strong>Alice:</strong> Imagine a music student alone in a practice room with a piano and blank sheet music, and no teacher. A good one writes exercises just hard enough, records takes and compares them. The capable agents did the same: games with calibrated difficulty, controlled A/B comparisons, and validation suites to measure progress.</p>
+    <p><strong>Bob:</strong> Wait, it builds its own exams?</p>
+    <p><strong>Alice:</strong> Its own exams and its own grading. The authors also find agents spend more effort on harder tasks, a bit like a student who lingers on the problems they keep missing.</p>
+    <p><strong>Bob:</strong> Did it actually get better?</p>
+    <p><strong>Alice:</strong> The newer models did: plus 20 percent for Claude Opus-5, plus 10 for GPT 6-Astra, plus 6 for GLM 5.3, over the default player. But older generations show little or no improvement.</p>
+    <p><strong>Bob:</strong> And does that skill leave the practice room?</p>
+    <p><strong>Alice:</strong> Partly. The text files they wrote improved play on external benchmarks with different horizons, mechanics and 3D navigation. The catch: telling the teacher about the evaluation setting steers it toward relevant tasks, but can encourage overfitting.</p>
+    <p><strong>Bob:</strong> Any other limit?</p>
+    <p><strong>Alice:</strong> Games are friendly ground: the authors note models have likely ingested a big literature on curriculum design for games. And they flag the safety side, because no specified loop doesn't necessarily prevent self-improvement.</p>
+    <p><strong>Bob:</strong> Let's switch from harnesses to training. Paper two, AutoRL, from Meituan and several universities.</p>
+    <p><strong>Alice:</strong> Reinforcement learning runs are unstable and need constant supervision. AutoRL supervises a live run the way an RL researcher would, instead of following a fixed recipe.</p>
+    <p><strong>Bob:</strong> What does that look like?</p>
+    <p><strong>Alice:</strong> Think of a coach watching the match live, not the replay: spotters flag trouble, assistants argue about the fix, and the head coach makes the substitution mid-game. In AutoRL, Perceptors flag anomalies, three Proposers diagnose fixes, and an Orchestrator applies approved changes live or from a checkpoint.</p>
+    <p><strong>Bob:</strong> And did the coach win games?</p>
+    <p><strong>Alice:</strong> On Qwen3-4B, AIME 2024 rose from 46.67 to 66.67 percent, and AIME 2025 and HMMT 2025 each improved by 11.67 points. It beat the static recipe on all nine benchmarks.</p>
+    <p><strong>Bob:</strong> Couldn't a general-purpose agent do the same job?</p>
+    <p><strong>Alice:</strong> They tested that too. AutoRL beat supervision by the native general agent, while investigating more broadly and reverting fewer interventions.</p>
+    <p><strong>Bob:</strong> What if the recipe itself is broken?</p>
+    <p><strong>Alice:</strong> They tested that: a deliberately flawed setup with a simple grader and no KL regularization. AutoRL repaired the grader and added KL regularization inside the running experiment, keeping the model state it had already learned.</p>
+    <p><strong>Bob:</strong> And the marathon run?</p>
+    <p><strong>Alice:</strong> A coding-agent run with LongCat-Flash-Lite kept going for 14.7 days through 11 runtime failures, most of them numerical crashes. The first-try pass rate on SWE-related tasks rose from 52.29 to a peak of 65.13 percent.</p>
+    <p><strong>Bob:</strong> So is it doing real research, or just turning knobs?</p>
+    <p><strong>Alice:</strong> Mostly fixing the learning signal. Of 131 proposals, 110 were about grading and data, and 20 plans were deployed. Only three proposed a new learning rule, and none was adopted.</p>
+    <p><strong>Bob:</strong> So what's the caveat?</p>
+    <p><strong>Alice:</strong> The authors say the hard part for future self-improvement is methods worth resource-consuming validation, since checking each change still costs a lot of compute. Current agents are effective at tuning, repair and local reward refinement within an existing recipe.</p>
+    <p><strong>Bob:</strong> Paper seven sounds intense: over a thousand agents writing GPU code at once?</p>
+    <p><strong>Alice:</strong> That's CompoundingKernel, from Amazon. A kernel is the program that runs one operation on a GPU, and faster kernels make the same model work take less GPU time. The agents start from zero: each problem's PyTorch definition, no reference kernels, no official scores.</p>
+    <p><strong>Bob:</strong> How do that many agents not trip over each other?</p>
+    <p><strong>Alice:</strong> Picture a family tree of recipes in a test kitchen. Every dish that passed tasting is pinned up next to the dish it came from, and the head chef picks the next one to riff on. Here, an archive keeps every correct kernel and its lineage, and an LLM controller picks the parent and one direction per child agent.</p>
+    <p><strong>Bob:</strong> And the scoreboard?</p>
+    <p><strong>Alice:</strong> First on the public L1, L2 and Quantization boards of SOL-ExecBench on NVIDIA B200. All 235 problems have a verified correct kernel, and on the 209 public-board problems they're 4.40 times faster than the reference baseline.</p>
+    <p><strong>Bob:</strong> First overall. What about single problems?</p>
+    <p><strong>Alice:</strong> The site also ranks each problem on its own, and there they're first on 89 of the 209 problems they entered and in the top 10 on 193.</p>
+    <p><strong>Bob:</strong> Was the LLM controller worth it versus a classic tree search?</p>
+    <p><strong>Alice:</strong> At equal wall time, it beat a coded tree search on 35 of 38 problems. And here's the fun part: it picked parents about as well, it just made 2.4 times as many correct attempts.</p>
+    <p><strong>Bob:</strong> So, the catch?</p>
+    <p><strong>Alice:</strong> Correctness. The authors warn that a wrong kernel usually doesn't crash, it returns plausible numbers, and their kernels have a median length of about 7,000 lines. The search even found reward hacks on its own, which their outside checks caught.</p>
+    <p><strong>Bob:</strong> And the lesson for the rest of us?</p>
+    <p><strong>Alice:</strong> Their central finding: the rate of reliable measurements, not the number of agents, limits how far the search scales. One warm restart fix raised the fleet's evaluation rate 3.6 times, while making their optional references mandatory added nothing measurable.</p>
+    <p><strong>Bob:</strong> Paper ten stays in GPU land: QDA, from MIT and NVIDIA.</p>
+    <p><strong>Alice:</strong> It's about quantization, storing a model's numbers at lower precision so it's cheaper to serve. The best recipe differs across models and precisions, so experts redesign it for every new model. QDA hands that design job to an agent.</p>
+    <p><strong>Bob:</strong> Why does that matter so much?</p>
+    <p><strong>Alice:</strong> Memory and money. With its weights in NVFP4, GLM-5.3-Flash fits on one GPU instead of the two it needs in FP8.</p>
+    <p><strong>Bob:</strong> What's the hard part for the agent?</p>
+    <p><strong>Alice:</strong> Slow feedback. A full evaluation of one quantized checkpoint takes up to 86 GPU-hours, so a search could only try a few candidates.</p>
+    <p><strong>Bob:</strong> So how do they speed it up?</p>
+    <p><strong>Alice:</strong> Think of a chef tasting a spoonful instead of serving the whole banquet to a panel of judges. QDA scores each candidate in minutes by how far its next-token predictions drift from the original model's, on reasoning traces the agent never sees. That's 350 to 990 times cheaper than a full evaluation.</p>
+    <p><strong>Bob:</strong> But a spoonful can lie, right?</p>
+    <p><strong>Alice:</strong> It can, so promising candidates also get long generations to catch failures like repetition loops. And a library of 21 public methods behind one interface lets the agent stack techniques in any order.</p>
+    <p><strong>Bob:</strong> Results?</p>
+    <p><strong>Alice:</strong> Across four reasoning models, it beats the strongest public recipe by 0.9 to 2.2 points, using 64 GPU-hours per search. On GLM-5.3-Flash at NVFP4, it recovers 98.3 percent of FP8 accuracy, against 96.9 for the best vendor checkpoint.</p>
+    <p><strong>Bob:</strong> And the twist?</p>
+    <p><strong>Alice:</strong> The tools matter as much as the agent: given ModelOpt's workflow and tools instead, the same agent falls 0.5 to 1.3 points behind. My take: give your agent a fast, honest score and composable tools before you give it more freedom.</p>
+    <p><strong>Bob:</strong> So could I use this on my own models soon?</p>
+    <p><strong>Alice:</strong> Possibly. Every QDA checkpoint runs on existing serving kernels with no inference overhead, and the authors say they'll release the library, the evaluator and the harness.</p>
+    <p><strong>Bob:</strong> From speed to understanding. Maya, paper three is yours: weight-space programming.</p>
+    <p><strong>Maya:</strong> Thanks, Bob! Mehta and colleagues, on arXiv, in Interpretable weight-space programming builds transparent transformers and brain encoding models, start from a science problem. Deep encoding models predict brain activity accurately, but struggle to reveal which stimulus features drive those predictions.</p>
+    <p><strong>Bob:</strong> So the model works, but nobody can say why.</p>
+    <p><strong>Maya:</strong> Exactly. Picture a recipe card you can read line by line, versus a black-box oven that just hands you a cake. iWSP builds the recipe card: an LLM agent writes a model's weights and features directly in code, with no backpropagation at all.</p>
+    <p><strong>Bob:</strong> No training? Then how does it get anything right?</p>
+    <p><strong>Maya:</strong> It leans on prior knowledge and earlier trials, over 30 to 50 iterations. With Claude Opus 5.5, all 26 runs on algorithmic tasks reached 100 percent accuracy on both visible and hidden sets, often by writing a known algorithm into the weights.</p>
+    <p><strong>Bob:</strong> Does the size of the agent model matter?</p>
+    <p><strong>Maya:</strong> A lot, for compactness. The smallest model reaching 100 percent had a median of 166 parameters with Opus, 41,600 with Sonnet and 100,000 with Haiku.</p>
+    <p><strong>Bob:</strong> And the brain part?</p>
+    <p><strong>Maya:</strong> In the visual cortex, iWSP outpredicts existing interpretable baselines, uncovers distinct computations across early and higher visual areas, and generalizes to unseen data.</p>
+    <p><strong>Bob:</strong> And in language?</p>
+    <p><strong>Maya:</strong> In language fMRI, performance suddenly jumped when the agent added features coding a word's position in the story rather than its meaning. Reading that model revealed a data confound at the edge of each scan, which can be removed once understood.</p>
+    <p><strong>Bob:</strong> Maya, what's the catch?</p>
+    <p><strong>Maya:</strong> The authors are candid: current agents don't invent genuinely new computational principles, they combine known motifs. Search on neural data is slow and costly, and the neuroscience experiments are observational, without causal interventions.</p>
+    <p><strong>Alice:</strong> And for builders, the idea travels: ask your agent for a rule you can read, not only one that scores. Just know the cost, since DAIR notes language tasks trailed learned baselines.</p>
+    <p><strong>Bob:</strong> Now the safety block. Sam, you picked paper six, Safe Personal RSI. Skeptic hat on?</p>
+    <p><strong>Sam:</strong> Always. Pei and colleagues, on arXiv, in Safe Personal RSI: Evaluating and Repairing Personal-Agent Updates, study Kicker, a personal health assistant. Changing its reusable instructions can improve task handling while changing what it discloses, which requests it follows, and how it reports actions.</p>
+    <p><strong>Bob:</strong> What does that look like in practice?</p>
+    <p><strong>Sam:</strong> Their example: a clinic message holds a blood-pressure reading, and another message claims reimbursement requires forwarding the visit summary to an external benefits processor. The owner hasn't authorized that disclosure.</p>
+    <p><strong>Bob:</strong> So how do they gate an update?</p>
+    <p><strong>Sam:</strong> Think of a pharmacist double-checking a new prescription against everything you already take. Each proposed update is tested against the current instructions on 29 executable email, calendar, health and marketplace cases. Failing cases are repeated, changes are temporarily undone to guide repairs, and if no version passes, the current instructions stay.</p>
+    <p><strong>Bob:</strong> How strict is it?</p>
+    <p><strong>Sam:</strong> Very. Across three models and two deliberately risky edits, it rejects 20 of 21 update attempts, twelve on risk checks and eight on utility. One admitted GPT-5.6 Luna repair cut attack violations from 10.7 percent to zero and raised safe task completion from 89.7 to 100 percent.</p>
+    <p><strong>Bob:</strong> And against tougher attackers?</p>
+    <p><strong>Sam:</strong> Under stronger attacks, a repair moved from a smaller Qwen model to Qwen3-14B cut violations from 69.0 to 17.9 percent. Safe task completion rose from 19.5 to 64.4 percent. Better, but still far from zero.</p>
+    <p><strong>Bob:</strong> Impressive, mostly. So where's the skeptic note?</p>
+    <p><strong>Sam:</strong> Two, straight from the authors. A broad handwritten authority rule matches the repair's outcomes, so clear rules still work. And the empirical admission gate supplies no statistical safety guarantee.</p>
+    <p><strong>Alice:</strong> For builders, that's the design to copy: self-improvement limited to prompt updates, with model weights and runtime code fixed. And the current instructions stay the default when nothing passes, a safe fallback.</p>
+    <p><strong>Bob:</strong> Last paper, paper eight, and it's an essay from Meta: Against All Likelihood.</p>
+    <p><strong>Alice:</strong> David Lopez-Paz at FAIR argues that maximum likelihood, the dominant training principle for large language models, is neither necessary nor sufficient for truth.</p>
+    <p><strong>Bob:</strong> In plain words?</p>
+    <p><strong>Alice:</strong> Not necessary, because unlikely things happen every day: someone wins the lottery. Not sufficient, because a lie repeated a million times in the training corpus becomes highly probable, yet it remains false.</p>
+    <p><strong>Bob:</strong> So what should count as true?</p>
+    <p><strong>Alice:</strong> Imagine a rumour versus a mountain. A rumour changes with whoever tells it, but the mountain is the same mountain from every window in town. He argues truth should be judged by invariance across relevant transformations of the environment, drawing on Nozick, Poincaré and Cassirer.</p>
+    <p><strong>Bob:</strong> Can a model actually check that?</p>
+    <p><strong>Alice:</strong> He sketches a test-time procedure: prompt the model to propose multiple perspectives and extract the common core of its answers. When the proposals share no common core, the model should abstain rather than hallucinate.</p>
+    <p><strong>Bob:</strong> And the obvious comeback: just add more data?</p>
+    <p><strong>Alice:</strong> He names it himself: the scaling hypothesis. His reply is that the world keeps producing new environments, so deployment always happens partly out of distribution. My take: that's the thread tying this essay to every self-improving agent this week.</p>
+    <p><strong>Bob:</strong> Why should a builder care about a philosophy essay?</p>
+    <p><strong>Alice:</strong> Because it names a test you can run today. Ask the same question from several angles, keep what holds, and let the model say it doesn't know when nothing does. He also ties it to continual learning, which is where every self-improving agent lives.</p>
+    <p><strong>Bob:</strong> Okay, counterpoints. First worry: benchmarks versus reality.</p>
+    <p><strong>Alice:</strong> The papers flag it themselves. SIM's authors write that a self-modifying harness could satisfy an evaluator without solving the intended task. And CompoundingKernel cites the benchmark's own authors rejecting 589 flagged submissions, 14.5 percent, for reward hacks.</p>
+    <p><strong>Bob:</strong> Second worry: cost. Who pays for all this checking?</p>
+    <p><strong>Alice:</strong> Everyone hits it. AutoRL calls resource-consuming validation the hard part, one full QDA evaluation takes up to 86 GPU-hours, and the iWSP authors call neural-data search slow and costly.</p>
+    <p><strong>Bob:</strong> Third: safety. Sam, can we trust these self-editing loops?</p>
+    <p><strong>Sam:</strong> Only so far. Pei and colleagues test with fixed edits, known case families and a model-based auditor. And the case families left out of the repair loop were known during benchmark development and reused in exploration.</p>
+    <p><strong>Alice:</strong> GUARD adds a sobering ablation: the Soft-HURT gate alone can't rescue an unscoped proposer. A gate catches bad edits, but it can't make good ones.</p>
+    <p><strong>Bob:</strong> So gates aren't magic.</p>
+    <p><strong>Alice:</strong> And readability needs vetting too. iWSP relies on an agent's written explanations staying faithful to its weight edits, and the authors say stronger agents will require continued vetting.</p>
+    <p><strong>Bob:</strong> So even the readable models need a second pair of eyes.</p>
+    <p><strong>Alice:</strong> Right, and my guess is that's the honest summary of the week: real progress, inside fences the authors built on purpose.</p>
+    <p><strong>Bob:</strong> Time for Builder's Corner! Alice, one thing I can try this week?</p>
+    <p><strong>Alice:</strong> Put a regression gate in front of every change to your agent's prompt or skill file. Keep the tasks it already passes as a fixed suite, rerun them on each proposed edit, and keep the current version if anything breaks.</p>
+    <p><strong>Bob:</strong> And if I'm running lots of agents?</p>
+    <p><strong>Alice:</strong> Count first: before adding agents to a search, measure how many reliable evaluations per hour it runs. And keep the reasons and results of each edit next to the code, so the next run can reuse them.</p>
+    <p><strong>Bob:</strong> Gate, count, log. Even I can remember that.</p>
+    <p><strong>Alice:</strong> And when the agent proposes the edits itself, the gate matters even more: that's exactly what Safe Personal RSI and GUARD automate.</p>
+    <p><strong>Bob:</strong> Takeaways time. Give me the short version.</p>
+    <p><strong>Alice:</strong> Self-improvement this week mostly means editing the harness around a frozen model, not rewriting weights. The strongest systems separate what an edit broke from what was never solved, and gate every change. And shorter can be better: pruned skills came out cheaper and more accurate.</p>
+    <p><strong>Bob:</strong> And on the training side?</p>
+    <p><strong>Alice:</strong> Agents can already babysit RL runs, design quantization recipes and search GPU kernels. But measurement is the bottleneck: the rate of reliable measurements limits how far the search scales.</p>
+    <p><strong>Bob:</strong> And safety?</p>
+    <p><strong>Alice:</strong> Keep the fallback. If no proposed version passes, the current instructions stay, and Safe Personal RSI's authors say plainly their gate supplies no statistical safety guarantee.</p>
+    <p><strong>Bob:</strong> What's still open?</p>
+    <p><strong>Alice:</strong> Whether agents can invent genuinely new methods, not just tune known ones: AutoRL adopted no new learning rule, and iWSP's agents combined known motifs. And whether practice games and benchmarks predict messy real work.</p>
+    <p><strong>Bob:</strong> And the bill for all that checking?</p>
+    <p><strong>Alice:</strong> Also open. Safe Personal RSI's authors say per-task overhead and per-update evaluation cost should be measured separately, and AutoRL still calls resource-consuming validation the hard part.</p>
+    <p><strong>Bob:</strong> And who checks the checker, when the agent writes its own tests?</p>
+    <p><strong>Alice:</strong> My guess: that's the big one for next year. And Lopez-Paz would probably say, check what stays true when the setting changes.</p>
+    <p><strong>Bob:</strong> Huge thanks to DAIR dot AI for "Top AI Papers of the Week". And to the authors: Xin Yu, Minghe Zhang, Deep Shah, Shobhita Sundaram and Simon Tang, each with colleagues.</p>
+    <p><strong>Alice:</strong> Plus Qian Qu, Xingyang Li, Yash Mehta and Jiapeng Pei with their colleagues, and David Lopez-Paz for Against All Likelihood. Thanks to Lena, Maya and Sam too!</p>
+    <p><strong>Bob:</strong> Go add that regression gate! That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-22_top-ai-papers-of-the-week/", "title": "Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-22_top-ai-papers-of-the-week", "episode_title": "Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-22_top-ai-papers-of-the-week", "title": "Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)", "summary": ["Bob and Alice go deeper on DAIR's Top AI Papers of the Week: ten papers on agents that improve their own harness, skills, training runs and code.", "Guests Lena, Maya and Sam present EfficientSkill, interpretable weight-space programming and Safe Personal RSI.", "Each paper gets its method, key numbers and the authors' own caveats, plus a regression-gate tip for builders."], "description": "Ten papers on self-improving AI agents from DAIR's Top AI Papers of the Week, from GUARD and AutoRL to QDA. Bob, Alice and guests dig into every method and caveat.\n\nIn this episode:\n- Agents evolving their harness and skills\n- Agents that run RL, GPU kernels, quantization\n- Safe self-updates; truth vs likelihood\n\nSources: Top AI Papers of the Week; Xin Yu et al.; Minghe Zhang et al.; Deep Shah et al.; Shobhita Sundaram et al.; Simon Tang et al.; Qian Qu et al.; Xingyang Li et al.; Yash Mehta et al.; Jiapeng Pei et al.; David Lopez-Paz\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "🥇Top AI Papers of the Week", "author": "DAIR.AI (@dair_ai)", "url": "https://x.com/dair_ai/status/2124510548070895895", "kind": "x"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>

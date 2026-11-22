@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sun, 22 Nov 2026 07:39:49 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 22 Nov 2026 21:53:41 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,38 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-22_top-ai-papers-of-the-week</guid>
+    <title>Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)</title>
+    <link>https://luongnv.com/podcast/#2026-11-22_top-ai-papers-of-the-week</link>
+    <description>Bob and Alice go deeper on DAIR's Top AI Papers of the Week: ten papers on agents that improve their own harness, skills, training runs and code.
+
+Guests Lena, Maya and Sam present EfficientSkill, interpretable weight-space programming and Safe Personal RSI.
+
+Each paper gets its method, key numbers and the authors' own caveats, plus a regression-gate tip for builders.
+
+Sources:
+- 🥇Top AI Papers of the Week, DAIR.AI (@dair_ai) (https://x.com/dair_ai/status/2124510548070895895)
+- Self-Improvement Memory Enables Continual Recursive Self-Improvement, Xin Yu et al. (https://arxiv.org/html/2611.18856)
+- GUARD: Stabilizing Recursive Self-Improvement with Regret Guidance, Minghe Zhang et al. (https://arxiv.org/html/2611.23476)
+- EfficientSkill: Learning Skills for Token-Efficient Multi-Turn Agents, Deep Shah et al. (https://arxiv.org/html/2611.19823)
+- Do LLM Agents Still Need to Be Told How to Self-Improve?, Shobhita Sundaram et al. (https://arxiv.org/html/2611.23219)
+- AutoRL: A Multi-Agent System towards Autonomous Reinforcement Learning, Simon Tang et al. (https://arxiv.org/html/2611.17790)
+- CompoundingKernel: Self-Improving from Zero to First, Qian Qu et al. (https://arxiv.org/html/2611.19230)
+- QDA: Closed-Loop LLM Quantization Design with Agents, Xingyang Li et al. (https://arxiv.org/html/2611.23388)
+- Interpretable weight-space programming builds transparent transformers and brain encoding models, Yash Mehta et al. (https://arxiv.org/html/2611.18114)
+- Safe Personal RSI: Evaluating and Repairing Personal-Agent Updates, Jiapeng Pei et al. (https://arxiv.org/html/2611.23651)
+- Against All Likelihood, David Lopez-Paz (https://arxiv.org/html/2611.09385)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Bob and Alice go deeper on DAIR's Top AI Papers of the Week: ten papers on agents that improve their own harness, skills, training runs and code.</p><p>Guests Lena, Maya and Sam present EfficientSkill, interpretable weight-space programming and Safe Personal RSI.</p><p>Each paper gets its method, key numbers and the authors' own caveats, plus a regression-gate tip for builders.</p><p>Sources:</p><ul><li>🥇Top AI Papers of the Week, DAIR.AI (@dair_ai): <a href="https://x.com/dair_ai/status/2124510548070895895">https://x.com/dair_ai/status/2124510548070895895</a></li><li>Self-Improvement Memory Enables Continual Recursive Self-Improvement, Xin Yu et al.: <a href="https://arxiv.org/html/2611.18856">https://arxiv.org/html/2611.18856</a></li><li>GUARD: Stabilizing Recursive Self-Improvement with Regret Guidance, Minghe Zhang et al.: <a href="https://arxiv.org/html/2611.23476">https://arxiv.org/html/2611.23476</a></li><li>EfficientSkill: Learning Skills for Token-Efficient Multi-Turn Agents, Deep Shah et al.: <a href="https://arxiv.org/html/2611.19823">https://arxiv.org/html/2611.19823</a></li><li>Do LLM Agents Still Need to Be Told How to Self-Improve?, Shobhita Sundaram et al.: <a href="https://arxiv.org/html/2611.23219">https://arxiv.org/html/2611.23219</a></li><li>AutoRL: A Multi-Agent System towards Autonomous Reinforcement Learning, Simon Tang et al.: <a href="https://arxiv.org/html/2611.17790">https://arxiv.org/html/2611.17790</a></li><li>CompoundingKernel: Self-Improving from Zero to First, Qian Qu et al.: <a href="https://arxiv.org/html/2611.19230">https://arxiv.org/html/2611.19230</a></li><li>QDA: Closed-Loop LLM Quantization Design with Agents, Xingyang Li et al.: <a href="https://arxiv.org/html/2611.23388">https://arxiv.org/html/2611.23388</a></li><li>Interpretable weight-space programming builds transparent transformers and brain encoding models, Yash Mehta et al.: <a href="https://arxiv.org/html/2611.18114">https://arxiv.org/html/2611.18114</a></li><li>Safe Personal RSI: Evaluating and Repairing Personal-Agent Updates, Jiapeng Pei et al.: <a href="https://arxiv.org/html/2611.23651">https://arxiv.org/html/2611.23651</a></li><li>Against All Likelihood, David Lopez-Paz: <a href="https://arxiv.org/html/2611.09385">https://arxiv.org/html/2611.09385</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Sun, 22 Nov 2026 21:50:20 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_top-ai-papers-of-the-week.mp3?v=96904677" length="26172801" type="audio/mpeg"/>
+    <itunes:duration>1636</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-22_top-ai-papers-of-the-week/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-22_morning-edition-sunday-22-november-2026</guid>
     <title>Together AI's Agent Key Leak, Runpod's Hidden Ask | AI Daily 22 Nov</title>

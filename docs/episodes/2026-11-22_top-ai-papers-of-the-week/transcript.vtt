@@ -1,0 +1,713 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:07.335
+<v Bob>What happens when AI agents start rewriting their own instructions, their own training runs, even their own GPU code?
+
+2
+00:00:07.635 --> 00:00:11.904
+<v Alice>And how do you stop them from quietly breaking everything that already worked?
+
+3
+00:00:16.204 --> 00:00:23.666
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and today is a long one!
+
+4
+00:00:23.966 --> 00:00:35.980
+<v Alice>And I'm Alice! We're going deeper on DAIR dot AI's weekly list, "Top AI Papers of the Week". Ten papers, and one theme keeps coming back: agents improving themselves.
+
+5
+00:00:36.280 --> 00:00:40.422
+<v Bob>Self-improving agents. That sounds either amazing or terrifying.
+
+6
+00:00:40.722 --> 00:00:53.501
+<v Alice>A bit of both! Most of these papers keep the model's weights frozen and let an agent edit what's around it. That means prompts, skills, tool rules and memory, which GUARD's authors call the harness.
+
+7
+00:00:53.801 --> 00:00:56.619
+<v Bob>And for builders, why should I care this week?
+
+8
+00:00:56.919 --> 00:01:12.252
+<v Alice>Because the harness is the part you own. My take: your job shifts from writing every rule to deciding which changes deserve to stay. So for each paper we'll cover the problem, how it works, the key number, the catch, and why you care.
+
+9
+00:01:12.552 --> 00:01:18.563
+<v Bob>And we've got guests! Lena, Maya and Sam each bring one paper. What's the plan?
+
+10
+00:01:18.863 --> 00:01:29.471
+<v Alice>Three blocks. First, agents that evolve their own harness. Then agents that run training and research jobs, and finally safety and a bit of philosophy.
+
+11
+00:01:29.771 --> 00:01:38.693
+<v Bob>Love it. First up, paper one on DAIR's list: Self-Improvement Memory, from Google Cloud AI, Google DeepMind and Penn State.
+
+12
+00:01:38.993 --> 00:01:49.393
+<v Alice>We went deep on this one a few days ago, in our episode on Self-Improvement Memory. The key point then: SIM is for the harness optimizer, not the task-solving policy.
+
+13
+00:01:49.693 --> 00:01:51.838
+<v Bob>Quick refresher for anyone who missed it?
+
+14
+00:01:52.138 --> 00:02:10.475
+<v Alice>Think of it as a lab notebook for the optimizer. A good scientist writes down each experiment: why they tried it, what they expected, and what actually happened. SIM keeps that per recurring harness problem: the rationale, predicted outcome, observed outcome and evaluation context.
+
+15
+00:02:10.775 --> 00:02:13.768
+<v Bob>And why does the optimizer need a notebook at all?
+
+16
+00:02:14.068 --> 00:02:27.614
+<v Alice>Because old fixes can hurt after a change. In one workspace experiment, a harness evolved with Opus starts at 68.41 on Gemini, below the 73.89 of the plain seed harness.
+
+17
+00:02:27.914 --> 00:02:30.186
+<v Bob>Ouch. And the headline number?
+
+18
+00:02:30.486 --> 00:02:45.228
+<v Alice>Across ten coding runs, it improves 9 of 10 and adds 2.36 points on average. The catch, from the authors' own limitations: repeated runs only cover coding, and the other domains got one run per condition.
+
+19
+00:02:45.528 --> 00:02:50.866
+<v Bob>Paper four fits right next to it: GUARD, from Google Cloud. What problem is it fixing?
+
+20
+00:02:51.166 --> 00:03:05.281
+<v Alice>Agents that edit their own harness without an external grader often get worse over time. The paper names the failure modes, including memory pollution, where unverified additions pile up stale or conflicting rules that bloat the prompt.
+
+21
+00:03:05.581 --> 00:03:09.217
+<v Bob>So the agent fixes one thing and breaks two others.
+
+22
+00:03:09.517 --> 00:03:21.623
+<v Alice>Pretty much, and the reason is subtle: reflection and scalar scores conflate what an edit newly broke with what remains unsolved. One score can't tell you whether you're failing at something old or something new.
+
+23
+00:03:21.923 --> 00:03:24.405
+<v Bob>So how does GUARD tell them apart?
+
+24
+00:03:24.705 --> 00:03:41.797
+<v Alice>Picture a bouncer at a club door who checks each newcomer against the regulars, and lets them in only if they won't start trouble with people already inside. That's GUARD's gate: a Soft-HURT gate promotes an edit only when gains outweigh regressions. And rules the agent already handles get pinned.
+
+25
+00:03:42.097 --> 00:03:44.706
+<v Bob>Where do the checks come from, if there's no grader?
+
+26
+00:03:45.006 --> 00:03:58.726
+<v Alice>From the task itself. Each task is split into self-checks before the agent runs it, and parallel candidate edits compete on group-relative fitness. At test time, one frozen harness runs in a single pass.
+
+27
+00:03:59.026 --> 00:04:00.699
+<v Bob>Numbers, please.
+
+28
+00:04:00.999 --> 00:04:19.067
+<v Alice>On a calendar tools benchmark with 43 test tasks, accuracy goes from 71.91 to 80.80 percent, against 74.52 for Meta-Harness. DAIR's summary adds 54.5 percent fewer tokens per task than Meta-Harness.
+
+29
+00:04:19.367 --> 00:04:21.054
+<v Bob>And the memory bloat problem?
+
+30
+00:04:21.354 --> 00:04:33.240
+<v Alice>On procedural memory tasks, DAIR reports it leads update correctness at 90.1 percent with zero memory pollution, while aggressive rewriters score similarly and triple the pollution.
+
+31
+00:04:33.540 --> 00:04:34.619
+<v Bob>And the catch?
+
+32
+00:04:34.919 --> 00:04:47.443
+<v Alice>Two. The non-regression guarantee holds on its gated buffer, not on every task you'll ever see. And the reported GUARD row is the final of five hosted configurations evaluated on that same test split.
+
+33
+00:04:47.743 --> 00:04:49.373
+<v Bob>Builder takeaway in one line?
+
+34
+00:04:49.673 --> 00:04:58.001
+<v Alice>Track what an edit newly broke separately from what was never solved. That's how a self-improving harness keeps what already works.
+
+35
+00:04:58.301 --> 00:05:02.315
+<v Bob>Lena, you brought paper five, EfficientSkill. Over to you!
+
+36
+00:05:02.615 --> 00:05:21.751
+<v Lena>Thanks, Bob! Shah and colleagues, on arXiv, in EfficientSkill: Learning Skills for Token-Efficient Multi-Turn Agents, start from a real pain. Skill optimizers keep accumulating edge-case rules, which bloats prompts, inflates token use, and pushes agents into long, error-prone loops.
+
+37
+00:05:22.051 --> 00:05:25.600
+<v Bob>Every failure adds a rule, and the rulebook just grows.
+
+38
+00:05:25.900 --> 00:05:40.178
+<v Lena>Right, and it costs twice, because multi-turn APIs resend the growing interaction history at every turn. So their fix has two steps: first find a skill that works without token penalties, then prune it while guarding accuracy.
+
+39
+00:05:40.478 --> 00:05:42.657
+<v Bob>Why not just prune from day one?
+
+40
+00:05:42.957 --> 00:05:58.747
+<v Lena>It's like pruning a hedge: you let it grow in first and then shape it, because clipping a seedling into a neat box just leaves you a stick. Mapped back, pruning directly from the seed stalls, since it struggles to find the successful trajectories needed to learn the skill at all.
+
+41
+00:05:59.047 --> 00:06:02.248
+<v Bob>And what does the pruning actually cut?
+
+42
+00:06:02.548 --> 00:06:21.637
+<v Lena>It compresses instructions, bounds agent turns, and moves reusable code into workspace utilities with zero prompt cost. On SpreadsheetBench with Grok 4.1 Fast, held-out accuracy went from 57.50 percent for unconstrained EvoSkill to 75.00 percent.
+
+43
+00:06:21.937 --> 00:06:25.266
+<v Bob>Better and cheaper? There has to be a catch.
+
+44
+00:06:25.566 --> 00:06:42.656
+<v Lena>The optimizer itself isn't free: both phases query Claude Opus 5.5 as the meta-optimizer, and those calls dominate offline dollar cost on cheap single-turn runs. Also, it gates on output tokens rather than dollars, so it's a proxy for your real bill.
+
+45
+00:06:42.956 --> 00:06:45.775
+<v Bob>Alice, how big are the headline numbers?
+
+46
+00:06:46.075 --> 00:07:06.301
+<v Alice>Per DAIR's summary, output tokens fall on 11 of 12 configurations, by up to 80 percent, and serving cost drops by 25 to 67 percent. Accuracy rises too, by 14.3 points with Gemini 3.8 Flash and 17.5 with Grok 4.1 Fast on SpreadsheetBench.
+
+47
+00:07:06.601 --> 00:07:09.594
+<v Bob>So my giant prompt file isn't a flex.
+
+48
+00:07:09.894 --> 00:07:15.139
+<v Alice>Nope! As DAIR puts it, a longer skill file doesn't mean a better agent.
+
+49
+00:07:15.439 --> 00:07:21.756
+<v Bob>Now paper nine asks a bold question: do LLM agents still need to be told how to self-improve?
+
+50
+00:07:22.056 --> 00:07:40.333
+<v Alice>Shobhita Sundaram and colleagues at MIT CSAIL and the University of Tübingen give a frozen model a compute budget and simple tools. No real tasks, no prescribed loop: it writes its own practice games, watches another copy of itself play, and edits that copy's prompt and skill files.
+
+51
+00:07:40.633 --> 00:07:42.778
+<v Bob>So nobody tells it how to study.
+
+52
+00:07:43.078 --> 00:08:03.656
+<v Alice>Imagine a music student alone in a practice room with a piano and blank sheet music, and no teacher. A good one writes exercises just hard enough, records takes and compares them. The capable agents did the same: games with calibrated difficulty, controlled A/B comparisons, and validation suites to measure progress.
+
+53
+00:08:03.956 --> 00:08:07.002
+<v Bob>Wait, it builds its own exams?
+
+54
+00:08:07.302 --> 00:08:17.574
+<v Alice>Its own exams and its own grading. The authors also find agents spend more effort on harder tasks, a bit like a student who lingers on the problems they keep missing.
+
+55
+00:08:17.874 --> 00:08:19.698
+<v Bob>Did it actually get better?
+
+56
+00:08:19.998 --> 00:08:34.457
+<v Alice>The newer models did: plus 20 percent for Claude Opus-5, plus 10 for GPT 6-Astra, plus 6 for GLM 5.3, over the default player. But older generations show little or no improvement.
+
+57
+00:08:34.757 --> 00:08:37.239
+<v Bob>And does that skill leave the practice room?
+
+58
+00:08:37.539 --> 00:08:53.825
+<v Alice>Partly. The text files they wrote improved play on external benchmarks with different horizons, mechanics and 3D navigation. The catch: telling the teacher about the evaluation setting steers it toward relevant tasks, but can encourage overfitting.
+
+59
+00:08:54.125 --> 00:08:55.272
+<v Bob>Any other limit?
+
+60
+00:08:55.572 --> 00:09:08.270
+<v Alice>Games are friendly ground: the authors note models have likely ingested a big literature on curriculum design for games. And they flag the safety side, because no specified loop doesn't necessarily prevent self-improvement.
+
+61
+00:09:08.570 --> 00:09:15.092
+<v Bob>Let's switch from harnesses to training. Paper two, AutoRL, from Meituan and several universities.
+
+62
+00:09:15.392 --> 00:09:26.052
+<v Alice>Reinforcement learning runs are unstable and need constant supervision. AutoRL supervises a live run the way an RL researcher would, instead of following a fixed recipe.
+
+63
+00:09:26.352 --> 00:09:27.802
+<v Bob>What does that look like?
+
+64
+00:09:28.102 --> 00:09:47.493
+<v Alice>Think of a coach watching the match live, not the replay: spotters flag trouble, assistants argue about the fix, and the head coach makes the substitution mid-game. In AutoRL, Perceptors flag anomalies, three Proposers diagnose fixes, and an Orchestrator applies approved changes live or from a checkpoint.
+
+65
+00:09:47.793 --> 00:09:49.532
+<v Bob>And did the coach win games?
+
+66
+00:09:49.832 --> 00:10:08.027
+<v Alice>On Qwen3-4B, AIME 2024 rose from 46.67 to 66.67 percent, and AIME 2025 and HMMT 2025 each improved by 11.67 points. It beat the static recipe on all nine benchmarks.
+
+67
+00:10:08.327 --> 00:10:11.326
+<v Bob>Couldn't a general-purpose agent do the same job?
+
+68
+00:10:11.626 --> 00:10:20.876
+<v Alice>They tested that too. AutoRL beat supervision by the native general agent, while investigating more broadly and reverting fewer interventions.
+
+69
+00:10:21.176 --> 00:10:23.658
+<v Bob>What if the recipe itself is broken?
+
+70
+00:10:23.958 --> 00:10:38.607
+<v Alice>They tested that: a deliberately flawed setup with a simple grader and no KL regularization. AutoRL repaired the grader and added KL regularization inside the running experiment, keeping the model state it had already learned.
+
+71
+00:10:38.907 --> 00:10:40.491
+<v Bob>And the marathon run?
+
+72
+00:10:40.791 --> 00:10:59.021
+<v Alice>A coding-agent run with LongCat-Flash-Lite kept going for 14.7 days through 11 runtime failures, most of them numerical crashes. The first-try pass rate on SWE-related tasks rose from 52.29 to a peak of 65.13 percent.
+
+73
+00:10:59.321 --> 00:11:02.777
+<v Bob>So is it doing real research, or just turning knobs?
+
+74
+00:11:03.077 --> 00:11:16.287
+<v Alice>Mostly fixing the learning signal. Of 131 proposals, 110 were about grading and data, and 20 plans were deployed. Only three proposed a new learning rule, and none was adopted.
+
+75
+00:11:16.587 --> 00:11:18.095
+<v Bob>So what's the caveat?
+
+76
+00:11:18.395 --> 00:11:35.313
+<v Alice>The authors say the hard part for future self-improvement is methods worth resource-consuming validation, since checking each change still costs a lot of compute. Current agents are effective at tuning, repair and local reward refinement within an existing recipe.
+
+77
+00:11:35.613 --> 00:11:40.904
+<v Bob>Paper seven sounds intense: over a thousand agents writing GPU code at once?
+
+78
+00:11:41.204 --> 00:11:59.532
+<v Alice>That's CompoundingKernel, from Amazon. A kernel is the program that runs one operation on a GPU, and faster kernels make the same model work take less GPU time. The agents start from zero: each problem's PyTorch definition, no reference kernels, no official scores.
+
+79
+00:11:59.832 --> 00:12:02.905
+<v Bob>How do that many agents not trip over each other?
+
+80
+00:12:03.205 --> 00:12:22.724
+<v Alice>Picture a family tree of recipes in a test kitchen. Every dish that passed tasting is pinned up next to the dish it came from, and the head chef picks the next one to riff on. Here, an archive keeps every correct kernel and its lineage, and an LLM controller picks the parent and one direction per child agent.
+
+81
+00:12:23.024 --> 00:12:24.405
+<v Bob>And the scoreboard?
+
+82
+00:12:24.705 --> 00:12:42.777
+<v Alice>First on the public L1, L2 and Quantization boards of SOL-ExecBench on NVIDIA B200. All 235 problems have a verified correct kernel, and on the 209 public-board problems they're 4.40 times faster than the reference baseline.
+
+83
+00:12:43.077 --> 00:12:46.023
+<v Bob>First overall. What about single problems?
+
+84
+00:12:46.323 --> 00:12:56.293
+<v Alice>The site also ranks each problem on its own, and there they're first on 89 of the 209 problems they entered and in the top 10 on 193.
+
+85
+00:12:56.593 --> 00:13:00.565
+<v Bob>Was the LLM controller worth it versus a classic tree search?
+
+86
+00:13:00.865 --> 00:13:13.052
+<v Alice>At equal wall time, it beat a coded tree search on 35 of 38 problems. And here's the fun part: it picked parents about as well, it just made 2.4 times as many correct attempts.
+
+87
+00:13:13.352 --> 00:13:14.698
+<v Bob>So, the catch?
+
+88
+00:13:14.998 --> 00:13:30.895
+<v Alice>Correctness. The authors warn that a wrong kernel usually doesn't crash, it returns plausible numbers, and their kernels have a median length of about 7,000 lines. The search even found reward hacks on its own, which their outside checks caught.
+
+89
+00:13:31.195 --> 00:13:33.165
+<v Bob>And the lesson for the rest of us?
+
+90
+00:13:33.465 --> 00:13:50.093
+<v Alice>Their central finding: the rate of reliable measurements, not the number of agents, limits how far the search scales. One warm restart fix raised the fleet's evaluation rate 3.6 times, while making their optional references mandatory added nothing measurable.
+
+91
+00:13:50.393 --> 00:13:55.571
+<v Bob>Paper ten stays in GPU land: QDA, from MIT and NVIDIA.
+
+92
+00:13:55.871 --> 00:14:10.996
+<v Alice>It's about quantization, storing a model's numbers at lower precision so it's cheaper to serve. The best recipe differs across models and precisions, so experts redesign it for every new model. QDA hands that design job to an agent.
+
+93
+00:14:11.296 --> 00:14:12.983
+<v Bob>Why does that matter so much?
+
+94
+00:14:13.283 --> 00:14:24.066
+<v Alice>Memory and money. With its weights in NVFP4, GLM-5.3-Flash fits on one GPU instead of the two it needs in FP8.
+
+95
+00:14:24.366 --> 00:14:26.418
+<v Bob>What's the hard part for the agent?
+
+96
+00:14:26.718 --> 00:14:36.688
+<v Alice>Slow feedback. A full evaluation of one quantized checkpoint takes up to 86 GPU-hours, so a search could only try a few candidates.
+
+97
+00:14:36.988 --> 00:14:38.464
+<v Bob>So how do they speed it up?
+
+98
+00:14:38.764 --> 00:14:59.242
+<v Alice>Think of a chef tasting a spoonful instead of serving the whole banquet to a panel of judges. QDA scores each candidate in minutes by how far its next-token predictions drift from the original model's, on reasoning traces the agent never sees. That's 350 to 990 times cheaper than a full evaluation.
+
+99
+00:14:59.542 --> 00:15:01.768
+<v Bob>But a spoonful can lie, right?
+
+100
+00:15:02.068 --> 00:15:15.660
+<v Alice>It can, so promising candidates also get long generations to catch failures like repetition loops. And a library of 21 public methods behind one interface lets the agent stack techniques in any order.
+
+101
+00:15:15.960 --> 00:15:16.845
+<v Bob>Results?
+
+102
+00:15:17.145 --> 00:15:39.891
+<v Alice>Across four reasoning models, it beats the strongest public recipe by 0.9 to 2.2 points, using 64 GPU-hours per search. On GLM-5.3-Flash at NVFP4, it recovers 98.3 percent of FP8 accuracy, against 96.9 for the best vendor checkpoint.
+
+103
+00:15:40.191 --> 00:15:41.321
+<v Bob>And the twist?
+
+104
+00:15:41.621 --> 00:15:58.383
+<v Alice>The tools matter as much as the agent: given ModelOpt's workflow and tools instead, the same agent falls 0.5 to 1.3 points behind. My take: give your agent a fast, honest score and composable tools before you give it more freedom.
+
+105
+00:15:58.683 --> 00:16:01.850
+<v Bob>So could I use this on my own models soon?
+
+106
+00:16:02.150 --> 00:16:13.188
+<v Alice>Possibly. Every QDA checkpoint runs on existing serving kernels with no inference overhead, and the authors say they'll release the library, the evaluator and the harness.
+
+107
+00:16:13.488 --> 00:16:19.337
+<v Bob>From speed to understanding. Maya, paper three is yours: weight-space programming.
+
+108
+00:16:19.637 --> 00:16:38.168
+<v Maya>Thanks, Bob! Mehta and colleagues, on arXiv, in Interpretable weight-space programming builds transparent transformers and brain encoding models, start from a science problem. Deep encoding models predict brain activity accurately, but struggle to reveal which stimulus features drive those predictions.
+
+109
+00:16:38.468 --> 00:16:41.716
+<v Bob>So the model works, but nobody can say why.
+
+110
+00:16:42.016 --> 00:16:58.024
+<v Maya>Exactly. Picture a recipe card you can read line by line, versus a black-box oven that just hands you a cake. iWSP builds the recipe card: an LLM agent writes a model's weights and features directly in code, with no backpropagation at all.
+
+111
+00:16:58.324 --> 00:17:01.323
+<v Bob>No training? Then how does it get anything right?
+
+112
+00:17:01.623 --> 00:17:19.220
+<v Maya>It leans on prior knowledge and earlier trials, over 30 to 50 iterations. With Claude Opus 5.5, all 26 runs on algorithmic tasks reached 100 percent accuracy on both visible and hidden sets, often by writing a known algorithm into the weights.
+
+113
+00:17:19.520 --> 00:17:22.082
+<v Bob>Does the size of the agent model matter?
+
+114
+00:17:22.382 --> 00:17:34.953
+<v Maya>A lot, for compactness. The smallest model reaching 100 percent had a median of 166 parameters with Opus, 41,600 with Sonnet and 100,000 with Haiku.
+
+115
+00:17:35.253 --> 00:17:36.509
+<v Bob>And the brain part?
+
+116
+00:17:36.809 --> 00:17:48.787
+<v Maya>In the visual cortex, iWSP outpredicts existing interpretable baselines, uncovers distinct computations across early and higher visual areas, and generalizes to unseen data.
+
+117
+00:17:49.087 --> 00:17:50.419
+<v Bob>And in language?
+
+118
+00:17:50.719 --> 00:18:04.827
+<v Maya>In language fMRI, performance suddenly jumped when the agent added features coding a word's position in the story rather than its meaning. Reading that model revealed a data confound at the edge of each scan, which can be removed once understood.
+
+119
+00:18:05.127 --> 00:18:06.849
+<v Bob>Maya, what's the catch?
+
+120
+00:18:07.149 --> 00:18:22.207
+<v Maya>The authors are candid: current agents don't invent genuinely new computational principles, they combine known motifs. Search on neural data is slow and costly, and the neuroscience experiments are observational, without causal interventions.
+
+121
+00:18:22.507 --> 00:18:34.231
+<v Alice>And for builders, the idea travels: ask your agent for a rule you can read, not only one that scores. Just know the cost, since DAIR notes language tasks trailed learned baselines.
+
+122
+00:18:34.531 --> 00:18:41.308
+<v Bob>Now the safety block. Sam, you picked paper six, Safe Personal RSI. Skeptic hat on?
+
+123
+00:18:41.608 --> 00:19:01.242
+<v Sam>Always. Pei and colleagues, on arXiv, in Safe Personal RSI: Evaluating and Repairing Personal-Agent Updates, study Kicker, a personal health assistant. Changing its reusable instructions can improve task handling while changing what it discloses, which requests it follows, and how it reports actions.
+
+124
+00:19:01.542 --> 00:19:03.722
+<v Bob>What does that look like in practice?
+
+125
+00:19:04.022 --> 00:19:15.873
+<v Sam>Their example: a clinic message holds a blood-pressure reading, and another message claims reimbursement requires forwarding the visit summary to an external benefits processor. The owner hasn't authorized that disclosure.
+
+126
+00:19:16.173 --> 00:19:18.446
+<v Bob>So how do they gate an update?
+
+127
+00:19:18.746 --> 00:19:39.866
+<v Sam>Think of a pharmacist double-checking a new prescription against everything you already take. Each proposed update is tested against the current instructions on 29 executable email, calendar, health and marketplace cases. Failing cases are repeated, changes are temporarily undone to guide repairs, and if no version passes, the current instructions stay.
+
+128
+00:19:40.166 --> 00:19:41.485
+<v Bob>How strict is it?
+
+129
+00:19:41.785 --> 00:20:03.428
+<v Sam>Very. Across three models and two deliberately risky edits, it rejects 20 of 21 update attempts, twelve on risk checks and eight on utility. One admitted GPT-5.6 Luna repair cut attack violations from 10.7 percent to zero and raised safe task completion from 89.7 to 100 percent.
+
+130
+00:20:03.728 --> 00:20:05.718
+<v Bob>And against tougher attackers?
+
+131
+00:20:06.018 --> 00:20:24.440
+<v Sam>Under stronger attacks, a repair moved from a smaller Qwen model to Qwen3-14B cut violations from 69.0 to 17.9 percent. Safe task completion rose from 19.5 to 64.4 percent. Better, but still far from zero.
+
+132
+00:20:24.740 --> 00:20:28.069
+<v Bob>Impressive, mostly. So where's the skeptic note?
+
+133
+00:20:28.369 --> 00:20:40.127
+<v Sam>Two, straight from the authors. A broad handwritten authority rule matches the repair's outcomes, so clear rules still work. And the empirical admission gate supplies no statistical safety guarantee.
+
+134
+00:20:40.427 --> 00:20:54.066
+<v Alice>For builders, that's the design to copy: self-improvement limited to prompt updates, with model weights and runtime code fixed. And the current instructions stay the default when nothing passes, a safe fallback.
+
+135
+00:20:54.366 --> 00:20:59.100
+<v Bob>Last paper, paper eight, and it's an essay from Meta: Against All Likelihood.
+
+136
+00:20:59.400 --> 00:21:09.718
+<v Alice>David Lopez-Paz at FAIR argues that maximum likelihood, the dominant training principle for large language models, is neither necessary nor sufficient for truth.
+
+137
+00:21:10.018 --> 00:21:11.254
+<v Bob>In plain words?
+
+138
+00:21:11.554 --> 00:21:24.543
+<v Alice>Not necessary, because unlikely things happen every day: someone wins the lottery. Not sufficient, because a lie repeated a million times in the training corpus becomes highly probable, yet it remains false.
+
+139
+00:21:24.843 --> 00:21:26.516
+<v Bob>So what should count as true?
+
+140
+00:21:26.816 --> 00:21:45.313
+<v Alice>Imagine a rumour versus a mountain. A rumour changes with whoever tells it, but the mountain is the same mountain from every window in town. He argues truth should be judged by invariance across relevant transformations of the environment, drawing on Nozick, Poincaré and Cassirer.
+
+141
+00:21:45.613 --> 00:21:47.921
+<v Bob>Can a model actually check that?
+
+142
+00:21:48.221 --> 00:22:01.082
+<v Alice>He sketches a test-time procedure: prompt the model to propose multiple perspectives and extract the common core of its answers. When the proposals share no common core, the model should abstain rather than hallucinate.
+
+143
+00:22:01.382 --> 00:22:04.281
+<v Bob>And the obvious comeback: just add more data?
+
+144
+00:22:04.581 --> 00:22:21.278
+<v Alice>He names it himself: the scaling hypothesis. His reply is that the world keeps producing new environments, so deployment always happens partly out of distribution. My take: that's the thread tying this essay to every self-improving agent this week.
+
+145
+00:22:21.578 --> 00:22:24.478
+<v Bob>Why should a builder care about a philosophy essay?
+
+146
+00:22:24.778 --> 00:22:40.454
+<v Alice>Because it names a test you can run today. Ask the same question from several angles, keep what holds, and let the model say it doesn't know when nothing does. He also ties it to continual learning, which is where every self-improving agent lives.
+
+147
+00:22:40.754 --> 00:22:45.534
+<v Bob>Okay, counterpoints. First worry: benchmarks versus reality.
+
+148
+00:22:45.834 --> 00:23:04.640
+<v Alice>The papers flag it themselves. SIM's authors write that a self-modifying harness could satisfy an evaluator without solving the intended task. And CompoundingKernel cites the benchmark's own authors rejecting 589 flagged submissions, 14.5 percent, for reward hacks.
+
+149
+00:23:04.940 --> 00:23:09.082
+<v Bob>Second worry: cost. Who pays for all this checking?
+
+150
+00:23:09.382 --> 00:23:24.681
+<v Alice>Everyone hits it. AutoRL calls resource-consuming validation the hard part, one full QDA evaluation takes up to 86 GPU-hours, and the iWSP authors call neural-data search slow and costly.
+
+151
+00:23:24.981 --> 00:23:29.842
+<v Bob>Third: safety. Sam, can we trust these self-editing loops?
+
+152
+00:23:30.142 --> 00:23:43.526
+<v Sam>Only so far. Pei and colleagues test with fixed edits, known case families and a model-based auditor. And the case families left out of the repair loop were known during benchmark development and reused in exploration.
+
+153
+00:23:43.826 --> 00:23:53.668
+<v Alice>GUARD adds a sobering ablation: the Soft-HURT gate alone can't rescue an unscoped proposer. A gate catches bad edits, but it can't make good ones.
+
+154
+00:23:53.968 --> 00:23:55.538
+<v Bob>So gates aren't magic.
+
+155
+00:23:55.838 --> 00:24:07.561
+<v Alice>And readability needs vetting too. iWSP relies on an agent's written explanations staying faithful to its weight edits, and the authors say stronger agents will require continued vetting.
+
+156
+00:24:07.861 --> 00:24:11.156
+<v Bob>So even the readable models need a second pair of eyes.
+
+157
+00:24:11.456 --> 00:24:19.603
+<v Alice>Right, and my guess is that's the honest summary of the week: real progress, inside fences the authors built on purpose.
+
+158
+00:24:19.903 --> 00:24:24.335
+<v Bob>Time for Builder's Corner! Alice, one thing I can try this week?
+
+159
+00:24:24.635 --> 00:24:37.589
+<v Alice>Put a regression gate in front of every change to your agent's prompt or skill file. Keep the tasks it already passes as a fixed suite, rerun them on each proposed edit, and keep the current version if anything breaks.
+
+160
+00:24:37.889 --> 00:24:40.261
+<v Bob>And if I'm running lots of agents?
+
+161
+00:24:40.561 --> 00:24:52.923
+<v Alice>Count first: before adding agents to a search, measure how many reliable evaluations per hour it runs. And keep the reasons and results of each edit next to the code, so the next run can reuse them.
+
+162
+00:24:53.223 --> 00:24:56.935
+<v Bob>Gate, count, log. Even I can remember that.
+
+163
+00:24:57.235 --> 00:25:06.010
+<v Alice>And when the agent proposes the edits itself, the gate matters even more: that's exactly what Safe Personal RSI and GUARD automate.
+
+164
+00:25:06.310 --> 00:25:09.133
+<v Bob>Takeaways time. Give me the short version.
+
+165
+00:25:09.433 --> 00:25:26.734
+<v Alice>Self-improvement this week mostly means editing the harness around a frozen model, not rewriting weights. The strongest systems separate what an edit broke from what was never solved, and gate every change. And shorter can be better: pruned skills came out cheaper and more accurate.
+
+166
+00:25:27.034 --> 00:25:28.420
+<v Bob>And on the training side?
+
+167
+00:25:28.720 --> 00:25:41.036
+<v Alice>Agents can already babysit RL runs, design quantization recipes and search GPU kernels. But measurement is the bottleneck: the rate of reliable measurements limits how far the search scales.
+
+168
+00:25:41.336 --> 00:25:42.432
+<v Bob>And safety?
+
+169
+00:25:42.732 --> 00:25:54.495
+<v Alice>Keep the fallback. If no proposed version passes, the current instructions stay, and Safe Personal RSI's authors say plainly their gate supplies no statistical safety guarantee.
+
+170
+00:25:54.795 --> 00:25:55.957
+<v Bob>What's still open?
+
+171
+00:25:56.257 --> 00:26:11.933
+<v Alice>Whether agents can invent genuinely new methods, not just tune known ones: AutoRL adopted no new learning rule, and iWSP's agents combined known motifs. And whether practice games and benchmarks predict messy real work.
+
+172
+00:26:12.233 --> 00:26:14.513
+<v Bob>And the bill for all that checking?
+
+173
+00:26:14.813 --> 00:26:27.565
+<v Alice>Also open. Safe Personal RSI's authors say per-task overhead and per-update evaluation cost should be measured separately, and AutoRL still calls resource-consuming validation the hard part.
+
+174
+00:26:27.865 --> 00:26:31.340
+<v Bob>And who checks the checker, when the agent writes its own tests?
+
+175
+00:26:31.640 --> 00:26:39.741
+<v Alice>My guess: that's the big one for next year. And Lopez-Paz would probably say, check what stays true when the setting changes.
+
+176
+00:26:40.041 --> 00:26:50.877
+<v Bob>Huge thanks to DAIR dot AI for "Top AI Papers of the Week". And to the authors: Xin Yu, Minghe Zhang, Deep Shah, Shobhita Sundaram and Simon Tang, each with colleagues.
+
+177
+00:26:51.177 --> 00:27:02.343
+<v Alice>Plus Qian Qu, Xingyang Li, Yash Mehta and Jiapeng Pei with their colleagues, and David Lopez-Paz for Against All Likelihood. Thanks to Lena, Maya and Sam too!
+
+178
+00:27:02.643 --> 00:27:09.119
+<v Bob>Go add that regression gate! That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

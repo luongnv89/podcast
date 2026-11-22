@@ -24,8 +24,119 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-22T07:39:49Z",
+  "updated": "2026-11-22T21:53:41Z",
   "episodes": [
+    {
+      "id": "2026-11-22_top-ai-papers-of-the-week",
+      "title": "Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)",
+      "summary": [
+        "Bob and Alice go deeper on DAIR's Top AI Papers of the Week: ten papers on agents that improve their own harness, skills, training runs and code.",
+        "Guests Lena, Maya and Sam present EfficientSkill, interpretable weight-space programming and Safe Personal RSI.",
+        "Each paper gets its method, key numbers and the authors' own caveats, plus a regression-gate tip for builders."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-22T21:50:20Z",
+      "duration_s": 1635.719,
+      "size_bytes": 26172801,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-22_top-ai-papers-of-the-week.mp3",
+      "audio_sha256": "969046775c81c0841f4c32869592830208b19a6859089ee50701d03751083ce6",
+      "transcript": "episodes/2026-11-22_top-ai-papers-of-the-week/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "🥇Top AI Papers of the Week",
+        "author": "DAIR.AI (@dair_ai)",
+        "url": "https://x.com/dair_ai/status/2124510548070895895",
+        "published": "2026-11-22T14:29:20Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "🥇Top AI Papers of the Week",
+          "author": "DAIR.AI (@dair_ai)",
+          "url": "https://x.com/dair_ai/status/2124510548070895895"
+        },
+        {
+          "title": "Self-Improvement Memory Enables Continual Recursive Self-Improvement",
+          "author": "Xin Yu et al.",
+          "url": "https://arxiv.org/html/2611.18856"
+        },
+        {
+          "title": "GUARD: Stabilizing Recursive Self-Improvement with Regret Guidance",
+          "author": "Minghe Zhang et al.",
+          "url": "https://arxiv.org/html/2611.23476"
+        },
+        {
+          "title": "EfficientSkill: Learning Skills for Token-Efficient Multi-Turn Agents",
+          "author": "Deep Shah et al.",
+          "url": "https://arxiv.org/html/2611.19823"
+        },
+        {
+          "title": "Do LLM Agents Still Need to Be Told How to Self-Improve?",
+          "author": "Shobhita Sundaram et al.",
+          "url": "https://arxiv.org/html/2611.23219"
+        },
+        {
+          "title": "AutoRL: A Multi-Agent System towards Autonomous Reinforcement Learning",
+          "author": "Simon Tang et al.",
+          "url": "https://arxiv.org/html/2611.17790"
+        },
+        {
+          "title": "CompoundingKernel: Self-Improving from Zero to First",
+          "author": "Qian Qu et al.",
+          "url": "https://arxiv.org/html/2611.19230"
+        },
+        {
+          "title": "QDA: Closed-Loop LLM Quantization Design with Agents",
+          "author": "Xingyang Li et al.",
+          "url": "https://arxiv.org/html/2611.23388"
+        },
+        {
+          "title": "Interpretable weight-space programming builds transparent transformers and brain encoding models",
+          "author": "Yash Mehta et al.",
+          "url": "https://arxiv.org/html/2611.18114"
+        },
+        {
+          "title": "Safe Personal RSI: Evaluating and Repairing Personal-Agent Updates",
+          "author": "Jiapeng Pei et al.",
+          "url": "https://arxiv.org/html/2611.23651"
+        },
+        {
+          "title": "Against All Likelihood",
+          "author": "David Lopez-Paz",
+          "url": "https://arxiv.org/html/2611.09385"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Lena",
+          "presents": [
+            "EfficientSkill: Learning Skills for Token-Efficient Multi-Turn Agents"
+          ]
+        },
+        {
+          "name": "Maya",
+          "presents": [
+            "Interpretable weight-space programming builds transparent transformers and brain encoding models"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Safe Personal RSI: Evaluating and Repairing Personal-Agent Updates"
+          ]
+        }
+      ],
+      "description": "Ten papers on self-improving AI agents from DAIR's Top AI Papers of the Week, from GUARD and AutoRL to QDA. Bob, Alice and guests dig into every method and caveat.\n\nIn this episode:\n- Agents evolving their harness and skills\n- Agents that run RL, GPU kernels, quantization\n- Safe self-updates; truth vs likelihood\n\nSources: Top AI Papers of the Week; Xin Yu et al.; Minghe Zhang et al.; Deep Shah et al.; Shobhita Sundaram et al.; Simon Tang et al.; Qian Qu et al.; Xingyang Li et al.; Yash Mehta et al.; Jiapeng Pei et al.; David Lopez-Paz\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Self-Improving AI Agents 10 Papers Explained (DAIR.AI Top Papers) (2026-11-22).mp3"
+    },
     {
       "id": "2026-11-22_morning-edition-sunday-22-november-2026",
       "title": "Together AI's Agent Key Leak, Runpod's Hidden Ask | AI Daily 22 Nov",
