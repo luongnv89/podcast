@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sun, 22 Nov 2026 21:53:41 +0000</lastBuildDate>
+  <lastBuildDate>Sun, 22 Nov 2026 22:09:10 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,33 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-22_agent-platform-2027</guid>
+    <title>Agent Platform 2027: The Agentic OS Blueprint (John Suh)</title>
+    <link>https://luongnv.com/podcast/#2026-11-22_agent-platform-2027</link>
+    <description>John Suh's "Agent platform 2027" sketches one agentic operating system that every company's agents run on.
+
+Alice and Bob unpack his building blocks: actors, shared files, conversations, inboxes, listeners, workflows and apps.
+
+Guests weigh in with Gartner's agent forecast, Simon Willison on prompt injection and Seema Amble on systems of record.
+
+Sources:
+- Agent platform 2027, John Suh (https://x.com/john_ssuh/status/2124336124172935336)
+- The definitive guide to Durable Execution, Tom Wheeler (https://temporal.io/blog/what-is-durable-execution)
+- Building effective AI agents, Anthropic (https://www.anthropic.com/research/building-effective-agents)
+- Gartner Predicts Over 40% of Agentic AI Projects Will Be Canceled by End of 2027, Gartner (https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027)
+- Design Patterns for Securing LLM Agents against Prompt Injections, Simon Willison (https://simonwillison.net/2025/Jun/13/prompt-injection-design-patterns/)
+- Is Software Losing Its Head?, Seema Amble (https://www.a16z.news/p/is-software-losing-its-head)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>John Suh's "Agent platform 2027" sketches one agentic operating system that every company's agents run on.</p><p>Alice and Bob unpack his building blocks: actors, shared files, conversations, inboxes, listeners, workflows and apps.</p><p>Guests weigh in with Gartner's agent forecast, Simon Willison on prompt injection and Seema Amble on systems of record.</p><p>Sources:</p><ul><li>Agent platform 2027, John Suh: <a href="https://x.com/john_ssuh/status/2124336124172935336">https://x.com/john_ssuh/status/2124336124172935336</a></li><li>The definitive guide to Durable Execution, Tom Wheeler: <a href="https://temporal.io/blog/what-is-durable-execution">https://temporal.io/blog/what-is-durable-execution</a></li><li>Building effective AI agents, Anthropic: <a href="https://www.anthropic.com/research/building-effective-agents">https://www.anthropic.com/research/building-effective-agents</a></li><li>Gartner Predicts Over 40% of Agentic AI Projects Will Be Canceled by End of 2027, Gartner: <a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027">https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027</a></li><li>Design Patterns for Securing LLM Agents against Prompt Injections, Simon Willison: <a href="https://simonwillison.net/2025/Jun/13/prompt-injection-design-patterns/">https://simonwillison.net/2025/Jun/13/prompt-injection-design-patterns/</a></li><li>Is Software Losing Its Head?, Seema Amble: <a href="https://www.a16z.news/p/is-software-losing-its-head">https://www.a16z.news/p/is-software-losing-its-head</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Sun, 22 Nov 2026 22:05:55 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_agent-platform-2027.mp3?v=63ddf997" length="15446704" type="audio/mpeg"/>
+    <itunes:duration>965</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-22_agent-platform-2027/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-22_top-ai-papers-of-the-week</guid>
     <title>Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)</title>

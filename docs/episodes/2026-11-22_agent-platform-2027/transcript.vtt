@@ -1,0 +1,397 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.465
+<v Bob>What if every company's AI agents ended up running on one single operating system?
+
+2
+00:00:05.765 --> 00:00:14.888
+<v Alice>John Suh calls that the end game: one agentic operating system, with every other piece of software turned into a database underneath it.
+
+3
+00:00:19.188 --> 00:00:28.612
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and I'm asking the questions today. Alice, what's on the table?
+
+4
+00:00:28.912 --> 00:00:43.271
+<v Alice>Hi, I'm Alice. Today it's an X post by John Suh, with four images of a document titled "Agent platform 2027". He calls it the blueprint for the one and only application layer software that will exist.
+
+5
+00:00:43.571 --> 00:00:48.607
+<v Bob>One and only. Bold! That's his prediction, though, not a fact, right?
+
+6
+00:00:48.907 --> 00:01:04.587
+<v Alice>His prediction, yes. He believes an independent company will own this layer, and that most agent platform and vertical software companies are focused on the wrong things, far too narrowly. We'll walk through his building blocks, then three guests push back.
+
+7
+00:01:04.887 --> 00:01:08.901
+<v Bob>Start with the big picture. What exactly is this platform?
+
+8
+00:01:09.201 --> 00:01:20.878
+<v Alice>In his words, the everything agentic operating system for the million agent swarm to work on top of. He also calls it the obvious end game for the application layer of ChatGPT and Claude.
+
+9
+00:01:21.178 --> 00:01:25.111
+<v Bob>I keep hearing "factory of a factory". Is that his image?
+
+10
+00:01:25.411 --> 00:01:42.329
+<v Alice>No, he prefers a garden. Picture a garden bed: customers plant their own unique seeds, and agents, humans and signals from the business's sensors grow them into plants and trees. The platform is the soil, and each company's agents and apps are what grows.
+
+11
+00:01:42.629 --> 00:01:45.447
+<v Bob>Less smoke, more tomatoes. I like it.
+
+12
+00:01:45.747 --> 00:01:55.171
+<v Alice>He says it presents a clearer picture than "factory of a factory". But is the market ready? Maya, you looked at where companies actually are.
+
+13
+00:01:55.471 --> 00:02:11.613
+<v Maya>I did. Gartner, in a June 2025 press release, predicts over 40 percent of agentic AI projects will be canceled by the end of 2027. The reasons: escalating costs, unclear business value or inadequate risk controls.
+
+14
+00:02:11.913 --> 00:02:14.145
+<v Bob>Forty percent canceled? Ouch.
+
+15
+00:02:14.445 --> 00:02:37.275
+<v Maya>Gartner also warns about "agent washing": vendors rebranding assistants and chatbots without real agentic capabilities. It estimates only about 130 of the thousands of agentic AI vendors are real. Still, it predicts 33 percent of enterprise software applications will include agentic AI by 2028, up from less than 1 percent in 2024.
+
+16
+00:02:37.575 --> 00:02:44.485
+<v Bob>So real growth, plus a lot of hype. First building block: agents as actors. What's he pushing against?
+
+17
+00:02:44.785 --> 00:03:02.730
+<v Alice>He says most scalable agent workloads today run on some form of Temporal. Tom Wheeler's guide on Temporal's blog, "The definitive guide to Durable Execution", calls that crash-proof execution. If a process crashes, the work resumes in a new process with its state recreated.
+
+18
+00:03:03.030 --> 00:03:05.639
+<v Bob>Sounds great. So why move away from it?
+
+19
+00:03:05.939 --> 00:03:19.276
+<v Alice>He thinks agents will shift toward actors, where each agent harness gets a fully independent runtime. The reason is self-improvement: an agent that writes its own extensions or hooks on the fly needs that isolation.
+
+20
+00:03:19.576 --> 00:03:22.451
+<v Bob>Actors. Give me the novice version.
+
+21
+00:03:22.751 --> 00:03:40.423
+<v Alice>Imagine separate apartments in one building: same address, same plumbing, but each tenant can knock down their own walls without touching the neighbours. Map that back: actors let different versions of the agent loop run safely on the same platform backend, even within a single tenant.
+
+22
+00:03:40.723 --> 00:03:44.784
+<v Bob>So an agent can redecorate itself without flooding the floor below.
+
+23
+00:03:45.084 --> 00:04:03.233
+<v Alice>Exactly. Anthropic's guide describes agents as typically just LLMs using tools based on environmental feedback in a loop. Suh wants that loop's definition kept apart from its instances and sessions, because some users want one mega-agent and others prefer bespoke agent definitions.
+
+24
+00:04:03.533 --> 00:04:08.030
+<v Bob>And where does Fermat's Last Theorem come in? Strange place for an agent story.
+
+25
+00:04:08.330 --> 00:04:25.334
+<v Alice>It's his example. He writes that Anthropic argues for one mega-agent, but that in its work formalizing Fermat's Last Theorem, each agent had access to only a shell and a file editor. He reads that as a revealed preference for focused, code-defined agents.
+
+26
+00:04:25.634 --> 00:04:29.218
+<v Bob>Just a shell and an editor. Very minimalist.
+
+27
+00:04:29.518 --> 00:04:39.744
+<v Alice>And it fits Anthropic's own advice in "Building effective AI agents": find the simplest solution possible, and only add complexity when it's needed.
+
+28
+00:04:40.044 --> 00:04:44.569
+<v Bob>Next, computers and files. Where do these agents actually work?
+
+29
+00:04:44.869 --> 00:05:07.963
+<v Alice>On two kinds of computers: clones of checkpointed sandboxes across many providers, and people's own local machines. N agents should work with M computers, from one agent spinning up five sandboxes to 1,000 agents using 100 VMs in parallel. Anthropic's guide, too, recommends extensive testing in sandboxed environments.
+
+30
+00:05:08.263 --> 00:05:09.676
+<v Bob>That's a busy office.
+
+31
+00:05:09.976 --> 00:05:25.872
+<v Alice>And they all share files: a shared POSIX filesystem in the cloud, with access controls attached to the filesystem separately from the computer. He calls it part GitHub, for agent code and definitions, and part Google Drive, for files and apps.
+
+32
+00:05:26.172 --> 00:05:29.338
+<v Bob>POSIX, RBAC. Translate, please.
+
+33
+00:05:29.638 --> 00:05:46.712
+<v Alice>Think of it as a shared office drive where every folder needs a keycard. It doesn't matter which desk you sit at: your badge decides what opens. The drive is the filesystem, the badge rules are role-based access control, and the desks are the computers, kept separate from the access rules.
+
+34
+00:05:47.012 --> 00:05:49.897
+<v Bob>And whose badge does an agent carry?
+
+35
+00:05:50.197 --> 00:06:05.634
+<v Alice>He expects organizations to want different setups: agents treated like humans, permission based on who started that particular turn, or a mix of both. And since it's one remote shared filesystem, each directory could even use git for version control.
+
+36
+00:06:05.934 --> 00:06:10.203
+<v Bob>This next one sounds like a UX fight. Conversation versus session?
+
+37
+00:06:10.503 --> 00:06:26.071
+<v Alice>It is. Most coding agent apps show users the raw agent session, intermediate tool calls included, and he thinks that's wrong. What the user sees should be a conversation, at the level of a Slack channel, an iMessage chat or an email thread.
+
+38
+00:06:26.371 --> 00:06:30.002
+<v Bob>Why hide it? I kind of like watching the agent work.
+
+39
+00:06:30.302 --> 00:06:46.698
+<v Alice>Picture a restaurant: you sit in the dining room and get your plate, while the kitchen, with all its noise, stays behind the door. The conversation is the dining room and the session is the kitchen. The agent carries content out to you through a tool call, like a waiter bringing the dish.
+
+40
+00:06:46.998 --> 00:06:49.944
+<v Bob>But the health inspector still gets into the kitchen.
+
+41
+00:06:50.244 --> 00:07:06.522
+<v Alice>Right, and that's his point too: direct access to agent sessions should be like reading the codebase, a way to inspect and debug, not the main interface. He also suspects most apps that wrap coding agent sessions won't survive this shift, because of the innovator's dilemma.
+
+42
+00:07:06.822 --> 00:07:10.453
+<v Bob>Then the inbox. Another inbox? I already have three.
+
+43
+00:07:10.753 --> 00:07:26.521
+<v Alice>This one replaces reading through conversations: he expects users to increasingly work from a focused inbox of approvals and questions. Imagine an assistant's in-tray on your desk. You don't sit in on every call, you just sign what's waiting and answer the notes.
+
+44
+00:07:26.821 --> 00:07:28.873
+<v Bob>And for business-specific work?
+
+45
+00:07:29.173 --> 00:07:43.126
+<v Alice>The inbox should also support tenant-specific apps for reviewing work that needs a human's action. It's where the pauses land that Anthropic's guide describes, when agents stop for human feedback at checkpoints or when encountering blockers.
+
+46
+00:07:43.426 --> 00:07:46.755
+<v Bob>Listeners and monitors. What are they listening to?
+
+47
+00:07:47.055 --> 00:08:01.925
+<v Alice>Streams of events from the outside world, defined per tenant, such as Kafka streams. Agents translate those events, deterministically or agentically, into signals they can act on, and he wants these listeners buildable on the fly.
+
+48
+00:08:02.225 --> 00:08:03.086
+<v Bob>Example?
+
+49
+00:08:03.386 --> 00:08:23.342
+<v Alice>Email: run an agent on every incoming email, then on batches across all accounts, then only on mail from one company's senders for the next week. Think of a smoke detector wired to the alarm company: it watches all day and calls for help only when it matters. The detector is the listener, the alarm company is the agent.
+
+50
+00:08:23.642 --> 00:08:26.506
+<v Bob>And what do platforms offer today?
+
+51
+00:08:26.806 --> 00:08:38.200
+<v Alice>He says the industry mostly supports hourly cron jobs that trigger an agent, or bespoke webhook plugins. Listeners and monitors, in his view, are a strict superset of that.
+
+52
+00:08:38.500 --> 00:08:42.978
+<v Bob>Sam, an agent reading every incoming email. Does that make you nervous?
+
+53
+00:08:43.278 --> 00:09:03.220
+<v Sam>It does. Simon Willison, on his weblog, reviews a paper called "Design Patterns for Securing LLM Agents against Prompt Injections". Its guiding principle: "once an LLM agent has ingested untrusted input, it must be constrained so that it is impossible for that input to trigger any consequential actions".
+
+54
+00:09:03.520 --> 00:09:07.197
+<v Bob>And an email from a stranger is exactly that kind of input.
+
+55
+00:09:07.497 --> 00:09:23.347
+<v Sam>Right. Willison's own take: an attacker who can sneak in their tokens "should be considered to have complete control over what happens next". The paper's answer is patterns that impose intentional constraints on agents, limiting their ability to perform arbitrary tasks.
+
+56
+00:09:23.647 --> 00:09:27.119
+<v Bob>Workflows next. Don't we already have tools for that?
+
+57
+00:09:27.419 --> 00:09:43.264
+<v Alice>Drag-and-drop tools, yes, like n8n or the original Zapier. He calls that paradigm inferior to writing custom code, and wants durable, code-defined workflows per tenant, mixing agentic and deterministic steps over long horizons.
+
+58
+00:09:43.564 --> 00:09:46.893
+<v Bob>But why code? Boxes and arrows are friendlier.
+
+59
+00:09:47.193 --> 00:10:08.952
+<v Alice>Picture a recipe versus a flowchart poster on the kitchen wall: the poster is easy to read, but the recipe can say "if the dough is sticky, add flour". A workflow written in code is that recipe. Tom Wheeler's guide shows the payoff: with durable execution, a months-long customer onboarding needs nothing more than a for-loop and a sleep statement.
+
+60
+00:10:09.252 --> 00:10:11.432
+<v Bob>And what does durable mean here?
+
+61
+00:10:11.732 --> 00:10:22.677
+<v Alice>Back to Tom Wheeler's guide: durable execution isn't limited by time. A payment may finish in a fraction of a second, while one that manages a loan may need to run for several years.
+
+62
+00:10:22.977 --> 00:10:26.051
+<v Bob>So where do workflows end and agents begin?
+
+63
+00:10:26.351 --> 00:10:40.535
+<v Alice>Anthropic's guide draws that line: workflows orchestrate LLMs and tools through predefined code paths, while agents dynamically direct their own processes and tool use. Suh's platform wants both, side by side.
+
+64
+00:10:40.835 --> 00:10:44.930
+<v Bob>Last block, the biggest one: apps. What does he mean?
+
+65
+00:10:45.230 --> 00:11:02.200
+<v Alice>He treats Replit, Claude Artifacts, ChatGPT Apps and embedded widgets as one idea: an app. All interfaces should be apps in your filesystem that users can customize, even the whole conversations page, with each user getting a clone of the code to extend.
+
+66
+00:11:02.500 --> 00:11:03.639
+<v Bob>Give me the picture.
+
+67
+00:11:03.939 --> 00:11:22.262
+<v Alice>Think of your phone's home screen: it comes with default apps, but you move them, delete them and add your own. Now imagine asking an assistant to rebuild any of them for you. That's his app layer: instead of a vendor's implementation team, users ask their agents to modify the applications directly.
+
+68
+00:11:22.562 --> 00:11:24.742
+<v Bob>Where do those apps live on screen?
+
+69
+00:11:25.042 --> 00:11:38.307
+<v Alice>In containers that can be apps themselves: tmux-like interfaces, apps inside messages, app-first screens with chat in a sidebar, plus infinite canvases, layered windows and resizable panels.
+
+70
+00:11:38.607 --> 00:11:41.653
+<v Bob>And why does any of this threaten vertical software?
+
+71
+00:11:41.953 --> 00:11:54.268
+<v Alice>His example: ten different accounting companies review tax forms. They share the same noun, review, but each one's process is bespoke, so ideally each could fork Excel and build its own interface.
+
+72
+00:11:54.568 --> 00:11:56.984
+<v Bob>Ten firms, ten Excels.
+
+73
+00:11:57.284 --> 00:12:12.925
+<v Alice>He thinks vertical SaaS is broken as a venture thesis, at least in its original form. The best products, he says, turn into configurable platforms with consultants and deployment teams, so why not a general platform the agent can fully operate on?
+
+74
+00:12:13.225 --> 00:12:17.494
+<v Bob>Theo, you follow the market. Is vertical software really done?
+
+75
+00:12:17.794 --> 00:12:35.727
+<v Theo>Not so fast. Seema Amble, writing for a16z in "Is Software Losing Its Head?", argues: "Agents may kill muscle memory as a moat, but they do not kill operational logic and context as a moat." Agents need explicit rules, permissions and process definitions to act safely.
+
+76
+00:12:36.027 --> 00:12:38.927
+<v Bob>So the rules are the moat, not the screens.
+
+77
+00:12:39.227 --> 00:12:54.009
+<v Theo>Right. She writes that AI lowers the cost of recreating the first 80 percent of a system of record. But the remaining 20 percent, the exceptions, approvals, compliance requirements and edge cases, separates a useful wedge from a true replacement.
+
+78
+00:12:54.309 --> 00:12:59.809
+<v Bob>Counterpoints. Theo, what's the strongest objection to one platform owning it all?
+
+79
+00:13:00.109 --> 00:13:14.186
+<v Theo>Trust. Amble writes that a system of record that becomes the identity and permissioning layer for agent-to-agent interactions has a structural role that's "genuinely hard to displace". So the incumbents holding that trust may not simply become databases.
+
+80
+00:13:14.486 --> 00:13:17.223
+<v Bob>Maya, does Gartner see a catch too?
+
+81
+00:13:17.523 --> 00:13:30.349
+<v Maya>Its analyst Anushree Verma says many use cases positioned as agentic today "don't require agentic implementations". And Gartner recommends pursuing agentic AI only where it delivers clear value or ROI.
+
+82
+00:13:30.649 --> 00:13:32.590
+<v Bob>Sam, last word on risk?
+
+83
+00:13:32.890 --> 00:13:49.506
+<v Sam>Willison calls prompt injection "the biggest challenge to responsibly deploying the kind of agentic systems everyone is so excited to build". And the paper's authors doubt that general-purpose agents on today's language models can provide meaningful and reliable safety guarantees.
+
+84
+00:13:49.806 --> 00:13:53.110
+<v Bob>And there's a tension in your own sources, Alice, isn't there?
+
+85
+00:13:53.410 --> 00:14:09.776
+<v Alice>There is. Anthropic's guide says to prioritize transparency by explicitly showing the agent's planning steps, while Suh wants the raw session out of the main view. My take: you can do both, with a clear conversation up front and the session one click away for debugging.
+
+86
+00:14:10.076 --> 00:14:14.729
+<v Bob>And it's one person's forecast, with confident words like "inevitable".
+
+87
+00:14:15.029 --> 00:14:24.267
+<v Alice>Right. In my view it's a design map, built from reasoning and examples rather than data, so treat it as a map, not a forecast you can bank on.
+
+88
+00:14:24.567 --> 00:14:27.671
+<v Bob>Builder's Corner. One thing listeners can try this week?
+
+89
+00:14:27.971 --> 00:14:38.324
+<v Alice>Separate what users see from the raw agent session. Give your agent a tool for posting to the user, and show only those posts in the conversation view, the way Suh describes.
+
+90
+00:14:38.624 --> 00:14:41.113
+<v Bob>And the raw session goes where?
+
+91
+00:14:41.413 --> 00:14:49.560
+<v Alice>Behind a debug view, like reading the codebase. Then check one thing: can a user follow the work without ever opening the kitchen door?
+
+92
+00:14:49.860 --> 00:14:59.284
+<v Bob>Takeaways. Mine: his platform is a garden bed, with agents as actors, shared files behind keycards, and a conversation kept apart from the session.
+
+93
+00:14:59.584 --> 00:15:10.924
+<v Alice>Mine: the human side shrinks to an inbox of approvals and questions, while listeners and code-defined workflows do the watching. And every app becomes something your agent can reshape.
+
+94
+00:15:11.224 --> 00:15:16.132
+<v Bob>And the caveat: Gartner says pursue agents only where the value is clear.
+
+95
+00:15:16.432 --> 00:15:25.810
+<v Alice>Still open: who owns this layer. He bets on an independent company rather than the makers of ChatGPT and Claude, but he doesn't say which one.
+
+96
+00:15:26.110 --> 00:15:29.710
+<v Bob>And can agents that write their own hooks stay safe?
+
+97
+00:15:30.010 --> 00:15:35.765
+<v Alice>My guess: that's the real test of his blueprint, and none of our sources settles it yet.
+
+98
+00:15:36.065 --> 00:15:43.272
+<v Bob>Thanks to John Suh for his X post and its four images, and to Tom Wheeler's guide to durable execution on Temporal's blog.
+
+99
+00:15:43.572 --> 00:15:58.737
+<v Alice>And to Anthropic's "Building effective AI agents", Gartner's press release on agentic AI projects, Seema Amble at a16z, and Simon Willison. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-22T21:53:41Z",
+  "updated": "2026-11-22T22:09:10Z",
   "episodes": [
+    {
+      "id": "2026-11-22_agent-platform-2027",
+      "title": "Agent Platform 2027: The Agentic OS Blueprint (John Suh)",
+      "summary": [
+        "John Suh's \"Agent platform 2027\" sketches one agentic operating system that every company's agents run on.",
+        "Alice and Bob unpack his building blocks: actors, shared files, conversations, inboxes, listeners, workflows and apps.",
+        "Guests weigh in with Gartner's agent forecast, Simon Willison on prompt injection and Seema Amble on systems of record."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-22T22:05:55Z",
+      "duration_s": 965.337,
+      "size_bytes": 15446704,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-22_agent-platform-2027.mp3",
+      "audio_sha256": "63ddf99777d33ebab3b389682fe21c14a57deca5ff810862afd9a3d98e6fb5c5",
+      "transcript": "episodes/2026-11-22_agent-platform-2027/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Agent platform 2027",
+        "author": "John Suh",
+        "url": "https://x.com/john_ssuh/status/2124336124172935336",
+        "published": null,
+        "kind": "text"
+      },
+      "sources": [
+        {
+          "title": "Agent platform 2027",
+          "author": "John Suh",
+          "url": "https://x.com/john_ssuh/status/2124336124172935336"
+        },
+        {
+          "title": "The definitive guide to Durable Execution",
+          "author": "Tom Wheeler",
+          "url": "https://temporal.io/blog/what-is-durable-execution"
+        },
+        {
+          "title": "Building effective AI agents",
+          "author": "Anthropic",
+          "url": "https://www.anthropic.com/research/building-effective-agents"
+        },
+        {
+          "title": "Gartner Predicts Over 40% of Agentic AI Projects Will Be Canceled by End of 2027",
+          "author": "Gartner",
+          "url": "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027"
+        },
+        {
+          "title": "Design Patterns for Securing LLM Agents against Prompt Injections",
+          "author": "Simon Willison",
+          "url": "https://simonwillison.net/2025/Jun/13/prompt-injection-design-patterns/"
+        },
+        {
+          "title": "Is Software Losing Its Head?",
+          "author": "Seema Amble",
+          "url": "https://www.a16z.news/p/is-software-losing-its-head"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "Gartner Predicts Over 40% of Agentic AI Projects Will Be Canceled by End of 2027"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Design Patterns for Securing LLM Agents against Prompt Injections"
+          ]
+        },
+        {
+          "name": "Theo",
+          "presents": [
+            "Is Software Losing Its Head?"
+          ]
+        }
+      ],
+      "description": "John Suh's \"Agent platform 2027\" is a blueprint for one agentic operating system that every company's AI agents run on. Bob and Alice unpack it, then test it against Gartner's forecast, prompt injection risks and the case for vertical software.\n\nIn this episode:\n- Agents as actors, shared files and code-defined workflows\n- Why the user's conversation should stay apart from the agent session\n- Counterpoints on hype, security and systems of record\n\nSources: John Suh; Tom Wheeler; Anthropic; Gartner; Simon Willison; Seema Amble\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Agent Platform 2027 The Agentic OS Blueprint (John Suh) (2026-11-22).mp3"
+    },
     {
       "id": "2026-11-22_top-ai-papers-of-the-week",
       "title": "Self-Improving AI Agents: 10 Papers Explained (DAIR.AI Top Papers)",

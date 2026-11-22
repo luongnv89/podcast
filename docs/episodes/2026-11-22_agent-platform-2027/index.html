@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Platform 2027: The Agentic OS Blueprint (John Suh) | Build Wiz AI Show</title>
+<meta name="description" content="John Suh&#x27;s &quot;Agent platform 2027&quot; is a blueprint for one agentic operating system that every company&#x27;s AI agents run on. Bob and Alice unpack it, then test it against Gartner&#x27;s forecast, prompt injection risks and the case for vertical software.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-22_agent-platform-2027/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-22_agent-platform-2027/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="Agent Platform 2027: The Agentic OS Blueprint (John Suh)">
+<meta property="og:description" content="John Suh&#x27;s &quot;Agent platform 2027&quot; is a blueprint for one agentic operating system that every company&#x27;s AI agents run on. Bob and Alice unpack it, then test it against Gartner&#x27;s forecast, prompt injection risks and the case for vertical software.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-22_agent-platform-2027/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_agent-platform-2027.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Agent Platform 2027: The Agentic OS Blueprint (John Suh)">
+<meta name="twitter:description" content="John Suh&#x27;s &quot;Agent platform 2027&quot; is a blueprint for one agentic operating system that every company&#x27;s AI agents run on. Bob and Alice unpack it, then test it against Gartner&#x27;s forecast, prompt injection risks and the case for vertical software.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "Agent Platform 2027: The Agentic OS Blueprint (John Suh)",
+ "description": "John Suh's \"Agent platform 2027\" is a blueprint for one agentic operating system that every company's AI agents run on. Bob and Alice unpack it, then test it against Gartner's forecast, prompt injection risks and the case for vertical software.\n\nIn this episode:\n- Agents as actors, shared files and code-defined workflows\n- Why the user's conversation should stay apart from the agent session\n- Counterpoints on hype, security and systems of record\n\nSources: John Suh; Tom Wheeler; Anthropic; Gartner; Simon Willison; Seema Amble\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-22_agent-platform-2027/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-22_agent-platform-2027.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT16M5S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-22T22:05:55Z",
+ "timeRequired": "PT16M5S",
+ "isBasedOn": "https://x.com/john_ssuh/status/2124336124172935336"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">Agent Platform 2027: The Agentic OS Blueprint (John Suh)</h1>
+  <p class="meta"><span class="dur">16 min</span> · <time datetime="2026-11-22T22:05:55Z">2026-11-22</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_agent-platform-2027.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">John Suh&#x27;s &quot;Agent platform 2027&quot; is a blueprint for one agentic operating system that every company&#x27;s AI agents run on. Bob and Alice unpack it, then test it against Gartner&#x27;s forecast, prompt injection risks and the case for vertical software.
+
+In this episode:
+- Agents as actors, shared files and code-defined workflows
+- Why the user&#x27;s conversation should stay apart from the agent session
+- Counterpoints on hype, security and systems of record
+
+Sources: John Suh; Tom Wheeler; Anthropic; Gartner; Simon Willison; Seema Amble
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-22_agent-platform-2027">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-22_agent-platform-2027.mp3" download="Build Wiz AI Show - Agent Platform 2027 The Agentic OS Blueprint (John Suh) (2026-11-22).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Agent Platform 2027: The Agentic OS Blueprint (John Suh)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="John Suh&#x27;s &quot;Agent platform 2027&quot; is a blueprint for one agentic operating system that every company&#x27;s AI agents run on. Bob and Alice unpack it, then test it against Gartner&#x27;s forecast, prompt injection risks and the case for vertical software.
+
+In this episode:
+- Agents as actors, shared files and code-defined workflows
+- Why the user&#x27;s conversation should stay apart from the agent session
+- Counterpoints on hype, security and systems of record
+
+Sources: John Suh; Tom Wheeler; Anthropic; Gartner; Simon Willison; Seema Amble
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://x.com/john_ssuh/status/2124336124172935336" rel="noopener">Agent platform 2027</a> by John Suh</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> What if every company's AI agents ended up running on one single operating system?</p>
+    <p><strong>Alice:</strong> John Suh calls that the end game: one agentic operating system, with every other piece of software turned into a database underneath it.</p>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and I'm asking the questions today. Alice, what's on the table?</p>
+    <p><strong>Alice:</strong> Hi, I'm Alice. Today it's an X post by John Suh, with four images of a document titled "Agent platform 2027". He calls it the blueprint for the one and only application layer software that will exist.</p>
+    <p><strong>Bob:</strong> One and only. Bold! That's his prediction, though, not a fact, right?</p>
+    <p><strong>Alice:</strong> His prediction, yes. He believes an independent company will own this layer, and that most agent platform and vertical software companies are focused on the wrong things, far too narrowly. We'll walk through his building blocks, then three guests push back.</p>
+    <p><strong>Bob:</strong> Start with the big picture. What exactly is this platform?</p>
+    <p><strong>Alice:</strong> In his words, the everything agentic operating system for the million agent swarm to work on top of. He also calls it the obvious end game for the application layer of ChatGPT and Claude.</p>
+    <p><strong>Bob:</strong> I keep hearing "factory of a factory". Is that his image?</p>
+    <p><strong>Alice:</strong> No, he prefers a garden. Picture a garden bed: customers plant their own unique seeds, and agents, humans and signals from the business's sensors grow them into plants and trees. The platform is the soil, and each company's agents and apps are what grows.</p>
+    <p><strong>Bob:</strong> Less smoke, more tomatoes. I like it.</p>
+    <p><strong>Alice:</strong> He says it presents a clearer picture than "factory of a factory". But is the market ready? Maya, you looked at where companies actually are.</p>
+    <p><strong>Maya:</strong> I did. Gartner, in a June 2025 press release, predicts over 40 percent of agentic AI projects will be canceled by the end of 2027. The reasons: escalating costs, unclear business value or inadequate risk controls.</p>
+    <p><strong>Bob:</strong> Forty percent canceled? Ouch.</p>
+    <p><strong>Maya:</strong> Gartner also warns about "agent washing": vendors rebranding assistants and chatbots without real agentic capabilities. It estimates only about 130 of the thousands of agentic AI vendors are real. Still, it predicts 33 percent of enterprise software applications will include agentic AI by 2028, up from less than 1 percent in 2024.</p>
+    <p><strong>Bob:</strong> So real growth, plus a lot of hype. First building block: agents as actors. What's he pushing against?</p>
+    <p><strong>Alice:</strong> He says most scalable agent workloads today run on some form of Temporal. Tom Wheeler's guide on Temporal's blog, "The definitive guide to Durable Execution", calls that crash-proof execution. If a process crashes, the work resumes in a new process with its state recreated.</p>
+    <p><strong>Bob:</strong> Sounds great. So why move away from it?</p>
+    <p><strong>Alice:</strong> He thinks agents will shift toward actors, where each agent harness gets a fully independent runtime. The reason is self-improvement: an agent that writes its own extensions or hooks on the fly needs that isolation.</p>
+    <p><strong>Bob:</strong> Actors. Give me the novice version.</p>
+    <p><strong>Alice:</strong> Imagine separate apartments in one building: same address, same plumbing, but each tenant can knock down their own walls without touching the neighbours. Map that back: actors let different versions of the agent loop run safely on the same platform backend, even within a single tenant.</p>
+    <p><strong>Bob:</strong> So an agent can redecorate itself without flooding the floor below.</p>
+    <p><strong>Alice:</strong> Exactly. Anthropic's guide describes agents as typically just LLMs using tools based on environmental feedback in a loop. Suh wants that loop's definition kept apart from its instances and sessions, because some users want one mega-agent and others prefer bespoke agent definitions.</p>
+    <p><strong>Bob:</strong> And where does Fermat's Last Theorem come in? Strange place for an agent story.</p>
+    <p><strong>Alice:</strong> It's his example. He writes that Anthropic argues for one mega-agent, but that in its work formalizing Fermat's Last Theorem, each agent had access to only a shell and a file editor. He reads that as a revealed preference for focused, code-defined agents.</p>
+    <p><strong>Bob:</strong> Just a shell and an editor. Very minimalist.</p>
+    <p><strong>Alice:</strong> And it fits Anthropic's own advice in "Building effective AI agents": find the simplest solution possible, and only add complexity when it's needed.</p>
+    <p><strong>Bob:</strong> Next, computers and files. Where do these agents actually work?</p>
+    <p><strong>Alice:</strong> On two kinds of computers: clones of checkpointed sandboxes across many providers, and people's own local machines. N agents should work with M computers, from one agent spinning up five sandboxes to 1,000 agents using 100 VMs in parallel. Anthropic's guide, too, recommends extensive testing in sandboxed environments.</p>
+    <p><strong>Bob:</strong> That's a busy office.</p>
+    <p><strong>Alice:</strong> And they all share files: a shared POSIX filesystem in the cloud, with access controls attached to the filesystem separately from the computer. He calls it part GitHub, for agent code and definitions, and part Google Drive, for files and apps.</p>
+    <p><strong>Bob:</strong> POSIX, RBAC. Translate, please.</p>
+    <p><strong>Alice:</strong> Think of it as a shared office drive where every folder needs a keycard. It doesn't matter which desk you sit at: your badge decides what opens. The drive is the filesystem, the badge rules are role-based access control, and the desks are the computers, kept separate from the access rules.</p>
+    <p><strong>Bob:</strong> And whose badge does an agent carry?</p>
+    <p><strong>Alice:</strong> He expects organizations to want different setups: agents treated like humans, permission based on who started that particular turn, or a mix of both. And since it's one remote shared filesystem, each directory could even use git for version control.</p>
+    <p><strong>Bob:</strong> This next one sounds like a UX fight. Conversation versus session?</p>
+    <p><strong>Alice:</strong> It is. Most coding agent apps show users the raw agent session, intermediate tool calls included, and he thinks that's wrong. What the user sees should be a conversation, at the level of a Slack channel, an iMessage chat or an email thread.</p>
+    <p><strong>Bob:</strong> Why hide it? I kind of like watching the agent work.</p>
+    <p><strong>Alice:</strong> Picture a restaurant: you sit in the dining room and get your plate, while the kitchen, with all its noise, stays behind the door. The conversation is the dining room and the session is the kitchen. The agent carries content out to you through a tool call, like a waiter bringing the dish.</p>
+    <p><strong>Bob:</strong> But the health inspector still gets into the kitchen.</p>
+    <p><strong>Alice:</strong> Right, and that's his point too: direct access to agent sessions should be like reading the codebase, a way to inspect and debug, not the main interface. He also suspects most apps that wrap coding agent sessions won't survive this shift, because of the innovator's dilemma.</p>
+    <p><strong>Bob:</strong> Then the inbox. Another inbox? I already have three.</p>
+    <p><strong>Alice:</strong> This one replaces reading through conversations: he expects users to increasingly work from a focused inbox of approvals and questions. Imagine an assistant's in-tray on your desk. You don't sit in on every call, you just sign what's waiting and answer the notes.</p>
+    <p><strong>Bob:</strong> And for business-specific work?</p>
+    <p><strong>Alice:</strong> The inbox should also support tenant-specific apps for reviewing work that needs a human's action. It's where the pauses land that Anthropic's guide describes, when agents stop for human feedback at checkpoints or when encountering blockers.</p>
+    <p><strong>Bob:</strong> Listeners and monitors. What are they listening to?</p>
+    <p><strong>Alice:</strong> Streams of events from the outside world, defined per tenant, such as Kafka streams. Agents translate those events, deterministically or agentically, into signals they can act on, and he wants these listeners buildable on the fly.</p>
+    <p><strong>Bob:</strong> Example?</p>
+    <p><strong>Alice:</strong> Email: run an agent on every incoming email, then on batches across all accounts, then only on mail from one company's senders for the next week. Think of a smoke detector wired to the alarm company: it watches all day and calls for help only when it matters. The detector is the listener, the alarm company is the agent.</p>
+    <p><strong>Bob:</strong> And what do platforms offer today?</p>
+    <p><strong>Alice:</strong> He says the industry mostly supports hourly cron jobs that trigger an agent, or bespoke webhook plugins. Listeners and monitors, in his view, are a strict superset of that.</p>
+    <p><strong>Bob:</strong> Sam, an agent reading every incoming email. Does that make you nervous?</p>
+    <p><strong>Sam:</strong> It does. Simon Willison, on his weblog, reviews a paper called "Design Patterns for Securing LLM Agents against Prompt Injections". Its guiding principle: "once an LLM agent has ingested untrusted input, it must be constrained so that it is impossible for that input to trigger any consequential actions".</p>
+    <p><strong>Bob:</strong> And an email from a stranger is exactly that kind of input.</p>
+    <p><strong>Sam:</strong> Right. Willison's own take: an attacker who can sneak in their tokens "should be considered to have complete control over what happens next". The paper's answer is patterns that impose intentional constraints on agents, limiting their ability to perform arbitrary tasks.</p>
+    <p><strong>Bob:</strong> Workflows next. Don't we already have tools for that?</p>
+    <p><strong>Alice:</strong> Drag-and-drop tools, yes, like n8n or the original Zapier. He calls that paradigm inferior to writing custom code, and wants durable, code-defined workflows per tenant, mixing agentic and deterministic steps over long horizons.</p>
+    <p><strong>Bob:</strong> But why code? Boxes and arrows are friendlier.</p>
+    <p><strong>Alice:</strong> Picture a recipe versus a flowchart poster on the kitchen wall: the poster is easy to read, but the recipe can say "if the dough is sticky, add flour". A workflow written in code is that recipe. Tom Wheeler's guide shows the payoff: with durable execution, a months-long customer onboarding needs nothing more than a for-loop and a sleep statement.</p>
+    <p><strong>Bob:</strong> And what does durable mean here?</p>
+    <p><strong>Alice:</strong> Back to Tom Wheeler's guide: durable execution isn't limited by time. A payment may finish in a fraction of a second, while one that manages a loan may need to run for several years.</p>
+    <p><strong>Bob:</strong> So where do workflows end and agents begin?</p>
+    <p><strong>Alice:</strong> Anthropic's guide draws that line: workflows orchestrate LLMs and tools through predefined code paths, while agents dynamically direct their own processes and tool use. Suh's platform wants both, side by side.</p>
+    <p><strong>Bob:</strong> Last block, the biggest one: apps. What does he mean?</p>
+    <p><strong>Alice:</strong> He treats Replit, Claude Artifacts, ChatGPT Apps and embedded widgets as one idea: an app. All interfaces should be apps in your filesystem that users can customize, even the whole conversations page, with each user getting a clone of the code to extend.</p>
+    <p><strong>Bob:</strong> Give me the picture.</p>
+    <p><strong>Alice:</strong> Think of your phone's home screen: it comes with default apps, but you move them, delete them and add your own. Now imagine asking an assistant to rebuild any of them for you. That's his app layer: instead of a vendor's implementation team, users ask their agents to modify the applications directly.</p>
+    <p><strong>Bob:</strong> Where do those apps live on screen?</p>
+    <p><strong>Alice:</strong> In containers that can be apps themselves: tmux-like interfaces, apps inside messages, app-first screens with chat in a sidebar, plus infinite canvases, layered windows and resizable panels.</p>
+    <p><strong>Bob:</strong> And why does any of this threaten vertical software?</p>
+    <p><strong>Alice:</strong> His example: ten different accounting companies review tax forms. They share the same noun, review, but each one's process is bespoke, so ideally each could fork Excel and build its own interface.</p>
+    <p><strong>Bob:</strong> Ten firms, ten Excels.</p>
+    <p><strong>Alice:</strong> He thinks vertical SaaS is broken as a venture thesis, at least in its original form. The best products, he says, turn into configurable platforms with consultants and deployment teams, so why not a general platform the agent can fully operate on?</p>
+    <p><strong>Bob:</strong> Theo, you follow the market. Is vertical software really done?</p>
+    <p><strong>Theo:</strong> Not so fast. Seema Amble, writing for a16z in "Is Software Losing Its Head?", argues: "Agents may kill muscle memory as a moat, but they do not kill operational logic and context as a moat." Agents need explicit rules, permissions and process definitions to act safely.</p>
+    <p><strong>Bob:</strong> So the rules are the moat, not the screens.</p>
+    <p><strong>Theo:</strong> Right. She writes that AI lowers the cost of recreating the first 80 percent of a system of record. But the remaining 20 percent, the exceptions, approvals, compliance requirements and edge cases, separates a useful wedge from a true replacement.</p>
+    <p><strong>Bob:</strong> Counterpoints. Theo, what's the strongest objection to one platform owning it all?</p>
+    <p><strong>Theo:</strong> Trust. Amble writes that a system of record that becomes the identity and permissioning layer for agent-to-agent interactions has a structural role that's "genuinely hard to displace". So the incumbents holding that trust may not simply become databases.</p>
+    <p><strong>Bob:</strong> Maya, does Gartner see a catch too?</p>
+    <p><strong>Maya:</strong> Its analyst Anushree Verma says many use cases positioned as agentic today "don't require agentic implementations". And Gartner recommends pursuing agentic AI only where it delivers clear value or ROI.</p>
+    <p><strong>Bob:</strong> Sam, last word on risk?</p>
+    <p><strong>Sam:</strong> Willison calls prompt injection "the biggest challenge to responsibly deploying the kind of agentic systems everyone is so excited to build". And the paper's authors doubt that general-purpose agents on today's language models can provide meaningful and reliable safety guarantees.</p>
+    <p><strong>Bob:</strong> And there's a tension in your own sources, Alice, isn't there?</p>
+    <p><strong>Alice:</strong> There is. Anthropic's guide says to prioritize transparency by explicitly showing the agent's planning steps, while Suh wants the raw session out of the main view. My take: you can do both, with a clear conversation up front and the session one click away for debugging.</p>
+    <p><strong>Bob:</strong> And it's one person's forecast, with confident words like "inevitable".</p>
+    <p><strong>Alice:</strong> Right. In my view it's a design map, built from reasoning and examples rather than data, so treat it as a map, not a forecast you can bank on.</p>
+    <p><strong>Bob:</strong> Builder's Corner. One thing listeners can try this week?</p>
+    <p><strong>Alice:</strong> Separate what users see from the raw agent session. Give your agent a tool for posting to the user, and show only those posts in the conversation view, the way Suh describes.</p>
+    <p><strong>Bob:</strong> And the raw session goes where?</p>
+    <p><strong>Alice:</strong> Behind a debug view, like reading the codebase. Then check one thing: can a user follow the work without ever opening the kitchen door?</p>
+    <p><strong>Bob:</strong> Takeaways. Mine: his platform is a garden bed, with agents as actors, shared files behind keycards, and a conversation kept apart from the session.</p>
+    <p><strong>Alice:</strong> Mine: the human side shrinks to an inbox of approvals and questions, while listeners and code-defined workflows do the watching. And every app becomes something your agent can reshape.</p>
+    <p><strong>Bob:</strong> And the caveat: Gartner says pursue agents only where the value is clear.</p>
+    <p><strong>Alice:</strong> Still open: who owns this layer. He bets on an independent company rather than the makers of ChatGPT and Claude, but he doesn't say which one.</p>
+    <p><strong>Bob:</strong> And can agents that write their own hooks stay safe?</p>
+    <p><strong>Alice:</strong> My guess: that's the real test of his blueprint, and none of our sources settles it yet.</p>
+    <p><strong>Bob:</strong> Thanks to John Suh for his X post and its four images, and to Tom Wheeler's guide to durable execution on Temporal's blog.</p>
+    <p><strong>Alice:</strong> And to Anthropic's "Building effective AI agents", Gartner's press release on agentic AI projects, Seema Amble at a16z, and Simon Willison. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-22_agent-platform-2027/", "title": "Agent Platform 2027: The Agentic OS Blueprint (John Suh)", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-22_agent-platform-2027", "episode_title": "Agent Platform 2027: The Agentic OS Blueprint (John Suh)", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-22_agent-platform-2027", "title": "Agent Platform 2027: The Agentic OS Blueprint (John Suh)", "summary": ["John Suh's \"Agent platform 2027\" sketches one agentic operating system that every company's agents run on.", "Alice and Bob unpack his building blocks: actors, shared files, conversations, inboxes, listeners, workflows and apps.", "Guests weigh in with Gartner's agent forecast, Simon Willison on prompt injection and Seema Amble on systems of record."], "description": "John Suh's \"Agent platform 2027\" is a blueprint for one agentic operating system that every company's AI agents run on. Bob and Alice unpack it, then test it against Gartner's forecast, prompt injection risks and the case for vertical software.\n\nIn this episode:\n- Agents as actors, shared files and code-defined workflows\n- Why the user's conversation should stay apart from the agent session\n- Counterpoints on hype, security and systems of record\n\nSources: John Suh; Tom Wheeler; Anthropic; Gartner; Simon Willison; Seema Amble\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "Agent platform 2027", "author": "John Suh", "url": "https://x.com/john_ssuh/status/2124336124172935336", "kind": "text"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>
