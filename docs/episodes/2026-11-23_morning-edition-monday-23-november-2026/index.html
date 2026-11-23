@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAI Proposes AI Speed Limits, Sarvam&#x27;s Cheap 105B | AI Daily 23 Nov | Build Wiz AI Show</title>
+<meta name="description" content="OpenAI chief scientist Jakub Pachocki proposes perplexity as a shared yardstick for limits on AI development, and India&#x27;s Sarvam releases Sarvam-105B-1711, an open-weight model it says matches Gemini 3.5 Flash-Lite for less. Bob and Alice cover the AI news of the last day.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-23_morning-edition-monday-23-november-2026/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-23_morning-edition-monday-23-november-2026/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="OpenAI Proposes AI Speed Limits, Sarvam&#x27;s Cheap 105B | AI Daily 23 Nov">
+<meta property="og:description" content="OpenAI chief scientist Jakub Pachocki proposes perplexity as a shared yardstick for limits on AI development, and India&#x27;s Sarvam releases Sarvam-105B-1711, an open-weight model it says matches Gemini 3.5 Flash-Lite for less. Bob and Alice cover the AI news of the last day.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-23_morning-edition-monday-23-november-2026/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-23_morning-edition-monday-23-november-2026.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenAI Proposes AI Speed Limits, Sarvam&#x27;s Cheap 105B | AI Daily 23 Nov">
+<meta name="twitter:description" content="OpenAI chief scientist Jakub Pachocki proposes perplexity as a shared yardstick for limits on AI development, and India&#x27;s Sarvam releases Sarvam-105B-1711, an open-weight model it says matches Gemini 3.5 Flash-Lite for less. Bob and Alice cover the AI news of the last day.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "OpenAI Proposes AI Speed Limits, Sarvam's Cheap 105B | AI Daily 23 Nov",
+ "description": "OpenAI chief scientist Jakub Pachocki proposes perplexity as a shared yardstick for limits on AI development, and India's Sarvam releases Sarvam-105B-1711, an open-weight model it says matches Gemini 3.5 Flash-Lite for less. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- OpenRouter drops three providers and 125 zero-retention endpoints\n- Microsoft's Brad Smith warns of months more outage risk\n- METR on faster AI research, and Anthropic's IPO bankers\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-23_morning-edition-monday-23-november-2026/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-23_morning-edition-monday-23-november-2026.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT7M53S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-23T08:10:03Z",
+ "timeRequired": "PT7M53S",
+ "isBasedOn": "https://luongnv.com/news/reports/2026-11-23-morning.html"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">OpenAI Proposes AI Speed Limits, Sarvam&#x27;s Cheap 105B | AI Daily 23 Nov</h1>
+  <p class="meta"><span class="dur">8 min</span> · <time datetime="2026-11-23T08:10:03Z">2026-11-23</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-23_morning-edition-monday-23-november-2026.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">OpenAI chief scientist Jakub Pachocki proposes perplexity as a shared yardstick for limits on AI development, and India&#x27;s Sarvam releases Sarvam-105B-1711, an open-weight model it says matches Gemini 3.5 Flash-Lite for less. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- OpenRouter drops three providers and 125 zero-retention endpoints
+- Microsoft&#x27;s Brad Smith warns of months more outage risk
+- METR on faster AI research, and Anthropic&#x27;s IPO bankers
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-23_morning-edition-monday-23-november-2026">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-23_morning-edition-monday-23-november-2026.mp3" download="Build Wiz AI Show - OpenAI Proposes AI Speed Limits, Sarvam&#x27;s Cheap 105B AI Daily 23 Nov (2026-11-23).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="OpenAI Proposes AI Speed Limits, Sarvam&#x27;s Cheap 105B | AI Daily 23 Nov" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="OpenAI chief scientist Jakub Pachocki proposes perplexity as a shared yardstick for limits on AI development, and India&#x27;s Sarvam releases Sarvam-105B-1711, an open-weight model it says matches Gemini 3.5 Flash-Lite for less. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- OpenRouter drops three providers and 125 zero-retention endpoints
+- Microsoft&#x27;s Brad Smith warns of months more outage risk
+- METR on faster AI research, and Anthropic&#x27;s IPO bankers
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://luongnv.com/news/reports/2026-11-23-morning.html" rel="noopener">The AI Gazette, morning edition, Monday 23 November 2026</a> by The AI Gazette</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> OpenAI wants a speed limit for AI. And a model that says it's as good as Gemini, for a fifth of the price.</p>
+    <p><strong>Bob:</strong> Plus OpenRouter cuts three providers. Busy Monday!</p>
+    <p><strong>Alice:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and this is our daily edition: the AI news of the last day, in about eight minutes.</p>
+    <p><strong>Bob:</strong> And I'm Bob. Everything today comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories. Let's go.</p>
+    <p><strong>Alice:</strong> Monday morning. Coffee first?</p>
+    <p><strong>Bob:</strong> Coffee during.</p>
+    <p><strong>Alice:</strong> Lead story. OpenAI's chief scientist wrote an essay. About what?</p>
+    <p><strong>Bob:</strong> Jakub Pachocki argues that every lab should use one shared measure of AI progress: perplexity, also called cross-entropy loss. Then labs would commit not to cross agreed limits until we can understand and monitor AI behaviour much better.</p>
+    <p><strong>Alice:</strong> Perplexity. Explain it like I'm on my first coffee.</p>
+    <p><strong>Bob:</strong> Think of it as a guessing game. The model reads text and guesses the next word. Lower perplexity means it's surprised less often. So it's a single number for how well the model predicts.</p>
+    <p><strong>Alice:</strong> And OpenAI shared its own numbers?</p>
+    <p><strong>Bob:</strong> Yes, measured on a private dataset from OpenAI's own codebase. GPT-3.5 sits at about 0.99, GPT-4 at about 0.91. Below 0.8, the essay says, came transformative capabilities in cybersecurity and mathematics.</p>
+    <p><strong>Alice:</strong> And the next jump?</p>
+    <p><strong>Bob:</strong> He expects more transformative capabilities in a 0.68 to 0.7 window, and says a new wave of pretraining advances could come as soon as 2027. TechCrunch reports Sam Altman called it the most important thing OpenAI has published in a while.</p>
+    <p><strong>Alice:</strong> Story two, for the builders. India's Sarvam has a new model?</p>
+    <p><strong>Bob:</strong> A new open-weight checkpoint, Sarvam-105B-1711. It's a mixture-of-experts model: 105 billion parameters, but only 10.3 billion active at a time. It's tuned for tool calling, agentic tasks and Indian languages, under the Apache 2.0 licence.</p>
+    <p><strong>Alice:</strong> Active parameters?</p>
+    <p><strong>Bob:</strong> Picture a hospital with a hundred specialists. For each patient, only a few are called in. Same here: the model only wakes the experts it needs, so it runs cheaper.</p>
+    <p><strong>Alice:</strong> How cheap?</p>
+    <p><strong>Bob:</strong> Sarvam says it averages 73.9 on eight agent benchmarks, against 74 for Gemini 3.5 Flash-Lite, at 0.15 dollars per million tokens, against 0.85 dollars. And a compressed build runs on a single GPU.</p>
+    <p><strong>Alice:</strong> Wait, a fifth of the price? Really?</p>
+    <p><strong>Bob:</strong> On Sarvam's own numbers, yes. No independent evaluation yet, and it's compared with small Flash-Lite models, not the frontier.</p>
+    <p><strong>Alice:</strong> Yesterday on AI Daily we covered Together AI's agent key leak: an outsider downloaded stored samples of customer prompts. There's a follow-up?</p>
+    <p><strong>Bob:</strong> A big one. OpenRouter, which routes your requests to many model hosts, says it off-boarded three providers after its own investigations. It also removed 125 endpoints from zero data retention, after the Dragos canary study.</p>
+    <p><strong>Alice:</strong> Canary study. Like the bird in the mine?</p>
+    <p><strong>Bob:</strong> Exactly that idea. It's like leaving a marked banknote in a drawer and checking whether it ever shows up in town. The researchers seeded about two million prompts and watched where they went.</p>
+    <p><strong>Alice:</strong> Which providers?</p>
+    <p><strong>Bob:</strong> OpenRouter doesn't name the three. It lists notices from Novita, Phala and Together. Novita says a routing error sent some MiniMax requests to MiniMax's own API, between May 28 and November 11, so a third party may have kept them.</p>
+    <p><strong>Alice:</strong> And OpenRouter itself?</p>
+    <p><strong>Bob:</strong> It says it found no breach of its own, and it'll keep running canary checks. Those are its own statements.</p>
+    <p><strong>Alice:</strong> Story four. Microsoft's president on the recent outages?</p>
+    <p><strong>Bob:</strong> Brad Smith told CBS's Face the Nation that the outages are, at least in substantial part, AI ripple effects. AI made flaws easier to find, and that set off a race to patch at a pace we have never seen before.</p>
+    <p><strong>Alice:</strong> Why would fixing things break things?</p>
+    <p><strong>Bob:</strong> Imagine a whole city repaving every road in one week. Less time to test each change, more crews on old roads, more chances something cracks. Smith says be prepared for the coming months.</p>
+    <p><strong>Alice:</strong> And Microsoft's own outage?</p>
+    <p><strong>Bob:</strong> He said it wasn't linked to AI and wasn't a cyberattack. Microsoft has taken nine corrective steps, with 13 more to come. And on data centres abroad, his line: you can't support Helsinki from New Jersey.</p>
+    <p><strong>Alice:</strong> Great line, honestly. Story five. METR, the evaluation group, has a warning?</p>
+    <p><strong>Bob:</strong> METR says current public evidence can't rule out drastic acceleration of AI research in the next couple of years. Meaning progress so fast that humans could no longer meaningfully assess and react to catastrophic risks.</p>
+    <p><strong>Alice:</strong> What did they measure?</p>
+    <p><strong>Bob:</strong> On coding and optimisation tasks, models usually match or beat skilled humans. But on choices without clear, fast feedback, agents seem to have worse judgment than experts. Think of a chess prodigy who still can't pick a good flat to rent.</p>
+    <p><strong>Alice:</strong> And the trend?</p>
+    <p><strong>Bob:</strong> Time horizons double roughly every 3.6 months. A naive extrapolation reaches its longest tasks, 200 hours, in July 2027. METR itself calls that projection naive, and stresses big uncertainty.</p>
+    <p><strong>Alice:</strong> Last one: money. Anthropic and its bankers?</p>
+    <p><strong>Bob:</strong> Reuters reports, citing people familiar with the matter, that Anthropic told some of its 22 IPO underwriters to cap deal teams at four senior bankers. One source said it was likely fear of leaks.</p>
+    <p><strong>Alice:</strong> Four bankers. That's a small dinner party.</p>
+    <p><strong>Bob:</strong> And there's more. It asked for six-month bars on core team members working with rivals like OpenAI, Cursor, DeepSeek and Hugging Face. It's like a chef signing a contract saying no cooking for the restaurant next door for half a year. Bankers told Reuters that's rare.</p>
+    <p><strong>Alice:</strong> And the shares?</p>
+    <p><strong>Bob:</strong> Down 8.5 percent on Friday, after a 17 percent first-day rise. Anthropic declined to comment.</p>
+    <p><strong>Alice:</strong> Reality check. How much is confirmed?</p>
+    <p><strong>Bob:</strong> Pachocki's plan is a proposal, not an agreement: no other lab has signed up, and there's no threshold. His numbers are on a private dataset, so nobody can check them. And Smith's AI link is his own assessment, not an investigation's finding.</p>
+    <p><strong>Alice:</strong> And the Anthropic story rests on unnamed people. Builder's Corner. One thing to do today?</p>
+    <p><strong>Bob:</strong> If you route prompts through OpenRouter with zero data retention, check whether your endpoints still qualify. OpenRouter removed 125 of them, and a removed one needs assurances and validation before it gets that status back.</p>
+    <p><strong>Alice:</strong> Today in three lines?</p>
+    <p><strong>Bob:</strong> One: labs are arguing over how to measure AI's speed before agreeing on any limit. Two: below the frontier, models compete on price and on running from one GPU. Three: where your prompts travel matters as much as the model.</p>
+    <p><strong>Alice:</strong> What I'll watch: will any rival lab publish its own perplexity curve?</p>
+    <p><strong>Bob:</strong> And which three providers OpenRouter dropped.</p>
+    <p><strong>Alice:</strong> Today's stories come from The AI Gazette, this morning's and yesterday afternoon's editions. Thanks to them for the reporting.</p>
+    <p><strong>Bob:</strong> See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-23_morning-edition-monday-23-november-2026/", "title": "OpenAI Proposes AI Speed Limits, Sarvam's Cheap 105B | AI Daily 23 Nov", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-23_morning-edition-monday-23-november-2026", "episode_title": "OpenAI Proposes AI Speed Limits, Sarvam's Cheap 105B | AI Daily 23 Nov", "show": "Build Wiz AI Show", "episode_language": "en", "category": "daily"}, "ep": {"id": "2026-11-23_morning-edition-monday-23-november-2026", "title": "OpenAI Proposes AI Speed Limits, Sarvam's Cheap 105B | AI Daily 23 Nov", "summary": ["The AI Gazette's Monday morning edition, with yesterday afternoon's: six AI stories of the last day.", "OpenAI's chief scientist proposes perplexity as a yardstick for AI limits; Sarvam ships a cheaper open-weight 105B model.", "For builders: OpenRouter dropped three providers and 125 zero-retention endpoints; Microsoft warns of more outages."], "description": "OpenAI chief scientist Jakub Pachocki proposes perplexity as a shared yardstick for limits on AI development, and India's Sarvam releases Sarvam-105B-1711, an open-weight model it says matches Gemini 3.5 Flash-Lite for less. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- OpenRouter drops three providers and 125 zero-retention endpoints\n- Microsoft's Brad Smith warns of months more outage risk\n- METR on faster AI research, and Anthropic's IPO bankers\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "daily", "source": {"title": "The AI Gazette, morning edition, Monday 23 November 2026", "author": "The AI Gazette", "url": "https://luongnv.com/news/reports/2026-11-23-morning.html", "kind": "article"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>

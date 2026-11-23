@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-23T07:45:20Z",
+  "updated": "2026-11-23T08:13:29Z",
   "episodes": [
+    {
+      "id": "2026-11-23_morning-edition-monday-23-november-2026",
+      "title": "OpenAI Proposes AI Speed Limits, Sarvam's Cheap 105B | AI Daily 23 Nov",
+      "summary": [
+        "The AI Gazette's Monday morning edition, with yesterday afternoon's: six AI stories of the last day.",
+        "OpenAI's chief scientist proposes perplexity as a yardstick for AI limits; Sarvam ships a cheaper open-weight 105B model.",
+        "For builders: OpenRouter dropped three providers and 125 zero-retention endpoints; Microsoft warns of more outages."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-23T08:10:03Z",
+      "duration_s": 473.359,
+      "size_bytes": 7574875,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-23_morning-edition-monday-23-november-2026.mp3",
+      "audio_sha256": "eac482082f404aa5380cf1c2f474f56bc69dd9a249f0c591b3926902eaa6d0d6",
+      "transcript": "episodes/2026-11-23_morning-edition-monday-23-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Monday 23 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-23-morning.html",
+        "published": "2026-11-22",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Monday 23 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-23-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Sunday 22 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-22-afternoon.html"
+        }
+      ],
+      "description": "OpenAI chief scientist Jakub Pachocki proposes perplexity as a shared yardstick for limits on AI development, and India's Sarvam releases Sarvam-105B-1711, an open-weight model it says matches Gemini 3.5 Flash-Lite for less. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- OpenRouter drops three providers and 125 zero-retention endpoints\n- Microsoft's Brad Smith warns of months more outage risk\n- METR on faster AI research, and Anthropic's IPO bankers\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - OpenAI Proposes AI Speed Limits, Sarvam's Cheap 105B AI Daily 23 Nov (2026-11-23).mp3"
+    },
     {
       "id": "2026-11-23_superintelligence-is-arriving",
       "title": "Superintelligence: Why the Riemann Proof Matters (Alexandr Wang)",
