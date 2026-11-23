@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sun, 22 Nov 2026 22:09:10 +0000</lastBuildDate>
+  <lastBuildDate>Mon, 23 Nov 2026 07:45:21 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,33 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-23_superintelligence-is-arriving</guid>
+    <title>Superintelligence: Why the Riemann Proof Matters (Alexandr Wang)</title>
+    <link>https://luongnv.com/podcast/#2026-11-23_superintelligence-is-arriving</link>
+    <description>Alexandr Wang reads the Riemann Hypothesis proof, found by Levent Alpöge with Claude, as a sign superintelligence is arriving.
+
+Bob explains the proof's Lean verification, Wang's 'intelligence is not the bottleneck' case and his warning on control.
+
+Guests bring Science on a proof no one can read yet, Gary Marcus on transfer, and AI as Normal Technology.
+
+Sources:
+- Superintelligence is Arriving, Alexandr Wang (@alexandr_wang) (https://x.com/alexandr_wang/status/2124636606959345776)
+- What the Riemann hypothesis proof really means about AI and the future, Lee Billings (https://www.scientificamerican.com/article/what-the-riemann-hypothesis-proof-really-means-about-ai-and-the-future/)
+- The AI Riemann hypothesis proof is true, independent mathematicians confirm, Clara Moskowitz (https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/)
+- AI may have solved math’s greatest mystery. Can humans understand the answer?, Zack Savitsky (https://www.science.org/content/article/ai-may-have-solved-math-s-greatest-mystery-can-humans-understand-answer)
+- Levent Alpöge has solved the Riemann Hypothesis with the help of Claude! What does it mean?, Gary Marcus (https://garymarcus.substack.com/p/levent-alpoge-has-solved-the-riemann)
+- AI as Normal Technology, Arvind Narayanan (https://www.aisnakeoil.com/p/ai-as-normal-technology)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Alexandr Wang reads the Riemann Hypothesis proof, found by Levent Alpöge with Claude, as a sign superintelligence is arriving.</p><p>Bob explains the proof's Lean verification, Wang's 'intelligence is not the bottleneck' case and his warning on control.</p><p>Guests bring Science on a proof no one can read yet, Gary Marcus on transfer, and AI as Normal Technology.</p><p>Sources:</p><ul><li>Superintelligence is Arriving, Alexandr Wang (@alexandr_wang): <a href="https://x.com/alexandr_wang/status/2124636606959345776">https://x.com/alexandr_wang/status/2124636606959345776</a></li><li>What the Riemann hypothesis proof really means about AI and the future, Lee Billings: <a href="https://www.scientificamerican.com/article/what-the-riemann-hypothesis-proof-really-means-about-ai-and-the-future/">https://www.scientificamerican.com/article/what-the-riemann-hypothesis-proof-really-means-about-ai-and-the-future/</a></li><li>The AI Riemann hypothesis proof is true, independent mathematicians confirm, Clara Moskowitz: <a href="https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/">https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/</a></li><li>AI may have solved math’s greatest mystery. Can humans understand the answer?, Zack Savitsky: <a href="https://www.science.org/content/article/ai-may-have-solved-math-s-greatest-mystery-can-humans-understand-answer">https://www.science.org/content/article/ai-may-have-solved-math-s-greatest-mystery-can-humans-understand-answer</a></li><li>Levent Alpöge has solved the Riemann Hypothesis with the help of Claude! What does it mean?, Gary Marcus: <a href="https://garymarcus.substack.com/p/levent-alpoge-has-solved-the-riemann">https://garymarcus.substack.com/p/levent-alpoge-has-solved-the-riemann</a></li><li>AI as Normal Technology, Arvind Narayanan: <a href="https://www.aisnakeoil.com/p/ai-as-normal-technology">https://www.aisnakeoil.com/p/ai-as-normal-technology</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Mon, 23 Nov 2026 07:41:43 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-23_superintelligence-is-arriving.mp3?v=9b810fb9" length="12380146" type="audio/mpeg"/>
+    <itunes:duration>774</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-23_superintelligence-is-arriving/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-22_agent-platform-2027</guid>
     <title>Agent Platform 2027: The Agentic OS Blueprint (John Suh)</title>

@@ -1,0 +1,337 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.082
+<v Bob>What happens when an AI helps crack what may be the hardest problem in mathematics?
+
+2
+00:00:05.382 --> 00:00:14.458
+<v Alice>Alexandr Wang says the proof of the Riemann Hypothesis marks the beginning of a significant change. His headline: superintelligence is arriving.
+
+3
+00:00:14.758 --> 00:00:18.060
+<v Bob>So is he right, and who stays in charge?
+
+4
+00:00:22.360 --> 00:00:33.398
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and I'm asking the questions today. Bob, what are we digging into?
+
+5
+00:00:33.698 --> 00:00:46.779
+<v Bob>Hi, I'm Bob. Today it's an X article by Alexandr Wang, "Superintelligence is Arriving". He opens with a warning: how humanity acts over the next year will have great consequence on what future world we live in.
+
+6
+00:00:47.079 --> 00:00:49.579
+<v Alice>Big claim. And a serious one.
+
+7
+00:00:49.879 --> 00:00:59.819
+<v Bob>It is. So here's our approach: his forecasts are his views, and we'll say so. The proof itself we checked against outside reporting, and three guests bring other views.
+
+8
+00:01:00.119 --> 00:01:03.192
+<v Alice>Let's start where he starts. What's the big event?
+
+9
+00:01:03.492 --> 00:01:14.612
+<v Bob>He writes as someone who has spent much of his life in math and science. To him, the proof of the Riemann Hypothesis is the absolute pinnacle of intellectual accomplishment, for most who have studied math.
+
+10
+00:01:14.912 --> 00:01:17.575
+<v Alice>Pinnacle. Higher than anything?
+
+11
+00:01:17.875 --> 00:01:27.253
+<v Bob>In his telling, yes. He grew up in Los Alamos, New Mexico, and says many physicists would agree the atomic bomb was a homework problem compared to it.
+
+12
+00:01:27.553 --> 00:01:31.393
+<v Alice>Okay, honest question. What IS the Riemann Hypothesis?
+
+13
+00:01:31.693 --> 00:01:47.891
+<v Bob>Lee Billings explains it in Scientific American. It was proposed some 167 years ago by Bernhard Riemann, and it concerns the distribution of prime numbers. It's one of seven Millennium Prize Problems from the Clay Mathematics Institute, so solving it even carries a cash prize.
+
+14
+00:01:48.191 --> 00:01:52.220
+<v Alice>Primes being the numbers you can only divide by one and themselves?
+
+15
+00:01:52.520 --> 00:02:08.335
+<v Bob>Exactly. Picture the primes as streetlights along an endless road, spaced in a way that looks random. Riemann's idea is like claiming a hidden wiring plan sets that spacing; mapped back, the hypothesis says a hidden pattern underlies how primes are distributed.
+
+16
+00:02:08.635 --> 00:02:10.734
+<v Alice>And who actually proved it?
+
+17
+00:02:11.034 --> 00:02:17.765
+<v Bob>Wang's post doesn't name anyone. He only says it was completed with the help of an alien mind that we don't understand.
+
+18
+00:02:18.065 --> 00:02:21.011
+<v Alice>That's vague. What does the reporting say?
+
+19
+00:02:21.311 --> 00:02:37.098
+<v Bob>Clara Moskowitz reports in Scientific American that Anthropic mathematician Levent Alpöge claimed he used the company's Claude model to solve it. He wrote the proof in Lean, where a proof that compiles error-free is usually taken as confirmation that each step is correct.
+
+20
+00:02:37.398 --> 00:02:40.825
+<v Alice>Claimed, though. Did anyone check it independently?
+
+21
+00:02:41.125 --> 00:02:55.013
+<v Bob>According to the same report, yes. Andrew Sutherland at MIT compiled it separately. And a joint statement by the Lean and Mathlib communities says: "We hereby certify that both the statement and the proof of the Riemann Hypothesis are correct."
+
+22
+00:02:55.313 --> 00:02:58.580
+<v Alice>Wow. So not just one person's word.
+
+23
+00:02:58.880 --> 00:03:13.209
+<v Bob>Right. Think of Lean as a referee that checks every single move of a game, not just the final score. Mapped back: software checks the proof line by line, and experts also checked that it proves the real statement, not a subtly different one.
+
+24
+00:03:13.509 --> 00:03:18.801
+<v Alice>Verified, then. But can anyone actually read it? Maya, you looked into that.
+
+25
+00:03:19.101 --> 00:03:36.994
+<v Maya>Zack Savitsky, writing in Science, reports that Alpöge provided 17 million lines of code that formally verify a broad version, the generalized Riemann hypothesis. The AI-generated explanation, which he says runs over 250,000 pages, hasn't been released.
+
+26
+00:03:37.294 --> 00:03:39.122
+<v Alice>That's not bedtime reading.
+
+27
+00:03:39.422 --> 00:03:51.993
+<v Maya>No. Mathematicians expect it could be years before the code is digestible by humans. Cognitive scientist Simon DeDeo told Science: "You get to study this elite creation of a nonhuman mind."
+
+28
+00:03:52.293 --> 00:04:00.057
+<v Alice>A nonhuman mind: that's Wang's alien mind again. So why does he think one proof changes everything else?
+
+29
+00:04:00.357 --> 00:04:11.430
+<v Bob>He draws a parallel. For people who did math competitions, he says there was a similar everything-is-about-to-change moment when the models began acing the AIME in December 2024 with o3.
+
+30
+00:04:11.730 --> 00:04:15.059
+<v Alice>And the AIME is what, exactly?
+
+31
+00:04:15.359 --> 00:04:26.525
+<v Bob>A math competition. In his words, AIME is an extracurricular activity for teenagers, while the Riemann Hypothesis may be the most intellectually demanding problem humanity has ever devised.
+
+32
+00:04:26.825 --> 00:04:30.281
+<v Alice>Teenagers versus the final boss. Got it.
+
+33
+00:04:30.581 --> 00:04:46.733
+<v Bob>Here's his key claim. The hardest AIME problems, he says, are far more difficult than most coding, cyber or business work. So lack of raw intelligence wasn't the bottleneck: the models were missing domain-specific knowledge, context and know-how.
+
+34
+00:04:47.033 --> 00:04:49.022
+<v Alice>Give me the everyday version.
+
+35
+00:04:49.322 --> 00:05:08.242
+<v Bob>Imagine a climber who just summited the hardest peak there is. Ask her to run a grocery chain's delivery trucks, and strength isn't the issue any more: it's routes, suppliers and paperwork. Mapped back, Wang says the remaining gaps are no longer intelligence, but domain-specific know-how, plumbing and experimentation.
+
+36
+00:05:08.542 --> 00:05:11.024
+<v Alice>And he says that's already happening?
+
+37
+00:05:11.324 --> 00:05:29.252
+<v Bob>He says yes. Over the past two years, in his account, coding became nearly solved, extremely powerful cyber capabilities emerged, and agents became general-purpose useful aides. So he concludes AI will likely become the greatest contributor of progress across nearly every field.
+
+38
+00:05:29.552 --> 00:05:34.413
+<v Alice>That's a big jump from one math proof. Sam, you're not convinced.
+
+39
+00:05:34.713 --> 00:05:53.852
+<v Sam>Not fully. Gary Marcus, on his Substack Marcus on AI, points out the proof leaned on Lean and on mathlib, a library of over two million lines of formalized mathematics. He says that library is presumably of relatively little value for open-ended problems in biology, business or robotics.
+
+40
+00:05:54.152 --> 00:05:56.761
+<v Alice>So the checker is part of the magic?
+
+41
+00:05:57.061 --> 00:06:09.760
+<v Sam>That's his point. Marcus says formal verifiability is straightforward in math but difficult to achieve elsewhere. It's like a spelling bee next to writing a novel: one comes with an answer key, the other doesn't.
+
+42
+00:06:10.060 --> 00:06:21.400
+<v Bob>To be fair to Wang, he names that gap himself. He grants the other fields have other challenges, such as experimentation, data and feedback loops; he just thinks they're the smaller problem.
+
+43
+00:06:21.700 --> 00:06:26.515
+<v Alice>Next step in his argument: AI research itself. Why that one?
+
+44
+00:06:26.815 --> 00:06:42.711
+<v Bob>He writes that most researchers would agree AI research is much less intellectually demanding than solving the Riemann Hypothesis. So, in his view, the models will be intelligent enough to automate all of AI research and be clearly superhuman at improving themselves.
+
+45
+00:06:43.011 --> 00:06:45.876
+<v Alice>That's recursive self-improvement, right?
+
+46
+00:06:46.176 --> 00:07:02.335
+<v Bob>Right. Picture a race car that, after every lap, opens its own hood, tunes its own engine and heads out faster, with no mechanic in the pit. Mapped back: a system improving the very thing that makes it improve, which Wang calls recursive self-improvement.
+
+47
+00:07:02.635 --> 00:07:09.586
+<v Alice>We met a much tamer version in our Self-Improvement Memory episode. There, it meant automating harness edits.
+
+48
+00:07:09.886 --> 00:07:21.818
+<v Bob>Good memory. That was a workshop upgrade, not a whole new mind. Wang means the big version, along with massively accelerating biological research, weapons research and economics research.
+
+49
+00:07:22.118 --> 00:07:25.958
+<v Alice>Weapons research. That's where it stops being abstract.
+
+50
+00:07:26.258 --> 00:07:37.122
+<v Bob>It does. He warns that, just as the math community hasn't fully digested the proof, nearly every field could be accelerated at a pace beyond what humans can understand or monitor.
+
+51
+00:07:37.422 --> 00:07:41.262
+<v Alice>Theo, your source sees the speed very differently.
+
+52
+00:07:41.562 --> 00:07:58.782
+<v Theo>It does. Arvind Narayanan and Sayash Kapoor, in their essay AI as Normal Technology, note that AI development already relies heavily on AI. They think a gradual increase in automation is more likely than a singular, discontinuous moment when recursive self-improvement is achieved.
+
+53
+00:07:59.082 --> 00:08:01.981
+<v Alice>A dial turning, not a switch flipping.
+
+54
+00:08:02.281 --> 00:08:15.235
+<v Theo>That's their read. Think of a city adopting electricity: the invention arrives fast, but rewiring every factory takes ages. They also argue benchmarks have arguably led to overoptimism about the speed of progress in methods.
+
+55
+00:08:15.535 --> 00:08:18.874
+<v Alice>Now the part he calls urgent. What worries him?
+
+56
+00:08:19.174 --> 00:08:34.676
+<v Bob>Control. He finds it hard to imagine humanity keeping control over fully unconstrained recursive self-improvement, or over a superintelligence 1000 times smarter and more capable than humans in every field. Those are his projections, not measurements.
+
+57
+00:08:34.976 --> 00:08:37.457
+<v Alice>And the lazy thinking he calls out?
+
+58
+00:08:37.757 --> 00:08:50.072
+<v Bob>He sees a form of lazy thinking in the AI industry: that ASI is inevitable and the only problem is doing it safely. He argues much more is at stake, and that we shouldn't be okay with a handover of society to AI.
+
+59
+00:08:50.372 --> 00:08:53.318
+<v Alice>Handover. Make that concrete for me.
+
+60
+00:08:53.618 --> 00:09:09.999
+<v Bob>Imagine giving a brilliant house-sitter your keys, your bank cards and the right to rewrite the house rules, then leaving for good. Even if they mean well, it's no longer your home. Mapped back, Wang wants a technology where all humans have greater agency and empowerment.
+
+61
+00:09:10.299 --> 00:09:12.562
+<v Alice>Does he say how to get there?
+
+62
+00:09:12.862 --> 00:09:25.978
+<v Bob>Not in detail. He strongly believes it's possible, but says it likely involves the whole industry taking meaningfully different actions from the default path. And he still calls safety, alignment and security extremely urgent.
+
+63
+00:09:26.278 --> 00:09:30.501
+<v Alice>Theo, do Narayanan and Kapoor at least agree on control?
+
+64
+00:09:30.801 --> 00:09:45.978
+<v Theo>On the goal, yes. They view AI as a tool that we can and should remain in control of, and argue this doesn't require drastic policy interventions or technical breakthroughs. Where they differ: they call superintelligence, as usually conceptualized, incoherent.
+
+65
+00:09:46.278 --> 00:09:50.164
+<v Alice>Let's push on all of this. Sam, the strongest objection?
+
+66
+00:09:50.464 --> 00:10:01.247
+<v Sam>Marcus stresses that the solution required extensive human guidance from Alpöge, who worked together with the AI over a period of months. In his view, current AI couldn't have done it on its own.
+
+67
+00:10:01.547 --> 00:10:04.586
+<v Alice>So less alien mind, more a duet.
+
+68
+00:10:04.886 --> 00:10:16.644
+<v Sam>That's his framing. He compares it to Deep Blue beating Garry Kasparov at chess in 1997: amazing brute force, used in a special-purpose way that didn't generalize to much else.
+
+69
+00:10:16.944 --> 00:10:20.784
+<v Alice>Maya, what worries the mathematicians in your reporting?
+
+70
+00:10:21.084 --> 00:10:39.787
+<v Maya>Concentration. Science reports researchers objecting that such results are available only to those with access to frontier tools at companies like Anthropic. NYU mathematician Nestor Guillen says: "No one person or company is sufficiently wise to control this one technology by themselves."
+
+71
+00:10:40.087 --> 00:10:51.427
+<v Bob>That fits Wang's call for more human agency, aimed at a different risk. And Billings adds a sober note: whether humans could even understand AI-generated advances remains an open question.
+
+72
+00:10:51.727 --> 00:10:53.727
+<v Alice>Theo, last word on timing?
+
+73
+00:10:54.027 --> 00:11:07.236
+<v Theo>Narayanan and Kapoor expect transformative economic and societal impacts to be slow, on the timescale of decades. In high-stakes areas, they point to safety speed limits such as the FDA's supervision of medical devices.
+
+74
+00:11:07.536 --> 00:11:12.653
+<v Alice>Time for Builder's Corner. Bob, one sober thing builders can do this week?
+
+75
+00:11:12.953 --> 00:11:28.001
+<v Bob>Borrow the mathematicians' habit. Kevin Buzzard's first question about the Lean proof was whether the statement in the code matches the actual theorem. My take: before you trust an AI agent's passing result, check that your tests state what you actually meant.
+
+76
+00:11:28.301 --> 00:11:31.039
+<v Alice>Check the checker, not just the green tick.
+
+77
+00:11:31.339 --> 00:11:37.698
+<v Bob>Exactly. Outside math, there's no Lean to lean on, so in your domain the checker is the part you build.
+
+78
+00:11:37.998 --> 00:11:39.807
+<v Alice>Takeaways. Bob?
+
+79
+00:11:40.107 --> 00:11:55.910
+<v Bob>One: according to Scientific American, independent mathematicians and the Lean community confirmed the proof Levent Alpöge found with Claude. Two: Wang reads it as a sign that raw intelligence is no longer the bottleneck, and that AI research is next.
+
+80
+00:11:56.210 --> 00:12:07.564
+<v Alice>Mine: our guests doubt it transfers so easily beyond math. And Wang's real ask is about agency: no handover of society to AI, whatever the timeline.
+
+81
+00:12:07.864 --> 00:12:17.880
+<v Bob>Still open: whether a proof checked by software, but not yet understood by people, changes how other fields work. Science reports the code could take years to digest.
+
+82
+00:12:18.180 --> 00:12:25.213
+<v Alice>And who decides what the non-default path looks like. He doesn't say, and I'd bet that's the real debate next year.
+
+83
+00:12:25.513 --> 00:12:35.274
+<v Bob>Thanks to Alexandr Wang for his X article "Superintelligence is Arriving", to Lee Billings and Clara Moskowitz at Scientific American, and to Zack Savitsky at Science.
+
+84
+00:12:35.574 --> 00:12:47.076
+<v Alice>And to Gary Marcus, and to Arvind Narayanan and Sayash Kapoor for AI as Normal Technology. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

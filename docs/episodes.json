@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-22T22:09:10Z",
+  "updated": "2026-11-23T07:45:20Z",
   "episodes": [
+    {
+      "id": "2026-11-23_superintelligence-is-arriving",
+      "title": "Superintelligence: Why the Riemann Proof Matters (Alexandr Wang)",
+      "summary": [
+        "Alexandr Wang reads the Riemann Hypothesis proof, found by Levent Alpöge with Claude, as a sign superintelligence is arriving.",
+        "Bob explains the proof's Lean verification, Wang's 'intelligence is not the bottleneck' case and his warning on control.",
+        "Guests bring Science on a proof no one can read yet, Gary Marcus on transfer, and AI as Normal Technology."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-23T07:41:43Z",
+      "duration_s": 773.676,
+      "size_bytes": 12380146,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-23_superintelligence-is-arriving.mp3",
+      "audio_sha256": "9b810fb973058470c5aeb4d7e23dcda357d75747b45a4fdbd98f87863f97608c",
+      "transcript": "episodes/2026-11-23_superintelligence-is-arriving/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Superintelligence is Arriving",
+        "author": "Alexandr Wang (@alexandr_wang)",
+        "url": "https://x.com/alexandr_wang/status/2124636606959345776",
+        "published": "2026-11-22T22:50:15Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "Superintelligence is Arriving",
+          "author": "Alexandr Wang (@alexandr_wang)",
+          "url": "https://x.com/alexandr_wang/status/2124636606959345776"
+        },
+        {
+          "title": "What the Riemann hypothesis proof really means about AI and the future",
+          "author": "Lee Billings",
+          "url": "https://www.scientificamerican.com/article/what-the-riemann-hypothesis-proof-really-means-about-ai-and-the-future/"
+        },
+        {
+          "title": "The AI Riemann hypothesis proof is true, independent mathematicians confirm",
+          "author": "Clara Moskowitz",
+          "url": "https://www.scientificamerican.com/article/the-ai-riemann-hypothesis-proof-is-almost-certainly-true-independent-mathematicians-attest/"
+        },
+        {
+          "title": "AI may have solved math’s greatest mystery. Can humans understand the answer?",
+          "author": "Zack Savitsky",
+          "url": "https://www.science.org/content/article/ai-may-have-solved-math-s-greatest-mystery-can-humans-understand-answer"
+        },
+        {
+          "title": "Levent Alpöge has solved the Riemann Hypothesis with the help of Claude! What does it mean?",
+          "author": "Gary Marcus",
+          "url": "https://garymarcus.substack.com/p/levent-alpoge-has-solved-the-riemann"
+        },
+        {
+          "title": "AI as Normal Technology",
+          "author": "Arvind Narayanan",
+          "url": "https://www.aisnakeoil.com/p/ai-as-normal-technology"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "AI may have solved math’s greatest mystery. Can humans understand the answer?"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Levent Alpöge has solved the Riemann Hypothesis with the help of Claude! What does it mean?"
+          ]
+        },
+        {
+          "name": "Theo",
+          "presents": [
+            "AI as Normal Technology"
+          ]
+        }
+      ],
+      "description": "Alexandr Wang argues the Riemann Hypothesis proof, which Scientific American reports Levent Alpöge found with Anthropic's Claude, means superintelligence is arriving. Bob and Alice test his case for human control.\n\nIn this episode:\n- The Riemann Hypothesis and how its proof was checked\n- His claim that intelligence isn't the bottleneck\n- Self-improving AI and his case against a handover\n- Skeptics on going beyond math\n\nSources: Alexandr Wang (@alexandr_wang); Lee Billings; Clara Moskowitz; Zack Savitsky; Gary Marcus; Arvind Narayanan\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Superintelligence Why the Riemann Proof Matters (Alexandr Wang) (2026-11-23).mp3"
+    },
     {
       "id": "2026-11-22_agent-platform-2027",
       "title": "Agent Platform 2027: The Agentic OS Blueprint (John Suh)",
