@@ -7,7 +7,7 @@
   <description>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</description>
   <itunes:summary>Những câu chuyện nhẹ nhàng trước giờ ngủ cho bé, được kể chậm rãi bằng một giọng kể ấm áp. Mỗi tập kể lại một truyện cổ kinh điển thuộc phạm vi công cộng (Cô bé Lọ Lem, Hansel và Gretel, Vua Midas và nhiều truyện khác) bằng lời lẽ đơn giản, có nhạc nhẹ giữa các cảnh và lời chúc ngủ ngon êm dịu ở cuối. Truyện được kể lại cho hợp với giờ đi ngủ, không có gì quá đáng sợ. Lời kể và giọng đọc được tạo bằng AI, và mỗi tập đều ghi rõ nguồn truyện và nhạc. Có cả bản tiếng Anh và tiếng Pháp.</itunes:summary>
   <language>vi</language>
-  <lastBuildDate>Fri, 20 Nov 2026 16:53:46 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 16:48:36 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-24_the-lion-the-mouse-vi</guid>
+    <title>Sư tử và chuột nhắt: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop)</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-24_the-lion-the-mouse-vi</link>
+    <description>Truyện Sư tử và chuột nhắt, ngụ ngôn của Aesop, kể lại nhẹ nhàng cho giờ đi ngủ, theo The Aesop for Children của Thư viện Quốc hội Mỹ.
+
+Chú sư tử tốt bụng thả cô chuột nhỏ, cô hứa sẽ giúp chú. Chú bật cười, cho tới ngày chú mắc vào lưới của người thợ săn.
+
+Cô chuột gặm đứt dây lưới, cứu chú ra: một việc tốt chẳng bao giờ uổng phí. Rồi chúc bé ngủ ngon.
+
+Nguồn: The Lion &amp; the Mouse, Aesop (https://read.gov/aesop/007.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Golly Gee", "Marty Gots a Plan", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Truyện Sư tử và chuột nhắt, ngụ ngôn của Aesop, kể lại nhẹ nhàng cho giờ đi ngủ, theo The Aesop for Children của Thư viện Quốc hội Mỹ.</p><p>Chú sư tử tốt bụng thả cô chuột nhỏ, cô hứa sẽ giúp chú. Chú bật cười, cho tới ngày chú mắc vào lưới của người thợ săn.</p><p>Cô chuột gặm đứt dây lưới, cứu chú ra: một việc tốt chẳng bao giờ uổng phí. Rồi chúc bé ngủ ngon.</p><p>Nguồn: The Lion &amp; the Mouse, Aesop: <a href="https://read.gov/aesop/007.html">https://read.gov/aesop/007.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Golly Gee", "Marty Gots a Plan", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Viết và đọc bằng AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 24 Nov 2026 16:43:39 +0000</pubDate>
+    <enclosure url="https://luongnv.com/once-upon-a-time-vi-media/2026-11-24_the-lion-the-mouse-vi.mp3?v=6478c08d" length="3504229" type="audio/mpeg"/>
+    <itunes:duration>219</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-24_the-lion-the-mouse/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-24_the-lion-the-mouse-vi/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-20_the-shepherd-boy-the-wolf-vi</guid>
     <title>Cậu bé chăn cừu: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop)</title>

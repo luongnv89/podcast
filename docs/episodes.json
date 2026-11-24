@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-24T16:47:36Z",
+  "updated": "2026-11-24T16:48:36Z",
   "episodes": [
+    {
+      "id": "2026-11-24_the-lion-the-mouse-vi",
+      "title": "Sư tử và chuột nhắt: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop)",
+      "summary": [
+        "Truyện Sư tử và chuột nhắt, ngụ ngôn của Aesop, kể lại nhẹ nhàng cho giờ đi ngủ, theo The Aesop for Children của Thư viện Quốc hội Mỹ.",
+        "Chú sư tử tốt bụng thả cô chuột nhỏ, cô hứa sẽ giúp chú. Chú bật cười, cho tới ngày chú mắc vào lưới của người thợ săn.",
+        "Cô chuột gặm đứt dây lưới, cứu chú ra: một việc tốt chẳng bao giờ uổng phí. Rồi chúc bé ngủ ngon."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "vi",
+      "format": "bedtime-story",
+      "published": "2026-11-24T16:43:39Z",
+      "duration_s": 218.9,
+      "size_bytes": 3504229,
+      "audio": "https://luongnv.com/once-upon-a-time-vi-media/2026-11-24_the-lion-the-mouse-vi.mp3",
+      "audio_sha256": "6478c08dd727383d36d18b86e1342012b383e8b14797acde88d2130824a38327",
+      "transcript": "episodes/2026-11-24_the-lion-the-mouse-vi/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The Lion & the Mouse",
+        "author": "Aesop",
+        "url": "https://read.gov/aesop/007.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Golly Gee\", \"Marty Gots a Plan\", \"Carefree\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-24_the-lion-the-mouse",
+      "image": {
+        "square": "art/2026-11-24_the-lion-the-mouse/square.jpg",
+        "wide": "art/2026-11-24_the-lion-the-mouse/wide.jpg",
+        "thumb": "art/2026-11-24_the-lion-the-mouse/thumb.jpg",
+        "alt": "Pencil drawing of a smiling lion resting in a sunny meadow, a little grey mouse sitting on his front paw, with bits of nibbled rope in the grass."
+      },
+      "description": "Sư tử và chuột nhắt, truyện ngụ ngôn của Aesop, kể lại bằng lời của chúng tôi cho giờ đi ngủ, theo The Aesop for Children của Thư viện Quốc hội Mỹ. Chú sư tử thả cô chuột nhỏ, và một ngày cô gặm lưới cứu chú.\n\nTrong tập này:\n- Chú sư tử ngủ say và một lời hứa nhỏ\n- Mắc lưới, và một tiếng gầm\n- Gặm, gặm: việc tốt chẳng bao giờ uổng phí\n\nNguồn: The Lion & the Mouse, Aesop, The Aesop for Children\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Sư tử và chuột nhắt truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop) (2026-11-24).mp3"
+    },
     {
       "id": "2026-11-24_the-lion-the-mouse",
       "title": "The Lion and the Mouse: Bedtime Story for Kids, Our Retelling (after Aesop)",
