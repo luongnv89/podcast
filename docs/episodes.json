@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-24T07:45:28Z",
+  "updated": "2026-11-24T16:47:36Z",
   "episodes": [
+    {
+      "id": "2026-11-24_the-lion-the-mouse",
+      "title": "The Lion and the Mouse: Bedtime Story for Kids, Our Retelling (after Aesop)",
+      "summary": [
+        "A gentle bedtime retelling of The Lion and the Mouse, Aesop's fable, from The Aesop for Children at the Library of Congress.",
+        "A kind lion lets a tiny mouse go, and she promises to help him one day. He laughs, until he is caught in a hunter's net.",
+        "The mouse nibbles the ropes and sets him free: a kindness is never wasted. It ends with a soft goodnight."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "en",
+      "format": "bedtime-story",
+      "published": "2026-11-24T16:38:24Z",
+      "duration_s": 218.034,
+      "size_bytes": 3490410,
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-24_the-lion-the-mouse.mp3",
+      "audio_sha256": "e1c4edb61f24dd1316ddf85ca009b2902fc46e6cb37faa20d024cbfeba80ab31",
+      "transcript": "episodes/2026-11-24_the-lion-the-mouse/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The Lion & the Mouse",
+        "author": "Aesop",
+        "url": "https://read.gov/aesop/007.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Golly Gee\", \"Marty Gots a Plan\", \"Carefree\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-24_the-lion-the-mouse",
+      "image": {
+        "square": "art/2026-11-24_the-lion-the-mouse/square.jpg",
+        "wide": "art/2026-11-24_the-lion-the-mouse/wide.jpg",
+        "thumb": "art/2026-11-24_the-lion-the-mouse/thumb.jpg",
+        "alt": "Pencil drawing of a smiling lion resting in a sunny meadow, a little grey mouse sitting on his front paw, with bits of nibbled rope in the grass."
+      },
+      "description": "The Lion and the Mouse, Aesop's fable, retold in our own words as a gentle bedtime story, from The Aesop for Children. A kind lion lets a tiny mouse go, and one day she nibbles him free from a hunter's net.\n\nIn this episode:\n- A sleeping lion and a tiny promise\n- Caught in a net, and a roar\n- Nibble, nibble: a kindness is never wasted\n\nSources: The Lion & the Mouse, Aesop, The Aesop for Children (Library of Congress)\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - The Lion and the Mouse Bedtime Story for Kids, Our Retelling (after Aesop) (2026-11-24).mp3"
+    },
     {
       "id": "2026-11-24_morning-edition-tuesday-24-november-2026",
       "title": "Anthropic's Claude Ship, Nvidia Reinstates Huang | AI Daily 24 Nov",
