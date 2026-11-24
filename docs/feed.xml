@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Tue, 24 Nov 2026 07:45:28 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 16:58:28 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,33 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-24_12-rules-for-a-software-factory-that-doesn-t</guid>
+    <title>Software Factories Without Slop: 12 Rules (Dex Horthy)</title>
+    <link>https://luongnv.com/podcast/#2026-11-24_12-rules-for-a-software-factory-that-doesn-t</link>
+    <description>Dex Horthy's AI Engineer talk argues software factories are just good engineering with agents doing the building, and lays out 12 practices against slop.
+
+Bob explains forward and back pressure, Slop Code Bench, planning by expected pain, lint rules, feature flags, a unified forge and the Anti-Slop Manifesto.
+
+Guests weigh the SlopCodeBench paper, Semgrep's case against reviewing every change, and Octopus Deploy's view that batches, not review, are the bottleneck.
+
+Sources:
+- 12 Rules for a Software Factory That Doesn't Ship Slop, Dex Horthy (https://www.youtube.com/watch?v=-NFMsM2y0Vk)
+- The Twelve-Factor App, Adam Wiggins (https://12factor.net/)
+- Feature Toggles (aka Feature Flags), Pete Hodgson (https://martinfowler.com/articles/feature-toggles.html)
+- SlopCodeBench: Benchmarking How Coding Agents Degrade Over Long-Horizon Iterative Tasks, Gabriel Orlanski et al. (https://arxiv.org/abs/2603.24755)
+- AI Code Review and the End of Reviewing Every Change, Daghan Altas (https://semgrep.dev/blog/2026/end-is-nigh-for-code-review)
+- Code review isn't your bottleneck, even with AI, Steve Fenton (https://octopus.com/blog/code-review-not-bottleneck-even-with-ai)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Dex Horthy's AI Engineer talk argues software factories are just good engineering with agents doing the building, and lays out 12 practices against slop.</p><p>Bob explains forward and back pressure, Slop Code Bench, planning by expected pain, lint rules, feature flags, a unified forge and the Anti-Slop Manifesto.</p><p>Guests weigh the SlopCodeBench paper, Semgrep's case against reviewing every change, and Octopus Deploy's view that batches, not review, are the bottleneck.</p><p>Sources:</p><ul><li>12 Rules for a Software Factory That Doesn't Ship Slop, Dex Horthy: <a href="https://www.youtube.com/watch?v=-NFMsM2y0Vk">https://www.youtube.com/watch?v=-NFMsM2y0Vk</a></li><li>The Twelve-Factor App, Adam Wiggins: <a href="https://12factor.net/">https://12factor.net/</a></li><li>Feature Toggles (aka Feature Flags), Pete Hodgson: <a href="https://martinfowler.com/articles/feature-toggles.html">https://martinfowler.com/articles/feature-toggles.html</a></li><li>SlopCodeBench: Benchmarking How Coding Agents Degrade Over Long-Horizon Iterative Tasks, Gabriel Orlanski et al.: <a href="https://arxiv.org/abs/2603.24755">https://arxiv.org/abs/2603.24755</a></li><li>AI Code Review and the End of Reviewing Every Change, Daghan Altas: <a href="https://semgrep.dev/blog/2026/end-is-nigh-for-code-review">https://semgrep.dev/blog/2026/end-is-nigh-for-code-review</a></li><li>Code review isn't your bottleneck, even with AI, Steve Fenton: <a href="https://octopus.com/blog/code-review-not-bottleneck-even-with-ai">https://octopus.com/blog/code-review-not-bottleneck-even-with-ai</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 24 Nov 2026 16:55:16 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-24_12-rules-for-a-software-factory-that-doesn-t.mp3?v=219c3945" length="13533703" type="audio/mpeg"/>
+    <itunes:duration>846</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-24_12-rules-for-a-software-factory-that-doesn-t/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-24_morning-edition-tuesday-24-november-2026</guid>
     <title>Anthropic's Claude Ship, Nvidia Reinstates Huang | AI Daily 24 Nov</title>

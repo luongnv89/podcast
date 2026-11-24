@@ -1,0 +1,441 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.313
+<v Bob>On a new benchmark for how agents evolve a codebase over time, the best model scores about 16 percent.
+
+2
+00:00:06.613 --> 00:00:09.652
+<v Alice>So should we all stop building software factories?
+
+3
+00:00:09.952 --> 00:00:14.221
+<v Bob>Dex Horthy says the opposite. He actually loves software factories.
+
+4
+00:00:18.521 --> 00:00:28.874
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and I'm asking the questions today. Bob, what are we unpacking?
+
+5
+00:00:29.174 --> 00:00:44.003
+<v Bob>Hi, I'm Bob. Today it's a talk on the AI Engineer channel by Dex Horthy, "12 Rules for a Software Factory That Doesn't Ship Slop". Until about a week before it, he was CEO and co-founder of Human Layer, which is now part of Factory.
+
+6
+00:00:44.303 --> 00:00:48.363
+<v Alice>Twelve rules, and a war on slop. Where do we start?
+
+7
+00:00:48.663 --> 00:00:59.190
+<v Bob>With his big claim: software factories are just good engineering, with agents doing the building. Those are his views, so we'll say so, and three guests bring outside research.
+
+8
+00:00:59.490 --> 00:01:03.922
+<v Alice>Okay, so what does a software factory look like before AI?
+
+9
+00:01:04.222 --> 00:01:15.261
+<v Bob>People put ideas into a tracker, someone builds them and runs tests, a pull request gets reviewed, and CI runs checks and linters. Then come canaries, rollouts and feature flags.
+
+10
+00:01:15.561 --> 00:01:17.533
+<v Alice>And then users find the bugs.
+
+11
+00:01:17.833 --> 00:01:26.654
+<v Bob>Right, so we add monitoring that wakes someone up at three in the morning, before anybody notices. He says a lot of this was around for 30 years.
+
+12
+00:01:26.954 --> 00:01:29.044
+<v Alice>So what changes with agents?
+
+13
+00:01:29.344 --> 00:01:35.018
+<v Bob>Just one box. You replace "someone builds the thing" with "an agent builds the thing".
+
+14
+00:01:35.318 --> 00:01:39.588
+<v Alice>First, the name. Why "12 Factor Factories"?
+
+15
+00:01:39.888 --> 00:01:51.191
+<v Bob>He says it started as a joke title, and then everyone started calling it that. It nods to "The Twelve-Factor App" by Adam Wiggins, written from the Heroku team's experience with hundreds of apps.
+
+16
+00:01:51.491 --> 00:01:54.126
+<v Alice>And what did that methodology care about?
+
+17
+00:01:54.426 --> 00:02:03.328
+<v Bob>The organic growth of an app over time, and avoiding the cost of software erosion. Hold on to that word, erosion. It's exactly Dex's worry.
+
+18
+00:02:03.628 --> 00:02:11.299
+<v Alice>Which surprised me, because in our Why Software Factories Fail episode, his verdict was that the lights off factory doesn't work.
+
+19
+00:02:11.599 --> 00:02:19.827
+<v Bob>He addresses that. People called him the anti-software-factory guy, but he says there are just certain things you could do in a factory that make it fail.
+
+20
+00:02:20.127 --> 00:02:21.809
+<v Alice>Like turning the lights off?
+
+21
+00:02:22.109 --> 00:02:35.372
+<v Bob>Maybe the dark factory thing, he says. Then come his two forces. Forward pressure is what causes work to start: feature requests and incidents go straight to the factory, so you get paged with a pull request, not just a stack trace.
+
+22
+00:02:35.672 --> 00:02:37.075
+<v Alice>And back pressure?
+
+23
+00:02:37.375 --> 00:02:51.697
+<v Bob>Picture a factory line with an inspector at every station and a stop cord anyone can pull. Back pressure is that line: agent code review, agent testing, CI and linters, so agents hill climb to a better outcome without needing humans.
+
+24
+00:02:51.997 --> 00:02:55.867
+<v Alice>So when a human finally looks, the easy stuff is done?
+
+25
+00:02:56.167 --> 00:03:02.271
+<v Bob>That's the goal: all the low-hanging stuff is already fixed, and the outcome is as good as it can be on its own.
+
+26
+00:03:02.571 --> 00:03:06.539
+<v Alice>Rule two is "know your enemy". Who's the enemy?
+
+27
+00:03:06.839 --> 00:03:19.618
+<v Bob>Unattended models, he says, don't do a great job of maintaining codebase quality over time. A model can clone a big app if it knows the whole problem in advance, but most of us ship a feature, then another, then another.
+
+28
+00:03:19.918 --> 00:03:22.481
+<v Alice>And that's what Slop Code Bench measures?
+
+29
+00:03:22.781 --> 00:03:35.387
+<v Bob>Exactly. Imagine adding a room to a house every month without ever redrawing the plans: soon the hallways lead nowhere. The benchmark has the model solve problems in checkpoints, building on its own code each time.
+
+30
+00:03:35.687 --> 00:03:39.526
+<v Alice>Maya, you read the paper behind it. What does it find?
+
+31
+00:03:39.826 --> 00:03:55.885
+<v Maya>The paper is SlopCodeBench, by Gabriel Orlanski and colleagues on arXiv: 36 problems and 196 checkpoints. No agent fully solves any problem end to end, and the best agent passes 14.8 percent of checkpoints.
+
+32
+00:03:56.185 --> 00:03:58.876
+<v Alice>And Dex's figure is a little higher?
+
+33
+00:03:59.176 --> 00:04:08.043
+<v Bob>His is newer data, released the day of the talk, with the top model at about 16 percent. Same picture either way: very unsaturated.
+
+34
+00:04:08.343 --> 00:04:10.859
+<v Alice>What does the slop actually look like?
+
+35
+00:04:11.159 --> 00:04:27.009
+<v Maya>Quality degrades across checkpoints, with structural erosion rising in 77 percent of trajectories. Compared to 473 open-source Python repositories, agent code is 2.3 times more verbose and twice as eroded.
+
+36
+00:04:27.309 --> 00:04:31.497
+<v Alice>Twice as eroded. My code reviews suddenly feel generous.
+
+37
+00:04:31.797 --> 00:04:48.525
+<v Bob>And Dex adds a twist: patterns flagged as probably not great were way less present in models from six months ago, so it almost feels like the slop is amplifying. Some models now write Python 3 in Python 2 style, with old percent-s format strings instead of f-strings.
+
+38
+00:04:48.825 --> 00:04:50.331
+<v Alice>So what's the lesson?
+
+39
+00:04:50.631 --> 00:05:07.027
+<v Bob>If your codebase needs to last, keep understanding the system and the code. That's the software erosion the Twelve-Factor authors warned about, now at agent speed. And the benchmark has 200 custom rules, many built by comparing model code to repos from before AI.
+
+40
+00:05:07.327 --> 00:05:12.142
+<v Alice>Rule three: plan before you build. Didn't we use to call that a meeting?
+
+41
+00:05:12.442 --> 00:05:23.434
+<v Bob>Pretty much: architecture review and sprint planning, to cut the chance of rework later. But he admits he's overdone it, spending six hours on a spec and feeling he could have just YOLOed it.
+
+42
+00:05:23.734 --> 00:05:26.599
+<v Alice>So how do you decide how much to plan?
+
+43
+00:05:26.899 --> 00:05:39.132
+<v Bob>He thinks in expected pain: how likely something will have to change later, times how hard it will be to change. It's like building a house: nobody argues about paint before the walls are up, but the foundation has to be right first.
+
+44
+00:05:39.432 --> 00:05:42.077
+<v Alice>And in software, the foundation is?
+
+45
+00:05:42.377 --> 00:05:50.610
+<v Bob>The database schema. He won't argue with the model about what color a button is, but he wants the schemas right, because they're really hard to change later.
+
+46
+00:05:50.910 --> 00:05:53.283
+<v Alice>What does that spectrum look like?
+
+47
+00:05:53.583 --> 00:06:06.571
+<v Bob>A two-sentence prompt: maybe a 50 percent chance you send a couple more prompts. Five hours on a detailed spec: maybe 10 percent to change afterwards. Or 20 hours writing it all by hand, with no rework from an agent.
+
+48
+00:06:06.871 --> 00:06:10.711
+<v Alice>Then he says align visually. What's that?
+
+49
+00:06:11.011 --> 00:06:23.199
+<v Bob>Instead of reading walls of text, you get HTML mockups, tables and charts, because the human brain is very visual. He passes on a line he likes: we've only been reading text for about 5,000 years.
+
+50
+00:06:23.499 --> 00:06:25.276
+<v Alice>And letting agents test?
+
+51
+00:06:25.576 --> 00:06:36.486
+<v Bob>Give the agent screenshots, browsers, videos, curl, whatever helps. Building an iOS app? Make sure it can build, run and test that app wherever it's running.
+
+52
+00:06:36.786 --> 00:06:41.184
+<v Alice>Next: fight slop with lint rules. Why lint?
+
+53
+00:06:41.484 --> 00:06:53.718
+<v Bob>It's like a spell-checker that has learned your favorite typo: it catches it every time, and you never reread for it again. He points to a rule set from a principal engineer at Cloudflare, aimed at stopping agents from building slop.
+
+54
+00:06:54.018 --> 00:07:03.906
+<v Alice>That's our Trusting AI Coding Agents episode with Lauren Tan: whenever you correct your agent, make it a deterministic check instead of another line in your rules.
+
+55
+00:07:04.206 --> 00:07:20.219
+<v Bob>And Dex nods to her: Lauren was saying a lot of this is stuff we've been doing for a long time. And the SlopCodeBench paper shows why words alone fall short. Explicit quality guidance cut initial verbosity and erosion by up to a third, without changing how fast the code degraded.
+
+56
+00:07:20.519 --> 00:07:23.128
+<v Alice>So a rule beats a polite request.
+
+57
+00:07:23.428 --> 00:07:35.871
+<v Bob>But here's his nuance: slop is a tool. Not all slop is bad: vibe coding, prototypes and side projects. Behind a feature flag, when you just need to learn if people even want it, he thinks it's great.
+
+58
+00:07:36.171 --> 00:07:38.360
+<v Alice>Slop as a feature. Bold.
+
+59
+00:07:38.660 --> 00:07:52.942
+<v Bob>And he says to give models a feature flagging system, so they can try things and see if they perform better, what Hodgson's guide calls experiment toggles. Think of a light switch wired in before the lamp ships: the lamp is installed, and you choose when it's on.
+
+60
+00:07:53.242 --> 00:07:56.142
+<v Alice>Remind me what a feature flag really is?
+
+61
+00:07:56.442 --> 00:08:05.344
+<v Bob>Pete Hodgson's feature toggles guide on Martin Fowler's site calls them a powerful technique, allowing teams to modify system behavior without changing code.
+
+62
+00:08:05.644 --> 00:08:06.747
+<v Alice>Any catch?
+
+63
+00:08:07.047 --> 00:08:20.036
+<v Bob>A carrying cost. Hodgson says savvy teams see their toggles as inventory and keep it as low as possible. And on evals, Dex is short: compound over time, eval everything, learn from past sessions.
+
+64
+00:08:20.336 --> 00:08:24.369
+<v Alice>Then: unify your forge. What's a forge?
+
+65
+00:08:24.669 --> 00:08:34.766
+<v Bob>Where the code lives. We used to send git patches around on mailing lists, and now most people keep their code in GitHub. But teams still paste Claude answers back and forth in Slack.
+
+66
+00:08:35.066 --> 00:08:37.710
+<v Alice>Guilty. I did that this morning.
+
+67
+00:08:38.010 --> 00:08:49.223
+<v Bob>Picture a kitchen where every cook keeps recipe notes in their own pocket: nobody knows why the soup changed. He wants designs and decisions brought close to the code, so you understand all the decisions that went into it.
+
+68
+00:08:49.523 --> 00:08:51.103
+<v Alice>And what can't you buy?
+
+69
+00:08:51.403 --> 00:09:01.000
+<v Bob>He thinks nobody can sell you verification of your code, because only you know how to test it. In his view, a software factory is a way of thinking about our work.
+
+70
+00:09:01.300 --> 00:09:05.987
+<v Alice>Then he turns from software to slop itself. What's this manifesto?
+
+71
+00:09:06.287 --> 00:09:19.322
+<v Bob>The Anti-Slop Manifesto, built with attendees and speakers at the conference. Its values: outcomes over outputs, understanding over speed, your own thinking over the model's first draft, better work over easier work.
+
+72
+00:09:19.622 --> 00:09:21.545
+<v Alice>And how does it define slop?
+
+73
+00:09:21.845 --> 00:09:34.369
+<v Bob>Slop is when we put less effort into producing something than we ask the consumer to spend understanding it. Using AI doesn't make something slop by itself; passing off AI output without taking responsibility for its quality does.
+
+74
+00:09:34.669 --> 00:09:36.879
+<v Alice>Why does it pile up so fast?
+
+75
+00:09:37.179 --> 00:09:54.616
+<v Bob>It's like a group chat where one person posts essays all day: writing is instant, reading still costs everyone. Producing a thousand-line pull request or a 10-page doc costs almost nothing now, while reviewing it stays fairly constant, and the next agent reads and copies the slop.
+
+76
+00:09:54.916 --> 00:09:56.948
+<v Alice>So do we still read the code?
+
+77
+00:09:57.248 --> 00:10:08.670
+<v Bob>He believes there will always be alpha in reviewing something. As models get better we may stop reading most of the code, but still review a plan, a design or a result, and how much depends on the stakes.
+
+78
+00:10:08.970 --> 00:10:10.897
+<v Alice>Sam, you look skeptical.
+
+79
+00:10:11.197 --> 00:10:25.428
+<v Sam>Daghan Altas at Semgrep argues that reviewing every change by hand is ending. He cites a Carnegie Mellon and Stanford study where pull request volume grew 3.1 times, while the reviewer pool grew 1.5 times.
+
+80
+00:10:25.728 --> 00:10:28.244
+<v Alice>So reviewers just read faster?
+
+81
+00:10:28.544 --> 00:10:42.346
+<v Sam>No. The share of pull requests with any written human feedback fell from 39 to 21 percent. It's like an airport fast lane: routine changes pass automatic checks, and only consequential ones go to a human.
+
+82
+00:10:42.646 --> 00:10:53.510
+<v Bob>That's closer to Dex than it sounds. He also calls agent reviewers, linters and verifiers very useful, but not sufficient, and Altas keeps humans on the consequential changes too.
+
+83
+00:10:53.810 --> 00:10:58.845
+<v Alice>Let's push back. Lena, you ship products. Is review even the bottleneck?
+
+84
+00:10:59.145 --> 00:11:11.844
+<v Lena>Steve Fenton at Octopus Deploy says no. His test: how many changes have passed code review but haven't been deployed and enabled for users? The further that is from zero, the less likely review is your constraint.
+
+85
+00:11:12.144 --> 00:11:14.052
+<v Alice>And how many teams pass?
+
+86
+00:11:14.352 --> 00:11:25.135
+<v Lena>In his figures, just 8 percent of teams deploy changes independently, while 92 percent deploy in batches. Speeding up the coding only adds pressure to the real bottleneck.
+
+87
+00:11:25.435 --> 00:11:32.212
+<v Bob>I think that fits Dex's forward and back pressure framing: the factory is the whole line, not just the review desk.
+
+88
+00:11:32.512 --> 00:11:36.190
+<v Alice>Another one. Whose numbers are those benchmark scores?
+
+89
+00:11:36.490 --> 00:11:48.984
+<v Bob>Fair question. Dex says the new paper builds on research his team did with the lab, and the arXiv abstract reports a lower best score than his slide. So treat the exact figure loosely; the trend is the point.
+
+90
+00:11:49.284 --> 00:11:52.660
+<v Alice>And can't you just tell the model to keep the codebase clean?
+
+91
+00:11:52.960 --> 00:12:01.478
+<v Bob>He's heard that telling one new model it owns the codebase should keep it clean, but he says he hasn't tested this yet. The paper's guidance result suggests caution.
+
+92
+00:12:01.778 --> 00:12:04.899
+<v Alice>Better instructions, same slide downhill.
+
+93
+00:12:05.199 --> 00:12:08.528
+<v Bob>Pretty much, at least until someone measures otherwise.
+
+94
+00:12:08.828 --> 00:12:12.923
+<v Alice>Time for Builder's Corner. Bob, one thing to try this week?
+
+95
+00:12:13.223 --> 00:12:24.133
+<v Bob>Pick one slop pattern you keep seeing, like those old percent-s format strings in Python, and add one lint rule for it. As Dex puts it: this exists for your language, you should use it.
+
+96
+00:12:24.433 --> 00:12:27.195
+<v Alice>One rule. Not a whole rulebook.
+
+97
+00:12:27.495 --> 00:12:37.020
+<v Bob>Right. And if your agents get feature flags, borrow Hodgson's habit: some teams add a toggle removal task to the backlog whenever a release toggle is introduced.
+
+98
+00:12:37.320 --> 00:12:38.468
+<v Alice>Takeaways?
+
+99
+00:12:38.768 --> 00:12:48.192
+<v Bob>One: a software factory is good engineering, with agents doing the building. Two: models don't maintain codebases well on their own, so know your enemy.
+
+100
+00:12:48.492 --> 00:12:56.639
+<v Alice>Three: plan where change is expensive, and let lint rules catch the rest. Four: still review the subset that matters.
+
+101
+00:12:56.939 --> 00:13:01.847
+<v Bob>And the manifesto's line: AI should make our work better, not just easier.
+
+102
+00:13:02.147 --> 00:13:03.381
+<v Alice>What's still open?
+
+103
+00:13:03.681 --> 00:13:10.040
+<v Bob>Whether telling a model it owns the codebase changes anything. He's running the benchmark on that in the background right now.
+
+104
+00:13:10.340 --> 00:13:15.038
+<v Alice>And where to draw the review line. He admits none of us has this figured out.
+
+105
+00:13:15.338 --> 00:13:22.591
+<v Bob>Altas also promises Semgrep's pilot results early next year, with a goal of fewer than 1 percent of pull requests needing a human.
+
+106
+00:13:22.891 --> 00:13:25.790
+<v Alice>That's an ambitious goal. We'll be watching.
+
+107
+00:13:26.090 --> 00:13:36.618
+<v Bob>Thanks to Dex Horthy for his talk on the AI Engineer channel. Thanks also to Adam Wiggins for "The Twelve-Factor App", and to Pete Hodgson for his feature toggles guide on Martin Fowler's site.
+
+108
+00:13:36.918 --> 00:13:45.070
+<v Alice>And to Gabriel Orlanski and colleagues for SlopCodeBench, to Daghan Altas at Semgrep, and to Steve Fenton at Octopus Deploy.
+
+109
+00:13:45.370 --> 00:13:53.552
+<v Bob>The voices are AI, and every claim was checked against those sources. And in Dex's words: give a care about what you're doing.
+
+110
+00:13:53.852 --> 00:13:59.190
+<v Alice>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

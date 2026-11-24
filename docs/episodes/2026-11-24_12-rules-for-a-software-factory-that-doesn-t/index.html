@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software Factories Without Slop: 12 Rules (Dex Horthy) | Build Wiz AI Show</title>
+<meta name="description" content="Dex Horthy&#x27;s AI Engineer talk lays out 12 practices for a software factory that doesn&#x27;t ship slop, from forward and back pressure to lint rules and feature flags. On Slop Code Bench, the best model scores about 16%.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-24_12-rules-for-a-software-factory-that-doesn-t/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-24_12-rules-for-a-software-factory-that-doesn-t/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="Software Factories Without Slop: 12 Rules (Dex Horthy)">
+<meta property="og:description" content="Dex Horthy&#x27;s AI Engineer talk lays out 12 practices for a software factory that doesn&#x27;t ship slop, from forward and back pressure to lint rules and feature flags. On Slop Code Bench, the best model scores about 16%.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-24_12-rules-for-a-software-factory-that-doesn-t/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-24_12-rules-for-a-software-factory-that-doesn-t.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Software Factories Without Slop: 12 Rules (Dex Horthy)">
+<meta name="twitter:description" content="Dex Horthy&#x27;s AI Engineer talk lays out 12 practices for a software factory that doesn&#x27;t ship slop, from forward and back pressure to lint rules and feature flags. On Slop Code Bench, the best model scores about 16%.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "Software Factories Without Slop: 12 Rules (Dex Horthy)",
+ "description": "Dex Horthy's AI Engineer talk lays out 12 practices for a software factory that doesn't ship slop, from forward and back pressure to lint rules and feature flags. On Slop Code Bench, the best model scores about 16%.\n\nIn this episode:\n- Why models don't maintain code: SlopCodeBench\n- Planning by expected pain, aligning visually\n- Lint rules, feature flags and a unified forge\n- The Anti-Slop Manifesto and whether review still scales\n\nSources: Dex Horthy; Adam Wiggins; Pete Hodgson; Gabriel Orlanski et al.; Daghan Altas; Steve Fenton\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-24_12-rules-for-a-software-factory-that-doesn-t/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-24_12-rules-for-a-software-factory-that-doesn-t.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT14M6S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-24T16:55:16Z",
+ "timeRequired": "PT14M6S",
+ "isBasedOn": "https://www.youtube.com/watch?v=-NFMsM2y0Vk"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">Software Factories Without Slop: 12 Rules (Dex Horthy)</h1>
+  <p class="meta"><span class="dur">14 min</span> · <time datetime="2026-11-24T16:55:16Z">2026-11-24</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-24_12-rules-for-a-software-factory-that-doesn-t.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">Dex Horthy&#x27;s AI Engineer talk lays out 12 practices for a software factory that doesn&#x27;t ship slop, from forward and back pressure to lint rules and feature flags. On Slop Code Bench, the best model scores about 16%.
+
+In this episode:
+- Why models don&#x27;t maintain code: SlopCodeBench
+- Planning by expected pain, aligning visually
+- Lint rules, feature flags and a unified forge
+- The Anti-Slop Manifesto and whether review still scales
+
+Sources: Dex Horthy; Adam Wiggins; Pete Hodgson; Gabriel Orlanski et al.; Daghan Altas; Steve Fenton
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-24_12-rules-for-a-software-factory-that-doesn-t">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-24_12-rules-for-a-software-factory-that-doesn-t.mp3" download="Build Wiz AI Show - Software Factories Without Slop 12 Rules (Dex Horthy) (2026-11-24).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Software Factories Without Slop: 12 Rules (Dex Horthy)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Dex Horthy&#x27;s AI Engineer talk lays out 12 practices for a software factory that doesn&#x27;t ship slop, from forward and back pressure to lint rules and feature flags. On Slop Code Bench, the best model scores about 16%.
+
+In this episode:
+- Why models don&#x27;t maintain code: SlopCodeBench
+- Planning by expected pain, aligning visually
+- Lint rules, feature flags and a unified forge
+- The Anti-Slop Manifesto and whether review still scales
+
+Sources: Dex Horthy; Adam Wiggins; Pete Hodgson; Gabriel Orlanski et al.; Daghan Altas; Steve Fenton
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://www.youtube.com/watch?v=-NFMsM2y0Vk" rel="noopener">12 Rules for a Software Factory That Doesn&#x27;t Ship Slop</a> by Dex Horthy</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> On a new benchmark for how agents evolve a codebase over time, the best model scores about 16 percent.</p>
+    <p><strong>Alice:</strong> So should we all stop building software factories?</p>
+    <p><strong>Bob:</strong> Dex Horthy says the opposite. He actually loves software factories.</p>
+    <p><strong>Alice:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and I'm asking the questions today. Bob, what are we unpacking?</p>
+    <p><strong>Bob:</strong> Hi, I'm Bob. Today it's a talk on the AI Engineer channel by Dex Horthy, "12 Rules for a Software Factory That Doesn't Ship Slop". Until about a week before it, he was CEO and co-founder of Human Layer, which is now part of Factory.</p>
+    <p><strong>Alice:</strong> Twelve rules, and a war on slop. Where do we start?</p>
+    <p><strong>Bob:</strong> With his big claim: software factories are just good engineering, with agents doing the building. Those are his views, so we'll say so, and three guests bring outside research.</p>
+    <p><strong>Alice:</strong> Okay, so what does a software factory look like before AI?</p>
+    <p><strong>Bob:</strong> People put ideas into a tracker, someone builds them and runs tests, a pull request gets reviewed, and CI runs checks and linters. Then come canaries, rollouts and feature flags.</p>
+    <p><strong>Alice:</strong> And then users find the bugs.</p>
+    <p><strong>Bob:</strong> Right, so we add monitoring that wakes someone up at three in the morning, before anybody notices. He says a lot of this was around for 30 years.</p>
+    <p><strong>Alice:</strong> So what changes with agents?</p>
+    <p><strong>Bob:</strong> Just one box. You replace "someone builds the thing" with "an agent builds the thing".</p>
+    <p><strong>Alice:</strong> First, the name. Why "12 Factor Factories"?</p>
+    <p><strong>Bob:</strong> He says it started as a joke title, and then everyone started calling it that. It nods to "The Twelve-Factor App" by Adam Wiggins, written from the Heroku team's experience with hundreds of apps.</p>
+    <p><strong>Alice:</strong> And what did that methodology care about?</p>
+    <p><strong>Bob:</strong> The organic growth of an app over time, and avoiding the cost of software erosion. Hold on to that word, erosion. It's exactly Dex's worry.</p>
+    <p><strong>Alice:</strong> Which surprised me, because in our Why Software Factories Fail episode, his verdict was that the lights off factory doesn't work.</p>
+    <p><strong>Bob:</strong> He addresses that. People called him the anti-software-factory guy, but he says there are just certain things you could do in a factory that make it fail.</p>
+    <p><strong>Alice:</strong> Like turning the lights off?</p>
+    <p><strong>Bob:</strong> Maybe the dark factory thing, he says. Then come his two forces. Forward pressure is what causes work to start: feature requests and incidents go straight to the factory, so you get paged with a pull request, not just a stack trace.</p>
+    <p><strong>Alice:</strong> And back pressure?</p>
+    <p><strong>Bob:</strong> Picture a factory line with an inspector at every station and a stop cord anyone can pull. Back pressure is that line: agent code review, agent testing, CI and linters, so agents hill climb to a better outcome without needing humans.</p>
+    <p><strong>Alice:</strong> So when a human finally looks, the easy stuff is done?</p>
+    <p><strong>Bob:</strong> That's the goal: all the low-hanging stuff is already fixed, and the outcome is as good as it can be on its own.</p>
+    <p><strong>Alice:</strong> Rule two is "know your enemy". Who's the enemy?</p>
+    <p><strong>Bob:</strong> Unattended models, he says, don't do a great job of maintaining codebase quality over time. A model can clone a big app if it knows the whole problem in advance, but most of us ship a feature, then another, then another.</p>
+    <p><strong>Alice:</strong> And that's what Slop Code Bench measures?</p>
+    <p><strong>Bob:</strong> Exactly. Imagine adding a room to a house every month without ever redrawing the plans: soon the hallways lead nowhere. The benchmark has the model solve problems in checkpoints, building on its own code each time.</p>
+    <p><strong>Alice:</strong> Maya, you read the paper behind it. What does it find?</p>
+    <p><strong>Maya:</strong> The paper is SlopCodeBench, by Gabriel Orlanski and colleagues on arXiv: 36 problems and 196 checkpoints. No agent fully solves any problem end to end, and the best agent passes 14.8 percent of checkpoints.</p>
+    <p><strong>Alice:</strong> And Dex's figure is a little higher?</p>
+    <p><strong>Bob:</strong> His is newer data, released the day of the talk, with the top model at about 16 percent. Same picture either way: very unsaturated.</p>
+    <p><strong>Alice:</strong> What does the slop actually look like?</p>
+    <p><strong>Maya:</strong> Quality degrades across checkpoints, with structural erosion rising in 77 percent of trajectories. Compared to 473 open-source Python repositories, agent code is 2.3 times more verbose and twice as eroded.</p>
+    <p><strong>Alice:</strong> Twice as eroded. My code reviews suddenly feel generous.</p>
+    <p><strong>Bob:</strong> And Dex adds a twist: patterns flagged as probably not great were way less present in models from six months ago, so it almost feels like the slop is amplifying. Some models now write Python 3 in Python 2 style, with old percent-s format strings instead of f-strings.</p>
+    <p><strong>Alice:</strong> So what's the lesson?</p>
+    <p><strong>Bob:</strong> If your codebase needs to last, keep understanding the system and the code. That's the software erosion the Twelve-Factor authors warned about, now at agent speed. And the benchmark has 200 custom rules, many built by comparing model code to repos from before AI.</p>
+    <p><strong>Alice:</strong> Rule three: plan before you build. Didn't we use to call that a meeting?</p>
+    <p><strong>Bob:</strong> Pretty much: architecture review and sprint planning, to cut the chance of rework later. But he admits he's overdone it, spending six hours on a spec and feeling he could have just YOLOed it.</p>
+    <p><strong>Alice:</strong> So how do you decide how much to plan?</p>
+    <p><strong>Bob:</strong> He thinks in expected pain: how likely something will have to change later, times how hard it will be to change. It's like building a house: nobody argues about paint before the walls are up, but the foundation has to be right first.</p>
+    <p><strong>Alice:</strong> And in software, the foundation is?</p>
+    <p><strong>Bob:</strong> The database schema. He won't argue with the model about what color a button is, but he wants the schemas right, because they're really hard to change later.</p>
+    <p><strong>Alice:</strong> What does that spectrum look like?</p>
+    <p><strong>Bob:</strong> A two-sentence prompt: maybe a 50 percent chance you send a couple more prompts. Five hours on a detailed spec: maybe 10 percent to change afterwards. Or 20 hours writing it all by hand, with no rework from an agent.</p>
+    <p><strong>Alice:</strong> Then he says align visually. What's that?</p>
+    <p><strong>Bob:</strong> Instead of reading walls of text, you get HTML mockups, tables and charts, because the human brain is very visual. He passes on a line he likes: we've only been reading text for about 5,000 years.</p>
+    <p><strong>Alice:</strong> And letting agents test?</p>
+    <p><strong>Bob:</strong> Give the agent screenshots, browsers, videos, curl, whatever helps. Building an iOS app? Make sure it can build, run and test that app wherever it's running.</p>
+    <p><strong>Alice:</strong> Next: fight slop with lint rules. Why lint?</p>
+    <p><strong>Bob:</strong> It's like a spell-checker that has learned your favorite typo: it catches it every time, and you never reread for it again. He points to a rule set from a principal engineer at Cloudflare, aimed at stopping agents from building slop.</p>
+    <p><strong>Alice:</strong> That's our Trusting AI Coding Agents episode with Lauren Tan: whenever you correct your agent, make it a deterministic check instead of another line in your rules.</p>
+    <p><strong>Bob:</strong> And Dex nods to her: Lauren was saying a lot of this is stuff we've been doing for a long time. And the SlopCodeBench paper shows why words alone fall short. Explicit quality guidance cut initial verbosity and erosion by up to a third, without changing how fast the code degraded.</p>
+    <p><strong>Alice:</strong> So a rule beats a polite request.</p>
+    <p><strong>Bob:</strong> But here's his nuance: slop is a tool. Not all slop is bad: vibe coding, prototypes and side projects. Behind a feature flag, when you just need to learn if people even want it, he thinks it's great.</p>
+    <p><strong>Alice:</strong> Slop as a feature. Bold.</p>
+    <p><strong>Bob:</strong> And he says to give models a feature flagging system, so they can try things and see if they perform better, what Hodgson's guide calls experiment toggles. Think of a light switch wired in before the lamp ships: the lamp is installed, and you choose when it's on.</p>
+    <p><strong>Alice:</strong> Remind me what a feature flag really is?</p>
+    <p><strong>Bob:</strong> Pete Hodgson's feature toggles guide on Martin Fowler's site calls them a powerful technique, allowing teams to modify system behavior without changing code.</p>
+    <p><strong>Alice:</strong> Any catch?</p>
+    <p><strong>Bob:</strong> A carrying cost. Hodgson says savvy teams see their toggles as inventory and keep it as low as possible. And on evals, Dex is short: compound over time, eval everything, learn from past sessions.</p>
+    <p><strong>Alice:</strong> Then: unify your forge. What's a forge?</p>
+    <p><strong>Bob:</strong> Where the code lives. We used to send git patches around on mailing lists, and now most people keep their code in GitHub. But teams still paste Claude answers back and forth in Slack.</p>
+    <p><strong>Alice:</strong> Guilty. I did that this morning.</p>
+    <p><strong>Bob:</strong> Picture a kitchen where every cook keeps recipe notes in their own pocket: nobody knows why the soup changed. He wants designs and decisions brought close to the code, so you understand all the decisions that went into it.</p>
+    <p><strong>Alice:</strong> And what can't you buy?</p>
+    <p><strong>Bob:</strong> He thinks nobody can sell you verification of your code, because only you know how to test it. In his view, a software factory is a way of thinking about our work.</p>
+    <p><strong>Alice:</strong> Then he turns from software to slop itself. What's this manifesto?</p>
+    <p><strong>Bob:</strong> The Anti-Slop Manifesto, built with attendees and speakers at the conference. Its values: outcomes over outputs, understanding over speed, your own thinking over the model's first draft, better work over easier work.</p>
+    <p><strong>Alice:</strong> And how does it define slop?</p>
+    <p><strong>Bob:</strong> Slop is when we put less effort into producing something than we ask the consumer to spend understanding it. Using AI doesn't make something slop by itself; passing off AI output without taking responsibility for its quality does.</p>
+    <p><strong>Alice:</strong> Why does it pile up so fast?</p>
+    <p><strong>Bob:</strong> It's like a group chat where one person posts essays all day: writing is instant, reading still costs everyone. Producing a thousand-line pull request or a 10-page doc costs almost nothing now, while reviewing it stays fairly constant, and the next agent reads and copies the slop.</p>
+    <p><strong>Alice:</strong> So do we still read the code?</p>
+    <p><strong>Bob:</strong> He believes there will always be alpha in reviewing something. As models get better we may stop reading most of the code, but still review a plan, a design or a result, and how much depends on the stakes.</p>
+    <p><strong>Alice:</strong> Sam, you look skeptical.</p>
+    <p><strong>Sam:</strong> Daghan Altas at Semgrep argues that reviewing every change by hand is ending. He cites a Carnegie Mellon and Stanford study where pull request volume grew 3.1 times, while the reviewer pool grew 1.5 times.</p>
+    <p><strong>Alice:</strong> So reviewers just read faster?</p>
+    <p><strong>Sam:</strong> No. The share of pull requests with any written human feedback fell from 39 to 21 percent. It's like an airport fast lane: routine changes pass automatic checks, and only consequential ones go to a human.</p>
+    <p><strong>Bob:</strong> That's closer to Dex than it sounds. He also calls agent reviewers, linters and verifiers very useful, but not sufficient, and Altas keeps humans on the consequential changes too.</p>
+    <p><strong>Alice:</strong> Let's push back. Lena, you ship products. Is review even the bottleneck?</p>
+    <p><strong>Lena:</strong> Steve Fenton at Octopus Deploy says no. His test: how many changes have passed code review but haven't been deployed and enabled for users? The further that is from zero, the less likely review is your constraint.</p>
+    <p><strong>Alice:</strong> And how many teams pass?</p>
+    <p><strong>Lena:</strong> In his figures, just 8 percent of teams deploy changes independently, while 92 percent deploy in batches. Speeding up the coding only adds pressure to the real bottleneck.</p>
+    <p><strong>Bob:</strong> I think that fits Dex's forward and back pressure framing: the factory is the whole line, not just the review desk.</p>
+    <p><strong>Alice:</strong> Another one. Whose numbers are those benchmark scores?</p>
+    <p><strong>Bob:</strong> Fair question. Dex says the new paper builds on research his team did with the lab, and the arXiv abstract reports a lower best score than his slide. So treat the exact figure loosely; the trend is the point.</p>
+    <p><strong>Alice:</strong> And can't you just tell the model to keep the codebase clean?</p>
+    <p><strong>Bob:</strong> He's heard that telling one new model it owns the codebase should keep it clean, but he says he hasn't tested this yet. The paper's guidance result suggests caution.</p>
+    <p><strong>Alice:</strong> Better instructions, same slide downhill.</p>
+    <p><strong>Bob:</strong> Pretty much, at least until someone measures otherwise.</p>
+    <p><strong>Alice:</strong> Time for Builder's Corner. Bob, one thing to try this week?</p>
+    <p><strong>Bob:</strong> Pick one slop pattern you keep seeing, like those old percent-s format strings in Python, and add one lint rule for it. As Dex puts it: this exists for your language, you should use it.</p>
+    <p><strong>Alice:</strong> One rule. Not a whole rulebook.</p>
+    <p><strong>Bob:</strong> Right. And if your agents get feature flags, borrow Hodgson's habit: some teams add a toggle removal task to the backlog whenever a release toggle is introduced.</p>
+    <p><strong>Alice:</strong> Takeaways?</p>
+    <p><strong>Bob:</strong> One: a software factory is good engineering, with agents doing the building. Two: models don't maintain codebases well on their own, so know your enemy.</p>
+    <p><strong>Alice:</strong> Three: plan where change is expensive, and let lint rules catch the rest. Four: still review the subset that matters.</p>
+    <p><strong>Bob:</strong> And the manifesto's line: AI should make our work better, not just easier.</p>
+    <p><strong>Alice:</strong> What's still open?</p>
+    <p><strong>Bob:</strong> Whether telling a model it owns the codebase changes anything. He's running the benchmark on that in the background right now.</p>
+    <p><strong>Alice:</strong> And where to draw the review line. He admits none of us has this figured out.</p>
+    <p><strong>Bob:</strong> Altas also promises Semgrep's pilot results early next year, with a goal of fewer than 1 percent of pull requests needing a human.</p>
+    <p><strong>Alice:</strong> That's an ambitious goal. We'll be watching.</p>
+    <p><strong>Bob:</strong> Thanks to Dex Horthy for his talk on the AI Engineer channel. Thanks also to Adam Wiggins for "The Twelve-Factor App", and to Pete Hodgson for his feature toggles guide on Martin Fowler's site.</p>
+    <p><strong>Alice:</strong> And to Gabriel Orlanski and colleagues for SlopCodeBench, to Daghan Altas at Semgrep, and to Steve Fenton at Octopus Deploy.</p>
+    <p><strong>Bob:</strong> The voices are AI, and every claim was checked against those sources. And in Dex's words: give a care about what you're doing.</p>
+    <p><strong>Alice:</strong> That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-24_12-rules-for-a-software-factory-that-doesn-t/", "title": "Software Factories Without Slop: 12 Rules (Dex Horthy)", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-24_12-rules-for-a-software-factory-that-doesn-t", "episode_title": "Software Factories Without Slop: 12 Rules (Dex Horthy)", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-24_12-rules-for-a-software-factory-that-doesn-t", "title": "Software Factories Without Slop: 12 Rules (Dex Horthy)", "summary": ["Dex Horthy's AI Engineer talk argues software factories are just good engineering with agents doing the building, and lays out 12 practices against slop.", "Bob explains forward and back pressure, Slop Code Bench, planning by expected pain, lint rules, feature flags, a unified forge and the Anti-Slop Manifesto.", "Guests weigh the SlopCodeBench paper, Semgrep's case against reviewing every change, and Octopus Deploy's view that batches, not review, are the bottleneck."], "description": "Dex Horthy's AI Engineer talk lays out 12 practices for a software factory that doesn't ship slop, from forward and back pressure to lint rules and feature flags. On Slop Code Bench, the best model scores about 16%.\n\nIn this episode:\n- Why models don't maintain code: SlopCodeBench\n- Planning by expected pain, aligning visually\n- Lint rules, feature flags and a unified forge\n- The Anti-Slop Manifesto and whether review still scales\n\nSources: Dex Horthy; Adam Wiggins; Pete Hodgson; Gabriel Orlanski et al.; Daghan Altas; Steve Fenton\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "12 Rules for a Software Factory That Doesn't Ship Slop", "author": "Dex Horthy", "url": "https://www.youtube.com/watch?v=-NFMsM2y0Vk", "kind": "text"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>

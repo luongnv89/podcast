@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-24T16:51:55Z",
+  "updated": "2026-11-24T16:58:28Z",
   "episodes": [
+    {
+      "id": "2026-11-24_12-rules-for-a-software-factory-that-doesn-t",
+      "title": "Software Factories Without Slop: 12 Rules (Dex Horthy)",
+      "summary": [
+        "Dex Horthy's AI Engineer talk argues software factories are just good engineering with agents doing the building, and lays out 12 practices against slop.",
+        "Bob explains forward and back pressure, Slop Code Bench, planning by expected pain, lint rules, feature flags, a unified forge and the Anti-Slop Manifesto.",
+        "Guests weigh the SlopCodeBench paper, Semgrep's case against reviewing every change, and Octopus Deploy's view that batches, not review, are the bottleneck."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-24T16:55:16Z",
+      "duration_s": 845.79,
+      "size_bytes": 13533703,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-24_12-rules-for-a-software-factory-that-doesn-t.mp3",
+      "audio_sha256": "219c3945c5321cd9685aa1bb23459beb909b11da8b867042e6a769febb202136",
+      "transcript": "episodes/2026-11-24_12-rules-for-a-software-factory-that-doesn-t/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "12 Rules for a Software Factory That Doesn't Ship Slop",
+        "author": "Dex Horthy",
+        "url": "https://www.youtube.com/watch?v=-NFMsM2y0Vk",
+        "published": "2026-11-23",
+        "kind": "text"
+      },
+      "sources": [
+        {
+          "title": "12 Rules for a Software Factory That Doesn't Ship Slop",
+          "author": "Dex Horthy",
+          "url": "https://www.youtube.com/watch?v=-NFMsM2y0Vk"
+        },
+        {
+          "title": "The Twelve-Factor App",
+          "author": "Adam Wiggins",
+          "url": "https://12factor.net/"
+        },
+        {
+          "title": "Feature Toggles (aka Feature Flags)",
+          "author": "Pete Hodgson",
+          "url": "https://martinfowler.com/articles/feature-toggles.html"
+        },
+        {
+          "title": "SlopCodeBench: Benchmarking How Coding Agents Degrade Over Long-Horizon Iterative Tasks",
+          "author": "Gabriel Orlanski et al.",
+          "url": "https://arxiv.org/abs/2603.24755"
+        },
+        {
+          "title": "AI Code Review and the End of Reviewing Every Change",
+          "author": "Daghan Altas",
+          "url": "https://semgrep.dev/blog/2026/end-is-nigh-for-code-review"
+        },
+        {
+          "title": "Code review isn't your bottleneck, even with AI",
+          "author": "Steve Fenton",
+          "url": "https://octopus.com/blog/code-review-not-bottleneck-even-with-ai"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "SlopCodeBench: Benchmarking How Coding Agents Degrade Over Long-Horizon Iterative Tasks"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "AI Code Review and the End of Reviewing Every Change"
+          ]
+        },
+        {
+          "name": "Lena",
+          "presents": [
+            "Code review isn't your bottleneck, even with AI"
+          ]
+        }
+      ],
+      "description": "Dex Horthy's AI Engineer talk lays out 12 practices for a software factory that doesn't ship slop, from forward and back pressure to lint rules and feature flags. On Slop Code Bench, the best model scores about 16%.\n\nIn this episode:\n- Why models don't maintain code: SlopCodeBench\n- Planning by expected pain, aligning visually\n- Lint rules, feature flags and a unified forge\n- The Anti-Slop Manifesto and whether review still scales\n\nSources: Dex Horthy; Adam Wiggins; Pete Hodgson; Gabriel Orlanski et al.; Daghan Altas; Steve Fenton\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Software Factories Without Slop 12 Rules (Dex Horthy) (2026-11-24).mp3"
+    },
     {
       "id": "2026-11-24_the-lion-the-mouse-fr",
       "title": "Le Lion et la Souris : histoire du soir pour enfants, notre version (d'après Ésope)",
