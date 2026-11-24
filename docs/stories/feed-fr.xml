@@ -7,7 +7,7 @@
   <description>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</description>
   <itunes:summary>Des histoires du soir tout en douceur pour les enfants, racontées lentement par une voix chaleureuse. Chaque épisode reprend un conte classique du domaine public (Cendrillon, Hansel et Gretel, le roi Midas et d'autres) avec des mots simples, une petite musique entre les scènes et une bonne nuit tout en calme. Les contes sont adaptés pour le coucher : rien de trop effrayant. Textes et voix sont créés avec l'IA, et chaque épisode cite sa source et sa musique. Aussi en anglais et en vietnamien.</itunes:summary>
   <language>fr</language>
-  <lastBuildDate>Fri, 20 Nov 2026 16:54:40 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 16:51:55 +0000</lastBuildDate>
   <itunes:author>Once Upon a Time Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -24,6 +24,30 @@
   </itunes:category>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-24_the-lion-the-mouse-fr</guid>
+    <title>Le Lion et la Souris : histoire du soir pour enfants, notre version (d'après Ésope)</title>
+    <link>https://luongnv.com/podcast/stories/#2026-11-24_the-lion-the-mouse-fr</link>
+    <description>Une douce version du Lion et la Souris, une fable d'Ésope, d'après The Aesop for Children de la Bibliothèque du Congrès.
+
+Un lion gentil laisse partir une petite souris, qui promet de l'aider un jour. Il en rit, jusqu'au jour où il est pris dans un filet.
+
+La souris grignote les cordes et le libère : une gentillesse n'est jamais perdue. Puis une douce bonne nuit.
+
+Source: The Lion &amp; the Mouse, Aesop (https://read.gov/aesop/007.html)
+
+Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Golly Gee", "Marty Gots a Plan", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)
+
+Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</description>
+    <content:encoded><![CDATA[<p>Une douce version du Lion et la Souris, une fable d'Ésope, d'après The Aesop for Children de la Bibliothèque du Congrès.</p><p>Un lion gentil laisse partir une petite souris, qui promet de l'aider un jour. Il en rit, jusqu'au jour où il est pris dans un filet.</p><p>La souris grignote les cordes et le libère : une gentillesse n'est jamais perdue. Puis une douce bonne nuit.</p><p>Source: The Lion &amp; the Mouse, Aesop: <a href="https://read.gov/aesop/007.html">https://read.gov/aesop/007.html</a></p><p>Music by Kevin MacLeod (incompetech.com): "Music Box Theme", "Golly Gee", "Marty Gots a Plan", "Carefree", "Sleep and Then". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)</p><p>Écrit et lu avec l'IA (OpenRouter · microsoft/mai-voice-2.1-flash).</p>]]></content:encoded>
+    <pubDate>Tue, 24 Nov 2026 16:46:47 +0000</pubDate>
+    <enclosure url="https://luongnv.com/once-upon-a-time-fr-media/2026-11-24_the-lion-the-mouse-fr.mp3?v=d7b675b7" length="4457159" type="audio/mpeg"/>
+    <itunes:duration>278</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <itunes:image href="https://luongnv.com/podcast/art/2026-11-24_the-lion-the-mouse/square.jpg"/>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-24_the-lion-the-mouse-fr/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-20_the-shepherd-boy-the-wolf-fr</guid>
     <title>Le Garçon qui criait au loup : histoire du soir pour enfants, notre version (d'après Ésope)</title>
