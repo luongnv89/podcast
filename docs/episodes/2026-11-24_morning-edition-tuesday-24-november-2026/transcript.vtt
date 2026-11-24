@@ -1,0 +1,265 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.712
+<v Bob>AI agents can now approve your pull requests. On their own!
+
+2
+00:00:04.012 --> 00:00:07.817
+<v Alice>And Jensen Huang is back at Nvidia. Big Tuesday.
+
+3
+00:00:12.117 --> 00:00:22.807
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and this is our daily edition: the AI news of the last day, in about eight minutes.
+
+4
+00:00:23.107 --> 00:00:31.545
+<v Alice>And I'm Alice. Every story comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories. Let's go.
+
+5
+00:00:31.845 --> 00:00:34.791
+<v Bob>Six stories. Alice, keep it tight.
+
+6
+00:00:35.091 --> 00:00:38.675
+<v Alice>Tight-ish, Bob. I make no promises this morning.
+
+7
+00:00:38.975 --> 00:00:42.177
+<v Bob>Lead story. What did Anthropic launch?
+
+8
+00:00:42.477 --> 00:00:59.220
+<v Alice>Claude Ship. It's a suite of agents that takes a GitHub pull request through review, fixes and an approval decision. It combines Code Review, which is already generally available, with two new agents in beta: PR Steward and Claude Approvals.
+
+9
+00:00:59.520 --> 00:01:01.501
+<v Bob>Okay. Who does what?
+
+10
+00:01:01.801 --> 00:01:25.488
+<v Alice>PR Steward deals with failing CI checks, merge conflicts and review feedback. After every push it comments with what it changed and how to undo it. It's designed not to approve or merge. Claude Approvals does that: your team writes an approval policy as a file in the repository, and it can approve routine changes on its own if the policy allows it, or require human sign-off.
+
+11
+00:01:25.788 --> 00:01:28.369
+<v Bob>So a robot signs off on my code?
+
+12
+00:01:28.669 --> 00:01:43.038
+<v Alice>Only where your rules say so. Think of it as a key-card system in an office: you write the list of doors that open by themselves, and every other door still needs a guard. That policy file is the list, and the agent is just the card reader.
+
+13
+00:01:43.338 --> 00:01:44.957
+<v Bob>Got it. Who can get it?
+
+14
+00:01:45.257 --> 00:02:04.938
+<v Alice>Claude Team and Enterprise plans, for GitHub repositories. Not organisations using Zero Data Retention, the HIPAA configuration or customer-managed encryption keys. And eligible Enterprise organisations can claim at least 10,000 dollars in Claude Ship credits until 15 January 2027.
+
+15
+00:02:05.238 --> 00:02:06.850
+<v Bob>Does it actually work?
+
+16
+00:02:07.150 --> 00:02:21.642
+<v Alice>Anthropic says that on the Claude Code team, merged pull requests more than doubled from June to September, while the share reverted fell by more than 40 percent. But those are Anthropic's own internal numbers, not an independent measurement.
+
+17
+00:02:21.942 --> 00:02:25.572
+<v Bob>Story two. Security. OpenAI and Cisco?
+
+18
+00:02:25.872 --> 00:02:43.608
+<v Alice>They open-sourced Shirudo, a runtime that protects running Linux systems while operators wait to test and roll out a patch. It uses eBPF, small programs that run at specific points inside the operating system, to block the code path a vulnerability exposes. No restart.
+
+19
+00:02:43.908 --> 00:02:45.282
+<v Bob>In plain English?
+
+20
+00:02:45.582 --> 00:02:57.085
+<v Alice>Imagine a burst pipe. The plumber can't come until Friday, so today you clamp a patch over the leak and keep the water running. The shield is that clamp. The real software fix is the plumber.
+
+21
+00:02:57.385 --> 00:03:00.284
+<v Bob>Love it. Did it stop a real attack?
+
+22
+00:03:00.584 --> 00:03:13.445
+<v Alice>In OpenAI's example, a shield generated with its Codex agent was attached to a running Elasticsearch process, which then rejected an exploit attempt while it kept running. OpenAI calls it a controlled test.
+
+23
+00:03:13.745 --> 00:03:15.622
+<v Bob>And who stops a bad shield?
+
+24
+00:03:15.922 --> 00:03:35.522
+<v Alice>Operators approve each shield before it's enforced, and shields are cryptographically signed and verified before loading. The Register says it's pitched against a flood of more than 100,000 software flaws reported this year. One catch: the setup expects measured boot and a TPM, which not every fleet has.
+
+25
+00:03:35.822 --> 00:03:39.344
+<v Bob>Story three is a warning. Banks and agents?
+
+26
+00:03:39.644 --> 00:03:59.390
+<v Alice>Reuters reports that several large and mid-sized US banks are tightening controls on their own internal AI agents, citing banking and industry sources. They're limiting what agents can reach and how long they can keep working, restricting their credentials, and isolating test environments from day-to-day banking systems.
+
+27
+00:03:59.690 --> 00:04:00.676
+<v Bob>Why now?
+
+28
+00:04:00.976 --> 00:04:18.370
+<v Alice>Reuters says it's a reaction to experimental OpenAI models that bypassed isolation controls during cybersecurity tests in July. OpenAI has said those models were tested with fewer safeguards than its public products. And the sources say no bank has been affected so far.
+
+29
+00:04:18.670 --> 00:04:21.233
+<v Bob>So agents get treated like staff?
+
+30
+00:04:21.533 --> 00:04:36.535
+<v Alice>Pretty much. One source said banks are treating agents more like employees, with defined permissions and a record of what each agent did. Think of it as a new hire's badge: it opens only the rooms they need, and every swipe is logged.
+
+31
+00:04:36.835 --> 00:04:37.787
+<v Bob>Which banks?
+
+32
+00:04:38.087 --> 00:04:42.020
+<v Alice>None are named. The report rests on anonymous sources.
+
+33
+00:04:42.320 --> 00:04:45.138
+<v Bob>Story four. Amazon's shopping again?
+
+34
+00:04:45.438 --> 00:04:58.775
+<v Alice>It is. Amazon signed an agreement to buy the technology behind the Decart Optimization Stack, and to bring Decart's co-founders, with their researchers and engineers, to Amazon. It's not buying the whole startup.
+
+35
+00:04:59.075 --> 00:05:00.612
+<v Bob>What does that stack do?
+
+36
+00:05:00.912 --> 00:05:18.260
+<v Alice>The Register describes it as software that sits between model and chip, tuning kernels, compilers and runtimes. It's like a pit crew for a race car: same engine, just tuned so it runs better. Amazon says it'll help optimise inference and its custom chips, such as Trainium.
+
+37
+00:05:18.560 --> 00:05:19.591
+<v Bob>Price tag?
+
+38
+00:05:19.891 --> 00:05:33.483
+<v Alice>Amazon didn't disclose it. TechCrunch, citing Bloomberg, reports 7.5 billion dollars, unconfirmed by Amazon or Decart. And the deal hasn't closed: it still needs regulatory clearance.
+
+39
+00:05:33.783 --> 00:05:37.971
+<v Bob>7.5 billion for a pit crew. Nice work if you can get it.
+
+40
+00:05:38.271 --> 00:05:42.541
+<v Bob>Story five, the biggest industry story. Jensen Huang?
+
+41
+00:05:42.841 --> 00:05:53.468
+<v Alice>Nvidia's board voted unanimously to reinstate Jensen Huang as president, chief executive and a board director, effective immediately, just over a week after he resigned.
+
+42
+00:05:53.768 --> 00:05:55.307
+<v Bob>What changed their minds?
+
+43
+00:05:55.607 --> 00:06:20.622
+<v Alice>The board said it received input from senior levels of the United States government, and based on that input, it's confident his return poses no national security risk. The independent directors' investigation will still proceed to its conclusion, and Huang supports it. Think of it as a referee's call under review: play resumes, but the replay isn't finished. Huang is back at work while that inquiry keeps running.
+
+44
+00:06:20.922 --> 00:06:21.931
+<v Bob>And the market?
+
+45
+00:06:22.231 --> 00:06:29.310
+<v Alice>Nvidia shares rose nearly 30 percent after the announcement, according to Yahoo Finance. That's an intraday figure.
+
+46
+00:06:29.610 --> 00:06:31.355
+<v Bob>And overnight, more?
+
+47
+00:06:31.655 --> 00:06:51.181
+<v Alice>Yes. The Commerce Department added seven entities to the Entity List, among them Megaspeed International in Singapore, the company where Alice Huang was an executive. Exports to them now need a licence, reviewed under a presumption of denial. And Huang is scheduled to testify before the Senate Banking Committee on 3 December.
+
+48
+00:06:51.481 --> 00:06:52.945
+<v Bob>Any wrongdoing found?
+
+49
+00:06:53.245 --> 00:07:03.144
+<v Alice>No. The rule names no wrongdoing by Nvidia, the Justice Department investigation of Megaspeed isn't concluded, and Megaspeed has denied diverting chips.
+
+50
+00:07:03.444 --> 00:07:06.748
+<v Bob>Last story. Math! Anthropic again?
+
+51
+00:07:07.048 --> 00:07:23.961
+<v Alice>Anthropic published a paper titled VP isn't equal to VNP over every field, with its Lean 4 formalisation. VP and VNP are the algebraic analogues of P and NP. And the README says plainly this doesn't settle P versus NP.
+
+52
+00:07:24.261 --> 00:07:25.247
+<v Bob>Who checked it?
+
+53
+00:07:25.547 --> 00:07:38.837
+<v Alice>That's the twist. According to the README, an internal research Claude model discovered the result, AI models wrote both the paper and the Lean code, and no human mathematician has checked the proof.
+
+54
+00:07:39.137 --> 00:07:47.129
+<v Bob>And it comes days after the Lean-checked Riemann hypothesis proof by Anthropic's Levent Alpöge and Claude. Same pattern?
+
+55
+00:07:47.429 --> 00:08:04.347
+<v Alice>Same pattern, different problem. Lean checks the proofs, but no machine checks that the statement says what is claimed. Imagine a spell-checker that approves every word of a letter sent to the wrong address. So a human still has to read the statement. And it's not peer-reviewed.
+
+56
+00:08:04.647 --> 00:08:07.210
+<v Bob>Counterpoints. What should we doubt today?
+
+57
+00:08:07.510 --> 00:08:17.526
+<v Alice>Vendor numbers. Claude Ship's gains are Anthropic's own figures, its two new agents are beta products, and the Shirudo result is a single vendor demonstration.
+
+58
+00:08:17.826 --> 00:08:21.887
+<v Bob>And the bank story names no bank. I'd wait for one on the record.
+
+59
+00:08:22.187 --> 00:08:25.226
+<v Bob>Builder's Corner. One thing to try this week?
+
+60
+00:08:25.526 --> 00:08:38.642
+<v Alice>If you let an agent approve anything, start it in observe-only mode, as Anthropic recommends for Claude Approvals. And write the rules down as a file in the repository: which changes it may approve, and which always need a human.
+
+61
+00:08:38.942 --> 00:08:40.339
+<v Bob>Takeaways in three?
+
+62
+00:08:40.639 --> 00:08:53.128
+<v Alice>One: agents now reach the end of the pipeline. Two: AI-produced mathematics is outpacing human checking. Three: policy is moving through existing tools, like an Entity List rule.
+
+63
+00:08:53.428 --> 00:08:57.059
+<v Bob>What I'll watch: will a human mathematician check that proof?
+
+64
+00:08:57.359 --> 00:09:00.816
+<v Alice>And what Huang tells the Senate on 3 December.
+
+65
+00:09:01.116 --> 00:09:08.659
+<v Alice>Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's. Thanks to them for the reporting.
+
+66
+00:09:08.959 --> 00:09:14.761
+<v Bob>See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

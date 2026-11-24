@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Mon, 23 Nov 2026 08:13:30 +0000</lastBuildDate>
+  <lastBuildDate>Tue, 24 Nov 2026 07:45:28 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-24_morning-edition-tuesday-24-november-2026</guid>
+    <title>Anthropic's Claude Ship, Nvidia Reinstates Huang | AI Daily 24 Nov</title>
+    <link>https://luongnv.com/podcast/#2026-11-24_morning-edition-tuesday-24-november-2026</link>
+    <description>AI Daily for Tuesday 24 November, from The AI Gazette's morning and afternoon editions.
+
+Anthropic launches Claude Ship, OpenAI and Cisco open-source Shirudo, and US banks fence in their own AI agents.
+
+Amazon buys Decart's optimisation tech, Nvidia reinstates Jensen Huang, and a Claude-written proof awaits human checks.
+
+Sources:
+- The AI Gazette, morning edition, Tuesday 24 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-24-morning.html)
+- The AI Gazette, afternoon edition, Monday 23 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-23-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>AI Daily for Tuesday 24 November, from The AI Gazette's morning and afternoon editions.</p><p>Anthropic launches Claude Ship, OpenAI and Cisco open-source Shirudo, and US banks fence in their own AI agents.</p><p>Amazon buys Decart's optimisation tech, Nvidia reinstates Jensen Huang, and a Claude-written proof awaits human checks.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Tuesday 24 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-24-morning.html">https://luongnv.com/news/reports/2026-11-24-morning.html</a></li><li>The AI Gazette, afternoon edition, Monday 23 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-23-afternoon.html">https://luongnv.com/news/reports/2026-11-23-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Tue, 24 Nov 2026 07:42:17 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-24_morning-edition-tuesday-24-november-2026.mp3?v=4aafcf01" length="8982975" type="audio/mpeg"/>
+    <itunes:duration>561</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-24_morning-edition-tuesday-24-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-23_morning-edition-monday-23-november-2026</guid>
     <title>OpenAI Proposes AI Speed Limits, Sarvam's Cheap 105B | AI Daily 23 Nov</title>

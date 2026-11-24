@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-23T08:13:29Z",
+  "updated": "2026-11-24T07:45:28Z",
   "episodes": [
+    {
+      "id": "2026-11-24_morning-edition-tuesday-24-november-2026",
+      "title": "Anthropic's Claude Ship, Nvidia Reinstates Huang | AI Daily 24 Nov",
+      "summary": [
+        "AI Daily for Tuesday 24 November, from The AI Gazette's morning and afternoon editions.",
+        "Anthropic launches Claude Ship, OpenAI and Cisco open-source Shirudo, and US banks fence in their own AI agents.",
+        "Amazon buys Decart's optimisation tech, Nvidia reinstates Jensen Huang, and a Claude-written proof awaits human checks."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-24T07:42:17Z",
+      "duration_s": 561.361,
+      "size_bytes": 8982975,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-24_morning-edition-tuesday-24-november-2026.mp3",
+      "audio_sha256": "4aafcf01c959f800020c4ab6fd17809432b6a3298a2e2bc24cc751695ef50806",
+      "transcript": "episodes/2026-11-24_morning-edition-tuesday-24-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Tuesday 24 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-24-morning.html",
+        "published": "2026-11-23",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Tuesday 24 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-24-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Monday 23 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-23-afternoon.html"
+        }
+      ],
+      "description": "Anthropic launches Claude Ship, agents that review, fix and approve GitHub pull requests, and Nvidia's board reinstates Jensen Huang as chief executive. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- OpenAI and Cisco open-source Shirudo, eBPF shields for unpatched Linux\n- US banks tighten controls on their own AI agents\n- Amazon buys Decart's tech, and a Claude-written math proof\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Anthropic's Claude Ship, Nvidia Reinstates Huang AI Daily 24 Nov (2026-11-24).mp3"
+    },
     {
       "id": "2026-11-23_morning-edition-monday-23-november-2026",
       "title": "OpenAI Proposes AI Speed Limits, Sarvam's Cheap 105B | AI Daily 23 Nov",
