@@ -1,0 +1,461 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.993
+<v Alice>Uber's agents invoked skills more than 1 million times in one month.
+
+2
+00:00:05.293 --> 00:00:09.133
+<v Bob>So how do you keep thousands of skills from quietly going bad?
+
+3
+00:00:09.433 --> 00:00:14.724
+<v Alice>Partly by letting the agents file their own bug reports. Uber calls them papercuts.
+
+4
+00:00:19.024 --> 00:00:28.355
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and Alice is explaining today. Alice, what are we unpacking?
+
+5
+00:00:28.655 --> 00:00:38.725
+<v Alice>An X article by Uber Engineering, "How Uber Evals 1 Million Agent Skill Invocations a Month". It's written for teams rolling out agents across a company.
+
+6
+00:00:39.025 --> 00:00:40.286
+<v Bob>Who's helping us?
+
+7
+00:00:40.586 --> 00:00:49.325
+<v Alice>Three guests with outside research, and two primers I'll quote: the Agent Skills specification, and Hamel Husain's post on evals.
+
+8
+00:00:49.625 --> 00:00:52.699
+<v Bob>Start with the scale. How fast did this grow?
+
+9
+00:00:52.999 --> 00:01:03.561
+<v Alice>Uber's shared skills marketplace grew from 1 skill in October 2025 to more than 5,000 in just one year. Thousands of people have written a skill.
+
+10
+00:01:03.861 --> 00:01:07.747
+<v Bob>From one skill to 5,000. In a year!
+
+11
+00:01:08.047 --> 00:01:17.855
+<v Alice>They call skills one of the building blocks of Uber's software factory. And as usage grows, their focus moves from writing skills to skill quality and evaluation.
+
+12
+00:01:18.155 --> 00:01:21.913
+<v Bob>Okay, basics. What actually is a skill?
+
+13
+00:01:22.213 --> 00:01:41.047
+<v Alice>A Markdown file that teaches an AI agent to do one job well, like creating a pull request or querying a metrics store. It's like a recipe card: one dish, the steps in order, and a note on when to cook it. On disk, the card is a skill file with a name, a description, and a body of instructions.
+
+14
+00:01:41.347 --> 00:01:45.879
+<v Bob>So a recipe box with thousands of cards. Doesn't the agent drown?
+
+15
+00:01:46.179 --> 00:01:59.771
+<v Alice>No, because it loads them in three stages. Always loaded: the name and description, about 100 tokens. The body loads only when the skill runs, and scripts and references only when a step needs them.
+
+16
+00:02:00.071 --> 00:02:01.833
+<v Bob>Is that Uber's own trick?
+
+17
+00:02:02.133 --> 00:02:15.249
+<v Alice>It's the open standard. The Agent Skills specification says agents load skills progressively, pulling in more detail only as a task calls for it, and to keep the main skill file under 500 lines.
+
+18
+00:02:15.549 --> 00:02:18.751
+<v Bob>And the description is what the agent reads to decide?
+
+19
+00:02:19.051 --> 00:02:31.784
+<v Alice>Exactly. The agent uses the description to decide whether the skill applies, and the spec wants it to say both what the skill does and when to use it. A recipe card with a vague title never leaves the box.
+
+20
+00:02:32.084 --> 00:02:34.391
+<v Bob>Where do all those skills even live?
+
+21
+00:02:34.691 --> 00:02:42.200
+<v Alice>In one Git repository. Version control already gives each skill an owner, a review, and a history.
+
+22
+00:02:42.500 --> 00:02:45.794
+<v Bob>But anyone can write one. How do they stop the junk?
+
+23
+00:02:46.094 --> 00:03:03.435
+<v Alice>Three tiers. Picture a restaurant: chalkboard specials any cook can add, the regular menu that's tested and maintained, and the set menu every guest gets. At Uber those are Domain, Core and Always-on, and the expectations for quality rise as a skill graduates.
+
+24
+00:03:03.735 --> 00:03:04.899
+<v Bob>Walk me through them.
+
+25
+00:03:05.199 --> 00:03:19.512
+<v Alice>Domain: any team can start its own area and publish after one peer approval and a CI check. Core: widely used skills, recommended, tested and maintained by a team, and the platform team reviews every change.
+
+26
+00:03:19.812 --> 00:03:21.864
+<v Bob>And what about the Always-on tier?
+
+27
+00:03:22.164 --> 00:03:34.068
+<v Alice>About 100 broadly useful skills that are on for everyone, so a new employee has skills on the first run: pull requests, code review, tool access, data analysis, and chat.
+
+28
+00:03:34.368 --> 00:03:35.801
+<v Bob>And to move up a tier?
+
+29
+00:03:36.101 --> 00:03:49.090
+<v Alice>To graduate a skill, they run their eval system plus a set of quality and usefulness checks. It echoes Hamel Husain's rhythm for evals: cheap ones on every code change, costlier ones on a set cadence.
+
+30
+00:03:49.390 --> 00:03:53.357
+<v Bob>Next problem. Engineers don't all use the same agent, right?
+
+31
+00:03:53.657 --> 00:04:09.461
+<v Alice>Right, and Uber calls that part of its strategy, because people pick the agent that suits the task. The catch: each agent defines and installs skills differently. Even the open spec warns that support for some fields may vary between agent implementations.
+
+32
+00:04:09.761 --> 00:04:12.707
+<v Bob>So you'd package every skill again for each agent?
+
+33
+00:04:13.007 --> 00:04:28.979
+<v Alice>That's what aifx avoids, their command-line tool. It's like a universal travel adapter: one plug, any socket. You add a skill or a plugin once, and aifx applies it to whichever agent starts next, Claude Code, Codex or OpenCode.
+
+34
+00:04:29.279 --> 00:04:31.668
+<v Bob>And who decides which skills I get?
+
+35
+00:04:31.968 --> 00:04:47.905
+<v Alice>Layers. Aifx merges company defaults, a team or program, the repository, the working directory, the user, and a local override. Later layers only add plugins, so a repository can declare the plugins everyone working in it needs.
+
+36
+00:04:48.205 --> 00:04:51.723
+<v Bob>With thousands of skills, how do I find the one I need?
+
+37
+00:04:52.023 --> 00:05:09.782
+<v Alice>Imagine a library's card catalogue, sorted by what readers actually borrow. Uber has a find-skills skill that finds a quality skill for your workflow, and it ranks skills with evals and run counts into a quality score. You can even ask: "Give me the skills my peers are using that I'm not."
+
+38
+00:05:10.082 --> 00:05:13.841
+<v Bob>Why not show the model every tool and let it choose? Maya?
+
+39
+00:05:14.141 --> 00:05:35.354
+<v Maya>Tiantian Gan and Qiyao Sun tested that on arXiv, in their RAG-MCP paper. They write that models struggle with a growing number of external tools, due to prompt bloat and selection complexity. Retrieving only the relevant tools first more than triples tool selection accuracy: 43.13 percent versus 13.62.
+
+40
+00:05:35.654 --> 00:05:39.084
+<v Bob>So the catalogue beats a pile of books on the floor.
+
+41
+00:05:39.384 --> 00:05:46.375
+<v Maya>Exactly. Like a good catalogue, it also cuts prompt tokens, by over 50 percent in their tests.
+
+42
+00:05:46.675 --> 00:05:49.749
+<v Bob>And how does Uber know which skills people use?
+
+43
+00:05:50.049 --> 00:06:07.605
+<v Alice>OpenTelemetry in agent hooks. Each event records the skill, its version, and whether the agent chose it or the user typed its command, and carries no prompt text and no file contents. Hamel calls logging your traces a prerequisite for human and model-based eval.
+
+44
+00:06:07.905 --> 00:06:11.327
+<v Bob>Which brings us to the title. How do you eval a skill?
+
+45
+00:06:11.627 --> 00:06:30.106
+<v Alice>It starts with a spec: the skill's goal, its outputs, the tool actions required or forbidden, and the agents and models it targets. Their authoring tool, Skill Workshop, compiles the skill file and its test prompts from that spec, and recompiles them when a model or an agent changes.
+
+46
+00:06:30.406 --> 00:06:31.483
+<v Bob>And there's a linter?
+
+47
+00:06:31.783 --> 00:06:49.560
+<v Alice>Pass or fail. Steps are numbered with one objective each, and every step checks its result before the next. The skill needs an error recovery table of failures and fixes, where "Try again" doesn't count, and the open spec asks scripts to include helpful error messages too.
+
+48
+00:06:49.860 --> 00:06:53.062
+<v Bob>Shame. That's my whole debugging strategy.
+
+49
+00:06:53.362 --> 00:07:05.932
+<v Alice>Then the evals. Their guidance is about 5 percent golden cases with a fixed input and expected output, 80 percent real prompts graded on trajectory, and 15 percent judged by the author.
+
+50
+00:07:06.232 --> 00:07:07.704
+<v Bob>Trajectory meaning what?
+
+51
+00:07:08.004 --> 00:07:19.425
+<v Alice>Picture a driving test. The examiner checks where you parked, but also whether you checked your mirrors in the right order. Trajectory means whether the agent used the right skills and tools in the right order.
+
+52
+00:07:19.725 --> 00:07:21.314
+<v Bob>Where do those tests run?
+
+53
+00:07:21.614 --> 00:07:38.915
+<v Alice>In three clean setups: Minion, their background agent platform; AES, a managed agent sandbox; and devpods, remote development machines. The clean room catches skills that expected certain file paths, cached documents, or certain OS tooling.
+
+54
+00:07:39.215 --> 00:07:42.207
+<v Bob>The classic "it works on my machine".
+
+55
+00:07:42.507 --> 00:07:58.582
+<v Alice>Then a surprise: evals that pass 70 to 90 percent of runs can be more useful than ones that pass 100. Hamel Husain says it in "Your AI Product Needs Evals" too: you don't necessarily need a 100 percent pass rate, it's a product decision.
+
+56
+00:07:58.882 --> 00:08:01.318
+<v Bob>Why would a perfect score be bad?
+
+57
+00:08:01.618 --> 00:08:09.637
+<v Alice>A 100 percent pass rate may mean an eval is missing meaningful changes in the answer. Answers vary, and judges can too.
+
+58
+00:08:09.937 --> 00:08:11.281
+<v Bob>And who's the judge?
+
+59
+00:08:11.581 --> 00:08:28.232
+<v Alice>Often an LLM, but Uber says LLM-as-judge works best with a human-annotated set that authors grade repeatedly. Hamel's advice matches: track the correlation between model-based and human evaluation, to decide how much you can rely on the automatic one.
+
+60
+00:08:28.532 --> 00:08:35.913
+<v Bob>That rings a bell from our Factory Engineering episode with Ben Holmes, where another agent reviews past agent conversations to score them.
+
+61
+00:08:36.213 --> 00:08:47.251
+<v Alice>Same idea, and Uber adds the human anchor. On their own, they warn, agents can miss a significant hallucination when the answer otherwise follows the expected format.
+
+62
+00:08:47.551 --> 00:08:49.696
+<v Bob>Does a skill always help, though?
+
+63
+00:08:49.996 --> 00:09:03.716
+<v Alice>They test that with ablation. They replay real prompts once with the skill and once without, and a blind judge picks the better answer. In a majority of cases, skills made the session more successful and cost less.
+
+64
+00:09:04.016 --> 00:09:05.044
+<v Bob>Give me a number.
+
+65
+00:09:05.344 --> 00:09:20.218
+<v Alice>Their warehouse query skill. Without it, sessions made 13 percent more tool calls, had six times as many tool errors, and took 31 percent longer. And the answer with the skill won 87 percent of the comparisons.
+
+66
+00:09:20.518 --> 00:09:22.751
+<v Bob>Six times the errors. Ouch.
+
+67
+00:09:23.051 --> 00:09:32.429
+<v Alice>But as models get better, more words can reduce performance, so they also test removing words. Lena, SkillsBench looked at this from outside?
+
+68
+00:09:32.729 --> 00:09:48.022
+<v Lena>It did. Xiangyi Li and colleagues on arXiv built SkillsBench: 87 tasks across 8 domains, run with and without curated skills. Curated skills raised the average pass rate from 33.9 percent to 50.5.
+
+69
+00:09:48.322 --> 00:09:51.361
+<v Bob>So skills work. Does size matter?
+
+70
+00:09:51.661 --> 00:10:05.978
+<v Lena>Focused skills with at most three modules outperform larger or exhaustive bundles. It's like a pocket checklist versus the full manual: the one you actually read wins. And smaller models with skills can match larger models without them.
+
+71
+00:10:06.278 --> 00:10:08.550
+<v Bob>But a skill isn't free either?
+
+72
+00:10:08.850 --> 00:10:23.499
+<v Alice>No. It's like packing for a hike: everything you put in the backpack, you carry up every hill after. A skill's instructions, tool calls and results enter the context, and every later turn in the session pays for that context again.
+
+73
+00:10:23.799 --> 00:10:25.742
+<v Bob>How do they even measure that?
+
+74
+00:10:26.042 --> 00:10:36.150
+<v Alice>Agents keep a running total of the session's cost. They take the last total before the skill call and the first one after, subtract, and average per invocation.
+
+75
+00:10:36.450 --> 00:10:37.867
+<v Bob>And how do they cut it?
+
+76
+00:10:38.167 --> 00:10:50.773
+<v Alice>Use code over LLMs for steps that never vary. And run the skill in a worker on a cheaper model: the big tool result stays in the worker, and a tracing skill's cost per invocation fell 46 percent.
+
+77
+00:10:51.073 --> 00:10:53.426
+<v Bob>Okay, what else is on the list?
+
+78
+00:10:53.726 --> 00:11:10.726
+<v Alice>Run a small script when the skill loads: one search skill went from four turns to three, and its mean cost fell 32 percent. And move polling out of the main session, because in their 20 highest-spend sessions, notification turns were about a third of the spend.
+
+79
+00:11:11.026 --> 00:11:13.716
+<v Bob>A third of the bill on "are we there yet?"
+
+80
+00:11:14.016 --> 00:11:32.520
+<v Alice>Tool servers were worse: with more than 100 tools, definitions took 50,000 to 70,000 tokens before the user typed anything. That's the prompt bloat Maya's paper warned about. Inspired by Cloudflare's Code Mode, Uber moved those flows into scripts that call tools through a gateway.
+
+81
+00:11:32.820 --> 00:11:36.551
+<v Bob>Now my favourite part. Agents report their own bugs?
+
+82
+00:11:36.851 --> 00:11:51.500
+<v Alice>They do. A skill can stop working for a thousand reasons: a model upgrade, a tool changing its flags, a harness change. And an agent knows when it's struggling, say after 100 turns fighting some weird error.
+
+83
+00:11:51.800 --> 00:11:53.261
+<v Bob>So what does it do about it?
+
+84
+00:11:53.561 --> 00:12:12.522
+<v Alice>It's like the warning light on a car's dashboard: the car can't fix the engine, but it tells you something's wrong. Every agent has log-papercut, an always-on skill, and reports what it tried, what it expected, what happened, and what would fix it. All reports go to one dashboard, grouped by skill.
+
+85
+00:12:12.822 --> 00:12:21.534
+<v Bob>That's the loop from our Knowledge Factory episode with Harrison Chase: the first piece of the factory is a way for agents to flag missing knowledge as they work.
+
+86
+00:12:21.834 --> 00:12:39.062
+<v Alice>Same instinct, at Uber's scale. Agents filed thousands of papercuts in just three months, and hundreds have been fixed. Each is grouped, triaged, analyzed for its root cause, fixed, evaluated, and approved, with a person acting at two steps.
+
+87
+00:12:39.362 --> 00:12:42.308
+<v Bob>So what was the best bug an agent filed?
+
+88
+00:12:42.608 --> 00:12:56.246
+<v Alice>A deployment skill told the agent to pass epoch seconds where the API expects milliseconds. And a pull request skill waited for CI checks on a repository that has none, repeating the same 404 until it timed out.
+
+89
+00:12:56.546 --> 00:13:00.050
+<v Bob>Waiting forever for checks that don't exist. Relatable.
+
+90
+00:13:00.350 --> 00:13:20.286
+<v Alice>And humans still grade. In Fawkes, Uber's automatic software maintenance factory, a pull request that gets comments or isn't accepted feeds back into the skills that created it. Blocked ones join the eval set, which Hamel would like: he says having humans periodically evaluate at least a sample of traces is a good idea.
+
+91
+00:13:20.586 --> 00:13:24.264
+<v Bob>Time to push back. Sam, you're not sold on skills?
+
+92
+00:13:24.564 --> 00:13:41.022
+<v Sam>Not on trusting the agent to pick them. Jude Gao on Vercel's blog tested a docs skill on framework APIs that aren't in current model training data. In 56 percent of eval cases, the skill was never invoked, and adding it produced no improvement over baseline.
+
+93
+00:13:41.322 --> 00:13:42.825
+<v Bob>So what worked instead?
+
+94
+00:13:43.125 --> 00:13:58.382
+<v Sam>A compressed docs index in the project's AGENTS file, which the agent sees on every turn. It hit a 100 percent pass rate, while skills maxed out at 79 percent even when told to use them. His theory: no decision point.
+
+95
+00:13:58.682 --> 00:14:01.036
+<v Bob>That's a direct hit on discovery.
+
+96
+00:14:01.336 --> 00:14:12.548
+<v Sam>Partly. Gao says skills aren't useless: they work better for vertical, action-specific workflows that users explicitly trigger. But small wording tweaks produced large swings.
+
+97
+00:14:12.848 --> 00:14:19.672
+<v Alice>I think that's an argument for Uber's Always-on tier: for the skills that matter most, there's no decision to get wrong.
+
+98
+00:14:19.972 --> 00:14:23.301
+<v Bob>Another one: these are all Uber's own numbers.
+
+99
+00:14:23.601 --> 00:14:34.512
+<v Alice>True, and they're candid. Evals are still part art and part science, and one deployment skill showed no cost drop in its first week, so they measure each skill after its change.
+
+100
+00:14:34.812 --> 00:14:38.361
+<v Bob>Builder's Corner. Alice, one thing to try this week?
+
+101
+00:14:38.661 --> 00:14:47.691
+<v Alice>Give your agent a papercut skill. When it struggles, it writes down what it tried, what it expected, what happened, and what would fix it.
+
+102
+00:14:47.991 --> 00:14:49.185
+<v Bob>And then I read them?
+
+103
+00:14:49.485 --> 00:14:58.096
+<v Alice>Once a week, and fix the skill behind the most common one. Then give that skill an error recovery table: failures and their fixes.
+
+104
+00:14:58.396 --> 00:15:00.496
+<v Bob>No "try again" allowed.
+
+105
+00:15:00.796 --> 00:15:10.610
+<v Alice>Takeaways, then. One: a skill is one workflow in a Markdown file, loaded in stages, so thousands cost only a short description each.
+
+106
+00:15:10.910 --> 00:15:15.342
+<v Bob>Two: tier them, and make skills earn their way up with evals.
+
+107
+00:15:15.642 --> 00:15:22.721
+<v Alice>Three: grade the trajectory, not just the answer, and anchor any LLM judge in human labels.
+
+108
+00:15:23.021 --> 00:15:26.525
+<v Bob>And four: let the agents file the bugs.
+
+109
+00:15:26.825 --> 00:15:37.770
+<v Alice>As for what's still open: evaluating workflows that run rarely, matter a lot, and are hard to judge. And whether Vercel's gap closes as models get better at tool use.
+
+110
+00:15:38.070 --> 00:15:43.698
+<v Bob>Uber's next steps include A/B testing skills and compiling them per model family.
+
+111
+00:15:43.998 --> 00:15:50.538
+<v Alice>And Hamel puts A/B testing at his third level, the costliest. So that's the big league.
+
+112
+00:15:50.838 --> 00:16:02.223
+<v Bob>Thanks to Uber Engineering for their X article on how they evaluate agent skills. Thanks also to the Agent Skills specification, and to Hamel Husain for "Your AI Product Needs Evals".
+
+113
+00:16:02.523 --> 00:16:10.961
+<v Alice>And to Tiantian Gan and Qiyao Sun for RAG-MCP, to Xiangyi Li and colleagues for SkillsBench, and to Jude Gao on Vercel's blog.
+
+114
+00:16:11.261 --> 00:16:18.421
+<v Bob>The voices are AI, and every claim was checked against those sources. Go give one agent a way to file its own papercuts.
+
+115
+00:16:18.721 --> 00:16:24.186
+<v Alice>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

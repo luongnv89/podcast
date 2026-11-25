@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering) | Build Wiz AI Show</title>
+<meta name="description" content="Uber Engineering shows how it runs and evaluates agent skills at scale: more than 5,000 Markdown skills invoked over 1 million times in one month. Bob and Alice unpack what keeps them good, and when skills fail.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-25_how-uber-evals-1-million-agent-skill-invocations/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-25_how-uber-evals-1-million-agent-skill-invocations/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering)">
+<meta property="og:description" content="Uber Engineering shows how it runs and evaluates agent skills at scale: more than 5,000 Markdown skills invoked over 1 million times in one month. Bob and Alice unpack what keeps them good, and when skills fail.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-25_how-uber-evals-1-million-agent-skill-invocations/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-25_how-uber-evals-1-million-agent-skill-invocations.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering)">
+<meta name="twitter:description" content="Uber Engineering shows how it runs and evaluates agent skills at scale: more than 5,000 Markdown skills invoked over 1 million times in one month. Bob and Alice unpack what keeps them good, and when skills fail.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering)",
+ "description": "Uber Engineering shows how it runs and evaluates agent skills at scale: more than 5,000 Markdown skills invoked over 1 million times in one month. Bob and Alice unpack what keeps them good, and when skills fail.\n\nIn this episode:\n- Domain, Core and Always-on tiers, and one install for every agent\n- Evals graded on trajectory, plus ablation tests\n- Agents filing their own bugs as papercuts\n\nSources: Uber Engineering (@UberEng); Specification - Agent Skills; Hamel Husain; Tiantian Gan and Qiyao Sun; Xiangyi Li et al.; Jude Gao\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-25_how-uber-evals-1-million-agent-skill-invocations/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-25_how-uber-evals-1-million-agent-skill-invocations.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT16M31S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-25T07:58:30Z",
+ "timeRequired": "PT16M31S",
+ "isBasedOn": "https://x.com/UberEng/status/2125008806249930999"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering)</h1>
+  <p class="meta"><span class="dur">17 min</span> · <time datetime="2026-11-25T07:58:30Z">2026-11-25</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-25_how-uber-evals-1-million-agent-skill-invocations.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">Uber Engineering shows how it runs and evaluates agent skills at scale: more than 5,000 Markdown skills invoked over 1 million times in one month. Bob and Alice unpack what keeps them good, and when skills fail.
+
+In this episode:
+- Domain, Core and Always-on tiers, and one install for every agent
+- Evals graded on trajectory, plus ablation tests
+- Agents filing their own bugs as papercuts
+
+Sources: Uber Engineering (@UberEng); Specification - Agent Skills; Hamel Husain; Tiantian Gan and Qiyao Sun; Xiangyi Li et al.; Jude Gao
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-25_how-uber-evals-1-million-agent-skill-invocations">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-25_how-uber-evals-1-million-agent-skill-invocations.mp3" download="Build Wiz AI Show - Agent Skills How Uber Evals 1 Million Invocations (Uber Engineering) (2026-11-25).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering)" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Uber Engineering shows how it runs and evaluates agent skills at scale: more than 5,000 Markdown skills invoked over 1 million times in one month. Bob and Alice unpack what keeps them good, and when skills fail.
+
+In this episode:
+- Domain, Core and Always-on tiers, and one install for every agent
+- Evals graded on trajectory, plus ablation tests
+- Agents filing their own bugs as papercuts
+
+Sources: Uber Engineering (@UberEng); Specification - Agent Skills; Hamel Husain; Tiantian Gan and Qiyao Sun; Xiangyi Li et al.; Jude Gao
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://x.com/UberEng/status/2125008806249930999" rel="noopener">How Uber Evals 1 Million Agent Skill Invocations a Month</a> by Uber Engineering (@UberEng)</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Alice:</strong> Uber's agents invoked skills more than 1 million times in one month.</p>
+    <p><strong>Bob:</strong> So how do you keep thousands of skills from quietly going bad?</p>
+    <p><strong>Alice:</strong> Partly by letting the agents file their own bug reports. Uber calls them papercuts.</p>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and Alice is explaining today. Alice, what are we unpacking?</p>
+    <p><strong>Alice:</strong> An X article by Uber Engineering, "How Uber Evals 1 Million Agent Skill Invocations a Month". It's written for teams rolling out agents across a company.</p>
+    <p><strong>Bob:</strong> Who's helping us?</p>
+    <p><strong>Alice:</strong> Three guests with outside research, and two primers I'll quote: the Agent Skills specification, and Hamel Husain's post on evals.</p>
+    <p><strong>Bob:</strong> Start with the scale. How fast did this grow?</p>
+    <p><strong>Alice:</strong> Uber's shared skills marketplace grew from 1 skill in October 2025 to more than 5,000 in just one year. Thousands of people have written a skill.</p>
+    <p><strong>Bob:</strong> From one skill to 5,000. In a year!</p>
+    <p><strong>Alice:</strong> They call skills one of the building blocks of Uber's software factory. And as usage grows, their focus moves from writing skills to skill quality and evaluation.</p>
+    <p><strong>Bob:</strong> Okay, basics. What actually is a skill?</p>
+    <p><strong>Alice:</strong> A Markdown file that teaches an AI agent to do one job well, like creating a pull request or querying a metrics store. It's like a recipe card: one dish, the steps in order, and a note on when to cook it. On disk, the card is a skill file with a name, a description, and a body of instructions.</p>
+    <p><strong>Bob:</strong> So a recipe box with thousands of cards. Doesn't the agent drown?</p>
+    <p><strong>Alice:</strong> No, because it loads them in three stages. Always loaded: the name and description, about 100 tokens. The body loads only when the skill runs, and scripts and references only when a step needs them.</p>
+    <p><strong>Bob:</strong> Is that Uber's own trick?</p>
+    <p><strong>Alice:</strong> It's the open standard. The Agent Skills specification says agents load skills progressively, pulling in more detail only as a task calls for it, and to keep the main skill file under 500 lines.</p>
+    <p><strong>Bob:</strong> And the description is what the agent reads to decide?</p>
+    <p><strong>Alice:</strong> Exactly. The agent uses the description to decide whether the skill applies, and the spec wants it to say both what the skill does and when to use it. A recipe card with a vague title never leaves the box.</p>
+    <p><strong>Bob:</strong> Where do all those skills even live?</p>
+    <p><strong>Alice:</strong> In one Git repository. Version control already gives each skill an owner, a review, and a history.</p>
+    <p><strong>Bob:</strong> But anyone can write one. How do they stop the junk?</p>
+    <p><strong>Alice:</strong> Three tiers. Picture a restaurant: chalkboard specials any cook can add, the regular menu that's tested and maintained, and the set menu every guest gets. At Uber those are Domain, Core and Always-on, and the expectations for quality rise as a skill graduates.</p>
+    <p><strong>Bob:</strong> Walk me through them.</p>
+    <p><strong>Alice:</strong> Domain: any team can start its own area and publish after one peer approval and a CI check. Core: widely used skills, recommended, tested and maintained by a team, and the platform team reviews every change.</p>
+    <p><strong>Bob:</strong> And what about the Always-on tier?</p>
+    <p><strong>Alice:</strong> About 100 broadly useful skills that are on for everyone, so a new employee has skills on the first run: pull requests, code review, tool access, data analysis, and chat.</p>
+    <p><strong>Bob:</strong> And to move up a tier?</p>
+    <p><strong>Alice:</strong> To graduate a skill, they run their eval system plus a set of quality and usefulness checks. It echoes Hamel Husain's rhythm for evals: cheap ones on every code change, costlier ones on a set cadence.</p>
+    <p><strong>Bob:</strong> Next problem. Engineers don't all use the same agent, right?</p>
+    <p><strong>Alice:</strong> Right, and Uber calls that part of its strategy, because people pick the agent that suits the task. The catch: each agent defines and installs skills differently. Even the open spec warns that support for some fields may vary between agent implementations.</p>
+    <p><strong>Bob:</strong> So you'd package every skill again for each agent?</p>
+    <p><strong>Alice:</strong> That's what aifx avoids, their command-line tool. It's like a universal travel adapter: one plug, any socket. You add a skill or a plugin once, and aifx applies it to whichever agent starts next, Claude Code, Codex or OpenCode.</p>
+    <p><strong>Bob:</strong> And who decides which skills I get?</p>
+    <p><strong>Alice:</strong> Layers. Aifx merges company defaults, a team or program, the repository, the working directory, the user, and a local override. Later layers only add plugins, so a repository can declare the plugins everyone working in it needs.</p>
+    <p><strong>Bob:</strong> With thousands of skills, how do I find the one I need?</p>
+    <p><strong>Alice:</strong> Imagine a library's card catalogue, sorted by what readers actually borrow. Uber has a find-skills skill that finds a quality skill for your workflow, and it ranks skills with evals and run counts into a quality score. You can even ask: "Give me the skills my peers are using that I'm not."</p>
+    <p><strong>Bob:</strong> Why not show the model every tool and let it choose? Maya?</p>
+    <p><strong>Maya:</strong> Tiantian Gan and Qiyao Sun tested that on arXiv, in their RAG-MCP paper. They write that models struggle with a growing number of external tools, due to prompt bloat and selection complexity. Retrieving only the relevant tools first more than triples tool selection accuracy: 43.13 percent versus 13.62.</p>
+    <p><strong>Bob:</strong> So the catalogue beats a pile of books on the floor.</p>
+    <p><strong>Maya:</strong> Exactly. Like a good catalogue, it also cuts prompt tokens, by over 50 percent in their tests.</p>
+    <p><strong>Bob:</strong> And how does Uber know which skills people use?</p>
+    <p><strong>Alice:</strong> OpenTelemetry in agent hooks. Each event records the skill, its version, and whether the agent chose it or the user typed its command, and carries no prompt text and no file contents. Hamel calls logging your traces a prerequisite for human and model-based eval.</p>
+    <p><strong>Bob:</strong> Which brings us to the title. How do you eval a skill?</p>
+    <p><strong>Alice:</strong> It starts with a spec: the skill's goal, its outputs, the tool actions required or forbidden, and the agents and models it targets. Their authoring tool, Skill Workshop, compiles the skill file and its test prompts from that spec, and recompiles them when a model or an agent changes.</p>
+    <p><strong>Bob:</strong> And there's a linter?</p>
+    <p><strong>Alice:</strong> Pass or fail. Steps are numbered with one objective each, and every step checks its result before the next. The skill needs an error recovery table of failures and fixes, where "Try again" doesn't count, and the open spec asks scripts to include helpful error messages too.</p>
+    <p><strong>Bob:</strong> Shame. That's my whole debugging strategy.</p>
+    <p><strong>Alice:</strong> Then the evals. Their guidance is about 5 percent golden cases with a fixed input and expected output, 80 percent real prompts graded on trajectory, and 15 percent judged by the author.</p>
+    <p><strong>Bob:</strong> Trajectory meaning what?</p>
+    <p><strong>Alice:</strong> Picture a driving test. The examiner checks where you parked, but also whether you checked your mirrors in the right order. Trajectory means whether the agent used the right skills and tools in the right order.</p>
+    <p><strong>Bob:</strong> Where do those tests run?</p>
+    <p><strong>Alice:</strong> In three clean setups: Minion, their background agent platform; AES, a managed agent sandbox; and devpods, remote development machines. The clean room catches skills that expected certain file paths, cached documents, or certain OS tooling.</p>
+    <p><strong>Bob:</strong> The classic "it works on my machine".</p>
+    <p><strong>Alice:</strong> Then a surprise: evals that pass 70 to 90 percent of runs can be more useful than ones that pass 100. Hamel Husain says it in "Your AI Product Needs Evals" too: you don't necessarily need a 100 percent pass rate, it's a product decision.</p>
+    <p><strong>Bob:</strong> Why would a perfect score be bad?</p>
+    <p><strong>Alice:</strong> A 100 percent pass rate may mean an eval is missing meaningful changes in the answer. Answers vary, and judges can too.</p>
+    <p><strong>Bob:</strong> And who's the judge?</p>
+    <p><strong>Alice:</strong> Often an LLM, but Uber says LLM-as-judge works best with a human-annotated set that authors grade repeatedly. Hamel's advice matches: track the correlation between model-based and human evaluation, to decide how much you can rely on the automatic one.</p>
+    <p><strong>Bob:</strong> That rings a bell from our Factory Engineering episode with Ben Holmes, where another agent reviews past agent conversations to score them.</p>
+    <p><strong>Alice:</strong> Same idea, and Uber adds the human anchor. On their own, they warn, agents can miss a significant hallucination when the answer otherwise follows the expected format.</p>
+    <p><strong>Bob:</strong> Does a skill always help, though?</p>
+    <p><strong>Alice:</strong> They test that with ablation. They replay real prompts once with the skill and once without, and a blind judge picks the better answer. In a majority of cases, skills made the session more successful and cost less.</p>
+    <p><strong>Bob:</strong> Give me a number.</p>
+    <p><strong>Alice:</strong> Their warehouse query skill. Without it, sessions made 13 percent more tool calls, had six times as many tool errors, and took 31 percent longer. And the answer with the skill won 87 percent of the comparisons.</p>
+    <p><strong>Bob:</strong> Six times the errors. Ouch.</p>
+    <p><strong>Alice:</strong> But as models get better, more words can reduce performance, so they also test removing words. Lena, SkillsBench looked at this from outside?</p>
+    <p><strong>Lena:</strong> It did. Xiangyi Li and colleagues on arXiv built SkillsBench: 87 tasks across 8 domains, run with and without curated skills. Curated skills raised the average pass rate from 33.9 percent to 50.5.</p>
+    <p><strong>Bob:</strong> So skills work. Does size matter?</p>
+    <p><strong>Lena:</strong> Focused skills with at most three modules outperform larger or exhaustive bundles. It's like a pocket checklist versus the full manual: the one you actually read wins. And smaller models with skills can match larger models without them.</p>
+    <p><strong>Bob:</strong> But a skill isn't free either?</p>
+    <p><strong>Alice:</strong> No. It's like packing for a hike: everything you put in the backpack, you carry up every hill after. A skill's instructions, tool calls and results enter the context, and every later turn in the session pays for that context again.</p>
+    <p><strong>Bob:</strong> How do they even measure that?</p>
+    <p><strong>Alice:</strong> Agents keep a running total of the session's cost. They take the last total before the skill call and the first one after, subtract, and average per invocation.</p>
+    <p><strong>Bob:</strong> And how do they cut it?</p>
+    <p><strong>Alice:</strong> Use code over LLMs for steps that never vary. And run the skill in a worker on a cheaper model: the big tool result stays in the worker, and a tracing skill's cost per invocation fell 46 percent.</p>
+    <p><strong>Bob:</strong> Okay, what else is on the list?</p>
+    <p><strong>Alice:</strong> Run a small script when the skill loads: one search skill went from four turns to three, and its mean cost fell 32 percent. And move polling out of the main session, because in their 20 highest-spend sessions, notification turns were about a third of the spend.</p>
+    <p><strong>Bob:</strong> A third of the bill on "are we there yet?"</p>
+    <p><strong>Alice:</strong> Tool servers were worse: with more than 100 tools, definitions took 50,000 to 70,000 tokens before the user typed anything. That's the prompt bloat Maya's paper warned about. Inspired by Cloudflare's Code Mode, Uber moved those flows into scripts that call tools through a gateway.</p>
+    <p><strong>Bob:</strong> Now my favourite part. Agents report their own bugs?</p>
+    <p><strong>Alice:</strong> They do. A skill can stop working for a thousand reasons: a model upgrade, a tool changing its flags, a harness change. And an agent knows when it's struggling, say after 100 turns fighting some weird error.</p>
+    <p><strong>Bob:</strong> So what does it do about it?</p>
+    <p><strong>Alice:</strong> It's like the warning light on a car's dashboard: the car can't fix the engine, but it tells you something's wrong. Every agent has log-papercut, an always-on skill, and reports what it tried, what it expected, what happened, and what would fix it. All reports go to one dashboard, grouped by skill.</p>
+    <p><strong>Bob:</strong> That's the loop from our Knowledge Factory episode with Harrison Chase: the first piece of the factory is a way for agents to flag missing knowledge as they work.</p>
+    <p><strong>Alice:</strong> Same instinct, at Uber's scale. Agents filed thousands of papercuts in just three months, and hundreds have been fixed. Each is grouped, triaged, analyzed for its root cause, fixed, evaluated, and approved, with a person acting at two steps.</p>
+    <p><strong>Bob:</strong> So what was the best bug an agent filed?</p>
+    <p><strong>Alice:</strong> A deployment skill told the agent to pass epoch seconds where the API expects milliseconds. And a pull request skill waited for CI checks on a repository that has none, repeating the same 404 until it timed out.</p>
+    <p><strong>Bob:</strong> Waiting forever for checks that don't exist. Relatable.</p>
+    <p><strong>Alice:</strong> And humans still grade. In Fawkes, Uber's automatic software maintenance factory, a pull request that gets comments or isn't accepted feeds back into the skills that created it. Blocked ones join the eval set, which Hamel would like: he says having humans periodically evaluate at least a sample of traces is a good idea.</p>
+    <p><strong>Bob:</strong> Time to push back. Sam, you're not sold on skills?</p>
+    <p><strong>Sam:</strong> Not on trusting the agent to pick them. Jude Gao on Vercel's blog tested a docs skill on framework APIs that aren't in current model training data. In 56 percent of eval cases, the skill was never invoked, and adding it produced no improvement over baseline.</p>
+    <p><strong>Bob:</strong> So what worked instead?</p>
+    <p><strong>Sam:</strong> A compressed docs index in the project's AGENTS file, which the agent sees on every turn. It hit a 100 percent pass rate, while skills maxed out at 79 percent even when told to use them. His theory: no decision point.</p>
+    <p><strong>Bob:</strong> That's a direct hit on discovery.</p>
+    <p><strong>Sam:</strong> Partly. Gao says skills aren't useless: they work better for vertical, action-specific workflows that users explicitly trigger. But small wording tweaks produced large swings.</p>
+    <p><strong>Alice:</strong> I think that's an argument for Uber's Always-on tier: for the skills that matter most, there's no decision to get wrong.</p>
+    <p><strong>Bob:</strong> Another one: these are all Uber's own numbers.</p>
+    <p><strong>Alice:</strong> True, and they're candid. Evals are still part art and part science, and one deployment skill showed no cost drop in its first week, so they measure each skill after its change.</p>
+    <p><strong>Bob:</strong> Builder's Corner. Alice, one thing to try this week?</p>
+    <p><strong>Alice:</strong> Give your agent a papercut skill. When it struggles, it writes down what it tried, what it expected, what happened, and what would fix it.</p>
+    <p><strong>Bob:</strong> And then I read them?</p>
+    <p><strong>Alice:</strong> Once a week, and fix the skill behind the most common one. Then give that skill an error recovery table: failures and their fixes.</p>
+    <p><strong>Bob:</strong> No "try again" allowed.</p>
+    <p><strong>Alice:</strong> Takeaways, then. One: a skill is one workflow in a Markdown file, loaded in stages, so thousands cost only a short description each.</p>
+    <p><strong>Bob:</strong> Two: tier them, and make skills earn their way up with evals.</p>
+    <p><strong>Alice:</strong> Three: grade the trajectory, not just the answer, and anchor any LLM judge in human labels.</p>
+    <p><strong>Bob:</strong> And four: let the agents file the bugs.</p>
+    <p><strong>Alice:</strong> As for what's still open: evaluating workflows that run rarely, matter a lot, and are hard to judge. And whether Vercel's gap closes as models get better at tool use.</p>
+    <p><strong>Bob:</strong> Uber's next steps include A/B testing skills and compiling them per model family.</p>
+    <p><strong>Alice:</strong> And Hamel puts A/B testing at his third level, the costliest. So that's the big league.</p>
+    <p><strong>Bob:</strong> Thanks to Uber Engineering for their X article on how they evaluate agent skills. Thanks also to the Agent Skills specification, and to Hamel Husain for "Your AI Product Needs Evals".</p>
+    <p><strong>Alice:</strong> And to Tiantian Gan and Qiyao Sun for RAG-MCP, to Xiangyi Li and colleagues for SkillsBench, and to Jude Gao on Vercel's blog.</p>
+    <p><strong>Bob:</strong> The voices are AI, and every claim was checked against those sources. Go give one agent a way to file its own papercuts.</p>
+    <p><strong>Alice:</strong> That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-25_how-uber-evals-1-million-agent-skill-invocations/", "title": "Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering)", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-25_how-uber-evals-1-million-agent-skill-invocations", "episode_title": "Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering)", "show": "Build Wiz AI Show", "episode_language": "en", "category": "ai"}, "ep": {"id": "2026-11-25_how-uber-evals-1-million-agent-skill-invocations", "title": "Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering)", "summary": ["Uber Engineering explains how its agent skills marketplace grew past 5,000 skills and 1 million invocations a month.", "Alice and Bob unpack tiers, the aifx install tool, trajectory evals, ablation tests and the cost of a skill.", "Agents file their own bugs as papercuts; guests weigh benchmark evidence and Vercel's case for an AGENTS file."], "description": "Uber Engineering shows how it runs and evaluates agent skills at scale: more than 5,000 Markdown skills invoked over 1 million times in one month. Bob and Alice unpack what keeps them good, and when skills fail.\n\nIn this episode:\n- Domain, Core and Always-on tiers, and one install for every agent\n- Evals graded on trajectory, plus ablation tests\n- Agents filing their own bugs as papercuts\n\nSources: Uber Engineering (@UberEng); Specification - Agent Skills; Hamel Husain; Tiantian Gan and Qiyao Sun; Xiangyi Li et al.; Jude Gao\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "ai", "source": {"title": "How Uber Evals 1 Million Agent Skill Invocations a Month", "author": "Uber Engineering (@UberEng)", "url": "https://x.com/UberEng/status/2125008806249930999", "kind": "x"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>

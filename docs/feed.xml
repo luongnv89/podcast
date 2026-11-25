@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Wed, 25 Nov 2026 07:42:07 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 25 Nov 2026 08:01:44 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,33 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-25_how-uber-evals-1-million-agent-skill-invocations</guid>
+    <title>Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering)</title>
+    <link>https://luongnv.com/podcast/#2026-11-25_how-uber-evals-1-million-agent-skill-invocations</link>
+    <description>Uber Engineering explains how its agent skills marketplace grew past 5,000 skills and 1 million invocations a month.
+
+Alice and Bob unpack tiers, the aifx install tool, trajectory evals, ablation tests and the cost of a skill.
+
+Agents file their own bugs as papercuts; guests weigh benchmark evidence and Vercel's case for an AGENTS file.
+
+Sources:
+- How Uber Evals 1 Million Agent Skill Invocations a Month, Uber Engineering (@UberEng) (https://x.com/UberEng/status/2125008806249930999)
+- Specification - Agent Skills, Agent Skills (https://agentskills.io/specification)
+- Your AI Product Needs Evals – Hamel’s Blog, Hamel Husain (https://hamel.dev/blog/posts/evals/)
+- RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation, Tiantian Gan and Qiyao Sun (https://arxiv.org/abs/2505.03275)
+- SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks, Xiangyi Li et al. (https://arxiv.org/abs/2602.12670)
+- AGENTS.md outperforms skills in our agent evals, Jude Gao (https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Uber Engineering explains how its agent skills marketplace grew past 5,000 skills and 1 million invocations a month.</p><p>Alice and Bob unpack tiers, the aifx install tool, trajectory evals, ablation tests and the cost of a skill.</p><p>Agents file their own bugs as papercuts; guests weigh benchmark evidence and Vercel's case for an AGENTS file.</p><p>Sources:</p><ul><li>How Uber Evals 1 Million Agent Skill Invocations a Month, Uber Engineering (@UberEng): <a href="https://x.com/UberEng/status/2125008806249930999">https://x.com/UberEng/status/2125008806249930999</a></li><li>Specification - Agent Skills, Agent Skills: <a href="https://agentskills.io/specification">https://agentskills.io/specification</a></li><li>Your AI Product Needs Evals – Hamel’s Blog, Hamel Husain: <a href="https://hamel.dev/blog/posts/evals/">https://hamel.dev/blog/posts/evals/</a></li><li>RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation, Tiantian Gan and Qiyao Sun: <a href="https://arxiv.org/abs/2505.03275">https://arxiv.org/abs/2505.03275</a></li><li>SkillsBench: Benchmarking How Well Agent Skills Work Across Diverse Tasks, Xiangyi Li et al.: <a href="https://arxiv.org/abs/2602.12670">https://arxiv.org/abs/2602.12670</a></li><li>AGENTS.md outperforms skills in our agent evals, Jude Gao: <a href="https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals">https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Wed, 25 Nov 2026 07:58:30 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-25_how-uber-evals-1-million-agent-skill-invocations.mp3?v=8b14c2b6" length="15853809" type="audio/mpeg"/>
+    <itunes:duration>991</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-25_how-uber-evals-1-million-agent-skill-invocations/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-25_morning-edition-wednesday-25-november-2026</guid>
     <title>Anthropic's Siren Test, OpenAI's 9/4 Math Claim | AI Daily 25 Nov</title>
