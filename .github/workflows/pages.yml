@@ -1,5 +1,10 @@
 # Managed by the github-pages-publish skill. It deploys docs/ to GitHub Pages
 # exactly as committed: no build step and no Jekyll. Edit the site files, not this workflow.
+# Local change (issue #57): right after upload, deploy-pages can fail with
+# 'No artifacts named "github-pages" were found' because the artifact listing lags
+# behind the upload. The job waits 20 s before deploying, and if that deploy fails it
+# waits 60 s and deploys once more; it fails only when both attempts fail. Keep the
+# wait and retry if the skill regenerates this file.
 name: Deploy site to GitHub Pages
 
 on:
@@ -23,7 +28,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -31,5 +36,16 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: docs
+      - name: Wait for the artifact to be listed
+        run: sleep 20
       - id: deployment
+        name: Deploy to GitHub Pages
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+      - name: Wait before retrying the deploy
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 60
+      - id: deployment_retry
+        name: Retry deploy to GitHub Pages
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v5
