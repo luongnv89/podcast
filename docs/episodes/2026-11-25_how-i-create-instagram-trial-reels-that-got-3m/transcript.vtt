@@ -1,0 +1,421 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.737
+<v Alice>What if your idea was never the problem?
+
+2
+00:00:03.037 --> 00:00:12.160
+<v Bob>One creator says the same script, the same message and the same call to action got 30K views with one opening, and 435K with another.
+
+3
+00:00:16.460 --> 00:00:26.778
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and I'm asking the questions today. Bob, what are we unpacking?
+
+4
+00:00:27.078 --> 00:00:43.264
+<v Bob>Victor In Public's X article on how he makes Instagram Trial Reels with an AI model he calls Fable 5.2. All of it promotes his own app, one that blocks your phone until you do push-ups or drink water. His view counts are his reports, from screenshots we can't verify.
+
+5
+00:00:43.564 --> 00:00:46.893
+<v Alice>Fair warning taken. Who's helping us check him?
+
+6
+00:00:47.193 --> 00:00:57.756
+<v Bob>Meta's own trial reels announcement, and Mia Sato's report in The Verge. Plus three guests: research on attention, a policy on engagement bait, and the UK's rules on ads.
+
+7
+00:00:58.056 --> 00:01:01.222
+<v Alice>Why should a builder care about Instagram tricks?
+
+8
+00:01:01.522 --> 00:01:14.713
+<v Bob>Because this is distribution for a tiny app team. Same face, same bedroom, same iPhone, with no studio, no editor and no UGC creators. And until recently he did it while working a 9-to-5.
+
+9
+00:01:15.013 --> 00:01:18.563
+<v Alice>Start with the basics. What is a trial reel?
+
+10
+00:01:18.863 --> 00:01:29.344
+<v Bob>Meta's announcement puts it simply: trial reels will be shown to non-followers first. Your followers won't see it in their feed or Reels tab, and it stays off your main grid unless you decide to share it.
+
+11
+00:01:29.644 --> 00:01:31.440
+<v Alice>Give me a picture for that one.
+
+12
+00:01:31.740 --> 00:01:44.202
+<v Bob>Picture a shop that tests a new window display on strangers walking past, before its regulars ever see it. If nobody stops, the regulars never knew. That's a trial reel: strangers first, followers only if you choose.
+
+13
+00:01:44.502 --> 00:01:47.934
+<v Alice>Why does Victor call that a cheat code for app marketing?
+
+14
+00:01:48.234 --> 00:01:57.949
+<v Bob>Zero risk, since a bad video doesn't hurt your profile, and data from people who've never heard of you. Plus you can test the same idea several times, which he calls the whole trick.
+
+15
+00:01:58.249 --> 00:02:00.556
+<v Alice>And how fast do you see results?
+
+16
+00:02:00.856 --> 00:02:14.198
+<v Bob>Meta says that approximately 24 hours after you share one, you can view key engagement metrics. You can even let Instagram share it with your followers automatically if it performs well on views within the first 72 hours.
+
+17
+00:02:14.498 --> 00:02:22.390
+<v Alice>That rings a bell from our Zero Ad Spend episode on organic video. That founder called trial reels the key part of the whole strategy.
+
+18
+00:02:22.690 --> 00:02:27.505
+<v Bob>Same tool, and Victor pushes it further: one idea, many openings.
+
+19
+00:02:27.805 --> 00:02:29.445
+<v Alice>So what's the big insight?
+
+20
+00:02:29.745 --> 00:02:47.731
+<v Bob>In his words: "The idea is not always the problem. The hook is." One version got 30K views and another 435K, and the only thing that changed was the first two or three seconds. Facebook IQ's research opens on the same idea: every second on mobile matters.
+
+21
+00:02:48.031 --> 00:02:52.765
+<v Alice>Same video, wildly different numbers. That's maddening!
+
+22
+00:02:53.065 --> 00:03:04.788
+<v Bob>It's like a band playing the same song with two different intros: one gets the crowd dancing, the other loses them. The song is the idea, the intro is the hook. So he lets the algorithm test the hooks for him.
+
+23
+00:03:05.088 --> 00:03:10.937
+<v Alice>But why would the first seconds matter that much? Maya, you brought research on attention.
+
+24
+00:03:11.237 --> 00:03:31.638
+<v Maya>I did. Facebook IQ, in its study on capturing attention in feed, cites Fors Marsh group tests: it takes only 0.25 seconds of exposure for people to recall mobile feed content at a statistically significant rate. And on mobile, people spent on average 1.7 seconds with a piece of content.
+
+25
+00:03:31.938 --> 00:03:36.416
+<v Alice>A quarter of a second. I can't even find my phone that fast.
+
+26
+00:03:36.716 --> 00:03:52.450
+<v Maya>To be clear, it studied ads, not reels: over 850 video ads from 2014 and 2015. Still, its advice fits: video should be understandable regardless of sound, using captions or other visual techniques.
+
+27
+00:03:52.750 --> 00:03:56.462
+<v Alice>Does Instagram itself test reels on small groups first?
+
+28
+00:03:56.762 --> 00:04:10.824
+<v Bob>It does, as Mia Sato reported in The Verge. The system shows a piece of content to a small audience that may be interested, whether they follow the creator or not. Then the top performers go to a wider audience, and the process repeats.
+
+29
+00:04:11.124 --> 00:04:15.336
+<v Alice>Now the AI part. What exactly is Hook Lab?
+
+30
+00:04:15.636 --> 00:04:29.697
+<v Bob>A dedicated Claude Project with one job: help him turn ideas that already work into hooks he can record. He doesn't type "give me viral ideas" into a new chat, because that gives generic ideas that sound like they were written for everyone else.
+
+31
+00:04:29.997 --> 00:04:31.638
+<v Alice>So what goes into it?
+
+32
+00:04:31.938 --> 00:04:43.406
+<v Bob>Instructions making the model a short-form content strategist for Trial Reels: analyse viral Reels, write hooks as different as possible, and learn from his results. Plus screenshots of his app and his best Reels.
+
+33
+00:04:43.706 --> 00:04:45.677
+<v Alice>And what rules does it follow?
+
+34
+00:04:45.977 --> 00:05:00.682
+<v Bob>Every hook must work without sound, which fits Facebook IQ's point that feed viewing is sound-free. Max 8 words of on-screen text, filmable alone in his room in under 2 minutes. And the app should appear as part of the story, never like an ad.
+
+35
+00:05:00.982 --> 00:05:04.056
+<v Alice>Never like an ad. Hold that thought for later.
+
+36
+00:05:04.356 --> 00:05:14.656
+<v Bob>Will do. He says the important part isn't the first prompt, it's what happens afterwards: he corrects it every time, for example that nobody reads 15 words in 2 seconds.
+
+37
+00:05:14.956 --> 00:05:17.866
+<v Alice>So it's basically like training a new hire?
+
+38
+00:05:18.166 --> 00:05:30.179
+<v Bob>Think of it as a sparring partner who learns your style round after round. He says that after a couple of weeks, Hook Lab stopped feeling like a chatbot and started feeling like someone who knows exactly how he makes content.
+
+39
+00:05:30.479 --> 00:05:34.876
+<v Alice>Where do the ideas come from? He must keep a genius notebook.
+
+40
+00:05:35.176 --> 00:05:46.249
+<v Bob>The opposite: he starts with what's already working. He keeps a separate Instagram account just for research, follows competitor apps and creators in his niche, and scrolls Reels there 20 to 30 minutes a day.
+
+41
+00:05:46.549 --> 00:05:49.367
+<v Alice>And one viral video is enough to copy?
+
+42
+00:05:49.667 --> 00:06:06.667
+<v Bob>No, one viral video can blow up from luck or timing. A format makes his list only if it went viral more than once on different accounts, the product fits naturally, and it's recent. Copying a format that peaked a year ago, he says, is the fastest way to get 500 views.
+
+43
+00:06:06.967 --> 00:06:11.027
+<v Alice>Ouch. 500 views, the participation trophy.
+
+44
+00:06:11.327 --> 00:06:19.381
+<v Bob>Then Hook Lab analyses the best 10 to 15 Reels, with one instruction: don't focus on the topic, focus on the mechanism.
+
+45
+00:06:19.681 --> 00:06:21.452
+<v Alice>And what came out of that?
+
+46
+00:06:21.752 --> 00:06:37.916
+<v Bob>Five formats he still uses: POV with an absurd rule, a screen time reveal, a split comparison, a reaction, and holding a sign. It's like a cook who borrows a technique, not the plate: same psychological structure, completely different content.
+
+47
+00:06:38.216 --> 00:06:41.081
+<v Alice>Does Instagram care about that difference?
+
+48
+00:06:41.381 --> 00:06:54.637
+<v Bob>It does. Mia Sato reported that Instagram is removing reposted content from recommendations. It targets accounts that repost content they didn't create or enhance in a material way more than 10 times in 30 days.
+
+49
+00:06:54.937 --> 00:06:58.823
+<v Alice>Okay, so how does one idea become a real test?
+
+50
+00:06:59.123 --> 00:07:11.392
+<v Bob>One video, one idea. He follows a real one: "I have to do a push-up every time I want to use my phone." The body, the script and the call to action stay exactly the same in every version; only the hook changes.
+
+51
+00:07:11.692 --> 00:07:13.624
+<v Alice>How many hooks does he write?
+
+52
+00:07:13.924 --> 00:07:22.919
+<v Bob>Hook Lab writes 20 for the first two or three seconds, and he keeps the 5 most different. If two hooks are too similar, he says, you're not testing anything.
+
+53
+00:07:23.219 --> 00:07:26.723
+<v Alice>Why the most different, and not just the five best?
+
+54
+00:07:27.023 --> 00:07:44.533
+<v Bob>It's like a science fair experiment: change one thing, keep everything else fixed, and make the change big enough to tell apart. That's why his prompt asks for hooks as different as possible, so each Trial Reel is a real test. Facebook IQ ends on the same note: small changes can uncover what works best.
+
+55
+00:07:44.833 --> 00:07:47.651
+<v Alice>And how did the push-up idea actually do?
+
+56
+00:07:47.951 --> 00:07:57.120
+<v Bob>He reports anywhere from 30K to 435K views, just by changing the first seconds. The winner was "One push-up to use my phone".
+
+57
+00:07:57.420 --> 00:08:00.192
+<v Alice>Then he locks everything else in place?
+
+58
+00:08:00.492 --> 00:08:11.565
+<v Bob>Yes. Hook Lab writes one body of 6 to 9 seconds that works with all 5 hooks, ending with a call to action that pushes people to comment. It should feel like a creator video, not an ad.
+
+59
+00:08:11.865 --> 00:08:15.421
+<v Alice>Doesn't five versions of everything eat his whole week?
+
+60
+00:08:15.721 --> 00:08:29.105
+<v Bob>No, he batches: five ideas times five hooks in one session, so 25 videos from one afternoon. Picture a baker who bakes the whole week's bread on Sunday: the oven heats once, and every morning a loaf is ready.
+
+61
+00:08:29.405 --> 00:08:32.177
+<v Alice>And what's the trick for the filming itself?
+
+62
+00:08:32.477 --> 00:08:46.167
+<v Bob>Record the body only once per idea, then the 5 hooks back to back, in 2 or 3 different t-shirts. In editing, using Edits, Instagram's own editing app, he just swaps the first clip, and Hook Lab writes a different caption for each.
+
+63
+00:08:46.467 --> 00:08:48.948
+<v Alice>Then he dumps them all online at once?
+
+64
+00:08:49.248 --> 00:08:58.754
+<v Bob>Never. He says Instagram can treat back-to-back versions of the same idea as repetitive content and limit their reach, so he schedules in rounds, at 2 Reels a day.
+
+65
+00:08:59.054 --> 00:09:01.279
+<v Alice>By hand? With a day job?
+
+66
+00:09:01.579 --> 00:09:11.003
+<v Bob>No. He connected the scheduler Postiz to Claude, so the model schedules the batch as Trial Reels in round order, left as drafts he reviews before anything goes live.
+
+67
+00:09:11.303 --> 00:09:13.994
+<v Alice>So how does he decide what won?
+
+68
+00:09:14.294 --> 00:09:24.443
+<v Bob>Each Trial Reel runs for about 48 hours. Then he compares reach, average watch time, how many people watch past the first 3 seconds, and shares and saves.
+
+69
+00:09:24.743 --> 00:09:26.888
+<v Alice>And what counts as a hit for him?
+
+70
+00:09:27.188 --> 00:09:41.459
+<v Bob>More than 15K views means the idea works, so he makes more variations. Less than 3K on every hook, and he kills the idea for good. The winner goes to his main profile, which Meta's announcement handles with a tap to share it with everyone.
+
+71
+00:09:41.759 --> 00:09:45.134
+<v Alice>Brutal. Only one survivor per idea.
+
+72
+00:09:45.434 --> 00:09:55.369
+<v Bob>It's like a talent show where only the winner goes on tour: the rest go home, but the judges keep their notes. In his words, the winners become templates and the losers become data.
+
+73
+00:09:55.669 --> 00:10:06.115
+<v Alice>That's the spirit of our Instagram Growth Without Ads episode with Samuel Beek. He says 90 percent of your experiments will fail. And if they don't, they're not experiments.
+
+74
+00:10:06.415 --> 00:10:19.885
+<v Bob>And Victor feeds the failures back: he pastes the results into Hook Lab and asks what the top 2 hooks have in common. Then it writes 10 new hooks with that pattern. Meta's own insights compare each trial with your previous ones, too.
+
+75
+00:10:20.185 --> 00:10:23.085
+<v Alice>And how do the views turn into downloads?
+
+76
+00:10:23.385 --> 00:10:33.320
+<v Bob>Every video ends with a clear call to action, such as asking viewers to comment a word to get the link, sent by an auto-reply. He adds that comments also boost reach.
+
+77
+00:10:33.620 --> 00:10:37.123
+<v Alice>So is any of this still him, or is it all the model?
+
+78
+00:10:37.423 --> 00:10:53.528
+<v Bob>He records every video, his face, his room, his phone, which he says is why it doesn't look like an ad. It's like a chef with a sous-chef: the chopping gets delegated, the tasting never does. The model offers 20 hooks, and his instinct picks the final 5.
+
+79
+00:10:53.828 --> 00:10:58.388
+<v Alice>Time for some pushback. Sam, does that comment trick worry you?
+
+80
+00:10:58.688 --> 00:11:17.940
+<v Sam>It does. Henry Silverman and Lin Huang, on the Meta Newsroom, wrote that people dislike spammy posts that goad them into interacting with likes, shares, comments and other actions. Facebook called it engagement bait, a tactic to boost engagement for greater reach, and began demoting those posts.
+
+81
+00:11:18.240 --> 00:11:23.020
+<v Alice>But that's Facebook, and an older post. Does it apply to a reel?
+
+82
+00:11:23.320 --> 00:11:38.153
+<v Sam>Not directly: it's a Facebook News Feed policy, not an Instagram rule for reels. But they later started demoting comments which contain engagement bait too. I'd bet a comment-for-a-link prompt is exactly what a platform can decide to punish.
+
+83
+00:11:38.453 --> 00:11:42.850
+<v Alice>Theo, what about his rule that the app appears "never like an ad"?
+
+84
+00:11:43.150 --> 00:11:59.557
+<v Theo>That's where the UK's Advertising Standards Authority, the ASA, comes in, with its advice "Recognising ads: Brand-owned and paid social media". All advertising needs to be obviously identifiable: when a consumer sees an ad, it should be immediately obvious that they're looking at one.
+
+85
+00:11:59.857 --> 00:12:01.575
+<v Alice>Even on your own account?
+
+86
+00:12:01.875 --> 00:12:16.912
+<v Theo>A brand posting about its own products on its own account, under its own username, is generally considered obviously identifiable. But when it's not immediately clear that an influencer is posting about their own product, the ASA is likely to expect a prominent label upfront.
+
+87
+00:12:17.212 --> 00:12:21.017
+<v Alice>So a hook built to never look like an ad cuts against that.
+
+88
+00:12:21.317 --> 00:12:32.564
+<v Theo>In the UK it can, because it's not enough if people have to watch the whole thing to understand the commercial intent. To be fair, this is advice from the CAP Executive, not legal advice, and it's one country's rules.
+
+89
+00:12:32.864 --> 00:12:35.150
+<v Alice>And is zero risk really zero?
+
+90
+00:12:35.450 --> 00:12:49.020
+<v Bob>Not quite. Meta notes that some followers may still see a trial reel outside their feed, for example when someone shares it in a direct message. And his warning about repetitive content is his own reading; he doesn't cite Instagram for it.
+
+91
+00:12:49.320 --> 00:12:53.543
+<v Alice>Builder's Corner. Bob, what's one thing to try this week?
+
+92
+00:12:53.843 --> 00:13:05.264
+<v Bob>Take one idea and lock the body and the call to action. Record the body once, then record 5 hooks that are as different as possible, and post them as trial reels, never two versions back to back.
+
+93
+00:13:05.564 --> 00:13:07.581
+<v Alice>And what do I measure afterwards?
+
+94
+00:13:07.881 --> 00:13:18.235
+<v Bob>After about 48 hours, compare views, average watch time and how many people watch past the first 3 seconds. Then write down what the top 2 hooks have in common.
+
+95
+00:13:18.535 --> 00:13:22.165
+<v Alice>And if every single hook flops, at least I've got data.
+
+96
+00:13:22.465 --> 00:13:28.906
+<v Bob>Takeaways. One: trial reels go to non-followers first, so a flop doesn't hurt your profile.
+
+97
+00:13:29.206 --> 00:13:33.859
+<v Alice>Two: when an idea flops, test the hook before you blame the idea.
+
+98
+00:13:34.159 --> 00:13:41.191
+<v Bob>Three: give your AI assistant standing rules, and correct it every time it misses, so it learns how you work.
+
+99
+00:13:41.491 --> 00:13:46.225
+<v Alice>And four: make it clear when it's an ad, and go easy on comment bait.
+
+100
+00:13:46.525 --> 00:13:57.865
+<v Bob>As for what's still open: does a hook that wins with strangers also win with your followers? Meta says creators report fresh ideas doing well with both. But that's what creators report, not published data.
+
+101
+00:13:58.165 --> 00:14:03.967
+<v Alice>And how long a format keeps working, if one that peaked a year ago only gets 500 views.
+
+102
+00:14:04.267 --> 00:14:13.692
+<v Bob>Thanks to Victor In Public for his X article on Instagram Trial Reels and his Hook Lab. Thanks also to Meta for its trial reels announcement, and to Mia Sato at The Verge.
+
+103
+00:14:13.992 --> 00:14:25.929
+<v Alice>And to Facebook IQ for its study on attention in feed, and to Henry Silverman and Lin Huang for their post on engagement bait. Plus the Advertising Standards Authority for its advice on recognising ads.
+
+104
+00:14:26.229 --> 00:14:34.539
+<v Bob>The voices are AI, and every claim was checked against those sources. Go test one idea with five very different hooks.
+
+105
+00:14:34.839 --> 00:14:40.385
+<v Alice>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

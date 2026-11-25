@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Wed, 25 Nov 2026 08:01:44 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 25 Nov 2026 17:25:22 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,33 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-25_how-i-create-instagram-trial-reels-that-got-3m</guid>
+    <title>Instagram Trial Reels: Testing Hooks with AI (Victor In Public)</title>
+    <link>https://luongnv.com/podcast/#2026-11-25_how-i-create-instagram-trial-reels-that-got-3m</link>
+    <description>Victor In Public's workflow for Instagram Trial Reels: one idea, a locked body and five very different hooks, written with an AI assistant he calls Hook Lab.
+
+Bob explains trial reels, batch filming and how he picks winners, with Meta's announcement and The Verge on how Instagram tests reels.
+
+Guests bring attention research, Facebook's stance on engagement bait and the UK rules on making ads obvious.
+
+Sources:
+- How I Create Instagram Trial Reels That Got +3M views/week Using Fable 5.2, Victor In Public (@victorinpublic) (https://x.com/victorinpublic/status/2125579409327280633)
+- Test Content With Non-Followers Using Trial Reels, Meta (https://about.fb.com/news/2024/12/trial-reels-try-content-non-followers-first-see-what-perfoms-best)
+- Instagram’s updated algorithm prioritizes original content instead of rip-offs, Mia Sato (https://www.theverge.com/2024/4/30/24144571/instagram-algorithm-ranking-recommendations-reposted-content)
+- Capturing Attention in Feed: The Science Behind Effective Video Creative, Facebook IQ (https://www.facebook.com/business/news/insights/capturing-attention-feed-video-creative)
+- Fighting Engagement Bait on Facebook, Henry Silverman and Lin Huang (https://about.fb.com/news/2017/12/news-feed-fyi-fighting-engagement-bait-on-facebook)
+- Recognising ads: Brand-owned and paid social media, Advertising Standards Authority (https://www.asa.org.uk/advice-online/recognising-ads-brand-owned-and-paid-social-media.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Victor In Public's workflow for Instagram Trial Reels: one idea, a locked body and five very different hooks, written with an AI assistant he calls Hook Lab.</p><p>Bob explains trial reels, batch filming and how he picks winners, with Meta's announcement and The Verge on how Instagram tests reels.</p><p>Guests bring attention research, Facebook's stance on engagement bait and the UK rules on making ads obvious.</p><p>Sources:</p><ul><li>How I Create Instagram Trial Reels That Got +3M views/week Using Fable 5.2, Victor In Public (@victorinpublic): <a href="https://x.com/victorinpublic/status/2125579409327280633">https://x.com/victorinpublic/status/2125579409327280633</a></li><li>Test Content With Non-Followers Using Trial Reels, Meta: <a href="https://about.fb.com/news/2024/12/trial-reels-try-content-non-followers-first-see-what-perfoms-best">https://about.fb.com/news/2024/12/trial-reels-try-content-non-followers-first-see-what-perfoms-best</a></li><li>Instagram’s updated algorithm prioritizes original content instead of rip-offs, Mia Sato: <a href="https://www.theverge.com/2024/4/30/24144571/instagram-algorithm-ranking-recommendations-reposted-content">https://www.theverge.com/2024/4/30/24144571/instagram-algorithm-ranking-recommendations-reposted-content</a></li><li>Capturing Attention in Feed: The Science Behind Effective Video Creative, Facebook IQ: <a href="https://www.facebook.com/business/news/insights/capturing-attention-feed-video-creative">https://www.facebook.com/business/news/insights/capturing-attention-feed-video-creative</a></li><li>Fighting Engagement Bait on Facebook, Henry Silverman and Lin Huang: <a href="https://about.fb.com/news/2017/12/news-feed-fyi-fighting-engagement-bait-on-facebook">https://about.fb.com/news/2017/12/news-feed-fyi-fighting-engagement-bait-on-facebook</a></li><li>Recognising ads: Brand-owned and paid social media, Advertising Standards Authority: <a href="https://www.asa.org.uk/advice-online/recognising-ads-brand-owned-and-paid-social-media.html">https://www.asa.org.uk/advice-online/recognising-ads-brand-owned-and-paid-social-media.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Wed, 25 Nov 2026 17:22:10 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-25_how-i-create-instagram-trial-reels-that-got-3m.mp3?v=7cf94a42" length="14192834" type="audio/mpeg"/>
+    <itunes:duration>887</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-25_how-i-create-instagram-trial-reels-that-got-3m/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-25_how-uber-evals-1-million-agent-skill-invocations</guid>
     <title>Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering)</title>

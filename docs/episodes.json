@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-25T08:01:43Z",
+  "updated": "2026-11-25T17:25:22Z",
   "episodes": [
+    {
+      "id": "2026-11-25_how-i-create-instagram-trial-reels-that-got-3m",
+      "title": "Instagram Trial Reels: Testing Hooks with AI (Victor In Public)",
+      "summary": [
+        "Victor In Public's workflow for Instagram Trial Reels: one idea, a locked body and five very different hooks, written with an AI assistant he calls Hook Lab.",
+        "Bob explains trial reels, batch filming and how he picks winners, with Meta's announcement and The Verge on how Instagram tests reels.",
+        "Guests bring attention research, Facebook's stance on engagement bait and the UK rules on making ads obvious."
+      ],
+      "category": "marketing",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-25T17:22:10Z",
+      "duration_s": 886.985,
+      "size_bytes": 14192834,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-25_how-i-create-instagram-trial-reels-that-got-3m.mp3",
+      "audio_sha256": "7cf94a42d92bad1e120f7521cae3d29fd745d80e43f498b5d3e70521ea2605cf",
+      "transcript": "episodes/2026-11-25_how-i-create-instagram-trial-reels-that-got-3m/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "How I Create Instagram Trial Reels That Got +3M views/week Using Fable 5.2",
+        "author": "Victor In Public (@victorinpublic)",
+        "url": "https://x.com/victorinpublic/status/2125579409327280633",
+        "published": "2026-11-25T13:16:37Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "How I Create Instagram Trial Reels That Got +3M views/week Using Fable 5.2",
+          "author": "Victor In Public (@victorinpublic)",
+          "url": "https://x.com/victorinpublic/status/2125579409327280633"
+        },
+        {
+          "title": "Test Content With Non-Followers Using Trial Reels",
+          "author": "Meta",
+          "url": "https://about.fb.com/news/2024/12/trial-reels-try-content-non-followers-first-see-what-perfoms-best"
+        },
+        {
+          "title": "Instagram’s updated algorithm prioritizes original content instead of rip-offs",
+          "author": "Mia Sato",
+          "url": "https://www.theverge.com/2024/4/30/24144571/instagram-algorithm-ranking-recommendations-reposted-content"
+        },
+        {
+          "title": "Capturing Attention in Feed: The Science Behind Effective Video Creative",
+          "author": "Facebook IQ",
+          "url": "https://www.facebook.com/business/news/insights/capturing-attention-feed-video-creative"
+        },
+        {
+          "title": "Fighting Engagement Bait on Facebook",
+          "author": "Henry Silverman and Lin Huang",
+          "url": "https://about.fb.com/news/2017/12/news-feed-fyi-fighting-engagement-bait-on-facebook"
+        },
+        {
+          "title": "Recognising ads: Brand-owned and paid social media",
+          "author": "Advertising Standards Authority",
+          "url": "https://www.asa.org.uk/advice-online/recognising-ads-brand-owned-and-paid-social-media.html"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "Capturing Attention in Feed: The Science Behind Effective Video Creative"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Fighting Engagement Bait on Facebook"
+          ]
+        },
+        {
+          "name": "Theo",
+          "presents": [
+            "Recognising ads: Brand-owned and paid social media"
+          ]
+        }
+      ],
+      "description": "Victor In Public tests Instagram Trial Reels hooks with an AI Hook Lab: one idea, one locked body, five very different openings. We check it against Meta's announcement, attention research and the rules on engagement bait and ads.\n\nIn this episode:\n- Why trial reels go to non-followers first\n- Writing 20 hooks per idea and keeping the 5 most different\n- Comment bait and making clear that ads are ads\n\nSources: Victor In Public (@victorinpublic); Meta; Mia Sato; Facebook IQ; Henry Silverman and Lin Huang; Advertising Standards Authority\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Instagram Trial Reels Testing Hooks with AI (Victor In Public) (2026-11-25).mp3"
+    },
     {
       "id": "2026-11-25_how-uber-evals-1-million-agent-skill-invocations",
       "title": "Agent Skills: How Uber Evals 1 Million Invocations (Uber Engineering)",
