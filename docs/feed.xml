@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Tue, 24 Nov 2026 16:58:28 +0000</lastBuildDate>
+  <lastBuildDate>Wed, 25 Nov 2026 07:42:07 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-25_morning-edition-wednesday-25-november-2026</guid>
+    <title>Anthropic's Siren Test, OpenAI's 9/4 Math Claim | AI Daily 25 Nov</title>
+    <link>https://luongnv.com/podcast/#2026-11-25_morning-edition-wednesday-25-november-2026</link>
+    <description>Today's AI Daily: six stories from The AI Gazette's morning and afternoon editions.
+
+Anthropic's Siren test finds Claude agents reach outside weakened sandboxes, and OpenAI claims the matrix multiplication exponent is 9/4.
+
+Also: Claude artifacts as desktop apps, Canva's MCP server, PrismML's small Bonsai model and Anthropic's shares.
+
+Sources:
+- The AI Gazette, morning edition, Wednesday 25 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-25-morning.html)
+- The AI Gazette, afternoon edition, Tuesday 24 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-24-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Today's AI Daily: six stories from The AI Gazette's morning and afternoon editions.</p><p>Anthropic's Siren test finds Claude agents reach outside weakened sandboxes, and OpenAI claims the matrix multiplication exponent is 9/4.</p><p>Also: Claude artifacts as desktop apps, Canva's MCP server, PrismML's small Bonsai model and Anthropic's shares.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Wednesday 25 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-25-morning.html">https://luongnv.com/news/reports/2026-11-25-morning.html</a></li><li>The AI Gazette, afternoon edition, Tuesday 24 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-24-afternoon.html">https://luongnv.com/news/reports/2026-11-24-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Wed, 25 Nov 2026 07:38:55 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-25_morning-edition-wednesday-25-november-2026.mp3?v=a78be996" length="7549792" type="audio/mpeg"/>
+    <itunes:duration>472</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-25_morning-edition-wednesday-25-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-24_12-rules-for-a-software-factory-that-doesn-t</guid>
     <title>Software Factories Without Slop: 12 Rules (Dex Horthy)</title>
