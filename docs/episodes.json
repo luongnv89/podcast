@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-25T17:25:22Z",
+  "updated": "2026-11-26T07:41:53Z",
   "episodes": [
+    {
+      "id": "2026-11-26_morning-edition-thursday-26-november-2026",
+      "title": "Anthropic's API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov",
+      "summary": [
+        "AI Daily for Thursday 26 November, from The AI Gazette's morning and afternoon editions.",
+        "Claude agents helped move Anthropic's Messages API to Rust, and state hackers adopt the ARTEX attack agent.",
+        "Also: KRAFTON's open Raon-1 mini, AI math proofs, SpaceX's Starmind permit and S&P's watch on Nvidia."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-26T07:38:43Z",
+      "duration_s": 442.528,
+      "size_bytes": 7081683,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-26_morning-edition-thursday-26-november-2026.mp3",
+      "audio_sha256": "faa7b59bcb27a37e6929879f5bea57aa1f197d6c90a1bb567e07c06e7a1742f0",
+      "transcript": "episodes/2026-11-26_morning-edition-thursday-26-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Thursday 26 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-26-morning.html",
+        "published": "2026-11-25",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Thursday 26 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-26-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Wednesday 25 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-25-afternoon.html"
+        }
+      ],
+      "description": "Anthropic says Claude agents helped move its Messages API from Python to Rust on live traffic, while the FCC authorised SpaceX to deploy up to 1 million Starmind data-centre satellites. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Salt Typhoon and North Korean groups add the ARTEX attack agent\n- KRAFTON's open Raon-1 mini and new Lean proofs of the Riemann hypothesis\n- S&P puts Nvidia's AA rating on CreditWatch negative\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Anthropic's API Goes Rust, SpaceX Gets 1M Satellites AI Daily 26 Nov (2026-11-26).mp3"
+    },
     {
       "id": "2026-11-25_how-i-create-instagram-trial-reels-that-got-3m",
       "title": "Instagram Trial Reels: Testing Hooks with AI (Victor In Public)",

@@ -1,0 +1,201 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.908
+<v Bob>Claude agents helped move Anthropic's main API to Rust. On live traffic!
+
+2
+00:00:05.208 --> 00:00:12.113
+<v Alice>And SpaceX just got a green light for up to 1 million data centre satellites. In space.
+
+3
+00:00:16.413 --> 00:00:26.511
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and this is our daily edition: the AI news of the last day, in about eight minutes.
+
+4
+00:00:26.811 --> 00:00:35.422
+<v Alice>And I'm Alice. Every story comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories today.
+
+5
+00:00:35.722 --> 00:00:41.141
+<v Bob>Six stories. Rust, rockets and the Riemann hypothesis. Busy Thursday!
+
+6
+00:00:41.441 --> 00:00:45.328
+<v Bob>Lead story, for the builders. What did Anthropic do?
+
+7
+00:00:45.628 --> 00:01:06.156
+<v Alice>Its engineering team explained how it moved the Messages API, the main way customers and apps like Claude Code reach Claude, from Python to Rust. Without taking the service offline. Traffic grew roughly 1,800 times since early 2024, and the Rust version uses about 70 percent less CPU per request.
+
+8
+00:01:06.456 --> 00:01:08.214
+<v Bob>And Claude wrote the code?
+
+9
+00:01:08.514 --> 00:01:20.957
+<v Alice>A first version of the core path in about a week. But checking it was the hard part. In April it passed about 98 percent of its tests, yet only about a quarter of real inputs matched on production traffic.
+
+10
+00:01:21.257 --> 00:01:25.062
+<v Bob>Ninety eight percent green, and still broken. Classic.
+
+11
+00:01:25.362 --> 00:01:49.948
+<v Alice>Classic! So they ran live requests through both versions and turned each difference into a small record for agents to fix. Think of it as two cooks making the same dish side by side, with a taster flagging every plate that comes out different. In plain terms: the old system is the recipe, and every mismatch becomes a ticket. Matching reached 99.6 percent by August.
+
+12
+00:01:50.248 --> 00:01:53.705
+<v Bob>Story two is security. And it's serious.
+
+13
+00:01:54.005 --> 00:02:12.827
+<v Alice>Microsoft Threat Intelligence says China's Salt Typhoon and Crystal Typhoon, and North Korea's Onyx Sleet and Pearl Sleet, have added ARTEX to their tooling. ARTEX is an AI-driven penetration-testing platform: a planner agent, worker agents with a real shell, and a reporter agent.
+
+14
+00:02:13.127 --> 00:02:14.574
+<v Bob>What makes it dangerous?
+
+15
+00:02:14.874 --> 00:02:34.080
+<v Alice>No new techniques, Microsoft says, but it can reach persistent, privileged access in minutes. Imagine a burglar who isn't smarter than others, just tries every door in the street in seconds. Same old tricks, at machine speed. And that's also the clue: bursts of varied requests and retries.
+
+16
+00:02:34.380 --> 00:02:36.896
+<v Bob>And Salt Typhoon is the telecom group?
+
+17
+00:02:37.196 --> 00:02:49.302
+<v Alice>The Record notes US agencies believe it breached at least nine telecommunications companies in 2024. The attribution is Microsoft's own, with no detail on how each group used the tool.
+
+18
+00:02:49.602 --> 00:02:52.996
+<v Bob>Story three, a model. From a games company?
+
+19
+00:02:53.296 --> 00:03:12.520
+<v Alice>Yes! KRAFTON, the company behind PUBG, released Raon-1 mini with open weights on Hugging Face, Apache 2.0 licence. It's a mixture-of-experts model with 28.8 billion parameters, 4.3 billion active per token, trained from scratch.
+
+20
+00:03:12.820 --> 00:03:15.383
+<v Bob>Mixture of experts, for the rest of us?
+
+21
+00:03:15.683 --> 00:03:29.531
+<v Alice>It's like a big hospital. Lots of specialists on staff, but for each patient only a few are called in. So the model is large, yet each word only wakes a small part of it. And you pick one of six reasoning effort levels.
+
+22
+00:03:29.831 --> 00:03:31.003
+<v Bob>Is it any good?
+
+23
+00:03:31.303 --> 00:03:45.836
+<v Alice>On KRAFTON's own table it scores 72.3 on GDPVal, best among similar-sized mixture-of-experts models it compares. But those scores are unverified, and a dense Qwen model shown for reference scores higher.
+
+24
+00:03:46.136 --> 00:03:48.334
+<v Bob>Story four. Math again?
+
+25
+00:03:48.634 --> 00:04:10.027
+<v Alice>Math again! A GitHub repository based on Levent Alpöge's proof posts a far shorter Lean proof of the Riemann hypothesis, and its generalisation for Dirichlet L-functions. Its README says it was produced with colleagues at Anthropic, and Claude. A readable edition is about 300,000 lines, a compact one about 76,000.
+
+26
+00:04:10.327 --> 00:04:12.324
+<v Bob>Lean, in plain words?
+
+27
+00:04:12.624 --> 00:04:27.820
+<v Alice>Think of it as a spell checker for logic. It can't tell you if the essay is beautiful, but it won't let one wrong step through. And Google posted six papers its Cogentic agents wrote on Gemini 4, one claiming a new factoring algorithm.
+
+28
+00:04:28.120 --> 00:04:29.406
+<v Bob>Has anyone checked them?
+
+29
+00:04:29.706 --> 00:04:40.187
+<v Alice>Not by hand. The Riemann proof has passed machine checks only, with no paper. Google's papers aren't peer reviewed, and their Lean proofs are promised but not yet public.
+
+30
+00:04:40.487 --> 00:04:44.373
+<v Bob>Story five, the big industry one. Data centres in orbit?
+
+31
+00:04:44.673 --> 00:04:58.695
+<v Alice>The FCC granted SpaceX authorisation to deploy up to 1 million orbital compute modules, the Starmind constellation. The FCC calls it the first authorisation in US history for data centres in space.
+
+32
+00:04:58.995 --> 00:05:01.988
+<v Bob>A million. That's a lot of rooftops.
+
+33
+00:05:02.288 --> 00:05:15.752
+<v Alice>Imagine getting a building permit for a whole city of server rooms. The permit doesn't build the city, or pay for it. The Gazette puts it well: compute is heading for orbit on paper first, while the economics remain unproven.
+
+34
+00:05:16.052 --> 00:05:17.035
+<v Bob>Deadlines?
+
+35
+00:05:17.335 --> 00:05:26.759
+<v Alice>Ars reports SpaceX has seven years to deploy one operational Starmind satellite, and until November 2035 for 100,000.
+
+36
+00:05:27.059 --> 00:05:34.858
+<v Bob>Last story, an update. On AI Daily of 24 November, our headline was Nvidia Reinstates Huang. What now?
+
+37
+00:05:35.158 --> 00:05:49.087
+<v Alice>S and P Global Ratings placed Nvidia's AA ratings on CreditWatch negative. It cited board independence and key man risk, and said the CEO's departure and return don't sufficiently answer its questions on board oversight.
+
+38
+00:05:49.387 --> 00:05:50.847
+<v Bob>Is that a downgrade?
+
+39
+00:05:51.147 --> 00:06:02.185
+<v Alice>Not yet. A CreditWatch isn't a downgrade. Think of it as a yellow card, not a red one. S and P expects to decide within 90 days, and to limit any cut to one notch.
+
+40
+00:06:02.485 --> 00:06:05.605
+<v Bob>Counterpoints. What should we doubt today?
+
+41
+00:06:05.905 --> 00:06:17.965
+<v Alice>Self-reported numbers. The Rust figures are Anthropic's own, unchecked by anyone outside. The Raon scores are KRAFTON's. And none of the new math has been read through by a mathematician.
+
+42
+00:06:18.265 --> 00:06:22.790
+<v Bob>And Starmind's deadlines come from Ars, not the FCC's release.
+
+43
+00:06:23.090 --> 00:06:25.989
+<v Bob>Builder's Corner. One thing to try this week?
+
+44
+00:06:26.289 --> 00:06:40.346
+<v Alice>Rewriting a live service with agents? Shadow real requests through old and new versions, and log every difference as a small record. Then keep a memory loop: turn each review correction into a rule, a test or a lint.
+
+45
+00:06:40.646 --> 00:06:41.895
+<v Bob>Takeaways in three?
+
+46
+00:06:42.195 --> 00:06:53.488
+<v Alice>One: agents are taking on work where checking is the hard part. Two: attack agents are now in state hackers' toolkits. Three: governance has become a credit question.
+
+47
+00:06:53.788 --> 00:06:58.051
+<v Bob>What I'll watch: does a human mathematician read that Riemann proof?
+
+48
+00:06:58.351 --> 00:07:02.365
+<v Alice>And what S and P decides after it meets Nvidia's board.
+
+49
+00:07:02.665 --> 00:07:09.651
+<v Alice>Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's. Thanks to them for the reporting.
+
+50
+00:07:09.951 --> 00:07:15.928
+<v Bob>See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

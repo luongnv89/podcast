@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anthropic&#x27;s API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov | Build Wiz AI Show</title>
+<meta name="description" content="Anthropic says Claude agents helped move its Messages API from Python to Rust on live traffic, while the FCC authorised SpaceX to deploy up to 1 million Starmind data-centre satellites. Bob and Alice cover the AI news of the last day.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-26_morning-edition-thursday-26-november-2026/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-26_morning-edition-thursday-26-november-2026/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="Anthropic&#x27;s API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov">
+<meta property="og:description" content="Anthropic says Claude agents helped move its Messages API from Python to Rust on live traffic, while the FCC authorised SpaceX to deploy up to 1 million Starmind data-centre satellites. Bob and Alice cover the AI news of the last day.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-26_morning-edition-thursday-26-november-2026/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-26_morning-edition-thursday-26-november-2026.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Anthropic&#x27;s API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov">
+<meta name="twitter:description" content="Anthropic says Claude agents helped move its Messages API from Python to Rust on live traffic, while the FCC authorised SpaceX to deploy up to 1 million Starmind data-centre satellites. Bob and Alice cover the AI news of the last day.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "Anthropic's API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov",
+ "description": "Anthropic says Claude agents helped move its Messages API from Python to Rust on live traffic, while the FCC authorised SpaceX to deploy up to 1 million Starmind data-centre satellites. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Salt Typhoon and North Korean groups add the ARTEX attack agent\n- KRAFTON's open Raon-1 mini and new Lean proofs of the Riemann hypothesis\n- S\u0026P puts Nvidia's AA rating on CreditWatch negative\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-26_morning-edition-thursday-26-november-2026/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-26_morning-edition-thursday-26-november-2026.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT7M23S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-26T07:38:43Z",
+ "timeRequired": "PT7M23S",
+ "isBasedOn": "https://luongnv.com/news/reports/2026-11-26-morning.html"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">Anthropic&#x27;s API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov</h1>
+  <p class="meta"><span class="dur">7 min</span> · <time datetime="2026-11-26T07:38:43Z">2026-11-26</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-26_morning-edition-thursday-26-november-2026.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">Anthropic says Claude agents helped move its Messages API from Python to Rust on live traffic, while the FCC authorised SpaceX to deploy up to 1 million Starmind data-centre satellites. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- Salt Typhoon and North Korean groups add the ARTEX attack agent
+- KRAFTON&#x27;s open Raon-1 mini and new Lean proofs of the Riemann hypothesis
+- S&amp;P puts Nvidia&#x27;s AA rating on CreditWatch negative
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-26_morning-edition-thursday-26-november-2026">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-26_morning-edition-thursday-26-november-2026.mp3" download="Build Wiz AI Show - Anthropic&#x27;s API Goes Rust, SpaceX Gets 1M Satellites AI Daily 26 Nov (2026-11-26).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="Anthropic&#x27;s API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="Anthropic says Claude agents helped move its Messages API from Python to Rust on live traffic, while the FCC authorised SpaceX to deploy up to 1 million Starmind data-centre satellites. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- Salt Typhoon and North Korean groups add the ARTEX attack agent
+- KRAFTON&#x27;s open Raon-1 mini and new Lean proofs of the Riemann hypothesis
+- S&amp;P puts Nvidia&#x27;s AA rating on CreditWatch negative
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://luongnv.com/news/reports/2026-11-26-morning.html" rel="noopener">The AI Gazette, morning edition, Thursday 26 November 2026</a> by The AI Gazette</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> Claude agents helped move Anthropic's main API to Rust. On live traffic!</p>
+    <p><strong>Alice:</strong> And SpaceX just got a green light for up to 1 million data centre satellites. In space.</p>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and this is our daily edition: the AI news of the last day, in about eight minutes.</p>
+    <p><strong>Alice:</strong> And I'm Alice. Every story comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories today.</p>
+    <p><strong>Bob:</strong> Six stories. Rust, rockets and the Riemann hypothesis. Busy Thursday! Lead story, for the builders. What did Anthropic do?</p>
+    <p><strong>Alice:</strong> Its engineering team explained how it moved the Messages API, the main way customers and apps like Claude Code reach Claude, from Python to Rust. Without taking the service offline. Traffic grew roughly 1,800 times since early 2024, and the Rust version uses about 70 percent less CPU per request.</p>
+    <p><strong>Bob:</strong> And Claude wrote the code?</p>
+    <p><strong>Alice:</strong> A first version of the core path in about a week. But checking it was the hard part. In April it passed about 98 percent of its tests, yet only about a quarter of real inputs matched on production traffic.</p>
+    <p><strong>Bob:</strong> Ninety eight percent green, and still broken. Classic.</p>
+    <p><strong>Alice:</strong> Classic! So they ran live requests through both versions and turned each difference into a small record for agents to fix. Think of it as two cooks making the same dish side by side, with a taster flagging every plate that comes out different. In plain terms: the old system is the recipe, and every mismatch becomes a ticket. Matching reached 99.6 percent by August.</p>
+    <p><strong>Bob:</strong> Story two is security. And it's serious.</p>
+    <p><strong>Alice:</strong> Microsoft Threat Intelligence says China's Salt Typhoon and Crystal Typhoon, and North Korea's Onyx Sleet and Pearl Sleet, have added ARTEX to their tooling. ARTEX is an AI-driven penetration-testing platform: a planner agent, worker agents with a real shell, and a reporter agent.</p>
+    <p><strong>Bob:</strong> What makes it dangerous?</p>
+    <p><strong>Alice:</strong> No new techniques, Microsoft says, but it can reach persistent, privileged access in minutes. Imagine a burglar who isn't smarter than others, just tries every door in the street in seconds. Same old tricks, at machine speed. And that's also the clue: bursts of varied requests and retries.</p>
+    <p><strong>Bob:</strong> And Salt Typhoon is the telecom group?</p>
+    <p><strong>Alice:</strong> The Record notes US agencies believe it breached at least nine telecommunications companies in 2024. The attribution is Microsoft's own, with no detail on how each group used the tool.</p>
+    <p><strong>Bob:</strong> Story three, a model. From a games company?</p>
+    <p><strong>Alice:</strong> Yes! KRAFTON, the company behind PUBG, released Raon-1 mini with open weights on Hugging Face, Apache 2.0 licence. It's a mixture-of-experts model with 28.8 billion parameters, 4.3 billion active per token, trained from scratch.</p>
+    <p><strong>Bob:</strong> Mixture of experts, for the rest of us?</p>
+    <p><strong>Alice:</strong> It's like a big hospital. Lots of specialists on staff, but for each patient only a few are called in. So the model is large, yet each word only wakes a small part of it. And you pick one of six reasoning effort levels.</p>
+    <p><strong>Bob:</strong> Is it any good?</p>
+    <p><strong>Alice:</strong> On KRAFTON's own table it scores 72.3 on GDPVal, best among similar-sized mixture-of-experts models it compares. But those scores are unverified, and a dense Qwen model shown for reference scores higher.</p>
+    <p><strong>Bob:</strong> Story four. Math again?</p>
+    <p><strong>Alice:</strong> Math again! A GitHub repository based on Levent Alpöge's proof posts a far shorter Lean proof of the Riemann hypothesis, and its generalisation for Dirichlet L-functions. Its README says it was produced with colleagues at Anthropic, and Claude. A readable edition is about 300,000 lines, a compact one about 76,000.</p>
+    <p><strong>Bob:</strong> Lean, in plain words?</p>
+    <p><strong>Alice:</strong> Think of it as a spell checker for logic. It can't tell you if the essay is beautiful, but it won't let one wrong step through. And Google posted six papers its Cogentic agents wrote on Gemini 4, one claiming a new factoring algorithm.</p>
+    <p><strong>Bob:</strong> Has anyone checked them?</p>
+    <p><strong>Alice:</strong> Not by hand. The Riemann proof has passed machine checks only, with no paper. Google's papers aren't peer reviewed, and their Lean proofs are promised but not yet public.</p>
+    <p><strong>Bob:</strong> Story five, the big industry one. Data centres in orbit?</p>
+    <p><strong>Alice:</strong> The FCC granted SpaceX authorisation to deploy up to 1 million orbital compute modules, the Starmind constellation. The FCC calls it the first authorisation in US history for data centres in space.</p>
+    <p><strong>Bob:</strong> A million. That's a lot of rooftops.</p>
+    <p><strong>Alice:</strong> Imagine getting a building permit for a whole city of server rooms. The permit doesn't build the city, or pay for it. The Gazette puts it well: compute is heading for orbit on paper first, while the economics remain unproven.</p>
+    <p><strong>Bob:</strong> Deadlines?</p>
+    <p><strong>Alice:</strong> Ars reports SpaceX has seven years to deploy one operational Starmind satellite, and until November 2035 for 100,000.</p>
+    <p><strong>Bob:</strong> Last story, an update. On AI Daily of 24 November, our headline was Nvidia Reinstates Huang. What now?</p>
+    <p><strong>Alice:</strong> S and P Global Ratings placed Nvidia's AA ratings on CreditWatch negative. It cited board independence and key man risk, and said the CEO's departure and return don't sufficiently answer its questions on board oversight.</p>
+    <p><strong>Bob:</strong> Is that a downgrade?</p>
+    <p><strong>Alice:</strong> Not yet. A CreditWatch isn't a downgrade. Think of it as a yellow card, not a red one. S and P expects to decide within 90 days, and to limit any cut to one notch.</p>
+    <p><strong>Bob:</strong> Counterpoints. What should we doubt today?</p>
+    <p><strong>Alice:</strong> Self-reported numbers. The Rust figures are Anthropic's own, unchecked by anyone outside. The Raon scores are KRAFTON's. And none of the new math has been read through by a mathematician.</p>
+    <p><strong>Bob:</strong> And Starmind's deadlines come from Ars, not the FCC's release. Builder's Corner. One thing to try this week?</p>
+    <p><strong>Alice:</strong> Rewriting a live service with agents? Shadow real requests through old and new versions, and log every difference as a small record. Then keep a memory loop: turn each review correction into a rule, a test or a lint.</p>
+    <p><strong>Bob:</strong> Takeaways in three?</p>
+    <p><strong>Alice:</strong> One: agents are taking on work where checking is the hard part. Two: attack agents are now in state hackers' toolkits. Three: governance has become a credit question.</p>
+    <p><strong>Bob:</strong> What I'll watch: does a human mathematician read that Riemann proof?</p>
+    <p><strong>Alice:</strong> And what S and P decides after it meets Nvidia's board. Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's. Thanks to them for the reporting.</p>
+    <p><strong>Bob:</strong> See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-26_morning-edition-thursday-26-november-2026/", "title": "Anthropic's API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-26_morning-edition-thursday-26-november-2026", "episode_title": "Anthropic's API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov", "show": "Build Wiz AI Show", "episode_language": "en", "category": "daily"}, "ep": {"id": "2026-11-26_morning-edition-thursday-26-november-2026", "title": "Anthropic's API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov", "summary": ["AI Daily for Thursday 26 November, from The AI Gazette's morning and afternoon editions.", "Claude agents helped move Anthropic's Messages API to Rust, and state hackers adopt the ARTEX attack agent.", "Also: KRAFTON's open Raon-1 mini, AI math proofs, SpaceX's Starmind permit and S\u0026P's watch on Nvidia."], "description": "Anthropic says Claude agents helped move its Messages API from Python to Rust on live traffic, while the FCC authorised SpaceX to deploy up to 1 million Starmind data-centre satellites. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Salt Typhoon and North Korean groups add the ARTEX attack agent\n- KRAFTON's open Raon-1 mini and new Lean proofs of the Riemann hypothesis\n- S\u0026P puts Nvidia's AA rating on CreditWatch negative\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "daily", "source": {"title": "The AI Gazette, morning edition, Thursday 26 November 2026", "author": "The AI Gazette", "url": "https://luongnv.com/news/reports/2026-11-26-morning.html", "kind": "article"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>
