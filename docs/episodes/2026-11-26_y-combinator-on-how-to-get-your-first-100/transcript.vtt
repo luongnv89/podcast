@@ -1,0 +1,205 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.117
+<v Alice>Would you rather have a thousand curious users, or ten who would pay you tomorrow?
+
+2
+00:00:05.417 --> 00:00:13.599
+<v Bob>According to one cheat sheet of Y Combinator advice, 10 customers with a burning problem beat 1,000 with a passing annoyance.
+
+3
+00:00:17.899 --> 00:00:28.252
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and Bob is walking us through a cheat sheet today. Bob, what is it?
+
+4
+00:00:28.552 --> 00:00:47.263
+<v Bob>It's an X post by Alex Vacca: a two-page cheat sheet titled "Y Combinator on how to get your first 100 customers". He presents it as Y Combinator's advice, but the post doesn't say which YC talks or articles it summarises. We didn't check it against YC's originals, so everything today is the sheet's version.
+
+5
+00:00:47.563 --> 00:00:54.724
+<v Alice>So it's Alex Vacca's summary, not YC's own words. Why should someone shipping an AI product care?
+
+6
+00:00:55.024 --> 00:01:02.358
+<v Bob>Because it covers the part before anything scales: finding the first people who pay. I think that's where a lot of AI tools stall.
+
+7
+00:01:02.658 --> 00:01:07.694
+<v Alice>First point. Can't I just hire a salesperson and get back to my model?
+
+8
+00:01:07.994 --> 00:01:23.344
+<v Bob>Think of a chef who tastes their own dish before hiring a cook: you can't hand over a recipe you've never made. The sheet says don't hire a sales team until you know how to do sales yourself. At Clever, it says, one founder had to own sales and think about it every day.
+
+9
+00:01:23.644 --> 00:01:27.020
+<v Alice>So who do I pitch first? Strangers on the internet?
+
+10
+00:01:27.320 --> 00:01:37.262
+<v Bob>Your network. The sheet says that in YC founder stories, the first 2 or 3 almost always came through their network, and conversion rates are much, much higher there.
+
+11
+00:01:37.562 --> 00:01:40.447
+<v Alice>Even my old roommate who still owes me a pizza?
+
+12
+00:01:40.747 --> 00:01:51.409
+<v Bob>Him too: message your second-degree connections before you set up outreach tools. And Brex, the sheet says, recruited its first 10 customers directly from its own YC batch.
+
+13
+00:01:51.709 --> 00:01:55.997
+<v Alice>Next on the sheet: burning problems. How do I find them?
+
+14
+00:01:56.297 --> 00:02:10.742
+<v Bob>It's like fishing where the fish are already jumping: you don't argue a fish into biting. The sheet says finding your first users is more of a search problem than a persuasion problem. Write your hypothesis: customer X has problem Y, and we help them solve it.
+
+15
+00:02:11.042 --> 00:02:15.358
+<v Alice>With AI, though, lots of people will happily chat about it for an hour.
+
+16
+00:02:15.658 --> 00:02:26.011
+<v Bob>The sheet warns about exactly that: startups without the problem aren't an easier sell just because they'll talk. If they take a really long time to decide, they're not an early adopter.
+
+17
+00:02:26.311 --> 00:02:29.304
+<v Alice>Ouch. That's half my demo calendar.
+
+18
+00:02:29.604 --> 00:02:39.829
+<v Bob>Then reach the right people by hand. The sheet says do at least 100 outreaches by hand before you automate anything. Send them yourself, because people take it way more seriously from the founder.
+
+19
+00:02:40.129 --> 00:02:49.124
+<v Alice>That echoes our episode on the one-person marketing agency, where owners can spot an AI-written personalized first line from the subject.
+
+20
+00:02:49.424 --> 00:02:59.441
+<v Bob>So skip the AI-written opener. The sheet's rules: keep it under 75 words, with one clear call to action at the end, and follow up two to four times, because people are busy.
+
+21
+00:02:59.741 --> 00:03:02.129
+<v Alice>And what reply rate should I expect?
+
+22
+00:03:02.429 --> 00:03:08.742
+<v Bob>According to the sheet, two or three replies per 100 emails is a great place to start iterating.
+
+23
+00:03:09.042 --> 00:03:12.801
+<v Alice>Say someone replies. Do I pitch them on the first call?
+
+24
+00:03:13.101 --> 00:03:25.834
+<v Bob>The sheet says don't: qualify them and book the demo, the selling comes later. Check three things: the problem, the budget and who can sign. And the best salespeople Clever's co-founder has seen listen 70 percent of the time.
+
+25
+00:03:26.134 --> 00:03:29.126
+<v Alice>Seventy percent listening? I'm in trouble.
+
+26
+00:03:29.426 --> 00:03:40.929
+<v Bob>Picture a first date: it isn't a proposal, it's finding out if there's a second date. The first call works the same way. Get to a yes or a no fast, the sheet says, because where you die is a thousand maybes.
+
+27
+00:03:41.229 --> 00:03:45.417
+<v Alice>Okay, now money. Can I give it away free to get going?
+
+28
+00:03:45.717 --> 00:03:55.176
+<v Bob>The sheet says if you don't charge them, they're not a customer. For B2B, avoid free trials: offer a money-back guarantee or an opt-out instead.
+
+29
+00:03:55.476 --> 00:03:59.827
+<v Alice>How do I price an AI tool, though? My costs are tokens.
+
+30
+00:04:00.127 --> 00:04:14.317
+<v Bob>Cost should only ever be a floor, says the sheet. Agree the value with your champion; one YC partner typically charges 25 to 50 percent of it. And once price alone costs you over 25 percent of deals, you're probably in the right ballpark.
+
+31
+00:04:14.617 --> 00:04:18.457
+<v Alice>They said yes. How do I actually get it signed?
+
+32
+00:04:18.757 --> 00:04:31.200
+<v Bob>Ask your champion what they can sign off on personally. If you're really confident, the sheet says push for an annual contract with a 30 or 60 day opt-out. And agree the success metrics before you run a proof of concept.
+
+33
+00:04:31.500 --> 00:04:34.956
+<v Alice>Metrics before the pilot. Why does that matter?
+
+34
+00:04:35.256 --> 00:04:44.681
+<v Bob>Imagine a gym membership you actually pay for, with your goal written on the card: everyone knows what success looks like. That's a deal with agreed success metrics.
+
+35
+00:04:44.981 --> 00:04:47.880
+<v Alice>And when do the outreach tools finally come in?
+
+36
+00:04:48.180 --> 00:05:02.713
+<v Bob>Your first 10 customers will likely not come from a tool. From 10 to 50, high-volume tools like Apollo, Clay and sequences start to make sense. The goal it ends on: find 10 to 100 customers who love your product.
+
+37
+00:05:03.013 --> 00:05:06.725
+<v Alice>Time for some pushback. What do you think the sheet leaves out?
+
+38
+00:05:07.025 --> 00:05:15.672
+<v Bob>My take: it leans on YC founder stories, and those are the ones that worked. Founders who did all of this and still failed don't make a cheat sheet.
+
+39
+00:05:15.972 --> 00:05:22.621
+<v Alice>I think it also reads very B2B: champions, annual contracts, security audits.
+
+40
+00:05:22.921 --> 00:05:31.870
+<v Bob>Agreed, and I'd say the numbers, like two or three replies per 100 emails, will vary by market. Treat them as a starting point, not a target.
+
+41
+00:05:32.170 --> 00:05:37.380
+<v Alice>Builder's Corner. Bob, what's one thing an AI builder should do this week?
+
+42
+00:05:37.680 --> 00:05:52.601
+<v Bob>Write your hypothesis in one line: customer X has problem Y, and we help them solve it. Then start your 100 outreaches by hand with a first batch of emails, each under 75 words, with one clear call to action, sent by you.
+
+43
+00:05:52.901 --> 00:05:57.251
+<v Alice>Hand-written emails from an AI builder. I love the irony.
+
+44
+00:05:57.551 --> 00:06:02.587
+<v Bob>Takeaways. One: sell it yourself first, and start with everyone you know.
+
+45
+00:06:02.887 --> 00:06:07.749
+<v Alice>Two: search for burning problems, and write the first emails by hand.
+
+46
+00:06:08.049 --> 00:06:13.259
+<v Bob>Three: qualify on the first call, charge real money early, and price on value.
+
+47
+00:06:13.559 --> 00:06:15.739
+<v Alice>What's still open for you, Bob?
+
+48
+00:06:16.039 --> 00:06:23.420
+<v Bob>The post doesn't say which YC talks or articles the sheet summarises, so we can't tell how much is Alex Vacca's own condensing.
+
+49
+00:06:23.720 --> 00:06:29.565
+<v Alice>And I'd guess nobody knows yet whether those reply rates hold as more outreach gets written by AI.
+
+50
+00:06:29.865 --> 00:06:40.810
+<v Bob>Thanks to Alex Vacca for his X post and cheat sheet, which he presents as Y Combinator's advice on getting your first customers. We didn't check it against YC's original talks, so take it as his summary.
+
+51
+00:06:41.110 --> 00:06:50.918
+<v Alice>The voices are AI, and every claim was checked against that cheat sheet. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

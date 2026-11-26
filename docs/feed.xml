@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Thu, 26 Nov 2026 07:41:53 +0000</lastBuildDate>
+  <lastBuildDate>Thu, 26 Nov 2026 12:28:53 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,27 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-26_y-combinator-on-how-to-get-your-first-100</guid>
+    <title>First 100 Customers: Y Combinator's Sales Playbook (Alex Vacca)</title>
+    <link>https://luongnv.com/podcast/#2026-11-26_y-combinator-on-how-to-get-your-first-100</link>
+    <description>Alex Vacca's cheat sheet, which he presents as Y Combinator's advice, on how to get your first 100 customers.
+
+The playbook: sell it yourself, start with your network, hunt burning problems, write the first emails by hand.
+
+Then qualify on the first call, charge early, price on value, and get it signed; read for AI builders.
+
+Source: Y Combinator on how to get your first 100 customers, Alex Vacca (https://x.com/itsalexvacca/status/2125696384003371454)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Alex Vacca's cheat sheet, which he presents as Y Combinator's advice, on how to get your first 100 customers.</p><p>The playbook: sell it yourself, start with your network, hunt burning problems, write the first emails by hand.</p><p>Then qualify on the first call, charge early, price on value, and get it signed; read for AI builders.</p><p>Source: Y Combinator on how to get your first 100 customers, Alex Vacca: <a href="https://x.com/itsalexvacca/status/2125696384003371454">https://x.com/itsalexvacca/status/2125696384003371454</a></p><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Thu, 26 Nov 2026 12:25:44 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-26_y-combinator-on-how-to-get-your-first-100.mp3?v=52366b59" length="6681689" type="audio/mpeg"/>
+    <itunes:duration>418</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-26_y-combinator-on-how-to-get-your-first-100/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-26_morning-edition-thursday-26-november-2026</guid>
     <title>Anthropic's API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov</title>

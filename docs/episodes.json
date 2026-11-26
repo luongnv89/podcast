@@ -24,8 +24,42 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-26T07:41:53Z",
+  "updated": "2026-11-26T12:28:53Z",
   "episodes": [
+    {
+      "id": "2026-11-26_y-combinator-on-how-to-get-your-first-100",
+      "title": "First 100 Customers: Y Combinator's Sales Playbook (Alex Vacca)",
+      "summary": [
+        "Alex Vacca's cheat sheet, which he presents as Y Combinator's advice, on how to get your first 100 customers.",
+        "The playbook: sell it yourself, start with your network, hunt burning problems, write the first emails by hand.",
+        "Then qualify on the first call, charge early, price on value, and get it signed; read for AI builders."
+      ],
+      "category": "marketing",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-26T12:25:44Z",
+      "duration_s": 417.518,
+      "size_bytes": 6681689,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-26_y-combinator-on-how-to-get-your-first-100.mp3",
+      "audio_sha256": "52366b59810892b7b8dd7f4490f609e13350438099fe6a3a4bb5ea404135b374",
+      "transcript": "episodes/2026-11-26_y-combinator-on-how-to-get-your-first-100/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Y Combinator on how to get your first 100 customers",
+        "author": "Alex Vacca",
+        "url": "https://x.com/itsalexvacca/status/2125696384003371454",
+        "published": null,
+        "kind": "text"
+      },
+      "description": "Alex Vacca's cheat sheet on how to get your first 100 customers, which he presents as Y Combinator's advice. Bob and Alice read it for builders selling an AI product, from the first hand-written email to the signed deal, without checking it against YC's originals.\n\nIn this episode:\n- Sell it yourself first, and start with your network\n- Burning problems, emails under 75 words, real reply rates\n- Qualify on the first call, charge early, price on value\n\nSources: Alex Vacca\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - First 100 Customers Y Combinator's Sales Playbook (Alex Vacca) (2026-11-26).mp3"
+    },
     {
       "id": "2026-11-26_morning-edition-thursday-26-november-2026",
       "title": "Anthropic's API Goes Rust, SpaceX Gets 1M Satellites | AI Daily 26 Nov",
