@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-27T16:52:00Z",
+  "updated": "2026-11-27T16:55:18Z",
   "episodes": [
+    {
+      "id": "2026-11-27_the-ants-the-grasshopper-fr",
+      "title": "La Cigale et les Fourmis : histoire du soir pour enfants, notre version (d'après Ésope)",
+      "summary": [
+        "Une douce version de La Cigale et les Fourmis, une fable d'Ésope, d'après The Aesop for Children de la Bibliothèque du Congrès.",
+        "Une cigale joue du violon tout l'été pendant que les fourmis font des réserves. À l'automne, elle vient les voir, le ventre vide.",
+        "Elle comprend qu'il y a un temps pour travailler et un temps pour jouer, et se fait une promesse. Puis une douce bonne nuit."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "fr",
+      "format": "bedtime-story",
+      "published": "2026-11-27T16:48:37Z",
+      "duration_s": 280.128,
+      "size_bytes": 4483913,
+      "audio": "https://luongnv.com/once-upon-a-time-fr-media/2026-11-27_the-ants-the-grasshopper-fr.mp3",
+      "audio_sha256": "0bc565ca33892fa878ebdbcd0a997323dd404c57355c8e23cc0d52384159006e",
+      "transcript": "episodes/2026-11-27_the-ants-the-grasshopper-fr/transcript.vtt",
+      "voices": "OpenRouter · microsoft/mai-voice-2.1-flash",
+      "source": {
+        "title": "The Ants & the Grasshopper",
+        "author": "Aesop",
+        "url": "https://read.gov/aesop/052.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Touching Moments Four - Melody\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-27_the-ants-the-grasshopper",
+      "image": {
+        "square": "art/2026-11-27_the-ants-the-grasshopper/square.jpg",
+        "wide": "art/2026-11-27_the-ants-the-grasshopper/wide.jpg",
+        "thumb": "art/2026-11-27_the-ants-the-grasshopper/thumb.jpg",
+        "alt": "Pencil drawing of a smiling green grasshopper playing a little fiddle on a stone in a sunny summer meadow, while three little ants march past carrying golden grains to their anthill."
+      },
+      "description": "La Cigale et les Fourmis, la fable d'Ésope, en histoire du soir, notre version avec nos mots, d'après The Aesop for Children. Une cigale joue tout l'été, puis comprend qu'il y a un temps pour tout.\n\nDans cet épisode :\n- Un été en musique\n- Les fourmis travailleuses\n- Un temps pour chaque chose\n\nSources : The Ants & the Grasshopper, Ésope, The Aesop for Children\nMusique : Kevin MacLeod (incompetech.com), CC BY 4.0\nDe douces histoires pour le soir et l'heure du conte, racontées lentement par une voix chaleureuse. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - La Cigale et les Fourmis histoire du soir pour enfants, notre version (d'après Ésope) (2026-11-27).mp3"
+    },
     {
       "id": "2026-11-27_the-ants-the-grasshopper-vi",
       "title": "Ve sầu và đàn kiến: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop)",
