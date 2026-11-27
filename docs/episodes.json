@@ -24,8 +24,54 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-26T12:28:53Z",
+  "updated": "2026-11-27T11:33:18Z",
   "episodes": [
+    {
+      "id": "2026-11-27_morning-edition-friday-27-november-2026",
+      "title": "GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov",
+      "summary": [
+        "AI Daily for Friday 27 November, from The AI Gazette's morning edition and yesterday afternoon's.",
+        "OpenAI fixed a GPT-6.2 billing mistake, AI agent skills head for Linux 7.5, and Switzerland reports its first AI-agent attacks.",
+        "Also: Nvidia's reported server halt to four Southeast Asian countries, the delayed GLM-5.5 model and SAP's reported job cuts."
+      ],
+      "category": "daily",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-27T11:30:08Z",
+      "duration_s": 445.235,
+      "size_bytes": 7125146,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-27_morning-edition-friday-27-november-2026.mp3",
+      "audio_sha256": "05afc884e266d0a79f5f762d556745dc7c9ed8c6df2e95c1f06c796f75b38681",
+      "transcript": "episodes/2026-11-27_morning-edition-friday-27-november-2026/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The AI Gazette, morning edition, Friday 27 November 2026",
+        "author": "The AI Gazette",
+        "url": "https://luongnv.com/news/reports/2026-11-27-morning.html",
+        "published": "2026-11-26T03:50:10+01:00",
+        "kind": "article"
+      },
+      "sources": [
+        {
+          "title": "The AI Gazette, morning edition, Friday 27 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-27-morning.html"
+        },
+        {
+          "title": "The AI Gazette, afternoon edition, Thursday 26 November 2026",
+          "author": "The AI Gazette",
+          "url": "https://luongnv.com/news/reports/2026-11-26-afternoon.html"
+        }
+      ],
+      "description": "OpenAI's Thibault Sottiaux says a GPT-6.2 billing fix means Astra and Sol users reach their limits sooner, while NVIDIA engineer Sasha Levin plans to send AI agent skills for the Linux kernel to Linus Torvalds. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Switzerland's first cyberattacks carried out with AI agents\n- Nvidia's reported server halt to four Southeast Asian countries\n- China's delayed GLM-5.5 model and SAP's reported job cuts\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - GPT-6.2 Limits Tighten, Linux Gets Agent Skills AI Daily 27 Nov (2026-11-27).mp3"
+    },
     {
       "id": "2026-11-26_y-combinator-on-how-to-get-your-first-100",
       "title": "First 100 Customers: Y Combinator's Sales Playbook (Alex Vacca)",

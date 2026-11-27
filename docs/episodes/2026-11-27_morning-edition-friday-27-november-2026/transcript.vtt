@@ -1,0 +1,221 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:06.359
+<v Bob>Your GPT-6.2 limits just got smaller. And AI agents are heading for the Linux kernel.
+
+2
+00:00:06.659 --> 00:00:11.823
+<v Alice>Plus Switzerland's first attacks carried out with AI agents. Let's go!
+
+3
+00:00:16.123 --> 00:00:26.522
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and this is our daily edition: the AI news of the last day, in about eight minutes.
+
+4
+00:00:26.822 --> 00:00:34.970
+<v Alice>And I'm Alice. Every story comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories today.
+
+5
+00:00:35.270 --> 00:00:38.773
+<v Bob>Billing, kernels, chips. Happy Friday!
+
+6
+00:00:39.073 --> 00:00:42.448
+<v Bob>Start with your limits. What happened at OpenAI?
+
+7
+00:00:42.748 --> 00:00:55.324
+<v Alice>OpenAI's Thibault Sottiaux said the company made a billing mistake at the launch of GPT-6.2. It wrongly discounted Astra and Sol usage for most users. Now it's fixed, so you hit your limits sooner.
+
+8
+00:00:55.624 --> 00:00:56.638
+<v Bob>How much sooner?
+
+9
+00:00:56.938 --> 00:01:11.424
+<v Alice>Compared with the previous week, 40 percent faster on Astra and 25 percent faster on Sol. It's like a taxi meter that was running slow: fix the meter, and the same ride shows a bigger fare. Same work, more of your limit.
+
+10
+00:01:11.724 --> 00:01:13.130
+<v Bob>Do I pay for the past?
+
+11
+00:01:13.430 --> 00:01:28.334
+<v Alice>No. Sottiaux said users won't be charged for past usage, and other models weren't affected. And OpenAI is adding one banked reset for everyone on Go, Plus, Pro and Business, which BleepingComputer says expires after a month.
+
+12
+00:01:28.634 --> 00:01:30.634
+<v Bob>A free reset. I'll take it.
+
+13
+00:01:30.934 --> 00:01:35.158
+<v Bob>Story two is pure builder. AI agents in the Linux kernel?
+
+14
+00:01:35.458 --> 00:01:52.415
+<v Alice>Sasha Levin, an NVIDIA engineer who co-maintains the stable kernels, says his agents branch holds the agent skills series. He intends to send it to Linus, Phoronix reports. It's expected in the Linux 7.5 merge window, which opens in late December.
+
+15
+00:01:52.715 --> 00:01:54.479
+<v Bob>What's a skill, here?
+
+16
+00:01:54.779 --> 00:02:14.297
+<v Alice>A new folder in the kernel source with instructions for AI coding agents: how to find a patch's Fixes tag, find other copies of a fixed bug, write commit messages and write KUnit tests. Imagine the house rules taped inside a kitchen cupboard for a new cook. The agent reads the kernel's own rules before it touches anything.
+
+17
+00:02:14.597 --> 00:02:17.590
+<v Bob>A cheat sheet for robots. So it's in?
+
+18
+00:02:17.890 --> 00:02:24.384
+<v Alice>Not yet. Torvalds hasn't received or accepted the pull request. Inclusion isn't decided.
+
+19
+00:02:24.684 --> 00:02:29.120
+<v Bob>Now a serious one. Attacks run by AI agents, in Switzerland?
+
+20
+00:02:29.420 --> 00:02:47.995
+<v Alice>Switzerland's National Cyber Security Centre says it received its first reports of cyberattacks carried out with AI agents, including against critical infrastructure operators in at least two sectors. Reuters says five attacks in recent days used AI agents, and four of the five succeeded.
+
+21
+00:02:48.295 --> 00:02:56.021
+<v Bob>Yesterday on AI Daily, we said North Korea's Onyx Sleet and Pearl Sleet had added ARTEX to their tooling. Same family?
+
+22
+00:02:56.321 --> 00:03:16.687
+<v Alice>Yes. The office names ARTEX and CyberStrikeAI, and says internet-accessible attack agents have almost doubled since October: agents that search for holes, pick tools, check results and plan the next step on their own. Think of it as a burglar who never gets tired, trying every door on the street, all night.
+
+23
+00:03:16.987 --> 00:03:18.130
+<v Bob>Who's behind it?
+
+24
+00:03:18.430 --> 00:03:22.015
+<v Alice>The office didn't say. Victims weren't named either.
+
+25
+00:03:22.315 --> 00:03:26.173
+<v Bob>The big industry story. Nvidia and Southeast Asia?
+
+26
+00:03:26.473 --> 00:03:43.073
+<v Alice>The Financial Times reported that Nvidia told its partners to stop shipping servers with its chips to Malaysia, Singapore, Thailand and Indonesia. That's according to Reuters' account. Partners including Dell and Supermicro told buyers their orders wouldn't ship.
+
+27
+00:03:43.373 --> 00:03:44.252
+<v Bob>Why?
+
+28
+00:03:44.552 --> 00:04:01.413
+<v Alice>A US Commerce Department rule took effect on the nineteenth of November. It requires licences to ship advanced AI chips to those four countries and Brazil, over a higher-than-normal risk of diversion. It's like a shop told to check ID at the till: until it knows how, it stops selling.
+
+29
+00:04:01.713 --> 00:04:04.148
+<v Bob>How big is that market for Nvidia?
+
+30
+00:04:04.448 --> 00:04:19.318
+<v Alice>Big. TNW says revenue booked through Nvidia's Singapore subsidiary reached 104 billion dollars in 2025, up 72 percent. That counts revenue booked there, not only sales to Southeast Asian customers.
+
+31
+00:04:19.618 --> 00:04:22.799
+<v Bob>Wow. And this morning, Singapore spoke up?
+
+32
+00:04:23.099 --> 00:04:34.045
+<v Alice>Deputy Prime Minister Gan Kim Yong said the government hasn't confirmed whether Nvidia stopped shipments, and is asking businesses about the impact. Nvidia still hasn't confirmed the halt either.
+
+33
+00:04:34.345 --> 00:04:38.103
+<v Bob>Same rule, different story. A Chinese model is late?
+
+34
+00:04:38.403 --> 00:04:57.174
+<v Alice>Reuters reports the Chinese lab Z AI planned to release its next flagship, GLM-5.5, this month, and hasn't. Two people told Reuters it's held up partly by better safeguards against distillation, and the US rule could push it into the first quarter of 2027 or later.
+
+35
+00:04:57.474 --> 00:04:58.708
+<v Bob>Distillation?
+
+36
+00:04:59.008 --> 00:05:10.046
+<v Alice>Training a model on a stronger model's answers. Imagine copying the top student's homework: it works, until the teacher starts hiding the answer sheet. That's what those safeguards do.
+
+37
+00:05:10.346 --> 00:05:12.048
+<v Bob>Ha. And Moonshot?
+
+38
+00:05:12.348 --> 00:05:23.038
+<v Alice>A source says Moonshot's next flagship, Kimi K4, could slip to around mid-2027. These are anonymous sources, and the companies didn't respond to Reuters.
+
+39
+00:05:23.338 --> 00:05:26.565
+<v Bob>Last story, and a sober one. SAP?
+
+40
+00:05:26.865 --> 00:05:41.263
+<v Alice>Bloomberg reported that SAP is preparing a plan to cut at least 10,000 positions to reshape its business for the AI era. That's at least 9 percent of its global workforce, according to Reuters' account. SAP declined to comment.
+
+41
+00:05:41.563 --> 00:05:44.555
+<v Bob>What does reshaping for the AI era mean?
+
+42
+00:05:44.855 --> 00:05:56.021
+<v Alice>Think of it as rebuilding a house around a new kitchen: some rooms get knocked down to make space. Here the kitchen is AI. And the figure is a floor that may still change in labour talks.
+
+43
+00:05:56.321 --> 00:05:59.441
+<v Bob>Reality check. How solid is all this?
+
+44
+00:05:59.741 --> 00:06:16.578
+<v Alice>Mixed. The SAP plan is reported, not announced, and Bloomberg's article wasn't read; the Financial Times piece on Nvidia wasn't read either. The GLM story rests on anonymous sources, and OpenAI's wording comes from BleepingComputer and The Next Web.
+
+45
+00:06:16.878 --> 00:06:18.126
+<v Bob>And the Swiss numbers?
+
+46
+00:06:18.426 --> 00:06:24.110
+<v Alice>Reuters counts four successes out of five, while the office's own statement gives no count.
+
+47
+00:06:24.410 --> 00:06:27.054
+<v Bob>Builder's Corner. One thing for this week?
+
+48
+00:06:27.354 --> 00:06:41.028
+<v Alice>Take the Swiss office's advice: patch critical flaws in internet-facing systems within 24 hours. Put multi-factor authentication or passkeys on every exposed service. And cut down what's reachable from the internet.
+
+49
+00:06:41.328 --> 00:06:42.749
+<v Bob>Tight, but fair.
+
+50
+00:06:43.049 --> 00:06:44.363
+<v Bob>Takeaways in three?
+
+51
+00:06:44.663 --> 00:06:56.259
+<v Alice>One: check your AI limits, they just changed. Two: agents are joining the kernel's workflow, and attackers use them too. Three: the US chip rule is rippling through Asia.
+
+52
+00:06:56.559 --> 00:06:59.853
+<v Bob>What I'll watch: does Linus take the agent skills?
+
+53
+00:07:00.153 --> 00:07:04.806
+<v Alice>And whether Nvidia's halt is temporary, or the new normal for the region.
+
+54
+00:07:05.106 --> 00:07:12.231
+<v Alice>Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's. Thanks to them for the reporting.
+
+55
+00:07:12.531 --> 00:07:18.635
+<v Bob>See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

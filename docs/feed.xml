@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Thu, 26 Nov 2026 12:28:53 +0000</lastBuildDate>
+  <lastBuildDate>Fri, 27 Nov 2026 11:33:18 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-27_morning-edition-friday-27-november-2026</guid>
+    <title>GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov</title>
+    <link>https://luongnv.com/podcast/#2026-11-27_morning-edition-friday-27-november-2026</link>
+    <description>AI Daily for Friday 27 November, from The AI Gazette's morning edition and yesterday afternoon's.
+
+OpenAI fixed a GPT-6.2 billing mistake, AI agent skills head for Linux 7.5, and Switzerland reports its first AI-agent attacks.
+
+Also: Nvidia's reported server halt to four Southeast Asian countries, the delayed GLM-5.5 model and SAP's reported job cuts.
+
+Sources:
+- The AI Gazette, morning edition, Friday 27 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-27-morning.html)
+- The AI Gazette, afternoon edition, Thursday 26 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-26-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>AI Daily for Friday 27 November, from The AI Gazette's morning edition and yesterday afternoon's.</p><p>OpenAI fixed a GPT-6.2 billing mistake, AI agent skills head for Linux 7.5, and Switzerland reports its first AI-agent attacks.</p><p>Also: Nvidia's reported server halt to four Southeast Asian countries, the delayed GLM-5.5 model and SAP's reported job cuts.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Friday 27 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-27-morning.html">https://luongnv.com/news/reports/2026-11-27-morning.html</a></li><li>The AI Gazette, afternoon edition, Thursday 26 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-26-afternoon.html">https://luongnv.com/news/reports/2026-11-26-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Fri, 27 Nov 2026 11:30:08 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-27_morning-edition-friday-27-november-2026.mp3?v=05afc884" length="7125146" type="audio/mpeg"/>
+    <itunes:duration>445</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-27_morning-edition-friday-27-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-26_y-combinator-on-how-to-get-your-first-100</guid>
     <title>First 100 Customers: Y Combinator's Sales Playbook (Alex Vacca)</title>

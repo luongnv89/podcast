@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov | Build Wiz AI Show</title>
+<meta name="description" content="OpenAI&#x27;s Thibault Sottiaux says a GPT-6.2 billing fix means Astra and Sol users reach their limits sooner, while NVIDIA engineer Sasha Levin plans to send AI agent skills for the Linux kernel to Linus Torvalds. Bob and Alice cover the AI news of the last day.">
+<link rel="canonical" href="https://luongnv.com/podcast/episodes/2026-11-27_morning-edition-friday-27-november-2026/">
+<link rel="alternate" hreflang="en" href="https://luongnv.com/podcast/episodes/2026-11-27_morning-edition-friday-27-november-2026/">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Build Wiz AI Show">
+<meta property="og:title" content="GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov">
+<meta property="og:description" content="OpenAI&#x27;s Thibault Sottiaux says a GPT-6.2 billing fix means Astra and Sol users reach their limits sooner, while NVIDIA engineer Sasha Levin plans to send AI agent skills for the Linux kernel to Linus Torvalds. Bob and Alice cover the AI news of the last day.">
+<meta property="og:url" content="https://luongnv.com/podcast/episodes/2026-11-27_morning-edition-friday-27-november-2026/">
+<meta property="og:image" content="https://luongnv.com/podcast/cover.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:audio" content="https://luongnv.com/buildwiz-ai-show-media/2026-11-27_morning-edition-friday-27-november-2026.mp3">
+<meta property="og:audio:type" content="audio/mpeg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov">
+<meta name="twitter:description" content="OpenAI&#x27;s Thibault Sottiaux says a GPT-6.2 billing fix means Astra and Sol users reach their limits sooner, while NVIDIA engineer Sasha Levin plans to send AI agent skills for the Linux kernel to Linus Torvalds. Bob and Alice cover the AI news of the last day.">
+<meta name="twitter:image" content="https://luongnv.com/podcast/cover.jpg">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "PodcastEpisode",
+ "name": "GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov",
+ "description": "OpenAI's Thibault Sottiaux says a GPT-6.2 billing fix means Astra and Sol users reach their limits sooner, while NVIDIA engineer Sasha Levin plans to send AI agent skills for the Linux kernel to Linus Torvalds. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Switzerland's first cyberattacks carried out with AI agents\n- Nvidia's reported server halt to four Southeast Asian countries\n- China's delayed GLM-5.5 model and SAP's reported job cuts\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+ "url": "https://luongnv.com/podcast/episodes/2026-11-27_morning-edition-friday-27-november-2026/",
+ "inLanguage": "en",
+ "image": "https://luongnv.com/podcast/cover.jpg",
+ "associatedMedia": {
+  "@type": "MediaObject",
+  "contentUrl": "https://luongnv.com/buildwiz-ai-show-media/2026-11-27_morning-edition-friday-27-november-2026.mp3",
+  "encodingFormat": "audio/mpeg",
+  "duration": "PT7M25S"
+ },
+ "partOfSeries": {
+  "@type": "PodcastSeries",
+  "name": "Build Wiz AI Show",
+  "url": "https://luongnv.com/podcast/"
+ },
+ "datePublished": "2026-11-27T11:30:08Z",
+ "timeRequired": "PT7M25S",
+ "isBasedOn": "https://luongnv.com/news/reports/2026-11-27-morning.html"
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FZV5YX8YPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FZV5YX8YPT');
+</script>
+<style>
+  :root { --accent: #22C55E; color-scheme: dark; }
+  body { margin: 0; background: #000; color: #fff; font: 400 16px/1.6 "Helvetica Neue", Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 48px; }
+  a { color: #fff; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+  a:hover { color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .show { font-weight: 700; text-decoration: none; }
+  h1 { font-size: clamp(26px, 5vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin: 18px 0 6px; overflow-wrap: anywhere; }
+  .meta { color: rgba(255,255,255,.72); font-size: 14px; margin: 0 0 16px; }
+  .meta .dur { color: var(--accent); font-weight: 600; }
+  audio { width: 100%; margin: 4px 0 16px; }
+  .desc { white-space: pre-line; color: rgba(255,255,255,.86); margin: 0 0 18px; overflow-wrap: anywhere; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }
+  .btn { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border: 1px solid rgba(255,255,255,.24); border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; }
+  .btn:hover { border-color: #fff; color: #fff; }
+  button.btn { background: transparent; color: #fff; font-family: inherit; line-height: inherit; cursor: pointer; }
+  .btn.is-done { border-color: var(--accent); color: var(--accent); }
+  .btn[hidden] { display: none; }
+  .langs, .credit { font-size: 14px; color: rgba(255,255,255,.72); margin: 0 0 8px; overflow-wrap: anywhere; }
+  footer { font-size: 13px; color: rgba(255,255,255,.62); border-top: 1px solid rgba(255,255,255,.12); margin-top: 28px; padding-top: 14px; }
+  .transcript { border-top: 1px solid rgba(255,255,255,.12); margin: 18px 0 0; padding-top: 10px; }
+  .transcript summary { cursor: pointer; font-weight: 700; padding: 4px 0; }
+  .transcript p { color: rgba(255,255,255,.86); margin: 10px 0 0; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <a class="show" href="../../">Build Wiz AI Show</a>
+  <h1 id="title">GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov</h1>
+  <p class="meta"><span class="dur">7 min</span> · <time datetime="2026-11-27T11:30:08Z">2026-11-27</time> · English</p>
+  <audio controls preload="none" src="https://luongnv.com/buildwiz-ai-show-media/2026-11-27_morning-edition-friday-27-november-2026.mp3" aria-labelledby="title"></audio>
+  <p class="desc" id="description">OpenAI&#x27;s Thibault Sottiaux says a GPT-6.2 billing fix means Astra and Sol users reach their limits sooner, while NVIDIA engineer Sasha Levin plans to send AI agent skills for the Linux kernel to Linus Torvalds. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- Switzerland&#x27;s first cyberattacks carried out with AI agents
+- Nvidia&#x27;s reported server halt to four Southeast Asian countries
+- China&#x27;s delayed GLM-5.5 model and SAP&#x27;s reported job cuts
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast</p>
+  <p class="actions">
+    <a class="btn" href="../../#2026-11-27_morning-edition-friday-27-november-2026">Listen on Build Wiz AI Show</a>
+    <a class="btn" href="https://luongnv.com/buildwiz-ai-show-media/2026-11-27_morning-edition-friday-27-november-2026.mp3" download="Build Wiz AI Show - GPT-6.2 Limits Tighten, Linux Gets Agent Skills AI Daily 27 Nov (2026-11-27).mp3">Download MP3</a>
+    <a class="btn" href="transcript.vtt">Transcript</a>
+    <button class="btn" type="button" id="share" hidden><span aria-live="polite">Share</span></button>
+    <button class="btn" type="button" data-copy="title" data-text="GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov" data-done="Copied" hidden><span aria-live="polite">Copy title</span></button>
+    <button class="btn" type="button" data-copy="description" data-text="OpenAI&#x27;s Thibault Sottiaux says a GPT-6.2 billing fix means Astra and Sol users reach their limits sooner, while NVIDIA engineer Sasha Levin plans to send AI agent skills for the Linux kernel to Linus Torvalds. Bob and Alice cover the AI news of the last day.
+
+In this episode:
+- Switzerland&#x27;s first cyberattacks carried out with AI agents
+- Nvidia&#x27;s reported server halt to four Southeast Asian countries
+- China&#x27;s delayed GLM-5.5 model and SAP&#x27;s reported job cuts
+
+Sources: The AI Gazette (morning and afternoon editions)
+Big AI ideas, made clear for builders. luongnv.com/podcast" data-done="Copied" hidden><span aria-live="polite">Copy description</span></button>
+  </p>
+  <p class="credit">Based on <a href="https://luongnv.com/news/reports/2026-11-27-morning.html" rel="noopener">The AI Gazette, morning edition, Friday 27 November 2026</a> by The AI Gazette</p>
+  <details class="transcript" id="transcript">
+    <summary>Transcript</summary>
+    <p><strong>Bob:</strong> Your GPT-6.2 limits just got smaller. And AI agents are heading for the Linux kernel.</p>
+    <p><strong>Alice:</strong> Plus Switzerland's first attacks carried out with AI agents. Let's go!</p>
+    <p><strong>Bob:</strong> Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and this is our daily edition: the AI news of the last day, in about eight minutes.</p>
+    <p><strong>Alice:</strong> And I'm Alice. Every story comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories today.</p>
+    <p><strong>Bob:</strong> Billing, kernels, chips. Happy Friday! Start with your limits. What happened at OpenAI?</p>
+    <p><strong>Alice:</strong> OpenAI's Thibault Sottiaux said the company made a billing mistake at the launch of GPT-6.2. It wrongly discounted Astra and Sol usage for most users. Now it's fixed, so you hit your limits sooner.</p>
+    <p><strong>Bob:</strong> How much sooner?</p>
+    <p><strong>Alice:</strong> Compared with the previous week, 40 percent faster on Astra and 25 percent faster on Sol. It's like a taxi meter that was running slow: fix the meter, and the same ride shows a bigger fare. Same work, more of your limit.</p>
+    <p><strong>Bob:</strong> Do I pay for the past?</p>
+    <p><strong>Alice:</strong> No. Sottiaux said users won't be charged for past usage, and other models weren't affected. And OpenAI is adding one banked reset for everyone on Go, Plus, Pro and Business, which BleepingComputer says expires after a month.</p>
+    <p><strong>Bob:</strong> A free reset. I'll take it. Story two is pure builder. AI agents in the Linux kernel?</p>
+    <p><strong>Alice:</strong> Sasha Levin, an NVIDIA engineer who co-maintains the stable kernels, says his agents branch holds the agent skills series. He intends to send it to Linus, Phoronix reports. It's expected in the Linux 7.5 merge window, which opens in late December.</p>
+    <p><strong>Bob:</strong> What's a skill, here?</p>
+    <p><strong>Alice:</strong> A new folder in the kernel source with instructions for AI coding agents: how to find a patch's Fixes tag, find other copies of a fixed bug, write commit messages and write KUnit tests. Imagine the house rules taped inside a kitchen cupboard for a new cook. The agent reads the kernel's own rules before it touches anything.</p>
+    <p><strong>Bob:</strong> A cheat sheet for robots. So it's in?</p>
+    <p><strong>Alice:</strong> Not yet. Torvalds hasn't received or accepted the pull request. Inclusion isn't decided.</p>
+    <p><strong>Bob:</strong> Now a serious one. Attacks run by AI agents, in Switzerland?</p>
+    <p><strong>Alice:</strong> Switzerland's National Cyber Security Centre says it received its first reports of cyberattacks carried out with AI agents, including against critical infrastructure operators in at least two sectors. Reuters says five attacks in recent days used AI agents, and four of the five succeeded.</p>
+    <p><strong>Bob:</strong> Yesterday on AI Daily, we said North Korea's Onyx Sleet and Pearl Sleet had added ARTEX to their tooling. Same family?</p>
+    <p><strong>Alice:</strong> Yes. The office names ARTEX and CyberStrikeAI, and says internet-accessible attack agents have almost doubled since October: agents that search for holes, pick tools, check results and plan the next step on their own. Think of it as a burglar who never gets tired, trying every door on the street, all night.</p>
+    <p><strong>Bob:</strong> Who's behind it?</p>
+    <p><strong>Alice:</strong> The office didn't say. Victims weren't named either.</p>
+    <p><strong>Bob:</strong> The big industry story. Nvidia and Southeast Asia?</p>
+    <p><strong>Alice:</strong> The Financial Times reported that Nvidia told its partners to stop shipping servers with its chips to Malaysia, Singapore, Thailand and Indonesia. That's according to Reuters' account. Partners including Dell and Supermicro told buyers their orders wouldn't ship.</p>
+    <p><strong>Bob:</strong> Why?</p>
+    <p><strong>Alice:</strong> A US Commerce Department rule took effect on the nineteenth of November. It requires licences to ship advanced AI chips to those four countries and Brazil, over a higher-than-normal risk of diversion. It's like a shop told to check ID at the till: until it knows how, it stops selling.</p>
+    <p><strong>Bob:</strong> How big is that market for Nvidia?</p>
+    <p><strong>Alice:</strong> Big. TNW says revenue booked through Nvidia's Singapore subsidiary reached 104 billion dollars in 2025, up 72 percent. That counts revenue booked there, not only sales to Southeast Asian customers.</p>
+    <p><strong>Bob:</strong> Wow. And this morning, Singapore spoke up?</p>
+    <p><strong>Alice:</strong> Deputy Prime Minister Gan Kim Yong said the government hasn't confirmed whether Nvidia stopped shipments, and is asking businesses about the impact. Nvidia still hasn't confirmed the halt either.</p>
+    <p><strong>Bob:</strong> Same rule, different story. A Chinese model is late?</p>
+    <p><strong>Alice:</strong> Reuters reports the Chinese lab Z AI planned to release its next flagship, GLM-5.5, this month, and hasn't. Two people told Reuters it's held up partly by better safeguards against distillation, and the US rule could push it into the first quarter of 2027 or later.</p>
+    <p><strong>Bob:</strong> Distillation?</p>
+    <p><strong>Alice:</strong> Training a model on a stronger model's answers. Imagine copying the top student's homework: it works, until the teacher starts hiding the answer sheet. That's what those safeguards do.</p>
+    <p><strong>Bob:</strong> Ha. And Moonshot?</p>
+    <p><strong>Alice:</strong> A source says Moonshot's next flagship, Kimi K4, could slip to around mid-2027. These are anonymous sources, and the companies didn't respond to Reuters.</p>
+    <p><strong>Bob:</strong> Last story, and a sober one. SAP?</p>
+    <p><strong>Alice:</strong> Bloomberg reported that SAP is preparing a plan to cut at least 10,000 positions to reshape its business for the AI era. That's at least 9 percent of its global workforce, according to Reuters' account. SAP declined to comment.</p>
+    <p><strong>Bob:</strong> What does reshaping for the AI era mean?</p>
+    <p><strong>Alice:</strong> Think of it as rebuilding a house around a new kitchen: some rooms get knocked down to make space. Here the kitchen is AI. And the figure is a floor that may still change in labour talks.</p>
+    <p><strong>Bob:</strong> Reality check. How solid is all this?</p>
+    <p><strong>Alice:</strong> Mixed. The SAP plan is reported, not announced, and Bloomberg's article wasn't read; the Financial Times piece on Nvidia wasn't read either. The GLM story rests on anonymous sources, and OpenAI's wording comes from BleepingComputer and The Next Web.</p>
+    <p><strong>Bob:</strong> And the Swiss numbers?</p>
+    <p><strong>Alice:</strong> Reuters counts four successes out of five, while the office's own statement gives no count.</p>
+    <p><strong>Bob:</strong> Builder's Corner. One thing for this week?</p>
+    <p><strong>Alice:</strong> Take the Swiss office's advice: patch critical flaws in internet-facing systems within 24 hours. Put multi-factor authentication or passkeys on every exposed service. And cut down what's reachable from the internet.</p>
+    <p><strong>Bob:</strong> Tight, but fair. Takeaways in three?</p>
+    <p><strong>Alice:</strong> One: check your AI limits, they just changed. Two: agents are joining the kernel's workflow, and attackers use them too. Three: the US chip rule is rippling through Asia.</p>
+    <p><strong>Bob:</strong> What I'll watch: does Linus take the agent skills?</p>
+    <p><strong>Alice:</strong> And whether Nvidia's halt is temporary, or the new normal for the region. Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's. Thanks to them for the reporting.</p>
+    <p><strong>Bob:</strong> See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.</p>
+  </details>
+  <footer>AI-voiced episode made with DropCast. Voices are synthetic; each episode credits its source.</footer>
+</main>
+<script src="../../share.js?v=202611130200"></script>
+<script>
+(() => {
+  const S = {"url": "https://luongnv.com/podcast/episodes/2026-11-27_morning-edition-friday-27-november-2026/", "title": "GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov", "label": "Share", "copied": "Link copied", "failed": "Copy failed", "lang": "en", "params": {"episode_id": "2026-11-27_morning-edition-friday-27-november-2026", "episode_title": "GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov", "show": "Build Wiz AI Show", "episode_language": "en", "category": "daily"}, "ep": {"id": "2026-11-27_morning-edition-friday-27-november-2026", "title": "GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov", "summary": ["AI Daily for Friday 27 November, from The AI Gazette's morning edition and yesterday afternoon's.", "OpenAI fixed a GPT-6.2 billing mistake, AI agent skills head for Linux 7.5, and Switzerland reports its first AI-agent attacks.", "Also: Nvidia's reported server halt to four Southeast Asian countries, the delayed GLM-5.5 model and SAP's reported job cuts."], "description": "OpenAI's Thibault Sottiaux says a GPT-6.2 billing fix means Astra and Sol users reach their limits sooner, while NVIDIA engineer Sasha Levin plans to send AI agent skills for the Linux kernel to Linus Torvalds. Bob and Alice cover the AI news of the last day.\n\nIn this episode:\n- Switzerland's first cyberattacks carried out with AI agents\n- Nvidia's reported server halt to four Southeast Asian countries\n- China's delayed GLM-5.5 model and SAP's reported job cuts\n\nSources: The AI Gazette (morning and afternoon editions)\nBig AI ideas, made clear for builders. luongnv.com/podcast", "format": "podcast-2host", "show": "Build Wiz AI Show", "language": "en", "category": "daily", "source": {"title": "The AI Gazette, morning edition, Friday 27 November 2026", "author": "The AI Gazette", "url": "https://luongnv.com/news/reports/2026-11-27-morning.html", "kind": "article"}}};
+  const btn = document.getElementById("share");
+  const label = btn.querySelector("span");
+  const track = (method) => {
+    try { if (typeof window.gtag === "function") window.gtag("event", "episode_share", Object.assign({}, S.params, { method })); } catch (e) { /* never breaks the page */ }
+  };
+  const copy = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(text); return true; }
+    } catch (e) { /* fall back */ }
+    const back = document.activeElement || btn;
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.readOnly = true; ta.tabIndex = -1; ta.setAttribute("aria-hidden", "true");
+    ta.style.cssText = "position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;";
+    document.body.append(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    ta.remove();
+    if (back && typeof back.focus === "function") back.focus({ preventScroll: true });
+    return ok;
+  };
+  const more = async (b, l, rest) => {
+    if (b._busy) return;
+    b._busy = true;
+    try {
+      const data = { title: S.title, url: S.url };
+      if (typeof navigator.share === "function" && (typeof navigator.canShare !== "function" || navigator.canShare(data))) {
+        try { await navigator.share(data); track("share_sheet"); return; }
+        catch (err) { if (err && err.name === "AbortError") return; }
+      }
+      const ok = await copy(S.url);
+      l.textContent = ok ? S.copied : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) track("copy");
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    } finally {
+      b._busy = false;
+    }
+  };
+  // Copy title / Copy description (podcast #50): the exact text from the button's data-text,
+  // the button's own words while it shows the result, as on the list pages.
+  document.querySelectorAll("button[data-copy]").forEach((b) => {
+    const l = b.querySelector("span");
+    const rest = l.textContent;
+    b.addEventListener("click", async () => {
+      const ok = await copy(b.getAttribute("data-text") || "");
+      l.textContent = ok ? b.getAttribute("data-done") : S.failed;
+      b.classList.toggle("is-done", ok);
+      if (ok) { try { if (typeof window.gtag === "function") window.gtag("event", b.getAttribute("data-copy") + "_copy", S.params); } catch (e) { /* never breaks the page */ } }
+      clearTimeout(b._t);
+      b._t = setTimeout(() => { l.textContent = rest; b.classList.remove("is-done"); }, 1800);
+    });
+    b.hidden = false;
+  });
+  btn.addEventListener("click", () => {
+    const P = window.PodcastShare;
+    if (P && typeof P.toggle === "function") P.toggle({ ep: S.ep, url: S.url, lang: S.lang, button: btn, after: btn.parentNode, track, copy, more });
+    else return more(btn, label, S.label);
+  });
+  btn.hidden = false;
+})();
+</script>
+</body>
+</html>
