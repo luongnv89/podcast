@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-27T11:33:18Z",
+  "updated": "2026-11-27T16:48:45Z",
   "episodes": [
+    {
+      "id": "2026-11-27_the-ants-the-grasshopper",
+      "title": "The Ant and the Grasshopper: Bedtime Story for Kids, Our Retelling (after Aesop)",
+      "summary": [
+        "A gentle bedtime retelling of The Ant and the Grasshopper, Aesop's fable, from The Aesop for Children at the Library of Congress.",
+        "A grasshopper plays his fiddle all summer while a family of ants stores food. In autumn he comes to them, hungry.",
+        "He learns there is a time for work and a time for play, and makes a promise. It ends with a soft goodnight."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "en",
+      "format": "bedtime-story",
+      "published": "2026-11-27T16:40:30Z",
+      "duration_s": 227.847,
+      "size_bytes": 3647567,
+      "audio": "https://luongnv.com/once-upon-a-time-en-media/2026-11-27_the-ants-the-grasshopper.mp3",
+      "audio_sha256": "7a8d6eb3e9dfe0d14a696817ec7188932cedd2c33f1d0dc770ca1f26e7979f7d",
+      "transcript": "episodes/2026-11-27_the-ants-the-grasshopper/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The Ants & the Grasshopper",
+        "author": "Aesop",
+        "url": "https://read.gov/aesop/052.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Touching Moments Four - Melody\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-27_the-ants-the-grasshopper",
+      "image": {
+        "square": "art/2026-11-27_the-ants-the-grasshopper/square.jpg",
+        "wide": "art/2026-11-27_the-ants-the-grasshopper/wide.jpg",
+        "thumb": "art/2026-11-27_the-ants-the-grasshopper/thumb.jpg",
+        "alt": "Pencil drawing of a smiling green grasshopper playing a little fiddle on a stone in a sunny summer meadow, while three little ants march past carrying golden grains to their anthill."
+      },
+      "description": "The Ant and the Grasshopper, Aesop's fable, retold in our own words as a gentle bedtime story, from The Aesop for Children. A grasshopper fiddles all summer while the ants store food, then learns there is a time for work and play.\n\nIn this episode:\n- A summer of music\n- The busy ants\n- A time for work and play\n\nSources: The Ants & the Grasshopper, Aesop, The Aesop for Children (Library of Congress)\nMusic: Kevin MacLeod (incompetech.com), CC BY 4.0\nGentle stories for bedtime and story time, told slowly by a warm narrator. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - The Ant and the Grasshopper Bedtime Story for Kids, Our Retelling (after Aesop) (2026-11-27).mp3"
+    },
     {
       "id": "2026-11-27_morning-edition-friday-27-november-2026",
       "title": "GPT-6.2 Limits Tighten, Linux Gets Agent Skills | AI Daily 27 Nov",
