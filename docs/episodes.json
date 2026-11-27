@@ -24,8 +24,47 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-27T16:48:45Z",
+  "updated": "2026-11-27T16:52:00Z",
   "episodes": [
+    {
+      "id": "2026-11-27_the-ants-the-grasshopper-vi",
+      "title": "Ve sầu và đàn kiến: truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop)",
+      "summary": [
+        "Truyện Ve sầu và đàn kiến, ngụ ngôn của Aesop, kể lại nhẹ nhàng cho giờ đi ngủ, theo The Aesop for Children của Thư viện Quốc hội Mỹ.",
+        "Chú ve sầu kéo đàn suốt mùa hè, còn đàn kiến chăm chỉ để dành thức ăn. Sang thu, chú ve đói bụng tìm đến các bạn kiến.",
+        "Chú hiểu ra rằng có lúc để làm và có lúc để chơi, và tự hứa với mình. Rồi chúc bé ngủ ngon."
+      ],
+      "category": "bedtime",
+      "show": "Once Upon a Time Show",
+      "hosts": [],
+      "language": "vi",
+      "format": "bedtime-story",
+      "published": "2026-11-27T16:45:18Z",
+      "duration_s": 225.977,
+      "size_bytes": 3617494,
+      "audio": "https://luongnv.com/once-upon-a-time-vi-media/2026-11-27_the-ants-the-grasshopper-vi.mp3",
+      "audio_sha256": "36c0113a1a58cede0cbf67e940bc7b686a46288e6dc83122c6fe0933aed774fc",
+      "transcript": "episodes/2026-11-27_the-ants-the-grasshopper-vi/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "The Ants & the Grasshopper",
+        "author": "Aesop",
+        "url": "https://read.gov/aesop/052.html",
+        "published": null,
+        "kind": "article"
+      },
+      "music_credit": "Music by Kevin MacLeod (incompetech.com): \"Music Box Theme\", \"Carefree\", \"Touching Moments Four - Melody\", \"Sleep and Then\". Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/ (excerpts, edited: trimmed, resampled, faded; the mood clips also loudness-normalised)",
+      "story_group": "2026-11-27_the-ants-the-grasshopper",
+      "image": {
+        "square": "art/2026-11-27_the-ants-the-grasshopper/square.jpg",
+        "wide": "art/2026-11-27_the-ants-the-grasshopper/wide.jpg",
+        "thumb": "art/2026-11-27_the-ants-the-grasshopper/thumb.jpg",
+        "alt": "Pencil drawing of a smiling green grasshopper playing a little fiddle on a stone in a sunny summer meadow, while three little ants march past carrying golden grains to their anthill."
+      },
+      "description": "Ve sầu và đàn kiến, truyện ngụ ngôn của Aesop, kể lại bằng lời của chúng tôi cho giờ đi ngủ, theo The Aesop for Children. Chú ve kéo đàn suốt mùa hè, đàn kiến để dành thức ăn, và chú hiểu ra có lúc để làm, có lúc để chơi.\n\nTrong tập này:\n- Một mùa hè đầy tiếng nhạc\n- Đàn kiến chăm chỉ và kho thức ăn mùa đông\n- Có lúc để làm, có lúc để chơi\n\nNguồn: The Ants & the Grasshopper, Aesop, The Aesop for Children\nNhạc: Kevin MacLeod (incompetech.com), CC BY 4.0\nNhững câu chuyện nhẹ nhàng cho giờ đi ngủ và giờ kể chuyện, được kể chậm rãi bằng một giọng đọc ấm áp. luongnv.com/podcast/stories",
+      "description_source": "description.txt",
+      "file_name": "Once Upon a Time Show - Ve sầu và đàn kiến truyện kể trước giờ ngủ cho bé, bản kể lại (theo Aesop) (2026-11-27).mp3"
+    },
     {
       "id": "2026-11-27_the-ants-the-grasshopper",
       "title": "The Ant and the Grasshopper: Bedtime Story for Kids, Our Retelling (after Aesop)",
