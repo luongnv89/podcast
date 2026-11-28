@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sat, 28 Nov 2026 05:15:55 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 28 Nov 2026 16:41:24 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,33 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-28_critical-thinking-when-agents-do-the-work</guid>
+    <title>Critical Thinking with AI Agents: Keep Your Judgment (Addy Osmani)</title>
+    <link>https://luongnv.com/podcast/#2026-11-28_critical-thinking-when-agents-do-the-work</link>
+    <description>Addy Osmani on keeping critical thinking when AI coding agents do the work, from cognitive offloading to quiet surrender.
+
+Bob and Alice unpack his questions, verification habits and reading what agents decide, with research on automation complacency.
+
+Guests Maya, Theo and Sam bring a Microsoft Research survey, a study of AI at work and Ethan Mollick's counterpoint.
+
+Sources:
+- Critical thinking when agents do the work, Addy Osmani (@addyosmani) (https://x.com/addyosmani/status/2117512471930167377)
+- Complacency and bias in human use of automation: an attentional integration., Raja Parasuraman and Dietrich H Manzey (https://pubmed.ncbi.nlm.nih.gov/21077562/)
+- AI and the ironies of automation - Part 1, Uwe Friedrichsen (https://www.ufried.com/blog/ironies_of_ai_1/)
+- The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers - Microsoft Research, Hao-Ping (Hank) Lee et al. (https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/)
+- Generative AI at Work, Erik Brynjolfsson, Danielle Li and Lindsey Raymond (https://arxiv.org/abs/2304.11771)
+- Against "Brain Damage", Ethan Mollick (https://www.oneusefulthing.org/p/against-brain-damage)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>Addy Osmani on keeping critical thinking when AI coding agents do the work, from cognitive offloading to quiet surrender.</p><p>Bob and Alice unpack his questions, verification habits and reading what agents decide, with research on automation complacency.</p><p>Guests Maya, Theo and Sam bring a Microsoft Research survey, a study of AI at work and Ethan Mollick's counterpoint.</p><p>Sources:</p><ul><li>Critical thinking when agents do the work, Addy Osmani (@addyosmani): <a href="https://x.com/addyosmani/status/2117512471930167377">https://x.com/addyosmani/status/2117512471930167377</a></li><li>Complacency and bias in human use of automation: an attentional integration., Raja Parasuraman and Dietrich H Manzey: <a href="https://pubmed.ncbi.nlm.nih.gov/21077562/">https://pubmed.ncbi.nlm.nih.gov/21077562/</a></li><li>AI and the ironies of automation - Part 1, Uwe Friedrichsen: <a href="https://www.ufried.com/blog/ironies_of_ai_1/">https://www.ufried.com/blog/ironies_of_ai_1/</a></li><li>The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers - Microsoft Research, Hao-Ping (Hank) Lee et al.: <a href="https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/">https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/</a></li><li>Generative AI at Work, Erik Brynjolfsson, Danielle Li and Lindsey Raymond: <a href="https://arxiv.org/abs/2304.11771">https://arxiv.org/abs/2304.11771</a></li><li>Against "Brain Damage", Ethan Mollick: <a href="https://www.oneusefulthing.org/p/against-brain-damage">https://www.oneusefulthing.org/p/against-brain-damage</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Sat, 28 Nov 2026 16:38:13 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-28_critical-thinking-when-agents-do-the-work.mp3?v=b94174b0" length="15167517" type="audio/mpeg"/>
+    <itunes:duration>948</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-28_critical-thinking-when-agents-do-the-work/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-28_morning-edition-saturday-28-november-2026</guid>
     <title>OpenAI Countersues Apple, Claude Sabotage Denied | AI Daily 28 Nov</title>

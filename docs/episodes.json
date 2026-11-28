@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-28T05:15:55Z",
+  "updated": "2026-11-28T16:41:24Z",
   "episodes": [
+    {
+      "id": "2026-11-28_critical-thinking-when-agents-do-the-work",
+      "title": "Critical Thinking with AI Agents: Keep Your Judgment (Addy Osmani)",
+      "summary": [
+        "Addy Osmani on keeping critical thinking when AI coding agents do the work, from cognitive offloading to quiet surrender.",
+        "Bob and Alice unpack his questions, verification habits and reading what agents decide, with research on automation complacency.",
+        "Guests Maya, Theo and Sam bring a Microsoft Research survey, a study of AI at work and Ethan Mollick's counterpoint."
+      ],
+      "category": "ai",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-28T16:38:13Z",
+      "duration_s": 947.904,
+      "size_bytes": 15167517,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-28_critical-thinking-when-agents-do-the-work.mp3",
+      "audio_sha256": "b94174b04d20c7226a1a59d8117467ea10ed7b1855022ceba87b874bc18477d4",
+      "transcript": "episodes/2026-11-28_critical-thinking-when-agents-do-the-work/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "Critical thinking when agents do the work",
+        "author": "Addy Osmani (@addyosmani)",
+        "url": "https://x.com/addyosmani/status/2117512471930167377",
+        "published": "2026-11-03T07:01:29Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "Critical thinking when agents do the work",
+          "author": "Addy Osmani (@addyosmani)",
+          "url": "https://x.com/addyosmani/status/2117512471930167377"
+        },
+        {
+          "title": "Complacency and bias in human use of automation: an attentional integration.",
+          "author": "Raja Parasuraman and Dietrich H Manzey",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/21077562/"
+        },
+        {
+          "title": "AI and the ironies of automation - Part 1",
+          "author": "Uwe Friedrichsen",
+          "url": "https://www.ufried.com/blog/ironies_of_ai_1/"
+        },
+        {
+          "title": "The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers - Microsoft Research",
+          "author": "Hao-Ping (Hank) Lee et al.",
+          "url": "https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/"
+        },
+        {
+          "title": "Generative AI at Work",
+          "author": "Erik Brynjolfsson, Danielle Li and Lindsey Raymond",
+          "url": "https://arxiv.org/abs/2304.11771"
+        },
+        {
+          "title": "Against \"Brain Damage\"",
+          "author": "Ethan Mollick",
+          "url": "https://www.oneusefulthing.org/p/against-brain-damage"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Maya",
+          "presents": [
+            "The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers - Microsoft Research"
+          ]
+        },
+        {
+          "name": "Theo",
+          "presents": [
+            "Generative AI at Work"
+          ]
+        },
+        {
+          "name": "Sam",
+          "presents": [
+            "Against \"Brain Damage\""
+          ]
+        }
+      ],
+      "description": "Addy Osmani explains how to keep critical thinking when AI coding agents do the work. We test his advice against research on automation complacency, a Microsoft Research survey and Ethan Mollick's counterpoint.\n\nIn this episode:\n- Offloading, deferral and cognitive surrender\n- Questions to ask before an agent runs\n- What a green check really proves\n\nSources: Addy Osmani; Raja Parasuraman and Dietrich H Manzey; Uwe Friedrichsen; Hao-Ping (Hank) Lee et al.; Ethan Mollick; Erik Brynjolfsson, Danielle Li and Lindsey Raymond\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Critical Thinking with AI Agents Keep Your Judgment (Addy Osmani) (2026-11-28).mp3"
+    },
     {
       "id": "2026-11-28_morning-edition-saturday-28-november-2026",
       "title": "OpenAI Countersues Apple, Claude Sabotage Denied | AI Daily 28 Nov",
