@@ -24,8 +24,94 @@
       "page": "stories/"
     }
   ],
-  "updated": "2026-11-27T16:55:18Z",
+  "updated": "2026-11-28T00:40:01Z",
   "episodes": [
+    {
+      "id": "2026-11-28_how-to-command-attention-1-skill-of-2027",
+      "title": "Commanding Attention: 5 Triggers and the Purple Cow (Ryan)",
+      "summary": [
+        "Ryan's X article on commanding attention: five triggers (novelty, open loops, self-interest, emotion, proof) and Seth Godin's purple cow.",
+        "Bob explains the Von Restorff effect and Loewenstein's information gap with Laws of UX and Kidd and Hayden's curiosity review.",
+        "Guests bring Godin's own essay, the BBC on the attention span myth and the debate on distinctiveness vs differentiation."
+      ],
+      "category": "marketing",
+      "show": "Build Wiz AI Show",
+      "hosts": [
+        "Bob",
+        "Alice"
+      ],
+      "language": "en",
+      "format": "podcast-2host",
+      "published": "2026-11-28T00:36:49Z",
+      "duration_s": 893.787,
+      "size_bytes": 14301916,
+      "audio": "https://luongnv.com/buildwiz-ai-show-media/2026-11-28_how-to-command-attention-1-skill-of-2027.mp3",
+      "audio_sha256": "fa92524be5734eafeb5e7fff78b6cf5d96130b55f6a35ba7b3c95f2a18652de2",
+      "transcript": "episodes/2026-11-28_how-to-command-attention-1-skill-of-2027/transcript.vtt",
+      "voices": "OpenRouter · heygen/heygen-voice-1-turbo:free",
+      "source": {
+        "title": "How to Command Attention (#1 Skill of 2027)",
+        "author": "Ryan (@ryangrowthh)",
+        "url": "https://x.com/ryangrowthh/status/2126335635917242616",
+        "published": "2026-11-27T15:21:35Z",
+        "kind": "x"
+      },
+      "sources": [
+        {
+          "title": "How to Command Attention (#1 Skill of 2027)",
+          "author": "Ryan (@ryangrowthh)",
+          "url": "https://x.com/ryangrowthh/status/2126335635917242616"
+        },
+        {
+          "title": "Von Restorff Effect | Laws of UX",
+          "author": "Jon Yablonski",
+          "url": "https://lawsofux.com/von-restorff-effect/"
+        },
+        {
+          "title": "The psychology and neuroscience of curiosity",
+          "author": "Celeste Kidd and Benjamin Y Hayden",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4635443/"
+        },
+        {
+          "title": "In Praise of the Purple Cow",
+          "author": "Seth Godin",
+          "url": "https://www.fastcompany.com/46049/praise-purple-cow"
+        },
+        {
+          "title": "Busting the attention span myth",
+          "author": "Simon Maybin",
+          "url": "https://bbc.com/news/health-38896790"
+        },
+        {
+          "title": "Delivering clarity on differentiation and distinctiveness",
+          "author": "James Womersley",
+          "url": "https://www.contagious.com/en/article/news-and-views/delivering-clarity-for-marketing-teams-99f444b539ff402cbcd12e186f6d305d"
+        }
+      ],
+      "guests": [
+        {
+          "name": "Lena",
+          "presents": [
+            "In Praise of the Purple Cow"
+          ]
+        },
+        {
+          "name": "Maya",
+          "presents": [
+            "Busting the attention span myth"
+          ]
+        },
+        {
+          "name": "Theo",
+          "presents": [
+            "Delivering clarity on differentiation and distinctiveness"
+          ]
+        }
+      ],
+      "description": "Ryan explains how to command attention when AI floods every feed: five attention triggers and Seth Godin's purple cow. Bob and Alice test his playbook against the psychology of distinctiveness and curiosity, and the attention span myth.\n\nIn this episode:\n- Novelty, open loops, self-interest, emotion and proof\n- Winning the first line and holding attention\n- Distinctiveness vs differentiation\n\nSources: Ryan (@ryangrowthh); Jon Yablonski; Celeste Kidd and Benjamin Y Hayden; Seth Godin; Simon Maybin; James Womersley\nBig AI ideas, made clear for builders. luongnv.com/podcast",
+      "description_source": "description.txt",
+      "file_name": "Build Wiz AI Show - Commanding Attention 5 Triggers and the Purple Cow (Ryan) (2026-11-28).mp3"
+    },
     {
       "id": "2026-11-27_the-ants-the-grasshopper-fr",
       "title": "La Cigale et les Fourmis : histoire du soir pour enfants, notre version (d'après Ésope)",

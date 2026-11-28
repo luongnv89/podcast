@@ -1,0 +1,417 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.540
+<v Alice>What if your new product is invisible, simply because it looks like everything else?
+
+2
+00:00:04.840 --> 00:00:12.000
+<v Bob>One marketer puts it bluntly: average media is now virtually invisible, and good enough content is officially cooked.
+
+3
+00:00:12.300 --> 00:00:15.860
+<v Alice>So how do you stand out when AI floods every feed?
+
+4
+00:00:20.160 --> 00:00:30.896
+<v Alice>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Alice, and I'm asking the questions today. Bob, what are we unpacking?
+
+5
+00:00:31.196 --> 00:00:41.294
+<v Bob>I'm Bob, and today it's Ryan's X article on how to command attention. He says he's drawing on six years of building brands that reach millions; that's his own claim, and we can't check it.
+
+6
+00:00:41.594 --> 00:00:44.412
+<v Alice>And what's his big claim, in one line?
+
+7
+00:00:44.712 --> 00:00:56.315
+<v Bob>Attention is the most valuable currency in the world right now, and commanding it, in his words, will be the number one skill of 2027. That second part is his prediction, not a measurement.
+
+8
+00:00:56.615 --> 00:01:07.479
+<v Alice>That rings a bell. In our episode on the most lucrative AI business, Dan argues the most lucrative skill has always been capturing attention. So who's checking Ryan this time?
+
+9
+00:01:07.779 --> 00:01:21.197
+<v Bob>I'll lean on Jon Yablonski's Laws of UX and a curiosity review by Celeste Kidd and Benjamin Hayden. Three guests bring Seth Godin's purple cow essay, the BBC on attention spans, and a Contagious column on distinctiveness.
+
+10
+00:01:21.497 --> 00:01:26.184
+<v Alice>Let's start with the battlefield. What does Ryan say the feed looks like right now?
+
+11
+00:01:26.484 --> 00:01:36.246
+<v Bob>Crowded. He says you're hit with thousands of posts, ads, emails and notifications every day, and with AI, creating content has almost no friction.
+
+12
+00:01:36.546 --> 00:01:40.896
+<v Alice>So everyone's a creator now, and the feed is a firehose.
+
+13
+00:01:41.196 --> 00:01:51.166
+<v Bob>Exactly, and his thesis is that the bar has split in two. Generic content gets ignored or labelled as slop, while genuinely interesting content gets more attention than ever.
+
+14
+00:01:51.466 --> 00:01:54.459
+<v Alice>How lopsided does he think it actually gets?
+
+15
+00:01:54.759 --> 00:02:04.055
+<v Bob>He says the top 10 percent hoards 90 percent of all mindshare. He gives no study for that number, so treat it as his estimate, not a measured split.
+
+16
+00:02:04.355 --> 00:02:08.267
+<v Alice>Noted. So why would a flood be good news for anyone?
+
+17
+00:02:08.567 --> 00:02:25.009
+<v Bob>Picture a street market where every stall has a barker shouting the same deal, until it all turns to noise. The one quiet shop doing something odd is the one you remember. Ryan calls this the Von Restorff effect: when everything looks the same, people remember only what's different.
+
+18
+00:02:25.309 --> 00:02:28.893
+<v Alice>Is that a real effect, or just a marketing nickname?
+
+19
+00:02:29.193 --> 00:02:46.156
+<v Bob>It's real, and old. Jon Yablonski's Laws of UX explains that Hedwig von Restorff found, in her 1933 study, that memory improved for the one distinctive item in a list of similar ones. In short, the one that differs from the rest is most likely to be remembered.
+
+20
+00:02:46.456 --> 00:02:49.228
+<v Alice>And I'm guessing there's a catch for builders.
+
+21
+00:02:49.528 --> 00:03:00.392
+<v Bob>There is. Yablonski also says to use restraint when placing emphasis, so salient elements don't compete with one another. If every line of your landing page shouts, nothing stands out.
+
+22
+00:03:00.692 --> 00:03:06.703
+<v Alice>So the flood helps, but only if you're actually different. What are Ryan's triggers for that?
+
+23
+00:03:07.003 --> 00:03:19.446
+<v Bob>He frames attention as a trade: the viewer is trading their attention for something. And he says only five triggers really matter: novelty, tension and loops, self-interest, emotion, and having what they want.
+
+24
+00:03:19.746 --> 00:03:23.887
+<v Alice>Start with novelty, then. What does new look like in practice?
+
+25
+00:03:24.187 --> 00:03:43.276
+<v Bob>Think of a dark stage with one spotlight: every eye goes to whatever it lands on, and novelty is that spotlight for the brain. In practice, Ryan lists being first, saying what nobody else is saying, or saying something familiar in a new way. That's Yablonski's point again: the item that differs is the one remembered.
+
+26
+00:03:43.576 --> 00:03:48.995
+<v Alice>And he admits that last one is what a lot of gurus do: repackage ideas.
+
+27
+00:03:49.295 --> 00:04:03.949
+<v Bob>Honest of him. Next, tension and loops: Ryan says people can't stand an open loop. He credits psychologist George Loewenstein with the information gap: notice a gap between what we know and what we want to know, and we feel a pull to close it.
+
+28
+00:04:04.249 --> 00:04:07.114
+<v Alice>Where does Loewenstein's idea actually come from?
+
+29
+00:04:07.414 --> 00:04:27.054
+<v Bob>Celeste Kidd and Benjamin Hayden review the psychology and neuroscience of curiosity. They quote his 1994 description of curiosity as "a cognitive induced deprivation that arises from the perception of a gap in knowledge and understanding". His theory treats curiosity like a drive, the way hunger motivates eating.
+
+30
+00:04:27.354 --> 00:04:31.159
+<v Alice>Hunger for answers. Okay, I like that one.
+
+31
+00:04:31.459 --> 00:04:47.107
+<v Bob>Here's the twist builders should steal. Loewenstein suggests a small amount of information serves as a priming dose that greatly increases curiosity. In a trivia study the review describes, people were most curious when they had some idea of the answer but lacked confidence.
+
+32
+00:04:47.407 --> 00:04:51.502
+<v Alice>So a total mystery doesn't work. You need a hint first?
+
+33
+00:04:51.802 --> 00:05:05.527
+<v Bob>Right. It's like the cliffhanger at the end of a TV episode: you know the characters, you've seen the door open, and you have to see who walks through. That's the priming dose: give people enough to care, and the loop makes them follow you and crave more.
+
+34
+00:05:05.827 --> 00:05:10.143
+<v Alice>Third trigger, self-interest. How cynical does he get here?
+
+35
+00:05:10.443 --> 00:05:23.176
+<v Bob>He says bluntly that we're all selfish, and he won't spend attention on something without a clear payoff. People pay attention to what helps them make money, save time, gain status, feel better, or solve a specific problem.
+
+36
+00:05:23.476 --> 00:05:26.643
+<v Alice>So, make it about the viewer, not about you.
+
+37
+00:05:26.943 --> 00:05:40.744
+<v Bob>Then emotion. He says we remember how things made us feel far longer than what was said, like a childhood friend whose bond outlasts the details. So make people laugh, inspire them, surprise them, or make them feel seen.
+
+38
+00:05:41.044 --> 00:05:45.460
+<v Alice>And the fifth one, having what they want? That sounds vague.
+
+39
+00:05:45.760 --> 00:06:00.259
+<v Bob>Think of it as a magnet: you don't chase the iron filings, they come to you. Ryan says the most magnetic brands have something others want, like results, knowledge or access. People follow whoever is a few steps ahead of them on their path.
+
+40
+00:06:00.559 --> 00:06:03.249
+<v Alice>Which is why he keeps coming back to proof.
+
+41
+00:06:03.549 --> 00:06:12.289
+<v Bob>Yes: results, case studies, screenshots. For an AI product, I'd say that means a real before-and-after demo, not a promise.
+
+42
+00:06:12.589 --> 00:06:20.260
+<v Alice>So the list is new, unfinished, useful, felt and proven. Now the cow: who's telling that one?
+
+43
+00:06:20.560 --> 00:06:28.032
+<v Bob>He says marketer Seth Godin wrote a 2003 book called Purple Cow, so we asked Lena to read Godin in his own words.
+
+44
+00:06:28.332 --> 00:06:40.473
+<v Lena>Thanks, Bob. Seth Godin's Fast Company essay is In Praise of the Purple Cow. He argues it's time to add an exceptionally important new P to the classic marketing checklist: the Purple Cow.
+
+45
+00:06:40.773 --> 00:06:43.046
+<v Alice>Where did the cow itself come from?
+
+46
+00:06:43.346 --> 00:06:59.927
+<v Lena>On a family drive through France, Godin writes, they were enchanted by hundreds of storybook cows. Within a few minutes they started ignoring them, because the new cows were just like the old cows. Now imagine one purple cow in that field: that's the thing you'd stop the car for.
+
+47
+00:07:00.227 --> 00:07:04.415
+<v Alice>A cow that shouldn't be possible. So the point is just being weird?
+
+48
+00:07:04.715 --> 00:07:21.041
+<v Lena>No, Godin's word is remarkable. He writes that something remarkable is worth talking about, worth paying attention to, and that boring stuff quickly becomes invisible. For a product team, that means the remarkable part has to be in the product, not just the post.
+
+49
+00:07:21.341 --> 00:07:24.461
+<v Alice>Bob, how does Ryan turn that into steps?
+
+50
+00:07:24.761 --> 00:07:37.286
+<v Bob>Do what others won't, meaning more depth, more effort and more honesty, and do only what you can, using your own experience and access. Then be the first to start something, or be the only one doing it.
+
+51
+00:07:37.586 --> 00:07:41.170
+<v Alice>And the last one is the MrBeast move, right?
+
+52
+00:07:41.470 --> 00:07:53.658
+<v Bob>Put more on the line than everyone else. Ryan says that's how MrBeast built his brand, with giveaways far bigger than other creators' ones. And stakes can also be time, reputation or a public goal.
+
+53
+00:07:53.958 --> 00:08:02.732
+<v Alice>For a solo founder, that's building in public with a real deadline. Now, the stranger scrolling past: how do you win that first moment?
+
+54
+00:08:03.032 --> 00:08:15.092
+<v Bob>Ryan's first rule is to lead with the most interesting thing. In writing, the first line is everything, and in video, your first three seconds need a visual hook, such as an unusual background or fast cuts.
+
+55
+00:08:15.392 --> 00:08:24.468
+<v Alice>That's Derick Carneiro's content sale, from our episode on the sales every ad must make: grab attention and make them want to hear the ad to the end.
+
+56
+00:08:24.768 --> 00:08:36.398
+<v Bob>Same instinct. Ryan adds: break the pattern, be specific with numbers, names and timeframes, and make it about them, because everyone is constantly asking what's in it for them.
+
+57
+00:08:36.698 --> 00:08:38.843
+<v Alice>And what's this trick with two loops?
+
+58
+00:08:39.143 --> 00:08:47.708
+<v Bob>Open two loops. Close one immediately to prove you can deliver value, and leave the second open to keep people watching. The closed one is your priming dose.
+
+59
+00:08:48.008 --> 00:08:51.511
+<v Alice>Then packaging. This is where he gets numeric.
+
+60
+00:08:51.811 --> 00:09:06.721
+<v Bob>It's like a shop window on a busy street: people decide from the glass, not the stockroom. From his own experience, Ryan says most people spend 95 percent of their time on the content and 5 on the packaging. He'd make it 60 to 70 percent packaging.
+
+61
+00:09:07.021 --> 00:09:10.954
+<v Alice>Seventy percent packaging? That sounds like a recipe for clickbait.
+
+62
+00:09:11.254 --> 00:09:18.205
+<v Bob>Fair worry, and he draws the line himself. One of his final rules is to never trade trust for an engagement spark.
+
+63
+00:09:18.505 --> 00:09:24.516
+<v Alice>Ryan keeps saying you only have a few seconds. Maya, is our attention really that short?
+
+64
+00:09:24.816 --> 00:09:42.105
+<v Maya>In Busting the attention span myth on BBC News, Simon Maybin traced the claim that attention fell from 12 seconds in 2000 to eight, less than a goldfish's nine. It led back to a 2015 Microsoft Canada report, which cited a site called Statistic Brain.
+
+65
+00:09:42.405 --> 00:09:44.713
+<v Alice>And did Statistic Brain hold up?
+
+66
+00:09:45.013 --> 00:09:54.139
+<v Maya>Not at all. Maybin says the sources it listed couldn't find any research behind the numbers, and attention researchers had no idea where they came from either.
+
+67
+00:09:54.439 --> 00:09:57.741
+<v Alice>Wait, so the goldfish got slandered too?
+
+68
+00:09:58.041 --> 00:10:13.702
+<v Maya>Twice over: he found no evidence that goldfish have particularly short attention spans. Psychologist Gemma Briggs told him attention is "very much task-dependent." Think of attention as a dimmer switch, not a timer: people turn it up for what they care about.
+
+69
+00:10:14.002 --> 00:10:16.867
+<v Alice>Which cuts both ways for Ryan, doesn't it?
+
+70
+00:10:17.167 --> 00:10:28.379
+<v Maya>It does. Maybin concludes there's no evidence human attention spans are shrinking, and the academic behind research on shorter film shots says it only shows film-makers got better at grabbing attention.
+
+71
+00:10:28.679 --> 00:10:31.544
+<v Alice>Say you've caught them. How do you keep them?
+
+72
+00:10:31.844 --> 00:10:43.138
+<v Bob>Ryan says most brands have an attention lifecycle, like the Lego you loved until you simply outgrew it. Capturing attention is like a first date; retention is the long friendship that keeps people coming back.
+
+73
+00:10:43.438 --> 00:10:46.047
+<v Alice>So what builds the friendship part?
+
+74
+00:10:46.347 --> 00:10:57.594
+<v Bob>His list: owned distribution such as newsletters and Discords, a consistent personality, good morals, and keeping your promises. Audiences, he says, hate being sold out.
+
+75
+00:10:57.894 --> 00:10:59.992
+<v Alice>And when your niche cools off?
+
+76
+00:11:00.292 --> 00:11:08.393
+<v Bob>Be willing to pivot. He points to the creators on X who suddenly pivoted to AI, because they realized that's where new market demand was.
+
+77
+00:11:08.693 --> 00:11:12.963
+<v Alice>So half of X pivoting to AI was a retention strategy.
+
+78
+00:11:13.263 --> 00:11:18.473
+<v Bob>Pretty much, and he says he even did it himself, pairing his marketing niche with a hot topic.
+
+79
+00:11:18.773 --> 00:11:24.192
+<v Alice>Let's push back. Are his big numbers and his skill-of-the-year claim actually facts?
+
+80
+00:11:24.492 --> 00:11:35.704
+<v Bob>No. Neither the mindshare split nor the 2027 prediction comes with data in the post, and the reach of his brands is self-reported. They're a practitioner's view: useful, but unverified.
+
+81
+00:11:36.004 --> 00:11:43.257
+<v Alice>Second objection: is being the purple cow even the right goal? Theo, you brought a different school of thought.
+
+82
+00:11:43.557 --> 00:11:59.581
+<v Theo>James Womersley's column in Contagious lays out the debate. He notes that Byron Sharp's How Brands Grow, in 2010, argued differentiation plays a small role in how brands compete. Sharp pushed distinctiveness instead: recognisable colours, logos and characters.
+
+83
+00:11:59.881 --> 00:12:04.569
+<v Alice>So, look like yourself every time, rather than shock people every time?
+
+84
+00:12:04.869 --> 00:12:18.572
+<v Theo>That's the Sharp side, but Womersley says the pendulum swung back. Kantar's 2017 BrandZ study found brands seen as both disruptive and different grew in value by 28 percent, while those low on both fell 5 percent.
+
+85
+00:12:18.872 --> 00:12:21.180
+<v Alice>So which side does he land on?
+
+86
+00:12:21.480 --> 00:12:37.121
+<v Theo>Both. He favours the cakeist approach of Mark Ritson and Tom Roach, where differentiation and distinctiveness complement one another. His warning is that undifferentiated, non-distinctive sameness is a recipe for bland, forgettable brand communications.
+
+87
+00:12:37.421 --> 00:12:46.322
+<v Bob>My take for builders: be remarkable once, then recognisable every time. The purple cow gets you noticed; consistent assets let people find you again.
+
+88
+00:12:46.622 --> 00:12:51.147
+<v Alice>Last objection: doesn't all this trigger talk slide into manipulation?
+
+89
+00:12:51.447 --> 00:13:01.510
+<v Bob>It can, and Ryan says as much: avoid ragebait, always deliver your promises, and protect your own attention, because what you consume shapes what you create.
+
+90
+00:13:01.810 --> 00:13:06.591
+<v Alice>Time for Builder's Corner. Bob, what's one thing to try this week?
+
+91
+00:13:06.891 --> 00:13:17.882
+<v Bob>Rewrite the first line of your product page or launch post using one trigger. Ryan says the first line is everything, so make it specific, make it about the user, or open a loop you close a sentence later.
+
+92
+00:13:18.182 --> 00:13:20.617
+<v Alice>And how do I know the new line worked?
+
+93
+00:13:20.917 --> 00:13:30.725
+<v Bob>Put the old and new lines side by side and ask Ryan's question: which one would stand out next to everyone else? Then ship the winner and watch whether more people read past it.
+
+94
+00:13:31.025 --> 00:13:35.968
+<v Alice>Quick takeaways. I'll start: different beats louder, thanks to Von Restorff.
+
+95
+00:13:36.268 --> 00:13:45.170
+<v Bob>Second, stack the triggers, novelty plus tension plus self-interest, as Ryan puts it. Third, prove it with results, not adjectives.
+
+96
+00:13:45.470 --> 00:13:49.182
+<v Alice>Fourth, you're not a goldfish, so earn the next second.
+
+97
+00:13:49.482 --> 00:13:58.001
+<v Bob>And his formula sums it up: attention equals what the viewer wants, plus what only you can give them, plus a way they haven't seen before.
+
+98
+00:13:58.301 --> 00:14:00.782
+<v Alice>What does this leave unsettled for you, Bob?
+
+99
+00:14:01.082 --> 00:14:11.737
+<v Bob>Whether the gap between top and average content is as extreme as Ryan says; nobody has measured it here. And whether floods of AI content train people to tune out novelty itself.
+
+100
+00:14:12.037 --> 00:14:17.154
+<v Alice>And where a good open loop turns into bait. I'd bet that's where most builders slip.
+
+101
+00:14:17.454 --> 00:14:26.837
+<v Bob>Thanks to Ryan for his X article on commanding attention, to Jon Yablonski's Laws of UX, and to Celeste Kidd and Benjamin Hayden for their review on curiosity.
+
+102
+00:14:27.137 --> 00:14:34.983
+<v Alice>And to Seth Godin for In Praise of the Purple Cow, Simon Maybin at BBC News, and James Womersley at Contagious.
+
+103
+00:14:35.283 --> 00:14:41.549
+<v Bob>The voices are AI, and every claim was checked against those sources. Go rewrite one first line this week.
+
+104
+00:14:41.849 --> 00:14:47.187
+<v Alice>That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.
