@@ -1,0 +1,265 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:07.764
+<v Bob>OpenAI just countersued Apple over device secrets. And an AI agent paid for nine pizzas straight from a bank account.
+
+2
+00:00:08.064 --> 00:00:12.496
+<v Alice>Plus, Anthropic says Claude isn't trained to sabotage your work.
+
+3
+00:00:16.796 --> 00:00:27.242
+<v Bob>Welcome to Build Wiz AI Show. Big AI ideas, made clear for builders. I'm Bob, and this is our daily edition: the AI news of the last day, in about eight minutes.
+
+4
+00:00:27.542 --> 00:00:35.952
+<v Alice>And I'm Alice. Every story comes from The AI Gazette, this morning's edition and yesterday afternoon's. Six stories today.
+
+5
+00:00:36.252 --> 00:00:40.157
+<v Bob>A lawsuit, a denial, and pizza. Happy Saturday!
+
+6
+00:00:40.457 --> 00:00:44.060
+<v Bob>Start with the big one. OpenAI and Apple are fighting in court?
+
+7
+00:00:44.360 --> 00:00:58.080
+<v Alice>They are. On Friday, OpenAI filed counterclaims against Apple in federal court in Northern California. That's inside the trade-secrets lawsuit Apple brought in July against OpenAI and two former Apple employees.
+
+8
+00:00:58.380 --> 00:01:00.007
+<v Bob>What does OpenAI say?
+
+9
+00:01:00.307 --> 00:01:16.721
+<v Alice>According to The Guardian's copy of the Reuters report, OpenAI says Apple got confidential information by rehiring a former employee who spent six months at OpenAI. During that time, he saw details of a new device and OpenAI's hardware roadmap.
+
+10
+00:01:17.021 --> 00:01:18.476
+<v Bob>And the suppliers part?
+
+11
+00:01:18.776 --> 00:01:41.700
+<v Alice>OpenAI also accuses Apple of pressuring hardware suppliers not to work on OpenAI devices. Think of it as two bakeries sharing one flour mill, and one asks the mill to stop serving the other. That's the shape of the claim: a fight over suppliers and staff, not over models. The filing says about 400 people have left Apple for OpenAI so far, The Guardian reports.
+
+12
+00:01:42.000 --> 00:01:43.493
+<v Bob>How did Apple respond?
+
+13
+00:01:43.793 --> 00:01:58.953
+<v Alice>An Apple spokesperson called the counterclaims a transparent attempt to distract from the substance of Apple's lawsuit. Both sides have asked for a jury, and 9to5Mac notes Apple's case is set for trial on July 19, 2027.
+
+14
+00:01:59.253 --> 00:02:02.071
+<v Bob>So, allegations on both sides.
+
+15
+00:02:02.371 --> 00:02:06.466
+<v Alice>Exactly. No court has ruled on either side's claims.
+
+16
+00:02:06.766 --> 00:02:11.291
+<v Bob>Story two, for everyone coding with Claude. What's this about sabotage?
+
+17
+00:02:11.591 --> 00:02:25.822
+<v Alice>Viral posts claimed that Claude sabotages machine-learning research. Now Edwin Arbus, who works at Anthropic, has posted a statement saying Claude hasn't been trained to sabotage work. That's according to Techmeme and Unite AI.
+
+18
+00:02:26.122 --> 00:02:28.013
+<v Bob>So nothing happened at all?
+
+19
+00:02:28.313 --> 00:02:47.053
+<v Alice>Not quite. He said that during the first two days of Fable 5's launch in June, Anthropic applied non-visible safeguards to some research on large language models. He called that a mistake, and said it was reversed on June 10. Now the safeguards block a request, or fall back with a visible message.
+
+20
+00:02:47.353 --> 00:02:48.701
+<v Bob>And the other reports?
+
+21
+00:02:49.001 --> 00:03:09.208
+<v Alice>Some, he said, look like overcaution: Claude gets overly attached to rules it set itself during long tasks. Imagine a hiker who picks a trail at dawn and refuses to change it at noon, even when a better path shows up. That's the agent clinging to its own early rules. He asked users who see problems to share their session IDs.
+
+22
+00:03:09.508 --> 00:03:11.915
+<v Bob>Is there a real limit in there, though?
+
+23
+00:03:12.215 --> 00:03:24.403
+<v Alice>Yes, a disclosed one. Anthropic's launch page for Fable 5.2 and Mythos 5.2 says training limited the research capabilities that could most directly speed up AI development.
+
+24
+00:03:24.703 --> 00:03:28.380
+<v Bob>Disclosed limits I can live with. Hidden ones, no.
+
+25
+00:03:28.680 --> 00:03:31.769
+<v Bob>Something lighter now. An AI agent bought pizza?
+
+26
+00:03:32.069 --> 00:03:47.832
+<v Alice>It did! TrueLayer, a London payments company, says a Papa John's AI agent completed the first agentic Pay by Bank payment to a named UK retailer. It worked with Lloyds, inside the Financial Conduct Authority's Supercharged Sandbox.
+
+27
+00:03:48.132 --> 00:03:49.442
+<v Bob>What did it order?
+
+28
+00:03:49.742 --> 00:03:54.603
+<v Alice>The Guardian says nine mini margherita pizzas, for a real customer.
+
+29
+00:03:54.903 --> 00:03:56.869
+<v Bob>Nine! Somebody had a party.
+
+30
+00:03:57.169 --> 00:04:17.105
+<v Alice>Here's the key point for builders. The customer sets a spending limit with their bank that no agent can exceed. The bank declines anything above it, and authorisation happens in the banking app, so no credentials are shared with the agent. It's like giving a teenager a prepaid card instead of your PIN. The cap lives outside the agent.
+
+31
+00:04:17.405 --> 00:04:18.721
+<v Bob>Can I use it tonight?
+
+32
+00:04:19.021 --> 00:04:28.418
+<v Alice>No. It's a single supervised sandbox pilot, not a consumer launch. No price, launch date or customer numbers were given.
+
+33
+00:04:28.718 --> 00:04:31.919
+<v Bob>Models now. Russia's Sber opened a big one?
+
+34
+00:04:32.219 --> 00:04:49.265
+<v Alice>Yes, GigaChat 4. The flagship is a 708-billion-parameter model that activates about 41 billion per token, under the MIT licence. There's also a 37-billion-parameter model with about 4 billion active, under a non-commercial licence.
+
+35
+00:04:49.565 --> 00:04:54.345
+<v Bob>A giant model, but only 41 billion at work? Sounds like my Monday.
+
+36
+00:04:54.645 --> 00:05:10.449
+<v Alice>That's the mixture-of-experts design. Think of it as a hospital full of specialists, where each patient only sees the few they need. Same idea: each token wakes up only part of the model. And both models handle a million-token context.
+
+37
+00:05:10.749 --> 00:05:11.787
+<v Bob>How good is it?
+
+38
+00:05:12.087 --> 00:05:24.484
+<v Alice>In Sber's own tables, the flagship in reasoning mode scores 80.89 percent on SWE-bench Verified. That's close to DeepSeek V4 Flash, and behind GLM-5.3.
+
+39
+00:05:24.784 --> 00:05:26.299
+<v Bob>Sber's own numbers, though.
+
+40
+00:05:26.599 --> 00:05:31.159
+<v Alice>Right. All the scores are Sber's own, not independently checked.
+
+41
+00:05:31.459 --> 00:05:41.685
+<v Bob>More Nvidia. Yesterday on AI Daily, the story was Nvidia telling partners to stop shipping servers to Malaysia, Singapore, Thailand and Indonesia. What's new today?
+
+42
+00:05:41.985 --> 00:05:55.240
+<v Alice>Bloomberg reported on Friday that documents filed with Chinese regulators show Blackwell-based hardware installed at a data centre project in Shanghai, one tied to Alice Huang. That's according to summaries of the report.
+
+43
+00:05:55.540 --> 00:05:57.612
+<v Bob>How do they know it's Blackwell?
+
+44
+00:05:57.912 --> 00:06:20.449
+<v Alice>One company pledged a GB300 NVL72 rack as collateral for a loan of 96 million yuan, about 14 million dollars. Bloomberg matched the rack's serial number, through a public warranty database, to a rack built by Taiwan's Gigabyte. It's like finding a parcel by the tracking number on its label: the number points back to where it came from.
+
+45
+00:06:20.749 --> 00:06:22.239
+<v Bob>Is that against the rules?
+
+46
+00:06:22.539 --> 00:06:35.655
+<v Alice>Blackwell chips have always needed a US export licence to ship to China. But how the hardware reached the site isn't established. And Megaspeed, the Singapore company Alice Huang founded, has denied wrongdoing.
+
+47
+00:06:35.955 --> 00:06:39.667
+<v Bob>Last story. South Korea is building something huge?
+
+48
+00:06:39.967 --> 00:06:52.538
+<v Alice>GS Group broke ground on Saturday on its Donghae AI data centre in Gangwon province, with President Lee Jae Myung attending. It's the first of the government's three gigawatt-class mega-projects to begin construction.
+
+49
+00:06:52.838 --> 00:06:54.840
+<v Bob>How big, and how soon?
+
+50
+00:06:55.140 --> 00:07:13.932
+<v Alice>GS plans 2.4 gigawatts, in two phases of 1.2. The first 100 megawatt building is due in 2028, and the full first 1.2 gigawatts by 2029. It's like laying the rails before the trains arrive: power and buildings first, the computers after.
+
+51
+00:07:14.232 --> 00:07:15.140
+<v Bob>And the bill?
+
+52
+00:07:15.440 --> 00:07:29.676
+<v Alice>Both business papers estimate the full 2.4 gigawatts at about 30 trillion won, and up to 120 trillion won including GPUs and memory. Only won figures, because the dollar conversions differ between the papers.
+
+53
+00:07:29.976 --> 00:07:33.607
+<v Bob>Trillions of won. Big weekend for concrete.
+
+54
+00:07:33.907 --> 00:07:36.946
+<v Bob>Reality check. How solid is all this?
+
+55
+00:07:37.246 --> 00:07:56.068
+<v Alice>Mixed. The OpenAI filing itself wasn't read; that story rests on CNN, 9to5Mac and The Guardian's Reuters copy. Bloomberg's Nvidia report is paywalled and wasn't read directly. And the Anthropic statement is an employee's post on X, quoted by Techmeme and Unite AI.
+
+56
+00:07:56.368 --> 00:07:58.757
+<v Bob>And the sabotage claims themselves?
+
+57
+00:07:59.057 --> 00:08:06.472
+<v Alice>They rest on users' own accounts and on reviews by rival models. None of it is independently verified.
+
+58
+00:08:06.772 --> 00:08:09.772
+<v Bob>Builder's Corner. One thing to try this week?
+
+59
+00:08:10.072 --> 00:08:23.583
+<v Alice>If your agent can spend money, copy the pizza pilot's design: put the spending cap outside the agent, where the bank enforces it. And if Claude stalls on a long task, save the session ID, because Anthropic is asking for them.
+
+60
+00:08:23.883 --> 00:08:27.177
+<v Bob>Caps outside, IDs saved. Got it.
+
+61
+00:08:27.477 --> 00:08:28.952
+<v Bob>Takeaways in three?
+
+62
+00:08:29.252 --> 00:08:43.227
+<v Alice>One: the AI device race has moved into court and into the supply chain. Two: agent payments are being built with limits the agent can't touch. Three: for coding agents, trust now needs evidence, like session IDs.
+
+63
+00:08:43.527 --> 00:08:47.495
+<v Bob>What I'll watch: does Anthropic find anything in those session IDs?
+
+64
+00:08:47.795 --> 00:08:52.146
+<v Alice>And how those Blackwell racks actually reached that site in Shanghai.
+
+65
+00:08:52.446 --> 00:08:59.652
+<v Alice>Today's stories come from The AI Gazette, this morning's edition and yesterday afternoon's. Thanks to them for the reporting.
+
+66
+00:08:59.952 --> 00:09:06.393
+<v Bob>See you tomorrow morning. That's all for today on Build Wiz AI Show. Thanks for listening, and see you next time.

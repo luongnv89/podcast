@@ -7,7 +7,7 @@
   <description>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</description>
   <itunes:summary>Big AI ideas, made clear for builders. Each episode takes one source, an article, a paper, a talk or a post on AI, agents, products or marketing, and unpacks everything worth knowing: the main ideas, the evidence, the counterpoints and one concrete thing to try. Hosts Bob and Alice are joined by recurring guests who bring in outside sources. Every claim is checked against its source, and every source is credited. Scripts and voices are made with AI.</itunes:summary>
   <language>en</language>
-  <lastBuildDate>Sat, 28 Nov 2026 00:40:01 +0000</lastBuildDate>
+  <lastBuildDate>Sat, 28 Nov 2026 05:15:55 +0000</lastBuildDate>
   <itunes:author>Build Wiz AI Show</itunes:author>
   <itunes:owner>
     <itunes:name>Build Wiz AI</itunes:name>
@@ -22,6 +22,29 @@
   <itunes:category text="Technology"/>
   <itunes:explicit>false</itunes:explicit>
   <itunes:type>episodic</itunes:type>
+  <item>
+    <guid isPermaLink="false">2026-11-28_morning-edition-saturday-28-november-2026</guid>
+    <title>OpenAI Countersues Apple, Claude Sabotage Denied | AI Daily 28 Nov</title>
+    <link>https://luongnv.com/podcast/#2026-11-28_morning-edition-saturday-28-november-2026</link>
+    <description>AI Daily for Saturday 28 November, from The AI Gazette's morning and afternoon editions.
+
+OpenAI countersues Apple over device secrets, and an Anthropic staff member says Claude is not trained to sabotage work.
+
+Also: a Papa John's agent pays by bank, Sber's open GigaChat 4, Blackwell racks in Shanghai, and a Korean gigawatt data centre.
+
+Sources:
+- The AI Gazette, morning edition, Saturday 28 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-28-morning.html)
+- The AI Gazette, afternoon edition, Friday 27 November 2026, The AI Gazette (https://luongnv.com/news/reports/2026-11-27-afternoon.html)
+
+Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</description>
+    <content:encoded><![CDATA[<p>AI Daily for Saturday 28 November, from The AI Gazette's morning and afternoon editions.</p><p>OpenAI countersues Apple over device secrets, and an Anthropic staff member says Claude is not trained to sabotage work.</p><p>Also: a Papa John's agent pays by bank, Sber's open GigaChat 4, Blackwell racks in Shanghai, and a Korean gigawatt data centre.</p><p>Sources:</p><ul><li>The AI Gazette, morning edition, Saturday 28 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-28-morning.html">https://luongnv.com/news/reports/2026-11-28-morning.html</a></li><li>The AI Gazette, afternoon edition, Friday 27 November 2026, The AI Gazette: <a href="https://luongnv.com/news/reports/2026-11-27-afternoon.html">https://luongnv.com/news/reports/2026-11-27-afternoon.html</a></li></ul><p>Written and voiced with AI (OpenRouter · heygen/heygen-voice-1-turbo:free).</p>]]></content:encoded>
+    <pubDate>Sat, 28 Nov 2026 05:12:45 +0000</pubDate>
+    <enclosure url="https://luongnv.com/buildwiz-ai-show-media/2026-11-28_morning-edition-saturday-28-november-2026.mp3?v=dbb251f3" length="8849228" type="audio/mpeg"/>
+    <itunes:duration>553</itunes:duration>
+    <itunes:explicit>false</itunes:explicit>
+    <itunes:episodeType>full</itunes:episodeType>
+    <podcast:transcript url="https://luongnv.com/podcast/episodes/2026-11-28_morning-edition-saturday-28-november-2026/transcript.vtt" type="text/vtt"/>
+  </item>
   <item>
     <guid isPermaLink="false">2026-11-28_how-to-command-attention-1-skill-of-2027</guid>
     <title>Commanding Attention: 5 Triggers and the Purple Cow (Ryan)</title>
